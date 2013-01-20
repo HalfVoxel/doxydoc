@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_astar_path_editor_1_1_update_checker" kind="class" prot="public">
+    <compoundname>AstarPathEditor::UpdateChecker</compoundname>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_astar_path_editor_1_1_update_checker_1a17a8ecaae2d13f8bcb31f87f450bc80b" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>static</type>
+        <definition>static UpdateChecker</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateChecker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/AstarPathEditor.cs" line="2351" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/AstarPathEditor.cs" bodystart="2350" bodyend="2353"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Checking for updates on startup. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/AstarPathEditor.cs" line="2349" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/AstarPathEditor.cs" bodystart="2349" bodyend="2354"/>
+    <listofallmembers>
+      <member refid="class_astar_path_editor_1_1_update_checker_1a17a8ecaae2d13f8bcb31f87f450bc80b" prot="private" virt="non-virtual"><scope>AstarPathEditor::UpdateChecker</scope><name>UpdateChecker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

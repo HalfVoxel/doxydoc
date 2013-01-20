@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_03a19a792656b2cc3d7320c8e19d733b" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject</compoundname>
+    <innerdir refid="dir_2d6442890bfdb93a11c23d2d6e1d1bca">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core</innerdir>
+    <innerdir refid="dir_c09d28b6f7c16f308d6909ed5a8ff132">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor</innerdir>
+    <innerdir refid="dir_ab7023e939f263f7b9c7b1b49bc492ab">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes</innerdir>
+    <innerdir refid="dir_d57e7c39553fec63bee0647daeb17d58">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators</innerdir>
+    <innerdir refid="dir_d24884ee165abfdb71df372c84cbad91">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance</innerdir>
+    <innerdir refid="dir_5dca08f5b593dbdb0a131666d512a56b">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers</innerdir>
+    <innerdir refid="dir_562a8b97bb2625d836b773348997f082">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders</innerdir>
+    <innerdir refid="dir_c0ad9b88d9543b6c9055e87ac39bbbf4">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO</innerdir>
+    <innerdir refid="dir_4cbe6f388ae3fa5f4d42adc389b2b1c4">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities</innerdir>
+    <innerfile refid="changelog_8cs">changelog.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/"/>
+  </compounddef>
+</doxygen>

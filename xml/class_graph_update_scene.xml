@@ -1,0 +1,563 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_graph_update_scene" kind="class" prot="public">
+    <compoundname>GraphUpdateScene</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_graph_modifier" prot="public" virt="non-virtual">GraphModifier</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_graph_update_scene_1a14572a55674ed823ac6efefa762c1324" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool applyOnScan</definition>
+        <argsstring></argsstring>
+        <name>applyOnScan</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Apply this graph update object whenever a graph is rescanned. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="60" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="60" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1ac211d3e2d564ddf0db6c36fd86670d52" compoundref="_graph_update_scene_8cs" startline="23" endline="26">OnPostScan</referencedby>
+        <referencedby refid="class_graph_update_scene_1a1df920ea33e5fca41ff49453bb2584fb" compoundref="_graph_update_scene_8cs" startline="164" endline="168">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a1c94aae03b28deb259e681fd32aefdb9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool applyOnStart</definition>
+        <argsstring></argsstring>
+        <name>applyOnStart</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Apply this graph update object on start. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="57" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="57" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_graph_update_scene_8cs" startline="14" endline="21">Start</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1adf57f7307451b26c33863e4ffb86a82d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool convex</definition>
+        <argsstring></argsstring>
+        <name>convex</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Use the convex hull (XZ space) of the points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="36" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="36" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" compoundref="_graph_update_scene_8cs" startline="130" endline="132">RecalcConvex</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+        <referencedby refid="class_graph_update_scene_1aee679185db3395453fc788027bbba782" compoundref="_graph_update_scene_8cs" startline="226" endline="247">OnDrawGizmos</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a004317cfa6123403bd59ecfe5e39a39a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool lockToY</definition>
+        <argsstring></argsstring>
+        <name>lockToY</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Lock all points to Y = <ref refid="class_graph_update_scene_1a4b2c54cb42341e1ecd4535c45b1d9ab0" kindref="member">lockToYValue</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="80" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a4b2c54cb42341e1ecd4535c45b1d9ab0" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float lockToYValue</definition>
+        <argsstring></argsstring>
+        <name>lockToYValue</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>if <ref refid="class_graph_update_scene_1a004317cfa6123403bd59ecfe5e39a39a" kindref="member">lockToY</ref> is enabled lock all points to this value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="83" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="83" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1ac7f99067ee2f9395763a24cc58169a79" compoundref="_graph_update_scene_8cs" startline="155" endline="160">LockToY</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1abeb615cf25c5b6fe31a1e148433478cf" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float minBoundsHeight</definition>
+        <argsstring></argsstring>
+        <name>minBoundsHeight</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Minumum height of the bounds of the resulting Graph Update Object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Useful when all points are laid out on a plane but you still need a bounds with a height greater than zero since a zero height graph update object would usually result in no nodes being updated. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="42" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="42" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1add96fb95ff8c820c477a6b9e7d70145a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool modifyTag</definition>
+        <argsstring></argsstring>
+        <name>modifyTag</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>If enabled, set all nodes&apos; tags to <ref refid="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" kindref="member">setTag</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="91" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="91" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a2861ffb55997ec06c4bab822ca1f6eb7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool modifyWalkability</definition>
+        <argsstring></argsstring>
+        <name>modifyWalkability</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Set to true to set all targeted nodese walkability to <ref refid="class_graph_update_scene_1ac4e414eb56d8eb7fb25f0ad49b60c49f" kindref="member">setWalkability</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="51" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="51" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1ae8b4eacb5710bd15dd52a291119d6729" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int penaltyDelta</definition>
+        <argsstring></argsstring>
+        <name>penaltyDelta</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Penalty to add to nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Be careful when setting negative values since if a node get&apos;s a negative penalty it will underflow and instead get really large. In most cases a warning will be logged if that happens. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="48" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="48" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" compoundref="_graph_update_scene_8cs" startline="115" endline="125">InvertSettings</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" prot="public" static="no" mutable="no">
+        <type>Vector3[]</type>
+        <definition>Vector3 [] points</definition>
+        <argsstring></argsstring>
+        <name>points</name>
+        <briefdescription>
+<para>Points which define the region to update. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="29" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" compoundref="_graph_update_scene_8cs" startline="130" endline="132">RecalcConvex</referencedby>
+        <referencedby refid="class_graph_update_scene_1a774305f0f6316fe5dca98e7f05e0dcc7" compoundref="_graph_update_scene_8cs" startline="139" endline="149">ToggleUseWorldSpace</referencedby>
+        <referencedby refid="class_graph_update_scene_1ac7f99067ee2f9395763a24cc58169a79" compoundref="_graph_update_scene_8cs" startline="155" endline="160">LockToY</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+        <referencedby refid="class_graph_update_scene_1aee679185db3395453fc788027bbba782" compoundref="_graph_update_scene_8cs" startline="226" endline="247">OnDrawGizmos</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int setTag</definition>
+        <argsstring></argsstring>
+        <name>setTag</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>If <ref refid="class_graph_update_scene_1add96fb95ff8c820c477a6b9e7d70145a" kindref="member">modifyTag</ref> is enabled, set all nodes&apos; tags to this value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="94" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="94" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" compoundref="_graph_update_scene_8cs" startline="115" endline="125">InvertSettings</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1ac4e414eb56d8eb7fb25f0ad49b60c49f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool setWalkability</definition>
+        <argsstring></argsstring>
+        <name>setWalkability</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>See <ref refid="class_graph_update_scene_1a2861ffb55997ec06c4bab822ca1f6eb7" kindref="member">modifyWalkability</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="54" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="54" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" compoundref="_graph_update_scene_8cs" startline="115" endline="125">InvertSettings</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a62de4bd11cc168fe0e75cb5bfdb4b269" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool updatePhysics</definition>
+        <argsstring></argsstring>
+        <name>updatePhysics</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Update node&apos;s walkability and connectivity using physics functions. </para>        </briefdescription>
+        <detaileddescription>
+<para>For grid graphs, this will update the node&apos;s position and walkability exactly like when doing a scan of the graph. If enabled for grid graphs, <ref refid="class_graph_update_scene_1a2861ffb55997ec06c4bab822ca1f6eb7" kindref="member">modifyWalkability</ref> will be ignored.</para><para>For Point Graphs, this will recalculate all connections which passes through the bounds of the resulting Graph Update Object using raycasts (if enabled). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="75" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="75" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a440a07d51b8e0538091901ecf7760049" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool useWorldSpace</definition>
+        <argsstring></argsstring>
+        <name>useWorldSpace</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Use world space for coordinates. </para>        </briefdescription>
+        <detaileddescription>
+<para>If true, the shape will not follow when moving around the transform </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="65" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="65" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a774305f0f6316fe5dca98e7f05e0dcc7" compoundref="_graph_update_scene_8cs" startline="139" endline="149">ToggleUseWorldSpace</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+        <referencedby refid="class_graph_update_scene_1aee679185db3395453fc788027bbba782" compoundref="_graph_update_scene_8cs" startline="226" endline="247">OnDrawGizmos</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph_update_scene_1a6b8c05d00a7bae8e877115df9507b4d3" prot="private" static="no" mutable="no">
+        <type>Vector3[]</type>
+        <definition>Vector3 [] convexPoints</definition>
+        <argsstring></argsstring>
+        <name>convexPoints</name>
+        <briefdescription>
+<para>Private cached convex hull of the <ref refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" kindref="member">points</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="32" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="32" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" compoundref="_graph_update_scene_8cs" startline="130" endline="132">RecalcConvex</referencedby>
+        <referencedby refid="class_graph_update_scene_1aee679185db3395453fc788027bbba782" compoundref="_graph_update_scene_8cs" startline="226" endline="247">OnDrawGizmos</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1aa52857762e38127ab69d655ebb84b3df" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool firstApplied</definition>
+        <argsstring></argsstring>
+        <name>firstApplied</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Has apply been called yet. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to prevent applying twice when both applyOnScan and applyOnStart are enabled </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="103" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_graph_update_scene_8cs" startline="14" endline="21">Start</referencedby>
+        <referencedby refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_1a517d66af9aa4b61d3a3e0b454ef774fb" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int setTagInvert</definition>
+        <argsstring></argsstring>
+        <name>setTagInvert</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Private cached inversion of <ref refid="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" kindref="member">setTag</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used for <ref refid="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" kindref="member">InvertSettings()</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="98" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="98" bodyend="-1"/>
+        <referencedby refid="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" compoundref="_graph_update_scene_8cs" startline="115" endline="125">InvertSettings</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph_update_scene_1a1df920ea33e5fca41ff49453bb2584fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Apply</definition>
+        <argsstring>(AstarPath active)</argsstring>
+        <name>Apply</name>
+        <param>
+          <type><ref refid="class_astar_path" kindref="compound">AstarPath</ref></type>
+          <declname>active</declname>
+        </param>
+        <briefdescription>
+<para>Apply the update. </para>        </briefdescription>
+        <detaileddescription>
+<para>Will only do anything if <ref refid="class_graph_update_scene_1a14572a55674ed823ac6efefa762c1324" kindref="member">applyOnScan</ref> is enabled </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="164" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="164" bodyend="168"/>
+        <references refid="class_graph_update_scene_1a14572a55674ed823ac6efefa762c1324" compoundref="_graph_update_scene_8cs" startline="60">applyOnScan</references>
+        <references refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Apply</definition>
+        <argsstring>()</argsstring>
+        <name>Apply</name>
+        <briefdescription>
+<para>Updates graphs with a created GUO. </para>        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="class_pathfinding_1_1_graph_update_object" kindref="compound">Pathfinding.GraphUpdateObject</ref> with a <ref refid="class_pathfinding_1_1_graph_update_shape" kindref="compound">Pathfinding.GraphUpdateShape</ref> representing the polygon of this object and update all graphs using <ref refid="class_astar_path_1ab418dfc993a7451f87bd9c7f9a5b5ef5" kindref="member">AstarPath.UpdateGraphs</ref>. This will not update graphs directly. See AstarPath.UpdateGraph for more info. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="175" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="175" bodyend="213"/>
+        <references refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" compoundref="_astar_path_8cs" startline="64">AstarPath.active</references>
+        <references refid="class_graph_update_scene_1aa52857762e38127ab69d655ebb84b3df" compoundref="_graph_update_scene_8cs" startline="103">firstApplied</references>
+        <references refid="class_graph_update_scene_1adf57f7307451b26c33863e4ffb86a82d" compoundref="_graph_update_scene_8cs" startline="36">convex</references>
+        <references refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" compoundref="_graph_update_scene_8cs" startline="29">points</references>
+        <references refid="class_graph_update_scene_1a440a07d51b8e0538091901ecf7760049" compoundref="_graph_update_scene_8cs" startline="65">useWorldSpace</references>
+        <references refid="class_graph_update_scene_1abeb615cf25c5b6fe31a1e148433478cf" compoundref="_graph_update_scene_8cs" startline="42">minBoundsHeight</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a2861ffb55997ec06c4bab822ca1f6eb7" compoundref="astarclasses_8cs" startline="401">GraphUpdateObject.modifyWalkability</references>
+        <references refid="class_graph_update_scene_1a2861ffb55997ec06c4bab822ca1f6eb7" compoundref="_graph_update_scene_8cs" startline="51">modifyWalkability</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1ac4e414eb56d8eb7fb25f0ad49b60c49f" compoundref="astarclasses_8cs" startline="402">GraphUpdateObject.setWalkability</references>
+        <references refid="class_graph_update_scene_1ac4e414eb56d8eb7fb25f0ad49b60c49f" compoundref="_graph_update_scene_8cs" startline="54">setWalkability</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1aba2a0e1ea6583ac15e47e21a492de2fc" compoundref="astarclasses_8cs" startline="399">GraphUpdateObject.addPenalty</references>
+        <references refid="class_graph_update_scene_1ae8b4eacb5710bd15dd52a291119d6729" compoundref="_graph_update_scene_8cs" startline="48">penaltyDelta</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a62de4bd11cc168fe0e75cb5bfdb4b269" compoundref="astarclasses_8cs" startline="389">GraphUpdateObject.updatePhysics</references>
+        <references refid="class_graph_update_scene_1a62de4bd11cc168fe0e75cb5bfdb4b269" compoundref="_graph_update_scene_8cs" startline="75">updatePhysics</references>
+        <references refid="class_graph_update_scene_1add96fb95ff8c820c477a6b9e7d70145a" compoundref="_graph_update_scene_8cs" startline="91">modifyTag</references>
+        <references refid="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" compoundref="_graph_update_scene_8cs" startline="94">setTag</references>
+        <references refid="class_astar_path_1ab418dfc993a7451f87bd9c7f9a5b5ef5" compoundref="_astar_path_8cs" startline="810" endline="812">AstarPath.UpdateGraphs</references>
+        <referencedby refid="class_graph_update_scene_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_graph_update_scene_8cs" startline="14" endline="21">Start</referencedby>
+        <referencedby refid="class_graph_update_scene_1ac211d3e2d564ddf0db6c36fd86670d52" compoundref="_graph_update_scene_8cs" startline="23" endline="26">OnPostScan</referencedby>
+        <referencedby refid="class_graph_update_scene_1a1df920ea33e5fca41ff49453bb2584fb" compoundref="_graph_update_scene_8cs" startline="164" endline="168">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void InvertSettings</definition>
+        <argsstring>()</argsstring>
+        <name>InvertSettings</name>
+        <briefdescription>
+<para>Inverts all invertable settings for this GUS. </para>        </briefdescription>
+        <detaileddescription>
+<para>Namely: penalty delta, walkability, tags.</para><para>Penalty delta will be changed to negative penalty delta.<linebreak/>
+ <ref refid="class_graph_update_scene_1ac4e414eb56d8eb7fb25f0ad49b60c49f" kindref="member">setWalkability</ref> will be inverted.<linebreak/>
+ <ref refid="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" kindref="member">setTag</ref> will be stored in a private variable, and the new value will be 0. When calling this function again, the saved value will be the new value.</para><para>Calling this function an even number of times without changing any settings in between will be identical to no change in settings. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="115" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="115" bodyend="125"/>
+        <references refid="class_graph_update_scene_1ac4e414eb56d8eb7fb25f0ad49b60c49f" compoundref="_graph_update_scene_8cs" startline="54">setWalkability</references>
+        <references refid="class_graph_update_scene_1ae8b4eacb5710bd15dd52a291119d6729" compoundref="_graph_update_scene_8cs" startline="48">penaltyDelta</references>
+        <references refid="class_graph_update_scene_1a517d66af9aa4b61d3a3e0b454ef774fb" compoundref="_graph_update_scene_8cs" startline="98">setTagInvert</references>
+        <references refid="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" compoundref="_graph_update_scene_8cs" startline="94">setTag</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1ac7f99067ee2f9395763a24cc58169a79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LockToY</definition>
+        <argsstring>()</argsstring>
+        <name>LockToY</name>
+        <briefdescription>
+<para>Lock all points to a specific Y value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_graph_update_scene_1a4b2c54cb42341e1ecd4535c45b1d9ab0" kindref="member">lockToYValue</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="155" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="155" bodyend="160"/>
+        <references refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" compoundref="_graph_update_scene_8cs" startline="29">points</references>
+        <references refid="class_graph_update_scene_1a4b2c54cb42341e1ecd4535c45b1d9ab0" compoundref="_graph_update_scene_8cs" startline="83">lockToYValue</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmos</definition>
+        <argsstring>()</argsstring>
+        <name>OnDrawGizmos</name>
+        <briefdescription>
+<para>Draws some gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="216" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="216" bodyend="218"/>
+        <referencedby refid="class_graph_update_scene_1ae7e5103e242d1fbf4a03afe96d3947ef" compoundref="_graph_update_scene_8cs" startline="221" endline="223">OnDrawGizmosSelected</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1aee679185db3395453fc788027bbba782" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmos</definition>
+        <argsstring>(bool selected)</argsstring>
+        <name>OnDrawGizmos</name>
+        <param>
+          <type>bool</type>
+          <declname>selected</declname>
+        </param>
+        <briefdescription>
+<para>Draws some gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="226" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="226" bodyend="247"/>
+        <references refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" compoundref="_graph_update_scene_8cs" startline="29">points</references>
+        <references refid="class_graph_update_scene_1a440a07d51b8e0538091901ecf7760049" compoundref="_graph_update_scene_8cs" startline="65">useWorldSpace</references>
+        <references refid="class_graph_update_scene_1adf57f7307451b26c33863e4ffb86a82d" compoundref="_graph_update_scene_8cs" startline="36">convex</references>
+        <references refid="class_graph_update_scene_1a6b8c05d00a7bae8e877115df9507b4d3" compoundref="_graph_update_scene_8cs" startline="32">convexPoints</references>
+        <references refid="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" compoundref="_graph_update_scene_8cs" startline="130" endline="132">RecalcConvex</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1ae7e5103e242d1fbf4a03afe96d3947ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmosSelected</definition>
+        <argsstring>()</argsstring>
+        <name>OnDrawGizmosSelected</name>
+        <briefdescription>
+<para>Draws some gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="221" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="221" bodyend="223"/>
+        <references refid="class_graph_update_scene_1ac51c75fd06c6783b6553902c86ac9d71" compoundref="_graph_update_scene_8cs" startline="216" endline="218">OnDrawGizmos</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1ac211d3e2d564ddf0db6c36fd86670d52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnPostScan</definition>
+        <argsstring>()</argsstring>
+        <name>OnPostScan</name>
+        <reimplements refid="class_pathfinding_1_1_graph_modifier_1acdc2bf08720205be905df413d0c25431">OnPostScan</reimplements>
+        <briefdescription>
+<para>Called right after all graphs have been scanned. </para>        </briefdescription>
+        <detaileddescription>
+<para>FloodFill and other post processing has not been done.</para><para><simplesect kind="warning"><para>Since OnEnable and Awake are called roughly in the same time, the only way to ensure that these scripts get this call when scanning in Awake is to set the Script Execution Order for <ref refid="class_astar_path" kindref="compound">AstarPath</ref> to some time later than default time (see Edit -&gt; Project Settings -&gt; Script Execution Order).</para></simplesect>
+<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_graph_modifier_1a2ce1c67f48b3c9c766e6f75d32cf1133" kindref="member">OnLatePostScan</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="24" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="23" bodyend="26"/>
+        <references refid="class_graph_update_scene_1a14572a55674ed823ac6efefa762c1324" compoundref="_graph_update_scene_8cs" startline="60">applyOnScan</references>
+        <references refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RecalcConvex</definition>
+        <argsstring>()</argsstring>
+        <name>RecalcConvex</name>
+        <briefdescription>
+<para>Recalculate convex points. </para>        </briefdescription>
+        <detaileddescription>
+<para>Will not do anything if not <ref refid="class_graph_update_scene_1adf57f7307451b26c33863e4ffb86a82d" kindref="member">convex</ref> is enabled </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="130" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="130" bodyend="132"/>
+        <references refid="class_graph_update_scene_1adf57f7307451b26c33863e4ffb86a82d" compoundref="_graph_update_scene_8cs" startline="36">convex</references>
+        <references refid="class_graph_update_scene_1a6b8c05d00a7bae8e877115df9507b4d3" compoundref="_graph_update_scene_8cs" startline="32">convexPoints</references>
+        <references refid="class_pathfinding_1_1_polygon_1a71fe006f3e60e025b75b7c2bc97348bb" compoundref="_astar_math_8cs" startline="834" endline="870">Polygon.ConvexHull</references>
+        <references refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" compoundref="_graph_update_scene_8cs" startline="29">points</references>
+        <referencedby refid="class_graph_update_scene_1aee679185db3395453fc788027bbba782" compoundref="_graph_update_scene_8cs" startline="226" endline="247">OnDrawGizmos</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <briefdescription>
+<para>Do some stuff at start. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="14" bodyend="21"/>
+        <references refid="class_graph_update_scene_1aa52857762e38127ab69d655ebb84b3df" compoundref="_graph_update_scene_8cs" startline="103">firstApplied</references>
+        <references refid="class_graph_update_scene_1a1c94aae03b28deb259e681fd32aefdb9" compoundref="_graph_update_scene_8cs" startline="57">applyOnStart</references>
+        <references refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" compoundref="_graph_update_scene_8cs" startline="175" endline="213">Apply</references>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_1a774305f0f6316fe5dca98e7f05e0dcc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ToggleUseWorldSpace</definition>
+        <argsstring>()</argsstring>
+        <name>ToggleUseWorldSpace</name>
+        <briefdescription>
+<para>Switches between using world space and not using local space. </para>        </briefdescription>
+        <detaileddescription>
+<para>Changes point coordinates to stay the same in world space after the change.</para><para><simplesect kind="see"><para><ref refid="class_graph_update_scene_1a440a07d51b8e0538091901ecf7760049" kindref="member">useWorldSpace</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="139" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="139" bodyend="149"/>
+        <references refid="class_graph_update_scene_1a440a07d51b8e0538091901ecf7760049" compoundref="_graph_update_scene_8cs" startline="65">useWorldSpace</references>
+        <references refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" compoundref="_graph_update_scene_8cs" startline="29">points</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Helper class for easily updating graphs. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para>graph-updates for an explanation of how to use this class. </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2026">
+        <label>GraphModifier</label>
+        <link refid="class_pathfinding_1_1_graph_modifier"/>
+        <childnode refid="2027" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2027">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2025">
+        <label>GraphUpdateScene</label>
+        <link refid="class_graph_update_scene"/>
+        <childnode refid="2026" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2029">
+        <label>GraphModifier</label>
+        <link refid="class_pathfinding_1_1_graph_modifier"/>
+        <childnode refid="2030" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2030">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2028">
+        <label>GraphUpdateScene</label>
+        <link refid="class_graph_update_scene"/>
+        <childnode refid="2029" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/GraphUpdateScene.cs" bodystart="11" bodyend="248"/>
+    <listofallmembers>
+      <member refid="class_graph_update_scene_1a1df920ea33e5fca41ff49453bb2584fb" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>Apply</name></member>
+      <member refid="class_graph_update_scene_1a83547725c7532a8ebd835d603857bc2d" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>Apply</name></member>
+      <member refid="class_graph_update_scene_1a14572a55674ed823ac6efefa762c1324" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>applyOnScan</name></member>
+      <member refid="class_graph_update_scene_1a1c94aae03b28deb259e681fd32aefdb9" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>applyOnStart</name></member>
+      <member refid="class_graph_update_scene_1adf57f7307451b26c33863e4ffb86a82d" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>convex</name></member>
+      <member refid="class_graph_update_scene_1a6b8c05d00a7bae8e877115df9507b4d3" prot="private" virt="non-virtual"><scope>GraphUpdateScene</scope><name>convexPoints</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a2628ea8d12e8b2563c32f05dc7fff6fa" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>EventType</name></member>
+      <member refid="class_graph_update_scene_1aa52857762e38127ab69d655ebb84b3df" prot="private" virt="non-virtual"><scope>GraphUpdateScene</scope><name>firstApplied</name></member>
+      <member refid="class_graph_update_scene_1a83fe411fa9f330cdfb9443fbb3b3db1d" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>InvertSettings</name></member>
+      <member refid="class_graph_update_scene_1ac7f99067ee2f9395763a24cc58169a79" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>LockToY</name></member>
+      <member refid="class_graph_update_scene_1a004317cfa6123403bd59ecfe5e39a39a" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>lockToY</name></member>
+      <member refid="class_graph_update_scene_1a4b2c54cb42341e1ecd4535c45b1d9ab0" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>lockToYValue</name></member>
+      <member refid="class_graph_update_scene_1abeb615cf25c5b6fe31a1e148433478cf" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>minBoundsHeight</name></member>
+      <member refid="class_graph_update_scene_1add96fb95ff8c820c477a6b9e7d70145a" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>modifyTag</name></member>
+      <member refid="class_graph_update_scene_1a2861ffb55997ec06c4bab822ca1f6eb7" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>modifyWalkability</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a1aac1c9a4ae04ef3e2fbf26b0aa570cc" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnDisable</name></member>
+      <member refid="class_graph_update_scene_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_graph_update_scene_1aee679185db3395453fc788027bbba782" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_graph_update_scene_1ae7e5103e242d1fbf4a03afe96d3947ef" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>OnDrawGizmosSelected</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a34316462014f78aba29c389590f6b104" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnEnable</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a04c8b950e415094e594605532ca2bc8e" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnGraphsPostUpdate</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1ab9bfd723b6004c5f29bd77da1af10ad2" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnGraphsPreUpdate</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a2ce1c67f48b3c9c766e6f75d32cf1133" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnLatePostScan</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1ad6a99805b352c6f4843582f83f00ebf3" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnPostCacheLoad</name></member>
+      <member refid="class_graph_update_scene_1ac211d3e2d564ddf0db6c36fd86670d52" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnPostScan</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1ab61c6e6431804964396c01a3425a9a3d" prot="public" virt="virtual"><scope>GraphUpdateScene</scope><name>OnPreScan</name></member>
+      <member refid="class_graph_update_scene_1ae8b4eacb5710bd15dd52a291119d6729" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>penaltyDelta</name></member>
+      <member refid="class_graph_update_scene_1a4c3eb69bface7072f36347cf91ad5d51" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>points</name></member>
+      <member refid="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>RecalcConvex</name></member>
+      <member refid="class_graph_update_scene_1acb3b2cf8a1820af99439c79bc87f8d01" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>setTag</name></member>
+      <member refid="class_graph_update_scene_1a517d66af9aa4b61d3a3e0b454ef774fb" prot="private" virt="non-virtual"><scope>GraphUpdateScene</scope><name>setTagInvert</name></member>
+      <member refid="class_graph_update_scene_1ac4e414eb56d8eb7fb25f0ad49b60c49f" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>setWalkability</name></member>
+      <member refid="class_graph_update_scene_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>Start</name></member>
+      <member refid="class_graph_update_scene_1a774305f0f6316fe5dca98e7f05e0dcc7" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>ToggleUseWorldSpace</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a181ec1fbcb440ae0a847d12e18be779c" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>TriggerEvent</name></member>
+      <member refid="class_graph_update_scene_1a62de4bd11cc168fe0e75cb5bfdb4b269" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>updatePhysics</name></member>
+      <member refid="class_graph_update_scene_1a440a07d51b8e0538091901ecf7760049" prot="public" virt="non-virtual"><scope>GraphUpdateScene</scope><name>useWorldSpace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

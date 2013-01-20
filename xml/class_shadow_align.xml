@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_shadow_align" kind="class" prot="public">
+    <compoundname>ShadowAlign</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_shadow_align_1a873e09758d9a9f8ee48554040e8492cd" prot="public" static="no" mutable="no">
+        <type>Light</type>
+        <definition>Light lightSource</definition>
+        <argsstring></argsstring>
+        <name>lightSource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/ShadowAlign.cs" line="6" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/ShadowAlign.cs" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_shadow_align_1a730d6a2e936437a95bb66aadf86e934b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LateUpdate</definition>
+        <argsstring>()</argsstring>
+        <name>LateUpdate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/ShadowAlign.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/ShadowAlign.cs" bodystart="9" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2915">
+        <label>ShadowAlign</label>
+        <link refid="class_shadow_align"/>
+        <childnode refid="2916" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2916">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2917">
+        <label>ShadowAlign</label>
+        <link refid="class_shadow_align"/>
+        <childnode refid="2918" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2918">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/ShadowAlign.cs" line="4" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/ShadowAlign.cs" bodystart="4" bodyend="16"/>
+    <listofallmembers>
+      <member refid="class_shadow_align_1a730d6a2e936437a95bb66aadf86e934b" prot="private" virt="non-virtual"><scope>ShadowAlign</scope><name>LateUpdate</name></member>
+      <member refid="class_shadow_align_1a873e09758d9a9f8ee48554040e8492cd" prot="public" virt="non-virtual"><scope>ShadowAlign</scope><name>lightSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="optimization" kind="page">
+    <compoundname>optimization</compoundname>
+    <title>Optimization</title>
+    <innerpage refid="pooling">Pooling</innerpage>
+    <detaileddescription>
+<para>In the pro version of the A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project there is a tab called &quot;Optimization&quot; in the A* Inspector.</para><para>This tab searches the project for places where preprocessor directives are listed. A preprocessor directive is a piece of code which controls if another piece of code should be included in the compilation or not. <programlisting><codeline><highlight class="preprocessor">#define<sp/>DEBUG</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Start<sp/>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>DEBUG</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>Debug.Log<sp/>(</highlight><highlight class="stringliteral">&quot;The<sp/>DEBUG<sp/>preprocessor<sp/>directive<sp/>is<sp/>defined&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>Debug.Log<sp/>(</highlight><highlight class="stringliteral">&quot;The<sp/>DEBUG<sp/>directive<sp/>is<sp/>not<sp/>defined&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> As you can see, it works like ordinary IF statements. What&apos;s good with them is that they have absolutely no runtime overhead, they are all evaluated at compile time.<linebreak/>
+ The A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project has some aspects of it which can be customized. It would normally require hand editing of code, but preprocessor directives solves that.<linebreak/>
+ Perhaps the most useful .#define is the SingleCoreOptimize directive. If you click on the &quot;Optimizations&quot; tab to open it, you will see a list with all available directives. The SingleCoreOptimize directive should be listed there. Per default, the SingleCoreOptimize directive is not enabled, what is does when enabled is to restrict the number of threads pathfinding can run in to one (1), and when it is restricted to one, it can apply some memory and performance optimizations based on that. Especially memory usage can be reduced quite a lot. This directive is recommended to have enabled when deploying for mobile devices which are usually only single or dual core and are often low on available memory.</para><para>Other directives apply various other optimizations (see their respective descriptions) or enable debugging messages (though they are probably not very useful for other people than developers).</para><para>If the directives are enabled or not is stored in the source code as commented or not commented lines of #define statements which means that the settings are shared between all your scenes in your Unity project.</para><para>See also subpages: <ref refid="pooling_1pooling" kindref="member">Pooling</ref> </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

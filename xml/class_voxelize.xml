@@ -1,0 +1,1839 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_voxelize" kind="class" prot="public">
+    <compoundname>Voxelize</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_voxelize_1a5a657d9395fcb945db90d82f984479a0" prot="public" static="yes" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 CellScale</definition>
+        <argsstring></argsstring>
+        <name>CellScale</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="72" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a210cf3d84dc808ac19d3ad0a5d4dcdf8" prot="public" static="yes" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 CellScaleDivision</definition>
+        <argsstring></argsstring>
+        <name>CellScaleDivision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="73" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a354b3177df352eb063238846ff25bde8" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int MaxLayers</definition>
+        <argsstring></argsstring>
+        <name>MaxLayers</name>
+        <initializer>= 65535</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="39" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a878d2683db083ceb4b2df5390818155b" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int MaxRegions</definition>
+        <argsstring></argsstring>
+        <name>MaxRegions</name>
+        <initializer>= 500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="42" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a263061edea9f9c224ceeea98f2e2e140" prot="public" static="yes" mutable="no">
+        <type>uint</type>
+        <definition>uint NotConnected</definition>
+        <argsstring></argsstring>
+        <name>NotConnected</name>
+        <initializer>= 0x3f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a87bd2e82900c247763658a04f2681eaf" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int RC_CONTOUR_TESS_AREA_EDGES</definition>
+        <argsstring></argsstring>
+        <name>RC_CONTOUR_TESS_AREA_EDGES</name>
+        <initializer>= 0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="59" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1ab3e3d31955688b068384296200cf2f0b" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int RC_CONTOUR_TESS_WALL_EDGES</definition>
+        <argsstring></argsstring>
+        <name>RC_CONTOUR_TESS_WALL_EDGES</name>
+        <initializer>= 0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="58" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a810888d946d53561546d0a2dcfa056f4" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int UnwalkableArea</definition>
+        <argsstring></argsstring>
+        <name>UnwalkableArea</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="44" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a2d9596eb1d1e2c807e8e725ef1df3ef8" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int VERTEX_BUCKET_COUNT</definition>
+        <argsstring></argsstring>
+        <name>VERTEX_BUCKET_COUNT</name>
+        <initializer>= 1&lt;&lt;12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="56" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_voxelize_1a47b7d168c0d6e68f5ad8a6b1c3392db0" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float cellHeight</definition>
+        <argsstring></argsstring>
+        <name>cellHeight</name>
+        <initializer>= 0.1F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="22" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a648adbc9ff17c47a4a0132d21f8893a5" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float cellSize</definition>
+        <argsstring></argsstring>
+        <name>cellSize</name>
+        <initializer>= 0.2F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="21" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a689719de0e560e18228733a651b8aeb0" prot="public" static="no" mutable="no">
+        <type><ref refid="class_voxel_contour_set" kindref="compound">VoxelContourSet</ref></type>
+        <definition>VoxelContourSet countourSet</definition>
+        <argsstring></argsstring>
+        <name>countourSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="36" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a02c509f177d30f1f074f25a42893272d" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string debugString</definition>
+        <argsstring></argsstring>
+        <name>debugString</name>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="64" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a7f4bf668336616a9fc89ad448055dbea" prot="public" static="no" mutable="no">
+        <type>Bounds</type>
+        <definition>Bounds forcedBounds</definition>
+        <argsstring></argsstring>
+        <name>forcedBounds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="31" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1ad0bc2a1e51aa036f4d96c5b211296db6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool includeOutOfBounds</definition>
+        <argsstring></argsstring>
+        <name>includeOutOfBounds</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a443cbf48b32ad4ee2bc5f6130fb9d71c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxEdgeLength</definition>
+        <argsstring></argsstring>
+        <name>maxEdgeLength</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="24" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxSlope</definition>
+        <argsstring></argsstring>
+        <name>maxSlope</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="26" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a13e9a85b4ae64bc8bd23edb865a7b996" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int runTimes</definition>
+        <argsstring></argsstring>
+        <name>runTimes</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="33" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1ae0a638c137887c222080a49a011ac1ab" prot="public" static="no" mutable="no">
+        <type><ref refid="class_voxel_area" kindref="compound">VoxelArea</ref></type>
+        <definition>VoxelArea voxelArea</definition>
+        <argsstring></argsstring>
+        <name>voxelArea</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="35" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1adbaf97566943d978f8ddb12e4b4f0a40" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 voxelOffset</definition>
+        <argsstring></argsstring>
+        <name>voxelOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a0838a2f78a7225133f9b274b85d1e42d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int voxelWalkableClimb</definition>
+        <argsstring></argsstring>
+        <name>voxelWalkableClimb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a03b9f8018b5b12e07d64b226174dfaf8" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint voxelWalkableHeight</definition>
+        <argsstring></argsstring>
+        <name>voxelWalkableHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="19" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a788c6eff96f12dce2455d1d705e69f76" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float walkableClimb</definition>
+        <argsstring></argsstring>
+        <name>walkableClimb</name>
+        <initializer>= 0.8F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="16" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a34d7465b956b21320ce589e06c632286" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float walkableHeight</definition>
+        <argsstring></argsstring>
+        <name>walkableHeight</name>
+        <initializer>= 0.8F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="15" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_voxelize_1a8677ee2f6bf790dd25ee638ef865b19f" prot="private" static="yes" mutable="no">
+        <type>ushort</type>
+        <definition>ushort BorderReg</definition>
+        <argsstring></argsstring>
+        <name>BorderReg</name>
+        <initializer>= 0x8000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="48" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a11cb0de11b5a00053d53d128b7ad97a4" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int ContourRegMask</definition>
+        <argsstring></argsstring>
+        <name>ContourRegMask</name>
+        <initializer>= 0xffff</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1ac4aede6c8c575e57dfcc946ffeecd8f4" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int RC_AREA_BORDER</definition>
+        <argsstring></argsstring>
+        <name>RC_AREA_BORDER</name>
+        <initializer>= 0x20000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="54" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxelize_1a6004d01732c289419f0d0843f8741c9a" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int RC_BORDER_VERTEX</definition>
+        <argsstring></argsstring>
+        <name>RC_BORDER_VERTEX</name>
+        <initializer>= 0x10000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="52" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_voxelize_1a832834f043d45cfdfbce02cbc2cdfaae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Voxelize</definition>
+        <argsstring>(float ch, float cs, float wc, float wh, float ms)</argsstring>
+        <name>Voxelize</name>
+        <param>
+          <type>float</type>
+          <declname>ch</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>wc</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>wh</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="75" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="75" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a7fbac1d04172e5b62a4dbaf3b751d761" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ushort[]</type>
+        <definition>ushort [] BoxBlur</definition>
+        <argsstring>(ushort[] src, ushort[] dst)</argsstring>
+        <name>BoxBlur</name>
+        <param>
+          <type>ushort[]</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2525" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2525" bodyend="2580"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a625d595be02009d029d48e12229cab55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildCompactField</definition>
+        <argsstring>()</argsstring>
+        <name>BuildCompactField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="717" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="717" bodyend="768"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ad22e1900034aec11f9db4be74fb38c32" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildContours</definition>
+        <argsstring>(float maxError, int maxEdgeLength, VoxelContourSet cset, int buildFlags)</argsstring>
+        <name>BuildContours</name>
+        <param>
+          <type>float</type>
+          <declname>maxError</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxEdgeLength</declname>
+        </param>
+        <param>
+          <type><ref refid="class_voxel_contour_set" kindref="compound">VoxelContourSet</ref></type>
+          <declname>cset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>buildFlags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2582" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2582" bodyend="2834"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1acca1c6137b1d30f95260e4576ce86013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildDistanceField</definition>
+        <argsstring>()</argsstring>
+        <name>BuildDistanceField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2325" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2325" bodyend="2346"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ab9fa8c27eafb3c344cf58a5e36415dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildPolyMesh</definition>
+        <argsstring>(VoxelContourSet cset, int nvp, out VoxelMesh mesh)</argsstring>
+        <name>BuildPolyMesh</name>
+        <param>
+          <type><ref refid="class_voxel_contour_set" kindref="compound">VoxelContourSet</ref></type>
+          <declname>cset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nvp</declname>
+        </param>
+        <param>
+          <type>out <ref refid="struct_voxel_mesh" kindref="compound">VoxelMesh</ref></type>
+          <declname>mesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="839" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="839" bodyend="978"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a586c73d3db5d58157db9bd5da869ecc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildRegions</definition>
+        <argsstring>()</argsstring>
+        <name>BuildRegions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1898" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1898" bodyend="1996"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a568a355c3e50ddd71808cb1f0226451c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildVoxelConnections</definition>
+        <argsstring>()</argsstring>
+        <name>BuildVoxelConnections</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="770" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="770" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a86c8753889d8ebf3ea7fa4ba5a287966" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CalcAreaOfPolygon2D</definition>
+        <argsstring>(int[] verts, int nverts)</argsstring>
+        <name>CalcAreaOfPolygon2D</name>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nverts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2836" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2836" bodyend="2845"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a5b2dc3253a70db22000f3b9bd778bc12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ushort</type>
+        <definition>ushort CalculateDistanceField</definition>
+        <argsstring>(ushort[] src)</argsstring>
+        <name>CalculateDistanceField</name>
+        <param>
+          <type>ushort[]</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2348" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2348" bodyend="2523"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a8d69f4477777516063bc2c2f81673e61" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 ConvertPos</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>ConvertPos</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1738" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1738" bodyend="1748"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a7c2a095a1a4ab73a4fbe8a4945e3379b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 ConvertPosCorrZ</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>ConvertPosCorrZ</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1750" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1750" bodyend="1760"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a4d5c847ce10c86ec5d1d06f553996369" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 ConvertPosition</definition>
+        <argsstring>(int x, int z, int i)</argsstring>
+        <name>ConvertPosition</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2033" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2033" bodyend="2036"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a5459ca45b68b7ffa9850a02f08b5226e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 ConvertPosWithoutOffset</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>ConvertPosWithoutOffset</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1762" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1762" bodyend="1772"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1adf0ee03a43a1adfe0d1084b2c69d8382" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DrawLine</definition>
+        <argsstring>(int a, int b, int[] indices, int[] verts, Color col)</argsstring>
+        <name>DrawLine</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>indices</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>Color</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1288" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1288" bodyend="1293"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a93af3be3d7ef116f4bb372bbeffbc99d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErodeVoxels</definition>
+        <argsstring>(int radius)</argsstring>
+        <name>ErodeVoxels</name>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000012"><xreftitle>Todo</xreftitle><xrefdescription><para>Complete the ErodeVoxels function translation </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2935" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2935" bodyend="3040"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a2b96cbe65901847205e905c6b90fa635" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErodeWalkableArea</definition>
+        <argsstring>(int radius)</argsstring>
+        <name>ErodeWalkableArea</name>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2304" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2304" bodyend="2323"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a47fd97b4f90dbc32b7311c96d8e0afa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ushort[]</type>
+        <definition>ushort [] ExpandRegions</definition>
+        <argsstring>(int maxIterations, uint level, ushort[] srcReg, ushort[] srcDist, ushort[] dstReg, ushort[] dstDist, List&lt; int &gt; stack)</argsstring>
+        <name>ExpandRegions</name>
+        <param>
+          <type>int</type>
+          <declname>maxIterations</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>srcReg</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>srcDist</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>dstReg</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>dstDist</declname>
+        </param>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>stack</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2038" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2038" bodyend="2173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a8b03daee4575d3226446b5be5fea5300" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void FilterLedges</definition>
+        <argsstring>(uint voxelWalkableHeight, int voxelWalkableClimb, float cs, float ch, Vector3 min)</argsstring>
+        <name>FilterLedges</name>
+        <param>
+          <type>uint</type>
+          <declname>voxelWalkableHeight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>voxelWalkableClimb</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ch</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="3064" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="3064" bodyend="3145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1aa01eb70e797d45a5cc0eb722bf301a71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void FilterLowHeightSpans</definition>
+        <argsstring>(uint voxelWalkableHeight, float cs, float ch, Vector3 min)</argsstring>
+        <name>FilterLowHeightSpans</name>
+        <param>
+          <type>uint</type>
+          <declname>voxelWalkableHeight</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ch</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="3042" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="3042" bodyend="3061"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ac8fde6ace2566acdd74c82651847ffc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void FilterSmallRegions</definition>
+        <argsstring>(ushort[] reg, int minRegionSize, int maxRegions)</argsstring>
+        <name>FilterSmallRegions</name>
+        <param>
+          <type>ushort[]</type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minRegionSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxRegions</declname>
+        </param>
+        <briefdescription>
+<para>Filters out or merges small regions. </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000011"><xreftitle>Todo</xreftitle><xrefdescription><para>This function has not been translated entirely (don&apos;t use it) </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2000" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2000" bodyend="2031"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a2f0605df422729cb9b9023a9561b8b01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FloodRegion</definition>
+        <argsstring>(int x, int z, int i, uint level, ushort r, ushort[] srcReg, ushort[] srcDist, List&lt; int &gt; stack)</argsstring>
+        <name>FloodRegion</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>ushort</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>srcReg</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>srcDist</declname>
+        </param>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>stack</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2175" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2175" bodyend="2282"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1adf1381a8936ba215717aa9e76674be9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int GetCornerHeight</definition>
+        <argsstring>(int x, int z, int i, int dir, ref bool isBorderVertex)</argsstring>
+        <name>GetCornerHeight</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>ref bool</type>
+          <declname>isBorderVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1774" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1774" bodyend="1853"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a12872d1486d62655955c1da7a05a964b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MarkRectWithRegion</definition>
+        <argsstring>(int minx, int maxx, int minz, int maxz, ushort region, ushort[] srcReg)</argsstring>
+        <name>MarkRectWithRegion</name>
+        <param>
+          <type>int</type>
+          <declname>minx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minz</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxz</declname>
+        </param>
+        <param>
+          <type>ushort</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>ushort[]</type>
+          <declname>srcReg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2285" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2285" bodyend="2302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1aed4a27d48069265ea875624f0b7c61a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="67" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a6fe452b3b133ccbf93a2f403a989a086" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RemoveDegenerateSegments</definition>
+        <argsstring>(List&lt; int &gt; simplified)</argsstring>
+        <name>RemoveDegenerateSegments</name>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>simplified</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="980" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="980" bodyend="1006"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a79e6e6b2b48b969b6008c9ea3f5cc4cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SimplifyContour</definition>
+        <argsstring>(List&lt; int &gt; verts, List&lt; int &gt; simplified, float maxError, int maxEdgeLenght, int buildFlags)</argsstring>
+        <name>SimplifyContour</name>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>simplified</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxError</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxEdgeLenght</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>buildFlags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1295" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1295" bodyend="1566"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1adfd5eefafe335d8a8fb3ac54d1b2af50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Triangulate</definition>
+        <argsstring>(int n, int[] verts, ref int[] indices, ref int[] tris)</argsstring>
+        <name>Triangulate</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>ref int[]</type>
+          <declname>indices</declname>
+        </param>
+        <param>
+          <type>ref int[]</type>
+          <declname>tris</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1150" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1150" bodyend="1286"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1aa0ab6400fe6e9e84528dc18096ec34d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_voxel_area" kindref="compound">VoxelArea</ref></type>
+        <definition>VoxelArea VoxelizeMesh</definition>
+        <argsstring>(MeshFilter[] filters, RecastGraph.ExtraMesh[] extraMeshes=null)</argsstring>
+        <name>VoxelizeMesh</name>
+        <param>
+          <type>MeshFilter[]</type>
+          <declname>filters</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_recast_graph_1_1_extra_mesh" kindref="compound">RecastGraph.ExtraMesh</ref>[]</type>
+          <declname>extraMeshes</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="152" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="152" bodyend="715"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a348f50d32f643ef31c1e7467a21664ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void WalkContour</definition>
+        <argsstring>(int x, int z, int i, int[] flags, List&lt; int &gt; verts)</argsstring>
+        <name>WalkContour</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type>List&lt; int &gt;</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1567" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1567" bodyend="1736"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_voxelize_1a12b15b1cd99a975fd38562ed2ed2f4fc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Area2</definition>
+        <argsstring>(int a, int b, int c, int[] verts)</argsstring>
+        <name>Area2</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1047" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1046" bodyend="1049"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a6483dd392a2c8cab50fea8f43aa9566d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Bounds</type>
+        <definition>static Bounds CollectMeshes</definition>
+        <argsstring>(MeshFilter[] filters, RecastGraph.ExtraMesh[] extraMeshes, Bounds bounds, out Vector3[] verts, out int[] tris)</argsstring>
+        <name>CollectMeshes</name>
+        <param>
+          <type>MeshFilter[]</type>
+          <declname>filters</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_recast_graph_1_1_extra_mesh" kindref="compound">RecastGraph.ExtraMesh</ref>[]</type>
+          <declname>extraMeshes</declname>
+        </param>
+        <param>
+          <type>Bounds</type>
+          <declname>bounds</declname>
+        </param>
+        <param>
+          <type>out Vector3[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>out int[]</type>
+          <declname>tris</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="86" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="86" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1aeab8358b7075cc8fd186a8d575587a2a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Collinear</definition>
+        <argsstring>(int a, int b, int c, int[] verts)</argsstring>
+        <name>Collinear</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1042" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1041" bodyend="1044"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ad0f0e72a393611cb4591a49c20fe6ec1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Diagonal</definition>
+        <argsstring>(int i, int j, int n, int[] verts, int[] indices)</argsstring>
+        <name>Diagonal</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1011" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1010" bodyend="1013"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a910a9c9bf4afddc8bf8e5cca3dd77047" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Ileft</definition>
+        <argsstring>(int a, int b, int c, int[] va, int[] vb, int[] vc)</argsstring>
+        <name>Ileft</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>va</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>vb</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>vc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2929" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2928" bodyend="2931"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1aa1b1836e596067744be9087a82f6966f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool InCone</definition>
+        <argsstring>(int i, int j, int n, int[] verts, int[] indices)</argsstring>
+        <name>InCone</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1015" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1015" bodyend="1027"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ae0f376b3bad69e9b5c5af8a27111358a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IntersectProp</definition>
+        <argsstring>(int a, int b, int c, int d, int[] verts)</argsstring>
+        <name>IntersectProp</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1091" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1090" bodyend="1098"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a3c6e935721870cd0225920d2f1d69b48" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Left</definition>
+        <argsstring>(int a, int b, int c, int[] verts)</argsstring>
+        <name>Left</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1032" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1031" bodyend="1034"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ad776430797c6cfebef1e9cfcb83775e3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool LeftOn</definition>
+        <argsstring>(int a, int b, int c, int[] verts)</argsstring>
+        <name>LeftOn</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1037" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1036" bodyend="1039"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ac50b0793bb76ed6e9cee560e86ad0aff" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MergeContours</definition>
+        <argsstring>(ref VoxelContour ca, ref VoxelContour cb, int ia, int ib)</argsstring>
+        <name>MergeContours</name>
+        <param>
+          <type>ref <ref refid="struct_voxel_contour" kindref="compound">VoxelContour</ref></type>
+          <declname>ca</declname>
+        </param>
+        <param>
+          <type>ref <ref refid="struct_voxel_contour" kindref="compound">VoxelContour</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ia</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ib</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2883" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2883" bodyend="2926"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a9929341fe7600e297e4218d4fe877d7a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Next</definition>
+        <argsstring>(int i, int n)</argsstring>
+        <name>Next</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1147" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1147" bodyend="1147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a3a6e38b77e2de045676a0ce682c70959" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Prev</definition>
+        <argsstring>(int i, int n)</argsstring>
+        <name>Prev</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1146" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1146" bodyend="1146"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1aab95f09f40427eb016988398ec3b9ee1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Xorb</definition>
+        <argsstring>(bool x, bool y)</argsstring>
+        <name>Xorb</name>
+        <param>
+          <type>bool</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1083" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1082" bodyend="1085"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_voxelize_1a152081117e7202882bbbf6db2275b2bc" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Between</definition>
+        <argsstring>(int a, int b, int c, int[] verts)</argsstring>
+        <name>Between</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1102" bodyend="1111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1ac9ed7f7d0dc2cc27f1f0bacbb325008f" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Diagonalie</definition>
+        <argsstring>(int i, int j, int n, int[] verts, int[] indices)</argsstring>
+        <name>Diagonalie</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1054" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1053" bodyend="1076"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a302b54a09b774d126213845f58a5f9ef" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Intersect</definition>
+        <argsstring>(int a, int b, int c, int d, int[] verts)</argsstring>
+        <name>Intersect</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1115" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1114" bodyend="1123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_voxelize_1a2599ce14d3050d8a9aed5ae9ccc9ae4e" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Vequal</definition>
+        <argsstring>(int a, int b, int[] verts)</argsstring>
+        <name>Vequal</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="1126" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="1125" bodyend="1128"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_voxelize_1a4afc9cbad0a712bdeb120cfc35162257" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void GetClosestIndices</definition>
+        <argsstring>(int[] vertsa, int nvertsa, int[] vertsb, int nvertsb, ref int ia, ref int ib)</argsstring>
+        <name>GetClosestIndices</name>
+        <param>
+          <type>int[]</type>
+          <declname>vertsa</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nvertsa</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>vertsb</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nvertsb</declname>
+        </param>
+        <param>
+          <type>ref int</type>
+          <declname>ia</declname>
+        </param>
+        <param>
+          <type>ref int</type>
+          <declname>ib</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="2849" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="2847" bodyend="2881"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="3074">
+        <label>VoxelCell</label>
+        <link refid="struct_voxel_cell"/>
+        <childnode refid="3075" relation="usage">
+          <edgelabel>firstSpan</edgelabel>
+        </childnode>
+      </node>
+      <node id="3072">
+        <label>VoxelContour</label>
+        <link refid="struct_voxel_contour"/>
+      </node>
+      <node id="3075">
+        <label>VoxelSpan</label>
+        <link refid="class_voxel_span"/>
+        <childnode refid="3075" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3071">
+        <label>VoxelContourSet</label>
+        <link refid="class_voxel_contour_set"/>
+        <childnode refid="3072" relation="usage">
+          <edgelabel>conts</edgelabel>
+        </childnode>
+      </node>
+      <node id="3077">
+        <label>CompactVoxelCell</label>
+        <link refid="struct_compact_voxel_cell"/>
+      </node>
+      <node id="3076">
+        <label>CompactVoxelSpan</label>
+        <link refid="struct_compact_voxel_span"/>
+      </node>
+      <node id="3070">
+        <label>Voxelize</label>
+        <link refid="class_voxelize"/>
+        <childnode refid="3071" relation="usage">
+          <edgelabel>countourSet</edgelabel>
+        </childnode>
+        <childnode refid="3073" relation="usage">
+          <edgelabel>voxelArea</edgelabel>
+        </childnode>
+      </node>
+      <node id="3073">
+        <label>VoxelArea</label>
+        <link refid="class_voxel_area"/>
+        <childnode refid="3074" relation="usage">
+          <edgelabel>cells</edgelabel>
+        </childnode>
+        <childnode refid="3076" relation="usage">
+          <edgelabel>compactSpans</edgelabel>
+        </childnode>
+        <childnode refid="3077" relation="usage">
+          <edgelabel>compactCells</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/Voxelize.cs" bodystart="11" bodyend="3146"/>
+    <listofallmembers>
+      <member refid="class_voxelize_1a12b15b1cd99a975fd38562ed2ed2f4fc" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Area2</name></member>
+      <member refid="class_voxelize_1a152081117e7202882bbbf6db2275b2bc" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>Between</name></member>
+      <member refid="class_voxelize_1a8677ee2f6bf790dd25ee638ef865b19f" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>BorderReg</name></member>
+      <member refid="class_voxelize_1a7fbac1d04172e5b62a4dbaf3b751d761" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BoxBlur</name></member>
+      <member refid="class_voxelize_1a625d595be02009d029d48e12229cab55" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BuildCompactField</name></member>
+      <member refid="class_voxelize_1ad22e1900034aec11f9db4be74fb38c32" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BuildContours</name></member>
+      <member refid="class_voxelize_1acca1c6137b1d30f95260e4576ce86013" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BuildDistanceField</name></member>
+      <member refid="class_voxelize_1ab9fa8c27eafb3c344cf58a5e36415dcc" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BuildPolyMesh</name></member>
+      <member refid="class_voxelize_1a586c73d3db5d58157db9bd5da869ecc5" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BuildRegions</name></member>
+      <member refid="class_voxelize_1a568a355c3e50ddd71808cb1f0226451c" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>BuildVoxelConnections</name></member>
+      <member refid="class_voxelize_1a86c8753889d8ebf3ea7fa4ba5a287966" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>CalcAreaOfPolygon2D</name></member>
+      <member refid="class_voxelize_1a5b2dc3253a70db22000f3b9bd778bc12" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>CalculateDistanceField</name></member>
+      <member refid="class_voxelize_1a47b7d168c0d6e68f5ad8a6b1c3392db0" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>cellHeight</name></member>
+      <member refid="class_voxelize_1a5a657d9395fcb945db90d82f984479a0" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>CellScale</name></member>
+      <member refid="class_voxelize_1a210cf3d84dc808ac19d3ad0a5d4dcdf8" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>CellScaleDivision</name></member>
+      <member refid="class_voxelize_1a648adbc9ff17c47a4a0132d21f8893a5" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>cellSize</name></member>
+      <member refid="class_voxelize_1a6483dd392a2c8cab50fea8f43aa9566d" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>CollectMeshes</name></member>
+      <member refid="class_voxelize_1aeab8358b7075cc8fd186a8d575587a2a" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Collinear</name></member>
+      <member refid="class_voxelize_1a11cb0de11b5a00053d53d128b7ad97a4" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>ContourRegMask</name></member>
+      <member refid="class_voxelize_1a8d69f4477777516063bc2c2f81673e61" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ConvertPos</name></member>
+      <member refid="class_voxelize_1a7c2a095a1a4ab73a4fbe8a4945e3379b" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ConvertPosCorrZ</name></member>
+      <member refid="class_voxelize_1a4d5c847ce10c86ec5d1d06f553996369" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ConvertPosition</name></member>
+      <member refid="class_voxelize_1a5459ca45b68b7ffa9850a02f08b5226e" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ConvertPosWithoutOffset</name></member>
+      <member refid="class_voxelize_1a689719de0e560e18228733a651b8aeb0" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>countourSet</name></member>
+      <member refid="class_voxelize_1a02c509f177d30f1f074f25a42893272d" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>debugString</name></member>
+      <member refid="class_voxelize_1ad0f0e72a393611cb4591a49c20fe6ec1" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Diagonal</name></member>
+      <member refid="class_voxelize_1ac9ed7f7d0dc2cc27f1f0bacbb325008f" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>Diagonalie</name></member>
+      <member refid="class_voxelize_1adf0ee03a43a1adfe0d1084b2c69d8382" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>DrawLine</name></member>
+      <member refid="class_voxelize_1a93af3be3d7ef116f4bb372bbeffbc99d" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ErodeVoxels</name></member>
+      <member refid="class_voxelize_1a2b96cbe65901847205e905c6b90fa635" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ErodeWalkableArea</name></member>
+      <member refid="class_voxelize_1a47fd97b4f90dbc32b7311c96d8e0afa1" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>ExpandRegions</name></member>
+      <member refid="class_voxelize_1a8b03daee4575d3226446b5be5fea5300" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>FilterLedges</name></member>
+      <member refid="class_voxelize_1aa01eb70e797d45a5cc0eb722bf301a71" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>FilterLowHeightSpans</name></member>
+      <member refid="class_voxelize_1ac8fde6ace2566acdd74c82651847ffc3" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>FilterSmallRegions</name></member>
+      <member refid="class_voxelize_1a2f0605df422729cb9b9023a9561b8b01" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>FloodRegion</name></member>
+      <member refid="class_voxelize_1a7f4bf668336616a9fc89ad448055dbea" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>forcedBounds</name></member>
+      <member refid="class_voxelize_1a4afc9cbad0a712bdeb120cfc35162257" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>GetClosestIndices</name></member>
+      <member refid="class_voxelize_1adf1381a8936ba215717aa9e76674be9e" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>GetCornerHeight</name></member>
+      <member refid="class_voxelize_1a910a9c9bf4afddc8bf8e5cca3dd77047" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Ileft</name></member>
+      <member refid="class_voxelize_1ad0bc2a1e51aa036f4d96c5b211296db6" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>includeOutOfBounds</name></member>
+      <member refid="class_voxelize_1aa1b1836e596067744be9087a82f6966f" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>InCone</name></member>
+      <member refid="class_voxelize_1a302b54a09b774d126213845f58a5f9ef" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>Intersect</name></member>
+      <member refid="class_voxelize_1ae0f376b3bad69e9b5c5af8a27111358a" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>IntersectProp</name></member>
+      <member refid="class_voxelize_1a3c6e935721870cd0225920d2f1d69b48" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Left</name></member>
+      <member refid="class_voxelize_1ad776430797c6cfebef1e9cfcb83775e3" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>LeftOn</name></member>
+      <member refid="class_voxelize_1a12872d1486d62655955c1da7a05a964b" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>MarkRectWithRegion</name></member>
+      <member refid="class_voxelize_1a443cbf48b32ad4ee2bc5f6130fb9d71c" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>maxEdgeLength</name></member>
+      <member refid="class_voxelize_1a354b3177df352eb063238846ff25bde8" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>MaxLayers</name></member>
+      <member refid="class_voxelize_1a878d2683db083ceb4b2df5390818155b" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>MaxRegions</name></member>
+      <member refid="class_voxelize_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>maxSlope</name></member>
+      <member refid="class_voxelize_1ac50b0793bb76ed6e9cee560e86ad0aff" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>MergeContours</name></member>
+      <member refid="class_voxelize_1a9929341fe7600e297e4218d4fe877d7a" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Next</name></member>
+      <member refid="class_voxelize_1a263061edea9f9c224ceeea98f2e2e140" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>NotConnected</name></member>
+      <member refid="class_voxelize_1aed4a27d48069265ea875624f0b7c61a4" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>OnGUI</name></member>
+      <member refid="class_voxelize_1a3a6e38b77e2de045676a0ce682c70959" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Prev</name></member>
+      <member refid="class_voxelize_1ac4aede6c8c575e57dfcc946ffeecd8f4" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>RC_AREA_BORDER</name></member>
+      <member refid="class_voxelize_1a6004d01732c289419f0d0843f8741c9a" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>RC_BORDER_VERTEX</name></member>
+      <member refid="class_voxelize_1a87bd2e82900c247763658a04f2681eaf" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>RC_CONTOUR_TESS_AREA_EDGES</name></member>
+      <member refid="class_voxelize_1ab3e3d31955688b068384296200cf2f0b" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>RC_CONTOUR_TESS_WALL_EDGES</name></member>
+      <member refid="class_voxelize_1a6fe452b3b133ccbf93a2f403a989a086" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>RemoveDegenerateSegments</name></member>
+      <member refid="class_voxelize_1a13e9a85b4ae64bc8bd23edb865a7b996" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>runTimes</name></member>
+      <member refid="class_voxelize_1a79e6e6b2b48b969b6008c9ea3f5cc4cc" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>SimplifyContour</name></member>
+      <member refid="class_voxelize_1adfd5eefafe335d8a8fb3ac54d1b2af50" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Triangulate</name></member>
+      <member refid="class_voxelize_1a810888d946d53561546d0a2dcfa056f4" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>UnwalkableArea</name></member>
+      <member refid="class_voxelize_1a2599ce14d3050d8a9aed5ae9ccc9ae4e" prot="private" virt="non-virtual"><scope>Voxelize</scope><name>Vequal</name></member>
+      <member refid="class_voxelize_1a2d9596eb1d1e2c807e8e725ef1df3ef8" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>VERTEX_BUCKET_COUNT</name></member>
+      <member refid="class_voxelize_1ae0a638c137887c222080a49a011ac1ab" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>voxelArea</name></member>
+      <member refid="class_voxelize_1a832834f043d45cfdfbce02cbc2cdfaae" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Voxelize</name></member>
+      <member refid="class_voxelize_1aa0ab6400fe6e9e84528dc18096ec34d1" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>VoxelizeMesh</name></member>
+      <member refid="class_voxelize_1adbaf97566943d978f8ddb12e4b4f0a40" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>voxelOffset</name></member>
+      <member refid="class_voxelize_1a0838a2f78a7225133f9b274b85d1e42d" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>voxelWalkableClimb</name></member>
+      <member refid="class_voxelize_1a03b9f8018b5b12e07d64b226174dfaf8" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>voxelWalkableHeight</name></member>
+      <member refid="class_voxelize_1a788c6eff96f12dce2455d1d705e69f76" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>walkableClimb</name></member>
+      <member refid="class_voxelize_1a34d7465b956b21320ce589e06c632286" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>walkableHeight</name></member>
+      <member refid="class_voxelize_1a348f50d32f643ef31c1e7467a21664ec" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>WalkContour</name></member>
+      <member refid="class_voxelize_1aab95f09f40427eb016988398ec3b9ee1" prot="public" virt="non-virtual"><scope>Voxelize</scope><name>Xorb</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

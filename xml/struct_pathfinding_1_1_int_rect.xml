@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_pathfinding_1_1_int_rect" kind="struct" prot="public">
+    <compoundname>Pathfinding::IntRect</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_int_rect_1a3bd9aad0bd6c391604e7a27d57c21d3f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int xmax</definition>
+        <argsstring></argsstring>
+        <name>xmax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="508" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_int_rect_1a883020d4284bd039cbac9574b896c948" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int xmin</definition>
+        <argsstring></argsstring>
+        <name>xmin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="508" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_int_rect_1a740732a581a525ffdac6d4124d517d0e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ymax</definition>
+        <argsstring></argsstring>
+        <name>ymax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="508" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_int_rect_1a8f91ffd86aa304f2ca807ff84fa2fe87" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ymin</definition>
+        <argsstring></argsstring>
+        <name>ymin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="508" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a4e7619b78af4c97cbff1eb8763afe020" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>IntRect</definition>
+        <argsstring>(int xmin, int ymin, int xmax, int ymax)</argsstring>
+        <name>IntRect</name>
+        <param>
+          <type>int</type>
+          <declname>xmin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ymin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>xmax</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ymax</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="510" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="510" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a63b9a4327a337dcdfb1633cee3eac726" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Contains</definition>
+        <argsstring>(int x, int y)</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="517" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="517" bodyend="519"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a500004c5601a79c123e5849a1da942da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DebugDraw</definition>
+        <argsstring>(Matrix4x4 matrix, Color col)</argsstring>
+        <name>DebugDraw</name>
+        <param>
+          <type>Matrix4x4</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>Color</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+<para>Draws some debug lines representing the rect. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="570" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="570" bodyend="580"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a5bc29b8c763740fc1513a73635c7576b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+        <definition>IntRect Expand</definition>
+        <argsstring>(int range)</argsstring>
+        <name>Expand</name>
+        <param>
+          <type>int</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+<para>Returns a new rect which is expanded by <emphasis>range</emphasis> in all directions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>How far to expand. Negative values are permitted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="561" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="561" bodyend="567"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a9dcb9b43a3d0fa9003d4c1c9d921f6b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool IsValid</definition>
+        <argsstring>()</argsstring>
+        <name>IsValid</name>
+        <briefdescription>
+<para>Returns if this rectangle is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para>An invalid rect could have e.g xmin &gt; xmax </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="524" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="524" bodyend="526"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a0e43f7eb18fcbb615348660e584875a2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+        <definition>static IntRect Intersection</definition>
+        <argsstring>(IntRect a, IntRect b)</argsstring>
+        <name>Intersection</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection rect between the two rects. </para>        </briefdescription>
+        <detaileddescription>
+<para>The intersection rect is the area which is inside both rects. If the rects do not have an intersection, an invalid rect is returned. <simplesect kind="see"><para><ref refid="struct_pathfinding_1_1_int_rect_1a9dcb9b43a3d0fa9003d4c1c9d921f6b2" kindref="member">IsValid</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="533" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="533" bodyend="542"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a9f3c0c3e561ceafbe1a0c4cccda7f17d" compoundref="_grid_generator_8cs" startline="1329" endline="1365">GridGraph.GetNodesInArea</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int_rect_1a97228037b37dd4c2e2ac66f521312173" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+        <definition>static IntRect Union</definition>
+        <argsstring>(IntRect a, IntRect b)</argsstring>
+        <name>Union</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int_rect" kindref="compound">IntRect</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Returns a new rect which contains both input rects. </para>        </briefdescription>
+        <detaileddescription>
+<para>This rectangle may contain areas outside both input rects as well in some cases. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="547" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="547" bodyend="556"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Integer Rectangle. </para>    </briefdescription>
+    <detaileddescription>
+<para>Works almost like UnityEngine.Rect but with integer coordinates </para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="507" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="507" bodyend="581"/>
+    <listofallmembers>
+      <member refid="struct_pathfinding_1_1_int_rect_1a63b9a4327a337dcdfb1633cee3eac726" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>Contains</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a500004c5601a79c123e5849a1da942da" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>DebugDraw</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a5bc29b8c763740fc1513a73635c7576b" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>Expand</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a0e43f7eb18fcbb615348660e584875a2" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>Intersection</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a4e7619b78af4c97cbff1eb8763afe020" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>IntRect</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a9dcb9b43a3d0fa9003d4c1c9d921f6b2" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>IsValid</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a97228037b37dd4c2e2ac66f521312173" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>Union</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a3bd9aad0bd6c391604e7a27d57c21d3f" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>xmax</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a883020d4284bd039cbac9574b896c948" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>xmin</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a740732a581a525ffdac6d4124d517d0e" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>ymax</name></member>
+      <member refid="struct_pathfinding_1_1_int_rect_1a8f91ffd86aa304f2ca807ff84fa2fe87" prot="public" virt="non-virtual"><scope>Pathfinding::IntRect</scope><name>ymin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

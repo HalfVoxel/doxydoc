@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_32dc442246f6304b08e3561f9def590d" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes</compoundname>
+    <innerfile refid="_graph_node_8cs">GraphNode.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/"/>
+  </compounddef>
+</doxygen>

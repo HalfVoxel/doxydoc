@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_c0ad9b88d9543b6c9055e87ac39bbbf4" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO</compoundname>
+    <innerfile refid="_r_v_o_controller_8cs">RVOController.cs</innerfile>
+    <innerfile refid="_r_v_o_navmesh_8cs">RVONavmesh.cs</innerfile>
+    <innerfile refid="_r_v_o_obstacle_8cs">RVOObstacle.cs</innerfile>
+    <innerfile refid="_r_v_o_simulator_8cs">RVOSimulator.cs</innerfile>
+    <innerfile refid="_r_v_o_square_obstacle_8cs">RVOSquareObstacle.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/"/>
+  </compounddef>
+</doxygen>

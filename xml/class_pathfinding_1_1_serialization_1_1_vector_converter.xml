@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_serialization_1_1_vector_converter" kind="class" prot="public">
+    <compoundname>Pathfinding::Serialization::VectorConverter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">JsonConverter</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_serialization_1_1_vector_converter_1a3afbcee35aaf9cce29a75e8f14de621d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool CanConvert</definition>
+        <argsstring>(Type type)</argsstring>
+        <name>CanConvert</name>
+        <param>
+          <type>Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" line="188" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" bodystart="188" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_serialization_1_1_vector_converter_1ac8232bafcae626348752c354afd8b112" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override object</type>
+        <definition>override object ReadJson</definition>
+        <argsstring>(Type type, Dictionary&lt; string, object &gt; values)</argsstring>
+        <name>ReadJson</name>
+        <param>
+          <type>Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>Dictionary&lt; string, object &gt;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" line="192" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" bodystart="192" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_serialization_1_1_vector_converter_1a55ee395d5e097136939d96ba2dd47749" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override Dictionary&lt; string, object &gt;</type>
+        <definition>override Dictionary&lt;string,object&gt; WriteJson</definition>
+        <argsstring>(Type type, object value)</argsstring>
+        <name>WriteJson</name>
+        <param>
+          <type>Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" line="204" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" bodystart="204" bodyend="229"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3043">
+        <label>VectorConverter</label>
+        <link refid="class_pathfinding_1_1_serialization_1_1_vector_converter"/>
+        <childnode refid="3044" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3044">
+        <label>JsonConverter</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3045">
+        <label>VectorConverter</label>
+        <link refid="class_pathfinding_1_1_serialization_1_1_vector_converter"/>
+        <childnode refid="3046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3046">
+        <label>JsonConverter</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" line="187" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" bodystart="186" bodyend="230"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_serialization_1_1_vector_converter_1a3afbcee35aaf9cce29a75e8f14de621d" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::VectorConverter</scope><name>CanConvert</name></member>
+      <member refid="class_pathfinding_1_1_serialization_1_1_vector_converter_1ac8232bafcae626348752c354afd8b112" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::VectorConverter</scope><name>ReadJson</name></member>
+      <member refid="class_pathfinding_1_1_serialization_1_1_vector_converter_1a55ee395d5e097136939d96ba2dd47749" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::VectorConverter</scope><name>WriteJson</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_astar_color" kind="class" prot="public">
+    <compoundname>Pathfinding::AstarColor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1aecb5e0277541474fc58a1d889b220da4" prot="public" static="no" mutable="no">
+        <type>Color[]</type>
+        <definition>Color [] _AreaColors</definition>
+        <argsstring></argsstring>
+        <name>_AreaColors</name>
+        <briefdescription>
+<para>Holds user set area colors. </para>        </briefdescription>
+        <detaileddescription>
+<para>Use GetAreaColor to get an area color </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="53" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="53" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_color_1a84e23ba394eacd818d2e005cc466c4d1" compoundref="astarclasses_8cs" startline="80" endline="93">AstarColor.OnEnable</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1aeff8612fec740e996121a8621d7dfd0c" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _BoundsHandles</definition>
+        <argsstring></argsstring>
+        <name>_BoundsHandles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="43" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1ac9c313f25b0bdba836619a4a0d2c6d14" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _ConnectionHighLerp</definition>
+        <argsstring></argsstring>
+        <name>_ConnectionHighLerp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="46" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a03ce9d4cfed43caa8ed4525d67e9b1d6" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _ConnectionLowLerp</definition>
+        <argsstring></argsstring>
+        <name>_ConnectionLowLerp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="45" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1ad8f9bacda78857170b27c3b803f53f55" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _MeshColor</definition>
+        <argsstring></argsstring>
+        <name>_MeshColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="49" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a8a18bd260e31efcdb88d4e29cfbd55b6" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _MeshEdgeColor</definition>
+        <argsstring></argsstring>
+        <name>_MeshEdgeColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="48" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1af7e71c1cfd4e4caf7208f0d3bc35d5d3" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _NodeConnection</definition>
+        <argsstring></argsstring>
+        <name>_NodeConnection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="41" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a9e4a9be5b64ec1170cd89869a46af94a" prot="public" static="no" mutable="no">
+        <type>Color</type>
+        <definition>Color _UnwalkableNode</definition>
+        <argsstring></argsstring>
+        <name>_UnwalkableNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="42" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a73f04abceba0f375d9309541f4099f34" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color BoundsHandles</definition>
+        <argsstring></argsstring>
+        <name>BoundsHandles</name>
+        <initializer>= new Color (0.29F,0.454F,0.741F,0.9F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="57" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1ac6b833f30a2f1c2c07030785170b60be" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color ConnectionHighLerp</definition>
+        <argsstring></argsstring>
+        <name>ConnectionHighLerp</name>
+        <initializer>= new Color (1,0,0,0.5F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="60" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a0b27ec23273410adbda9786e8261da2b" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color ConnectionLowLerp</definition>
+        <argsstring></argsstring>
+        <name>ConnectionLowLerp</name>
+        <initializer>= new Color (0,1,0,0.5F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="59" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a2d4a705ff62dae35a48441af0bb35484" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color MeshColor</definition>
+        <argsstring></argsstring>
+        <name>MeshColor</name>
+        <initializer>= new Color (0,0,0,0.5F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="63" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a41fe134675985e5ec67add4eaf63e017" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color MeshEdgeColor</definition>
+        <argsstring></argsstring>
+        <name>MeshEdgeColor</name>
+        <initializer>= new Color (0,0,0,0.5F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a2c2387d19eaf51c573e4ff81b53e9679" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color NodeConnection</definition>
+        <argsstring></argsstring>
+        <name>NodeConnection</name>
+        <initializer>= new Color (1,1,1,0.9F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="55" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a0fb6c4362dc617b2fa12cc0632aa3f62" prot="public" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color UnwalkableNode</definition>
+        <argsstring></argsstring>
+        <name>UnwalkableNode</name>
+        <initializer>= new Color (1,0,0,0.5F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="56" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_color_1a893ebe36da05cc4440ae60f9a924e4e4" prot="private" static="yes" mutable="no">
+        <type>Color[]</type>
+        <definition>Color [] AreaColors</definition>
+        <argsstring></argsstring>
+        <name>AreaColors</name>
+        <briefdescription>
+<para>Holds user set area colors. </para>        </briefdescription>
+        <detaileddescription>
+<para>Use GetAreaColor to get an area color </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="67" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="67" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_color_1aab7d0e8912271b024b8ef924515e3810" compoundref="astarclasses_8cs" startline="72" endline="77">AstarColor.GetAreaColor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_color_1a84e23ba394eacd818d2e005cc466c4d1" compoundref="astarclasses_8cs" startline="80" endline="93">AstarColor.OnEnable</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_color_1aab7d0e8912271b024b8ef924515e3810" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>static Color GetAreaColor</definition>
+        <argsstring>(uint area)</argsstring>
+        <name>GetAreaColor</name>
+        <param>
+          <type>uint</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Returns an color for an area, uses both user set ones and calculated. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the user has set a color for the area, it is used, but otherwise the color is calculated using <ref refid="class_pathfinding_1_1_mathfx_1a0393627f2218af15e3825565f13371a6" kindref="member">Mathfx.IntToColor</ref> <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_color_1a893ebe36da05cc4440ae60f9a924e4e4" kindref="member">AreaColors</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="72" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="72" bodyend="77"/>
+        <references refid="class_pathfinding_1_1_astar_color_1a893ebe36da05cc4440ae60f9a924e4e4" compoundref="astarclasses_8cs" startline="67">AstarColor.AreaColors</references>
+        <references refid="class_pathfinding_1_1_mathfx_1a0393627f2218af15e3825565f13371a6" compoundref="_astar_math_8cs" startline="331" endline="336">Mathfx.IntToColor</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_color_1a615f3058633fa4dccd81a31e25f44f18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>AstarColor</definition>
+        <argsstring>()</argsstring>
+        <name>AstarColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="95" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="95" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_color_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnEnable</definition>
+        <argsstring>()</argsstring>
+        <name>OnEnable</name>
+        <briefdescription>
+<para>Pushes all local variables out to static ones. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="80" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="80" bodyend="93"/>
+        <references refid="class_pathfinding_1_1_astar_color_1a893ebe36da05cc4440ae60f9a924e4e4" compoundref="astarclasses_8cs" startline="67">AstarColor.AreaColors</references>
+        <references refid="class_pathfinding_1_1_astar_color_1aecb5e0277541474fc58a1d889b220da4" compoundref="astarclasses_8cs" startline="53">AstarColor._AreaColors</references>
+        <referencedby refid="class_astar_path_1af7f09cac395f266b9f9775af2dbd5138" compoundref="_astar_path_8cs" startline="1185" endline="1200">AstarPath.SetUpReferences</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores editor colors. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="39" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="39" bodyend="109"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_astar_color_1aecb5e0277541474fc58a1d889b220da4" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_AreaColors</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1aeff8612fec740e996121a8621d7dfd0c" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_BoundsHandles</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1ac9c313f25b0bdba836619a4a0d2c6d14" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_ConnectionHighLerp</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a03ce9d4cfed43caa8ed4525d67e9b1d6" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_ConnectionLowLerp</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1ad8f9bacda78857170b27c3b803f53f55" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_MeshColor</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a8a18bd260e31efcdb88d4e29cfbd55b6" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_MeshEdgeColor</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1af7e71c1cfd4e4caf7208f0d3bc35d5d3" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_NodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a9e4a9be5b64ec1170cd89869a46af94a" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>_UnwalkableNode</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a893ebe36da05cc4440ae60f9a924e4e4" prot="private" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>AreaColors</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a615f3058633fa4dccd81a31e25f44f18" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>AstarColor</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a73f04abceba0f375d9309541f4099f34" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>BoundsHandles</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1ac6b833f30a2f1c2c07030785170b60be" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>ConnectionHighLerp</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a0b27ec23273410adbda9786e8261da2b" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>ConnectionLowLerp</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1aab7d0e8912271b024b8ef924515e3810" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>GetAreaColor</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a2d4a705ff62dae35a48441af0bb35484" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>MeshColor</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a41fe134675985e5ec67add4eaf63e017" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>MeshEdgeColor</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a2c2387d19eaf51c573e4ff81b53e9679" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>NodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>OnEnable</name></member>
+      <member refid="class_pathfinding_1_1_astar_color_1a0fb6c4362dc617b2fa12cc0632aa3f62" prot="public" virt="non-virtual"><scope>Pathfinding::AstarColor</scope><name>UnwalkableNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

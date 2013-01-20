@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_simple_graph" kind="class" prot="public">
+    <compoundname>SimpleGraph</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_nav_graph" prot="public" virt="non-virtual">NavGraph</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_simple_graph_1a03623f3b4f0993c79abaec6a5f988a82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GetNodes</definition>
+        <argsstring>(GraphNodeDelegateCancelable del)</argsstring>
+        <name>GetNodes</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1ae75022788c1a996be58e50ed2f4d7f3a">GetNodes</reimplements>
+        <param>
+          <type>GraphNodeDelegateCancelable</type>
+          <declname>del</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/SimplestGraphPossible.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/SimplestGraphPossible.cs" bodystart="18" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_simple_graph_1a90227378af44ec239626da2800e7c626" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Scan</definition>
+        <argsstring>()</argsstring>
+        <name>Scan</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1a702cb806adb2081c11b7a999a1fa4b44">Scan</reimplements>
+        <briefdescription>
+<para>Scans the graph, called from <ref refid="class_astar_path_1a69a25908bb9a9244e74df95d05001c77" kindref="member">AstarPath.Scan</ref> Override this function to implement custom scanning logic </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/SimplestGraphPossible.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/SimplestGraphPossible.cs" bodystart="14" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2919">
+        <label>SimpleGraph</label>
+        <link refid="class_simple_graph"/>
+        <childnode refid="2920" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2920">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2932">
+        <label>AstarData</label>
+        <link refid="class_pathfinding_1_1_astar_data"/>
+        <childnode refid="2922" relation="usage">
+          <edgelabel>graphs</edgelabel>
+        </childnode>
+        <childnode refid="2927" relation="usage">
+          <edgelabel>nodeRuns</edgelabel>
+        </childnode>
+        <childnode refid="2933" relation="usage">
+          <edgelabel>userConnections</edgelabel>
+        </childnode>
+        <childnode refid="2934" relation="usage">
+          <edgelabel>navmesh</edgelabel>
+        </childnode>
+        <childnode refid="2930" relation="usage">
+          <edgelabel>graphTypes</edgelabel>
+        </childnode>
+        <childnode refid="2945" relation="usage">
+          <edgelabel>pointGraph</edgelabel>
+        </childnode>
+        <childnode refid="2948" relation="usage">
+          <edgelabel>gridGraph</edgelabel>
+        </childnode>
+      </node>
+      <node id="2951">
+        <label>GridNode</label>
+        <link refid="class_pathfinding_1_1_grid_node"/>
+        <childnode refid="2928" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2948" relation="usage">
+          <edgelabel>_gridGraphs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2948">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2922" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2936" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2937" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2938" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2949" relation="usage">
+          <edgelabel>collision</edgelabel>
+        </childnode>
+        <childnode refid="2950" relation="usage">
+          <edgelabel>textureData</edgelabel>
+        </childnode>
+        <childnode refid="2951" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2944">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="2940" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="2944" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2953">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="2943">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="2941" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="2944" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="2928">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2942">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="2942" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="2921">
+        <label>SimpleGraph</label>
+        <link refid="class_simple_graph"/>
+        <childnode refid="2922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2923">
+        <label>AstarPath</label>
+        <link refid="class_astar_path"/>
+        <childnode refid="2924" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2925" relation="usage">
+          <edgelabel>threadInfos</edgelabel>
+        </childnode>
+        <childnode refid="2931" relation="usage">
+          <edgelabel>pathReturnStack</edgelabel>
+        </childnode>
+        <childnode refid="2932" relation="usage">
+          <edgelabel>astarData</edgelabel>
+        </childnode>
+        <childnode refid="2930" relation="usage">
+          <edgelabel>safeUpdateLock</edgelabel>
+          <edgelabel>TotalSearchedNodes</edgelabel>
+          <edgelabel>TotalSearchTime</edgelabel>
+        </childnode>
+        <childnode refid="2952" relation="usage">
+          <edgelabel>pathReturnPop</edgelabel>
+          <edgelabel>debugPath</edgelabel>
+        </childnode>
+        <childnode refid="2954" relation="usage">
+          <edgelabel>colorSettings</edgelabel>
+        </childnode>
+        <childnode refid="2923" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2952">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="2927" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="2930" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="2952" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2928" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="2953" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2936">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2925">
+        <label>PathThreadInfo</label>
+        <link refid="struct_pathfinding_1_1_path_thread_info"/>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>runData</edgelabel>
+        </childnode>
+        <childnode refid="2930" relation="usage">
+          <edgelabel>_lock</edgelabel>
+        </childnode>
+        <childnode refid="2923" relation="usage">
+          <edgelabel>astar</edgelabel>
+        </childnode>
+      </node>
+      <node id="2937">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="2949">
+        <label>GraphCollision</label>
+        <link refid="class_pathfinding_1_1_graph_collision"/>
+      </node>
+      <node id="2933">
+        <label>UserConnection</label>
+        <link refid="class_pathfinding_1_1_user_connection"/>
+      </node>
+      <node id="2941">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="2934">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="2922" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2935" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2936" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2937" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2938" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2939" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2942" relation="usage">
+          <edgelabel>_vertices</edgelabel>
+        </childnode>
+        <childnode refid="2943" relation="usage">
+          <edgelabel>_bbTree</edgelabel>
+        </childnode>
+      </node>
+      <node id="2938">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="2947">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2946">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2928" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2947" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2942" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="2928" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2954">
+        <label>AstarColor</label>
+        <link refid="class_pathfinding_1_1_astar_color"/>
+      </node>
+      <node id="2939">
+        <label>TriangleMeshNode</label>
+        <link refid="class_pathfinding_1_1_triangle_mesh_node"/>
+        <childnode refid="2940" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2941" relation="usage">
+          <edgelabel>_navmeshHolders</edgelabel>
+        </childnode>
+      </node>
+      <node id="2930">
+        <label>System</label>
+      </node>
+      <node id="2927">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="2927" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="2928" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="2940">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="2928" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2940" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2945">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="2922" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2936" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2946" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2929">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="2927" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2924">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2926">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="2927" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2929" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="2930" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2935">
+        <label>INavmesh</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh"/>
+      </node>
+      <node id="2950">
+        <label>GridGraph.TextureData</label>
+        <link refid="class_pathfinding_1_1_grid_graph_1_1_texture_data"/>
+      </node>
+      <node id="2922">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+        <childnode refid="2923" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2931">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/SimplestGraphPossible.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/SimplestGraphPossible.cs" bodystart="12" bodyend="20"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_nav_graph_1a1a7a624b2d1e6da7b424032a806a73ff" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>_sguid</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a434d5613ef9ff4b88d1be0ce9527825e" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>active</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1affb6ac8f8f08d515a8b74f5c213c2c52" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>Awake</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1af9cb6ab12f8f1fe5d71fa6158d3b23bb" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>CreateNodes</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a575ba0b88685f2e09789add16e4bbafb" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>DeserializeExtraInfo</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1ae9c11225f455a44cd7086edfb44f1dda" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>drawGizmos</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1ac28f08f7bddc85579649b5f6ebe57cd4" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>GetNearest</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1aae44d9d57ed269658eef4dddae3af43e" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>GetNearest</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1af25bf6726c21398948bd3e9293afd3f0" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>GetNearest</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a01ce7413474f02c0498c49c63ef6223e" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>GetNearestForce</name></member>
+      <member refid="class_simple_graph_1a03623f3b4f0993c79abaec6a5f988a82" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>GetNodes</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a0c8f65c9d3118ff62b1d40950e5154f8" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>guid</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a446b024d347557e040a2487a4dad35d4" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>infoScreenOpen</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a8ce0a60a61300cf40e5b80d38d725618" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>initialPenalty</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a19e846610475809a8a6026f0eb66061f" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>InSearchTree</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1afb324eca94dcbe6ba08d65cc718ed7f7" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>inverseMatrix</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>matrix</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a8ccf841cb59e451791bcb2e1ac4f1edc" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>name</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1aa24893229da881765c71a20d468f6bd5" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>NodeColor</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a1be5f5b23715843a7bfc4f2ebd6c7894" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>OnDestroy</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a58a7f39571aa2ed35b24e37537e8be93" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a8c7e45250b1eb6821dd59fb2a9a016d7" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>open</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1aec1349b074fefbf56b083f616cf3a6a6" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>PostDeserialization</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a9f94661379d6d8394f335c9add8c00a5" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>RelocateNodes</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a75833509db1f3435c4a995248e667f88" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>SafeOnDestroy</name></member>
+      <member refid="class_simple_graph_1a90227378af44ec239626da2800e7c626" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>Scan</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a05761001095e332b4947063865381a7c" prot="public" virt="non-virtual"><scope>SimpleGraph</scope><name>ScanGraph</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1ab80fa342322ac71dd3b111aa9e4c0a73" prot="public" virt="virtual"><scope>SimpleGraph</scope><name>SerializeExtraInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

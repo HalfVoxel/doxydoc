@@ -1,0 +1,569 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_r_v_o_obstacle" kind="class" prot="public" abstract="yes">
+    <compoundname>RVOObstacle</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <derivedcompoundref refid="class_r_v_o_square_obstacle" prot="public" virt="non-virtual">RVOSquareObstacle</derivedcompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbd" prot="public" static="no">
+        <name>ObstacleVertexWinding</name>
+        <enumvalue id="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbda08a4b9efe9915f838f3085c75526b209" prot="public">
+          <name>KeepOut</name>
+          <briefdescription>
+<para>Keeps agents from entering the obstacle. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbda117230e60c379fdc0450cc773b962176" prot="public">
+          <name>KeepIn</name>
+          <briefdescription>
+<para>Keeps agents inside the obstacle. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbda130c5b3473c57faa76e2a1c54e26f88e" prot="public">
+          <name>Both</name>
+          <briefdescription>
+<para>Keeps agents from crossing the obstacle border in either direction. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>RVO Obstacle Modes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Determines winding order of obstacle vertices </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="27" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" prot="public" static="no" mutable="no">
+        <type><ref refid="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbd" kindref="member">ObstacleVertexWinding</ref></type>
+        <definition>ObstacleVertexWinding obstacleMode</definition>
+        <argsstring></argsstring>
+        <name>obstacleMode</name>
+        <briefdescription>
+<para>Mode of the obstacle. </para>        </briefdescription>
+        <detaileddescription>
+<para>Determines winding order of the vertices </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="23" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="23" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a88e26426b52e90e85206cf937e3f3308" compoundref="_r_v_o_obstacle_8cs" startline="260" endline="277">WindCorrectly</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Pathfinding.RVO.Simulator</ref></type>
+        <definition>Pathfinding.RVO.Simulator sim</definition>
+        <argsstring></argsstring>
+        <name>sim</name>
+        <briefdescription>
+<para>Reference to simulator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="34" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="34" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" compoundref="_r_v_o_obstacle_8cs" startline="155" endline="163">OnDisable</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a84e23ba394eacd818d2e005cc466c4d1" compoundref="_r_v_o_obstacle_8cs" startline="168" endline="176">OnEnable</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" compoundref="_r_v_o_obstacle_8cs" startline="188" endline="198">Update</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a7d1e27151f3f0d6bf90acd29527a97b0" compoundref="_r_v_o_obstacle_8cs" startline="207" endline="212">FindSimulator</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" compoundref="_r_v_o_obstacle_8cs" startline="252" endline="255">AddObstacleInternal</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1a93b417f564a308bab89cc9dc55cb9f35" prot="private" static="no" mutable="no">
+        <type><ref refid="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbd" kindref="member">ObstacleVertexWinding</ref></type>
+        <definition>ObstacleVertexWinding _obstacleMode</definition>
+        <argsstring></argsstring>
+        <name>_obstacleMode</name>
+        <briefdescription>
+<para>Last obstacle mode. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to check if the gizmos should be updated </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="81" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="81" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref> &gt;</type>
+        <definition>List&lt;ObstacleVertex&gt; addedObstacles</definition>
+        <argsstring></argsstring>
+        <name>addedObstacles</name>
+        <briefdescription>
+<para>All obstacles added. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="37" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="37" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" compoundref="_r_v_o_obstacle_8cs" startline="155" endline="163">OnDisable</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a84e23ba394eacd818d2e005cc466c4d1" compoundref="_r_v_o_obstacle_8cs" startline="168" endline="176">OnEnable</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_r_v_o_obstacle_8cs" startline="179" endline="184">Start</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" compoundref="_r_v_o_obstacle_8cs" startline="188" endline="198">Update</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" compoundref="_r_v_o_obstacle_8cs" startline="252" endline="255">AddObstacleInternal</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1ab1424181a47a77566d6e110b58b0d9b3" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool gizmoDrawing</definition>
+        <argsstring></argsstring>
+        <name>gizmoDrawing</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Enabled if currently in OnDrawGizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="73" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="73" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1a1fd843e942b4a6179676e4a9e243d1d8" prot="private" static="no" mutable="no">
+        <type>List&lt; Vector3[]&gt;</type>
+        <definition>List&lt;Vector3[]&gt; gizmoVerts</definition>
+        <argsstring></argsstring>
+        <name>gizmoVerts</name>
+        <briefdescription>
+<para>Vertices for gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="76" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="76" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1ade886b377b761d5323f87d414ea87927" prot="private" static="no" mutable="no">
+        <type>Matrix4x4</type>
+        <definition>Matrix4x4 prevUpdateMatrix</definition>
+        <argsstring></argsstring>
+        <name>prevUpdateMatrix</name>
+        <briefdescription>
+<para>Last matrix the obstacle was updated with. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to check if the obstacle should be updated </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="85" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="85" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_r_v_o_obstacle_8cs" startline="179" endline="184">Start</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" compoundref="_r_v_o_obstacle_8cs" startline="188" endline="198">Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_obstacle_1a26c82c1a134c3d0e3d0c221406870011" prot="private" static="no" mutable="no">
+        <type>List&lt; Vector3[]&gt;</type>
+        <definition>List&lt;Vector3[]&gt; sourceObstacles</definition>
+        <argsstring></argsstring>
+        <name>sourceObstacles</name>
+        <briefdescription>
+<para>Original vertices for the obstacles. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="40" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="40" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_r_v_o_obstacle_8cs" startline="179" endline="184">Start</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" compoundref="_r_v_o_obstacle_8cs" startline="188" endline="198">Update</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" compoundref="_r_v_o_obstacle_8cs" startline="252" endline="255">AddObstacleInternal</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_r_v_o_obstacle_1af27adfa026c5e3fd3f43e3a57a618238" prot="protected" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>abstract bool</type>
+        <definition>abstract bool ExecuteInEditor</definition>
+        <argsstring></argsstring>
+        <name>ExecuteInEditor</name>
+        <briefdescription>
+<para>Enable executing in editor to draw gizmos. </para>        </briefdescription>
+        <detaileddescription>
+<para>If enabled, the CreateObstacles function will be executed in the editor as well in order to draw gizmos. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="54" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_r_v_o_obstacle_1a8fc60186dcf4e15ae5270a9ca317f7ae" prot="protected" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>abstract bool</type>
+        <definition>abstract bool LocalCoordinates</definition>
+        <argsstring></argsstring>
+        <name>LocalCoordinates</name>
+        <briefdescription>
+<para>If enabled, all coordinates are handled as local. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="58" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="58" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" compoundref="_r_v_o_obstacle_8cs" startline="147" endline="150">GetMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="property" id="class_r_v_o_obstacle_1a83c176797de4ad9490ccb55d5261b8b6" prot="protected" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>abstract bool</type>
+        <definition>abstract bool StaticObstacle</definition>
+        <argsstring></argsstring>
+        <name>StaticObstacle</name>
+        <briefdescription>
+<para>Static or dynamic. </para>        </briefdescription>
+        <detaileddescription>
+<para>This determines if the obstacle can be updated by e.g moving the transform around in the scene. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="64" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddObstacle</definition>
+        <argsstring>(Vector3[] vertices, float height)</argsstring>
+        <name>AddObstacle</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>vertices</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+<para>Adds an obstacle with the specified vertices. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertices array might be changed by this function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="216" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="216" bodyend="247"/>
+        <references refid="class_r_v_o_obstacle_1ab1424181a47a77566d6e110b58b0d9b3" compoundref="_r_v_o_obstacle_8cs" startline="73">gizmoDrawing</references>
+        <references refid="class_r_v_o_obstacle_1a88e26426b52e90e85206cf937e3f3308" compoundref="_r_v_o_obstacle_8cs" startline="260" endline="277">WindCorrectly</references>
+        <references refid="class_r_v_o_obstacle_1a1fd843e942b4a6179676e4a9e243d1d8" compoundref="_r_v_o_obstacle_8cs" startline="76">gizmoVerts</references>
+        <references refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_r_v_o_obstacle_8cs" startline="34">sim</references>
+        <references refid="class_r_v_o_obstacle_1a7d1e27151f3f0d6bf90acd29527a97b0" compoundref="_r_v_o_obstacle_8cs" startline="207" endline="212">FindSimulator</references>
+        <references refid="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" compoundref="_r_v_o_obstacle_8cs" startline="252" endline="255">AddObstacleInternal</references>
+        <references refid="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" compoundref="_r_v_o_obstacle_8cs" startline="23">obstacleMode</references>
+        <referencedby refid="class_r_v_o_square_obstacle_1a7fcaaf3a3467c5d44029d636013f2300" compoundref="_r_v_o_square_obstacle_8cs" startline="38" endline="47">RVOSquareObstacle.CreateObstacles</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a502a4f42c76c66b29f30bab261df4702" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract bool</type>
+        <definition>abstract bool AreGizmosDirty</definition>
+        <argsstring>()</argsstring>
+        <name>AreGizmosDirty</name>
+        <reimplementedby refid="class_r_v_o_square_obstacle_1aefb038d0d7ea90c712e0e13848859b74">AreGizmosDirty</reimplementedby>
+        <briefdescription>
+<para>Called in the editor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function should return true if any variables which can change the shape or position of the obstacle has changed since the last call to this function. Take a look at the <ref refid="class_r_v_o_square_obstacle" kindref="compound">RVOSquareObstacle</ref> for an example. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="70"/>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a13b28f7cd0ca99f228497fc4e10e523a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void CreateObstacles</definition>
+        <argsstring>()</argsstring>
+        <name>CreateObstacles</name>
+        <reimplementedby refid="class_r_v_o_square_obstacle_1a7fcaaf3a3467c5d44029d636013f2300">CreateObstacles</reimplementedby>
+        <briefdescription>
+<para>Create Obstacles. </para>        </briefdescription>
+        <detaileddescription>
+<para>Override this and add logic for creating obstacles. You should not use the simulator&apos;s function calls directly.</para><para><simplesect kind="see"><para><ref refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" kindref="member">AddObstacle</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="48"/>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_r_v_o_obstacle_8cs" startline="179" endline="184">Start</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a7d1e27151f3f0d6bf90acd29527a97b0" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void FindSimulator</definition>
+        <argsstring>()</argsstring>
+        <name>FindSimulator</name>
+        <briefdescription>
+<para>Finds a simulator in the scene. </para>        </briefdescription>
+        <detaileddescription>
+<para>Saves found simulator in <ref refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" kindref="member">sim</ref>.</para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.InvalidOperationException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When no <ref refid="class_r_v_o_simulator" kindref="compound">RVOSimulator</ref> could be found. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="207" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="207" bodyend="212"/>
+        <references refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_r_v_o_obstacle_8cs" startline="34">sim</references>
+        <references refid="class_r_v_o_simulator_1a9262cfa14f44bead1b2b007edee41678" compoundref="_r_v_o_simulator_8cs" startline="52" endline="57">RVOSimulator.GetSimulator</references>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>Matrix4x4</type>
+        <definition>virtual Matrix4x4 GetMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>GetMatrix</name>
+        <briefdescription>
+<para>Get&apos;s the matrix to use for vertices. </para>        </briefdescription>
+        <detaileddescription>
+<para>Can be overriden for custom matrices. <simplesect kind="return"><para>transform.localToWorldMatrix if LocalCoordinates is true, otherwise Matrix4x4.identity </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="147" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="147" bodyend="150"/>
+        <references refid="class_r_v_o_obstacle_1a8fc60186dcf4e15ae5270a9ca317f7ae" compoundref="_r_v_o_obstacle_8cs" startline="58">LocalCoordinates</references>
+        <referencedby refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" compoundref="_r_v_o_obstacle_8cs" startline="98" endline="141">OnDrawGizmos</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" compoundref="_r_v_o_obstacle_8cs" startline="179" endline="184">Start</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" compoundref="_r_v_o_obstacle_8cs" startline="188" endline="198">Update</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" compoundref="_r_v_o_obstacle_8cs" startline="252" endline="255">AddObstacleInternal</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDisable</definition>
+        <argsstring>()</argsstring>
+        <name>OnDisable</name>
+        <briefdescription>
+<para>Disables the obstacle. </para>        </briefdescription>
+        <detaileddescription>
+<para>Do not override this function </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="155" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="155" bodyend="163"/>
+        <references refid="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" compoundref="_r_v_o_obstacle_8cs" startline="37">addedObstacles</references>
+        <references refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_r_v_o_obstacle_8cs" startline="34">sim</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a3989a9b4dd227b97626502d5f93eb3fd" compoundref="_r_v_o_core_simulator_8cs" startline="474" endline="482">Simulator.RemoveObstacle</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmos</definition>
+        <argsstring>()</argsstring>
+        <name>OnDrawGizmos</name>
+        <briefdescription>
+<para>Draws Gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="88" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="88" bodyend="90"/>
+        <referencedby refid="class_r_v_o_obstacle_1ae7e5103e242d1fbf4a03afe96d3947ef" compoundref="_r_v_o_obstacle_8cs" startline="93" endline="95">OnDrawGizmosSelected</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmos</definition>
+        <argsstring>(bool selected)</argsstring>
+        <name>OnDrawGizmos</name>
+        <param>
+          <type>bool</type>
+          <declname>selected</declname>
+        </param>
+        <briefdescription>
+<para>Draws Gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="98" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="98" bodyend="141"/>
+        <references refid="class_r_v_o_obstacle_1ab1424181a47a77566d6e110b58b0d9b3" compoundref="_r_v_o_obstacle_8cs" startline="73">gizmoDrawing</references>
+        <references refid="class_r_v_o_obstacle_1a1fd843e942b4a6179676e4a9e243d1d8" compoundref="_r_v_o_obstacle_8cs" startline="76">gizmoVerts</references>
+        <references refid="class_r_v_o_obstacle_1a502a4f42c76c66b29f30bab261df4702">AreGizmosDirty</references>
+        <references refid="class_r_v_o_obstacle_1a93b417f564a308bab89cc9dc55cb9f35" compoundref="_r_v_o_obstacle_8cs" startline="81">_obstacleMode</references>
+        <references refid="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" compoundref="_r_v_o_obstacle_8cs" startline="23">obstacleMode</references>
+        <references refid="class_r_v_o_obstacle_1a13b28f7cd0ca99f228497fc4e10e523a">CreateObstacles</references>
+        <references refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" compoundref="_r_v_o_obstacle_8cs" startline="147" endline="150">GetMatrix</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1ae7e5103e242d1fbf4a03afe96d3947ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmosSelected</definition>
+        <argsstring>()</argsstring>
+        <name>OnDrawGizmosSelected</name>
+        <briefdescription>
+<para>Draws Gizmos. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="93" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="93" bodyend="95"/>
+        <references refid="class_r_v_o_obstacle_1ac51c75fd06c6783b6553902c86ac9d71" compoundref="_r_v_o_obstacle_8cs" startline="88" endline="90">OnDrawGizmos</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnEnable</definition>
+        <argsstring>()</argsstring>
+        <name>OnEnable</name>
+        <briefdescription>
+<para>Enabled the obstacle. </para>        </briefdescription>
+        <detaileddescription>
+<para>Do not override this function </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="168" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="168" bodyend="176"/>
+        <references refid="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" compoundref="_r_v_o_obstacle_8cs" startline="37">addedObstacles</references>
+        <references refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_r_v_o_obstacle_8cs" startline="34">sim</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a52d6f095a0668e4a0a4eea7c08f0c542" compoundref="_r_v_o_core_simulator_8cs" startline="242" endline="251">Simulator.AddObstacle</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <briefdescription>
+<para>Creates obstacles. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="179" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="179" bodyend="184"/>
+        <references refid="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" compoundref="_r_v_o_obstacle_8cs" startline="37">addedObstacles</references>
+        <references refid="class_r_v_o_obstacle_1a26c82c1a134c3d0e3d0c221406870011" compoundref="_r_v_o_obstacle_8cs" startline="40">sourceObstacles</references>
+        <references refid="class_r_v_o_obstacle_1ade886b377b761d5323f87d414ea87927" compoundref="_r_v_o_obstacle_8cs" startline="85">prevUpdateMatrix</references>
+        <references refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" compoundref="_r_v_o_obstacle_8cs" startline="147" endline="150">GetMatrix</references>
+        <references refid="class_r_v_o_obstacle_1a13b28f7cd0ca99f228497fc4e10e523a">CreateObstacles</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <briefdescription>
+<para>Updates obstacle if required. </para>        </briefdescription>
+        <detaileddescription>
+<para>Checks for if the obstacle should be updated (e.g if it has moved) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="188" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="188" bodyend="198"/>
+        <references refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" compoundref="_r_v_o_obstacle_8cs" startline="147" endline="150">GetMatrix</references>
+        <references refid="class_r_v_o_obstacle_1ade886b377b761d5323f87d414ea87927" compoundref="_r_v_o_obstacle_8cs" startline="85">prevUpdateMatrix</references>
+        <references refid="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" compoundref="_r_v_o_obstacle_8cs" startline="37">addedObstacles</references>
+        <references refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_r_v_o_obstacle_8cs" startline="34">sim</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1acee20e4897f14df1a56c45d2accd3989" compoundref="_r_v_o_core_simulator_8cs" startline="401" endline="448">Simulator.UpdateObstacle</references>
+        <references refid="class_r_v_o_obstacle_1a26c82c1a134c3d0e3d0c221406870011" compoundref="_r_v_o_obstacle_8cs" startline="40">sourceObstacles</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddObstacleInternal</definition>
+        <argsstring>(Vector3[] vertices, float height)</argsstring>
+        <name>AddObstacleInternal</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>vertices</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+<para>Adds an obstacle. </para>        </briefdescription>
+        <detaileddescription>
+<para>Winding is assumed to be correct and very little error checking is done. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="252" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="252" bodyend="255"/>
+        <references refid="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" compoundref="_r_v_o_obstacle_8cs" startline="37">addedObstacles</references>
+        <references refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_r_v_o_obstacle_8cs" startline="34">sim</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a52d6f095a0668e4a0a4eea7c08f0c542" compoundref="_r_v_o_core_simulator_8cs" startline="242" endline="251">Simulator.AddObstacle</references>
+        <references refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" compoundref="_r_v_o_obstacle_8cs" startline="147" endline="150">GetMatrix</references>
+        <references refid="class_r_v_o_obstacle_1a26c82c1a134c3d0e3d0c221406870011" compoundref="_r_v_o_obstacle_8cs" startline="40">sourceObstacles</references>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_obstacle_1a88e26426b52e90e85206cf937e3f3308" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void WindCorrectly</definition>
+        <argsstring>(Vector3[] vertices)</argsstring>
+        <name>WindCorrectly</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>vertices</declname>
+        </param>
+        <briefdescription>
+<para>Winds the vertices correctly. </para>        </briefdescription>
+        <detaileddescription>
+<para>Winding order is determined from <ref refid="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" kindref="member">obstacleMode</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="260" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="260" bodyend="277"/>
+        <references refid="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" compoundref="_r_v_o_obstacle_8cs" startline="23">obstacleMode</references>
+        <references refid="class_pathfinding_1_1_polygon_1af2f48887cb67d83d22b1646222b40f26" compoundref="_astar_math_8cs" startline="526" endline="528">Polygon.IsClockwise</references>
+        <referencedby refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">AddObstacle</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for simple RVO colliders. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is a helper base class for RVO colliders. It provides automatic gizmos and helps with the winding order of the vertices as well as automatically updating the obstacle when moved.</para><para>Extend this class to create custom RVO obstacles.</para><para><simplesect kind="see"><para>writing-rvo-colliders </para><simplesectsep/><para><ref refid="class_r_v_o_square_obstacle" kindref="compound">RVOSquareObstacle</ref></para></simplesect>
+<variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2874">
+        <label>RVOObstacle</label>
+        <link refid="class_r_v_o_obstacle"/>
+        <childnode refid="2875" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2876">
+        <label>RVOSquareObstacle</label>
+        <link refid="class_r_v_o_square_obstacle"/>
+        <childnode refid="2874" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2875">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2877">
+        <label>RVOObstacle</label>
+        <link refid="class_r_v_o_obstacle"/>
+        <childnode refid="2878" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2879" relation="usage">
+          <edgelabel>sim</edgelabel>
+        </childnode>
+      </node>
+      <node id="2878">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2879">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" line="19" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOObstacle.cs" bodystart="19" bodyend="278"/>
+    <listofallmembers>
+      <member refid="class_r_v_o_obstacle_1a93b417f564a308bab89cc9dc55cb9f35" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>_obstacleMode</name></member>
+      <member refid="class_r_v_o_obstacle_1ac24b9438fee6ae72eea8d5104084580c" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>addedObstacles</name></member>
+      <member refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" prot="protected" virt="non-virtual"><scope>RVOObstacle</scope><name>AddObstacle</name></member>
+      <member refid="class_r_v_o_obstacle_1a1a77da3a6a54ca056ea3e91d71a7a292" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>AddObstacleInternal</name></member>
+      <member refid="class_r_v_o_obstacle_1a502a4f42c76c66b29f30bab261df4702" prot="protected" virt="pure-virtual"><scope>RVOObstacle</scope><name>AreGizmosDirty</name></member>
+      <member refid="class_r_v_o_obstacle_1a13b28f7cd0ca99f228497fc4e10e523a" prot="protected" virt="pure-virtual"><scope>RVOObstacle</scope><name>CreateObstacles</name></member>
+      <member refid="class_r_v_o_obstacle_1af27adfa026c5e3fd3f43e3a57a618238" prot="protected" virt="non-virtual"><scope>RVOObstacle</scope><name>ExecuteInEditor</name></member>
+      <member refid="class_r_v_o_obstacle_1a7d1e27151f3f0d6bf90acd29527a97b0" prot="protected" virt="non-virtual"><scope>RVOObstacle</scope><name>FindSimulator</name></member>
+      <member refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" prot="protected" virt="virtual"><scope>RVOObstacle</scope><name>GetMatrix</name></member>
+      <member refid="class_r_v_o_obstacle_1ab1424181a47a77566d6e110b58b0d9b3" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>gizmoDrawing</name></member>
+      <member refid="class_r_v_o_obstacle_1a1fd843e942b4a6179676e4a9e243d1d8" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>gizmoVerts</name></member>
+      <member refid="class_r_v_o_obstacle_1a8fc60186dcf4e15ae5270a9ca317f7ae" prot="protected" virt="non-virtual"><scope>RVOObstacle</scope><name>LocalCoordinates</name></member>
+      <member refid="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>obstacleMode</name></member>
+      <member refid="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbd" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>ObstacleVertexWinding</name></member>
+      <member refid="class_r_v_o_obstacle_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>OnDisable</name></member>
+      <member refid="class_r_v_o_obstacle_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_r_v_o_obstacle_1ae7e5103e242d1fbf4a03afe96d3947ef" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>OnDrawGizmosSelected</name></member>
+      <member refid="class_r_v_o_obstacle_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>OnEnable</name></member>
+      <member refid="class_r_v_o_obstacle_1ade886b377b761d5323f87d414ea87927" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>prevUpdateMatrix</name></member>
+      <member refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" prot="protected" virt="non-virtual"><scope>RVOObstacle</scope><name>sim</name></member>
+      <member refid="class_r_v_o_obstacle_1a26c82c1a134c3d0e3d0c221406870011" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>sourceObstacles</name></member>
+      <member refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>Start</name></member>
+      <member refid="class_r_v_o_obstacle_1a83c176797de4ad9490ccb55d5261b8b6" prot="protected" virt="non-virtual"><scope>RVOObstacle</scope><name>StaticObstacle</name></member>
+      <member refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" prot="public" virt="non-virtual"><scope>RVOObstacle</scope><name>Update</name></member>
+      <member refid="class_r_v_o_obstacle_1a88e26426b52e90e85206cf937e3f3308" prot="private" virt="non-virtual"><scope>RVOObstacle</scope><name>WindCorrectly</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

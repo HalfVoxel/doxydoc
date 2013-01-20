@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_voxel_span" kind="class" prot="public">
+    <compoundname>VoxelSpan</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_voxel_span_1a5008f5aaa9ef50b1510e309dce9205d7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int area</definition>
+        <argsstring></argsstring>
+        <name>area</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="281" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxel_span_1abe10f07b1822a5c3dfe48705e5b88891" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint bottom</definition>
+        <argsstring></argsstring>
+        <name>bottom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="272" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxel_span_1af25359e1397946e36b994dd496ac11eb" prot="public" static="no" mutable="no">
+        <type><ref refid="class_voxel_span" kindref="compound">VoxelSpan</ref></type>
+        <definition>VoxelSpan next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="275" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_voxel_span_1ada1df9e07f83dee9bce080113289c789" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint top</definition>
+        <argsstring></argsstring>
+        <name>top</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="273" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_voxel_span_1adf07bbbc8e54b6ec20eb6eae326b042e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>VoxelSpan</definition>
+        <argsstring>(uint b, uint t, int area)</argsstring>
+        <name>VoxelSpan</name>
+        <param>
+          <type>uint</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="285" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="285" bodyend="289"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3082">
+        <label>VoxelSpan</label>
+        <link refid="class_voxel_span"/>
+        <childnode refid="3082" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="271" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="271" bodyend="290"/>
+    <listofallmembers>
+      <member refid="class_voxel_span_1a5008f5aaa9ef50b1510e309dce9205d7" prot="public" virt="non-virtual"><scope>VoxelSpan</scope><name>area</name></member>
+      <member refid="class_voxel_span_1abe10f07b1822a5c3dfe48705e5b88891" prot="public" virt="non-virtual"><scope>VoxelSpan</scope><name>bottom</name></member>
+      <member refid="class_voxel_span_1af25359e1397946e36b994dd496ac11eb" prot="public" virt="non-virtual"><scope>VoxelSpan</scope><name>next</name></member>
+      <member refid="class_voxel_span_1ada1df9e07f83dee9bce080113289c789" prot="public" virt="non-virtual"><scope>VoxelSpan</scope><name>top</name></member>
+      <member refid="class_voxel_span_1adf07bbbc8e54b6ec20eb6eae326b042e" prot="public" virt="non-virtual"><scope>VoxelSpan</scope><name>VoxelSpan</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

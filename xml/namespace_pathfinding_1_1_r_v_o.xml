@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="namespace_pathfinding_1_1_r_v_o" kind="namespace">
+    <compoundname>Pathfinding::RVO</compoundname>
+    <innerclass refid="class_pathfinding_1_1_r_v_o_1_1_agent" prot="public">Pathfinding::RVO::Agent</innerclass>
+    <innerclass refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent" prot="public">Pathfinding::RVO::IAgent</innerclass>
+    <innerclass refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree" prot="public">Pathfinding::RVO::KDTree</innerclass>
+    <innerclass refid="struct_pathfinding_1_1_r_v_o_1_1_line" prot="public">Pathfinding::RVO::Line</innerclass>
+    <innerclass refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" prot="public">Pathfinding::RVO::ObstacleVertex</innerclass>
+    <innerclass refid="class_pathfinding_1_1_r_v_o_1_1_simulator" prot="public">Pathfinding::RVO::Simulator</innerclass>
+    <briefdescription>
+<para>Local avoidance related classes. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="6"/>
+  </compounddef>
+</doxygen>

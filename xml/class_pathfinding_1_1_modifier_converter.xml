@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_modifier_converter" kind="class" prot="public">
+    <compoundname>Pathfinding::ModifierConverter</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_modifier_converter_1a3ae0e7e1d4fc87db22edd51325fc51db" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AllBits</definition>
+        <argsstring>(ModifierData a, ModifierData b)</argsstring>
+        <name>AllBits</name>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Returns If <emphasis>a</emphasis> has all bits that <emphasis>b</emphasis> has set to true, also set to true. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="210" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="210" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_modifier_converter_1a98b0ba488d5ad91a8c2119b79f70ad86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AnyBits</definition>
+        <argsstring>(ModifierData a, ModifierData b)</argsstring>
+        <name>AnyBits</name>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Returns If <emphasis>a</emphasis> and <emphasis>b</emphasis> has any bits in common. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="215" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="215" bodyend="217"/>
+        <referencedby refid="class_pathfinding_1_1_modifier_converter_1af39698395fe65dfb2daf71f266f98870" compoundref="_modifiers_8cs" startline="220" endline="246">ModifierConverter.Convert</referencedby>
+        <referencedby refid="class_pathfinding_1_1_modifier_converter_1ac9bb86b1750cb0ef3509dafbbd737858" compoundref="_modifiers_8cs" startline="249" endline="252">ModifierConverter.CanConvert</referencedby>
+        <referencedby refid="class_pathfinding_1_1_modifier_converter_1afd941a0b5aa95ccd250f48df91206131" compoundref="_modifiers_8cs" startline="255" endline="275">ModifierConverter.CanConvertTo</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_modifier_converter_1ac9bb86b1750cb0ef3509dafbbd737858" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool CanConvert</definition>
+        <argsstring>(ModifierData input, ModifierData output)</argsstring>
+        <name>CanConvert</name>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>Returns If <emphasis>input</emphasis> can be converted to <emphasis>output</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="249" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="249" bodyend="252"/>
+        <references refid="class_pathfinding_1_1_modifier_converter_1afd941a0b5aa95ccd250f48df91206131" compoundref="_modifiers_8cs" startline="255" endline="275">ModifierConverter.CanConvertTo</references>
+        <references refid="class_pathfinding_1_1_modifier_converter_1a98b0ba488d5ad91a8c2119b79f70ad86" compoundref="_modifiers_8cs" startline="215" endline="217">ModifierConverter.AnyBits</references>
+        <referencedby refid="class_pathfinding_1_1_modifier_converter_1af39698395fe65dfb2daf71f266f98870" compoundref="_modifiers_8cs" startline="220" endline="246">ModifierConverter.Convert</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_modifier_converter_1afd941a0b5aa95ccd250f48df91206131" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>static ModifierData CanConvertTo</definition>
+        <argsstring>(ModifierData a)</argsstring>
+        <name>CanConvertTo</name>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+<para>Returns All data types <emphasis>a</emphasis> can be converted to. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="255" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="255" bodyend="275"/>
+        <references refid="class_pathfinding_1_1_modifier_converter_1a98b0ba488d5ad91a8c2119b79f70ad86" compoundref="_modifiers_8cs" startline="215" endline="217">ModifierConverter.AnyBits</references>
+        <referencedby refid="class_pathfinding_1_1_modifier_converter_1ac9bb86b1750cb0ef3509dafbbd737858" compoundref="_modifiers_8cs" startline="249" endline="252">ModifierConverter.CanConvert</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_modifier_converter_1af39698395fe65dfb2daf71f266f98870" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>static ModifierData Convert</definition>
+        <argsstring>(Path p, ModifierData input, ModifierData output)</argsstring>
+        <name>Convert</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>Converts a path from <emphasis>input</emphasis> to <emphasis>output</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="220" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="220" bodyend="246"/>
+        <references refid="class_pathfinding_1_1_modifier_converter_1ac9bb86b1750cb0ef3509dafbbd737858" compoundref="_modifiers_8cs" startline="249" endline="252">ModifierConverter.CanConvert</references>
+        <references refid="class_pathfinding_1_1_modifier_converter_1a98b0ba488d5ad91a8c2119b79f70ad86" compoundref="_modifiers_8cs" startline="215" endline="217">ModifierConverter.AnyBits</references>
+        <references refid="class_pathfinding_1_1_path_1a606d877ec5788bbbf53311a2dff80ffd" compoundref="_path_8cs" startline="59">Path.vectorPath</references>
+        <references refid="class_pathfinding_1_1_path_1ac76dd31632dd24f062d1949d77af84d2" compoundref="_path_8cs" startline="56">Path.path</references>
+        <referencedby refid="class_seeker_1a50a5a52545d32a81497dd6ab9b357bd2" compoundref="_seeker_8cs" startline="146" endline="221">Seeker.RunModifiers</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="207" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="207" bodyend="276"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_modifier_converter_1a3ae0e7e1d4fc87db22edd51325fc51db" prot="public" virt="non-virtual"><scope>Pathfinding::ModifierConverter</scope><name>AllBits</name></member>
+      <member refid="class_pathfinding_1_1_modifier_converter_1a98b0ba488d5ad91a8c2119b79f70ad86" prot="public" virt="non-virtual"><scope>Pathfinding::ModifierConverter</scope><name>AnyBits</name></member>
+      <member refid="class_pathfinding_1_1_modifier_converter_1ac9bb86b1750cb0ef3509dafbbd737858" prot="public" virt="non-virtual"><scope>Pathfinding::ModifierConverter</scope><name>CanConvert</name></member>
+      <member refid="class_pathfinding_1_1_modifier_converter_1afd941a0b5aa95ccd250f48df91206131" prot="public" virt="non-virtual"><scope>Pathfinding::ModifierConverter</scope><name>CanConvertTo</name></member>
+      <member refid="class_pathfinding_1_1_modifier_converter_1af39698395fe65dfb2daf71f266f98870" prot="public" virt="non-virtual"><scope>Pathfinding::ModifierConverter</scope><name>Convert</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

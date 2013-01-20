@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="group__modifiers" kind="group">
+    <compoundname>modifiers</compoundname>
+    <title>Modifiers</title>
+    <innerclass refid="class_advanced_smooth" prot="public">AdvancedSmooth</innerclass>
+    <innerclass refid="class_alternative_path" prot="public">AlternativePath</innerclass>
+    <innerclass refid="class_funnel_modifier" prot="public">FunnelModifier</innerclass>
+    <innerclass refid="class_raycast_modifier" prot="public">RaycastModifier</innerclass>
+    <innerclass refid="class_simple_smooth_modifier" prot="public">SimpleSmoothModifier</innerclass>
+    <innerclass refid="class_start_end_modifier" prot="public">StartEndModifier</innerclass>
+    <briefdescription>
+<para>Collection of the most used modifiers. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="modifiers" kindref="compound">Using Modifiers</ref> </para></simplesect>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

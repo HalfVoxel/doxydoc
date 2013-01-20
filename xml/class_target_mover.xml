@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_target_mover" kind="class" prot="public">
+    <compoundname>TargetMover</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_target_mover_1a427e7d78bb1a767d205d60ef36cdf39c" prot="public" static="no" mutable="no">
+        <type>LayerMask</type>
+        <definition>LayerMask mask</definition>
+        <argsstring></argsstring>
+        <name>mask</name>
+        <briefdescription>
+<para>Mask for the raycast placement. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="7" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_target_mover_1ae044ddd67fbce65af8c3f28aa973fc7c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool onlyOnDoubleClick</definition>
+        <argsstring></argsstring>
+        <name>onlyOnDoubleClick</name>
+        <briefdescription>
+<para>Determines if the target position should be updated every frame or only on double-click. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_target_mover_1a8a24b37582e07ee23646b165d54fa600" prot="public" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_target_mover_1a3b23650c3f80b53cee3a2c471797c732" prot="private" static="no" mutable="no">
+        <type>Camera</type>
+        <definition>Camera cam</definition>
+        <argsstring></argsstring>
+        <name>cam</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_target_mover_1aed4a27d48069265ea875624f0b7c61a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="21" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_target_mover_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="16" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_target_mover_1ac82167e00b7a4c8ab9802f681cac189a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateTargetPosition</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateTargetPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="37" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="37" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_target_mover_1aec0783b5a136e042adcc47bae4fe5291" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="29" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3007">
+        <label>TargetMover</label>
+        <link refid="class_target_mover"/>
+        <childnode refid="3008" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3008">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3009">
+        <label>TargetMover</label>
+        <link refid="class_target_mover"/>
+        <childnode refid="3010" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3010">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" line="4" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" bodystart="4" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_target_mover_1a3b23650c3f80b53cee3a2c471797c732" prot="private" virt="non-virtual"><scope>TargetMover</scope><name>cam</name></member>
+      <member refid="class_target_mover_1a427e7d78bb1a767d205d60ef36cdf39c" prot="public" virt="non-virtual"><scope>TargetMover</scope><name>mask</name></member>
+      <member refid="class_target_mover_1aed4a27d48069265ea875624f0b7c61a4" prot="public" virt="non-virtual"><scope>TargetMover</scope><name>OnGUI</name></member>
+      <member refid="class_target_mover_1ae044ddd67fbce65af8c3f28aa973fc7c" prot="public" virt="non-virtual"><scope>TargetMover</scope><name>onlyOnDoubleClick</name></member>
+      <member refid="class_target_mover_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" virt="non-virtual"><scope>TargetMover</scope><name>Start</name></member>
+      <member refid="class_target_mover_1a8a24b37582e07ee23646b165d54fa600" prot="public" virt="non-virtual"><scope>TargetMover</scope><name>target</name></member>
+      <member refid="class_target_mover_1aec0783b5a136e042adcc47bae4fe5291" prot="private" virt="non-virtual"><scope>TargetMover</scope><name>Update</name></member>
+      <member refid="class_target_mover_1ac82167e00b7a4c8ab9802f681cac189a" prot="public" virt="non-virtual"><scope>TargetMover</scope><name>UpdateTargetPosition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

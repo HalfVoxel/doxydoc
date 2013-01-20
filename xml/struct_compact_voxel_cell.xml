@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_compact_voxel_cell" kind="struct" prot="public">
+    <compoundname>CompactVoxelCell</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_compact_voxel_cell_1ab77ade2208ba49f6e2b934ef32622c48" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="230" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_compact_voxel_cell_1a31016c06536d339fea7e511c2fe9538d" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="229" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_compact_voxel_cell_1adeb88b29424207cbbce676c55df1caa9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CompactVoxelCell</definition>
+        <argsstring>(uint i, uint c)</argsstring>
+        <name>CompactVoxelCell</name>
+        <param>
+          <type>uint</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="232" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="232" bodyend="235"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="228" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="228" bodyend="236"/>
+    <listofallmembers>
+      <member refid="struct_compact_voxel_cell_1adeb88b29424207cbbce676c55df1caa9" prot="public" virt="non-virtual"><scope>CompactVoxelCell</scope><name>CompactVoxelCell</name></member>
+      <member refid="struct_compact_voxel_cell_1ab77ade2208ba49f6e2b934ef32622c48" prot="public" virt="non-virtual"><scope>CompactVoxelCell</scope><name>count</name></member>
+      <member refid="struct_compact_voxel_cell_1a31016c06536d339fea7e511c2fe9538d" prot="public" virt="non-virtual"><scope>CompactVoxelCell</scope><name>index</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

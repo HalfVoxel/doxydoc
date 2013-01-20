@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="interface_pathfinding_1_1_i_navmesh_holder" kind="interface" prot="public">
+    <compoundname>Pathfinding::INavmeshHolder</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_pathfinding_1_1_i_navmesh_holder_1afc75e9428507c5c3ade34aa75c32584d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+        <definition>Int3 GetVertex</definition>
+        <argsstring>(int i)</argsstring>
+        <name>GetVertex</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="525"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="524" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="524" bodyend="526"/>
+    <listofallmembers>
+      <member refid="interface_pathfinding_1_1_i_navmesh_holder_1afc75e9428507c5c3ade34aa75c32584d" prot="public" virt="non-virtual"><scope>Pathfinding::INavmeshHolder</scope><name>GetVertex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_navmesh_clamp" kind="class" prot="public">
+    <compoundname>NavmeshClamp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_navmesh_clamp_1a0757ef25bee7e3409dd62490c9432771" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+        <definition>GraphNode prevNode</definition>
+        <argsstring></argsstring>
+        <name>prevNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_navmesh_clamp_1aabfd64ed4e9f40217ae48d67e27ffe25" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 prevPos</definition>
+        <argsstring></argsstring>
+        <name>prevPos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_navmesh_clamp_1a730d6a2e936437a95bb66aadf86e934b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LateUpdate</definition>
+        <argsstring>()</argsstring>
+        <name>LateUpdate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" line="17" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" bodystart="17" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Attach to any GameObject and the object will be clamped to the navmesh. </para>    </briefdescription>
+    <detaileddescription>
+<para>If a GameObject has this component attached, one or more graph linecasts will be carried out every frame to ensure that the object does not leave the navmesh area.<linebreak/>
+ It can be used with GridGraphs, but Navmesh based ones are prefered. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2388">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2387">
+        <label>NavmeshClamp</label>
+        <link refid="class_navmesh_clamp"/>
+        <childnode refid="2388" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2391">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2390">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2389">
+        <label>NavmeshClamp</label>
+        <link refid="class_navmesh_clamp"/>
+        <childnode refid="2390" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2391" relation="usage">
+          <edgelabel>prevNode</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/NavmeshClamp.cs" bodystart="11" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_navmesh_clamp_1a730d6a2e936437a95bb66aadf86e934b" prot="private" virt="non-virtual"><scope>NavmeshClamp</scope><name>LateUpdate</name></member>
+      <member refid="class_navmesh_clamp_1a0757ef25bee7e3409dd62490c9432771" prot="private" virt="non-virtual"><scope>NavmeshClamp</scope><name>prevNode</name></member>
+      <member refid="class_navmesh_clamp_1aabfd64ed4e9f40217ae48d67e27ffe25" prot="private" virt="non-virtual"><scope>NavmeshClamp</scope><name>prevPos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

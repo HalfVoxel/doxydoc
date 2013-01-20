@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_optimization_handler" kind="class" prot="public">
+    <compoundname>OptimizationHandler</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_optimization_handler_1ae70e647de673b86b215748d6b945caab" prot="public" static="yes" mutable="no">
+        <type>string[]</type>
+        <definition>string [] folders</definition>
+        <argsstring></argsstring>
+        <name>folders</name>
+        <initializer>= new string[1] {&quot;AstarPathfindingProject&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_optimization_handler_1aaceab972e6b0a66a23db781439d28883" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ApplyDefines</definition>
+        <argsstring>(Dictionary&lt; string, DefineObject &gt; defines)</argsstring>
+        <name>ApplyDefines</name>
+        <param>
+          <type>Dictionary&lt; string, <ref refid="class_define_object" kindref="compound">DefineObject</ref> &gt;</type>
+          <declname>defines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" line="147" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" bodystart="147" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_optimization_handler_1a777282dfac3fe0f8a6cbf12fe1615c51" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ApplyDefines</definition>
+        <argsstring>(string directory, Dictionary&lt; string, DefineObject &gt; defines)</argsstring>
+        <name>ApplyDefines</name>
+        <param>
+          <type>string</type>
+          <declname>directory</declname>
+        </param>
+        <param>
+          <type>Dictionary&lt; string, <ref refid="class_define_object" kindref="compound">DefineObject</ref> &gt;</type>
+          <declname>defines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" line="153" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" bodystart="153" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="class_optimization_handler_1aa1c07f90ceb973b3e09087f72b7a2158" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void FindDefines</definition>
+        <argsstring>(Dictionary&lt; string, DefineObject &gt; defines)</argsstring>
+        <name>FindDefines</name>
+        <param>
+          <type>Dictionary&lt; string, <ref refid="class_define_object" kindref="compound">DefineObject</ref> &gt;</type>
+          <declname>defines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" bodystart="14" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_optimization_handler_1a748d3c971213e60dc011acf2719d8ebd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void FindDefines</definition>
+        <argsstring>(string directory, Dictionary&lt; string, DefineObject &gt; defines)</argsstring>
+        <name>FindDefines</name>
+        <param>
+          <type>string</type>
+          <declname>directory</declname>
+        </param>
+        <param>
+          <type>Dictionary&lt; string, <ref refid="class_define_object" kindref="compound">DefineObject</ref> &gt;</type>
+          <declname>defines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" line="20" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" bodystart="20" bodyend="145"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" line="10" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/OptimizationHandler.cs" bodystart="10" bodyend="236"/>
+    <listofallmembers>
+      <member refid="class_optimization_handler_1aaceab972e6b0a66a23db781439d28883" prot="public" virt="non-virtual"><scope>OptimizationHandler</scope><name>ApplyDefines</name></member>
+      <member refid="class_optimization_handler_1a777282dfac3fe0f8a6cbf12fe1615c51" prot="public" virt="non-virtual"><scope>OptimizationHandler</scope><name>ApplyDefines</name></member>
+      <member refid="class_optimization_handler_1aa1c07f90ceb973b3e09087f72b7a2158" prot="public" virt="non-virtual"><scope>OptimizationHandler</scope><name>FindDefines</name></member>
+      <member refid="class_optimization_handler_1a748d3c971213e60dc011acf2719d8ebd" prot="public" virt="non-virtual"><scope>OptimizationHandler</scope><name>FindDefines</name></member>
+      <member refid="class_optimization_handler_1ae70e647de673b86b215748d6b945caab" prot="public" virt="non-virtual"><scope>OptimizationHandler</scope><name>folders</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

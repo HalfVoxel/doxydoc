@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_compact_voxel_span" kind="struct" prot="public">
+    <compoundname>CompactVoxelSpan</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_compact_voxel_span_1a8635c9a3b8c68a570b8d4f017899b437" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint con</definition>
+        <argsstring></argsstring>
+        <name>con</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="240" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_compact_voxel_span_1a0cf902ed91cf35330b639ab2ec1038dc" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint h</definition>
+        <argsstring></argsstring>
+        <name>h</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="241" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_compact_voxel_span_1aa391927e06832c3d8d2f4e89a25cdd81" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int reg</definition>
+        <argsstring></argsstring>
+        <name>reg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="242" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_compact_voxel_span_1a45b45124e843a937c3e256edbce64eea" prot="public" static="no" mutable="no">
+        <type>ushort</type>
+        <definition>ushort y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="239" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_compact_voxel_span_1ae06763465c77cbd39432dca95afd3fe9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CompactVoxelSpan</definition>
+        <argsstring>(ushort bottom, uint height)</argsstring>
+        <name>CompactVoxelSpan</name>
+        <param>
+          <type>ushort</type>
+          <declname>bottom</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="244" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="244" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_compact_voxel_span_1a786cb85d2a2cb8424357d384e16febb9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int GetConnection</definition>
+        <argsstring>(int dir)</argsstring>
+        <name>GetConnection</name>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="263" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="263" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_compact_voxel_span_1a3fde87e04261c1d01fa958d9318a091f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SetConnection</definition>
+        <argsstring>(int dir, uint value)</argsstring>
+        <name>SetConnection</name>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="258" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="258" bodyend="261"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" line="238" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/VoxelizeClasses.cs" bodystart="238" bodyend="269"/>
+    <listofallmembers>
+      <member refid="struct_compact_voxel_span_1ae06763465c77cbd39432dca95afd3fe9" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>CompactVoxelSpan</name></member>
+      <member refid="struct_compact_voxel_span_1a8635c9a3b8c68a570b8d4f017899b437" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>con</name></member>
+      <member refid="struct_compact_voxel_span_1a786cb85d2a2cb8424357d384e16febb9" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>GetConnection</name></member>
+      <member refid="struct_compact_voxel_span_1a0cf902ed91cf35330b639ab2ec1038dc" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>h</name></member>
+      <member refid="struct_compact_voxel_span_1aa391927e06832c3d8d2f4e89a25cdd81" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>reg</name></member>
+      <member refid="struct_compact_voxel_span_1a3fde87e04261c1d01fa958d9318a091f" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>SetConnection</name></member>
+      <member refid="struct_compact_voxel_span_1a45b45124e843a937c3e256edbce64eea" prot="public" virt="non-virtual"><scope>CompactVoxelSpan</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

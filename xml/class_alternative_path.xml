@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_alternative_path" kind="class" prot="public">
+    <compoundname>AlternativePath</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_mono_modifier" prot="public" virt="non-virtual">MonoModifier</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_alternative_path_1a7fa21bd10c16cb75ca714d5a24eb3f81" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override <ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>override ModifierData input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="21" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_alternative_path_1ad6b5391792318646e0bc50fe6dab206e" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override <ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>override ModifierData output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="25" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_alternative_path_1a70500289fa53bc6e8b1c2d7b82a11640" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int penalty</definition>
+        <argsstring></argsstring>
+        <name>penalty</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+<para>How much penalty (weight) to apply to nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="28" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1a4f8151e935662e4adbc9c764189d775e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int randomStep</definition>
+        <argsstring></argsstring>
+        <name>randomStep</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>Max number of nodes to skip in a row. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="31" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_alternative_path_1ae4fb9dcf35a1dc5ac58cb90b33df1b4e" prot="private" static="no" mutable="no">
+        <type>System.Object</type>
+        <definition>System.Object lockObject</definition>
+        <argsstring></argsstring>
+        <name>lockObject</name>
+        <initializer>= new System.Object ()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="41" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1ab442417795ba5129be4df3c9e30360b8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref>[]</type>
+        <definition>GraphNode [] prevNodes</definition>
+        <argsstring></argsstring>
+        <name>prevNodes</name>
+        <briefdescription>
+<para>The previous path. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="34" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1adf59f14d9c564a0f8110252994a1989e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int prevPenalty</definition>
+        <argsstring></argsstring>
+        <name>prevPenalty</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>The previous penalty used. </para>        </briefdescription>
+        <detaileddescription>
+<para>Stored just in case it changes during operation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="37" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1ae1cb29216b2867b3ef2500ba01291c71" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int prevSeed</definition>
+        <argsstring></argsstring>
+        <name>prevSeed</name>
+        <briefdescription>
+<para>Previous seed. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to figure out which nodes to revert penalty on without storing them in an array </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="36" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1aed3135be31c8f1e71499433a3fc6a9e6" prot="private" static="no" mutable="no">
+        <type>System.Random</type>
+        <definition>System.Random rnd</definition>
+        <argsstring></argsstring>
+        <name>rnd</name>
+        <initializer>= new System.Random ()</initializer>
+        <briefdescription>
+<para>A random object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="44" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1a8f686ccf9bddd75184a5fb2342a8dae0" prot="private" static="no" mutable="no">
+        <type>System.Random</type>
+        <definition>System.Random seedGenerator</definition>
+        <argsstring></argsstring>
+        <name>seedGenerator</name>
+        <initializer>= new System.Random ()</initializer>
+        <briefdescription>
+<para>A random object generating random seeds for other random objects. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="47" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1ad3386708b0cdd5fd20eab3bb95bb4b50" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref>[]</type>
+        <definition>GraphNode [] toBeApplied</definition>
+        <argsstring></argsstring>
+        <name>toBeApplied</name>
+        <briefdescription>
+<para>The nodes waiting to have their penalty changed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="50" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="50" bodyend="-1"/>
+        <referencedby refid="class_alternative_path_1a917f8611394bbb5da9cb835e534f8e70" compoundref="_alternative_path_8cs" startline="51" endline="61">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_alternative_path_1a08accb42625999069127d98d8ff9c5ca" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool waitingForApply</definition>
+        <argsstring></argsstring>
+        <name>waitingForApply</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="39" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_alternative_path_1a917f8611394bbb5da9cb835e534f8e70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Apply</definition>
+        <argsstring>(Path p, ModifierData source)</argsstring>
+        <name>Apply</name>
+        <reimplements refid="class_pathfinding_1_1_mono_modifier_1a37a16f17b48e8ac67c34478b7825a220">Apply</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Main Post-Processing function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="51" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="51" bodyend="61"/>
+        <references refid="class_alternative_path_1ad3386708b0cdd5fd20eab3bb95bb4b50" compoundref="_alternative_path_8cs" startline="50">toBeApplied</references>
+        <references refid="class_pathfinding_1_1_path_1ac76dd31632dd24f062d1949d77af84d2" compoundref="_path_8cs" startline="56">Path.path</references>
+        <references refid="class_astar_path_1ab5b069e4ec515ead310039862789d979" compoundref="_astar_path_8cs" startline="391">AstarPath.OnPathPreSearch</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_alternative_path_1a2045ae95f9bf1f050008e7eb74c17228" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ApplyNow</definition>
+        <argsstring>(Path somePath)</argsstring>
+        <name>ApplyNow</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>somePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="63" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="63" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Applies penalty to the paths it processes telling other units to avoid choosing the same path. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1638">
+        <label>MonoModifier</label>
+        <link refid="class_pathfinding_1_1_mono_modifier"/>
+        <childnode refid="1639" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1640">
+        <label>IPathModifier</label>
+        <link refid="interface_pathfinding_1_1_i_path_modifier"/>
+      </node>
+      <node id="1639">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1637">
+        <label>AlternativePath</label>
+        <link refid="class_alternative_path"/>
+        <childnode refid="1638" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1648">
+        <label>TagMask</label>
+        <link refid="class_pathfinding_1_1_tag_mask"/>
+      </node>
+      <node id="1655">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="1649">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="1642">
+        <label>MonoModifier</label>
+        <link refid="class_pathfinding_1_1_mono_modifier"/>
+        <childnode refid="1643" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1644" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1645" relation="usage">
+          <edgelabel>seeker</edgelabel>
+        </childnode>
+      </node>
+      <node id="1650">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="1651" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="1652" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="1654" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="1650" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="1649" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="1655" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="1646">
+        <label>StartEndModifier</label>
+        <link refid="class_start_end_modifier"/>
+        <childnode refid="1647" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1645">
+        <label>Seeker</label>
+        <link refid="class_seeker"/>
+        <childnode refid="1643" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1646" relation="usage">
+          <edgelabel>startEndModifier</edgelabel>
+        </childnode>
+        <childnode refid="1648" relation="usage">
+          <edgelabel>traversableTags</edgelabel>
+        </childnode>
+        <childnode refid="1649" relation="usage">
+          <edgelabel>endHint</edgelabel>
+          <edgelabel>startHint</edgelabel>
+        </childnode>
+        <childnode refid="1650" relation="usage">
+          <edgelabel>path</edgelabel>
+          <edgelabel>prevPath</edgelabel>
+        </childnode>
+      </node>
+      <node id="1644">
+        <label>IPathModifier</label>
+        <link refid="interface_pathfinding_1_1_i_path_modifier"/>
+      </node>
+      <node id="1654">
+        <label>System</label>
+      </node>
+      <node id="1651">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="1651" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="1649" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="1653">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="1651" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1647">
+        <label>Modifier</label>
+        <link refid="class_pathfinding_1_1_modifier"/>
+        <childnode refid="1644" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1645" relation="usage">
+          <edgelabel>seeker</edgelabel>
+        </childnode>
+      </node>
+      <node id="1643">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1652">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="1651" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="1653" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="1654" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="1641">
+        <label>AlternativePath</label>
+        <link refid="class_alternative_path"/>
+        <childnode refid="1642" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1654" relation="usage">
+          <edgelabel>rnd</edgelabel>
+          <edgelabel>seedGenerator</edgelabel>
+          <edgelabel>lockObject</edgelabel>
+        </childnode>
+        <childnode refid="1649" relation="usage">
+          <edgelabel>toBeApplied</edgelabel>
+          <edgelabel>prevNodes</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" line="10" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AlternativePath.cs" bodystart="10" bodyend="98"/>
+    <listofallmembers>
+      <member refid="class_alternative_path_1a917f8611394bbb5da9cb835e534f8e70" prot="public" virt="virtual"><scope>AlternativePath</scope><name>Apply</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1ad7ac788562c0c718a7bfc21e76225481" prot="public" virt="virtual" ambiguityscope="Pathfinding::MonoModifier."><scope>AlternativePath</scope><name>Apply</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a7d2b1d9359fe1f2f23084f94432e4682" prot="public" virt="virtual" ambiguityscope="Pathfinding::MonoModifier."><scope>AlternativePath</scope><name>Apply</name></member>
+      <member refid="class_alternative_path_1a2045ae95f9bf1f050008e7eb74c17228" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>ApplyNow</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1aa8c7b15aa0548cf6e94cf043b3bc7edd" prot="public" virt="virtual"><scope>AlternativePath</scope><name>ApplyOriginal</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1ae4b513cddd594f1c359e4f0a3e79a8c6" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>Awake</name></member>
+      <member refid="class_alternative_path_1a7fa21bd10c16cb75ca714d5a24eb3f81" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>input</name></member>
+      <member refid="class_alternative_path_1ae4fb9dcf35a1dc5ac58cb90b33df1b4e" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>lockObject</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1ac54ce402cec4f1d67a1cef4db841d26d" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>OnDestroy</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>OnDisable</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>OnEnable</name></member>
+      <member refid="class_alternative_path_1ad6b5391792318646e0bc50fe6dab206e" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>output</name></member>
+      <member refid="class_alternative_path_1a70500289fa53bc6e8b1c2d7b82a11640" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>penalty</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a1b989b9fa84a51baa6a06e766660288c" prot="public" virt="virtual"><scope>AlternativePath</scope><name>PreProcess</name></member>
+      <member refid="class_alternative_path_1ab442417795ba5129be4df3c9e30360b8" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>prevNodes</name></member>
+      <member refid="class_alternative_path_1adf59f14d9c564a0f8110252994a1989e" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>prevPenalty</name></member>
+      <member refid="class_alternative_path_1ae1cb29216b2867b3ef2500ba01291c71" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>prevSeed</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a4450b0bad265ba3bd24e994f70aec802" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>Priority</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1acec9ce2df15222151ad66fcb1d74eb9f" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>priority</name></member>
+      <member refid="class_alternative_path_1a4f8151e935662e4adbc9c764189d775e" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>randomStep</name></member>
+      <member refid="class_alternative_path_1aed3135be31c8f1e71499433a3fc6a9e6" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>rnd</name></member>
+      <member refid="class_alternative_path_1a8f686ccf9bddd75184a5fb2342a8dae0" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>seedGenerator</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a2cc99ba55c7911c446051a8d9c7afdbb" prot="public" virt="non-virtual"><scope>AlternativePath</scope><name>seeker</name></member>
+      <member refid="class_alternative_path_1ad3386708b0cdd5fd20eab3bb95bb4b50" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>toBeApplied</name></member>
+      <member refid="class_alternative_path_1a08accb42625999069127d98d8ff9c5ca" prot="private" virt="non-virtual"><scope>AlternativePath</scope><name>waitingForApply</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

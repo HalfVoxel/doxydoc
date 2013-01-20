@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_local_avoidance_1_1_v_o" kind="class" prot="public">
+    <compoundname>LocalAvoidance::VO</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1ab8ef1bf8a70cc07c6d55823c390a7e76" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float angle</definition>
+        <argsstring></argsstring>
+        <name>angle</name>
+        <briefdescription>
+<para>Angle as Cos (a) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="670" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="670" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a2fcccc984cbbe8a5140b5279428ba0ba" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <briefdescription>
+<para>Direction of the <ref refid="class_local_avoidance_1_1_v_o" kindref="compound">VO</ref>, should be normalized. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="669" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="669" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a71ab9efb823a7fed5101f7151ebbb655" prot="public" static="no" mutable="no">
+        <type>List&lt; <ref refid="struct_local_avoidance_1_1_intersection_pair" kindref="compound">IntersectionPair</ref> &gt;</type>
+        <definition>List&lt;IntersectionPair&gt; ints1</definition>
+        <argsstring></argsstring>
+        <name>ints1</name>
+        <initializer>= new List&lt;<ref refid="struct_local_avoidance_1_1_intersection_pair" kindref="compound">IntersectionPair</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="678" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="678" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a28065181335353eae529a27dc65735b6" prot="public" static="no" mutable="no">
+        <type>List&lt; <ref refid="struct_local_avoidance_1_1_intersection_pair" kindref="compound">IntersectionPair</ref> &gt;</type>
+        <definition>List&lt;IntersectionPair&gt; ints2</definition>
+        <argsstring></argsstring>
+        <name>ints2</name>
+        <initializer>= new List&lt;<ref refid="struct_local_avoidance_1_1_intersection_pair" kindref="compound">IntersectionPair</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="679" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="679" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a42854cb9d5c0484c22c16f575c693f2e" prot="public" static="no" mutable="no">
+        <type>List&lt; <ref refid="struct_local_avoidance_1_1_intersection_pair" kindref="compound">IntersectionPair</ref> &gt;</type>
+        <definition>List&lt;IntersectionPair&gt; ints3</definition>
+        <argsstring></argsstring>
+        <name>ints3</name>
+        <initializer>= new List&lt;<ref refid="struct_local_avoidance_1_1_intersection_pair" kindref="compound">IntersectionPair</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="680" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="680" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1ab9391faa6d1c5e72b1895547e4ef6a00" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float limit</definition>
+        <argsstring></argsstring>
+        <name>limit</name>
+        <briefdescription>
+<para>Distance from origin to start of cone. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="671" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="671" bodyend="-1"/>
+        <referencedby refid="class_local_avoidance_1_1_v_o_1a7a3206e94d4e0ae458b0c130926c4c69" compoundref="_assets_2_astar_pathfinding_project_2_local_avoidance_2_local_avoidance_8cs" startline="803" endline="818">LocalAvoidance.VO.Contains</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a61b4d761a88a39d8b46a9a7faaf89700" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 nLeft</definition>
+        <argsstring></argsstring>
+        <name>nLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="676" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="676" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a02b21174ba0d11e753b88c99cdc82cb0" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 origin</definition>
+        <argsstring></argsstring>
+        <name>origin</name>
+        <briefdescription>
+<para>Origin of the <ref refid="class_local_avoidance_1_1_v_o" kindref="compound">VO</ref> cone. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="668" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="668" bodyend="-1"/>
+        <referencedby refid="class_local_avoidance_1_1_v_o_1a7a3206e94d4e0ae458b0c130926c4c69" compoundref="_assets_2_astar_pathfinding_project_2_local_avoidance_2_local_avoidance_8cs" startline="803" endline="818">LocalAvoidance.VO.Contains</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a5bea4524b0ae989a0bf1ccb22e7269d0" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 pLeft</definition>
+        <argsstring></argsstring>
+        <name>pLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="673" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="673" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a5818441f09cc9a4fa07969c3dd9a0b5b" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 pRight</definition>
+        <argsstring></argsstring>
+        <name>pRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="674" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="674" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_local_avoidance_1_1_v_o_1a82e94876f6bdf3c10888958f5b2550dd" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 nRight</definition>
+        <argsstring></argsstring>
+        <name>nRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="676" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="676" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_local_avoidance_1_1_v_o_1a07cea879f88c13ce198b441c13cffc02" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddInt</definition>
+        <argsstring>(float factor, bool inside, int id)</argsstring>
+        <name>AddInt</name>
+        <param>
+          <type>float</type>
+          <declname>factor</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>inside</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="682" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="682" bodyend="694"/>
+      </memberdef>
+      <memberdef kind="function" id="class_local_avoidance_1_1_v_o_1a7a3206e94d4e0ae458b0c130926c4c69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Contains</definition>
+        <argsstring>(Vector3 p)</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns if this <ref refid="class_local_avoidance_1_1_v_o" kindref="compound">VO</ref> contains the point <emphasis>p</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="803" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="803" bodyend="818"/>
+        <references refid="class_local_avoidance_1_1_v_o_1a02b21174ba0d11e753b88c99cdc82cb0" compoundref="_assets_2_astar_pathfinding_project_2_local_avoidance_2_local_avoidance_8cs" startline="668">LocalAvoidance.VO.origin</references>
+        <references refid="class_local_avoidance_1_1_v_o_1ab9391faa6d1c5e72b1895547e4ef6a00" compoundref="_assets_2_astar_pathfinding_project_2_local_avoidance_2_local_avoidance_8cs" startline="671">LocalAvoidance.VO.limit</references>
+      </memberdef>
+      <memberdef kind="function" id="class_local_avoidance_1_1_v_o_1ac21c385b904f5b0f6fc731cc7b3ae2e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Draw</definition>
+        <argsstring>(Color c)</argsstring>
+        <name>Draw</name>
+        <param>
+          <type>Color</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="840" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="840" bodyend="851"/>
+      </memberdef>
+      <memberdef kind="function" id="class_local_avoidance_1_1_v_o_1a0da7e5820714f5ea30fbc0e85d7824fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FinalInts</definition>
+        <argsstring>(Vector3 target, Vector3 closeEdgeConstraint, bool drawGizmos, out Vector3 closest)</argsstring>
+        <name>FinalInts</name>
+        <param>
+          <type>Vector3</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>closeEdgeConstraint</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drawGizmos</declname>
+        </param>
+        <param>
+          <type>out Vector3</type>
+          <declname>closest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="696" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="696" bodyend="799"/>
+      </memberdef>
+      <memberdef kind="function" id="class_local_avoidance_1_1_v_o_1a4a3ee939f8406f6eb6b128d0e382d84c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float ScoreContains</definition>
+        <argsstring>(Vector3 p)</argsstring>
+        <name>ScoreContains</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns if this <ref refid="class_local_avoidance_1_1_v_o" kindref="compound">VO</ref> contains the point <emphasis>p</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="821" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="821" bodyend="838"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_local_avoidance_1_1_v_o_1a84507c35713ccee30ea9ee0a3ad07ab5" prot="public" static="yes" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>static</type>
+        <definition>static operator HalfPlane</definition>
+        <argsstring>(VO vo)</argsstring>
+        <name>operator HalfPlane</name>
+        <param>
+          <type><ref refid="class_local_avoidance_1_1_v_o" kindref="compound">VO</ref></type>
+          <declname>vo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="853" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="853" bodyend="859"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" line="667" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/LocalAvoidance/LocalAvoidance.cs" bodystart="667" bodyend="860"/>
+    <listofallmembers>
+      <member refid="class_local_avoidance_1_1_v_o_1a07cea879f88c13ce198b441c13cffc02" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>AddInt</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1ab8ef1bf8a70cc07c6d55823c390a7e76" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>angle</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a7a3206e94d4e0ae458b0c130926c4c69" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>Contains</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a2fcccc984cbbe8a5140b5279428ba0ba" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>direction</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1ac21c385b904f5b0f6fc731cc7b3ae2e3" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>Draw</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a0da7e5820714f5ea30fbc0e85d7824fd" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>FinalInts</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a71ab9efb823a7fed5101f7151ebbb655" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>ints1</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a28065181335353eae529a27dc65735b6" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>ints2</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a42854cb9d5c0484c22c16f575c693f2e" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>ints3</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1ab9391faa6d1c5e72b1895547e4ef6a00" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>limit</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a61b4d761a88a39d8b46a9a7faaf89700" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>nLeft</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a82e94876f6bdf3c10888958f5b2550dd" prot="private" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>nRight</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a84507c35713ccee30ea9ee0a3ad07ab5" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>operator HalfPlane</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a02b21174ba0d11e753b88c99cdc82cb0" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>origin</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a5bea4524b0ae989a0bf1ccb22e7269d0" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>pLeft</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a5818441f09cc9a4fa07969c3dd9a0b5b" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>pRight</name></member>
+      <member refid="class_local_avoidance_1_1_v_o_1a4a3ee939f8406f6eb6b128d0e382d84c" prot="public" virt="non-virtual"><scope>LocalAvoidance::VO</scope><name>ScoreContains</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

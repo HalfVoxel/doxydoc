@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_point_node" kind="class" prot="public">
+    <compoundname>Pathfinding::PointNode</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_graph_node" prot="public" virt="non-virtual">GraphNode</basecompoundref>
+    <basecompoundref refid="interface_pathfinding_1_1_i_positioned_node" prot="public" virt="non-virtual">IPositionedNode</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_point_node_1adc2d8716bd474b506ef6c5328878d65f" prot="public" static="no" mutable="no">
+        <type>uint[]</type>
+        <definition>uint [] connectionCosts</definition>
+        <argsstring></argsstring>
+        <name>connectionCosts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="181" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_point_node_1a0aeba4cbf4d47dd1023423046218ffc9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref>[]</type>
+        <definition>GraphNode [] connections</definition>
+        <argsstring></argsstring>
+        <name>connections</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="180" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_point_node_1ad0b853f1105e1ebcfde41e1ef9217b3f" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+        <definition>Int3 position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="183" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_pathfinding_1_1_point_node_1a63eb892b6257f68ae3fe679f5a4342f4" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override <ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+        <definition>override Int3 Position</definition>
+        <argsstring></argsstring>
+        <name>Position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="185" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_point_node_1a78fe5bb18d0a802c67cf271f400b378b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PointNode</definition>
+        <argsstring>()</argsstring>
+        <name>PointNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="191" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="191" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_point_node_1ae16fa262e18cbb10463cedfbf7767595" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GetConnections</definition>
+        <argsstring>(GraphNodeDelegate del)</argsstring>
+        <name>GetConnections</name>
+        <reimplements refid="class_pathfinding_1_1_graph_node_1adc1a1c5ae325bc0d8c7148055408b3bd">GetConnections</reimplements>
+        <param>
+          <type>GraphNodeDelegate</type>
+          <declname>del</declname>
+        </param>
+        <briefdescription>
+<para>Calls the delegate with all connections from this node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="194" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="194" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_point_node_1a8a3a435ab0f2a7171a3f91c5db3f71e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Open</definition>
+        <argsstring>(Path path, PathNode pathNode, PathHandler handler)</argsstring>
+        <name>Open</name>
+        <reimplements refid="class_pathfinding_1_1_graph_node_1ab98353ee3302ae9dbbe8d2e846162555">Open</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path_node" kindref="compound">PathNode</ref></type>
+          <declname>pathNode</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path_handler" kindref="compound">PathHandler</ref></type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Open the node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="199" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="199" bodyend="248"/>
+        <references refid="class_pathfinding_1_1_path_1a9460a578b3228c1030c99f624458ab42" compoundref="_path_8cs" startline="241" endline="243">Path.CanTraverse</references>
+        <references refid="class_pathfinding_1_1_graph_node_1a0b937f240eb441dfb631737c08cdd5f1" compoundref="_graph_node_8cs" startline="154" endline="161">GraphNode.ContainsConnection</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_point_node_1a4dd5c5bc08856e57626b97b3d876c326" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SetPosition</definition>
+        <argsstring>(Int3 value)</argsstring>
+        <name>SetPosition</name>
+        <reimplements refid="interface_pathfinding_1_1_i_positioned_node_1a4dd5c5bc08856e57626b97b3d876c326">SetPosition</reimplements>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="187" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="187" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2656">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2657">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2655">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2656" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2657" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2659">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2661">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="2661" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="2660">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2658">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2659" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2660" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2661" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="2659" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" line="178" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Nodes/GraphNode.cs" bodystart="178" bodyend="249"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_point_node_1adc2d8716bd474b506ef6c5328878d65f" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>connectionCosts</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1a0aeba4cbf4d47dd1023423046218ffc9" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>connections</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a0b937f240eb441dfb631737c08cdd5f1" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>ContainsConnection</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a660f9db871d26052904976a8bfe8432d" prot="protected" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>flags</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a85764cd17eba3c46f183bfc7988855e3" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>Flags</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1aaf9d523095b1596a0e6420050368a542" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>FloodFill</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1ae16fa262e18cbb10463cedfbf7767595" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>GetConnections</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a53fabd19eb92aa1c8c069f46f31b817b" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>GetPortal</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a50d7666a5b34343d07fe58de56435448" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>GraphIndex</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1acb967c17fe482111d1e168f1a63f79ef" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>GraphNode</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a07b82866709c3cfbd92bc2fd70c530ab" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>NodeIndex</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1a8a3a435ab0f2a7171a3f91c5db3f71e7" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>Open</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a82ac31f99d9a605b545b67fa8fef1191" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>Penalty</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1a78fe5bb18d0a802c67cf271f400b378b" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>PointNode</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1a63eb892b6257f68ae3fe679f5a4342f4" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>Position</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1ad0b853f1105e1ebcfde41e1ef9217b3f" prot="private" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>position</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a5d24907027416615d0155156696de505" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>RecalculateConnectionCosts</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a11698f2accfe5ab71b3601a193e6201b" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>Region</name></member>
+      <member refid="class_pathfinding_1_1_point_node_1a4dd5c5bc08856e57626b97b3d876c326" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>SetPosition</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a2a2d51b3ebbe372677a817da48e1e149" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>Tag</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1ac52043314ef439107b3004815af50f4b" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>UpdateG</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a84695ccd854b90b186366e66a132a3d5" prot="public" virt="virtual"><scope>Pathfinding::PointNode</scope><name>UpdateRecursiveG</name></member>
+      <member refid="class_pathfinding_1_1_graph_node_1a4c1197b00aa6b242691867575aebc88d" prot="public" virt="non-virtual"><scope>Pathfinding::PointNode</scope><name>Walkable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

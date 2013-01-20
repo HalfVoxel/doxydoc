@@ -1,0 +1,659 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_recast_graph_editor" kind="class" prot="public">
+    <compoundname>RecastGraphEditor</compoundname>
+    <basecompoundref refid="class_graph_editor" prot="public" virt="non-virtual">GraphEditor</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_recast_graph_editor_1a55b9cf66da3908331a67b34643b73cc4" prot="public" static="no" mutable="no">
+        <type>MeshFilter</type>
+        <definition>MeshFilter meshFilter</definition>
+        <argsstring></argsstring>
+        <name>meshFilter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_recast_graph_editor_1a669ecab4a40a6bc82d786e8cef5f7bfb" prot="public" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject meshRenderer</definition>
+        <argsstring></argsstring>
+        <name>meshRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_recast_graph_editor_1a8d81c8e46d4884ce9ed308aec74c5158" prot="public" static="no" mutable="no">
+        <type>Mesh</type>
+        <definition>Mesh navmeshRender</definition>
+        <argsstring></argsstring>
+        <name>navmeshRender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_recast_graph_editor_1ab1028819a3119db67d443cd9c6a01f67" prot="public" static="no" mutable="no">
+        <type>Renderer</type>
+        <definition>Renderer navmeshRenderer</definition>
+        <argsstring></argsstring>
+        <name>navmeshRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_recast_graph_editor_1a1d50e6356461a26ad974458cc19b05ef" prot="public" static="yes" mutable="no">
+        <type>Material</type>
+        <definition>Material navmeshMaterial</definition>
+        <argsstring></argsstring>
+        <name>navmeshMaterial</name>
+        <briefdescription>
+<para>Material to use for navmeshes in the editor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="17" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_recast_graph_editor_1a0a40491cab00fde5f2d2dd3700285275" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool tagMaskFoldout</definition>
+        <argsstring></argsstring>
+        <name>tagMaskFoldout</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_recast_graph_editor_1abb05460f02bbec0e57404147fb1e42ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CreateDebugMesh</definition>
+        <argsstring>()</argsstring>
+        <name>CreateDebugMesh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="40" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="40" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1aaab8c25c1ad5db6101e8ce90d8d6d3f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ExportToFile</definition>
+        <argsstring>(NavGraph target)</argsstring>
+        <name>ExportToFile</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Exports the INavmesh graph to a file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="266" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="266" bodyend="325"/>
+        <referencedby refid="class_recast_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_recast_graph_editor_8cs" startline="144" endline="263">OnInspectorGUI</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1aafb2e5ff9ac0b154ba7c920402922a91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnDestroy</definition>
+        <argsstring>()</argsstring>
+        <name>OnDestroy</name>
+        <reimplements refid="class_graph_editor_1a1be5f5b23715843a7bfc4f2ebd6c7894">OnDestroy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="26" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="26" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1acdab853f49ac7f0499afc94e493c44fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnDisable</definition>
+        <argsstring>()</argsstring>
+        <name>OnDisable</name>
+        <reimplements refid="class_graph_editor_1a1aac1c9a4ae04ef3e2fbf26b0aa570cc">OnDisable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="32" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="32" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1ad34f3aa16da2426e67c8ecc8a0b08008" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnEnable</definition>
+        <argsstring>()</argsstring>
+        <name>OnEnable</name>
+        <reimplements refid="class_graph_editor_1a34316462014f78aba29c389590f6b104">OnEnable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="20" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="20" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnInspectorGUI</definition>
+        <argsstring>(NavGraph target)</argsstring>
+        <name>OnInspectorGUI</name>
+        <reimplements refid="class_graph_editor_1a0222629eaa6e800ee75768ad62973200">OnInspectorGUI</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Override to implement graph inspectors. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="144" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="144" bodyend="263"/>
+        <references refid="class_pathfinding_1_1_recast_graph_1a2d3655da3ed281674cf5125205e2a246" compoundref="_recast_generator_8cs" startline="97">RecastGraph.useCRecast</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a24a4f86c42d493269588d3525e5ba366" compoundref="_recast_generator_8cs" startline="110">RecastGraph.forcedBoundsSize</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a648adbc9ff17c47a4a0132d21f8893a5" compoundref="_recast_generator_8cs" startline="66">RecastGraph.cellSize</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a47b7d168c0d6e68f5ad8a6b1c3392db0" compoundref="_recast_generator_8cs" startline="69">RecastGraph.cellHeight</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a34d7465b956b21320ce589e06c632286" compoundref="_recast_generator_8cs" startline="72">RecastGraph.walkableHeight</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a788c6eff96f12dce2455d1d705e69f76" compoundref="_recast_generator_8cs" startline="75">RecastGraph.walkableClimb</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" compoundref="_recast_generator_8cs" startline="78">RecastGraph.maxSlope</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a443cbf48b32ad4ee2bc5f6130fb9d71c" compoundref="_recast_generator_8cs" startline="81">RecastGraph.maxEdgeLength</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a071419560fb5485eddbc73207b9c06c7" compoundref="_recast_generator_8cs" startline="63">RecastGraph.contourMaxError</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1ab11c42b9f670619c56a2c86aefa69d95" compoundref="_recast_generator_8cs" startline="125">RecastGraph.includeTerrain</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1acfeb79b5a730b5d909fb213cf8fc9edd" compoundref="_recast_generator_8cs" startline="129">RecastGraph.terrainSampleSize</references>
+        <references refid="class_graph_editor_1a7a5500b26894ff8564fdbf054395503c" compoundref="_graph_editor_8cs" startline="116" endline="127">GraphEditor.Separator</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1ac2526d6cf6b8c42a04117ed20d315781" compoundref="_recast_generator_8cs" startline="106">RecastGraph.forcedBoundsCenter</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a427e7d78bb1a767d205d60ef36cdf39c" compoundref="_recast_generator_8cs" startline="114">RecastGraph.mask</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1af4b5c2b3e2935c60b3855e861c01dba9" compoundref="_recast_generator_8cs" startline="121">RecastGraph.showMeshOutline</references>
+        <references refid="class_pathfinding_1_1_recast_graph_1a9cbdd2a5961383b1b38ce8fbdce93926" compoundref="_recast_generator_8cs" startline="137">RecastGraph.accurateNearestNode</references>
+        <references refid="class_recast_graph_editor_1aaab8c25c1ad5db6101e8ce90d8d6d3f1" compoundref="_recast_graph_editor_8cs" startline="266" endline="325">ExportToFile</references>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnSceneGUI</definition>
+        <argsstring>(NavGraph target)</argsstring>
+        <name>OnSceneGUI</name>
+        <reimplements refid="class_graph_editor_1a415758944c5a639ccbb5fec7db17da40">OnSceneGUI</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Override to implement scene GUI drawing for the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="138" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="138" bodyend="142"/>
+        <references refid="class_astar_path_1a5c8aca200b940c2428221034245ca792" compoundref="_astar_path_8cs" startline="85">AstarPath.showNavGraphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_recast_graph_editor_1af417af184af5bcd5a117e5fd54d7511c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateDebugMesh</definition>
+        <argsstring>(AstarPath astar)</argsstring>
+        <name>UpdateDebugMesh</name>
+        <param>
+          <type><ref refid="class_astar_path" kindref="compound">AstarPath</ref></type>
+          <declname>astar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="87" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="87" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2782">
+        <label>GraphEditor</label>
+        <link refid="class_graph_editor"/>
+        <childnode refid="2783" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2781">
+        <label>RecastGraphEditor</label>
+        <link refid="class_recast_graph_editor"/>
+        <childnode refid="2782" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2783">
+        <label>GraphEditorBase</label>
+        <link refid="class_pathfinding_1_1_graph_editor_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2797">
+        <label>AstarData</label>
+        <link refid="class_pathfinding_1_1_astar_data"/>
+        <childnode refid="2787" relation="usage">
+          <edgelabel>graphs</edgelabel>
+        </childnode>
+        <childnode refid="2792" relation="usage">
+          <edgelabel>nodeRuns</edgelabel>
+        </childnode>
+        <childnode refid="2798" relation="usage">
+          <edgelabel>userConnections</edgelabel>
+        </childnode>
+        <childnode refid="2799" relation="usage">
+          <edgelabel>navmesh</edgelabel>
+        </childnode>
+        <childnode refid="2795" relation="usage">
+          <edgelabel>graphTypes</edgelabel>
+        </childnode>
+        <childnode refid="2810" relation="usage">
+          <edgelabel>pointGraph</edgelabel>
+        </childnode>
+        <childnode refid="2813" relation="usage">
+          <edgelabel>gridGraph</edgelabel>
+        </childnode>
+      </node>
+      <node id="2816">
+        <label>GridNode</label>
+        <link refid="class_pathfinding_1_1_grid_node"/>
+        <childnode refid="2793" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2813" relation="usage">
+          <edgelabel>_gridGraphs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2821">
+        <label>Editor</label>
+      </node>
+      <node id="2813">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2787" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2801" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2802" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2803" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2814" relation="usage">
+          <edgelabel>collision</edgelabel>
+        </childnode>
+        <childnode refid="2815" relation="usage">
+          <edgelabel>textureData</edgelabel>
+        </childnode>
+        <childnode refid="2816" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2809">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="2805" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="2809" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2818">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="2808">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="2806" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="2809" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="2793">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2807">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="2807" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="2785">
+        <label>GraphEditor</label>
+        <link refid="class_graph_editor"/>
+        <childnode refid="2786" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2820" relation="usage">
+          <edgelabel>editor</edgelabel>
+        </childnode>
+      </node>
+      <node id="2788">
+        <label>AstarPath</label>
+        <link refid="class_astar_path"/>
+        <childnode refid="2789" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2790" relation="usage">
+          <edgelabel>threadInfos</edgelabel>
+        </childnode>
+        <childnode refid="2796" relation="usage">
+          <edgelabel>pathReturnStack</edgelabel>
+        </childnode>
+        <childnode refid="2797" relation="usage">
+          <edgelabel>astarData</edgelabel>
+        </childnode>
+        <childnode refid="2795" relation="usage">
+          <edgelabel>safeUpdateLock</edgelabel>
+          <edgelabel>TotalSearchedNodes</edgelabel>
+          <edgelabel>TotalSearchTime</edgelabel>
+        </childnode>
+        <childnode refid="2817" relation="usage">
+          <edgelabel>pathReturnPop</edgelabel>
+          <edgelabel>debugPath</edgelabel>
+        </childnode>
+        <childnode refid="2819" relation="usage">
+          <edgelabel>colorSettings</edgelabel>
+        </childnode>
+        <childnode refid="2788" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2822">
+        <label>EditorGUILayoutx</label>
+        <link refid="class_editor_g_u_i_layoutx"/>
+      </node>
+      <node id="2817">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="2792" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="2791" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="2795" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="2817" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2793" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="2818" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2801">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2790">
+        <label>PathThreadInfo</label>
+        <link refid="struct_pathfinding_1_1_path_thread_info"/>
+        <childnode refid="2791" relation="usage">
+          <edgelabel>runData</edgelabel>
+        </childnode>
+        <childnode refid="2795" relation="usage">
+          <edgelabel>_lock</edgelabel>
+        </childnode>
+        <childnode refid="2788" relation="usage">
+          <edgelabel>astar</edgelabel>
+        </childnode>
+      </node>
+      <node id="2802">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="2814">
+        <label>GraphCollision</label>
+        <link refid="class_pathfinding_1_1_graph_collision"/>
+      </node>
+      <node id="2798">
+        <label>UserConnection</label>
+        <link refid="class_pathfinding_1_1_user_connection"/>
+      </node>
+      <node id="2820">
+        <label>AstarPathEditor</label>
+        <link refid="class_astar_path_editor"/>
+        <childnode refid="2821" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2796" relation="usage">
+          <edgelabel>serializationSettings</edgelabel>
+        </childnode>
+        <childnode refid="2822" relation="usage">
+          <edgelabel>GUILayoutx</edgelabel>
+        </childnode>
+        <childnode refid="2795" relation="usage">
+          <edgelabel>latestAstarVersion</edgelabel>
+          <edgelabel>_lastUpdateCheck</edgelabel>
+        </childnode>
+        <childnode refid="2793" relation="usage">
+          <edgelabel>firstShiftNode</edgelabel>
+        </childnode>
+        <childnode refid="2788" relation="usage">
+          <edgelabel>astarDistribution</edgelabel>
+          <edgelabel>script</edgelabel>
+        </childnode>
+        <childnode refid="2785" relation="usage">
+          <edgelabel>graphEditors</edgelabel>
+        </childnode>
+      </node>
+      <node id="2806">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="2799">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="2787" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2800" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2801" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2802" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2803" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2804" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2807" relation="usage">
+          <edgelabel>_vertices</edgelabel>
+        </childnode>
+        <childnode refid="2808" relation="usage">
+          <edgelabel>_bbTree</edgelabel>
+        </childnode>
+      </node>
+      <node id="2784">
+        <label>RecastGraphEditor</label>
+        <link refid="class_recast_graph_editor"/>
+        <childnode refid="2785" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2803">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="2812">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2811">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2793" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2812" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2807" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="2793" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2819">
+        <label>AstarColor</label>
+        <link refid="class_pathfinding_1_1_astar_color"/>
+      </node>
+      <node id="2804">
+        <label>TriangleMeshNode</label>
+        <link refid="class_pathfinding_1_1_triangle_mesh_node"/>
+        <childnode refid="2805" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2806" relation="usage">
+          <edgelabel>_navmeshHolders</edgelabel>
+        </childnode>
+      </node>
+      <node id="2795">
+        <label>System</label>
+      </node>
+      <node id="2792">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="2792" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="2793" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="2805">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="2793" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2805" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2810">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="2787" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2801" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2811" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2794">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="2792" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2789">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2791">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="2792" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2794" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="2795" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2800">
+        <label>INavmesh</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh"/>
+      </node>
+      <node id="2815">
+        <label>GridGraph.TextureData</label>
+        <link refid="class_pathfinding_1_1_grid_graph_1_1_texture_data"/>
+      </node>
+      <node id="2787">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+        <childnode refid="2788" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2786">
+        <label>GraphEditorBase</label>
+        <link refid="class_pathfinding_1_1_graph_editor_base"/>
+        <childnode refid="2787" relation="usage">
+          <edgelabel>target</edgelabel>
+        </childnode>
+      </node>
+      <node id="2796">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/RecastGraphEditor.cs" bodystart="9" bodyend="326"/>
+    <listofallmembers>
+      <member refid="class_recast_graph_editor_1abb05460f02bbec0e57404147fb1e42ec" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>CreateDebugMesh</name></member>
+      <member refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>DrawCollisionEditor</name></member>
+      <member refid="class_graph_editor_1a41d648d818cd79adbf4f7cf401d232a9" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>DrawWireCube</name></member>
+      <member refid="class_graph_editor_1a8ae91ee18aba4d5c048b3ebf1648eb16" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>editor</name></member>
+      <member refid="class_recast_graph_editor_1aaab8c25c1ad5db6101e8ce90d8d6d3f1" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>ExportToFile</name></member>
+      <member refid="class_graph_editor_1a5544a34e469b9b130932281cafe52f75" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>FixLabel</name></member>
+      <member refid="class_graph_editor_1a411c3c8de2178430cc3dbf30f9c9100a" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>HelpBox</name></member>
+      <member refid="class_recast_graph_editor_1a55b9cf66da3908331a67b34643b73cc4" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>meshFilter</name></member>
+      <member refid="class_recast_graph_editor_1a669ecab4a40a6bc82d786e8cef5f7bfb" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>meshRenderer</name></member>
+      <member refid="class_recast_graph_editor_1a1d50e6356461a26ad974458cc19b05ef" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>navmeshMaterial</name></member>
+      <member refid="class_recast_graph_editor_1a8d81c8e46d4884ce9ed308aec74c5158" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>navmeshRender</name></member>
+      <member refid="class_recast_graph_editor_1ab1028819a3119db67d443cd9c6a01f67" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>navmeshRenderer</name></member>
+      <member refid="class_graph_editor_1a8b92ecf44175e00122a7933e2b0f6b9b" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>ObjectField</name></member>
+      <member refid="class_graph_editor_1a79e968ca05d5d2e26e9e4ea69f0bebfa" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>ObjectField</name></member>
+      <member refid="class_graph_editor_1a0fd5497c6f8251140a5af5f299d54314" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>OnBaseInspectorGUI</name></member>
+      <member refid="class_recast_graph_editor_1aafb2e5ff9ac0b154ba7c920402922a91" prot="public" virt="virtual"><scope>RecastGraphEditor</scope><name>OnDestroy</name></member>
+      <member refid="class_recast_graph_editor_1acdab853f49ac7f0499afc94e493c44fb" prot="public" virt="virtual"><scope>RecastGraphEditor</scope><name>OnDisable</name></member>
+      <member refid="class_graph_editor_1ad5bbbcbbe8c563b720c6f214771062b9" prot="public" virt="virtual"><scope>RecastGraphEditor</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_recast_graph_editor_1ad34f3aa16da2426e67c8ecc8a0b08008" prot="public" virt="virtual"><scope>RecastGraphEditor</scope><name>OnEnable</name></member>
+      <member refid="class_recast_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" prot="public" virt="virtual"><scope>RecastGraphEditor</scope><name>OnInspectorGUI</name></member>
+      <member refid="class_recast_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" prot="public" virt="virtual"><scope>RecastGraphEditor</scope><name>OnSceneGUI</name></member>
+      <member refid="class_graph_editor_1a7a5500b26894ff8564fdbf054395503c" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>Separator</name></member>
+      <member refid="class_recast_graph_editor_1a0a40491cab00fde5f2d2dd3700285275" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>tagMaskFoldout</name></member>
+      <member refid="class_pathfinding_1_1_graph_editor_base_1a5176cc0bc64e4f4762196b5e96535600" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>target</name></member>
+      <member refid="class_graph_editor_1acd00495fe993f6447e0cfb55c76e8e0e" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>ToggleGroup</name></member>
+      <member refid="class_graph_editor_1ad5186cf3139ab312ebd950e8053b0125" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>ToggleGroup</name></member>
+      <member refid="class_recast_graph_editor_1af417af184af5bcd5a117e5fd54d7511c" prot="public" virt="non-virtual"><scope>RecastGraphEditor</scope><name>UpdateDebugMesh</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

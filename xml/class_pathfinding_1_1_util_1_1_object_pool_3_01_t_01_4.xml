@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4" kind="class" prot="public">
+    <compoundname>Pathfinding::Util::ObjectPool&lt; T &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1a4f60777fdbfdcd809ba223e2b9e126cf" prot="private" static="yes" mutable="no">
+        <type>List&lt; T &gt;</type>
+        <definition>List&lt;T&gt; pool</definition>
+        <argsstring></argsstring>
+        <name>pool</name>
+        <briefdescription>
+<para>Internal pool. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="25" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1aab0789cc3d49d5efd89201c9f74cf82b" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>static</type>
+        <definition>static ObjectPool</definition>
+        <argsstring>()</argsstring>
+        <name>ObjectPool</name>
+        <briefdescription>
+<para>Static constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="28" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1abce092f70f640b41fc28052eb1dc42d5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>static T Claim</definition>
+        <argsstring>()</argsstring>
+        <name>Claim</name>
+        <briefdescription>
+<para>Claim a object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a pooled object if any are in the pool. Otherwise it creates a new one. After usage, this object should be released using the Release function (though not strictly necessary). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="38" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="38" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1ade633bf8b439e2bb742c72215c632b19" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+<para>Clears the pool for objects of this type. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is an O(n) operation, where n is the number of pooled objects. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="86" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1a605940bf5e3b6094672f8869ae099076" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int GetSize</definition>
+        <argsstring>()</argsstring>
+        <name>GetSize</name>
+        <briefdescription>
+<para>Number of objects of this type in the pool. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="91" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="91" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1a203346fc0f2a833390ed1be2f4e2b622" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Release</definition>
+        <argsstring>(T obj)</argsstring>
+        <name>Release</name>
+        <param>
+          <type>T</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Releases an object. </para>        </briefdescription>
+        <detaileddescription>
+<para>After the object has been released it should not be used anymore.</para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>System.InvalidOperationException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Releasing an object when it has already been released will cause an exception to be thrown. However enabling ASTAR_OPTIMIZE_POOLING will prevent this check, making this function an O(1) operation instead of O(n).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1abce092f70f640b41fc28052eb1dc42d5" kindref="member">Claim</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="70" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="70" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1aabd5df101f822a3eb7a3fd66eb927e80" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Warmup</definition>
+        <argsstring>(int count)</argsstring>
+        <name>Warmup</name>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Makes sure the pool contains at least <emphasis>count</emphasis> pooled items with capacity <emphasis>size</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is good if you want to do all allocations at start. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="55" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="55" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Lightweight object Pool. </para>    </briefdescription>
+    <detaileddescription>
+<para>Handy class for pooling objects of type T.</para><para>Usage:<itemizedlist>
+<listitem><para>Claim a new object using<programlisting><codeline><highlight class="normal">SomeClass<sp/>foo<sp/>=<sp/>ObjectPool&lt;SomeClass&gt;.Claim<sp/>();<sp/></highlight></codeline>
+</programlisting></para></listitem><listitem><para>Use it and do stuff with it</para></listitem><listitem><para>Release it with<programlisting><codeline><highlight class="normal">ObjectPool&lt;SomeClass&gt;.Release<sp/>(foo);<sp/></highlight></codeline>
+</programlisting></para></listitem></itemizedlist>
+</para><para>After you have released a object, you should never use it again.</para><para><simplesect kind="since"><para>Version 3.2 </para></simplesect>
+<simplesect kind="see"><para>Pathfinding.Util.ListPool </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" line="23" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/ObjectPool.cs" bodystart="22" bodyend="94"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1abce092f70f640b41fc28052eb1dc42d5" prot="public" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>Claim</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1ade633bf8b439e2bb742c72215c632b19" prot="public" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>Clear</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1a605940bf5e3b6094672f8869ae099076" prot="public" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>GetSize</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1aab0789cc3d49d5efd89201c9f74cf82b" prot="private" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>ObjectPool</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1a4f60777fdbfdcd809ba223e2b9e126cf" prot="private" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>pool</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1a203346fc0f2a833390ed1be2f4e2b622" prot="public" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>Release</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_object_pool_3_01_t_01_4_1aabd5df101f822a3eb7a3fd66eb927e80" prot="public" virt="non-virtual"><scope>Pathfinding::Util::ObjectPool&lt; T &gt;</scope><name>Warmup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

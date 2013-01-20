@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_pathfinding_1_1_progress" kind="struct" prot="public">
+    <compoundname>Pathfinding::Progress</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_progress_1a23af17c78302b71c14ef38ea40b8d1d7" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="311" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_progress_1ac7abb4766cd3f65c31f56279d7decff8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float progress</definition>
+        <argsstring></argsstring>
+        <name>progress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="310" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_progress_1a33fa1c12b59f8e6cc342dc076d30a2bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Progress</definition>
+        <argsstring>(float p, string d)</argsstring>
+        <name>Progress</name>
+        <param>
+          <type>float</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="313" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="313" bodyend="316"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="struct_pathfinding_1_1_progress" kindref="compound">Progress</ref> info for e.g a progressbar. </para>    </briefdescription>
+    <detaileddescription>
+<para>Used by the scan functions in the project <simplesect kind="see"><para><ref refid="class_astar_path_1aa60a697e37f2db2802913699f24b3b2b" kindref="member">AstarPath.ScanLoop</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="309" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="309" bodyend="317"/>
+    <listofallmembers>
+      <member refid="struct_pathfinding_1_1_progress_1a23af17c78302b71c14ef38ea40b8d1d7" prot="public" virt="non-virtual"><scope>Pathfinding::Progress</scope><name>description</name></member>
+      <member refid="struct_pathfinding_1_1_progress_1a33fa1c12b59f8e6cc342dc076d30a2bc" prot="public" virt="non-virtual"><scope>Pathfinding::Progress</scope><name>Progress</name></member>
+      <member refid="struct_pathfinding_1_1_progress_1ac7abb4766cd3f65c31f56279d7decff8" prot="public" virt="non-virtual"><scope>Pathfinding::Progress</scope><name>progress</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

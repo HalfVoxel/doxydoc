@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node" kind="struct" prot="private">
+    <compoundname>Pathfinding::RVO::KDTree::AgentTreeNode</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1abce9f5dc9c83f2639b72024fdee5d388" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="364" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1ad8f5e19e19f12974c9713e920ec54331" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int left</definition>
+        <argsstring></argsstring>
+        <name>left</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="364" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a2f54f8b71f0d765e2b7dbd9a8b9774ff" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int right</definition>
+        <argsstring></argsstring>
+        <name>right</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="364" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a37722a150250e2a5a98e5e0d11e53449" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="364" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a9c42f51718ed192ed1841a53d2b0e507" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float xmax</definition>
+        <argsstring></argsstring>
+        <name>xmax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="365" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a058f249a5e6d20724cb0784b40a183e8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float xmin</definition>
+        <argsstring></argsstring>
+        <name>xmin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="365" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1acee1a082369857c7ee64924a0d9bc706" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ymax</definition>
+        <argsstring></argsstring>
+        <name>ymax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="365" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a5c6190dc7aa1bd7aafb9592a64f7046d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ymin</definition>
+        <argsstring></argsstring>
+        <name>ymin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="365" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="363" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="363" bodyend="366"/>
+    <listofallmembers>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1abce9f5dc9c83f2639b72024fdee5d388" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>end</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1ad8f5e19e19f12974c9713e920ec54331" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>left</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a2f54f8b71f0d765e2b7dbd9a8b9774ff" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>right</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a37722a150250e2a5a98e5e0d11e53449" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>start</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a9c42f51718ed192ed1841a53d2b0e507" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>xmax</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a058f249a5e6d20724cb0784b40a183e8" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>xmin</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1acee1a082369857c7ee64924a0d9bc706" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>ymax</name></member>
+      <member refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node_1a5c6190dc7aa1bd7aafb9592a64f7046d" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::AgentTreeNode</scope><name>ymin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

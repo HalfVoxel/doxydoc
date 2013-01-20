@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="interface_pathfinding_1_1_i_updatable_graph" kind="interface" prot="public">
+    <compoundname>Pathfinding::IUpdatableGraph</compoundname>
+    <derivedcompoundref refid="class_pathfinding_1_1_grid_graph" prot="public" virt="non-virtual">GridGraph</derivedcompoundref>
+    <derivedcompoundref refid="class_pathfinding_1_1_nav_mesh_graph" prot="public" virt="non-virtual">NavMeshGraph</derivedcompoundref>
+    <derivedcompoundref refid="class_pathfinding_1_1_point_graph" prot="public" virt="non-virtual">PointGraph</derivedcompoundref>
+    <derivedcompoundref refid="class_pathfinding_1_1_recast_graph" prot="public" virt="non-virtual">RecastGraph</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_pathfinding_1_1_i_updatable_graph_1a2ad812267c37b8c2d7d44e829696e186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateArea</definition>
+        <argsstring>(GraphUpdateObject o)</argsstring>
+        <name>UpdateArea</name>
+        <reimplementedby refid="class_pathfinding_1_1_point_graph_1a248f610a0bb71b66bba6fe873fca8e9a">UpdateArea</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_recast_graph_1a248f610a0bb71b66bba6fe873fca8e9a">UpdateArea</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_nav_mesh_graph_1a2ad812267c37b8c2d7d44e829696e186">UpdateArea</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186">UpdateArea</reimplementedby>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_update_object" kindref="compound">GraphUpdateObject</ref></type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Updates an area using the specified <ref refid="class_pathfinding_1_1_graph_update_object" kindref="compound">GraphUpdateObject</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Notes to implementators. This function should (in order):<orderedlist>
+<listitem><para>Call o.WillUpdateNode on the GUO for every node it will update, it is important that this is called BEFORE any changes are made to the nodes.</para></listitem><listitem><para>Update walkabilty using special settings such as the usePhysics flag used with the <ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref>.</para></listitem><listitem><para>Call Apply on the GUO for every node which should be updated with the GUO.</para></listitem><listitem><para>Update eventual connectivity info if appropriate (GridGraphs updates connectivity, but most other graphs don&apos;t since then the connectivity cannot be recovered later). </para></listitem></orderedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="331"/>
+        <referencedby refid="class_astar_path_1a8a21001195ccff9882ca194ac6617d02" compoundref="_astar_path_8cs" startline="904" endline="955">AstarPath.DoUpdateGraphs</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Graphs which can be updated during runtime. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2217">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2216" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2216">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2218">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="2216" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2219">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="2216" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2220">
+        <label>RecastGraph</label>
+        <link refid="class_pathfinding_1_1_recast_graph"/>
+        <childnode refid="2216" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="320" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="320" bodyend="332"/>
+    <listofallmembers>
+      <member refid="interface_pathfinding_1_1_i_updatable_graph_1a2ad812267c37b8c2d7d44e829696e186" prot="public" virt="non-virtual"><scope>Pathfinding::IUpdatableGraph</scope><name>UpdateArea</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_b_b_tree_box" kind="class" prot="public">
+    <compoundname>Pathfinding::BBTreeBox</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_b_b_tree_box_1a260aa9f5052fdbae0ef88245cb7f6357" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+        <definition>BBTreeBox c1</definition>
+        <argsstring></argsstring>
+        <name>c1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="371" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_b_b_tree_box_1af4a3013f69268901fbc8987ebc57220c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+        <definition>BBTreeBox c2</definition>
+        <argsstring></argsstring>
+        <name>c2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="372" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_b_b_tree_box_1a132fc55fafe5bfc07039131952daff9c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_mesh_node" kindref="compound">MeshNode</ref></type>
+        <definition>MeshNode node</definition>
+        <argsstring></argsstring>
+        <name>node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="369" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_b_b_tree_box_1a2a955ddc316d002f566598f340eb2af9" prot="public" static="no" mutable="no">
+        <type>Rect</type>
+        <definition>Rect rect</definition>
+        <argsstring></argsstring>
+        <name>rect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="368" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="368" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_box_1a731e7d688890f80a35d8b01505ae26f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>BBTreeBox</definition>
+        <argsstring>(BBTree tree, MeshNode node)</argsstring>
+        <name>BBTreeBox</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_b_b_tree" kindref="compound">BBTree</ref></type>
+          <declname>tree</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_mesh_node" kindref="compound">MeshNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="374" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="374" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_box_1a7a3206e94d4e0ae458b0c130926c4c69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Contains</definition>
+        <argsstring>(Vector3 p)</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="392" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="392" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_box_1aae98f3644187794112e95d9ca62e3d5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void WriteChildren</definition>
+        <argsstring>(int level)</argsstring>
+        <name>WriteChildren</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="396" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="396" bodyend="407"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1825">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="1826" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="1825" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="1827">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="1826">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="1827" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1826" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="367" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="367" bodyend="409"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1a731e7d688890f80a35d8b01505ae26f0" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>BBTreeBox</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1a260aa9f5052fdbae0ef88245cb7f6357" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>c1</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1af4a3013f69268901fbc8987ebc57220c" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>c2</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1a7a3206e94d4e0ae458b0c130926c4c69" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>Contains</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1a132fc55fafe5bfc07039131952daff9c" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>node</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1a2a955ddc316d002f566598f340eb2af9" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>rect</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_box_1aae98f3644187794112e95d9ca62e3d5b" prot="public" virt="non-virtual"><scope>Pathfinding::BBTreeBox</scope><name>WriteChildren</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

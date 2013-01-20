@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_ab7023e939f263f7b9c7b1b49bc492ab" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes</compoundname>
+    <innerdir refid="dir_2fc46a7e8577540b6334a9075458c542">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO</innerdir>
+    <innerdir refid="dir_d8a656707229f592a2a73ccb5b823439">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example8_PathTypes</innerdir>
+    <innerdir refid="dir_062565bed9f801982c1b296982bbf295">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/"/>
+  </compounddef>
+</doxygen>

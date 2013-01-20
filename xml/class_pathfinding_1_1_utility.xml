@@ -1,0 +1,693 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_utility" kind="class" prot="public">
+    <compoundname>Pathfinding::Utility</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_utility_1acf4e9a8a9e5f8b1495f8582796bae4a6" prot="public" static="yes" mutable="no">
+        <type>float</type>
+        <definition>float additiveTimer</definition>
+        <argsstring></argsstring>
+        <name>additiveTimer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="100" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_utility_1a798ca17b39ba8d9039870018bafa0f4f" prot="public" static="yes" mutable="no">
+        <type>Color[]</type>
+        <definition>Color [] colors</definition>
+        <argsstring></argsstring>
+        <name>colors</name>
+        <initializer>= new Color[7] {Color.green,Color.blue,Color.red,Color.yellow,Color.cyan, Color.white, Color.black}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_utility_1a0560b19e5373e6b3d913b29797cd20d5" prot="public" static="yes" mutable="no">
+        <type>float</type>
+        <definition>float lastAdditiveTimerStart</definition>
+        <argsstring></argsstring>
+        <name>lastAdditiveTimerStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_utility_1a1539d86ddbe48be7ae5ea5195a1d23c9" prot="public" static="yes" mutable="no">
+        <type>float</type>
+        <definition>float lastStartTime</definition>
+        <argsstring></argsstring>
+        <name>lastStartTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="90" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1abc5d7b7bec378d30c5e11d421d288913" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Bit</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>Bit</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="23" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1aa585f67edd6cbc621262cd8ceca0611a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ClipPoly</definition>
+        <argsstring>(float[] vIn, int n, float[] vOut, float pnx, float pnz, float pd)</argsstring>
+        <name>ClipPoly</name>
+        <param>
+          <type>float[]</type>
+          <declname>vIn</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float[]</type>
+          <declname>vOut</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>pnx</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>pnz</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>pd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="126" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="125" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1aeb206727c03b74b09cc3bb93926a60d4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ClipPolygon</definition>
+        <argsstring>(float[] vIn, int n, float[] vOut, float multi, float offset, int axis)</argsstring>
+        <name>ClipPolygon</name>
+        <param>
+          <type>float[]</type>
+          <declname>vIn</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float[]</type>
+          <declname>vOut</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>multi</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="156" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="156" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a542ee89d9fec1233e0554f4086233e2b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ClipPolygon</definition>
+        <argsstring>(Vector3[] vIn, int n, Vector3[] vOut, float multi, float offset, int axis)</argsstring>
+        <name>ClipPolygon</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>vIn</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>Vector3[]</type>
+          <declname>vOut</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>multi</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="239" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="239" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1aff8bd1102b9006b701b216e2485b3103" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ClipPolygonY</definition>
+        <argsstring>(float[] vIn, int n, float[] vOut, float multi, float offset, int axis)</argsstring>
+        <name>ClipPolygonY</name>
+        <param>
+          <type>float[]</type>
+          <declname>vIn</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float[]</type>
+          <declname>vOut</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>multi</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="205" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="205" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1acf4befc3b78be45907e4914e9ec4907e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CopyVector</definition>
+        <argsstring>(float[] a, int i, Vector3 v)</argsstring>
+        <name>CopyVector</name>
+        <param>
+          <type>float[]</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="119" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="119" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a81cd273dbb4577fd4da624778735606a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void EndTimer</definition>
+        <argsstring>(string label)</argsstring>
+        <name>EndTimer</name>
+        <param>
+          <type>string</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="95" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="95" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1acfe5b57813f17d7a6adca9fe6447c074" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void EndTimerAdditive</definition>
+        <argsstring>(string label, bool log)</argsstring>
+        <name>EndTimerAdditive</name>
+        <param>
+          <type>string</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>log</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="109" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="109" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a59ccb16ef5f1c7843b618ccb161e4a80" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>static Color GetColor</definition>
+        <argsstring>(int i)</argsstring>
+        <name>GetColor</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="11" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1afa62ebff896f17c90e9e98cb953adf76" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IntersectXAxis</definition>
+        <argsstring>(out Vector3 intersection, Vector3 start1, Vector3 dir1, float x)</argsstring>
+        <name>IntersectXAxis</name>
+        <param>
+          <type>out Vector3</type>
+          <declname>intersection</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>dir1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="271" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="271" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1ae26acab0bd63f56baad70ba8eec70e50" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IntersectZAxis</definition>
+        <argsstring>(out Vector3 intersection, Vector3 start1, Vector3 dir1, float z)</argsstring>
+        <name>IntersectZAxis</name>
+        <param>
+          <type>out Vector3</type>
+          <declname>intersection</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>dir1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="290" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="290" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a0393627f2218af15e3825565f13371a6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>static Color IntToColor</definition>
+        <argsstring>(int i, float a)</argsstring>
+        <name>IntToColor</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="27" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a479edf63d75aeb0838679ded9b324175" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Max</definition>
+        <argsstring>(float a, float b, float c)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="57" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1aa17c7058063de9a5530bd042b3251449" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Max</definition>
+        <argsstring>(int a, int b, int c, int d)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1af70b6fd44943fac619e40eabcbd5fea4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Max</definition>
+        <argsstring>(float a, float b, float c, float d)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="74" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a984b32c330ab5c0c9c6b5801ecc567ee" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Min</definition>
+        <argsstring>(float a, float b, float c)</argsstring>
+        <name>Min</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="52" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1ab853fa23247a5738e27f956ac7b89eb5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Min</definition>
+        <argsstring>(int a, int b, int c, int d)</argsstring>
+        <name>Min</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="68" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="68" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a68f2454cb87e664c5263656cb624b16c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Min</definition>
+        <argsstring>(float a, float b, float c, float d)</argsstring>
+        <name>Min</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="80" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a5cd834ddf81fa40c9e533297b9e8bcfa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void StartTimer</definition>
+        <argsstring>()</argsstring>
+        <name>StartTimer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="91" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="91" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a8fbf6820ec5f1c00e2ebd96b6f18a5e9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void StartTimerAdditive</definition>
+        <argsstring>(bool reset)</argsstring>
+        <name>StartTimerAdditive</name>
+        <param>
+          <type>bool</type>
+          <declname>reset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="101" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="101" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1ae6c6c8884d8fe44f7cfe3194011e3aaa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string ToMillis</definition>
+        <argsstring>(float v)</argsstring>
+        <name>ToMillis</name>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="86" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1aa4419aabb91537721ac5d2cdd895de62" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float TriangleArea</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>TriangleArea</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="43" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_utility_1a738c40c64153ba5a3a19c09b89e3c16d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float TriangleArea2</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>TriangleArea2</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="35" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="35" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" line="7" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/MathUtilities.cs" bodystart="7" bodyend="308"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_utility_1acf4e9a8a9e5f8b1495f8582796bae4a6" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>additiveTimer</name></member>
+      <member refid="class_pathfinding_1_1_utility_1abc5d7b7bec378d30c5e11d421d288913" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Bit</name></member>
+      <member refid="class_pathfinding_1_1_utility_1aa585f67edd6cbc621262cd8ceca0611a" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>ClipPoly</name></member>
+      <member refid="class_pathfinding_1_1_utility_1aeb206727c03b74b09cc3bb93926a60d4" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>ClipPolygon</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a542ee89d9fec1233e0554f4086233e2b" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>ClipPolygon</name></member>
+      <member refid="class_pathfinding_1_1_utility_1aff8bd1102b9006b701b216e2485b3103" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>ClipPolygonY</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a798ca17b39ba8d9039870018bafa0f4f" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>colors</name></member>
+      <member refid="class_pathfinding_1_1_utility_1acf4befc3b78be45907e4914e9ec4907e" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>CopyVector</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a81cd273dbb4577fd4da624778735606a" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>EndTimer</name></member>
+      <member refid="class_pathfinding_1_1_utility_1acfe5b57813f17d7a6adca9fe6447c074" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>EndTimerAdditive</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a59ccb16ef5f1c7843b618ccb161e4a80" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>GetColor</name></member>
+      <member refid="class_pathfinding_1_1_utility_1afa62ebff896f17c90e9e98cb953adf76" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>IntersectXAxis</name></member>
+      <member refid="class_pathfinding_1_1_utility_1ae26acab0bd63f56baad70ba8eec70e50" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>IntersectZAxis</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a0393627f2218af15e3825565f13371a6" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>IntToColor</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a0560b19e5373e6b3d913b29797cd20d5" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>lastAdditiveTimerStart</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a1539d86ddbe48be7ae5ea5195a1d23c9" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>lastStartTime</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a479edf63d75aeb0838679ded9b324175" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_utility_1aa17c7058063de9a5530bd042b3251449" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_utility_1af70b6fd44943fac619e40eabcbd5fea4" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a984b32c330ab5c0c9c6b5801ecc567ee" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Min</name></member>
+      <member refid="class_pathfinding_1_1_utility_1ab853fa23247a5738e27f956ac7b89eb5" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Min</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a68f2454cb87e664c5263656cb624b16c" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>Min</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a5cd834ddf81fa40c9e533297b9e8bcfa" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>StartTimer</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a8fbf6820ec5f1c00e2ebd96b6f18a5e9" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>StartTimerAdditive</name></member>
+      <member refid="class_pathfinding_1_1_utility_1ae6c6c8884d8fe44f7cfe3194011e3aaa" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>ToMillis</name></member>
+      <member refid="class_pathfinding_1_1_utility_1aa4419aabb91537721ac5d2cdd895de62" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>TriangleArea</name></member>
+      <member refid="class_pathfinding_1_1_utility_1a738c40c64153ba5a3a19c09b89e3c16d" prot="public" virt="non-virtual"><scope>Pathfinding::Utility</scope><name>TriangleArea2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1012 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_mathfx" kind="class" prot="public">
+    <compoundname>Pathfinding::Mathfx</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1aba51eb4e915bad7ba93d70fe9eb7a560" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Abs</definition>
+        <argsstring>(float a)</argsstring>
+        <name>Abs</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="357" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="357" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a083558c616ec62d28816dd811af35680" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Abs</definition>
+        <argsstring>(int a)</argsstring>
+        <name>Abs</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="364" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="364" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1abc5d7b7bec378d30c5e11d421d288913" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Bit</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>Bit</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Returns bit number <emphasis>b</emphasis> from int <emphasis>a</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The bit number is zero based. Relevant <emphasis>b</emphasis> values are from 0 to 31<linebreak/>
+ Equals to (a &gt;&gt; b) &amp; 1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="324" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="324" bodyend="327"/>
+        <referencedby refid="class_pathfinding_1_1_mathfx_1a0393627f2218af15e3825565f13371a6" compoundref="_astar_math_8cs" startline="331" endline="336">Mathfx.IntToColor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a1b94bf0669bce4b688bcae853dcd513e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Clamp</definition>
+        <argsstring>(float a, float b, float c)</argsstring>
+        <name>Clamp</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="407" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="407" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a081f5baa7c3526fb12436017022d396d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Clamp</definition>
+        <argsstring>(int a, int b, int c)</argsstring>
+        <name>Clamp</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="411" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="411" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ab359f4c19d288377da06321611f878bf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Clamp01</definition>
+        <argsstring>(float a)</argsstring>
+        <name>Clamp01</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="415" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="415" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1aafbfaf2bdd54061f9824421cbd218d4d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Clamp01</definition>
+        <argsstring>(int a)</argsstring>
+        <name>Clamp01</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="419" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="419" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a645a40743e5a85d41c0a6b15bb8d9e0a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int ComputeVertexHash</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>ComputeVertexHash</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Returns a hash value for a integer vector. </para>        </briefdescription>
+        <detaileddescription>
+<para>Code got from the internet </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="94" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="94" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a17bfa80ae23dab7cfde8dc89a0c3e1fe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 CubicBezier</definition>
+        <argsstring>(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)</argsstring>
+        <name>CubicBezier</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p0</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p3</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Returns a point on a cubic bezier curve. </para>        </briefdescription>
+        <detaileddescription>
+<para><emphasis>t</emphasis> is clamped between 0 and 1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="258" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="258" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a5503dca7b260ea2c789d7b1647ec99c4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float DistancePointSegment</definition>
+        <argsstring>(int x, int z, int px, int pz, int qx, int qz)</argsstring>
+        <name>DistancePointSegment</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>px</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pz</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>qx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>qz</declname>
+        </param>
+        <briefdescription>
+<para>Returns the approximate shortest distance between x,z and the line p-q. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is considered infinite. This function is not entirely exact, but it is about twice as fast as DistancePointSegment2. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="183" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="183" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1af5ce41fa7c86dc296a45666de73b58f4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float DistancePointSegment2</definition>
+        <argsstring>(int x, int z, int px, int pz, int qx, int qz)</argsstring>
+        <name>DistancePointSegment2</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>px</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pz</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>qx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>qz</declname>
+        </param>
+        <briefdescription>
+<para>Returns the distance between x,z and the line p-q. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is considered infinite. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="217" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="217" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1abeac52ed2441b96fb5cf4f7201bf01ed" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float DistancePointSegment2</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 p)</argsstring>
+        <name>DistancePointSegment2</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns the distance between c and the line a-b. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is considered infinite. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="228" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="228" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1acde7e3b38c9a95ba2df2804b488ca520" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float DistancePointSegmentStrict</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 p)</argsstring>
+        <name>DistancePointSegmentStrict</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns the squared distance between c and the line a-b. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is not considered infinite. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="245" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="245" bodyend="249"/>
+        <references refid="class_pathfinding_1_1_mathfx_1a2926797ed93d260436300fda33d60875" compoundref="_astar_math_8cs" startline="155" endline="163">Mathfx.NearestPointStrict</references>
+        <referencedby refid="class_a_i_follow_1a7ae22ebe2fadcf57c6134f70d006d752" compoundref="_a_i_follow_8cs" startline="77" endline="108">AIFollow.OnPathComplete</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a0fbd2e7b5aab826129dbaad5c37b6e05" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string FormatBytes</definition>
+        <argsstring>(int bytes)</argsstring>
+        <name>FormatBytes</name>
+        <param>
+          <type>int</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+<para>Returns a nicely formatted string for the number of bytes (kB, MB, GB etc). </para>        </briefdescription>
+        <detaileddescription>
+<para>Uses decimal values, not binary ones <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_mathfx_1a7c2cf55ca6d94428c98ae96d95ae9ca4" kindref="member">FormatBytesBinary</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="291" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="291" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a7c2cf55ca6d94428c98ae96d95ae9ca4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string FormatBytesBinary</definition>
+        <argsstring>(int bytes)</argsstring>
+        <name>FormatBytesBinary</name>
+        <param>
+          <type>int</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+<para>Returns a nicely formatted string for the number of bytes (KiB, MiB, GiB etc). </para>        </briefdescription>
+        <detaileddescription>
+<para>Uses decimal names (KB, Mb - 1000) but calculates using binary values (KiB, MiB - 1024) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="307" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="307" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ad1244b743a8a02a5e83c33d16f68bf50" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Hermite</definition>
+        <argsstring>(float start, float end, float value)</argsstring>
+        <name>Hermite</name>
+        <param>
+          <type>float</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Returns a point on a hermite curve. </para>        </briefdescription>
+        <detaileddescription>
+<para>Slow start and slow end, fast in the middle </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="252" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="252" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a0393627f2218af15e3825565f13371a6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>static Color IntToColor</definition>
+        <argsstring>(int i, float a)</argsstring>
+        <name>IntToColor</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+<para>Returns a nice color from int <emphasis>i</emphasis> with alpha <emphasis>a</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Got code from the open-source Recast project, works really good<linebreak/>
+ Seems like there are only 64 possible colors from studying the code </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="331" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="331" bodyend="336"/>
+        <references refid="class_pathfinding_1_1_mathfx_1abc5d7b7bec378d30c5e11d421d288913" compoundref="_astar_math_8cs" startline="324" endline="327">Mathfx.Bit</references>
+        <referencedby refid="class_pathfinding_1_1_astar_color_1aab7d0e8912271b024b8ef924515e3810" compoundref="astarclasses_8cs" startline="72" endline="77">AstarColor.GetAreaColor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1aae014e81b045055c763578ed0b18903f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Lerp</definition>
+        <argsstring>(float a, float b, float t)</argsstring>
+        <name>Lerp</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="423" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="423" bodyend="425"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a0e6b60c65eaef3d982b6d2e1068cb009" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float MagnitudeXZ</definition>
+        <argsstring>(Vector3 a, Vector3 b)</argsstring>
+        <name>MagnitudeXZ</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Distance between two points on the XZ plane. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="339" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="339" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a0e7375565a84f988aee5a7a881cfe9e4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float MapTo</definition>
+        <argsstring>(float startMin, float startMax, float value)</argsstring>
+        <name>MapTo</name>
+        <param>
+          <type>float</type>
+          <declname>startMin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>startMax</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Maps a value between startMin and startMax to be between 0 and 1. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="265" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="265" bodyend="270"/>
+        <referencedby refid="class_astar_path_1aa60a697e37f2db2802913699f24b3b2b" compoundref="_astar_path_8cs" startline="1537" endline="1621">AstarPath.ScanLoop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a0b2e9f595a38829fc9ef5aef04f00627" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float MapTo</definition>
+        <argsstring>(float startMin, float startMax, float targetMin, float targetMax, float value)</argsstring>
+        <name>MapTo</name>
+        <param>
+          <type>float</type>
+          <declname>startMin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>startMax</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>targetMin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>targetMax</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Maps a value between startMin and startMax to be between targetMin and targetMax. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="280" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="280" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a673f107d59fa6d96653bb1f4da2b895b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float MapToRange</definition>
+        <argsstring>(float targetMin, float targetMax, float value)</argsstring>
+        <name>MapToRange</name>
+        <param>
+          <type>float</type>
+          <declname>targetMin</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>targetMax</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Maps a value (0...1) to be between targetMin and targetMax. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="273" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="273" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1aa664ab79610d1d6539ffd081b5f88500" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Max</definition>
+        <argsstring>(float a, float b)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="383" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="383" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a4f810b796deffcdc635daa6f35e23def" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Max</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="387" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="387" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ac1be9ce12d46179d0a2a54843676fe95" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint</type>
+        <definition>static uint Max</definition>
+        <argsstring>(uint a, uint b)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>uint</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="391" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="391" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ada0db36613c3a53809be8052a5e82893" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ushort</type>
+        <definition>static ushort Max</definition>
+        <argsstring>(ushort a, ushort b)</argsstring>
+        <name>Max</name>
+        <param>
+          <type>ushort</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>ushort</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="395" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="395" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a4dc78a561905ab43f17e2277f1888ed6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Min</definition>
+        <argsstring>(float a, float b)</argsstring>
+        <name>Min</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="371" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="371" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a15844d65cac2a44ebaed3ed314996f7c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Min</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>Min</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="375" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="375" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a0cc224184573d5f4ce62dc0c12927eea" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint</type>
+        <definition>static uint Min</definition>
+        <argsstring>(uint a, uint b)</argsstring>
+        <name>Min</name>
+        <param>
+          <type>uint</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="379" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="379" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1aa1dba9eb530bc137662868cea7c891cd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 NearestPoint</definition>
+        <argsstring>(Vector3 lineStart, Vector3 lineEnd, Vector3 point)</argsstring>
+        <name>NearestPoint</name>
+        <param>
+          <type>Vector3</type>
+          <declname>lineStart</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>lineEnd</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the closest point on the line. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is treated as infinite. <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_mathfx_1a2926797ed93d260436300fda33d60875" kindref="member">NearestPointStrict</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="107" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="106" bodyend="112"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a5f760e1b7c0dbd5dad69d7582bc78edd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float NearestPointFactor</definition>
+        <argsstring>(Vector3 lineStart, Vector3 lineEnd, Vector3 point)</argsstring>
+        <name>NearestPointFactor</name>
+        <param>
+          <type>Vector3</type>
+          <declname>lineStart</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>lineEnd</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="115" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="114" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ae6996fbc37086d9f92981760f137720d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float NearestPointFactor</definition>
+        <argsstring>(Int3 lineStart, Int3 lineEnd, Int3 point)</argsstring>
+        <name>NearestPointFactor</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>lineStart</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>lineEnd</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Factor of the nearest point on the segment. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returned value is in the range [0,1] if the point lies on the segment otherwise it just lies on the line. The closest point can be got by (end-start)*factor + start; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="129" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="128" bodyend="136"/>
+        <references refid="struct_pathfinding_1_1_int3_1a1550685aa7e19bd2061d94b38b6413a4" compoundref="_int3_8cs" startline="201">Int3.sqrMagnitude</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ab87e836742f622d52253e9189519ef7b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float NearestPointFactor</definition>
+        <argsstring>(Int2 lineStart, Int2 lineEnd, Int2 point)</argsstring>
+        <name>NearestPointFactor</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>lineStart</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>lineEnd</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Factor of the nearest point on the segment. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returned value is in the range [0,1] if the point lies on the segment otherwise it just lies on the line. The closest point can be got by (end-start)*factor + start; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="143" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="142" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a2926797ed93d260436300fda33d60875" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 NearestPointStrict</definition>
+        <argsstring>(Vector3 lineStart, Vector3 lineEnd, Vector3 point)</argsstring>
+        <name>NearestPointStrict</name>
+        <param>
+          <type>Vector3</type>
+          <declname>lineStart</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>lineEnd</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the closest point on the line segment. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is NOT treated as infinite. <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_mathfx_1aa1dba9eb530bc137662868cea7c891cd" kindref="member">NearestPoint</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="156" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="155" bodyend="163"/>
+        <referencedby refid="class_pathfinding_1_1_mathfx_1acde7e3b38c9a95ba2df2804b488ca520" compoundref="_astar_math_8cs" startline="245" endline="249">Mathfx.DistancePointSegmentStrict</referencedby>
+        <referencedby refid="class_start_end_modifier_1a765c6507b18e487898c7c5478b93b718" compoundref="_start_end_modifier_8cs" startline="56" endline="133">StartEndModifier.Apply</referencedby>
+        <referencedby refid="class_pathfinding_1_1_a_b_path_1a9403daa81b78d5a7c1249981309267ae" compoundref="_a_b_path_8cs" startline="467" endline="491">ABPath.GetMovementVector</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ae326f05222ac19f69dc045c01a48a6f9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 NearestPointStrictXZ</definition>
+        <argsstring>(Vector3 lineStart, Vector3 lineEnd, Vector3 point)</argsstring>
+        <name>NearestPointStrictXZ</name>
+        <param>
+          <type>Vector3</type>
+          <declname>lineStart</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>lineEnd</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the closest point on the line segment on the XZ plane. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is NOT treated as infinite. <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_mathfx_1aa1dba9eb530bc137662868cea7c891cd" kindref="member">NearestPoint</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="169" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="168" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a58ca5bdedddebbc77a8a9de99a227e53" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Repeat</definition>
+        <argsstring>(int i, int n)</argsstring>
+        <name>Repeat</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="350" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="350" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a2595121c8e644ab45a89b87d028c6a46" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int RoundToInt</definition>
+        <argsstring>(float v)</argsstring>
+        <name>RoundToInt</name>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="427" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="427" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1ab45b4e57a0565dc2adc5ad78c6d570c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int RoundToInt</definition>
+        <argsstring>(double v)</argsstring>
+        <name>RoundToInt</name>
+        <param>
+          <type>double</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="431" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="431" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a24cd8d0ce04272bf04118418fa51c1f5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Sign</definition>
+        <argsstring>(float a)</argsstring>
+        <name>Sign</name>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="399" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="399" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1aa55ba13a0d6a4c55c3cced0a18ad15ec" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Sign</definition>
+        <argsstring>(int a)</argsstring>
+        <name>Sign</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="403" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="403" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_mathfx_1a5c6b6f8f8537409dcdf534a8c387a5f5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float SqrMagnitudeXZ</definition>
+        <argsstring>(Vector3 a, Vector3 b)</argsstring>
+        <name>SqrMagnitudeXZ</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Squared distance between two points on the XZ plane. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="345" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="345" bodyend="348"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_pathfinding_1_1_utility" kindref="compound">Utility</ref> functions for working with numbers, lines and vectors. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_polygon" kindref="compound">Polygon</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="91" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="91" bodyend="435"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_mathfx_1aba51eb4e915bad7ba93d70fe9eb7a560" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Abs</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a083558c616ec62d28816dd811af35680" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Abs</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1abc5d7b7bec378d30c5e11d421d288913" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Bit</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a1b94bf0669bce4b688bcae853dcd513e" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Clamp</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a081f5baa7c3526fb12436017022d396d" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Clamp</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ab359f4c19d288377da06321611f878bf" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Clamp01</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1aafbfaf2bdd54061f9824421cbd218d4d" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Clamp01</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a645a40743e5a85d41c0a6b15bb8d9e0a" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>ComputeVertexHash</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a17bfa80ae23dab7cfde8dc89a0c3e1fe" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>CubicBezier</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a5503dca7b260ea2c789d7b1647ec99c4" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>DistancePointSegment</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1af5ce41fa7c86dc296a45666de73b58f4" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>DistancePointSegment2</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1abeac52ed2441b96fb5cf4f7201bf01ed" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>DistancePointSegment2</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1acde7e3b38c9a95ba2df2804b488ca520" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>DistancePointSegmentStrict</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a0fbd2e7b5aab826129dbaad5c37b6e05" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>FormatBytes</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a7c2cf55ca6d94428c98ae96d95ae9ca4" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>FormatBytesBinary</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ad1244b743a8a02a5e83c33d16f68bf50" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Hermite</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a0393627f2218af15e3825565f13371a6" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>IntToColor</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1aae014e81b045055c763578ed0b18903f" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Lerp</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a0e6b60c65eaef3d982b6d2e1068cb009" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>MagnitudeXZ</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a0e7375565a84f988aee5a7a881cfe9e4" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>MapTo</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a0b2e9f595a38829fc9ef5aef04f00627" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>MapTo</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a673f107d59fa6d96653bb1f4da2b895b" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>MapToRange</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1aa664ab79610d1d6539ffd081b5f88500" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a4f810b796deffcdc635daa6f35e23def" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ac1be9ce12d46179d0a2a54843676fe95" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ada0db36613c3a53809be8052a5e82893" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Max</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a4dc78a561905ab43f17e2277f1888ed6" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Min</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a15844d65cac2a44ebaed3ed314996f7c" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Min</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a0cc224184573d5f4ce62dc0c12927eea" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Min</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1aa1dba9eb530bc137662868cea7c891cd" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>NearestPoint</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a5f760e1b7c0dbd5dad69d7582bc78edd" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>NearestPointFactor</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ae6996fbc37086d9f92981760f137720d" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>NearestPointFactor</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ab87e836742f622d52253e9189519ef7b" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>NearestPointFactor</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a2926797ed93d260436300fda33d60875" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>NearestPointStrict</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ae326f05222ac19f69dc045c01a48a6f9" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>NearestPointStrictXZ</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a58ca5bdedddebbc77a8a9de99a227e53" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Repeat</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a2595121c8e644ab45a89b87d028c6a46" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>RoundToInt</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1ab45b4e57a0565dc2adc5ad78c6d570c2" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>RoundToInt</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a24cd8d0ce04272bf04118418fa51c1f5" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Sign</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1aa55ba13a0d6a4c55c3cced0a18ad15ec" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>Sign</name></member>
+      <member refid="class_pathfinding_1_1_mathfx_1a5c6b6f8f8537409dcdf534a8c387a5f5" prot="public" virt="non-virtual"><scope>Pathfinding::Mathfx</scope><name>SqrMagnitudeXZ</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

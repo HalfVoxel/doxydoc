@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_r_v_o_agent_placer" kind="class" prot="public">
+    <compoundname>RVOAgentPlacer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1a0b8d95250c3211adb5d1574728478ccc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int agents</definition>
+        <argsstring></argsstring>
+        <name>agents</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1a1f1a559f124f6a8a29b9492035851c3b" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 goalOffset</definition>
+        <argsstring></argsstring>
+        <name>goalOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="16" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1a427e7d78bb1a767d205d60ef36cdf39c" prot="public" static="no" mutable="no">
+        <type>LayerMask</type>
+        <definition>LayerMask mask</definition>
+        <argsstring></argsstring>
+        <name>mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1ad6d3141bf24aaf85fa7573865a1934f6" prot="public" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject prefab</definition>
+        <argsstring></argsstring>
+        <name>prefab</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1a19f304392630a404236b0df6896bca75" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float repathRate</definition>
+        <argsstring></argsstring>
+        <name>repathRate</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1a70a0472d5a2686ba0767b6dcd9ded65c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ringSize</definition>
+        <argsstring></argsstring>
+        <name>ringSize</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_r_v_o_agent_placer_1a1afd74c1b3a69010a437fdc30c9eb551" prot="private" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float rad2Deg</definition>
+        <argsstring></argsstring>
+        <name>rad2Deg</name>
+        <initializer>= 360.0f/ ((float)System.Math.PI*2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="50" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_r_v_o_agent_placer_1a2b0ceff5bfcfae42f5ade91fc7c08eb6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator</type>
+        <definition>IEnumerator Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="21" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="21" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_r_v_o_agent_placer_1a19ee096babda05f1a80ec700a5c3278c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>Color GetColor</definition>
+        <argsstring>(float angle)</argsstring>
+        <name>GetColor</name>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="52" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="52" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_r_v_o_agent_placer_1aac311ae722bfb75a8899f6f74420d882" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>static Color HSVToRGB</definition>
+        <argsstring>(float h, float s, float v)</argsstring>
+        <name>HSVToRGB</name>
+        <param>
+          <type>float</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Converts an HSV color to an RGB color, according to the algorithm described at <ulink url="http://en.wikipedia.org/wiki/HSL_and_HSV">http://en.wikipedia.org/wiki/HSL_and_HSV</ulink>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the RGB representation of the color. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="61" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Places ROV agents in circles. </para>    </briefdescription>
+    <detaileddescription>
+<para>Used in a example scene </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2823">
+        <label>RVOAgentPlacer</label>
+        <link refid="class_r_v_o_agent_placer"/>
+        <childnode refid="2824" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2824">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2825">
+        <label>RVOAgentPlacer</label>
+        <link refid="class_r_v_o_agent_placer"/>
+        <childnode refid="2826" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2826">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" line="7" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/RVOAgentPlacer.cs" bodystart="7" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_r_v_o_agent_placer_1a0b8d95250c3211adb5d1574728478ccc" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>agents</name></member>
+      <member refid="class_r_v_o_agent_placer_1a19ee096babda05f1a80ec700a5c3278c" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>GetColor</name></member>
+      <member refid="class_r_v_o_agent_placer_1a1f1a559f124f6a8a29b9492035851c3b" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>goalOffset</name></member>
+      <member refid="class_r_v_o_agent_placer_1aac311ae722bfb75a8899f6f74420d882" prot="private" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>HSVToRGB</name></member>
+      <member refid="class_r_v_o_agent_placer_1a427e7d78bb1a767d205d60ef36cdf39c" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>mask</name></member>
+      <member refid="class_r_v_o_agent_placer_1ad6d3141bf24aaf85fa7573865a1934f6" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>prefab</name></member>
+      <member refid="class_r_v_o_agent_placer_1a1afd74c1b3a69010a437fdc30c9eb551" prot="private" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>rad2Deg</name></member>
+      <member refid="class_r_v_o_agent_placer_1a19f304392630a404236b0df6896bca75" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>repathRate</name></member>
+      <member refid="class_r_v_o_agent_placer_1a70a0472d5a2686ba0767b6dcd9ded65c" prot="public" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>ringSize</name></member>
+      <member refid="class_r_v_o_agent_placer_1a2b0ceff5bfcfae42f5ade91fc7c08eb6" prot="private" virt="non-virtual"><scope>RVOAgentPlacer</scope><name>Start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

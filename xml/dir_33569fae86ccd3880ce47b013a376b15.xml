@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_33569fae86ccd3880ce47b013a376b15" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities</compoundname>
+    <innerdir refid="dir_e34563c098c838298c38695d33b5150f">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels</innerdir>
+    <innerfile refid="_b_b_tree_8cs">BBTree.cs</innerfile>
+    <innerfile refid="_nav_mesh_renderer_8cs">NavMeshRenderer.cs</innerfile>
+    <innerfile refid="_obj_importer_8cs">ObjImporter.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/"/>
+  </compounddef>
+</doxygen>

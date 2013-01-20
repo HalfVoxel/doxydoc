@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="changelog_8cs" kind="file">
+    <compoundname>changelog.cs</compoundname>
+    <briefdescription>
+<para>This file contains the changelog for the A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+    </programlisting>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/changelog.cs"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_a5e677e8e60ffa4f32b467be3b94ad85" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization</compoundname>
+    <innerfile refid="_json_converters_8cs">JsonConverters.cs</innerfile>
+    <innerfile refid="_json_serializer_8cs">JsonSerializer.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/"/>
+  </compounddef>
+</doxygen>

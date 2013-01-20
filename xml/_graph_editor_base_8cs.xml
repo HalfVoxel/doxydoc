@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="_graph_editor_base_8cs" kind="file">
+    <compoundname>GraphEditorBase.cs</compoundname>
+    <innerclass refid="class_pathfinding_1_1_graph_editor_base" prot="public">Pathfinding::GraphEditorBase</innerclass>
+    <innernamespace refid="namespace_pathfinding">Pathfinding</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Pathfinding.Serialization.JsonFx;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Pathfinding<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/>[JsonOptIn]</highlight></codeline>
+<codeline lineno="6" refid="class_pathfinding_1_1_graph_editor_base" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_pathfinding_1_1_graph_editor_base" kindref="compound" tooltip="Defined here only so non-editor classes can use the target field.">GraphEditorBase</ref><sp/>{</highlight></codeline>
+<codeline lineno="8" refid="class_pathfinding_1_1_graph_editor_base_1a5176cc0bc64e4f4762196b5e96535600" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound" tooltip="Base class for all graphs ">NavGraph</ref><sp/><ref refid="class_pathfinding_1_1_graph_editor_base_1a5176cc0bc64e4f4762196b5e96535600" kindref="member" tooltip="NavGraph this editor is exposing.">target</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/GraphEditorBase.cs"/>
+  </compounddef>
+</doxygen>

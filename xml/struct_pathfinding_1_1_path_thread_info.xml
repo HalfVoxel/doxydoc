@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_pathfinding_1_1_path_thread_info" kind="struct" prot="public">
+    <compoundname>Pathfinding::PathThreadInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_path_thread_info_1a2095f6527fd44d0c0a6bfdf756044493" prot="public" static="no" mutable="no">
+        <type><ref refid="class_astar_path" kindref="compound">AstarPath</ref></type>
+        <definition>AstarPath astar</definition>
+        <argsstring></argsstring>
+        <name>astar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="490" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="490" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_path_thread_info_1a235fa4c2de0f2477db481321f49de276" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_path_handler" kindref="compound">PathHandler</ref></type>
+        <definition>PathHandler runData</definition>
+        <argsstring></argsstring>
+        <name>runData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="491" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="491" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_path_thread_info_1a430cd382ea7fe08329833bf34278a60d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int threadIndex</definition>
+        <argsstring></argsstring>
+        <name>threadIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="489" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="489" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_path_thread_info_1a1fd02ef2edc74de287e18c5d171594f3" prot="private" static="no" mutable="no">
+        <type>System.Object</type>
+        <definition>System.Object _lock</definition>
+        <argsstring></argsstring>
+        <name>_lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="493" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="493" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_pathfinding_1_1_path_thread_info_1a7cc925f5955effe2a9d3f1aa7651313f" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>System.Object</type>
+        <definition>System.Object Lock</definition>
+        <argsstring></argsstring>
+        <name>Lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="494" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="494" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_path_thread_info_1a75450d740c3f106342bcffb22ab476df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PathThreadInfo</definition>
+        <argsstring>(int index, AstarPath astar, PathHandler runData)</argsstring>
+        <name>PathThreadInfo</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="class_astar_path" kindref="compound">AstarPath</ref></type>
+          <declname>astar</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path_handler" kindref="compound">PathHandler</ref></type>
+          <declname>runData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="496" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="496" bodyend="501"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Holds info about one pathfinding thread. </para>    </briefdescription>
+    <detaileddescription>
+<para>Mainly used to send information about how the thread should execute when starting it </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="2544">
+        <label>AstarData</label>
+        <link refid="class_pathfinding_1_1_astar_data"/>
+        <childnode refid="2545" relation="usage">
+          <edgelabel>graphs</edgelabel>
+        </childnode>
+        <childnode refid="2537" relation="usage">
+          <edgelabel>nodeRuns</edgelabel>
+        </childnode>
+        <childnode refid="2546" relation="usage">
+          <edgelabel>userConnections</edgelabel>
+        </childnode>
+        <childnode refid="2547" relation="usage">
+          <edgelabel>navmesh</edgelabel>
+        </childnode>
+        <childnode refid="2540" relation="usage">
+          <edgelabel>graphTypes</edgelabel>
+        </childnode>
+        <childnode refid="2558" relation="usage">
+          <edgelabel>pointGraph</edgelabel>
+        </childnode>
+        <childnode refid="2561" relation="usage">
+          <edgelabel>gridGraph</edgelabel>
+        </childnode>
+      </node>
+      <node id="2564">
+        <label>GridNode</label>
+        <link refid="class_pathfinding_1_1_grid_node"/>
+        <childnode refid="2538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2561" relation="usage">
+          <edgelabel>_gridGraphs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2561">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2545" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2549" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2550" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2551" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2562" relation="usage">
+          <edgelabel>collision</edgelabel>
+        </childnode>
+        <childnode refid="2563" relation="usage">
+          <edgelabel>textureData</edgelabel>
+        </childnode>
+        <childnode refid="2564" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2557">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="2553" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="2557" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2566">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="2556">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="2554" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="2557" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="2538">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2555">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="2555" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="2541">
+        <label>AstarPath</label>
+        <link refid="class_astar_path"/>
+        <childnode refid="2542" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2535" relation="usage">
+          <edgelabel>threadInfos</edgelabel>
+        </childnode>
+        <childnode refid="2543" relation="usage">
+          <edgelabel>pathReturnStack</edgelabel>
+        </childnode>
+        <childnode refid="2544" relation="usage">
+          <edgelabel>astarData</edgelabel>
+        </childnode>
+        <childnode refid="2540" relation="usage">
+          <edgelabel>safeUpdateLock</edgelabel>
+          <edgelabel>TotalSearchedNodes</edgelabel>
+          <edgelabel>TotalSearchTime</edgelabel>
+        </childnode>
+        <childnode refid="2565" relation="usage">
+          <edgelabel>pathReturnPop</edgelabel>
+          <edgelabel>debugPath</edgelabel>
+        </childnode>
+        <childnode refid="2567" relation="usage">
+          <edgelabel>colorSettings</edgelabel>
+        </childnode>
+        <childnode refid="2541" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2565">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="2537" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="2536" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="2540" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="2565" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2538" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="2566" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2549">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2535">
+        <label>PathThreadInfo</label>
+        <link refid="struct_pathfinding_1_1_path_thread_info"/>
+        <childnode refid="2536" relation="usage">
+          <edgelabel>runData</edgelabel>
+        </childnode>
+        <childnode refid="2540" relation="usage">
+          <edgelabel>_lock</edgelabel>
+        </childnode>
+        <childnode refid="2541" relation="usage">
+          <edgelabel>astar</edgelabel>
+        </childnode>
+      </node>
+      <node id="2550">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="2562">
+        <label>GraphCollision</label>
+        <link refid="class_pathfinding_1_1_graph_collision"/>
+      </node>
+      <node id="2546">
+        <label>UserConnection</label>
+        <link refid="class_pathfinding_1_1_user_connection"/>
+      </node>
+      <node id="2554">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="2547">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="2545" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2548" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2549" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2550" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2551" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2552" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2555" relation="usage">
+          <edgelabel>_vertices</edgelabel>
+        </childnode>
+        <childnode refid="2556" relation="usage">
+          <edgelabel>_bbTree</edgelabel>
+        </childnode>
+      </node>
+      <node id="2551">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="2560">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2559">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2560" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2555" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="2538" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2567">
+        <label>AstarColor</label>
+        <link refid="class_pathfinding_1_1_astar_color"/>
+      </node>
+      <node id="2552">
+        <label>TriangleMeshNode</label>
+        <link refid="class_pathfinding_1_1_triangle_mesh_node"/>
+        <childnode refid="2553" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2554" relation="usage">
+          <edgelabel>_navmeshHolders</edgelabel>
+        </childnode>
+      </node>
+      <node id="2540">
+        <label>System</label>
+      </node>
+      <node id="2537">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="2537" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="2538" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="2553">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="2538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2553" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2558">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="2545" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2549" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2559" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2539">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="2537" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2542">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2536">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="2537" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2539" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="2540" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2548">
+        <label>INavmesh</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh"/>
+      </node>
+      <node id="2563">
+        <label>GridGraph.TextureData</label>
+        <link refid="class_pathfinding_1_1_grid_graph_1_1_texture_data"/>
+      </node>
+      <node id="2545">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+        <childnode refid="2541" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2543">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="488" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="488" bodyend="502"/>
+    <listofallmembers>
+      <member refid="struct_pathfinding_1_1_path_thread_info_1a1fd02ef2edc74de287e18c5d171594f3" prot="private" virt="non-virtual"><scope>Pathfinding::PathThreadInfo</scope><name>_lock</name></member>
+      <member refid="struct_pathfinding_1_1_path_thread_info_1a2095f6527fd44d0c0a6bfdf756044493" prot="public" virt="non-virtual"><scope>Pathfinding::PathThreadInfo</scope><name>astar</name></member>
+      <member refid="struct_pathfinding_1_1_path_thread_info_1a7cc925f5955effe2a9d3f1aa7651313f" prot="public" virt="non-virtual"><scope>Pathfinding::PathThreadInfo</scope><name>Lock</name></member>
+      <member refid="struct_pathfinding_1_1_path_thread_info_1a75450d740c3f106342bcffb22ab476df" prot="public" virt="non-virtual"><scope>Pathfinding::PathThreadInfo</scope><name>PathThreadInfo</name></member>
+      <member refid="struct_pathfinding_1_1_path_thread_info_1a235fa4c2de0f2477db481321f49de276" prot="public" virt="non-virtual"><scope>Pathfinding::PathThreadInfo</scope><name>runData</name></member>
+      <member refid="struct_pathfinding_1_1_path_thread_info_1a430cd382ea7fe08329833bf34278a60d" prot="public" virt="non-virtual"><scope>Pathfinding::PathThreadInfo</scope><name>threadIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_astar_debugger_1_1_path_type_debug" kind="struct" prot="private">
+    <compoundname>AstarDebugger::PathTypeDebug</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_astar_debugger_1_1_path_type_debug_1afeb59a0d6e4ee98742539776bd8044bf" prot="public" static="no" mutable="no">
+        <type>System.Func&lt; int &gt;</type>
+        <definition>System.Func&lt;int&gt; getSize</definition>
+        <argsstring></argsstring>
+        <name>getSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" line="105" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_astar_debugger_1_1_path_type_debug_1aadf7d670860db043784cda3d8e1448c2" prot="public" static="no" mutable="no">
+        <type>System.Func&lt; int &gt;</type>
+        <definition>System.Func&lt;int&gt; getTotalCreated</definition>
+        <argsstring></argsstring>
+        <name>getTotalCreated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" line="106" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_astar_debugger_1_1_path_type_debug_1a8ccf841cb59e451791bcb2e1ac4f1edc" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" line="104" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_astar_debugger_1_1_path_type_debug_1aa3ce9e368bb553bbc5f9cabd4d0154b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PathTypeDebug</definition>
+        <argsstring>(string name, System.Func&lt; int &gt; getSize, System.Func&lt; int &gt; getTotalCreated)</argsstring>
+        <name>PathTypeDebug</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>System.Func&lt; int &gt;</type>
+          <declname>getSize</declname>
+        </param>
+        <param>
+          <type>System.Func&lt; int &gt;</type>
+          <declname>getTotalCreated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" line="107" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" bodystart="107" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_astar_debugger_1_1_path_type_debug_1a8031a47bff086ed71ffcc3867c1979bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Print</definition>
+        <argsstring>(StringBuilder text)</argsstring>
+        <name>Print</name>
+        <param>
+          <type>StringBuilder</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" line="113" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" bodystart="113" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2570">
+        <label>System</label>
+      </node>
+      <node id="2569">
+        <label>AstarDebugger.PathTypeDebug</label>
+        <link refid="struct_astar_debugger_1_1_path_type_debug"/>
+        <childnode refid="2570" relation="usage">
+          <edgelabel>getSize</edgelabel>
+          <edgelabel>getTotalCreated</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" line="103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" bodystart="103" bodyend="119"/>
+    <listofallmembers>
+      <member refid="struct_astar_debugger_1_1_path_type_debug_1afeb59a0d6e4ee98742539776bd8044bf" prot="public" virt="non-virtual"><scope>AstarDebugger::PathTypeDebug</scope><name>getSize</name></member>
+      <member refid="struct_astar_debugger_1_1_path_type_debug_1aadf7d670860db043784cda3d8e1448c2" prot="public" virt="non-virtual"><scope>AstarDebugger::PathTypeDebug</scope><name>getTotalCreated</name></member>
+      <member refid="struct_astar_debugger_1_1_path_type_debug_1a8ccf841cb59e451791bcb2e1ac4f1edc" prot="public" virt="non-virtual"><scope>AstarDebugger::PathTypeDebug</scope><name>name</name></member>
+      <member refid="struct_astar_debugger_1_1_path_type_debug_1aa3ce9e368bb553bbc5f9cabd4d0154b8" prot="public" virt="non-virtual"><scope>AstarDebugger::PathTypeDebug</scope><name>PathTypeDebug</name></member>
+      <member refid="struct_astar_debugger_1_1_path_type_debug_1a8031a47bff086ed71ffcc3867c1979bb" prot="public" virt="non-virtual"><scope>AstarDebugger::PathTypeDebug</scope><name>Print</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

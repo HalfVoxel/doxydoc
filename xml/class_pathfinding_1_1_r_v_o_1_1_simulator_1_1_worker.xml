@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker" kind="class" prot="private">
+    <compoundname>Pathfinding::RVO::Simulator::Worker</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a962dbfc2f63d7a68b7c4d81e1cdda1e9" prot="public" static="no" mutable="no">
+        <type>AutoResetEvent</type>
+        <definition>AutoResetEvent runFlag</definition>
+        <argsstring></argsstring>
+        <name>runFlag</name>
+        <initializer>= new AutoResetEvent(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="615" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="615" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a1015df8222470d6426d5d3fd91018c09" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Simulator</ref></type>
+        <definition>Simulator simulator</definition>
+        <argsstring></argsstring>
+        <name>simulator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="619" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="619" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a37722a150250e2a5a98e5e0d11e53449" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="612" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="612" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a427ef99d8b77e4cac03718a0a769f806" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int task</definition>
+        <argsstring></argsstring>
+        <name>task</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="613" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="613" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1ac99b75d10f465c1160242dea4544069a" prot="public" static="no" mutable="no">
+        <type>Thread</type>
+        <definition>Thread thread</definition>
+        <argsstring></argsstring>
+        <name>thread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="611" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="611" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1af342130ec8fab0c81868248baf431594" prot="public" static="no" mutable="no">
+        <type>ManualResetEvent</type>
+        <definition>ManualResetEvent waitFlag</definition>
+        <argsstring></argsstring>
+        <name>waitFlag</name>
+        <initializer>= new ManualResetEvent(true)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="617" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="617" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1abce9f5dc9c83f2639b72024fdee5d388" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="612" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="612" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a74995b2493f23c9103413e37da5cdc38" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool terminate</definition>
+        <argsstring></argsstring>
+        <name>terminate</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="621" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="621" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1ae053cf2bceb1601fad87b1548e1a4eac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Worker</definition>
+        <argsstring>(Simulator sim)</argsstring>
+        <name>Worker</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Simulator</ref></type>
+          <declname>sim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="623" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="623" bodyend="629"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a40ea03876965358c265f1f92085c801b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Execute</definition>
+        <argsstring>(int task)</argsstring>
+        <name>Execute</name>
+        <param>
+          <type>int</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="631" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="631" bodyend="635"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1aa3eca255b6be227d7d901cc2a72017a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Run</definition>
+        <argsstring>()</argsstring>
+        <name>Run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="645" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="645" bodyend="676"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a9b848654502024dde7e46ab002f2c9dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Terminate</definition>
+        <argsstring>()</argsstring>
+        <name>Terminate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="641" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="641" bodyend="643"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a1ebc1addb0ce1d133780e177522c90d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaitOne</definition>
+        <argsstring>()</argsstring>
+        <name>WaitOne</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="637" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="637" bodyend="639"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3086">
+        <label>KDTree</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree"/>
+        <childnode refid="3085" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+        <childnode refid="3087" relation="usage">
+          <edgelabel>agentTree</edgelabel>
+        </childnode>
+        <childnode refid="3088" relation="usage">
+          <edgelabel>obstacleRoot</edgelabel>
+        </childnode>
+      </node>
+      <node id="3084">
+        <label>Simulator.Worker</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker"/>
+        <childnode refid="3085" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+      </node>
+      <node id="3087">
+        <label>KDTree.AgentTreeNode</label>
+        <link refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node"/>
+      </node>
+      <node id="3089">
+        <label>ObstacleVertex</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex"/>
+        <childnode refid="3089" relation="usage">
+          <edgelabel>prev</edgelabel>
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="3088">
+        <label>KDTree.ObstacleTreeNode</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node"/>
+        <childnode refid="3089" relation="usage">
+          <edgelabel>obstacle</edgelabel>
+        </childnode>
+        <childnode refid="3088" relation="usage">
+          <edgelabel>right</edgelabel>
+          <edgelabel>left</edgelabel>
+        </childnode>
+      </node>
+      <node id="3085">
+        <label>Simulator</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_simulator"/>
+        <childnode refid="3086" relation="usage">
+          <edgelabel>kdTree</edgelabel>
+        </childnode>
+        <childnode refid="3084" relation="usage">
+          <edgelabel>workers</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" line="610" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOCoreSimulator.cs" bodystart="610" bodyend="677"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1abce9f5dc9c83f2639b72024fdee5d388" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>end</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a40ea03876965358c265f1f92085c801b" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>Execute</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1aa3eca255b6be227d7d901cc2a72017a5" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>Run</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a962dbfc2f63d7a68b7c4d81e1cdda1e9" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>runFlag</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a1015df8222470d6426d5d3fd91018c09" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>simulator</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a37722a150250e2a5a98e5e0d11e53449" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>start</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a427ef99d8b77e4cac03718a0a769f806" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>task</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a74995b2493f23c9103413e37da5cdc38" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>terminate</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a9b848654502024dde7e46ab002f2c9dd" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>Terminate</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1ac99b75d10f465c1160242dea4544069a" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>thread</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1af342130ec8fab0c81868248baf431594" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>waitFlag</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1a1ebc1addb0ce1d133780e177522c90d2" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>WaitOne</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker_1ae053cf2bceb1601fad87b1548e1a4eac" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Simulator::Worker</scope><name>Worker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

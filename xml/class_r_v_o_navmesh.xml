@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_r_v_o_navmesh" kind="class" prot="public">
+    <compoundname>RVONavmesh</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_graph_modifier" prot="public" virt="non-virtual">GraphModifier</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_r_v_o_navmesh_1ae9d8481a1d11d48d462f78ab140bed39" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float wallHeight</definition>
+        <argsstring></argsstring>
+        <name>wallHeight</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>Height of the walls added for each obstacle edge. </para>        </briefdescription>
+        <detaileddescription>
+<para>If a graph contains overlapping you should set this low enough so that edges on different levels do not interfere, but high enough so that agents cannot move over them by mistake. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="23" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="23" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" compoundref="_r_v_o_navmesh_8cs" startline="68" endline="151">AddGraphObstacles</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_r_v_o_navmesh_1a528680a2147ae5f0f0cd3148f453d0e7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Simulator</ref></type>
+        <definition>Simulator lastSim</definition>
+        <argsstring></argsstring>
+        <name>lastSim</name>
+        <initializer>= null</initializer>
+        <briefdescription>
+<para>Last simulator used. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="29" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_navmesh_1a8f5246c5cac0be7fbade572f1e815dea" compoundref="_r_v_o_navmesh_8cs" startline="56" endline="65">RemoveObstacles</referencedby>
+        <referencedby refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" compoundref="_r_v_o_navmesh_8cs" startline="68" endline="151">AddGraphObstacles</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_navmesh_1aa913b435c2cdde6b9871be474e7f91b1" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref> &gt;</type>
+        <definition>List&lt;ObstacleVertex&gt; obstacles</definition>
+        <argsstring></argsstring>
+        <name>obstacles</name>
+        <initializer>= new List&lt;<ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref>&gt;()</initializer>
+        <briefdescription>
+<para>Obstacles currently added to the simulator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="26" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="26" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_navmesh_1a8f5246c5cac0be7fbade572f1e815dea" compoundref="_r_v_o_navmesh_8cs" startline="56" endline="65">RemoveObstacles</referencedby>
+        <referencedby refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" compoundref="_r_v_o_navmesh_8cs" startline="68" endline="151">AddGraphObstacles</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddGraphObstacles</definition>
+        <argsstring>(Pathfinding.RVO.Simulator sim, NavGraph graph)</argsstring>
+        <name>AddGraphObstacles</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Pathfinding.RVO.Simulator</ref></type>
+          <declname>sim</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+<para>Adds obstacles for a graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="68" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="68" bodyend="151"/>
+        <references refid="class_r_v_o_navmesh_1aa913b435c2cdde6b9871be474e7f91b1" compoundref="_r_v_o_navmesh_8cs" startline="26">obstacles</references>
+        <references refid="class_r_v_o_navmesh_1a528680a2147ae5f0f0cd3148f453d0e7" compoundref="_r_v_o_navmesh_8cs" startline="29">lastSim</references>
+        <references refid="class_r_v_o_navmesh_1a8f5246c5cac0be7fbade572f1e815dea" compoundref="_r_v_o_navmesh_8cs" startline="56" endline="65">RemoveObstacles</references>
+        <references refid="class_pathfinding_1_1_polygon_1af2f48887cb67d83d22b1646222b40f26" compoundref="_astar_math_8cs" startline="526" endline="528">Polygon.IsClockwise</references>
+        <references refid="class_r_v_o_navmesh_1ae9d8481a1d11d48d462f78ab140bed39" compoundref="_r_v_o_navmesh_8cs" startline="23">wallHeight</references>
+        <referencedby refid="class_r_v_o_navmesh_1a71d560a6a03b50171f0d5b2ba163d764" compoundref="_r_v_o_navmesh_8cs" startline="36" endline="53">OnLatePostScan</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_navmesh_1a71d560a6a03b50171f0d5b2ba163d764" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnLatePostScan</definition>
+        <argsstring>()</argsstring>
+        <name>OnLatePostScan</name>
+        <reimplements refid="class_pathfinding_1_1_graph_modifier_1a2ce1c67f48b3c9c766e6f75d32cf1133">OnLatePostScan</reimplements>
+        <briefdescription>
+<para>Called at the end of the scanning procedure. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is the absolute last thing done by Scan.</para><para><simplesect kind="note"><para>This event will be called even if Script Execution Order has messed things up (see the other two scan events). </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="36" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="36" bodyend="53"/>
+        <references refid="class_r_v_o_navmesh_1a8f5246c5cac0be7fbade572f1e815dea" compoundref="_r_v_o_navmesh_8cs" startline="56" endline="65">RemoveObstacles</references>
+        <references refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" compoundref="_astar_path_8cs" startline="64">AstarPath.active</references>
+        <references refid="class_astar_path_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_path_8cs" startline="67">AstarPath.graphs</references>
+        <references refid="class_r_v_o_simulator_1a9262cfa14f44bead1b2b007edee41678" compoundref="_r_v_o_simulator_8cs" startline="52" endline="57">RVOSimulator.GetSimulator</references>
+        <references refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" compoundref="_r_v_o_navmesh_8cs" startline="68" endline="151">AddGraphObstacles</references>
+        <referencedby refid="class_r_v_o_navmesh_1ab66d1f5d6fb530cf4563b88b66f727fa" compoundref="_r_v_o_navmesh_8cs" startline="31" endline="34">OnPostCacheLoad</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_navmesh_1ab66d1f5d6fb530cf4563b88b66f727fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnPostCacheLoad</definition>
+        <argsstring>()</argsstring>
+        <name>OnPostCacheLoad</name>
+        <reimplements refid="class_pathfinding_1_1_graph_modifier_1ad6a99805b352c6f4843582f83f00ebf3">OnPostCacheLoad</reimplements>
+        <briefdescription>
+<para>Called after cached graphs have been loaded. </para>        </briefdescription>
+        <detaileddescription>
+<para>When using cached startup, this event is analogous to OnLatePostScan and implementing scripts should do roughly the same thing for both events.</para><para><simplesect kind="note"><para>This event will be called even if Script Execution Order has messed things up (see the other two scan events). </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="32" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="31" bodyend="34"/>
+        <references refid="class_r_v_o_navmesh_1a71d560a6a03b50171f0d5b2ba163d764" compoundref="_r_v_o_navmesh_8cs" startline="36" endline="53">OnLatePostScan</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_navmesh_1a8f5246c5cac0be7fbade572f1e815dea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RemoveObstacles</definition>
+        <argsstring>()</argsstring>
+        <name>RemoveObstacles</name>
+        <briefdescription>
+<para>Removes obstacles which were added with AddGraphObstacles. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="56" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="56" bodyend="65"/>
+        <references refid="class_r_v_o_navmesh_1a528680a2147ae5f0f0cd3148f453d0e7" compoundref="_r_v_o_navmesh_8cs" startline="29">lastSim</references>
+        <references refid="class_r_v_o_navmesh_1aa913b435c2cdde6b9871be474e7f91b1" compoundref="_r_v_o_navmesh_8cs" startline="26">obstacles</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a3989a9b4dd227b97626502d5f93eb3fd" compoundref="_r_v_o_core_simulator_8cs" startline="474" endline="482">Simulator.RemoveObstacle</references>
+        <referencedby refid="class_r_v_o_navmesh_1a71d560a6a03b50171f0d5b2ba163d764" compoundref="_r_v_o_navmesh_8cs" startline="36" endline="53">OnLatePostScan</referencedby>
+        <referencedby refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" compoundref="_r_v_o_navmesh_8cs" startline="68" endline="151">AddGraphObstacles</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Adds a navmesh as RVO obstacles. </para>    </briefdescription>
+    <detaileddescription>
+<para>Add this to a scene in which has a navmesh based graph, when scanning (or loading from cache) the graph it will be added as RVO obstacles to the <ref refid="class_r_v_o_simulator" kindref="compound">RVOSimulator</ref> (which must exist in the scene).</para><para><xrefsect id="todo_1_todo000014"><xreftitle>Todo</xreftitle><xrefdescription><para>Support for grid based graphs will be added in future versions</para></xrefdescription></xrefsect></para><para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2863">
+        <label>GraphModifier</label>
+        <link refid="class_pathfinding_1_1_graph_modifier"/>
+        <childnode refid="2864" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2864">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2862">
+        <label>RVONavmesh</label>
+        <link refid="class_r_v_o_navmesh"/>
+        <childnode refid="2863" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2869">
+        <label>KDTree</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree"/>
+        <childnode refid="2868" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+        <childnode refid="2870" relation="usage">
+          <edgelabel>agentTree</edgelabel>
+        </childnode>
+        <childnode refid="2871" relation="usage">
+          <edgelabel>obstacleRoot</edgelabel>
+        </childnode>
+      </node>
+      <node id="2873">
+        <label>Simulator.Worker</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker"/>
+        <childnode refid="2868" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+      </node>
+      <node id="2870">
+        <label>KDTree.AgentTreeNode</label>
+        <link refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node"/>
+      </node>
+      <node id="2866">
+        <label>GraphModifier</label>
+        <link refid="class_pathfinding_1_1_graph_modifier"/>
+        <childnode refid="2867" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2872">
+        <label>ObstacleVertex</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex"/>
+        <childnode refid="2872" relation="usage">
+          <edgelabel>prev</edgelabel>
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2867">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2865">
+        <label>RVONavmesh</label>
+        <link refid="class_r_v_o_navmesh"/>
+        <childnode refid="2866" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2868" relation="usage">
+          <edgelabel>lastSim</edgelabel>
+        </childnode>
+      </node>
+      <node id="2871">
+        <label>KDTree.ObstacleTreeNode</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node"/>
+        <childnode refid="2872" relation="usage">
+          <edgelabel>obstacle</edgelabel>
+        </childnode>
+        <childnode refid="2871" relation="usage">
+          <edgelabel>right</edgelabel>
+          <edgelabel>left</edgelabel>
+        </childnode>
+      </node>
+      <node id="2868">
+        <label>Simulator</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_simulator"/>
+        <childnode refid="2869" relation="usage">
+          <edgelabel>kdTree</edgelabel>
+        </childnode>
+        <childnode refid="2873" relation="usage">
+          <edgelabel>workers</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" line="16" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVONavmesh.cs" bodystart="16" bodyend="152"/>
+    <listofallmembers>
+      <member refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" prot="public" virt="non-virtual"><scope>RVONavmesh</scope><name>AddGraphObstacles</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a2628ea8d12e8b2563c32f05dc7fff6fa" prot="public" virt="non-virtual"><scope>RVONavmesh</scope><name>EventType</name></member>
+      <member refid="class_r_v_o_navmesh_1a528680a2147ae5f0f0cd3148f453d0e7" prot="private" virt="non-virtual"><scope>RVONavmesh</scope><name>lastSim</name></member>
+      <member refid="class_r_v_o_navmesh_1aa913b435c2cdde6b9871be474e7f91b1" prot="private" virt="non-virtual"><scope>RVONavmesh</scope><name>obstacles</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a1aac1c9a4ae04ef3e2fbf26b0aa570cc" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnDisable</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a34316462014f78aba29c389590f6b104" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnEnable</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a04c8b950e415094e594605532ca2bc8e" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnGraphsPostUpdate</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1ab9bfd723b6004c5f29bd77da1af10ad2" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnGraphsPreUpdate</name></member>
+      <member refid="class_r_v_o_navmesh_1a71d560a6a03b50171f0d5b2ba163d764" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnLatePostScan</name></member>
+      <member refid="class_r_v_o_navmesh_1ab66d1f5d6fb530cf4563b88b66f727fa" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnPostCacheLoad</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1acdc2bf08720205be905df413d0c25431" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnPostScan</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1ab61c6e6431804964396c01a3425a9a3d" prot="public" virt="virtual"><scope>RVONavmesh</scope><name>OnPreScan</name></member>
+      <member refid="class_r_v_o_navmesh_1a8f5246c5cac0be7fbade572f1e815dea" prot="public" virt="non-virtual"><scope>RVONavmesh</scope><name>RemoveObstacles</name></member>
+      <member refid="class_pathfinding_1_1_graph_modifier_1a181ec1fbcb440ae0a847d12e18be779c" prot="public" virt="non-virtual"><scope>RVONavmesh</scope><name>TriggerEvent</name></member>
+      <member refid="class_r_v_o_navmesh_1ae9d8481a1d11d48d462f78ab140bed39" prot="public" virt="non-virtual"><scope>RVONavmesh</scope><name>wallHeight</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

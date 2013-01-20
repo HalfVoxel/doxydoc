@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node" kind="class" prot="private">
+    <compoundname>Pathfinding::RVO::KDTree::ObstacleTreeNode</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node_1aa94f99fdbfb3d20e4a7e7b4b380410b9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node" kindref="compound">ObstacleTreeNode</ref></type>
+        <definition>ObstacleTreeNode left</definition>
+        <argsstring></argsstring>
+        <name>left</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="369" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node_1a6f6a95437bb88cc94f4e69bc571689e3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref></type>
+        <definition>ObstacleVertex obstacle</definition>
+        <argsstring></argsstring>
+        <name>obstacle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="370" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node_1a3ef023f0e06fbe101a380245a5bc1b22" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node" kindref="compound">ObstacleTreeNode</ref></type>
+        <definition>ObstacleTreeNode right</definition>
+        <argsstring></argsstring>
+        <name>right</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="369" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2501">
+        <label>ObstacleVertex</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex"/>
+        <childnode refid="2501" relation="usage">
+          <edgelabel>prev</edgelabel>
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="2500">
+        <label>KDTree.ObstacleTreeNode</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node"/>
+        <childnode refid="2501" relation="usage">
+          <edgelabel>obstacle</edgelabel>
+        </childnode>
+        <childnode refid="2500" relation="usage">
+          <edgelabel>right</edgelabel>
+          <edgelabel>left</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" line="368" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOKDTree.cs" bodystart="368" bodyend="371"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node_1aa94f99fdbfb3d20e4a7e7b4b380410b9" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::ObstacleTreeNode</scope><name>left</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node_1a6f6a95437bb88cc94f4e69bc571689e3" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::ObstacleTreeNode</scope><name>obstacle</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node_1a3ef023f0e06fbe101a380245a5bc1b22" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::KDTree::ObstacleTreeNode</scope><name>right</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

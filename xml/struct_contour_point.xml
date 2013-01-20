@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_contour_point" kind="struct" prot="public">
+    <compoundname>ContourPoint</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_contour_point_1a2fcccc984cbbe8a5140b5279428ba0ba" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="358" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="358" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_contour_point_1ab1a382a0f57a5f2048a40aed12bdf619" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int directionIndex</definition>
+        <argsstring></argsstring>
+        <name>directionIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="359" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="359" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_contour_point_1acfb76c74e507fea066625f69fbc8a146" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="357" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="357" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_contour_point_1a6150e0515f7202e2fb518f7206ed97dc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="355" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_contour_point_1a14f94e529dff0b8bfba8e16fbe9755d6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="356" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="356" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_contour_point_1a198481f0ef4f474ae67de8e76299f5cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ContourPoint</definition>
+        <argsstring>(int x, int z, Vector3 position, Vector3 direction, int directionIndex)</argsstring>
+        <name>ContourPoint</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>directionIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="361" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="361" bodyend="367"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" line="354" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Pathfinders/EdgeTracePathfinder.cs" bodystart="354" bodyend="368"/>
+    <listofallmembers>
+      <member refid="struct_contour_point_1a198481f0ef4f474ae67de8e76299f5cb" prot="public" virt="non-virtual"><scope>ContourPoint</scope><name>ContourPoint</name></member>
+      <member refid="struct_contour_point_1a2fcccc984cbbe8a5140b5279428ba0ba" prot="public" virt="non-virtual"><scope>ContourPoint</scope><name>direction</name></member>
+      <member refid="struct_contour_point_1ab1a382a0f57a5f2048a40aed12bdf619" prot="public" virt="non-virtual"><scope>ContourPoint</scope><name>directionIndex</name></member>
+      <member refid="struct_contour_point_1acfb76c74e507fea066625f69fbc8a146" prot="public" virt="non-virtual"><scope>ContourPoint</scope><name>position</name></member>
+      <member refid="struct_contour_point_1a6150e0515f7202e2fb518f7206ed97dc" prot="public" virt="non-virtual"><scope>ContourPoint</scope><name>x</name></member>
+      <member refid="struct_contour_point_1a14f94e529dff0b8bfba8e16fbe9755d6" prot="public" virt="non-virtual"><scope>ContourPoint</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

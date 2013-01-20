@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_util_1_1_memory" kind="class" prot="public">
+    <compoundname>Pathfinding::Util::Memory</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_memory_1a1352fa2a9a4c874ab64abe22804e3287" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void MemSet</definition>
+        <argsstring>(byte[] array, byte value)</argsstring>
+        <name>MemSet</name>
+        <param>
+          <type>byte[]</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets all values in an array to a specific value faster than a loop. </para>        </briefdescription>
+        <detaileddescription>
+<para>Only faster for large arrays. Slower for small ones. Tests indicate it becomes faster somewhere when the length of the array grows above around 100. For large arrays this can be magnitudes faster. Up to 40 times faster has been measured.</para><para><simplesect kind="see"><para>System.Buffer.BlockCopy </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarMemory.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarMemory.cs" bodystart="14" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_memory_1a0e09edeb4674158d6d58aaa081853e8c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void MemSet&lt; T &gt;</definition>
+        <argsstring>(T[] array, T value, int byteSize)</argsstring>
+        <name>MemSet&lt; T &gt;</name>
+        <param>
+          <type>T[]</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>byteSize</declname>
+        </param>
+        <briefdescription>
+<para>Sets all values in an array to a specific value faster than a loop. </para>        </briefdescription>
+        <detaileddescription>
+<para>Only faster for large arrays. Slower for small ones. Tests indicate it becomes faster somewhere when the length of the array grows above around 100. For large arrays this can be magnitudes faster. Up to 40 times faster has been measured.</para><para><simplesect kind="note"><para>Only works on primitive value types such as int, long, float, etc.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array to fill </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to fill the array with </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byteSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size in bytes of every element in the array. e.g 4 bytes for an int, or 8 bytes for a long. It can be efficiently got using the sizeof built-in function.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<programlisting><codeline><highlight class="comment">//Set<sp/>all<sp/>values<sp/>to<sp/>8<sp/>in<sp/>the<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">[]<sp/>arr<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">[20000];</highlight></codeline>
+<codeline><highlight class="normal">Pathfinding.Util.Memory.MemSet&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>(arr,<sp/>8,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(int));</highlight></codeline>
+</programlisting> <simplesect kind="see"><para>System.Buffer.BlockCopy </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarMemory.cs" line="54" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarMemory.cs" bodystart="54" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarMemory.cs" line="6" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarMemory.cs" bodystart="5" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_util_1_1_memory_1a1352fa2a9a4c874ab64abe22804e3287" prot="public" virt="non-virtual"><scope>Pathfinding::Util::Memory</scope><name>MemSet</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_memory_1a0e09edeb4674158d6d58aaa081853e8c" prot="public" virt="non-virtual"><scope>Pathfinding::Util::Memory</scope><name>MemSet&lt; T &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

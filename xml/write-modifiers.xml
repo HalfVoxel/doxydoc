@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="write-modifiers" kind="page">
+    <compoundname>write-modifiers</compoundname>
+    <title>Writing Modifiers</title>
+    <detaileddescription>
+<para>Modifiers are small scripts which post-process paths to for example simplify or smooth them.</para><para><linebreak/>
+ They are built into the system using extendable add-on architecture which means that it is easy to add your own modifier.<linebreak/>
+ In this tutorial I will show you how to write a simple path smoother similar to the one included in the project (Components<ndash/>&gt;<ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref><ndash/>&gt;Modifiers<ndash/>&gt;SimpleSmooth)<linebreak/>
+</para><sect1 id="write-modifiers_1newscript">
+<title>New Script</title>
+<para>Begin by creating a new C# script somewhere in your project, name it ModifierTutorial.<linebreak/>
+ Open it up in your favourite script editor, you will have a basic class looking something like this: <programlisting><codeline><highlight class="keyword">using</highlight><highlight class="normal"><sp/>UnityEngine;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ModifierTutorial<sp/>:<sp/>MonoBehaviour<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>this<sp/>for<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Start<sp/>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>is<sp/>called<sp/>once<sp/>per<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Update<sp/>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para><para>Now, we are going to make a modifier which can be attached to any GameObject with a <ref refid="class_seeker" kindref="compound">Seeker</ref>, to do that we need to inherit from the MonoModifier class.<linebreak/>
+ This class will handle basic communication between the <ref refid="class_seeker" kindref="compound">Seeker</ref> and the Modifier and will greatly help the writing of the modifier.<linebreak/>
+ It is an abstarct class, so some functions <bold>need</bold> to be implemented in our modifier to not throw compiler errors: <programlisting><codeline><highlight class="keyword">using</highlight><highlight class="normal"><sp/>UnityEngine;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Pathfinding;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">[System.Serializable]</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ModifierTutorial<sp/>:<sp/>MonoModifier<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member" tooltip="Defines inputs and outputs for a modifier.">ModifierData</ref><sp/>input<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member" tooltip="Defines inputs and outputs for a modifier.">ModifierData</ref>.VectorPath;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member" tooltip="Defines inputs and outputs for a modifier.">ModifierData</ref><sp/>output<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member" tooltip="Defines inputs and outputs for a modifier.">ModifierData</ref>.VectorPath;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Apply<sp/>(Path<sp/>p,<sp/>ModifierData<sp/>source)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para><para>What we have here now is the most basic modifier... which doesn&apos;t really do anything, but it will serve as a template for future writing of modifiers.<linebreak/>
+ I have added the &quot;using Pathfinding&quot; statement because MonoModifier exists in the <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> namespace, so we need to include it in our script.<linebreak/>
+ There are also the <emphasis>input</emphasis> and <emphasis>output</emphasis> properties, these tell the <ref refid="class_seeker" kindref="compound">Seeker</ref> what this modifier accepts and what it outputs. Usually you take a VectorPath as input and output a VectorPath, see <ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">Pathfinding::ModifierData</ref> for more info.<linebreak/>
+ The Apply function is where we are going to put our code, it will be called when a path needs post-processing.<linebreak/>
+ The Path object supplied is the path which we are going to post-process and the <emphasis>source</emphasis> is what the previous modifier outputed, but we don&apos;t need to care about it really since it is guaranteed to be ModifierData.VectorPath as we set that as input.<linebreak/>
+</para></sect1>
+<sect1 id="write-modifiers_1smoothing">
+<title>Smoothing the Path</title>
+<para>The smoothing algorithm we are going to use is quite simple, it should just draw the points closer together by some amount, and we are going to work on the <ref refid="class_pathfinding_1_1_path_1a606d877ec5788bbbf53311a2dff80ffd" kindref="member">Pathfinding::Path::vectorPath</ref> array, the <ref refid="class_pathfinding_1_1_path_1ac76dd31632dd24f062d1949d77af84d2" kindref="member">Pathfinding::Path::path</ref> array should never be changed as it might break other modifiers.<linebreak/>
+ First though we need to check if the path suceeded and if the vectorPath array is not null, otherwise we might end up with evil NullReferenceExceptions<linebreak/>
+ And also, how are we going to smooth the path if there is less than three elements in it, it can&apos;t be done, so we will skip that case too. <programlisting><codeline><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Apply<sp/>(Path<sp/>p,<sp/>ModifierData<sp/>source)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p.error<sp/>||<sp/>p.vectorPath<sp/>==<sp/>null<sp/>||<sp/>p.vectorPath.Length<sp/>&lt;<sp/>3)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para><para>Then for the actual smoothing, the algorithm will work as follows:<linebreak/>
+ subdivide the path into smaller segments, then loop through the path array, and move each point except the first and the last ones closer to it&apos;s adjacent points, do that a number of times to get the desired smoothing.<linebreak/>
+</para><para><programlisting><codeline><highlight class="comment">//The<sp/>number<sp/>of<sp/>times<sp/>to<sp/>apply<sp/>smoothing</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations<sp/>=<sp/>5;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//The<sp/>number<sp/>of<sp/>times<sp/>to<sp/>subdivide<sp/>the<sp/>original<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subdivisions<sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Apply<sp/>(Path<sp/>p,<sp/>ModifierData<sp/>source)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p.error<sp/>||<sp/>p.vectorPath<sp/>==<sp/>null<sp/>||<sp/>p.vectorPath.Length<sp/>&lt;<sp/>3)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Subdivisions<sp/>should<sp/>not<sp/>be<sp/>less<sp/>than<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>subdivisions<sp/>=<sp/>subdivisions<sp/>&lt;<sp/>0<sp/>?<sp/>0<sp/>:<sp/>subdivisions;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Prevent<sp/>unknowing<sp/>users<sp/>from<sp/>entering<sp/>bad<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(subdivisions<sp/>&gt;<sp/>12)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Debug.LogWarning<sp/>(</highlight><highlight class="stringliteral">&quot;Subdividing<sp/>a<sp/>path<sp/>more<sp/>than<sp/>12<sp/>times<sp/>is<sp/>quite<sp/>a<sp/>lot,<sp/>it<sp/>might<sp/>cause<sp/>memory<sp/>problems<sp/>and<sp/>it<sp/>will<sp/>certainly<sp/>slow<sp/>the<sp/>game<sp/>down.\n&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;When<sp/>this<sp/>message<sp/>is<sp/>logged,<sp/>no<sp/>smoothing<sp/>will<sp/>be<sp/>applied&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subdivisions<sp/>=<sp/>12;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Create<sp/>a<sp/>new<sp/>array<sp/>to<sp/>hold<sp/>the<sp/>smoothed<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3[]<sp/>newPath<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Vector3[(p.vectorPath.Length-1)*(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)Mathf.Pow(2,subdivisions)];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3[]<sp/>originalPath<sp/>=<sp/>p.vectorPath;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//One<sp/>segment<sp/>(line)<sp/>in<sp/>the<sp/>original<sp/>array<sp/>will<sp/>be<sp/>subdivided<sp/>to<sp/>this<sp/>number<sp/>of<sp/>points</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>segLength<sp/>=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)Mathf.Pow(2,subdivisions);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;i&lt;originalPath.Length-1;i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>oneDivLength<sp/>=<sp/>1F<sp/>/<sp/>segLength;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;j&lt;segLength;j++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Use<sp/>Vector3.Lerp<sp/>to<sp/>place<sp/>the<sp/>points<sp/>at<sp/>their<sp/>correct<sp/>positions<sp/>along<sp/>the<sp/>line</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>newPath[i*segLength<sp/>+<sp/>j]<sp/>=<sp/>Vector3.Lerp<sp/>(originalPath[i],originalPath[i+1],j*oneDivLength);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Assign<sp/>the<sp/>new<sp/>path<sp/>to<sp/>the<sp/>p.vectorPath<sp/>field</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.vectorPath<sp/>=<sp/>newPath;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Smooth<sp/>the<sp/>path<sp/>[iterations]<sp/>number<sp/>of<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>it=0;it<sp/>&lt;<sp/>iterations;it++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Loop<sp/>through<sp/>all<sp/>points<sp/>except<sp/>the<sp/>first<sp/>and<sp/>the<sp/>last</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=1;i&lt;p.vectorPath.Length-1;i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>new<sp/>point<sp/>to<sp/>the<sp/>average<sp/>of<sp/>the<sp/>current<sp/>point<sp/>and<sp/>the<sp/>two<sp/>adjacent<sp/>points</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector3<sp/>newpoint<sp/>=<sp/>(p.vectorPath[i]<sp/>+<sp/>p.vectorPath[i-1]<sp/>+<sp/>p.vectorPath[i+1])<sp/>/<sp/>3F;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.vectorPath[i]<sp/>=<sp/>newpoint;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Assign<sp/>the<sp/>last<sp/>point</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.vectorPath[p.vectorPath.Length-1]<sp/>=<sp/>originalPath[originalPath.Length-1];</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para><para>Note that the new path gets assigned to the p.vectorPath field, that will enable other scripts to find it.<linebreak/>
+ <linebreak/>
+ </para></sect1>
+<sect1 id="write-modifiers_1end">
+<title>The End</title>
+<para>That was the end of this tutorial, I hope it will help you get started writing path modifiers.<linebreak/>
+ Add a comment to this page if there is something you do not understand! </para></sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

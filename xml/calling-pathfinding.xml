@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="calling-pathfinding" kind="page">
+    <compoundname>calling-pathfinding</compoundname>
+    <title>Pathfinding interface</title>
+    <detaileddescription>
+<sect1 id="calling-pathfinding_1toc">
+<title>Contents</title>
+<para><itemizedlist>
+<listitem><para><ref refid="calling-pathfinding_1paths" kindref="member">Searching for paths using a Seeker</ref></para></listitem><listitem><para><ref refid="calling-pathfinding_1other-paths" kindref="member">Other types of paths</ref></para></listitem><listitem><para><ref refid="calling-pathfinding_1calling-directly" kindref="member">Calling AstarPath directly</ref></para></listitem><listitem><para><ref refid="calling-pathfinding_1graph-data" kindref="member">Getting graph data</ref><itemizedlist>
+<listitem><para><ref refid="calling-pathfinding_1graph-nodes" kindref="member">Finding Nodes</ref></para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para></sect1>
+<sect1 id="calling-pathfinding_1paths">
+<title>Searching for paths using a Seeker</title>
+<para>The pathfinding can be called in a number of ways. The by far easiest method is to have <ref refid="class_seeker" kindref="compound">Seeker</ref> component attached to the GameObject you want to call pathfinding from and then call <ref refid="class_seeker_1ad9c281f768379478a6a3671a53e09113" kindref="member">Seeker::StartPath</ref>.<linebreak/>
+<emphasis>Note a <ref refid="class_seeker" kindref="compound">Seeker</ref> will only take one pathfinding call at a time, if you send one before the previous one has been completed, it the previous one will be canceled</emphasis><linebreak/>
+ The <ref refid="class_seeker" kindref="compound">Seeker</ref> will also automatically handle modifiers.</para><para><programlisting><codeline><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Pathfinding;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Start<sp/>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Get<sp/>the<sp/>seeker<sp/>component<sp/>attached<sp/>to<sp/>this<sp/>GameObject</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_seeker" kindref="compound" tooltip="Handles path calls for a single unit.">Seeker</ref><sp/>seeker<sp/>=<sp/>GetComponent&lt;Seeker&gt;();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Start<sp/>a<sp/>new<sp/>path<sp/>request<sp/>from<sp/>the<sp/>current<sp/>position<sp/>to<sp/>a<sp/>position<sp/>10<sp/>units<sp/>forward.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//When<sp/>the<sp/>path<sp/>has<sp/>been<sp/>calculated,<sp/>it<sp/>will<sp/>be<sp/>returned<sp/>to<sp/>the<sp/>function<sp/>OnPathComplete<sp/>unless<sp/>it<sp/>was<sp/>canceled<sp/>by<sp/>another<sp/>path<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seeker.<ref refid="class_seeker_1ad9c281f768379478a6a3671a53e09113" kindref="member" tooltip="Call this function to start calculating a path.">StartPath</ref><sp/>(transform.position,<sp/>transform.position+transform.forward*10,<sp/>OnPathComplete);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OnPathComplete<sp/>(Path<sp/>p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//We<sp/>got<sp/>our<sp/>path<sp/>back</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p.error)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Nooo,<sp/>a<sp/>valid<sp/>path<sp/>couldn&apos;t<sp/>be<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Yey,<sp/>now<sp/>we<sp/>can<sp/>get<sp/>a<sp/>Vector3<sp/>representation<sp/>of<sp/>the<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//from<sp/>p.vectorPath</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para><para>You can also create your own path objects instead of using the Seekers functions.<linebreak/>
+ This will enable you to change settings on the path object before calculating it.</para><para><programlisting><codeline><highlight class="comment">//Create<sp/>a<sp/>new<sp/>path<sp/>object,<sp/>the<sp/>last<sp/>parameter<sp/>is<sp/>a<sp/>callback<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//but<sp/>it<sp/>will<sp/>be<sp/>used<sp/>internally<sp/>by<sp/>the<sp/>seeker,<sp/>so<sp/>we<sp/>will<sp/>set<sp/>it<sp/>to<sp/>null<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">Path<sp/>p<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Path<sp/>(transform.position,<sp/>transform.position+transform.forward*10,<sp/>null);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>By<sp/>default,<sp/>a<sp/>search<sp/>for<sp/>the<sp/>closest<sp/>walkable<sp/>nodes<sp/>to<sp/>the<sp/>start<sp/>and<sp/>end<sp/>nodes<sp/>will<sp/>be<sp/>carried<sp/>out</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//but<sp/>for<sp/>example<sp/>in<sp/>a<sp/>turn<sp/>based<sp/>game,<sp/>you<sp/>might<sp/>not<sp/>want<sp/>it<sp/>to<sp/>search<sp/>for<sp/>the<sp/>closest<sp/>walkable<sp/>node,<sp/>but<sp/>return<sp/>an<sp/>error<sp/>if<sp/>the<sp/>target<sp/>point</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//was<sp/>at<sp/>an<sp/>unwalkable<sp/>node.<sp/>Setting<sp/>the<sp/>NNConstraint<sp/>to<sp/>None<sp/>will<sp/>disable<sp/>the<sp/>nearest<sp/>walkable<sp/>node<sp/>search</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">p.nnConstraint<sp/>=<sp/>NNConstraint.None;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//Start<sp/>the<sp/>path<sp/>by<sp/>sending<sp/>it<sp/>to<sp/>the<sp/>Seeker</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">seeker.<ref refid="class_seeker_1ad9c281f768379478a6a3671a53e09113" kindref="member" tooltip="Call this function to start calculating a path.">StartPath</ref><sp/>(p,<sp/>OnPathComplete);</highlight></codeline>
+</programlisting></para><para>It might seem tedious to specify the callback function every time, well, you don&apos;t have to.<linebreak/>
+ There is a field on the <ref refid="class_seeker" kindref="compound">Seeker</ref> which can be set to a function which will be called every time a path is returned. For those of you interested in performance, this is also a tiny bit faster and does not allocate a new delegate on the heap.</para><para><programlisting><codeline><highlight class="comment">//Set<sp/>the<sp/>path<sp/>callback,<sp/>this<sp/>should<sp/>be<sp/>done<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">seeker.<ref refid="class_seeker_1a383261cc8819e862d886b3e2da32d858" kindref="member" tooltip="Callback for when a path is completed.">pathCallback</ref><sp/>+=<sp/>OnPathComplete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//Now<sp/>we<sp/>can<sp/>skip<sp/>the<sp/>callback<sp/>function<sp/>parameter</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">seeker.<ref refid="class_seeker_1ad9c281f768379478a6a3671a53e09113" kindref="member" tooltip="Call this function to start calculating a path.">StartPath</ref><sp/>(transform.position,<sp/>transform.position+transform.forward*10);</highlight></codeline>
+</programlisting></para><para><simplesect kind="note"><para>This callback is permanent, while the component you are calling from might not be, so it&apos;s good practise to un-register from the callback when the component is destroyed <programlisting><codeline><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OnDisable<sp/>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seeker.<ref refid="class_seeker_1a383261cc8819e862d886b3e2da32d858" kindref="member" tooltip="Callback for when a path is completed.">pathCallback</ref><sp/>-=<sp/>OnPathComplete;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para></simplesect>
+A nice thing is that the callback is not limited to one function, you can have several scripts which all get a callback, or just callbacks to more than one function in the script (if you of some reason need that).<linebreak/>
+ That&apos;s why I have been using + and - when registering and un-registering the callback.</para></sect1>
+<sect1 id="calling-pathfinding_1other-paths">
+<title>Other types of paths</title>
+<para>There are other types of paths than the standard one, for example the MultiTargetPath (Pro feature).<linebreak/>
+ These can be started easily as well, especially the MultiTargetPath since the <ref refid="class_seeker" kindref="compound">Seeker</ref> has a special function for it</para><para><programlisting><codeline><highlight class="comment">//Start<sp/>a<sp/>multi<sp/>target<sp/>path,<sp/>where<sp/>endPoints<sp/>is<sp/>a<sp/>Vector3[]<sp/>array.<sp/>The<sp/>last<sp/>parameter<sp/>specifies<sp/>if<sp/>path<sp/>to<sp/>all<sp/>end<sp/>points<sp/>should<sp/>be<sp/>searched<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//or<sp/>only<sp/>to<sp/>the<sp/>closest<sp/>one</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">seeker.StartMultiTargetPath<sp/>(transform.position,endPoints,</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para><para>The path will be returned as a Path instance, but it can be casted to for example MultiTargetPath to get all the data. The full example of MultiTargetPaths can be found here: <ref refid="" kindref="compound">Multi Target Paths </ref> <simplesect kind="note"><para>The MultiTargetPath is an A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project Pro Feature, so you will get an error if you try the above code using the Free version of the project.</para></simplesect>
+The generic way to start a type of path is simply <programlisting><codeline><highlight class="normal">Path<sp/>p<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>MyPathType<sp/>(...);<sp/><sp/></highlight><highlight class="comment">//For<sp/>example<sp/>MultiTargetPath</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">seeker.<ref refid="class_seeker_1ad9c281f768379478a6a3671a53e09113" kindref="member" tooltip="Call this function to start calculating a path.">StartPath</ref><sp/>(p,<sp/>OnPathComplete);</highlight></codeline>
+</programlisting></para></sect1>
+<sect1 id="calling-pathfinding_1calling-directly">
+<title>Calling AstarPath directly</title>
+<para>There are of-course cases where you want even more control of each path. Then you can call <ref refid="class_astar_path" kindref="compound">AstarPath</ref> directly. The main function you then use is <ref refid="class_astar_path_1a0c1b34f509b2a50091f195cf216ca547" kindref="member">AstarPath::StartPath</ref><linebreak/>
+ <emphasis>Note that these paths will not be post-processed</emphasis></para><para><programlisting><codeline><highlight class="comment">//There<sp/>must<sp/>be<sp/>an<sp/>AstarPath<sp/>instance<sp/>in<sp/>the<sp/>scene</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" kindref="member" tooltip="Returns the active AstarPath object in the scene.">active</ref><sp/>==<sp/>null)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//As<sp/>there<sp/>is<sp/>not<sp/>Seeker<sp/>to<sp/>keep<sp/>track<sp/>of<sp/>the<sp/>callbacks,<sp/>you<sp/>now<sp/>need<sp/>to<sp/>specify<sp/>the<sp/>callback<sp/>every<sp/>time<sp/>again</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">Path<sp/>p<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Path<sp/>(transform.position,<sp/>transform.position+transform.forward*10,<sp/>OnPathComplete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//Start<sp/>the<sp/>path,<sp/>but<sp/>call<sp/>AstarPath<sp/>directly</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//AstarPath.active<sp/>is<sp/>the<sp/>current<sp/>AstarPath<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1a0c1b34f509b2a50091f195cf216ca547" kindref="member" tooltip="Puts the Path in queue for calculation.">StartPath</ref><sp/>(p);</highlight></codeline>
+</programlisting></para></sect1>
+<sect1 id="calling-pathfinding_1graph-data">
+<title>Getting graph data</title>
+<sect2 id="calling-pathfinding_1graph-nodes">
+<title>Finding Nodes</title>
+<para>Sometimes you want to get access to the graph data. If you, for example are making a TD game, you probably don&apos;t want to place a tower on an unwalkable node.<linebreak/>
+ Here&apos;s how you get nodes</para><para><programlisting><codeline><highlight class="comment">//Find<sp/>the<sp/>closest<sp/>node<sp/>to<sp/>this<sp/>GameObject&apos;s<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">Node<sp/>node<sp/>=<sp/><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" kindref="member" tooltip="Returns the active AstarPath object in the scene.">active</ref>.<ref refid="class_astar_path_1ac28f08f7bddc85579649b5f6ebe57cd4" kindref="member" tooltip="Returns the nearest node to a position using the specified NNConstraint.">GetNearest</ref><sp/>(transform.position);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(node.walkable)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Yey,<sp/>the<sp/>node<sp/>is<sp/>walkable,<sp/>we<sp/>can<sp/>place<sp/>a<sp/>tower<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para><para><simplesect kind="note"><para>Also check out the page on updating graphs during runtime: <ref refid="graph-updates" kindref="compound">Updating Graphs During Runtime </ref></para></simplesect>
+There are also cases where you want to get only certain nodes, such as &quot;What is the closest Walkable node to this position?&quot;. This can be accomplished using the <ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">Pathfinding::NNConstraint</ref>. For this case the Default NNConstraint (it&apos;s default, because it is used for path calls if nothing else is said) <programlisting><codeline><highlight class="normal">Node<sp/>node<sp/>=<sp/><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" kindref="member" tooltip="Returns the active AstarPath object in the scene.">active</ref>.<ref refid="class_astar_path_1ac28f08f7bddc85579649b5f6ebe57cd4" kindref="member" tooltip="Returns the nearest node to a position using the specified NNConstraint.">GetNearest</ref><sp/>(transform.positon,<sp/>NNConstraint.Default);</highlight></codeline>
+</programlisting></para><para>The search range of these constraints is not unlimited, but quite large, for grid graphs it will search a large square, but for Point Graphs, it will actually search the whole graph since they are usually small.<linebreak/>
+</para><para><simplesect kind="version"><para>The code on this page was written without any testing, but I hope I haven&apos;t made any mistakes.<linebreak/>
+ It was written for version 3.0.7 </para></simplesect>
+</para></sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

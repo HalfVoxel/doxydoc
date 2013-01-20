@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_lightweight_r_v_o" kind="class" prot="public">
+    <compoundname>LightweightRVO</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_lightweight_r_v_o_1adb53d8de533d0e99662dd3923d2ca724" prot="public" static="no">
+        <name>RVOExampleType</name>
+        <enumvalue id="class_lightweight_r_v_o_1adb53d8de533d0e99662dd3923d2ca724a30954d90085f6eaaf5817917fc5fecb3" prot="public">
+          <name>Circle</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_lightweight_r_v_o_1adb53d8de533d0e99662dd3923d2ca724a4803e6b9e63dabf04de980788d6a13c4" prot="public">
+          <name>Line</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_lightweight_r_v_o_1adb53d8de533d0e99662dd3923d2ca724a2a3cd5946cfd317eb99c3d32e35e2d4c" prot="public">
+          <name>Point</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_lightweight_r_v_o_1adb53d8de533d0e99662dd3923d2ca724ad2102cda7745175fab994e212f4b4828" prot="public">
+          <name>RandomStreams</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="29" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a95bcb790e75fde09eec7202257e57e27" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int agentCount</definition>
+        <argsstring></argsstring>
+        <name>agentCount</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+<para>Number of agents created at start. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="22" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="22" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1aae87304c6923138c031ff9918dd3a997" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float agentTimeHorizon</definition>
+        <argsstring></argsstring>
+        <name>agentTimeHorizon</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>How far in the future too look for agents. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="45" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="45" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a3d921a4bbfd9cf05f3b6a9b2e0da6919" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float exampleScale</definition>
+        <argsstring></argsstring>
+        <name>exampleScale</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+<para>How large is the area where agents are placed. </para>        </briefdescription>
+        <detaileddescription>
+<para>For e.g the circle example, it corresponds </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="26" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="26" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1afc4894bb6cdea8cdd3fb808617a6783a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int maxNeighbours</definition>
+        <argsstring></argsstring>
+        <name>maxNeighbours</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>Max number of neighbour agents to take into account. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="49" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="49" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a3c105180f93a78cf3fb0903df278cf3f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxSpeed</definition>
+        <argsstring></argsstring>
+        <name>maxSpeed</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Max speed for an agent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="42" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="42" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1ac6a0745845c06ab9b18b14e5b1f7d653" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float neighbourDist</definition>
+        <argsstring></argsstring>
+        <name>neighbourDist</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+<para>Max distance for other agents to take them into account. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="51" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="51" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1aaae09db88e3bf152d9ad44de274b7a5c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float obstacleTimeHorizon</definition>
+        <argsstring></argsstring>
+        <name>obstacleTimeHorizon</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>How far in the future too look for obstacles. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="47" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="47" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a5050a760c11da521cd4aee6336f6529f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float radius</definition>
+        <argsstring></argsstring>
+        <name>radius</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Agent radius. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="39" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="39" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a4db38b2afd9d13b66047dc08ce6d11ff" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 renderingOffset</definition>
+        <argsstring></argsstring>
+        <name>renderingOffset</name>
+        <initializer>= Vector3.up*0.1f</initializer>
+        <briefdescription>
+<para>Offset from the agent position the actual drawn postition. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to get rid of z-buffer issues </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="55" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a879898dfdef247bcb103e915329c0f94" prot="public" static="no" mutable="no">
+        <type>RVOExampleType</type>
+        <definition>RVOExampleType type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <initializer>= RVOExampleType.Circle</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="36" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a528a46d939b955ebe7dd99d04c5ffdec" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent" kindref="compound">IAgent</ref> &gt;</type>
+        <definition>List&lt;IAgent&gt; agents</definition>
+        <argsstring></argsstring>
+        <name>agents</name>
+        <briefdescription>
+<para>All agents handled by this script. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="64" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="64" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1af70f6a0defc8ca2b648b7442274df960" prot="private" static="no" mutable="no">
+        <type>List&lt; Color &gt;</type>
+        <definition>List&lt;Color&gt; colors</definition>
+        <argsstring></argsstring>
+        <name>colors</name>
+        <briefdescription>
+<para>Color for each agent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="70" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="70" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a3a7e2e1da58ff6ddb9eceeb2b46e95bd" prot="private" static="no" mutable="no">
+        <type>List&lt; Vector3 &gt;</type>
+        <definition>List&lt;Vector3&gt; goals</definition>
+        <argsstring></argsstring>
+        <name>goals</name>
+        <briefdescription>
+<para>Goals for each agent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="67" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="67" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a7b3d47f25e4b65dc13c94392a3da8076" prot="private" static="no" mutable="no">
+        <type>Mesh</type>
+        <definition>Mesh mesh</definition>
+        <argsstring></argsstring>
+        <name>mesh</name>
+        <briefdescription>
+<para>Mesh for rendering. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="58" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a31f782dc16a301dd9ac9cd9fff6783d4" prot="private" static="no" mutable="no">
+        <type>Color[]</type>
+        <definition>Color [] meshColors</definition>
+        <argsstring></argsstring>
+        <name>meshColors</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="75" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1add5f6cfafe4f43c8da15040c62eb4282" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Pathfinding.RVO.Simulator</ref></type>
+        <definition>Pathfinding.RVO.Simulator sim</definition>
+        <argsstring></argsstring>
+        <name>sim</name>
+        <briefdescription>
+<para>Reference to the simulator in the scene. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="61" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="61" bodyend="-1"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a661a2dd45ef4a81177a8fadb31ea50bb" prot="private" static="no" mutable="no">
+        <type>int[]</type>
+        <definition>int [] tris</definition>
+        <argsstring></argsstring>
+        <name>tris</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="74" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a2359b2a3027bbd65cb6218cf20498626" prot="private" static="no" mutable="no">
+        <type>Vector2[]</type>
+        <definition>Vector2 [] uv</definition>
+        <argsstring></argsstring>
+        <name>uv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="73" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_lightweight_r_v_o_1a57cea70d99b3d108e0604fd80335ad49" prot="private" static="no" mutable="no">
+        <type>Vector3[]</type>
+        <definition>Vector3 [] verts</definition>
+        <argsstring></argsstring>
+        <name>verts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="72" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CreateAgents</definition>
+        <argsstring>(int num)</argsstring>
+        <name>CreateAgents</name>
+        <param>
+          <type>int</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+<para>Create a number of agents in circle and restart simulation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="104" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="104" bodyend="169"/>
+        <references refid="class_lightweight_r_v_o_1a95bcb790e75fde09eec7202257e57e27" compoundref="_lightweight_r_v_o_8cs" startline="22">agentCount</references>
+        <references refid="class_lightweight_r_v_o_1a528a46d939b955ebe7dd99d04c5ffdec" compoundref="_lightweight_r_v_o_8cs" startline="64">agents</references>
+        <references refid="class_lightweight_r_v_o_1a3a7e2e1da58ff6ddb9eceeb2b46e95bd" compoundref="_lightweight_r_v_o_8cs" startline="67">goals</references>
+        <references refid="class_lightweight_r_v_o_1af70f6a0defc8ca2b648b7442274df960" compoundref="_lightweight_r_v_o_8cs" startline="70">colors</references>
+        <references refid="class_lightweight_r_v_o_1add5f6cfafe4f43c8da15040c62eb4282" compoundref="_lightweight_r_v_o_8cs" startline="61">sim</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a2911f81a2013552e46287c0e03f7ca27" compoundref="_r_v_o_core_simulator_8cs" startline="146" endline="157">Simulator.ClearAgents</references>
+        <references refid="class_lightweight_r_v_o_1a3d921a4bbfd9cf05f3b6a9b2e0da6919" compoundref="_lightweight_r_v_o_8cs" startline="26">exampleScale</references>
+        <references refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a38f12c64701af3a6dcfa425b7a6a54ca" compoundref="_r_v_o_core_simulator_8cs" startline="172" endline="191">Simulator.AddAgent</references>
+        <references refid="class_lightweight_r_v_o_1aac311ae722bfb75a8899f6f74420d882" compoundref="_lightweight_r_v_o_8cs" startline="237" endline="286">HSVToRGB</references>
+        <references refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent_1a062172106d8148f032b915309c6ff4e6" compoundref="_r_v_o_agent_8cs" startline="41">IAgent.Radius</references>
+        <references refid="class_lightweight_r_v_o_1a5050a760c11da521cd4aee6336f6529f" compoundref="_lightweight_r_v_o_8cs" startline="39">radius</references>
+        <references refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent_1a59dd60dd4af16d02d7ef44afbab5b5bd" compoundref="_r_v_o_agent_8cs" startline="47">IAgent.MaxSpeed</references>
+        <references refid="class_lightweight_r_v_o_1a3c105180f93a78cf3fb0903df278cf3f" compoundref="_lightweight_r_v_o_8cs" startline="42">maxSpeed</references>
+        <references refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent_1a53ad184600a4f4546ddf43377761b275" compoundref="_r_v_o_agent_8cs" startline="59">IAgent.AgentTimeHorizon</references>
+        <references refid="class_lightweight_r_v_o_1aae87304c6923138c031ff9918dd3a997" compoundref="_lightweight_r_v_o_8cs" startline="45">agentTimeHorizon</references>
+        <references refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent_1a4bb69978b1050721b4a0e4ae16934681" compoundref="_r_v_o_agent_8cs" startline="61">IAgent.ObstacleTimeHorizon</references>
+        <references refid="class_lightweight_r_v_o_1aaae09db88e3bf152d9ad44de274b7a5c" compoundref="_lightweight_r_v_o_8cs" startline="47">obstacleTimeHorizon</references>
+        <references refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent_1aefa0a2fa749eaaf8b7f42a52644147d4" compoundref="_r_v_o_agent_8cs" startline="69">IAgent.MaxNeighbours</references>
+        <references refid="class_lightweight_r_v_o_1afc4894bb6cdea8cdd3fb808617a6783a" compoundref="_lightweight_r_v_o_8cs" startline="49">maxNeighbours</references>
+        <references refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent_1a2b331457dd0de4b32c7be20e4e8f69ce" compoundref="_r_v_o_agent_8cs" startline="52">IAgent.NeighbourDist</references>
+        <references refid="class_lightweight_r_v_o_1ac6a0745845c06ab9b18b14e5b1f7d653" compoundref="_lightweight_r_v_o_8cs" startline="51">neighbourDist</references>
+      </memberdef>
+      <memberdef kind="function" id="class_lightweight_r_v_o_1aed4a27d48069265ea875624f0b7c61a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="90" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="90" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_lightweight_r_v_o_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="77" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="77" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_lightweight_r_v_o_1aec0783b5a136e042adcc47bae4fe5291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="171" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="171" bodyend="229"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_lightweight_r_v_o_1a25d35f41c703a061902137550d1df526" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float uniformDistance</definition>
+        <argsstring>(float radius)</argsstring>
+        <name>uniformDistance</name>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="97" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="97" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_lightweight_r_v_o_1aac311ae722bfb75a8899f6f74420d882" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Color</type>
+        <definition>static Color HSVToRGB</definition>
+        <argsstring>(float h, float s, float v)</argsstring>
+        <name>HSVToRGB</name>
+        <param>
+          <type>float</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Converts an HSV color to an RGB color, according to the algorithm described at <ulink url="http://en.wikipedia.org/wiki/HSL_and_HSV">http://en.wikipedia.org/wiki/HSL_and_HSV</ulink>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>h</parametername>
+<parametername>s</parametername>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color to convert. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the RGB representation of the color. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="237" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="237" bodyend="286"/>
+        <referencedby refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" compoundref="_lightweight_r_v_o_8cs" startline="104" endline="169">CreateAgents</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Lightweight RVO Circle Example. </para>    </briefdescription>
+    <detaileddescription>
+<para>Lightweight script for simulating agents in a circle trying to reach their antipodal positions. This script, compared to using lots of RVOAgents shows the real power of the RVO simulator when little other overhead (e.g GameObjects) is present.</para><para>For example with this script, I can simulate 5000 agents at around 50 fps on my laptop (with desired simulation fps = 10 and interpolation, 2 threads) however when using prefabs, only instantiating the 5000 agents takes 10 seconds and it runs at around 5 fps.</para><para>This script will render the agents by generating a square for each agent combined into a single mesh with appropriate UV.</para><para>A few GUI buttons will be drawn by this script with which the user can change the number of agents. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2234">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2233">
+        <label>LightweightRVO</label>
+        <link refid="class_lightweight_r_v_o"/>
+        <childnode refid="2234" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2236">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2237">
+        <label>Pathfinding</label>
+      </node>
+      <node id="2235">
+        <label>LightweightRVO</label>
+        <link refid="class_lightweight_r_v_o"/>
+        <childnode refid="2236" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2237" relation="usage">
+          <edgelabel>sim</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" line="19" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example11_RVO/LightweightRVO.cs" bodystart="19" bodyend="287"/>
+    <listofallmembers>
+      <member refid="class_lightweight_r_v_o_1a95bcb790e75fde09eec7202257e57e27" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>agentCount</name></member>
+      <member refid="class_lightweight_r_v_o_1a528a46d939b955ebe7dd99d04c5ffdec" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>agents</name></member>
+      <member refid="class_lightweight_r_v_o_1aae87304c6923138c031ff9918dd3a997" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>agentTimeHorizon</name></member>
+      <member refid="class_lightweight_r_v_o_1af70f6a0defc8ca2b648b7442274df960" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>colors</name></member>
+      <member refid="class_lightweight_r_v_o_1aa3b088710e0e19c48fe06cff1c2a07bd" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>CreateAgents</name></member>
+      <member refid="class_lightweight_r_v_o_1a3d921a4bbfd9cf05f3b6a9b2e0da6919" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>exampleScale</name></member>
+      <member refid="class_lightweight_r_v_o_1a3a7e2e1da58ff6ddb9eceeb2b46e95bd" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>goals</name></member>
+      <member refid="class_lightweight_r_v_o_1aac311ae722bfb75a8899f6f74420d882" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>HSVToRGB</name></member>
+      <member refid="class_lightweight_r_v_o_1afc4894bb6cdea8cdd3fb808617a6783a" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>maxNeighbours</name></member>
+      <member refid="class_lightweight_r_v_o_1a3c105180f93a78cf3fb0903df278cf3f" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>maxSpeed</name></member>
+      <member refid="class_lightweight_r_v_o_1a7b3d47f25e4b65dc13c94392a3da8076" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>mesh</name></member>
+      <member refid="class_lightweight_r_v_o_1a31f782dc16a301dd9ac9cd9fff6783d4" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>meshColors</name></member>
+      <member refid="class_lightweight_r_v_o_1ac6a0745845c06ab9b18b14e5b1f7d653" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>neighbourDist</name></member>
+      <member refid="class_lightweight_r_v_o_1aaae09db88e3bf152d9ad44de274b7a5c" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>obstacleTimeHorizon</name></member>
+      <member refid="class_lightweight_r_v_o_1aed4a27d48069265ea875624f0b7c61a4" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>OnGUI</name></member>
+      <member refid="class_lightweight_r_v_o_1a5050a760c11da521cd4aee6336f6529f" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>radius</name></member>
+      <member refid="class_lightweight_r_v_o_1a4db38b2afd9d13b66047dc08ce6d11ff" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>renderingOffset</name></member>
+      <member refid="class_lightweight_r_v_o_1adb53d8de533d0e99662dd3923d2ca724" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>RVOExampleType</name></member>
+      <member refid="class_lightweight_r_v_o_1add5f6cfafe4f43c8da15040c62eb4282" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>sim</name></member>
+      <member refid="class_lightweight_r_v_o_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>Start</name></member>
+      <member refid="class_lightweight_r_v_o_1a661a2dd45ef4a81177a8fadb31ea50bb" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>tris</name></member>
+      <member refid="class_lightweight_r_v_o_1a879898dfdef247bcb103e915329c0f94" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>type</name></member>
+      <member refid="class_lightweight_r_v_o_1a25d35f41c703a061902137550d1df526" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>uniformDistance</name></member>
+      <member refid="class_lightweight_r_v_o_1aec0783b5a136e042adcc47bae4fe5291" prot="public" virt="non-virtual"><scope>LightweightRVO</scope><name>Update</name></member>
+      <member refid="class_lightweight_r_v_o_1a2359b2a3027bbd65cb6218cf20498626" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>uv</name></member>
+      <member refid="class_lightweight_r_v_o_1a57cea70d99b3d108e0604fd80335ad49" prot="private" virt="non-virtual"><scope>LightweightRVO</scope><name>verts</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_door_controller" kind="class" prot="public">
+    <compoundname>DoorController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_door_controller_1a024318f4225ee6bedb20b7f865205d34" prot="private" static="no" mutable="no">
+        <type>Bounds</type>
+        <definition>Bounds bounds</definition>
+        <argsstring></argsstring>
+        <name>bounds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_door_controller_1a8c7e45250b1eb6821dd59fb2a9a016d7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool open</definition>
+        <argsstring></argsstring>
+        <name>open</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="7" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_door_controller_1ae54ea1e1b544c8e16c2a8ab39f17032f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int closedtag</definition>
+        <argsstring></argsstring>
+        <name>closedtag</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="10" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_door_controller_1a3231cb0abae034b6f26012dfd440fe40" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int opentag</definition>
+        <argsstring></argsstring>
+        <name>opentag</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_door_controller_1a15ea53b74a65636896aaabbb257248dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SetState</definition>
+        <argsstring>(bool open)</argsstring>
+        <name>SetState</name>
+        <param>
+          <type>bool</type>
+          <declname>open</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="27" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_door_controller_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="14" bodyend="17"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_door_controller_1aed4a27d48069265ea875624f0b7c61a4" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="20" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="20" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_door_controller_1aec0783b5a136e042adcc47bae4fe5291" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="52" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="52" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1880">
+        <label>DoorController</label>
+        <link refid="class_door_controller"/>
+        <childnode refid="1881" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1881">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1882">
+        <label>DoorController</label>
+        <link refid="class_door_controller"/>
+        <childnode refid="1883" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1883">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" line="5" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" bodystart="5" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_door_controller_1a024318f4225ee6bedb20b7f865205d34" prot="private" virt="non-virtual"><scope>DoorController</scope><name>bounds</name></member>
+      <member refid="class_door_controller_1ae54ea1e1b544c8e16c2a8ab39f17032f" prot="public" virt="non-virtual"><scope>DoorController</scope><name>closedtag</name></member>
+      <member refid="class_door_controller_1aed4a27d48069265ea875624f0b7c61a4" prot="private" virt="non-virtual"><scope>DoorController</scope><name>OnGUI</name></member>
+      <member refid="class_door_controller_1a8c7e45250b1eb6821dd59fb2a9a016d7" prot="private" virt="non-virtual"><scope>DoorController</scope><name>open</name></member>
+      <member refid="class_door_controller_1a3231cb0abae034b6f26012dfd440fe40" prot="public" virt="non-virtual"><scope>DoorController</scope><name>opentag</name></member>
+      <member refid="class_door_controller_1a15ea53b74a65636896aaabbb257248dc" prot="public" virt="non-virtual"><scope>DoorController</scope><name>SetState</name></member>
+      <member refid="class_door_controller_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" virt="non-virtual"><scope>DoorController</scope><name>Start</name></member>
+      <member refid="class_door_controller_1aec0783b5a136e042adcc47bae4fe5291" prot="private" virt="non-virtual"><scope>DoorController</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

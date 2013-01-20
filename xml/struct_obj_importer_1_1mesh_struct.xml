@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_obj_importer_1_1mesh_struct" kind="struct" prot="private">
+    <compoundname>ObjImporter::meshStruct</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1ae80b6283d3a8d527d19c4e857448b75d" prot="public" static="no" mutable="no">
+        <type>Vector3[]</type>
+        <definition>Vector3 [] faceData</definition>
+        <argsstring></argsstring>
+        <name>faceData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="26" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a8f0591891744ebb38040488dbadfb08f" prot="public" static="no" mutable="no">
+        <type>int[]</type>
+        <definition>int [] faceUVs</definition>
+        <argsstring></argsstring>
+        <name>faceUVs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="25" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a711a774ade823bc478dd6433263b683c" prot="public" static="no" mutable="no">
+        <type>int[]</type>
+        <definition>int [] faceVerts</definition>
+        <argsstring></argsstring>
+        <name>faceVerts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="24" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a71f006e8d6ac2a5d94354155a0da69f8" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string fileName</definition>
+        <argsstring></argsstring>
+        <name>fileName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="28" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a8ccf841cb59e451791bcb2e1ac4f1edc" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a65c24d6279802dcd97cb33269ea84d43" prot="public" static="no" mutable="no">
+        <type>Vector3[]</type>
+        <definition>Vector3 [] normals</definition>
+        <argsstring></argsstring>
+        <name>normals</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="19" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1afbf5fcf25017d8e3cceb063b6cc5e5e8" prot="public" static="no" mutable="no">
+        <type>int[]</type>
+        <definition>int [] triangles</definition>
+        <argsstring></argsstring>
+        <name>triangles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="23" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a2359b2a3027bbd65cb6218cf20498626" prot="public" static="no" mutable="no">
+        <type>Vector2[]</type>
+        <definition>Vector2 [] uv</definition>
+        <argsstring></argsstring>
+        <name>uv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="20" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1ae28ea5989f84640efe075a62a18a0b14" prot="public" static="no" mutable="no">
+        <type>Vector2[]</type>
+        <definition>Vector2 [] uv1</definition>
+        <argsstring></argsstring>
+        <name>uv1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="21" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1a4330319c78e7ee9f34efbbeae25ceb22" prot="public" static="no" mutable="no">
+        <type>Vector2[]</type>
+        <definition>Vector2 [] uv2</definition>
+        <argsstring></argsstring>
+        <name>uv2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="22" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_obj_importer_1_1mesh_struct_1ac2e0fbef9223747f19ec43dc5f1d00e1" prot="public" static="no" mutable="no">
+        <type>Vector3[]</type>
+        <definition>Vector3 [] vertices</definition>
+        <argsstring></argsstring>
+        <name>vertices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" line="17" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" bodystart="16" bodyend="29"/>
+    <listofallmembers>
+      <member refid="struct_obj_importer_1_1mesh_struct_1ae80b6283d3a8d527d19c4e857448b75d" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>faceData</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a8f0591891744ebb38040488dbadfb08f" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>faceUVs</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a711a774ade823bc478dd6433263b683c" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>faceVerts</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a71f006e8d6ac2a5d94354155a0da69f8" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>fileName</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a8ccf841cb59e451791bcb2e1ac4f1edc" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>name</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a65c24d6279802dcd97cb33269ea84d43" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>normals</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1afbf5fcf25017d8e3cceb063b6cc5e5e8" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>triangles</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a2359b2a3027bbd65cb6218cf20498626" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>uv</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1ae28ea5989f84640efe075a62a18a0b14" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>uv1</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1a4330319c78e7ee9f34efbbeae25ceb22" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>uv2</name></member>
+      <member refid="struct_obj_importer_1_1mesh_struct_1ac2e0fbef9223747f19ec43dc5f1d00e1" prot="public" virt="non-virtual"><scope>ObjImporter::meshStruct</scope><name>vertices</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_unity_reference_helper" kind="class" prot="public">
+    <compoundname>UnityReferenceHelper</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_unity_reference_helper_1a29a064833d998adc3aaf62bf96d5633d" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string guid</definition>
+        <argsstring></argsstring>
+        <name>guid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_unity_reference_helper_1ae4b513cddd594f1c359e4f0a3e79a8c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_unity_reference_helper_1a6c876c2ad48ff2bea4444a9f2f802eff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string GetGUID</definition>
+        <argsstring>()</argsstring>
+        <name>GetGUID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_unity_reference_helper_1a372de693ad40b3f42839c8ec6ac845f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" line="22" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" bodystart="22" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Helper class to keep track of references to GameObjects. </para>    </briefdescription>
+    <detaileddescription>
+<para>Does nothing more than to hold a GUID value. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3033">
+        <label>UnityReferenceHelper</label>
+        <link refid="class_unity_reference_helper"/>
+        <childnode refid="3034" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3034">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3035">
+        <label>UnityReferenceHelper</label>
+        <link refid="class_unity_reference_helper"/>
+        <childnode refid="3036" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3036">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" line="8" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" bodystart="8" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_unity_reference_helper_1ae4b513cddd594f1c359e4f0a3e79a8c6" prot="public" virt="non-virtual"><scope>UnityReferenceHelper</scope><name>Awake</name></member>
+      <member refid="class_unity_reference_helper_1a6c876c2ad48ff2bea4444a9f2f802eff" prot="public" virt="non-virtual"><scope>UnityReferenceHelper</scope><name>GetGUID</name></member>
+      <member refid="class_unity_reference_helper_1a29a064833d998adc3aaf62bf96d5633d" prot="private" virt="non-virtual"><scope>UnityReferenceHelper</scope><name>guid</name></member>
+      <member refid="class_unity_reference_helper_1a372de693ad40b3f42839c8ec6ac845f4" prot="public" virt="non-virtual"><scope>UnityReferenceHelper</scope><name>Reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

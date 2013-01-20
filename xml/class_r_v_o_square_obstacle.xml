@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_r_v_o_square_obstacle" kind="class" prot="public">
+    <compoundname>RVOSquareObstacle</compoundname>
+    <basecompoundref refid="class_r_v_o_obstacle" prot="public" virt="non-virtual">RVOObstacle</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_r_v_o_square_obstacle_1a48083b65ac9a863566dc3e3fff09a5b4" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Height of the obstacle. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="12" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_square_obstacle_1aefb038d0d7ea90c712e0e13848859b74" compoundref="_r_v_o_square_obstacle_8cs" startline="27" endline="36">AreGizmosDirty</referencedby>
+        <referencedby refid="class_r_v_o_square_obstacle_1a7fcaaf3a3467c5d44029d636013f2300" compoundref="_r_v_o_square_obstacle_8cs" startline="38" endline="47">CreateObstacles</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_v_o_square_obstacle_1aef1d073726fc4b857570fbae3230b8dd" prot="public" static="no" mutable="no">
+        <type>Vector2</type>
+        <definition>Vector2 size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <initializer>= Vector3.one</initializer>
+        <briefdescription>
+<para>Size of the square. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="15" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="15" bodyend="-1"/>
+        <referencedby refid="class_r_v_o_square_obstacle_1aefb038d0d7ea90c712e0e13848859b74" compoundref="_r_v_o_square_obstacle_8cs" startline="27" endline="36">AreGizmosDirty</referencedby>
+        <referencedby refid="class_r_v_o_square_obstacle_1a7fcaaf3a3467c5d44029d636013f2300" compoundref="_r_v_o_square_obstacle_8cs" startline="38" endline="47">CreateObstacles</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_r_v_o_square_obstacle_1a78da2913896f06adcc460510947ab859" prot="protected" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override bool</type>
+        <definition>override bool ExecuteInEditor</definition>
+        <argsstring></argsstring>
+        <name>ExecuteInEditor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_r_v_o_square_obstacle_1ad8d04829989b2339f272188a5d6dcabf" prot="protected" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override bool</type>
+        <definition>override bool LocalCoordinates</definition>
+        <argsstring></argsstring>
+        <name>LocalCoordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="19" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_r_v_o_square_obstacle_1acea026020a763b72f3f26e985a3a2b93" prot="protected" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override bool</type>
+        <definition>override bool StaticObstacle</definition>
+        <argsstring></argsstring>
+        <name>StaticObstacle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="17" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_r_v_o_square_obstacle_1aefb038d0d7ea90c712e0e13848859b74" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override bool</type>
+        <definition>override bool AreGizmosDirty</definition>
+        <argsstring>()</argsstring>
+        <name>AreGizmosDirty</name>
+        <reimplements refid="class_r_v_o_obstacle_1a502a4f42c76c66b29f30bab261df4702">AreGizmosDirty</reimplements>
+        <briefdescription>
+<para>Called in the editor. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function should return true if any variables which can change the shape or position of the obstacle has changed since the last call to this function. Take a look at the <ref refid="class_r_v_o_square_obstacle" kindref="compound">RVOSquareObstacle</ref> for an example. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="27" bodyend="36"/>
+        <references refid="class_r_v_o_square_obstacle_1aef1d073726fc4b857570fbae3230b8dd" compoundref="_r_v_o_square_obstacle_8cs" startline="15">size</references>
+        <references refid="class_r_v_o_square_obstacle_1a48083b65ac9a863566dc3e3fff09a5b4" compoundref="_r_v_o_square_obstacle_8cs" startline="12">height</references>
+      </memberdef>
+      <memberdef kind="function" id="class_r_v_o_square_obstacle_1a7fcaaf3a3467c5d44029d636013f2300" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void CreateObstacles</definition>
+        <argsstring>()</argsstring>
+        <name>CreateObstacles</name>
+        <reimplements refid="class_r_v_o_obstacle_1a13b28f7cd0ca99f228497fc4e10e523a">CreateObstacles</reimplements>
+        <briefdescription>
+<para>Create Obstacles. </para>        </briefdescription>
+        <detaileddescription>
+<para>Override this and add logic for creating obstacles. You should not use the simulator&apos;s function calls directly.</para><para><simplesect kind="see"><para><ref refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" kindref="member">AddObstacle</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="39" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="38" bodyend="47"/>
+        <references refid="class_r_v_o_square_obstacle_1aef1d073726fc4b857570fbae3230b8dd" compoundref="_r_v_o_square_obstacle_8cs" startline="15">size</references>
+        <references refid="class_r_v_o_square_obstacle_1a48083b65ac9a863566dc3e3fff09a5b4" compoundref="_r_v_o_square_obstacle_8cs" startline="12">height</references>
+        <references refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" compoundref="_r_v_o_obstacle_8cs" startline="216" endline="247">RVOObstacle.AddObstacle</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Square Obstacle for RVO Simulation. </para>    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2886">
+        <label>RVOObstacle</label>
+        <link refid="class_r_v_o_obstacle"/>
+        <childnode refid="2887" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2885">
+        <label>RVOSquareObstacle</label>
+        <link refid="class_r_v_o_square_obstacle"/>
+        <childnode refid="2886" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2887">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2889">
+        <label>RVOObstacle</label>
+        <link refid="class_r_v_o_obstacle"/>
+        <childnode refid="2890" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2891" relation="usage">
+          <edgelabel>sim</edgelabel>
+        </childnode>
+      </node>
+      <node id="2888">
+        <label>RVOSquareObstacle</label>
+        <link refid="class_r_v_o_square_obstacle"/>
+        <childnode refid="2889" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2890">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2891">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/RVO/RVOSquareObstacle.cs" bodystart="9" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_r_v_o_obstacle_1a062b2d7fc6ebe8e6426e6a67ac4752cf" prot="protected" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>AddObstacle</name></member>
+      <member refid="class_r_v_o_square_obstacle_1aefb038d0d7ea90c712e0e13848859b74" prot="protected" virt="virtual"><scope>RVOSquareObstacle</scope><name>AreGizmosDirty</name></member>
+      <member refid="class_r_v_o_square_obstacle_1a7fcaaf3a3467c5d44029d636013f2300" prot="protected" virt="virtual"><scope>RVOSquareObstacle</scope><name>CreateObstacles</name></member>
+      <member refid="class_r_v_o_square_obstacle_1a78da2913896f06adcc460510947ab859" prot="protected" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>ExecuteInEditor</name></member>
+      <member refid="class_r_v_o_obstacle_1a7d1e27151f3f0d6bf90acd29527a97b0" prot="protected" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>FindSimulator</name></member>
+      <member refid="class_r_v_o_obstacle_1adf4c704f81f9286866725c293999b63f" prot="protected" virt="virtual"><scope>RVOSquareObstacle</scope><name>GetMatrix</name></member>
+      <member refid="class_r_v_o_square_obstacle_1a48083b65ac9a863566dc3e3fff09a5b4" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>height</name></member>
+      <member refid="class_r_v_o_square_obstacle_1ad8d04829989b2339f272188a5d6dcabf" prot="protected" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>LocalCoordinates</name></member>
+      <member refid="class_r_v_o_obstacle_1accf6b4b41c52c247740485d2822a31d2" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>obstacleMode</name></member>
+      <member refid="class_r_v_o_obstacle_1aaa1778f605b7c712b87275cc44deedbd" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>ObstacleVertexWinding</name></member>
+      <member refid="class_r_v_o_obstacle_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>OnDisable</name></member>
+      <member refid="class_r_v_o_obstacle_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_r_v_o_obstacle_1aee679185db3395453fc788027bbba782" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_r_v_o_obstacle_1ae7e5103e242d1fbf4a03afe96d3947ef" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>OnDrawGizmosSelected</name></member>
+      <member refid="class_r_v_o_obstacle_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>OnEnable</name></member>
+      <member refid="class_r_v_o_obstacle_1add5f6cfafe4f43c8da15040c62eb4282" prot="protected" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>sim</name></member>
+      <member refid="class_r_v_o_square_obstacle_1aef1d073726fc4b857570fbae3230b8dd" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>size</name></member>
+      <member refid="class_r_v_o_obstacle_1a07aaf1227e4d645f15e0a964f54ef291" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>Start</name></member>
+      <member refid="class_r_v_o_square_obstacle_1acea026020a763b72f3f26e985a3a2b93" prot="protected" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>StaticObstacle</name></member>
+      <member refid="class_r_v_o_obstacle_1aec0783b5a136e042adcc47bae4fe5291" prot="public" virt="non-virtual"><scope>RVOSquareObstacle</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

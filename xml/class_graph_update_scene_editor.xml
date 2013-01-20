@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_graph_update_scene_editor" kind="class" prot="public">
+    <compoundname>GraphUpdateSceneEditor</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Editor</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph_update_scene_editor_1a518a171ab1e2a904ea6c1b6303d7c695" prot="private" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float pointGizmosRadius</definition>
+        <argsstring></argsstring>
+        <name>pointGizmosRadius</name>
+        <initializer>= 0.09F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="97" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_editor_1a8a0d22183fd6a5e18122018ce35c1fa4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int selectedPoint</definition>
+        <argsstring></argsstring>
+        <name>selectedPoint</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="95" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph_update_scene_editor_1abbf98488320400d5db3665b443ace6f0" prot="private" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color PointColor</definition>
+        <argsstring></argsstring>
+        <name>PointColor</name>
+        <initializer>= new Color (1,0.36F,0,0.6F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="98" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_update_scene_editor_1a7991500b3ea8294dd4f85d31e6d186bd" prot="private" static="yes" mutable="no">
+        <type>Color</type>
+        <definition>Color PointSelectedColor</definition>
+        <argsstring></argsstring>
+        <name>PointSelectedColor</name>
+        <initializer>= new Color (1,0.24F,0,1.0F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph_update_scene_editor_1a9292d21427a3a3c9c6727380f50ec25a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void OnInspectorGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnInspectorGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="9" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="9" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_update_scene_editor_1a242c48d349c3787aa4c86be0a80b1ee8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnSceneGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnSceneGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="101" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="101" bodyend="236"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2032">
+        <label>Editor</label>
+      </node>
+      <node id="2031">
+        <label>GraphUpdateSceneEditor</label>
+        <link refid="class_graph_update_scene_editor"/>
+        <childnode refid="2032" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2034">
+        <label>Editor</label>
+      </node>
+      <node id="2033">
+        <label>GraphUpdateSceneEditor</label>
+        <link refid="class_graph_update_scene_editor"/>
+        <childnode refid="2034" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" line="7" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" bodystart="7" bodyend="237"/>
+    <listofallmembers>
+      <member refid="class_graph_update_scene_editor_1a9292d21427a3a3c9c6727380f50ec25a" prot="public" virt="non-virtual"><scope>GraphUpdateSceneEditor</scope><name>OnInspectorGUI</name></member>
+      <member refid="class_graph_update_scene_editor_1a242c48d349c3787aa4c86be0a80b1ee8" prot="public" virt="non-virtual"><scope>GraphUpdateSceneEditor</scope><name>OnSceneGUI</name></member>
+      <member refid="class_graph_update_scene_editor_1abbf98488320400d5db3665b443ace6f0" prot="private" virt="non-virtual"><scope>GraphUpdateSceneEditor</scope><name>PointColor</name></member>
+      <member refid="class_graph_update_scene_editor_1a518a171ab1e2a904ea6c1b6303d7c695" prot="private" virt="non-virtual"><scope>GraphUpdateSceneEditor</scope><name>pointGizmosRadius</name></member>
+      <member refid="class_graph_update_scene_editor_1a7991500b3ea8294dd4f85d31e6d186bd" prot="private" virt="non-virtual"><scope>GraphUpdateSceneEditor</scope><name>PointSelectedColor</name></member>
+      <member refid="class_graph_update_scene_editor_1a8a0d22183fd6a5e18122018ce35c1fa4" prot="private" virt="non-virtual"><scope>GraphUpdateSceneEditor</scope><name>selectedPoint</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

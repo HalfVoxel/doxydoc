@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_astar_splines" kind="class" prot="public">
+    <compoundname>Pathfinding::AstarSplines</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_splines_1acfeb22aec6ad0bfe78463f49c675fd93" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 CatmullRom</definition>
+        <argsstring>(Vector3 previous, Vector3 start, Vector3 end, Vector3 next, float elapsedTime)</argsstring>
+        <name>CatmullRom</name>
+        <param>
+          <type>Vector3</type>
+          <declname>previous</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>next</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>elapsedTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="14" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_splines_1a8c433305a3d1dc7754ce43fe52b1c78c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 CatmullRomOLD</definition>
+        <argsstring>(Vector3 previous, Vector3 start, Vector3 end, Vector3 next, float elapsedTime)</argsstring>
+        <name>CatmullRomOLD</name>
+        <param>
+          <type>Vector3</type>
+          <declname>previous</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>next</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>elapsedTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="61" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="61" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains various spline functions. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="13" bodyend="86"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_astar_splines_1acfeb22aec6ad0bfe78463f49c675fd93" prot="public" virt="non-virtual"><scope>Pathfinding::AstarSplines</scope><name>CatmullRom</name></member>
+      <member refid="class_pathfinding_1_1_astar_splines_1a8c433305a3d1dc7754ce43fe52b1c78c" prot="public" virt="non-virtual"><scope>Pathfinding::AstarSplines</scope><name>CatmullRomOLD</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

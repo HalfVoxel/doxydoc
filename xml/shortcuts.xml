@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="shortcuts" kind="page">
+    <compoundname>shortcuts</compoundname>
+    <title>Keyboard Shortcuts</title>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem>
+<para><bold>Scan Graphs</bold> - alt+cmd+s on Mac - alt+ctrl+s on Windows (does not always work for some reason) </para></listitem>
+<listitem>
+<para><bold>Add Link</bold> - Hold shift in scene view while editing links </para></listitem>
+<listitem>
+<para><bold>Delete Link</bold> - Backspace while a link is selected </para></listitem>
+</itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

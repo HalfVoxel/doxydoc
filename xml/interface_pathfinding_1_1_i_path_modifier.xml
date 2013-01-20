@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="interface_pathfinding_1_1_i_path_modifier" kind="interface" prot="public">
+    <compoundname>Pathfinding::IPathModifier</compoundname>
+    <derivedcompoundref refid="class_pathfinding_1_1_modifier" prot="public" virt="non-virtual">Modifier</derivedcompoundref>
+    <derivedcompoundref refid="class_pathfinding_1_1_mono_modifier" prot="public" virt="non-virtual">MonoModifier</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_pathfinding_1_1_i_path_modifier_1a8d8741626025f5aeffa75dc8900cdb1e" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>ModifierData input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="64" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_pathfinding_1_1_i_path_modifier_1aae539977a4caef5659493bc4f787165e" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>ModifierData output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="65" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_pathfinding_1_1_i_path_modifier_1a4450b0bad265ba3bd24e994f70aec802" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int Priority</definition>
+        <argsstring></argsstring>
+        <name>Priority</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_pathfinding_1_1_i_path_modifier_1a8286eb2d8f4f1c815f0f9dd5d1afac29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Apply</definition>
+        <argsstring>(Path p, ModifierData source)</argsstring>
+        <name>Apply</name>
+        <reimplementedby refid="class_advanced_smooth_1a917f8611394bbb5da9cb835e534f8e70">Apply</reimplementedby>
+        <reimplementedby refid="class_funnel_modifier_1a917f8611394bbb5da9cb835e534f8e70">Apply</reimplementedby>
+        <reimplementedby refid="class_alternative_path_1a917f8611394bbb5da9cb835e534f8e70">Apply</reimplementedby>
+        <reimplementedby refid="class_raycast_modifier_1a917f8611394bbb5da9cb835e534f8e70">Apply</reimplementedby>
+        <reimplementedby refid="class_start_end_modifier_1a765c6507b18e487898c7c5478b93b718">Apply</reimplementedby>
+        <reimplementedby refid="class_simple_smooth_modifier_1a917f8611394bbb5da9cb835e534f8e70">Apply</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_modifier_1a37a16f17b48e8ac67c34478b7825a220">Apply</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_mono_modifier_1a37a16f17b48e8ac67c34478b7825a220">Apply</reimplementedby>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_pathfinding_1_1_i_path_modifier_1a2f801fa4ec6d2b9dbe32b5ffca22d37a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ApplyOriginal</definition>
+        <argsstring>(Path p)</argsstring>
+        <name>ApplyOriginal</name>
+        <reimplementedby refid="class_pathfinding_1_1_modifier_1aa8c7b15aa0548cf6e94cf043b3bc7edd">ApplyOriginal</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_mono_modifier_1aa8c7b15aa0548cf6e94cf043b3bc7edd">ApplyOriginal</reimplementedby>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_pathfinding_1_1_i_path_modifier_1a4a5a27418af338d6b323e0b3173fff28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PreProcess</definition>
+        <argsstring>(Path p)</argsstring>
+        <name>PreProcess</name>
+        <reimplementedby refid="class_pathfinding_1_1_modifier_1a1b989b9fa84a51baa6a06e766660288c">PreProcess</reimplementedby>
+        <reimplementedby refid="class_pathfinding_1_1_mono_modifier_1a1b989b9fa84a51baa6a06e766660288c">PreProcess</reimplementedby>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base for all path modifiers. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_mono_modifier" kindref="compound">MonoModifier</ref> <ref refid="class_pathfinding_1_1_modifier" kindref="compound">Modifier</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2201">
+        <label>MonoModifier</label>
+        <link refid="class_pathfinding_1_1_mono_modifier"/>
+        <childnode refid="2198" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2200">
+        <label>StartEndModifier</label>
+        <link refid="class_start_end_modifier"/>
+        <childnode refid="2199" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2204">
+        <label>FunnelModifier</label>
+        <link refid="class_funnel_modifier"/>
+        <childnode refid="2201" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2198">
+        <label>IPathModifier</label>
+        <link refid="interface_pathfinding_1_1_i_path_modifier"/>
+      </node>
+      <node id="2199">
+        <label>Modifier</label>
+        <link refid="class_pathfinding_1_1_modifier"/>
+        <childnode refid="2198" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2205">
+        <label>RaycastModifier</label>
+        <link refid="class_raycast_modifier"/>
+        <childnode refid="2201" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2206">
+        <label>SimpleSmoothModifier</label>
+        <link refid="class_simple_smooth_modifier"/>
+        <childnode refid="2201" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2202">
+        <label>AdvancedSmooth</label>
+        <link refid="class_advanced_smooth"/>
+        <childnode refid="2201" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2203">
+        <label>AlternativePath</label>
+        <link refid="class_alternative_path"/>
+        <childnode refid="2201" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" line="58" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/Modifiers.cs" bodystart="58" bodyend="70"/>
+    <listofallmembers>
+      <member refid="interface_pathfinding_1_1_i_path_modifier_1a8286eb2d8f4f1c815f0f9dd5d1afac29" prot="public" virt="non-virtual"><scope>Pathfinding::IPathModifier</scope><name>Apply</name></member>
+      <member refid="interface_pathfinding_1_1_i_path_modifier_1a2f801fa4ec6d2b9dbe32b5ffca22d37a" prot="public" virt="non-virtual"><scope>Pathfinding::IPathModifier</scope><name>ApplyOriginal</name></member>
+      <member refid="interface_pathfinding_1_1_i_path_modifier_1a8d8741626025f5aeffa75dc8900cdb1e" prot="public" virt="non-virtual"><scope>Pathfinding::IPathModifier</scope><name>input</name></member>
+      <member refid="interface_pathfinding_1_1_i_path_modifier_1aae539977a4caef5659493bc4f787165e" prot="public" virt="non-virtual"><scope>Pathfinding::IPathModifier</scope><name>output</name></member>
+      <member refid="interface_pathfinding_1_1_i_path_modifier_1a4a5a27418af338d6b323e0b3173fff28" prot="public" virt="non-virtual"><scope>Pathfinding::IPathModifier</scope><name>PreProcess</name></member>
+      <member refid="interface_pathfinding_1_1_i_path_modifier_1a4450b0bad265ba3bd24e994f70aec802" prot="public" virt="non-virtual"><scope>Pathfinding::IPathModifier</scope><name>Priority</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

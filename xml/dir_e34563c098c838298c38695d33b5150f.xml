@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_e34563c098c838298c38695d33b5150f" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels</compoundname>
+    <innerfile refid="_debug_utility_8cs">DebugUtility.cs</innerfile>
+    <innerfile refid="_math_utilities_8cs">MathUtilities.cs</innerfile>
+    <innerfile refid="_voxelize_8cs">Voxelize.cs</innerfile>
+    <innerfile refid="_voxelize_classes_8cs">VoxelizeClasses.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/Voxels/"/>
+  </compounddef>
+</doxygen>

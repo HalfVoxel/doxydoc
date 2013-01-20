@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_editor_utilities" kind="class" prot="public">
+    <compoundname>Pathfinding::EditorUtilities</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_editor_utilities_1af0bae6bc48f5a8afadff7e4b3b160f50" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string GetMd5Hash</definition>
+        <argsstring>(MD5 md5Hash, string input)</argsstring>
+        <name>GetMd5Hash</name>
+        <param>
+          <type>MD5</type>
+          <declname>md5Hash</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/EditorUtilities.cs" line="10" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/EditorUtilities.cs" bodystart="9" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/EditorUtilities.cs" line="7" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/EditorUtilities.cs" bodystart="7" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_editor_utilities_1af0bae6bc48f5a8afadff7e4b3b160f50" prot="public" virt="non-virtual"><scope>Pathfinding::EditorUtilities</scope><name>GetMd5Hash</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_navmesh_controller" kind="class" prot="public">
+    <compoundname>NavmeshController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <briefdescription>
+<para>CharacterController helper for use on navmeshes. </para>    </briefdescription>
+    <detaileddescription>
+<para>This character controller helper will clamp the desired movement to the navmesh before moving.<linebreak/>
+ This results in that this character will not move out from the navmesh by it&apos;s own force by more than very small distances.<linebreak/>
+ It can be used as a regular CharacterController, but the only move command you can use currently is SimpleMove. <simplesect kind="note"><para>A CharacterController component needs to be attached to the same GameObject for this script to work </para><simplesectsep/><para>It does only work on Navmesh based graphs (NavMeshGraph, RecastGraph) </para><simplesectsep/><para>It does not work very well with links in the graphs </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2392">
+        <label>NavmeshController</label>
+        <link refid="class_navmesh_controller"/>
+        <childnode refid="2393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2393">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2394">
+        <label>NavmeshController</label>
+        <link refid="class_navmesh_controller"/>
+        <childnode refid="2395" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2395">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AI/NavmeshController.cs" line="15" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AI/NavmeshController.cs" bodystart="15" bodyend="235"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

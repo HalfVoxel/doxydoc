@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="iphone" kind="page">
+    <compoundname>iphone</compoundname>
+    <title>Deploying for iphone</title>
+    <detaileddescription>
+<para>This page is about working with the A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project when deploying for the iPhone platform.</para><sect1 id="iphone_1requirements">
+<title>How to get it working</title>
+<para>The A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project works for the most part out of the box even for iPhone. But if you are using stripping (Assembly or bytecode) you will have to locate the link.xml file, which you can find at Assets/AstarPathfindingProject/link.xml and place it at Assets/link.xml. This file will instruct the AOT (ahead-of-time) compiler not to strip out the classes mentioned in the file. If you do not do this, you might get errors in some cases, for example when attempting to use caching.</para><para>Using the micro mscorlib is not supported since that strips out too much of .Net.</para><para>If you are using the Fast But No Exceptions option, you will need to enable the ASTAR_FAST_NO_EXCEPTIONS define since some reflection code cannot be used then. If you are using the pro version, simply open the Optimizations tab in the A* Inspector, enable ASTAR_FAST_NO_EXCEPTIONS and click Apply. If you are using the free version, open the AstarData.cs script (in the Core folder) and add this line at the top:<linebreak/>
+ <programlisting><codeline><highlight class="preprocessor">#define<sp/>ASTAR_FAST_NO_EXCEPTIONS</highlight></codeline>
+</programlisting> This will hard-code references to the built-in graph types. If you have written any custom graph types you will have to add them to the hard-coded list defined in the function FindGraphTypes in AstarData.cs.</para></sect1>
+<sect1 id="iphone_1optimize">
+<title>Optimize for the iPhone</title>
+<para>The iPhone, and most mobile devices have one or two cores (latest iPhone as of summer 2012 has two). It has also got quite limited memory available. If you have the Pro version of the A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> Project, then you can go to optimizations and check the ASTAR_SINGLE_THREAD_OPTIMIZE (or &quot;Single Core Optimize&quot; which it was called before 3.2) checkbox, then click Apply. If you have the free version, this is hardcoded into the system.</para><para>The above change will restrict the script to only use one thread for pathfinding, by doing so, it can also apply some optimizations which reduce memory usage a bit.</para><para>Caching Startup is also a good idea when deploying for the iPhone since that will reduce startup times, especially if using Recast graphs. </para></sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

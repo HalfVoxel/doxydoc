@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_smooth_modifier_editor" kind="class" prot="public">
+    <compoundname>SmoothModifierEditor</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Editor</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_smooth_modifier_editor_1a9292d21427a3a3c9c6727380f50ec25a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void OnInspectorGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnInspectorGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs" line="8" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs" bodystart="8" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2984">
+        <label>Editor</label>
+      </node>
+      <node id="2983">
+        <label>SmoothModifierEditor</label>
+        <link refid="class_smooth_modifier_editor"/>
+        <childnode refid="2984" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2986">
+        <label>Editor</label>
+      </node>
+      <node id="2985">
+        <label>SmoothModifierEditor</label>
+        <link refid="class_smooth_modifier_editor"/>
+        <childnode refid="2986" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs" line="6" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs" bodystart="6" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_smooth_modifier_editor_1a9292d21427a3a3c9c6727380f50ec25a" prot="public" virt="non-virtual"><scope>SmoothModifierEditor</scope><name>OnInspectorGUI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

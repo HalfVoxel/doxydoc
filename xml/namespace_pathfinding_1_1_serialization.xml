@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="namespace_pathfinding_1_1_serialization" kind="namespace">
+    <compoundname>Pathfinding::Serialization</compoundname>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_astar_serializer" prot="public">Pathfinding::Serialization::AstarSerializer</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_bounds_converter" prot="public">Pathfinding::Serialization::BoundsConverter</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_graph_meta" prot="public">Pathfinding::Serialization::GraphMeta</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_guid_converter" prot="public">Pathfinding::Serialization::GuidConverter</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_layer_mask_converter" prot="public">Pathfinding::Serialization::LayerMaskConverter</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_matrix_converter" prot="public">Pathfinding::Serialization::MatrixConverter</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_serialize_settings" prot="public">Pathfinding::Serialization::SerializeSettings</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_unity_object_converter" prot="public">Pathfinding::Serialization::UnityObjectConverter</innerclass>
+    <innerclass refid="class_pathfinding_1_1_serialization_1_1_vector_converter" prot="public">Pathfinding::Serialization::VectorConverter</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" line="8"/>
+  </compounddef>
+</doxygen>

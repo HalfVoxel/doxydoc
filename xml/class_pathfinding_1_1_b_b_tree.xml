@@ -1,0 +1,546 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_b_b_tree" kind="class" prot="public">
+    <compoundname>Pathfinding::BBTree</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_b_b_tree_1a13ad04987c5ba64aa3bb353de00dd3ba" prot="public" static="no" mutable="no">
+        <type><ref refid="interface_pathfinding_1_1_i_navmesh_holder" kindref="compound">INavmeshHolder</ref></type>
+        <definition>INavmeshHolder graph</definition>
+        <argsstring></argsstring>
+        <name>graph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="21" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_b_b_tree_1af8f4be25e429e9b685ef257ccebe9306" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+        <definition>BBTreeBox root</definition>
+        <argsstring></argsstring>
+        <name>root</name>
+        <briefdescription>
+<para>Holds an Axis Aligned Bounding Box Tree used for faster node lookups. </para>        </briefdescription>
+        <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="20" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="20" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_b_b_tree_1a772e8c8d63171ff5a74c71e3053fbe58" compoundref="_b_b_tree_8cs" startline="45" endline="68">BBTree.QueryCircle</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a02c0492b7942af64844500762f82d632" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>BBTree</definition>
+        <argsstring>(INavmeshHolder graph)</argsstring>
+        <name>BBTree</name>
+        <param>
+          <type><ref refid="interface_pathfinding_1_1_i_navmesh_holder" kindref="compound">INavmeshHolder</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="23" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a03c5e646565dfbb698e30c5c27c2fc06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rect</type>
+        <definition>Rect ExpandToContain</definition>
+        <argsstring>(Rect r, Rect r2)</argsstring>
+        <name>ExpandToContain</name>
+        <param>
+          <type>Rect</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>Rect</type>
+          <declname>r2</declname>
+        </param>
+        <briefdescription>
+<para>Returns a new rect which contains both <emphasis>r</emphasis> and <emphasis>r2</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="340" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="340" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a6aa7e05dcb8e3b5af5ef496200b9d6cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float ExpansionRequired</definition>
+        <argsstring>(Rect r, Rect r2)</argsstring>
+        <name>ExpansionRequired</name>
+        <param>
+          <type>Rect</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>Rect</type>
+          <declname>r2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the difference in area between <emphasis>r</emphasis> and <emphasis>r</emphasis> expanded to contain <emphasis>r2</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="330" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="330" bodyend="337"/>
+        <references refid="class_pathfinding_1_1_b_b_tree_1a6177461a90edac06f26731efb0974a24" compoundref="_b_b_tree_8cs" startline="350" endline="352">BBTree.RectArea</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1adf8c7723a2848b3c6aadc52d23c2609a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Insert</definition>
+        <argsstring>(MeshNode node)</argsstring>
+        <name>Insert</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_mesh_node" kindref="compound">MeshNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="162" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="162" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a83ccf5231f8058b5bf944896f2c8ada5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NodeIntersectsCircle</definition>
+        <argsstring>(MeshNode node, Vector3 p, float radius)</argsstring>
+        <name>NodeIntersectsCircle</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_mesh_node" kindref="compound">MeshNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="244" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="244" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmos</definition>
+        <argsstring>()</argsstring>
+        <name>OnDrawGizmos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="202" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="202" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a0f4f74536ccfb44b5a17666e8ac88799" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnDrawGizmos</definition>
+        <argsstring>(BBTreeBox box)</argsstring>
+        <name>OnDrawGizmos</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+          <declname>box</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="207" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="207" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1aa37316b4f8573fdc0e18f3346c407f0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_n_n_info" kindref="compound">NNInfo</ref></type>
+        <definition>NNInfo Query</definition>
+        <argsstring>(Vector3 p, NNConstraint constraint)</argsstring>
+        <name>Query</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">NNConstraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="27" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a772e8c8d63171ff5a74c71e3053fbe58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_n_n_info" kindref="compound">NNInfo</ref></type>
+        <definition>NNInfo QueryCircle</definition>
+        <argsstring>(Vector3 p, float radius, NNConstraint constraint)</argsstring>
+        <name>QueryCircle</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">NNConstraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+<para>Queries the tree for the best node, searching within a circle around <emphasis>p</emphasis> with the specified radius. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="45" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="45" bodyend="68"/>
+        <references refid="class_pathfinding_1_1_b_b_tree_1af8f4be25e429e9b685ef257ccebe9306" compoundref="_b_b_tree_8cs" startline="20">BBTree.root</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a6177461a90edac06f26731efb0974a24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float RectArea</definition>
+        <argsstring>(Rect r)</argsstring>
+        <name>RectArea</name>
+        <param>
+          <type>Rect</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Returns the area of a rect. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="350" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="350" bodyend="352"/>
+        <referencedby refid="class_pathfinding_1_1_b_b_tree_1a6aa7e05dcb8e3b5af5ef496200b9d6cc" compoundref="_b_b_tree_8cs" startline="330" endline="337">BBTree.ExpansionRequired</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a47fcee86b31181ee3112b3c3520b116c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RectContains</definition>
+        <argsstring>(Rect r, Vector3 p)</argsstring>
+        <name>RectContains</name>
+        <param>
+          <type>Rect</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns if a rect contains the 3D point in XZ space. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="279" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="279" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a810f58f04af138537b0be49e03e38d7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RectIntersectsCircle</definition>
+        <argsstring>(Rect r, Vector3 p, float radius)</argsstring>
+        <name>RectIntersectsCircle</name>
+        <param>
+          <type>Rect</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="266" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="266" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a0787a3cc1a89ea04798826c2a0d7cc62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SearchBox</definition>
+        <argsstring>(BBTreeBox box, Vector3 p, NNConstraint constraint, ref NNInfo nnInfo)</argsstring>
+        <name>SearchBox</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">NNConstraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type>ref <ref refid="struct_pathfinding_1_1_n_n_info" kindref="compound">NNInfo</ref></type>
+          <declname>nnInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="129" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="129" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1ac7f84698fb543b49c860941dcb3773ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SearchBoxCircle</definition>
+        <argsstring>(BBTreeBox box, Vector3 p, float radius, NNConstraint constraint, ref NNInfo nnInfo)</argsstring>
+        <name>SearchBoxCircle</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">NNConstraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type>ref <ref refid="struct_pathfinding_1_1_n_n_info" kindref="compound">NNInfo</ref></type>
+          <declname>nnInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="70" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="70" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1abe1b592e736fa073b3bed87416f63a80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestIntersections</definition>
+        <argsstring>(Vector3 p, float radius)</argsstring>
+        <name>TestIntersections</name>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="224" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="224" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1a471da855fc6aa923f50d922cceeadc84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestIntersections</definition>
+        <argsstring>(BBTreeBox box, Vector3 p, float radius)</argsstring>
+        <name>TestIntersections</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_b_b_tree_box" kindref="compound">BBTreeBox</ref></type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="232" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="232" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1af2a2e649c747b30bd3501255d81f6136" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>new void</type>
+        <definition>new void ToString</definition>
+        <argsstring>()</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="354" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="354" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1ae3307438decf6897155a6628607db2bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool XIntersectsCircle</definition>
+        <argsstring>(float x1, float x2, float zpos, Vector3 circle, float radius)</argsstring>
+        <name>XIntersectsCircle</name>
+        <param>
+          <type>float</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>zpos</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>circle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="306" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="306" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_b_b_tree_1aad27543a8f1a67feeb66383928d9f93a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ZIntersectsCircle</definition>
+        <argsstring>(float z1, float z2, float xpos, Vector3 circle, float radius)</argsstring>
+        <name>ZIntersectsCircle</name>
+        <param>
+          <type>float</type>
+          <declname>z1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>xpos</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>circle</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="283" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="283" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Axis Aligned Bounding Box Tree. </para>    </briefdescription>
+    <detaileddescription>
+<para>Holds a bounding box tree of triangles.<linebreak/>
+ <bold>Performance:</bold> Insertion - Practically O(1) - About 0.003 ms <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1821">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="1822" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="1821" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="1819">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="1820" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="1821" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="1823">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="1820">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="1822">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="1823" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1822" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" line="16" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Utilities/BBTree.cs" bodystart="15" bodyend="365"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a02c0492b7942af64844500762f82d632" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>BBTree</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a03c5e646565dfbb698e30c5c27c2fc06" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>ExpandToContain</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a6aa7e05dcb8e3b5af5ef496200b9d6cc" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>ExpansionRequired</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a13ad04987c5ba64aa3bb353de00dd3ba" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>graph</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1adf8c7723a2848b3c6aadc52d23c2609a" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>Insert</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a83ccf5231f8058b5bf944896f2c8ada5" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>NodeIntersectsCircle</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1ac51c75fd06c6783b6553902c86ac9d71" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a0f4f74536ccfb44b5a17666e8ac88799" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1aa37316b4f8573fdc0e18f3346c407f0f" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>Query</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a772e8c8d63171ff5a74c71e3053fbe58" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>QueryCircle</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a6177461a90edac06f26731efb0974a24" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>RectArea</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a47fcee86b31181ee3112b3c3520b116c" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>RectContains</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a810f58f04af138537b0be49e03e38d7b" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>RectIntersectsCircle</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1af8f4be25e429e9b685ef257ccebe9306" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>root</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a0787a3cc1a89ea04798826c2a0d7cc62" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>SearchBox</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1ac7f84698fb543b49c860941dcb3773ee" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>SearchBoxCircle</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1abe1b592e736fa073b3bed87416f63a80" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>TestIntersections</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1a471da855fc6aa923f50d922cceeadc84" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>TestIntersections</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1af2a2e649c747b30bd3501255d81f6136" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>ToString</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1ae3307438decf6897155a6628607db2bc" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>XIntersectsCircle</name></member>
+      <member refid="class_pathfinding_1_1_b_b_tree_1aad27543a8f1a67feeb66383928d9f93a" prot="public" virt="non-virtual"><scope>Pathfinding::BBTree</scope><name>ZIntersectsCircle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

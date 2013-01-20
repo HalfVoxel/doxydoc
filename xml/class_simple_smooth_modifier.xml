@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_simple_smooth_modifier" kind="class" prot="public">
+    <compoundname>SimpleSmoothModifier</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_mono_modifier" prot="public" virt="non-virtual">MonoModifier</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_simple_smooth_modifier_1aff4876b3d842424c8cbc79abf3f3166f" prot="public" static="no">
+        <name>SmoothType</name>
+        <enumvalue id="class_simple_smooth_modifier_1aff4876b3d842424c8cbc79abf3f3166fa1fbb1e3943c2c6c560247ac8f9289780" prot="public">
+          <name>Simple</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_simple_smooth_modifier_1aff4876b3d842424c8cbc79abf3f3166fa31aa08a905ffdb74542a88cb7320c69d" prot="public">
+          <name>Bezier</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_simple_smooth_modifier_1aff4876b3d842424c8cbc79abf3f3166fad4b4b07528e9577a048863b45cc241a4" prot="public">
+          <name>OffsetSimple</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_simple_smooth_modifier_1aff4876b3d842424c8cbc79abf3f3166fadcecf0bf9b139f84d30465032be8dae3" prot="public">
+          <name>CurvedNonuniform</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="82" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="82" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_simple_smooth_modifier_1a7fa21bd10c16cb75ca714d5a24eb3f81" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override <ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>override ModifierData input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="43" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_simple_smooth_modifier_1ad6b5391792318646e0bc50fe6dab206e" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>override <ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+        <definition>override ModifierData output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="53" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a73d0fce889a3d79f226b208fb0e0453c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float bezierTangentLength</definition>
+        <argsstring></argsstring>
+        <name>bezierTangentLength</name>
+        <initializer>= 0.4F</initializer>
+        <briefdescription>
+<para>Length factor of the bezier curves&apos; tangents&apos;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="77" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a323c112c11500270be91b7cb353826bd" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float factor</definition>
+        <argsstring></argsstring>
+        <name>factor</name>
+        <initializer>= 0.1F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="118" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a1d10e252e778731e59f0f71afd7e727e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int iterations</definition>
+        <argsstring></argsstring>
+        <name>iterations</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Number of times to apply smoothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a37144e0d96324f65a77c836ed3d0265a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxSegmentLength</definition>
+        <argsstring></argsstring>
+        <name>maxSegmentLength</name>
+        <initializer>= 2F</initializer>
+        <briefdescription>
+<para>The length of the segments in the smoothed path when using <ref refid="class_simple_smooth_modifier_1a51081f69b5201d301b573c328dc3ab2d" kindref="member">uniformLength</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>A high value yields rough paths and low value yields very smooth paths, but is slower </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="74" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a3e60b3c561be982d7c8e23f14c01fd5b" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <initializer>= 0.2F</initializer>
+        <briefdescription>
+<para>Offset to apply in each smoothing iteration when using Offset Simple. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_simple_smooth_modifier_1acbe858640b2915f374ba329cd015d636" kindref="member">smoothType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="80" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1acbe858640b2915f374ba329cd015d636" prot="public" static="no" mutable="no">
+        <type>SmoothType</type>
+        <definition>SmoothType smoothType</definition>
+        <argsstring></argsstring>
+        <name>smoothType</name>
+        <initializer>= SmoothType.Simple</initializer>
+        <briefdescription>
+<para>Type of smoothing to use. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="56" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="56" bodyend="-1"/>
+        <referencedby refid="class_simple_smooth_modifier_1a917f8611394bbb5da9cb835e534f8e70" compoundref="_simple_smooth_modifier_8cs" startline="89" endline="116">Apply</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a2c1c8f9331368f38bfc3eaee260b59a6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float strength</definition>
+        <argsstring></argsstring>
+        <name>strength</name>
+        <initializer>= 0.5F</initializer>
+        <briefdescription>
+<para>The strength of the smoothing. </para>        </briefdescription>
+        <detaileddescription>
+<para>A value from 0 to 1 is recommended, but values larger than 1 works too. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="65" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a81524b053be5dc3b6d0a187aea6c0ac4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int subdivisions</definition>
+        <argsstring></argsstring>
+        <name>subdivisions</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Number of times to subdivide when not using a uniform length. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="59" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simple_smooth_modifier_1a51081f69b5201d301b573c328dc3ab2d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool uniformLength</definition>
+        <argsstring></argsstring>
+        <name>uniformLength</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Toggle to divide all lines in equal length segments. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_simple_smooth_modifier_1a37144e0d96324f65a77c836ed3d0265a" kindref="member">maxSegmentLength</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="70" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_simple_smooth_modifier_1a917f8611394bbb5da9cb835e534f8e70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Apply</definition>
+        <argsstring>(Path p, ModifierData source)</argsstring>
+        <name>Apply</name>
+        <reimplements refid="class_pathfinding_1_1_mono_modifier_1a37a16f17b48e8ac67c34478b7825a220">Apply</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_path" kindref="compound">Path</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_pathfinding_1ae82dbd8faf6cfefaa3e3008c186a20e5" kindref="member">ModifierData</ref></type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Main Post-Processing function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="89" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="89" bodyend="116"/>
+        <references refid="class_pathfinding_1_1_path_1a606d877ec5788bbbf53311a2dff80ffd" compoundref="_path_8cs" startline="59">Path.vectorPath</references>
+        <references refid="class_simple_smooth_modifier_1acbe858640b2915f374ba329cd015d636" compoundref="_simple_smooth_modifier_8cs" startline="56">smoothType</references>
+      </memberdef>
+      <memberdef kind="function" id="class_simple_smooth_modifier_1ae1b3ecee92432791bfddb2d74143b708" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; Vector3 &gt;</type>
+        <definition>List&lt;Vector3&gt; CurvedNonuniform</definition>
+        <argsstring>(List&lt; Vector3 &gt; path)</argsstring>
+        <name>CurvedNonuniform</name>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="120" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="120" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_simple_smooth_modifier_1a61133dbd6d7fab66d76417c06659bc7d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; Vector3 &gt;</type>
+        <definition>List&lt;Vector3&gt; SmoothBezier</definition>
+        <argsstring>(List&lt; Vector3 &gt; path)</argsstring>
+        <name>SmoothBezier</name>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="386" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="386" bodyend="427"/>
+      </memberdef>
+      <memberdef kind="function" id="class_simple_smooth_modifier_1a15deb1f4a2b51d5d684a9759133189f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; Vector3 &gt;</type>
+        <definition>List&lt;Vector3&gt; SmoothOffsetSimple</definition>
+        <argsstring>(List&lt; Vector3 &gt; path)</argsstring>
+        <name>SmoothOffsetSimple</name>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="204" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="204" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="class_simple_smooth_modifier_1afbab731f09d65a5806961c4994257c34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; Vector3 &gt;</type>
+        <definition>List&lt;Vector3&gt; SmoothSimple</definition>
+        <argsstring>(List&lt; Vector3 &gt; path)</argsstring>
+        <name>SmoothSimple</name>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="300" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="300" bodyend="384"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_simple_smooth_modifier_1abcd781aee394210e062000bd10332b4f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 GetPointOnCubic</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 tan1, Vector3 tan2, float t)</argsstring>
+        <name>GetPointOnCubic</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>tan1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>tan2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="183" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="183" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Modifier which smooths the path. </para>    </briefdescription>
+    <detaileddescription>
+<para>This modifier can smooth a path by either moving the points closer together (Simple) or using Bezier curves (Bezier).<linebreak/>
+</para><para>Attach this component to the same GameObject as a <ref refid="class_seeker" kindref="compound">Seeker</ref> component. <linebreak/>
+ This component will hook in to the <ref refid="class_seeker" kindref="compound">Seeker</ref>&apos;s path post-processing system and will post process any paths it searches for. Take a look at the Modifier Priorities settings on the <ref refid="class_seeker" kindref="compound">Seeker</ref> component to determine where in the process this modifier should process the path. <linebreak/>
+ <linebreak/>
+ Several smoothing types are available, here follows a list of them and a short description of what they do, and how they work. But the best way is really to experiment with them yourself.<linebreak/>
+</para><para><itemizedlist>
+<listitem><para><bold>Simple</bold> Smooths the path by drawing all points close to each other. This results in paths that might cut corners if you are not careful. It will also subdivide the path to create more more points to smooth as otherwise it would still be quite rough. <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/smooth_simple.png&quot;/&gt;&lt;/div&gt;</htmlonly></para></listitem><listitem><para><bold>Bezier</bold> Smooths the path using Bezier curves. This results a smooth path which will always pass through all points in the path, but make sure it doesn&apos;t turn too quickly. <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/smooth_bezier.png&quot;/&gt;&lt;/div&gt;</htmlonly></para></listitem><listitem><para><bold>OffsetSimple</bold> An alternative to Simple smooth which will offset the path outwards in each step to minimize the corner-cutting. But be careful, if too high values are used, it will turn into loops and look really ugly.</para></listitem><listitem><para><bold>Curved Non Uniform</bold><htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/smooth_curved_nonuniform.png&quot;/&gt;&lt;/div&gt;</htmlonly></para></listitem></itemizedlist>
+</para><para><simplesect kind="note"><para>Modifies vectorPath array </para></simplesect>
+<xrefsect id="todo_1_todo000013"><xreftitle>Todo</xreftitle><xrefdescription><para>Make the smooth modifier take the world geometry into account when smoothing </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2956">
+        <label>MonoModifier</label>
+        <link refid="class_pathfinding_1_1_mono_modifier"/>
+        <childnode refid="2957" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2958" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2958">
+        <label>IPathModifier</label>
+        <link refid="interface_pathfinding_1_1_i_path_modifier"/>
+      </node>
+      <node id="2957">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2955">
+        <label>SimpleSmoothModifier</label>
+        <link refid="class_simple_smooth_modifier"/>
+        <childnode refid="2956" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2966">
+        <label>TagMask</label>
+        <link refid="class_pathfinding_1_1_tag_mask"/>
+      </node>
+      <node id="2973">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="2967">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2960">
+        <label>MonoModifier</label>
+        <link refid="class_pathfinding_1_1_mono_modifier"/>
+        <childnode refid="2961" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2962" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2963" relation="usage">
+          <edgelabel>seeker</edgelabel>
+        </childnode>
+      </node>
+      <node id="2968">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="2969" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="2970" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="2972" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="2968" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2967" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="2973" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2964">
+        <label>StartEndModifier</label>
+        <link refid="class_start_end_modifier"/>
+        <childnode refid="2965" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2963">
+        <label>Seeker</label>
+        <link refid="class_seeker"/>
+        <childnode refid="2961" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2964" relation="usage">
+          <edgelabel>startEndModifier</edgelabel>
+        </childnode>
+        <childnode refid="2966" relation="usage">
+          <edgelabel>traversableTags</edgelabel>
+        </childnode>
+        <childnode refid="2967" relation="usage">
+          <edgelabel>endHint</edgelabel>
+          <edgelabel>startHint</edgelabel>
+        </childnode>
+        <childnode refid="2968" relation="usage">
+          <edgelabel>path</edgelabel>
+          <edgelabel>prevPath</edgelabel>
+        </childnode>
+      </node>
+      <node id="2962">
+        <label>IPathModifier</label>
+        <link refid="interface_pathfinding_1_1_i_path_modifier"/>
+      </node>
+      <node id="2972">
+        <label>System</label>
+      </node>
+      <node id="2969">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="2969" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="2967" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="2971">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="2969" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2965">
+        <label>Modifier</label>
+        <link refid="class_pathfinding_1_1_modifier"/>
+        <childnode refid="2962" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2963" relation="usage">
+          <edgelabel>seeker</edgelabel>
+        </childnode>
+      </node>
+      <node id="2961">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2970">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="2969" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2971" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="2972" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2959">
+        <label>SimpleSmoothModifier</label>
+        <link refid="class_simple_smooth_modifier"/>
+        <childnode refid="2960" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" line="32" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" bodystart="32" bodyend="429"/>
+    <listofallmembers>
+      <member refid="class_simple_smooth_modifier_1a917f8611394bbb5da9cb835e534f8e70" prot="public" virt="virtual"><scope>SimpleSmoothModifier</scope><name>Apply</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1ad7ac788562c0c718a7bfc21e76225481" prot="public" virt="virtual" ambiguityscope="Pathfinding::MonoModifier."><scope>SimpleSmoothModifier</scope><name>Apply</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a7d2b1d9359fe1f2f23084f94432e4682" prot="public" virt="virtual" ambiguityscope="Pathfinding::MonoModifier."><scope>SimpleSmoothModifier</scope><name>Apply</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1aa8c7b15aa0548cf6e94cf043b3bc7edd" prot="public" virt="virtual"><scope>SimpleSmoothModifier</scope><name>ApplyOriginal</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1ae4b513cddd594f1c359e4f0a3e79a8c6" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>Awake</name></member>
+      <member refid="class_simple_smooth_modifier_1a73d0fce889a3d79f226b208fb0e0453c" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>bezierTangentLength</name></member>
+      <member refid="class_simple_smooth_modifier_1ae1b3ecee92432791bfddb2d74143b708" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>CurvedNonuniform</name></member>
+      <member refid="class_simple_smooth_modifier_1a323c112c11500270be91b7cb353826bd" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>factor</name></member>
+      <member refid="class_simple_smooth_modifier_1abcd781aee394210e062000bd10332b4f" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>GetPointOnCubic</name></member>
+      <member refid="class_simple_smooth_modifier_1a7fa21bd10c16cb75ca714d5a24eb3f81" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>input</name></member>
+      <member refid="class_simple_smooth_modifier_1a1d10e252e778731e59f0f71afd7e727e" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>iterations</name></member>
+      <member refid="class_simple_smooth_modifier_1a37144e0d96324f65a77c836ed3d0265a" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>maxSegmentLength</name></member>
+      <member refid="class_simple_smooth_modifier_1a3e60b3c561be982d7c8e23f14c01fd5b" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>offset</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1ac54ce402cec4f1d67a1cef4db841d26d" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>OnDestroy</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a3e9a1e1cd7a478a0d00f0efb51a8e4cf" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>OnDisable</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a84e23ba394eacd818d2e005cc466c4d1" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>OnEnable</name></member>
+      <member refid="class_simple_smooth_modifier_1ad6b5391792318646e0bc50fe6dab206e" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>output</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a1b989b9fa84a51baa6a06e766660288c" prot="public" virt="virtual"><scope>SimpleSmoothModifier</scope><name>PreProcess</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1acec9ce2df15222151ad66fcb1d74eb9f" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>priority</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a4450b0bad265ba3bd24e994f70aec802" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>Priority</name></member>
+      <member refid="class_pathfinding_1_1_mono_modifier_1a2cc99ba55c7911c446051a8d9c7afdbb" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>seeker</name></member>
+      <member refid="class_simple_smooth_modifier_1a61133dbd6d7fab66d76417c06659bc7d" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>SmoothBezier</name></member>
+      <member refid="class_simple_smooth_modifier_1a15deb1f4a2b51d5d684a9759133189f7" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>SmoothOffsetSimple</name></member>
+      <member refid="class_simple_smooth_modifier_1afbab731f09d65a5806961c4994257c34" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>SmoothSimple</name></member>
+      <member refid="class_simple_smooth_modifier_1acbe858640b2915f374ba329cd015d636" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>smoothType</name></member>
+      <member refid="class_simple_smooth_modifier_1aff4876b3d842424c8cbc79abf3f3166f" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>SmoothType</name></member>
+      <member refid="class_simple_smooth_modifier_1a2c1c8f9331368f38bfc3eaee260b59a6" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>strength</name></member>
+      <member refid="class_simple_smooth_modifier_1a81524b053be5dc3b6d0a187aea6c0ac4" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>subdivisions</name></member>
+      <member refid="class_simple_smooth_modifier_1a51081f69b5201d301b573c328dc3ab2d" prot="public" virt="non-virtual"><scope>SimpleSmoothModifier</scope><name>uniformLength</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

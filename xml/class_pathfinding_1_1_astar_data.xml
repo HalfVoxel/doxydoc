@@ -1,0 +1,1344 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_astar_data" kind="class" prot="public">
+    <compoundname>Pathfinding::AstarData</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_pathfinding_1_1_astar_data_1a434d5613ef9ff4b88d1be0ce9527825e" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type><ref refid="class_astar_path" kindref="compound">AstarPath</ref></type>
+        <definition>AstarPath active</definition>
+        <argsstring></argsstring>
+        <name>active</name>
+        <briefdescription>
+<para>Shortcut to <ref refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" kindref="member">AstarPath.active</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="25" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="21" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a0bcfb1e5f14dbf0051ba68e9661859af" compoundref="_astar_data_8cs" startline="165" endline="202">AstarData.CreateNodeRuns</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a1c6f9fc39aaca85c313f23e2ac3506fd" compoundref="_astar_data_8cs" startline="284" endline="303">AstarData.DeserializeGraphs</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ab75c959813c5066a85a9f8981471e772" compoundref="_astar_data_8cs" startline="310" endline="328">AstarData.DeserializeGraphsAdditive</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a9f312412f0d179abe42555bc47524049" compoundref="_astar_data_8cs" startline="450" endline="454">AstarData.CreateGraph</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1aadbf1a3a584b166ed504a4220f129947" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool cacheStartup</definition>
+        <argsstring></argsstring>
+        <name>cacheStartup</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Should graph-data be cached. </para>        </briefdescription>
+        <detaileddescription>
+<para>Caching the startup means saving the whole graphs, not only the settings to an internal array (<ref refid="class_pathfinding_1_1_astar_data_1aba2557ca1b56a753aa8bed4a1096e0a9" kindref="member">data_cachedStartup</ref>) which can be loaded faster than scanning all graphs at startup. This is setup from the editor. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="84" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="84" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_data_8cs" startline="102" endline="119">AstarData.Awake</referencedby>
+        <referencedby refid="class_astar_path_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_path_8cs" startline="1064" endline="1124">AstarPath.Awake</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a89f78986272988a58b4fda114fe915c3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool compress</definition>
+        <argsstring></argsstring>
+        <name>compress</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="86" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1aef45b2bc041f9135618b13f9302c041b" prot="public" static="no" mutable="no">
+        <type>byte[]</type>
+        <definition>byte [] data_backup</definition>
+        <argsstring></argsstring>
+        <name>data_backup</name>
+        <briefdescription>
+<para>Backup data if deserialization failed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="73" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="73" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a1c6f9fc39aaca85c313f23e2ac3506fd" compoundref="_astar_data_8cs" startline="284" endline="303">AstarData.DeserializeGraphs</referencedby>
+        <referencedby refid="class_astar_path_editor_1af1a1d526d405f950603e4b75de89f0f5" compoundref="_astar_path_editor_8cs" startline="750" endline="857">AstarPathEditor.DrawMainArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1aba2557ca1b56a753aa8bed4a1096e0a9" prot="public" static="no" mutable="no">
+        <type>byte[]</type>
+        <definition>byte [] data_cachedStartup</definition>
+        <argsstring></argsstring>
+        <name>data_cachedStartup</name>
+        <briefdescription>
+<para>Serialized data for cached startup. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="76" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="76" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_data_8cs" startline="102" endline="119">AstarData.Awake</referencedby>
+        <referencedby refid="class_astar_path_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_path_8cs" startline="1064" endline="1124">AstarPath.Awake</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a82f2fbc50c8c32aa8251469e9eb58ef2" prot="public" static="no" mutable="no">
+        <type>uint</type>
+        <definition>uint dataChecksum</definition>
+        <argsstring></argsstring>
+        <name>dataChecksum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="69" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref>[]</type>
+        <definition>NavGraph [] graphs</definition>
+        <argsstring></argsstring>
+        <name>graphs</name>
+        <initializer>= new <ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref>[0]</initializer>
+        <briefdescription>
+<para>All graphs this instance holds. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will be filled only after deserialization has completed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="52" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="52" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_data_8cs" startline="102" endline="119">AstarData.Awake</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a844872b11adfae46f65e8bdb9bfc07ad" compoundref="_astar_data_8cs" startline="266" endline="271">AstarData.SerializeGraphsPart</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1af21268b4669407d36676b8e92ecaefa0" compoundref="_astar_data_8cs" startline="334" endline="340">AstarData.DeserializeGraphsPart</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1adc58f38d130b50d152a304472d756dc1" compoundref="_astar_data_8cs" startline="346" endline="370">AstarData.DeserializeGraphsPartAdditive</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a68cf90cacb2b28f420a594993278c3e1" compoundref="_astar_data_8cs" startline="499" endline="504">AstarData.AddGraph</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a3976305041b0e6fca291bd8d04f32906" compoundref="_astar_data_8cs" startline="507" endline="516">AstarData.RemoveGraph</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1aca6b7917c5eadfd0b165a59775662c3f" compoundref="_astar_data_8cs" startline="524" endline="545">AstarData.GetGraph</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a45b971351a88ea06b5e3f24f920151ca" compoundref="_astar_data_8cs" startline="548" endline="550">AstarData.GetNode</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1aec94b2d458d64dc7ea1dc6f30a7a3d7f" compoundref="_astar_data_8cs" startline="583" endline="591">AstarData.FindGraphOfType</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a663335451cf49301b31a11a945e087cf" compoundref="_astar_data_8cs" startline="598" endline="605">AstarData.FindGraphsOfType</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a6b5cd0b294812890752b864c94f6983f" compoundref="_astar_data_8cs" startline="613" endline="620">AstarData.GetUpdateableGraphs</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a8a0adc6829529a3de8cc3d214ea565f6" compoundref="_astar_data_8cs" startline="627" endline="634">AstarData.GetRaycastableGraphs</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a81eaa53f9619caa799a218c15b5098e5" compoundref="_astar_data_8cs" startline="637" endline="645">AstarData.GetGraphIndex</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a3ecef069c3ab1fa353974d0a2b365680" compoundref="_astar_data_8cs" startline="650" endline="667">AstarData.GuidToIndex</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1aa5efbe923d31a7684993e537367b7d37" compoundref="_astar_data_8cs" startline="671" endline="688">AstarData.GuidToGraph</referencedby>
+        <referencedby refid="class_astar_path_1a2047271c0e5ee4c641e9e4261ca301fc" compoundref="_astar_path_8cs" startline="1130" endline="1161">AstarPath.DataUpdate</referencedby>
+        <referencedby refid="class_astar_path_1a98b1050f09da390896f964fb7a892391" compoundref="_astar_path_8cs" startline="1209" endline="1237">AstarPath.Initialize</referencedby>
+        <referencedby refid="class_astar_path_1ac54ce402cec4f1d67a1cef4db841d26d" compoundref="_astar_path_8cs" startline="1242" endline="1337">AstarPath.OnDestroy</referencedby>
+        <referencedby refid="class_astar_path_1a4f4cae3a469905cc5f44cddb8a2af750" compoundref="_astar_path_8cs" startline="1379" endline="1475">AstarPath.FloodFill</referencedby>
+        <referencedby refid="class_astar_path_editor_1a84e23ba394eacd818d2e005cc466c4d1" compoundref="_astar_path_editor_8cs" startline="203" endline="226">AstarPathEditor.OnEnable</referencedby>
+        <referencedby refid="class_astar_path_editor_1af1a1d526d405f950603e4b75de89f0f5" compoundref="_astar_path_editor_8cs" startline="750" endline="857">AstarPathEditor.DrawMainArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" prot="public" static="no" mutable="no">
+        <type>System.Type[]</type>
+        <definition>System.Type [] graphTypes</definition>
+        <argsstring></argsstring>
+        <name>graphTypes</name>
+        <initializer>= null</initializer>
+        <briefdescription>
+<para>All supported graph types. </para>        </briefdescription>
+        <detaileddescription>
+<para>Populated through reflection search </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="48" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="48" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a6a6a2ddbe517c899f4cd8483e57649de" compoundref="_astar_data_8cs" startline="376" endline="418">AstarData.FindGraphTypes</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a50418b3d2365ec265f3994f807f66ade" compoundref="_astar_data_8cs" startline="422" endline="430">AstarData.GetGraphType</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" compoundref="_astar_data_8cs" startline="435" endline="446">AstarData.CreateGraph</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a2bf2a41668eafbf7c1453e316882a123" compoundref="_astar_data_8cs" startline="457" endline="475">AstarData.AddGraph</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a509566918337a8f31f6181cbfc53f394" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref></type>
+        <definition>GridGraph gridGraph</definition>
+        <argsstring></argsstring>
+        <name>gridGraph</name>
+        <briefdescription>
+<para>Shortcut to the first <ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Updated at scanning time. This is the only reference to <ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref> in the core pathfinding scripts </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="32" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="32" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ace18049497c503d0137e950809e18024" compoundref="_astar_data_8cs" startline="208" endline="212">AstarData.UpdateShortcuts</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a34df335c853a1563ca57a221f1dbd322" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hasBeenReverted</definition>
+        <argsstring></argsstring>
+        <name>hasBeenReverted</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Has the data been reverted by an undo operation. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used by the editor&apos;s undo logic to check if the <ref refid="class_pathfinding_1_1_astar_data" kindref="compound">AstarData</ref> has been reverted by an undo operation and should be deserialized </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="62" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1ab319137a813f35832900adebb95eef3f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_nav_mesh_graph" kindref="compound">NavMeshGraph</ref></type>
+        <definition>NavMeshGraph navmesh</definition>
+        <argsstring></argsstring>
+        <name>navmesh</name>
+        <briefdescription>
+<para>Shortcut to the first <ref refid="class_pathfinding_1_1_nav_mesh_graph" kindref="compound">NavMeshGraph</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Updated at scanning time. This is the only reference to <ref refid="class_pathfinding_1_1_nav_mesh_graph" kindref="compound">NavMeshGraph</ref> in the core pathfinding scripts </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="29" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ace18049497c503d0137e950809e18024" compoundref="_astar_data_8cs" startline="208" endline="212">AstarData.UpdateShortcuts</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a574c9c69df61c7d79c076a22e88944df" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_path_node" kindref="compound">PathNode</ref>[][]</type>
+        <definition>PathNode [][] nodeRuns</definition>
+        <argsstring></argsstring>
+        <name>nodeRuns</name>
+        <briefdescription>
+<para>Holds temporary path data for pathfinders. </para>        </briefdescription>
+        <detaileddescription>
+<para>One array for every thread. Every array is itself an array with a number of NodeRun object of which there is one per node of. These objects holds the temporary path data, such as the G and H scores and the parent node. This is separate from the static path data, e.g connections between nodes. <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1a0bcfb1e5f14dbf0051ba68e9661859af" kindref="member">CreateNodeRuns</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="45" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1aefcf0082daea36f7d295b1fbd9f0b71d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_point_graph" kindref="compound">PointGraph</ref></type>
+        <definition>PointGraph pointGraph</definition>
+        <argsstring></argsstring>
+        <name>pointGraph</name>
+        <briefdescription>
+<para>Shortcut to the first <ref refid="class_pathfinding_1_1_point_graph" kindref="compound">PointGraph</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Updated at scanning time. This is the only reference to <ref refid="class_pathfinding_1_1_point_graph" kindref="compound">PointGraph</ref> in the core pathfinding scripts </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="35" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="35" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ace18049497c503d0137e950809e18024" compoundref="_astar_data_8cs" startline="208" endline="212">AstarData.UpdateShortcuts</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a1d22197ab2fc464e2682bad6dbc2cea1" prot="public" static="no" mutable="no">
+        <type>byte[]</type>
+        <definition>byte [] revertData</definition>
+        <argsstring></argsstring>
+        <name>revertData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="78" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1ab776d6b19ba6909c367676d5b43b2dd9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_user_connection" kindref="compound">UserConnection</ref>[]</type>
+        <definition>UserConnection [] userConnections</definition>
+        <argsstring></argsstring>
+        <name>userConnections</name>
+        <initializer>= new <ref refid="class_pathfinding_1_1_user_connection" kindref="compound">UserConnection</ref>[0]</initializer>
+        <briefdescription>
+<para>Links placed by the user in the scene view. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="56" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="56" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_data_8cs" startline="102" endline="119">AstarData.Awake</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a844872b11adfae46f65e8bdb9bfc07ad" compoundref="_astar_data_8cs" startline="266" endline="271">AstarData.SerializeGraphsPart</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1af21268b4669407d36676b8e92ecaefa0" compoundref="_astar_data_8cs" startline="334" endline="340">AstarData.DeserializeGraphsPart</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1adc58f38d130b50d152a304472d756dc1" compoundref="_astar_data_8cs" startline="346" endline="370">AstarData.DeserializeGraphsPartAdditive</referencedby>
+        <referencedby refid="class_astar_path_1af7f09cac395f266b9f9775af2dbd5138" compoundref="_astar_path_8cs" startline="1185" endline="1200">AstarPath.SetUpReferences</referencedby>
+        <referencedby refid="class_astar_path_1a38640086da775ea2217cc45d0a08e305" compoundref="_astar_path_8cs" startline="1634" endline="1688">AstarPath.ApplyLinks</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_astar_data_1a0ad80c378fb4b5fe4bc8a855302c4ae1" prot="private" static="no" mutable="no">
+        <type>byte[]</type>
+        <definition>byte [] data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+<para>Serialized data for all graphs and settings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="67" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="67" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1aa59f67f0ef50422e800fb92c69b26476" compoundref="_astar_data_8cs" startline="274" endline="278">AstarData.DeserializeGraphs</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1aca6b7917c5eadfd0b165a59775662c3f" compoundref="_astar_data_8cs" startline="524" endline="545">AstarData.GetGraph</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a2bf2a41668eafbf7c1453e316882a123" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>NavGraph AddGraph</definition>
+        <argsstring>(string type)</argsstring>
+        <name>AddGraph</name>
+        <param>
+          <type>string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Adds a graph of type <emphasis>type</emphasis> to the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="457" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="457" bodyend="475"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" compoundref="_astar_data_8cs" startline="48">AstarData.graphTypes</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" compoundref="_astar_data_8cs" startline="435" endline="446">AstarData.CreateGraph</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1aded49e502659b7fac93c49b378c828e7" compoundref="_astar_data_8cs" startline="478" endline="496">AstarData.AddGraph</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1aded49e502659b7fac93c49b378c828e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>NavGraph AddGraph</definition>
+        <argsstring>(System.Type type)</argsstring>
+        <name>AddGraph</name>
+        <param>
+          <type>System.Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Adds a graph of type <emphasis>type</emphasis> to the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="478" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="478" bodyend="496"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" compoundref="_astar_data_8cs" startline="48">AstarData.graphTypes</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" compoundref="_astar_data_8cs" startline="435" endline="446">AstarData.CreateGraph</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a2bf2a41668eafbf7c1453e316882a123" compoundref="_astar_data_8cs" startline="457" endline="475">AstarData.AddGraph</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a68cf90cacb2b28f420a594993278c3e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddGraph</definition>
+        <argsstring>(NavGraph graph)</argsstring>
+        <name>AddGraph</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+<para>Adds the specified graph to the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="499" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="499" bodyend="504"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a860e7cfe45bbfc85903835697f8d4cc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AssignNodeIndices</definition>
+        <argsstring>()</argsstring>
+        <name>AssignNodeIndices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="143" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="143" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+<para>Loads the graphs from memory, will load cached graphs if any exists. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="102" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="102" bodyend="119"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab776d6b19ba6909c367676d5b43b2dd9" compoundref="_astar_data_8cs" startline="56">AstarData.userConnections</references>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" compoundref="_astar_data_8cs" startline="435" endline="446">AstarData.CreateGraph</references>
+        <references refid="class_pathfinding_1_1_astar_data_1aadbf1a3a584b166ed504a4220f129947" compoundref="_astar_data_8cs" startline="84">AstarData.cacheStartup</references>
+        <references refid="class_pathfinding_1_1_astar_data_1aba2557ca1b56a753aa8bed4a1096e0a9" compoundref="_astar_data_8cs" startline="76">AstarData.data_cachedStartup</references>
+        <references refid="class_pathfinding_1_1_astar_data_1aa59f67f0ef50422e800fb92c69b26476" compoundref="_astar_data_8cs" startline="274" endline="278">AstarData.DeserializeGraphs</references>
+        <referencedby refid="class_astar_path_1a98b1050f09da390896f964fb7a892391" compoundref="_astar_path_8cs" startline="1209" endline="1237">AstarPath.Initialize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1acb1834a6c64880b1262d037785f926e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CollectNodes</definition>
+        <argsstring>(int numTemporary)</argsstring>
+        <name>CollectNodes</name>
+        <param>
+          <type>int</type>
+          <declname>numTemporary</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="122" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="122" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>NavGraph CreateGraph</definition>
+        <argsstring>(string type)</argsstring>
+        <name>CreateGraph</name>
+        <param>
+          <type>string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new instance of a graph of type <emphasis>type</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>If no matching graph type was found, an error is logged and null is returned <simplesect kind="return"><para>The created graph </para></simplesect>
+<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" kindref="member">CreateGraph</ref>(System.Type) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="435" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="435" bodyend="446"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" compoundref="_astar_data_8cs" startline="48">AstarData.graphTypes</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_data_8cs" startline="102" endline="119">AstarData.Awake</referencedby>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a2bf2a41668eafbf7c1453e316882a123" compoundref="_astar_data_8cs" startline="457" endline="475">AstarData.AddGraph</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a9f312412f0d179abe42555bc47524049" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>NavGraph CreateGraph</definition>
+        <argsstring>(System.Type type)</argsstring>
+        <name>CreateGraph</name>
+        <param>
+          <type>System.Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new graph instance of type <emphasis>type</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" kindref="member">CreateGraph(string)</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="450" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="450" bodyend="454"/>
+        <references refid="class_pathfinding_1_1_nav_graph_1a434d5613ef9ff4b88d1be0ce9527825e" compoundref="_base_8cs" startline="22">NavGraph.active</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a434d5613ef9ff4b88d1be0ce9527825e" compoundref="_astar_data_8cs" startline="21">AstarData.active</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a0bcfb1e5f14dbf0051ba68e9661859af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CreateNodeRuns</definition>
+        <argsstring>(int numParallel)</argsstring>
+        <name>CreateNodeRuns</name>
+        <param>
+          <type>int</type>
+          <declname>numParallel</declname>
+        </param>
+        <briefdescription>
+<para>Creates the structure for holding temporary path data. </para>        </briefdescription>
+        <detaileddescription>
+<para>The data is for example the G, H and F scores and the search tree. The number of nodeRuns must be no less than the number of nodes contained in all graphs. So after adding nodes, this MUST be called.<linebreak/>
+ Ideally, I would code an update function which reuses most of the previous ones instead of recreating it every time. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>numParallel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of parallel threads which will use the data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1a574c9c69df61c7d79c076a22e88944df" kindref="member">nodeRuns</ref> </para><simplesectsep/><para><ref refid="class_astar_path_1a83cc5f1da092b7d716d699bed908c767" kindref="member">AstarPath.UpdatePathThreadInfoNodes</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="165" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="165" bodyend="202"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a434d5613ef9ff4b88d1be0ce9527825e" compoundref="_astar_data_8cs" startline="21">AstarData.active</references>
+        <references refid="class_astar_path_1a83cc5f1da092b7d716d699bed908c767" compoundref="_astar_path_8cs" startline="1170" endline="1181">AstarPath.UpdatePathThreadInfoNodes</references>
+        <referencedby refid="class_astar_path_1a2047271c0e5ee4c641e9e4261ca301fc" compoundref="_astar_path_8cs" startline="1130" endline="1161">AstarPath.DataUpdate</referencedby>
+        <referencedby refid="class_astar_path_1ab6568fa1844dfd0b371e6d0655fe3234" compoundref="_astar_path_8cs" startline="1626" endline="1631">AstarPath.NodeCountChanged</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1aa59f67f0ef50422e800fb92c69b26476" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DeserializeGraphs</definition>
+        <argsstring>()</argsstring>
+        <name>DeserializeGraphs</name>
+        <briefdescription>
+<para>Deserializes graphs from <ref refid="class_pathfinding_1_1_astar_data_1a0ad80c378fb4b5fe4bc8a855302c4ae1" kindref="member">data</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="274" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="274" bodyend="278"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a0ad80c378fb4b5fe4bc8a855302c4ae1" compoundref="_astar_data_8cs" startline="67">AstarData.data</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" compoundref="_astar_data_8cs" startline="102" endline="119">AstarData.Awake</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a1c6f9fc39aaca85c313f23e2ac3506fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DeserializeGraphs</definition>
+        <argsstring>(byte[] bytes)</argsstring>
+        <name>DeserializeGraphs</name>
+        <param>
+          <type>byte[]</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+<para>Deserializes graphs from the specified byte array. </para>        </briefdescription>
+        <detaileddescription>
+<para>If an error ocurred, it will try to deserialize using the old deserializer. A warning will be logged if all deserializers failed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="284" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="284" bodyend="303"/>
+        <references refid="class_pathfinding_1_1_astar_data_1af21268b4669407d36676b8e92ecaefa0" compoundref="_astar_data_8cs" startline="334" endline="340">AstarData.DeserializeGraphsPart</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a434d5613ef9ff4b88d1be0ce9527825e" compoundref="_astar_data_8cs" startline="21">AstarData.active</references>
+        <references refid="class_astar_path_1a2047271c0e5ee4c641e9e4261ca301fc" compoundref="_astar_path_8cs" startline="1130" endline="1161">AstarPath.DataUpdate</references>
+        <references refid="class_pathfinding_1_1_astar_data_1aef45b2bc041f9135618b13f9302c041b" compoundref="_astar_data_8cs" startline="73">AstarData.data_backup</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1ab75c959813c5066a85a9f8981471e772" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DeserializeGraphsAdditive</definition>
+        <argsstring>(byte[] bytes)</argsstring>
+        <name>DeserializeGraphsAdditive</name>
+        <param>
+          <type>byte[]</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+<para>Deserializes graphs from the specified byte array additively. </para>        </briefdescription>
+        <detaileddescription>
+<para>If an error ocurred, it will try to deserialize using the old deserializer. A warning will be logged if all deserializers failed. This function will add loaded graphs to the current ones </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="310" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="310" bodyend="328"/>
+        <references refid="class_pathfinding_1_1_astar_data_1adc58f38d130b50d152a304472d756dc1" compoundref="_astar_data_8cs" startline="346" endline="370">AstarData.DeserializeGraphsPartAdditive</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a434d5613ef9ff4b88d1be0ce9527825e" compoundref="_astar_data_8cs" startline="21">AstarData.active</references>
+        <references refid="class_astar_path_1a2047271c0e5ee4c641e9e4261ca301fc" compoundref="_astar_path_8cs" startline="1130" endline="1161">AstarPath.DataUpdate</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1af21268b4669407d36676b8e92ecaefa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DeserializeGraphsPart</definition>
+        <argsstring>(Pathfinding.Serialization.AstarSerializer sr)</argsstring>
+        <name>DeserializeGraphsPart</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_serialization_1_1_astar_serializer" kindref="compound">Pathfinding.Serialization.AstarSerializer</ref></type>
+          <declname>sr</declname>
+        </param>
+        <briefdescription>
+<para>Deserializes common info. </para>        </briefdescription>
+        <detaileddescription>
+<para>Common info is what is shared between the editor serialization and the runtime serializer. This is mostly everything except the graph inspectors which serialize some extra data in the editor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="334" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="334" bodyend="340"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <references refid="class_pathfinding_1_1_astar_data_1ab776d6b19ba6909c367676d5b43b2dd9" compoundref="_astar_data_8cs" startline="56">AstarData.userConnections</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a1c6f9fc39aaca85c313f23e2ac3506fd" compoundref="_astar_data_8cs" startline="284" endline="303">AstarData.DeserializeGraphs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1adc58f38d130b50d152a304472d756dc1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DeserializeGraphsPartAdditive</definition>
+        <argsstring>(Pathfinding.Serialization.AstarSerializer sr)</argsstring>
+        <name>DeserializeGraphsPartAdditive</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_serialization_1_1_astar_serializer" kindref="compound">Pathfinding.Serialization.AstarSerializer</ref></type>
+          <declname>sr</declname>
+        </param>
+        <briefdescription>
+<para>Deserializes common info additively Common info is what is shared between the editor serialization and the runtime serializer. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is mostly everything except the graph inspectors which serialize some extra data in the editor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="346" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="346" bodyend="370"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <references refid="class_pathfinding_1_1_astar_data_1ab776d6b19ba6909c367676d5b43b2dd9" compoundref="_astar_data_8cs" startline="56">AstarData.userConnections</references>
+        <references refid="class_pathfinding_1_1_nav_graph_1a0c8f65c9d3118ff62b1d40950e5154f8" compoundref="_base_8cs" startline="28">NavGraph.guid</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ab75c959813c5066a85a9f8981471e772" compoundref="_astar_data_8cs" startline="310" endline="328">AstarData.DeserializeGraphsAdditive</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1aec94b2d458d64dc7ea1dc6f30a7a3d7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>NavGraph FindGraphOfType</definition>
+        <argsstring>(System.Type type)</argsstring>
+        <name>FindGraphOfType</name>
+        <param>
+          <type>System.Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Returns the first graph of type <emphasis>type</emphasis> found in the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns null if none was found </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="583" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="583" bodyend="591"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1ace18049497c503d0137e950809e18024" compoundref="_astar_data_8cs" startline="208" endline="212">AstarData.UpdateShortcuts</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a663335451cf49301b31a11a945e087cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable</type>
+        <definition>IEnumerable FindGraphsOfType</definition>
+        <argsstring>(System.Type type)</argsstring>
+        <name>FindGraphsOfType</name>
+        <param>
+          <type>System.Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Loop through this function to get all graphs of type &apos;type&apos;. </para>        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal"><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>(GridGraph<sp/>graph<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1ae505e02a52d4b9573e5d861ec48aa0ab" kindref="member" tooltip="Reference to the Pathfinding.AstarData object for this graph.">astarData</ref>.FindGraphsOfType<sp/>(typeof(GridGraph)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Do<sp/>something<sp/>with<sp/>the<sp/>graph</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}<sp/></highlight></codeline>
+</programlisting> <simplesect kind="see"><para>AstarPath.RegisterSafeNodeUpdate </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="598" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="598" bodyend="605"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a6a6a2ddbe517c899f4cd8483e57649de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void FindGraphTypes</definition>
+        <argsstring>()</argsstring>
+        <name>FindGraphTypes</name>
+        <briefdescription>
+<para>Find all graph types supported in this build. </para>        </briefdescription>
+        <detaileddescription>
+<para>Using reflection, the assembly is searched for types which inherit from <ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="376" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="376" bodyend="418"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" compoundref="_astar_data_8cs" startline="48">AstarData.graphTypes</references>
+        <referencedby refid="class_astar_path_1a98b1050f09da390896f964fb7a892391" compoundref="_astar_path_8cs" startline="1209" endline="1237">AstarPath.Initialize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a6a7448467c3bedb9c641ada290ff4bd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>byte [] GetData</definition>
+        <argsstring>()</argsstring>
+        <name>GetData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="92" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a81eaa53f9619caa799a218c15b5098e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int GetGraphIndex</definition>
+        <argsstring>(NavGraph graph)</argsstring>
+        <name>GetGraphIndex</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+<para>Gets the index of the <ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref> in the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="637" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="637" bodyend="645"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <referencedby refid="class_astar_path_1a8a21001195ccff9882ca194ac6617d02" compoundref="_astar_path_8cs" startline="904" endline="955">AstarPath.DoUpdateGraphs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a50418b3d2365ec265f3994f807f66ade" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>System.Type</type>
+        <definition>System.Type GetGraphType</definition>
+        <argsstring>(string type)</argsstring>
+        <name>GetGraphType</name>
+        <param>
+          <type>string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A System.Type which matches the specified <emphasis>type</emphasis> string. If no mathing graph type was found, null is returned </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="422" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="422" bodyend="430"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" compoundref="_astar_data_8cs" startline="48">AstarData.graphTypes</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a45b971351a88ea06b5e3f24f920151ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+        <definition>GraphNode GetNode</definition>
+        <argsstring>(int graphIndex, int nodeIndex)</argsstring>
+        <name>GetNode</name>
+        <param>
+          <type>int</type>
+          <declname>graphIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nodeIndex</declname>
+        </param>
+        <briefdescription>
+<para>Returns the node at <emphasis>graphs</emphasis>[graphIndex].nodes[nodeIndex]. </para>        </briefdescription>
+        <detaileddescription>
+<para>All kinds of error checking is done to make sure no exceptions are thrown. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="548" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="548" bodyend="550"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1ab11a97555d19f11ad7cd7b162048a3f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+        <definition>GraphNode GetNode</definition>
+        <argsstring>(int graphIndex, int nodeIndex, NavGraph[] graphs)</argsstring>
+        <name>GetNode</name>
+        <param>
+          <type>int</type>
+          <declname>graphIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nodeIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref>[]</type>
+          <declname>graphs</declname>
+        </param>
+        <briefdescription>
+<para>Returns the node at <emphasis>graphs</emphasis>[graphIndex].nodes[nodeIndex]. </para>        </briefdescription>
+        <detaileddescription>
+<para>The graphIndex refers to the specified graphs array.<linebreak/>
+ All kinds of error checking is done to make sure no exceptions are thrown </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="554" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="554" bodyend="580"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a8a0adc6829529a3de8cc3d214ea565f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable</type>
+        <definition>IEnumerable GetRaycastableGraphs</definition>
+        <argsstring>()</argsstring>
+        <name>GetRaycastableGraphs</name>
+        <briefdescription>
+<para>All graphs which implements the UpdateableGraph interface. </para>        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal"><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>(IRaycastableGraph<sp/>graph<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1ae505e02a52d4b9573e5d861ec48aa0ab" kindref="member" tooltip="Reference to the Pathfinding.AstarData object for this graph.">astarData</ref>.GetRaycastableGraphs<sp/>())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Do<sp/>something<sp/>with<sp/>the<sp/>graph</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}<sp/></highlight></codeline>
+</programlisting> <simplesect kind="see"><para><ref refid="interface_pathfinding_1_1_i_raycastable_graph" kindref="compound">Pathfinding.IRaycastableGraph</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="627" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="627" bodyend="634"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a6b5cd0b294812890752b864c94f6983f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerable</type>
+        <definition>IEnumerable GetUpdateableGraphs</definition>
+        <argsstring>()</argsstring>
+        <name>GetUpdateableGraphs</name>
+        <briefdescription>
+<para>All graphs which implements the UpdateableGraph interface. </para>        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal"><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>(IUpdatableGraph<sp/>graph<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1ae505e02a52d4b9573e5d861ec48aa0ab" kindref="member" tooltip="Reference to the Pathfinding.AstarData object for this graph.">astarData</ref>.GetUpdateableGraphs<sp/>())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Do<sp/>something<sp/>with<sp/>the<sp/>graph</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}<sp/></highlight></codeline>
+</programlisting> <simplesect kind="see"><para>AstarPath.RegisterSafeNodeUpdate </para><simplesectsep/><para><ref refid="interface_pathfinding_1_1_i_updatable_graph" kindref="compound">Pathfinding.IUpdatableGraph</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="613" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="613" bodyend="620"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <referencedby refid="class_astar_path_1a8a21001195ccff9882ca194ac6617d02" compoundref="_astar_path_8cs" startline="904" endline="955">AstarPath.DoUpdateGraphs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1aa5efbe923d31a7684993e537367b7d37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>NavGraph GuidToGraph</definition>
+        <argsstring>(Guid guid)</argsstring>
+        <name>GuidToGraph</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_util_1_1_guid" kindref="compound">Guid</ref></type>
+          <declname>guid</declname>
+        </param>
+        <briefdescription>
+<para>Tries to find a graph with the specified GUID in the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns null if none is found <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1a3ecef069c3ab1fa353974d0a2b365680" kindref="member">GuidToIndex</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="671" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="671" bodyend="688"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a3ecef069c3ab1fa353974d0a2b365680" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int GuidToIndex</definition>
+        <argsstring>(Guid guid)</argsstring>
+        <name>GuidToIndex</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_util_1_1_guid" kindref="compound">Guid</ref></type>
+          <declname>guid</declname>
+        </param>
+        <briefdescription>
+<para>Tries to find a graph with the specified GUID in the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. </para>        </briefdescription>
+        <detaileddescription>
+<para>If a graph is found it returns its index, otherwise it returns -1 <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1aa5efbe923d31a7684993e537367b7d37" kindref="member">GuidToGraph</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="650" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="650" bodyend="667"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a699cb7c867b9ebe3d76cfb3a2f0627b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LoadFromCache</definition>
+        <argsstring>()</argsstring>
+        <name>LoadFromCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="214" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="214" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a3976305041b0e6fca291bd8d04f32906" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RemoveGraph</definition>
+        <argsstring>(NavGraph graph)</argsstring>
+        <name>RemoveGraph</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+<para>Removes the specified graph from the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array and Destroys it in a safe manner. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="507" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="507" bodyend="516"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <references refid="class_pathfinding_1_1_nav_graph_1a75833509db1f3435c4a995248e667f88" compoundref="_base_8cs" startline="198" endline="200">NavGraph.SafeOnDestroy</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1ad189da80ce989829fb250481c73524ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SaveCacheData</definition>
+        <argsstring>(Pathfinding.Serialization.SerializeSettings settings)</argsstring>
+        <name>SaveCacheData</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_serialization_1_1_serialize_settings" kindref="compound">Pathfinding.Serialization.SerializeSettings</ref></type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="226" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="226" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a6d0c55cf9a05774831d4f9a007fe6efd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>byte [] SerializeGraphs</definition>
+        <argsstring>()</argsstring>
+        <name>SerializeGraphs</name>
+        <briefdescription>
+<para>Serializes all graphs settings to a byte array. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_astar_data_1a1c6f9fc39aaca85c313f23e2ac3506fd" kindref="member">DeserializeGraphs(byte[])</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="236" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="236" bodyend="238"/>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1af400199ac7b806a521a12b16b53fcd9c" compoundref="_astar_data_8cs" startline="241" endline="244">AstarData.SerializeGraphs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1af400199ac7b806a521a12b16b53fcd9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>byte [] SerializeGraphs</definition>
+        <argsstring>(Pathfinding.Serialization.SerializeSettings settings)</argsstring>
+        <name>SerializeGraphs</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_serialization_1_1_serialize_settings" kindref="compound">Pathfinding.Serialization.SerializeSettings</ref></type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Main serializer function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="241" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="241" bodyend="244"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a6d0c55cf9a05774831d4f9a007fe6efd" compoundref="_astar_data_8cs" startline="236" endline="238">AstarData.SerializeGraphs</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a65ca7f06425ec2e2f01e46a566464a1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>byte [] SerializeGraphs</definition>
+        <argsstring>(Pathfinding.Serialization.SerializeSettings settings, out uint checksum)</argsstring>
+        <name>SerializeGraphs</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_serialization_1_1_serialize_settings" kindref="compound">Pathfinding.Serialization.SerializeSettings</ref></type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>out uint</type>
+          <declname>checksum</declname>
+        </param>
+        <briefdescription>
+<para>Main serializer function. </para>        </briefdescription>
+        <detaileddescription>
+<para>Serializes all graphs to a byte array A similar function exists in the AstarEditor.cs script to save additional info </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="249" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="249" bodyend="260"/>
+        <references refid="class_pathfinding_1_1_astar_data_1a844872b11adfae46f65e8bdb9bfc07ad" compoundref="_astar_data_8cs" startline="266" endline="271">AstarData.SerializeGraphsPart</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a844872b11adfae46f65e8bdb9bfc07ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SerializeGraphsPart</definition>
+        <argsstring>(Pathfinding.Serialization.AstarSerializer sr)</argsstring>
+        <name>SerializeGraphsPart</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_serialization_1_1_astar_serializer" kindref="compound">Pathfinding.Serialization.AstarSerializer</ref></type>
+          <declname>sr</declname>
+        </param>
+        <briefdescription>
+<para>Serializes common info to the serializer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Common info is what is shared between the editor serialization and the runtime serializer. This is mostly everything except the graph inspectors which serialize some extra data in the editor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="266" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="266" bodyend="271"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <references refid="class_pathfinding_1_1_astar_data_1ab776d6b19ba6909c367676d5b43b2dd9" compoundref="_astar_data_8cs" startline="56">AstarData.userConnections</references>
+        <referencedby refid="class_pathfinding_1_1_astar_data_1a65ca7f06425ec2e2f01e46a566464a1d" compoundref="_astar_data_8cs" startline="249" endline="260">AstarData.SerializeGraphs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1a0cc42508087825ff230dfc5121dae6c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SetData</definition>
+        <argsstring>(byte[] data, uint checksum)</argsstring>
+        <name>SetData</name>
+        <param>
+          <type>byte[]</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>checksum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="96" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1ace18049497c503d0137e950809e18024" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateShortcuts</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateShortcuts</name>
+        <briefdescription>
+<para>Updates shortcuts to the first graph of different types. </para>        </briefdescription>
+        <detaileddescription>
+<para>Hard coding references to some graph types is not really a good thing imo. I want to keep it dynamic and flexible. But these references ease the use of the system, so I decided to keep them. It is the only reference to specific graph types in the pathfinding core.<linebreak/>
+ </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="208" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="208" bodyend="212"/>
+        <references refid="class_pathfinding_1_1_astar_data_1ab319137a813f35832900adebb95eef3f" compoundref="_astar_data_8cs" startline="29">AstarData.navmesh</references>
+        <references refid="class_pathfinding_1_1_astar_data_1aec94b2d458d64dc7ea1dc6f30a7a3d7f" compoundref="_astar_data_8cs" startline="583" endline="591">AstarData.FindGraphOfType</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a509566918337a8f31f6181cbfc53f394" compoundref="_astar_data_8cs" startline="32">AstarData.gridGraph</references>
+        <references refid="class_pathfinding_1_1_astar_data_1aefcf0082daea36f7d295b1fbd9f0b71d" compoundref="_astar_data_8cs" startline="35">AstarData.pointGraph</references>
+        <referencedby refid="class_astar_path_1aa60a697e37f2db2802913699f24b3b2b" compoundref="_astar_path_8cs" startline="1537" endline="1621">AstarPath.ScanLoop</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_astar_data_1aca6b7917c5eadfd0b165a59775662c3f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+        <definition>static NavGraph GetGraph</definition>
+        <argsstring>(GraphNode node)</argsstring>
+        <name>GetGraph</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Returns the graph which contains the specified node. </para>        </briefdescription>
+        <detaileddescription>
+<para>The graph must be in the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> array. <simplesect kind="return"><para>Returns the graph which contains the node. Null if the graph wasn&apos;t found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="524" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="524" bodyend="545"/>
+        <references refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" compoundref="_astar_path_8cs" startline="64">AstarPath.active</references>
+        <references refid="class_pathfinding_1_1_astar_data_1a0ad80c378fb4b5fe4bc8a855302c4ae1" compoundref="_astar_data_8cs" startline="67">AstarData.data</references>
+        <references refid="class_astar_path_1ae505e02a52d4b9573e5d861ec48aa0ab" compoundref="_astar_path_8cs" startline="61">AstarPath.astarData</references>
+        <references refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" compoundref="_astar_data_8cs" startline="52">AstarData.graphs</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" compoundref="_grid_generator_8cs" startline="1007" endline="1016">GridGraph.CalculateConnections</referencedby>
+        <referencedby refid="class_funnel_modifier_1a917f8611394bbb5da9cb835e534f8e70" compoundref="_funnel_modifier_8cs" startline="41" endline="110">FunnelModifier.Apply</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores the navigation graphs for the A* <ref refid="namespace_pathfinding" kindref="compound">Pathfinding</ref> System. </para>    </briefdescription>
+    <detaileddescription>
+<para>An instance of this class is assigned to <ref refid="class_astar_path_1ae505e02a52d4b9573e5d861ec48aa0ab" kindref="member">AstarPath.astarData</ref>, from it you can access all graphs loaded through the <ref refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" kindref="member">graphs</ref> variable.<linebreak/>
+ This class also handles a lot of the high level serialization. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1659">
+        <label>AstarData</label>
+        <link refid="class_pathfinding_1_1_astar_data"/>
+        <childnode refid="1660" relation="usage">
+          <edgelabel>graphs</edgelabel>
+        </childnode>
+        <childnode refid="1665" relation="usage">
+          <edgelabel>nodeRuns</edgelabel>
+        </childnode>
+        <childnode refid="1673" relation="usage">
+          <edgelabel>userConnections</edgelabel>
+        </childnode>
+        <childnode refid="1674" relation="usage">
+          <edgelabel>navmesh</edgelabel>
+        </childnode>
+        <childnode refid="1668" relation="usage">
+          <edgelabel>graphTypes</edgelabel>
+        </childnode>
+        <childnode refid="1685" relation="usage">
+          <edgelabel>pointGraph</edgelabel>
+        </childnode>
+        <childnode refid="1688" relation="usage">
+          <edgelabel>gridGraph</edgelabel>
+        </childnode>
+      </node>
+      <node id="1691">
+        <label>GridNode</label>
+        <link refid="class_pathfinding_1_1_grid_node"/>
+        <childnode refid="1666" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1688" relation="usage">
+          <edgelabel>_gridGraphs</edgelabel>
+        </childnode>
+      </node>
+      <node id="1688">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="1660" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1676" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1677" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1678" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1689" relation="usage">
+          <edgelabel>collision</edgelabel>
+        </childnode>
+        <childnode refid="1690" relation="usage">
+          <edgelabel>textureData</edgelabel>
+        </childnode>
+        <childnode refid="1691" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="1684">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="1680" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="1684" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="1671">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="1683">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="1681" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="1684" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="1666">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="1682">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="1682" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="1661">
+        <label>AstarPath</label>
+        <link refid="class_astar_path"/>
+        <childnode refid="1662" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1663" relation="usage">
+          <edgelabel>threadInfos</edgelabel>
+        </childnode>
+        <childnode refid="1669" relation="usage">
+          <edgelabel>pathReturnStack</edgelabel>
+        </childnode>
+        <childnode refid="1659" relation="usage">
+          <edgelabel>astarData</edgelabel>
+        </childnode>
+        <childnode refid="1668" relation="usage">
+          <edgelabel>safeUpdateLock</edgelabel>
+          <edgelabel>TotalSearchedNodes</edgelabel>
+          <edgelabel>TotalSearchTime</edgelabel>
+        </childnode>
+        <childnode refid="1670" relation="usage">
+          <edgelabel>pathReturnPop</edgelabel>
+          <edgelabel>debugPath</edgelabel>
+        </childnode>
+        <childnode refid="1672" relation="usage">
+          <edgelabel>colorSettings</edgelabel>
+        </childnode>
+        <childnode refid="1661" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="1670">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="1665" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="1664" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="1668" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="1670" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="1666" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="1671" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="1676">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="1663">
+        <label>PathThreadInfo</label>
+        <link refid="struct_pathfinding_1_1_path_thread_info"/>
+        <childnode refid="1664" relation="usage">
+          <edgelabel>runData</edgelabel>
+        </childnode>
+        <childnode refid="1668" relation="usage">
+          <edgelabel>_lock</edgelabel>
+        </childnode>
+        <childnode refid="1661" relation="usage">
+          <edgelabel>astar</edgelabel>
+        </childnode>
+      </node>
+      <node id="1677">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="1689">
+        <label>GraphCollision</label>
+        <link refid="class_pathfinding_1_1_graph_collision"/>
+      </node>
+      <node id="1673">
+        <label>UserConnection</label>
+        <link refid="class_pathfinding_1_1_user_connection"/>
+      </node>
+      <node id="1681">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="1674">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="1660" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1675" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1676" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1677" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1678" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1679" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="1682" relation="usage">
+          <edgelabel>_vertices</edgelabel>
+        </childnode>
+        <childnode refid="1683" relation="usage">
+          <edgelabel>_bbTree</edgelabel>
+        </childnode>
+      </node>
+      <node id="1678">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="1687">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="1686">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="1666" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1687" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1682" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="1666" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="1672">
+        <label>AstarColor</label>
+        <link refid="class_pathfinding_1_1_astar_color"/>
+      </node>
+      <node id="1679">
+        <label>TriangleMeshNode</label>
+        <link refid="class_pathfinding_1_1_triangle_mesh_node"/>
+        <childnode refid="1680" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1681" relation="usage">
+          <edgelabel>_navmeshHolders</edgelabel>
+        </childnode>
+      </node>
+      <node id="1668">
+        <label>System</label>
+      </node>
+      <node id="1665">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="1665" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="1666" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="1680">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="1666" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1680" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="1685">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="1660" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1676" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1686" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="1667">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="1665" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1662">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1664">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="1665" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="1667" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="1668" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="1675">
+        <label>INavmesh</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh"/>
+      </node>
+      <node id="1690">
+        <label>GridGraph.TextureData</label>
+        <link refid="class_pathfinding_1_1_grid_graph_1_1_texture_data"/>
+      </node>
+      <node id="1660">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+        <childnode refid="1661" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="1669">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" line="18" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarData.cs" bodystart="18" bodyend="692"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_astar_data_1a434d5613ef9ff4b88d1be0ce9527825e" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>active</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a2bf2a41668eafbf7c1453e316882a123" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>AddGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aded49e502659b7fac93c49b378c828e7" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>AddGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a68cf90cacb2b28f420a594993278c3e1" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>AddGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a860e7cfe45bbfc85903835697f8d4cc7" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>AssignNodeIndices</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ae4b513cddd594f1c359e4f0a3e79a8c6" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>Awake</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aadbf1a3a584b166ed504a4220f129947" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>cacheStartup</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1acb1834a6c64880b1262d037785f926e6" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>CollectNodes</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a89f78986272988a58b4fda114fe915c3" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>compress</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a9eebf0c0042336dc267d61ae2c07a78c" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>CreateGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a9f312412f0d179abe42555bc47524049" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>CreateGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a0bcfb1e5f14dbf0051ba68e9661859af" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>CreateNodeRuns</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a0ad80c378fb4b5fe4bc8a855302c4ae1" prot="private" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>data</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aef45b2bc041f9135618b13f9302c041b" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>data_backup</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aba2557ca1b56a753aa8bed4a1096e0a9" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>data_cachedStartup</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a82f2fbc50c8c32aa8251469e9eb58ef2" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>dataChecksum</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aa59f67f0ef50422e800fb92c69b26476" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>DeserializeGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a1c6f9fc39aaca85c313f23e2ac3506fd" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>DeserializeGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ab75c959813c5066a85a9f8981471e772" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>DeserializeGraphsAdditive</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1af21268b4669407d36676b8e92ecaefa0" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>DeserializeGraphsPart</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1adc58f38d130b50d152a304472d756dc1" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>DeserializeGraphsPartAdditive</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aec94b2d458d64dc7ea1dc6f30a7a3d7f" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>FindGraphOfType</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a663335451cf49301b31a11a945e087cf" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>FindGraphsOfType</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a6a6a2ddbe517c899f4cd8483e57649de" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>FindGraphTypes</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a6a7448467c3bedb9c641ada290ff4bd5" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetData</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aca6b7917c5eadfd0b165a59775662c3f" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a81eaa53f9619caa799a218c15b5098e5" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetGraphIndex</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a50418b3d2365ec265f3994f807f66ade" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetGraphType</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a45b971351a88ea06b5e3f24f920151ca" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetNode</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ab11a97555d19f11ad7cd7b162048a3f1" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetNode</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a8a0adc6829529a3de8cc3d214ea565f6" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetRaycastableGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a6b5cd0b294812890752b864c94f6983f" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GetUpdateableGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ab6f474b6907ebd1b9105ef82b90b8823" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>graphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a425bed5976e2925d8e6236ddd626872b" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>graphTypes</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a509566918337a8f31f6181cbfc53f394" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>gridGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aa5efbe923d31a7684993e537367b7d37" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GuidToGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a3ecef069c3ab1fa353974d0a2b365680" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>GuidToIndex</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a34df335c853a1563ca57a221f1dbd322" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>hasBeenReverted</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a699cb7c867b9ebe3d76cfb3a2f0627b8" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>LoadFromCache</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ab319137a813f35832900adebb95eef3f" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>navmesh</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a574c9c69df61c7d79c076a22e88944df" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>nodeRuns</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1aefcf0082daea36f7d295b1fbd9f0b71d" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>pointGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a3976305041b0e6fca291bd8d04f32906" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>RemoveGraph</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a1d22197ab2fc464e2682bad6dbc2cea1" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>revertData</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ad189da80ce989829fb250481c73524ea" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>SaveCacheData</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a6d0c55cf9a05774831d4f9a007fe6efd" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>SerializeGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1af400199ac7b806a521a12b16b53fcd9c" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>SerializeGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a65ca7f06425ec2e2f01e46a566464a1d" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>SerializeGraphs</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a844872b11adfae46f65e8bdb9bfc07ad" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>SerializeGraphsPart</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1a0cc42508087825ff230dfc5121dae6c8" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>SetData</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ace18049497c503d0137e950809e18024" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>UpdateShortcuts</name></member>
+      <member refid="class_pathfinding_1_1_astar_data_1ab776d6b19ba6909c367676d5b43b2dd9" prot="public" virt="non-virtual"><scope>Pathfinding::AstarData</scope><name>userConnections</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

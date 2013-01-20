@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_6be510a9f9137c5736422e16f66450ef" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors</compoundname>
+    <innerfile refid="_raycast_modifier_editor_8cs">RaycastModifierEditor.cs</innerfile>
+    <innerfile refid="_smooth_modifier_editor_8cs">SmoothModifierEditor.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_advanced_smooth_1_1_constant_turn" kind="class" prot="public">
+    <compoundname>AdvancedSmooth::ConstantTurn</compoundname>
+    <basecompoundref refid="class_advanced_smooth_1_1_turn_constructor" prot="public" virt="non-virtual">AdvancedSmooth.TurnConstructor</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_advanced_smooth_1_1_constant_turn_1aaf00f2c45b9adc61355c5fc8e280be30" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 circleCenter</definition>
+        <argsstring></argsstring>
+        <name>circleCenter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="468" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="468" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_advanced_smooth_1_1_constant_turn_1a8c32e373535c10f020ae906ae769e3b9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool clockwise</definition>
+        <argsstring></argsstring>
+        <name>clockwise</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="472" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="472" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_advanced_smooth_1_1_constant_turn_1aa0ca2c13c38c11da3cd6a915eb7b8b4d" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gamma1</definition>
+        <argsstring></argsstring>
+        <name>gamma1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="469" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="469" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_advanced_smooth_1_1_constant_turn_1a2e1e574832f4214189a63276dc3dea8d" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gamma2</definition>
+        <argsstring></argsstring>
+        <name>gamma2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="470" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="470" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_advanced_smooth_1_1_constant_turn_1a689d40ccad497de0a91956ed77ddb006" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GetPath</definition>
+        <argsstring>(Turn turn, List&lt; Vector3 &gt; output)</argsstring>
+        <name>GetPath</name>
+        <reimplements refid="class_advanced_smooth_1_1_turn_constructor_1a728f8d7183b665076bdf52a245648f92">GetPath</reimplements>
+        <param>
+          <type><ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref></type>
+          <declname>turn</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="511" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="511" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="class_advanced_smooth_1_1_constant_turn_1a32bb8600ea29799a89e62914ba1abfd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Prepare</definition>
+        <argsstring>(int i, Vector3[] vectorPath)</argsstring>
+        <name>Prepare</name>
+        <reimplements refid="class_advanced_smooth_1_1_turn_constructor_1a2d3ce7bdacdf3d429cf40be73ec2210d">Prepare</reimplements>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>Vector3[]</type>
+          <declname>vectorPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="474" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="474" bodyend="474"/>
+      </memberdef>
+      <memberdef kind="function" id="class_advanced_smooth_1_1_constant_turn_1aeb57e058101243ba0689e132e0ddd660" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void TangentToTangent</definition>
+        <argsstring>(List&lt; Turn &gt; turnList)</argsstring>
+        <name>TangentToTangent</name>
+        <reimplements refid="class_advanced_smooth_1_1_turn_constructor_1a6a894e9053bb28d78eddbf0a58462120">TangentToTangent</reimplements>
+        <param>
+          <type>List&lt; <ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref> &gt;</type>
+          <declname>turnList</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="476" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="476" bodyend="509"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1842">
+        <label>AdvancedSmooth.ConstantTurn</label>
+        <link refid="class_advanced_smooth_1_1_constant_turn"/>
+        <childnode refid="1843" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1843">
+        <label>TurnConstructor</label>
+        <link refid="class_advanced_smooth_1_1_turn_constructor"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1844">
+        <label>AdvancedSmooth.ConstantTurn</label>
+        <link refid="class_advanced_smooth_1_1_constant_turn"/>
+        <childnode refid="1845" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1845">
+        <label>TurnConstructor</label>
+        <link refid="class_advanced_smooth_1_1_turn_constructor"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="466" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="466" bodyend="527"/>
+    <listofallmembers>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1ad3eddee19099e70d4adee7160a24621c" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>AddCircleSegment</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a143c90a5ba736d07b56ac5b8e513f14e" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>AngleToVector</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a0877a02ccfa43ca7c14ccb41cba84efa" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>Atan2</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a3377f6089b2ab13b96dfe74c5a579401" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>changedPreviousTangent</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1aaf00f2c45b9adc61355c5fc8e280be30" prot="private" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>circleCenter</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1aa450353d16bea0259ea496169102ddf5" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>ClampAngle</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1a8c32e373535c10f020ae906ae769e3b9" prot="private" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>clockwise</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a4d3a5f98b2421126832262d214c804e0" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>ClockwiseAngle</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a9ecfd73751fc845dbe0f11b466b58b66" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>constantBias</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a21d592b18261e1590da30c09c7905008" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>CounterClockwiseAngle</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a934d4d0668fdc030e92610d8972beef6" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>DebugCircle</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a587b6cc3b9c3e2c8c05b03a1b723a56d" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>DebugCircleSegment</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a2caa5b439cdb74cad9d3f6cb65537eb9" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>factorBias</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1aa0ca2c13c38c11da3cd6a915eb7b8b4d" prot="private" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>gamma1</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1a2e1e574832f4214189a63276dc3dea8d" prot="private" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>gamma2</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a11260102bf907dc9b2429eb2799b9b8f" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>GetLengthFromAngle</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1a689d40ccad497de0a91956ed77ddb006" prot="public" virt="virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>GetPath</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1ac195757f149b518d7f5436aa9c5c293d" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>normal</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a50994617228233821f5a28700fe96bcd" prot="public" virt="virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>OnTangentUpdate</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a4b20dd713e9548655d65e2f6bb5fe0b6" prot="public" virt="virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>PointToTangent</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a49d33df1c0dee7f9cc9776c14641d16f" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>PostPrepare</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1a32bb8600ea29799a89e62914ba1abfd4" prot="public" virt="virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>Prepare</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a135afe84e9a0cbbcfe875a327084ef2e" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>prev</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1af1d75a5ab22cacf257b74ccd98833c9c" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>Setup</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1afcfee436c59001a14ddae49e468da303" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>t1</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a1b7ec4bb8d016d1ecf8c80e692a51e6e" prot="public" virt="virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>TangentToPoint</name></member>
+      <member refid="class_advanced_smooth_1_1_constant_turn_1aeb57e058101243ba0689e132e0ddd660" prot="public" virt="virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>TangentToTangent</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a1afc6aef9da746e63946c3e46ba4b1c6" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>ThreeSixtyRadians</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1ab6efcc6e24e777db0fe5e0d0955c2b2d" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>ToDegrees</name></member>
+      <member refid="class_advanced_smooth_1_1_turn_constructor_1a29ba3f4110245ccad5b233fb4f4c0c5f" prot="public" virt="non-virtual"><scope>AdvancedSmooth::ConstantTurn</scope><name>turningRadius</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_c09d28b6f7c16f308d6909ed5a8ff132" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor</compoundname>
+    <innerdir refid="dir_cf632b41e80d611fb171f24dd730169e">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors</innerdir>
+    <innerdir refid="dir_6be510a9f9137c5736422e16f66450ef">/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/ModifierEditors</innerdir>
+    <innerfile refid="_astar_path_editor_8cs">AstarPathEditor.cs</innerfile>
+    <innerfile refid="_editor_g_u_ix_8cs">EditorGUIx.cs</innerfile>
+    <innerfile refid="_editor_utilities_8cs">EditorUtilities.cs</innerfile>
+    <innerfile refid="_graph_update_scene_editor_8cs">GraphUpdateSceneEditor.cs</innerfile>
+    <innerfile refid="_node_object_editor_8cs">NodeObjectEditor.cs</innerfile>
+    <innerfile refid="_optimization_handler_8cs">OptimizationHandler.cs</innerfile>
+    <innerfile refid="_seeker_editor_8cs">SeekerEditor.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_serialization_1_1_serialize_settings" kind="class" prot="public">
+    <compoundname>Pathfinding::Serialization::SerializeSettings</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_serialization_1_1_serialize_settings_1ae29f63db1c318d6a9254aade4d448573" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool editorSettings</definition>
+        <argsstring></argsstring>
+        <name>editorSettings</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Save editor settings. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Only applicable when saving from the editor using the <ref refid="class_astar_path_editor" kindref="compound">AstarPathEditor</ref> methods </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" line="694" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" bodystart="694" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_serialization_1_1_serialize_settings_1adc562a34662e9e15ae85b8d7700080c0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool nodes</definition>
+        <argsstring></argsstring>
+        <name>nodes</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Is node data to be included in serialization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" line="690" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" bodystart="690" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_serialization_1_1_serialize_settings_1a769fe825232d88f6aa785c79fe7eb316" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool prettyPrint</definition>
+        <argsstring></argsstring>
+        <name>prettyPrint</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" line="691" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" bodystart="691" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_pathfinding_1_1_serialization_1_1_serialize_settings_1a708f610a330b2584804ac23f08f1d39f" prot="public" static="yes" readable="no" writable="no" gettable="yes" settable="no">
+        <type><ref refid="class_pathfinding_1_1_serialization_1_1_serialize_settings" kindref="compound">SerializeSettings</ref></type>
+        <definition>SerializeSettings All</definition>
+        <argsstring></argsstring>
+        <name>All</name>
+        <briefdescription>
+<para>Returns serialization settings for saving everything the can be saved. </para>        </briefdescription>
+        <detaileddescription>
+<para>This included all node data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" line="713" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" bodystart="707" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_serialization_1_1_serialize_settings_1ab862181f2385a252ebfc13de11f3f2f4" prot="public" static="yes" readable="no" writable="no" gettable="yes" settable="no">
+        <type><ref refid="class_pathfinding_1_1_serialization_1_1_serialize_settings" kindref="compound">SerializeSettings</ref></type>
+        <definition>SerializeSettings Settings</definition>
+        <argsstring></argsstring>
+        <name>Settings</name>
+        <briefdescription>
+<para>Returns serialization settings for only saving graph settings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" line="703" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" bodystart="697" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Holds settings for how graphs should be serialized. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" line="688" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" bodystart="688" bodyend="721"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_serialization_1_1_serialize_settings_1a708f610a330b2584804ac23f08f1d39f" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::SerializeSettings</scope><name>All</name></member>
+      <member refid="class_pathfinding_1_1_serialization_1_1_serialize_settings_1ae29f63db1c318d6a9254aade4d448573" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::SerializeSettings</scope><name>editorSettings</name></member>
+      <member refid="class_pathfinding_1_1_serialization_1_1_serialize_settings_1adc562a34662e9e15ae85b8d7700080c0" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::SerializeSettings</scope><name>nodes</name></member>
+      <member refid="class_pathfinding_1_1_serialization_1_1_serialize_settings_1a769fe825232d88f6aa785c79fe7eb316" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::SerializeSettings</scope><name>prettyPrint</name></member>
+      <member refid="class_pathfinding_1_1_serialization_1_1_serialize_settings_1ab862181f2385a252ebfc13de11f3f2f4" prot="public" virt="non-virtual"><scope>Pathfinding::Serialization::SerializeSettings</scope><name>Settings</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

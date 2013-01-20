@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_7536c97719fb825b478c429bf6636865" kind="dir">
+    <compoundname>ExtraDocPages</compoundname>
+    <innerfile refid="_calling_pathfinding_8cs">CallingPathfinding.cs</innerfile>
+    <innerfile refid="_documentation_8cs">Documentation.cs</innerfile>
+    <innerfile refid="_examples_8cs">Examples.cs</innerfile>
+    <innerfile refid="extending_8cs">extending.cs</innerfile>
+    <innerfile refid="_f_a_q_8cs">FAQ.cs</innerfile>
+    <innerfile refid="_fast_facts_8cs">FastFacts.cs</innerfile>
+    <innerfile refid="_get_started_8cs">GetStarted.cs</innerfile>
+    <innerfile refid="_graph_types_8cs">GraphTypes.cs</innerfile>
+    <innerfile refid="iphone_8cs">iphone.cs</innerfile>
+    <innerfile refid="javascript_8cs">javascript.cs</innerfile>
+    <innerfile refid="_local_avoidance-_colliders_8cs">LocalAvoidance-Colliders.cs</innerfile>
+    <innerfile refid="_documentation_2_extra_doc_pages_2_local_avoidance_8cs">LocalAvoidance.cs</innerfile>
+    <innerfile refid="_modifier_guidelines_8cs">ModifierGuidelines.cs</innerfile>
+    <innerfile refid="_optimization_8cs">Optimization.cs</innerfile>
+    <innerfile refid="_pooling_8cs">Pooling.cs</innerfile>
+    <innerfile refid="_relevant_classes_8cs">RelevantClasses.cs</innerfile>
+    <innerfile refid="_save_load_graphs_8cs">SaveLoadGraphs.cs</innerfile>
+    <innerfile refid="tags_8cs">tags.cs</innerfile>
+    <innerfile refid="_to_do_8cs">ToDo.cs</innerfile>
+    <innerfile refid="updating_graphs_8cs">updatingGraphs.cs</innerfile>
+    <innerfile refid="upgrading_8cs">upgrading.cs</innerfile>
+    <innerfile refid="_using_modifiers_8cs">UsingModifiers.cs</innerfile>
+    <innerfile refid="_writing_graph_generators_8cs">WritingGraphGenerators.cs</innerfile>
+    <innerfile refid="_writing_modifiers_8cs">WritingModifiers.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Documentation/ExtraDocPages/"/>
+  </compounddef>
+</doxygen>

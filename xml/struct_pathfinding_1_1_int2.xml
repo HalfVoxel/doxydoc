@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_pathfinding_1_1_int2" kind="struct" prot="public">
+    <compoundname>Pathfinding::Int2</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_int2_1a6150e0515f7202e2fb518f7206ed97dc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="288" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_int2_1a0a2f84ed7838f07779ae24c5a9086d33" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="289" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_pathfinding_1_1_int2_1afde6bb3d9d4ed1f87e3814ddfceb37d9" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>int</type>
+        <definition>int sqrMagnitude</definition>
+        <argsstring></argsstring>
+        <name>sqrMagnitude</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="300" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_pathfinding_1_1_int2_1a43fdb27a81c03cc49b5fe4cb550a6f54" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>long</type>
+        <definition>long sqrMagnitudeLong</definition>
+        <argsstring></argsstring>
+        <name>sqrMagnitudeLong</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="306" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a1a3bff2c12909b4f482bf81d13b78d35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Int2</definition>
+        <argsstring>(int x, int y)</argsstring>
+        <name>Int2</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="291" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="291" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a2d69afba6434bd9df862f16957205eae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Equals</definition>
+        <argsstring>(System.Object o)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>System.Object</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="332" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="332" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a77e1afa2b6dee1ed3640da81d7407b42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int GetHashCode</definition>
+        <argsstring>()</argsstring>
+        <name>GetHashCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="339" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="339" bodyend="341"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1abd915c3c4950dde9c2c74f00ccf3ab4f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Dot</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>Dot</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="324" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="324" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a246d525fda9b613f6999fc525b656c9c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long</type>
+        <definition>static long DotLong</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>DotLong</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="328" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="328" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a8fbb95a93c12eeaebfbdc38727e589dc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+        <definition>static Int2 FromInt3XZ</definition>
+        <argsstring>(Int3 o)</argsstring>
+        <name>FromInt3XZ</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="351" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="351" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a4c00abcdacc79fe2214b366ee2563676" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+        <definition>static Int2 Max</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>Max</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="347" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="347" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1aff371d21e2b6f14e06f63835dccd1c3f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+        <definition>static Int2 Min</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>Min</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="343" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="343" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a81da11a3a8dfa4d8e032d9d6e1e4b4ae" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool operator!=</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="320" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="320" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1ad47b9f15e58ddeebbaec2467049f16a1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+        <definition>static Int2 operator+</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="308" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="308" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a9c7996bdf89a6449ca1bad79dd376bbe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+        <definition>static Int2 operator-</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>operator-</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="312" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="312" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a08c41da0b6cc910c04a70427d8397bfb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool operator==</definition>
+        <argsstring>(Int2 a, Int2 b)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="316" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="316" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_pathfinding_1_1_int2_1a57e44e795c92471d64ff347dfdb8000a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+        <definition>static Int3 ToInt3XZ</definition>
+        <argsstring>(Int2 o)</argsstring>
+        <name>ToInt3XZ</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="355" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="355" bodyend="357"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Two Dimensional Integer Coordinate Pair. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" line="287" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/Misc/Int3.cs" bodystart="287" bodyend="358"/>
+    <listofallmembers>
+      <member refid="struct_pathfinding_1_1_int2_1abd915c3c4950dde9c2c74f00ccf3ab4f" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>Dot</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a246d525fda9b613f6999fc525b656c9c" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>DotLong</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a2d69afba6434bd9df862f16957205eae" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>Equals</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a8fbb95a93c12eeaebfbdc38727e589dc" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>FromInt3XZ</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a77e1afa2b6dee1ed3640da81d7407b42" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>GetHashCode</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a1a3bff2c12909b4f482bf81d13b78d35" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>Int2</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a4c00abcdacc79fe2214b366ee2563676" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>Max</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1aff371d21e2b6f14e06f63835dccd1c3f" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>Min</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a81da11a3a8dfa4d8e032d9d6e1e4b4ae" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>operator!=</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1ad47b9f15e58ddeebbaec2467049f16a1" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>operator+</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a9c7996bdf89a6449ca1bad79dd376bbe" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>operator-</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a08c41da0b6cc910c04a70427d8397bfb" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>operator==</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1afde6bb3d9d4ed1f87e3814ddfceb37d9" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>sqrMagnitude</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a43fdb27a81c03cc49b5fe4cb550a6f54" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>sqrMagnitudeLong</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a57e44e795c92471d64ff347dfdb8000a" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>ToInt3XZ</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a6150e0515f7202e2fb518f7206ed97dc" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>x</name></member>
+      <member refid="struct_pathfinding_1_1_int2_1a0a2f84ed7838f07779ae24c5a9086d33" prot="public" virt="non-virtual"><scope>Pathfinding::Int2</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

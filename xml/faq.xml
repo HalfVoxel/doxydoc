@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="faq" kind="page">
+    <compoundname>faq</compoundname>
+    <title>Frequently Asked Questions</title>
+    <detaileddescription>
+<para><heading level="3">I&apos;m getting an error saying somehing about vertices &gt; 60000? What&apos;s causing this?</heading>
+</para><para>This is as far as I know a Unity bug, I can unfortunately not do anything about it. It seems to trigger when raycasting a lot or drawing a lot of gizmos.<linebreak/>
+ It helps sometimes to turn of Draw Unwalkable Nodes or disable Show Graphs altogether.<linebreak/>
+ [Update] According to what I have heard, this is now fixed in Unity 3.5.3J</para><para><heading level="3">Can the Free version be used in a commercial project?</heading>
+</para><para>Yes it can! Go ahead!<linebreak/>
+ But consider purchasing the Pro version if you make money on it to support the development of this project as I have worked quite a lot on it.<linebreak/>
+ A credit is never wrong either ;) </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_polygon" kind="class" prot="public">
+    <compoundname>Pathfinding::Polygon</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_polygon_1adea929fcb334a2edb70fe7905741df1a" prot="public" static="yes" mutable="no">
+        <type>List&lt; Vector3 &gt;</type>
+        <definition>List&lt;Vector3&gt; hullCache</definition>
+        <argsstring></argsstring>
+        <name>hullCache</name>
+        <initializer>= new List&lt;Vector3&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="827" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="827" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a2c066a2832c7ba508fe0b1f65c5d60b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 ClosestPointOnTriangle</definition>
+        <argsstring>(Vector3[] triangle, Vector3 point)</argsstring>
+        <name>ClosestPointOnTriangle</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>triangle</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the closest point on the triangle. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>triangle</emphasis> array must have a length of at least 3. <simplesect kind="see"><para>ClosesPointOnTriangle(Vector3,Vector3,Vector3,Vector3); </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="965" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="965" bodyend="967"/>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a3fe8b1223181598c7b7c1609766f7211" compoundref="_nav_mesh_generator_8cs" startline="240" endline="343">NavMeshGraph.GetNearestForceBoth</referencedby>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a99080e33c8860cb1d2dc9ed1aeb4d140" compoundref="_nav_mesh_generator_8cs" startline="876" endline="878">NavMeshGraph.ClosestPointOnNode</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1aff2a20aaa09bf4a7243266e54d297cf5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 ClosestPointOnTriangle</definition>
+        <argsstring>(Vector3 tr0, Vector3 tr1, Vector3 tr2, Vector3 point)</argsstring>
+        <name>ClosestPointOnTriangle</name>
+        <param>
+          <type>Vector3</type>
+          <declname>tr0</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>tr1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>tr2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the closest point on the triangle. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="author"><para>Got code from the internet, changed a bit to work with the Unity API</para></simplesect>
+<xrefsect id="todo_1_todo000003"><xreftitle>Todo</xreftitle><xrefdescription><para>Uses Dot product to get the sqrMagnitude of a vector, should change to sqrMagnitude for readability and possibly for speed (unlikely though) </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="975" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="975" bodyend="1069"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ac8ef4317f6fb29639ca48b8abd05f6e5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ContainsPoint</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c, Vector3 p)</argsstring>
+        <name>ContainsPoint</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the triangle <emphasis>ABC</emphasis> contains the point <emphasis>p</emphasis> in XZ space. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="464" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="464" bodyend="466"/>
+        <references refid="class_pathfinding_1_1_polygon_1ab7e045550f6af75261ceeaa53c3acd92" compoundref="_astar_math_8cs" startline="521" endline="523">Polygon.IsClockwiseMargin</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a3c85bc388cf39739473f552ee4af332a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ContainsPoint</definition>
+        <argsstring>(Int2 a, Int2 b, Int2 c, Int2 p)</argsstring>
+        <name>ContainsPoint</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the triangle <emphasis>ABC</emphasis> contains the point <emphasis>p</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="469" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="469" bodyend="471"/>
+        <references refid="class_pathfinding_1_1_polygon_1ab7e045550f6af75261ceeaa53c3acd92" compoundref="_astar_math_8cs" startline="521" endline="523">Polygon.IsClockwiseMargin</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a3bee81a8f3e99226421d987cb04d72ed" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ContainsPoint</definition>
+        <argsstring>(Vector2[] polyPoints, Vector2 p)</argsstring>
+        <name>ContainsPoint</name>
+        <param>
+          <type>Vector2[]</type>
+          <declname>polyPoints</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Checks if <emphasis>p</emphasis> is inside the polygon. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="author"><para><ulink url="http://unifycommunity.com/wiki/index.php?title=PolyContainsPoint">http://unifycommunity.com/wiki/index.php?title=PolyContainsPoint</ulink> (Eric5h5) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="476" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="476" bodyend="486"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a5db2a4b36d0b6d3d1c5546e327f7dd5b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ContainsPoint</definition>
+        <argsstring>(Vector3[] polyPoints, Vector3 p)</argsstring>
+        <name>ContainsPoint</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>polyPoints</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Checks if <emphasis>p</emphasis> is inside the polygon (XZ space) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="author"><para><ulink url="http://unifycommunity.com/wiki/index.php?title=PolyContainsPoint">http://unifycommunity.com/wiki/index.php?title=PolyContainsPoint</ulink> (Eric5h5) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="491" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="491" bodyend="501"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a71fe006f3e60e025b75b7c2bc97348bb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3[]</type>
+        <definition>static Vector3 [] ConvexHull</definition>
+        <argsstring>(Vector3[] points)</argsstring>
+        <name>ConvexHull</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>points</declname>
+        </param>
+        <briefdescription>
+<para>Calculates convex hull in XZ space for the points. </para>        </briefdescription>
+        <detaileddescription>
+<para>Implemented using the very simple Gift Wrapping Algorithm which has a complexity of O(nh) where <emphasis>n</emphasis> is the number of points and <emphasis>h</emphasis> is the number of points on the hull, so it is in the worst case quadratic. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="834" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="834" bodyend="870"/>
+        <references refid="class_pathfinding_1_1_polygon_1a93389f87146114020dd189dc5ddd4287" compoundref="_astar_math_8cs" startline="504" endline="506">Polygon.Left</references>
+        <referencedby refid="class_graph_update_scene_1ae0fc7f33e11b681b1bfce87c7bb9a5c6" compoundref="_graph_update_scene_8cs" startline="130" endline="132">GraphUpdateScene.RecalcConvex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ae7706319595758e27b22010163779ba6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Dot</definition>
+        <argsstring>(Vector3 lhs, Vector3 rhs)</argsstring>
+        <name>Dot</name>
+        <param>
+          <type>Vector3</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Dot product of two vectors. </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000002"><xreftitle>Todo</xreftitle><xrefdescription><para>Why is this function defined here? </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="906" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="905" bodyend="911"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ae7296e07e17f20ee44f8d27fd681bdad" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IntersectionFactor</definition>
+        <argsstring>(Vector3 start1, Vector3 end1, Vector3 start2, Vector3 end2, out float factor1, out float factor2)</argsstring>
+        <name>IntersectionFactor</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end2</declname>
+        </param>
+        <param>
+          <type>out float</type>
+          <declname>factor1</declname>
+        </param>
+        <param>
+          <type>out float</type>
+          <declname>factor2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection factors for line 1 and line 2. </para>        </briefdescription>
+        <detaileddescription>
+<para>The intersection factors is a distance along the line <emphasis>start</emphasis> - <emphasis>end</emphasis> where the other line intersects it.<linebreak/>
+ <programlisting><codeline><highlight class="normal">intersectionPoint<sp/>=<sp/>start1<sp/>+<sp/>factor1<sp/>*<sp/>(end1-start1)<sp/></highlight></codeline>
+</programlisting> <programlisting><codeline><highlight class="normal">intersectionPoint2<sp/>=<sp/>start2<sp/>+<sp/>factor2<sp/>*<sp/>(end2-start2)<sp/></highlight></codeline>
+</programlisting> Lines are treated as infinite.<linebreak/>
+ false is returned if the lines are parallel and true if they are not </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="636" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="636" bodyend="665"/>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a2b72eb01e202fb9c9584adb7dcbe1341" compoundref="_nav_mesh_generator_8cs" startline="474" endline="763">NavMeshGraph.Linecast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ac0f374c78d2e2ab946108c45b48f7966" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float IntersectionFactor</definition>
+        <argsstring>(Vector3 start1, Vector3 end1, Vector3 start2, Vector3 end2)</argsstring>
+        <name>IntersectionFactor</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection factor for line 1 with line 2. </para>        </briefdescription>
+        <detaileddescription>
+<para>The intersection factor is a distance along the line <emphasis>start1</emphasis> - <emphasis>end1</emphasis> where the line <emphasis>start2</emphasis> - <emphasis>end2</emphasis> intersects it.<linebreak/>
+ <programlisting><codeline><highlight class="normal">intersectionPoint<sp/>=<sp/>start1<sp/>+<sp/>intersectionFactor<sp/>*<sp/>(end1-start1)<sp/></highlight></codeline>
+</programlisting>. Lines are treated as infinite.<linebreak/>
+ -1 is returned if the lines are parallel (note that this is a valid return value if they are not parallel too) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="702" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="702" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a2d23a8613201d3a0f0505128ad9f781f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float IntersectionFactorRay</definition>
+        <argsstring>(Int3 start1, Int3 end1, Int3 start2, Int3 end2)</argsstring>
+        <name>IntersectionFactorRay</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>end2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection factor for line 1 with ray 2. </para>        </briefdescription>
+        <detaileddescription>
+<para>The intersection factors is a factor distance along the line <emphasis>start</emphasis> - <emphasis>end</emphasis> where the other line intersects it.<linebreak/>
+ <programlisting><codeline><highlight class="normal">intersectionPoint<sp/>=<sp/>start1<sp/>+<sp/>factor<sp/>*<sp/>(end1-start1)<sp/></highlight></codeline>
+</programlisting> Lines are treated as infinite.<linebreak/>
+</para><para>The second &quot;line&quot; is treated as a ray, meaning only matches on start2 or forwards towards end2 (and beyond) will be returned If the point lies on the wrong side of the ray start, Nan will be returned.</para><para>NaN is returned if the lines are parallel. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="676" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="676" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ac58d8e64d668346ea96e48c8ac252b65" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 IntersectionPoint</definition>
+        <argsstring>(Vector3 start1, Vector3 end1, Vector3 start2, Vector3 end2)</argsstring>
+        <name>IntersectionPoint</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection point between the two lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are treated as infinite. <emphasis>start1</emphasis> is returned if the lines are parallel </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="727" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="727" bodyend="730"/>
+        <referencedby refid="class_pathfinding_1_1_polygon_1a81c4e6d3a23896cfe9d59bb55c23a6c2" compoundref="_astar_math_8cs" startline="760" endline="763">Polygon.IntersectionPoint</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1adf115f379c736fca947170d27b94b95c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 IntersectionPoint</definition>
+        <argsstring>(Vector3 start1, Vector3 end1, Vector3 start2, Vector3 end2, out bool intersects)</argsstring>
+        <name>IntersectionPoint</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end2</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>intersects</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection point between the two lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are treated as infinite. <emphasis>start1</emphasis> is returned if the lines are parallel </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="733" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="733" bodyend="757"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a81c4e6d3a23896cfe9d59bb55c23a6c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>static Vector2 IntersectionPoint</definition>
+        <argsstring>(Vector2 start1, Vector2 end1, Vector2 start2, Vector2 end2)</argsstring>
+        <name>IntersectionPoint</name>
+        <param>
+          <type>Vector2</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection point between the two lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are treated as infinite. <emphasis>start1</emphasis> is returned if the lines are parallel </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="760" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="760" bodyend="763"/>
+        <references refid="class_pathfinding_1_1_polygon_1ac58d8e64d668346ea96e48c8ac252b65" compoundref="_astar_math_8cs" startline="727" endline="730">Polygon.IntersectionPoint</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a4a6e8040543572def09338ad5dd7a772" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector2</type>
+        <definition>static Vector2 IntersectionPoint</definition>
+        <argsstring>(Vector2 start1, Vector2 end1, Vector2 start2, Vector2 end2, out bool intersects)</argsstring>
+        <name>IntersectionPoint</name>
+        <param>
+          <type>Vector2</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>end2</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>intersects</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection point between the two lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are treated as infinite. <emphasis>start1</emphasis> is returned if the lines are parallel </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="766" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="766" bodyend="790"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a277e47999b2989c533340fe422470a4c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 IntersectionPointOptimized</definition>
+        <argsstring>(Vector3 start1, Vector3 dir1, Vector3 start2, Vector3 dir2)</argsstring>
+        <name>IntersectionPointOptimized</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>dir1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>dir2</declname>
+        </param>
+        <briefdescription>
+<para>Intersection point between two infinite lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are treated as infinite. If the lines are parallel &apos;start1&apos; will be returned. Intersections are calculated on the XZ plane. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="596" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="596" bodyend="609"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a49d2d01bb28333e896ed0a4da24d8f7d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 IntersectionPointOptimized</definition>
+        <argsstring>(Vector3 start1, Vector3 dir1, Vector3 start2, Vector3 dir2, out bool intersects)</argsstring>
+        <name>IntersectionPointOptimized</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>dir1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>dir2</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>intersects</declname>
+        </param>
+        <briefdescription>
+<para>Intersection point between two infinite lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are treated as infinite. If the lines are parallel &apos;start1&apos; will be returned. Intersections are calculated on the XZ plane. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="614" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="614" bodyend="629"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a06641469089f9dea0104401f56a7cf31" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Intersects</definition>
+        <argsstring>(Int2 a, Int2 b, Int2 a2, Int2 b2)</argsstring>
+        <name>Intersects</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a2</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b2</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the line segment <emphasis>a2</emphasis> - <emphasis>b2</emphasis> line segment <emphasis>a</emphasis> - <emphasis>b</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="561" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="561" bodyend="563"/>
+        <references refid="class_pathfinding_1_1_polygon_1a93389f87146114020dd189dc5ddd4287" compoundref="_astar_math_8cs" startline="504" endline="506">Polygon.Left</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ab96b346769dbe66bbb451b04bfbf726c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Intersects</definition>
+        <argsstring>(Vector3 start1, Vector3 end1, Vector3 start2, Vector3 end2)</argsstring>
+        <name>Intersects</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end2</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the two line segments intersects. </para>        </briefdescription>
+        <detaileddescription>
+<para>The lines are NOT treated as infinite (just for clarification) <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_polygon_1ac58d8e64d668346ea96e48c8ac252b65" kindref="member">IntersectionPoint</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="567" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="567" bodyend="591"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a3a3215766abadb3175192f515b8c0b39" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IntersectsUnclamped</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 a2, Vector3 b2)</argsstring>
+        <name>IntersectsUnclamped</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>a2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b2</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the line segment <emphasis>a2</emphasis> - <emphasis>b2</emphasis> intersects the infinite line <emphasis>a</emphasis> - <emphasis>b</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>a-b is infinite, a2-b2 is not infinite </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="556" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="556" bodyend="558"/>
+        <references refid="class_pathfinding_1_1_polygon_1a93389f87146114020dd189dc5ddd4287" compoundref="_astar_math_8cs" startline="504" endline="506">Polygon.Left</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1af2f48887cb67d83d22b1646222b40f26" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsClockwise</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>IsClockwise</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the points a in a clockwise order. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="526" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="526" bodyend="528"/>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a3fe8b1223181598c7b7c1609766f7211" compoundref="_nav_mesh_generator_8cs" startline="240" endline="343">NavMeshGraph.GetNearestForceBoth</referencedby>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1afa3fa9c80c0412e2bc3f0350bd378b7e" compoundref="_nav_mesh_generator_8cs" startline="881" endline="888">NavMeshGraph.ContainsPoint</referencedby>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a70ab430d1f5ba6125144fd99314bc5f6" compoundref="_nav_mesh_generator_8cs" startline="937" endline="1151">NavMeshGraph.GenerateNodes</referencedby>
+        <referencedby refid="class_r_v_o_navmesh_1ac2bce8ae6e80e77e6c8fdc134ef040e8" compoundref="_r_v_o_navmesh_8cs" startline="68" endline="151">RVONavmesh.AddGraphObstacles</referencedby>
+        <referencedby refid="class_r_v_o_obstacle_1a88e26426b52e90e85206cf937e3f3308" compoundref="_r_v_o_obstacle_8cs" startline="260" endline="277">RVOObstacle.WindCorrectly</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a5c4ba2ce94c9d53ff1de8088684ceb94" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsClockwise</definition>
+        <argsstring>(Int3 a, Int3 b, Int3 c)</argsstring>
+        <name>IsClockwise</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the points a in a clockwise order. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="531" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="531" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ab7e045550f6af75261ceeaa53c3acd92" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsClockwiseMargin</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>IsClockwiseMargin</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the points a in a clockwise order. </para>        </briefdescription>
+        <detaileddescription>
+<para>Will return true even if the points are colinear or very slightly counter-clockwise (if the signed area of the triangle formed by the points has an area less than or equals to float.Epsilon) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="521" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="521" bodyend="523"/>
+        <referencedby refid="class_pathfinding_1_1_polygon_1ac8ef4317f6fb29639ca48b8abd05f6e5" compoundref="_astar_math_8cs" startline="464" endline="466">Polygon.ContainsPoint</referencedby>
+        <referencedby refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a92e2289b3c620f5365fc5fdf53bfb91f" compoundref="_r_v_o_core_simulator_8cs" startline="307" endline="358">Simulator.AddObstacle</referencedby>
+        <referencedby refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1acee20e4897f14df1a56c45d2accd3989" compoundref="_r_v_o_core_simulator_8cs" startline="401" endline="448">Simulator.UpdateObstacle</referencedby>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a06b2cce97bec18325d66fc411f9e5a18" compoundref="_nav_mesh_generator_8cs" startline="891" endline="902">NavMeshGraph.ContainsPoint</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1af96286de696425d6850fa8bebd1c5bca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsClockwiseMargin</definition>
+        <argsstring>(Int3 a, Int3 b, Int3 c)</argsstring>
+        <name>IsClockwiseMargin</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if the points a in a clockwise order or if they are colinear. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="536" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="536" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a254ad828d999fdd39e989eb0c68529fa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsClockwiseMargin</definition>
+        <argsstring>(Int2 a, Int2 b, Int2 c)</argsstring>
+        <name>IsClockwiseMargin</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if the points a in a clockwise order or if they are colinear. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="541" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="541" bodyend="543"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a9e12da85e08a779397e3a90345220fee" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsColinear</definition>
+        <argsstring>(Int3 a, Int3 b, Int3 c)</argsstring>
+        <name>IsColinear</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the points are colinear (lie on a straight line) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="546" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="546" bodyend="548"/>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a70ab430d1f5ba6125144fd99314bc5f6" compoundref="_nav_mesh_generator_8cs" startline="937" endline="1151">NavMeshGraph.GenerateNodes</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a9bc6e84df14480af4a6b7e366e7816c4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool IsColinear</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>IsColinear</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the points are colinear (lie on a straight line) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="551" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="551" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a93389f87146114020dd189dc5ddd4287" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Left</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 p)</argsstring>
+        <name>Left</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>p</emphasis> lies on the left side of the line <emphasis>a</emphasis> - <emphasis>b</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Uses XZ space. Also returns true if the points are colinear </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="504" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="504" bodyend="506"/>
+        <referencedby refid="class_pathfinding_1_1_polygon_1a3a3215766abadb3175192f515b8c0b39" compoundref="_astar_math_8cs" startline="556" endline="558">Polygon.IntersectsUnclamped</referencedby>
+        <referencedby refid="class_pathfinding_1_1_polygon_1a06641469089f9dea0104401f56a7cf31" compoundref="_astar_math_8cs" startline="561" endline="563">Polygon.Intersects</referencedby>
+        <referencedby refid="class_pathfinding_1_1_polygon_1a71fe006f3e60e025b75b7c2bc97348bb" compoundref="_astar_math_8cs" startline="834" endline="870">Polygon.ConvexHull</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2075178ecda4935789b7cfc4531a5bf0" compoundref="_grid_generator_8cs" startline="1688" endline="1831">GridGraph.Linecast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a699651cc2cc9e8971a19d374494e82bf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Left</definition>
+        <argsstring>(Int3 a, Int3 b, Int3 c)</argsstring>
+        <name>Left</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>p</emphasis> lies on the left side of the line <emphasis>a</emphasis> - <emphasis>b</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Uses XZ space. Also returns true if the points are colinear </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="509" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="509" bodyend="511"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a47a0764465ea6a93b28e20e9c10910ff" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Left</definition>
+        <argsstring>(Int2 a, Int2 b, Int2 c)</argsstring>
+        <name>Left</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int2" kindref="compound">Int2</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>p</emphasis> lies on the left side of the line <emphasis>a</emphasis> - <emphasis>b</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Also returns true if the points are colinear </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="514" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="514" bodyend="516"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a12fe6da8bd47587bd4cf28560d90bb4d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool LineIntersectsBounds</definition>
+        <argsstring>(Bounds bounds, Vector3 a, Vector3 b)</argsstring>
+        <name>LineIntersectsBounds</name>
+        <param>
+          <type>Bounds</type>
+          <declname>bounds</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Does the line segment intersect the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+<para>The line is NOT treated as infinite. <simplesect kind="author"><para>Slightly modified code from <ulink url="http://www.3dkingdoms.com/weekly/weekly.php?a=21">http://www.3dkingdoms.com/weekly/weekly.php?a=21</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="876" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="876" bodyend="902"/>
+        <referencedby refid="class_pathfinding_1_1_point_graph_1a248f610a0bb71b66bba6fe873fca8e9a" compoundref="_point_generator_8cs" startline="258" endline="350">PointGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a9927668ddd18d78e4eea0dc6ce78a784" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>static Vector3 SegmentIntersectionPoint</definition>
+        <argsstring>(Vector3 start1, Vector3 end1, Vector3 start2, Vector3 end2, out bool intersects)</argsstring>
+        <name>SegmentIntersectionPoint</name>
+        <param>
+          <type>Vector3</type>
+          <declname>start1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end1</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>start2</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>end2</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>intersects</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection point between the two line segments. </para>        </briefdescription>
+        <detaileddescription>
+<para>Lines are NOT treated as infinite. <emphasis>start1</emphasis> is returned if the line segments do not intersect </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="794" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="794" bodyend="825"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2075178ecda4935789b7cfc4531a5bf0" compoundref="_grid_generator_8cs" startline="1688" endline="1831">GridGraph.Linecast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1ad4ab744318e2bf7dd440f2e3a490f7a5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3[]</type>
+        <definition>static Vector3 [] Subdivide</definition>
+        <argsstring>(Vector3[] path, int subdivisions)</argsstring>
+        <name>Subdivide</name>
+        <param>
+          <type>Vector3[]</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subdivisions</declname>
+        </param>
+        <briefdescription>
+<para>Subdivides <emphasis>path</emphasis> and returns the new array with interpolated values. </para>        </briefdescription>
+        <detaileddescription>
+<para>The returned array is <emphasis>path</emphasis> subdivided <emphasis>subdivisions</emphasis> times, the resulting points are interpolated using Mathf.SmoothStep.<linebreak/>
+ If <emphasis>subdivisions</emphasis> is less or equal to 0 (zero), the original array will be returned </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="936" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="936" bodyend="960"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a280e701647f0724a029c999e4e2845e3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long</type>
+        <definition>static long TriangleArea</definition>
+        <argsstring>(Int3 a, Int3 b, Int3 c)</argsstring>
+        <name>TriangleArea</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="453" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="453" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1aa4419aabb91537721ac5d2cdd895de62" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float TriangleArea</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>TriangleArea</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="458" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="458" bodyend="461"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1af8a661b018bcf906022b72736170ba5c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long</type>
+        <definition>static long TriangleArea2</definition>
+        <argsstring>(Int3 a, Int3 b, Int3 c)</argsstring>
+        <name>TriangleArea2</name>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Area of a triangle This will be negative for clockwise triangles and positive for counter-clockwise ones. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="443" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="443" bodyend="446"/>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a2b72eb01e202fb9c9584adb7dcbe1341" compoundref="_nav_mesh_generator_8cs" startline="474" endline="763">NavMeshGraph.Linecast</referencedby>
+        <referencedby refid="class_pathfinding_1_1_nav_mesh_graph_1a70ab430d1f5ba6125144fd99314bc5f6" compoundref="_nav_mesh_generator_8cs" startline="937" endline="1151">NavMeshGraph.GenerateNodes</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_polygon_1a738c40c64153ba5a3a19c09b89e3c16d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float TriangleArea2</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>TriangleArea2</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="448" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="448" bodyend="451"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_pathfinding_1_1_utility" kindref="compound">Utility</ref> functions for working with polygons, lines, and other vector math. </para>    </briefdescription>
+    <detaileddescription>
+<para>All functions which accepts Vector3s but work in 2D space uses the XZ space if nothing else is said. </para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" line="440" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/AstarMath.cs" bodystart="440" bodyend="1070"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_polygon_1a2c066a2832c7ba508fe0b1f65c5d60b9" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ClosestPointOnTriangle</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1aff2a20aaa09bf4a7243266e54d297cf5" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ClosestPointOnTriangle</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ac8ef4317f6fb29639ca48b8abd05f6e5" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ContainsPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a3c85bc388cf39739473f552ee4af332a" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ContainsPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a3bee81a8f3e99226421d987cb04d72ed" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ContainsPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a5db2a4b36d0b6d3d1c5546e327f7dd5b" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ContainsPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a71fe006f3e60e025b75b7c2bc97348bb" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>ConvexHull</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ae7706319595758e27b22010163779ba6" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Dot</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1adea929fcb334a2edb70fe7905741df1a" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>hullCache</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ae7296e07e17f20ee44f8d27fd681bdad" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionFactor</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ac0f374c78d2e2ab946108c45b48f7966" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionFactor</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a2d23a8613201d3a0f0505128ad9f781f" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionFactorRay</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ac58d8e64d668346ea96e48c8ac252b65" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1adf115f379c736fca947170d27b94b95c" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a81c4e6d3a23896cfe9d59bb55c23a6c2" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a4a6e8040543572def09338ad5dd7a772" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a277e47999b2989c533340fe422470a4c" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionPointOptimized</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a49d2d01bb28333e896ed0a4da24d8f7d" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectionPointOptimized</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a06641469089f9dea0104401f56a7cf31" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Intersects</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ab96b346769dbe66bbb451b04bfbf726c" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Intersects</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a3a3215766abadb3175192f515b8c0b39" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IntersectsUnclamped</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1af2f48887cb67d83d22b1646222b40f26" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsClockwise</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a5c4ba2ce94c9d53ff1de8088684ceb94" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsClockwise</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ab7e045550f6af75261ceeaa53c3acd92" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsClockwiseMargin</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1af96286de696425d6850fa8bebd1c5bca" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsClockwiseMargin</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a254ad828d999fdd39e989eb0c68529fa" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsClockwiseMargin</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a9e12da85e08a779397e3a90345220fee" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsColinear</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a9bc6e84df14480af4a6b7e366e7816c4" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>IsColinear</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a93389f87146114020dd189dc5ddd4287" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Left</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a699651cc2cc9e8971a19d374494e82bf" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Left</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a47a0764465ea6a93b28e20e9c10910ff" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Left</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a12fe6da8bd47587bd4cf28560d90bb4d" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>LineIntersectsBounds</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a9927668ddd18d78e4eea0dc6ce78a784" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>SegmentIntersectionPoint</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1ad4ab744318e2bf7dd440f2e3a490f7a5" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>Subdivide</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a280e701647f0724a029c999e4e2845e3" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>TriangleArea</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1aa4419aabb91537721ac5d2cdd895de62" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>TriangleArea</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1af8a661b018bcf906022b72736170ba5c" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>TriangleArea2</name></member>
+      <member refid="class_pathfinding_1_1_polygon_1a738c40c64153ba5a3a19c09b89e3c16d" prot="public" virt="non-virtual"><scope>Pathfinding::Polygon</scope><name>TriangleArea2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_seeker_editor" kind="class" prot="public">
+    <compoundname>SeekerEditor</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Editor</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_seeker_editor_1ac79f959ce3f92e7790d73b619fef1b84" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool modifiersOpen</definition>
+        <argsstring></argsstring>
+        <name>modifiersOpen</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_seeker_editor_1a8494393847e92dd506e68e37c4457b7e" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool tagPenaltiesOpen</definition>
+        <argsstring></argsstring>
+        <name>tagPenaltiesOpen</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_seeker_editor_1ad0f6158db46e09617bde5cffe8109413" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="interface_pathfinding_1_1_i_path_modifier" kindref="compound">IPathModifier</ref> &gt;</type>
+        <definition>List&lt;IPathModifier&gt; mods</definition>
+        <argsstring></argsstring>
+        <name>mods</name>
+        <initializer>= null</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" line="16" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_seeker_editor_1a9292d21427a3a3c9c6727380f50ec25a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void OnInspectorGUI</definition>
+        <argsstring>()</argsstring>
+        <name>OnInspectorGUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" line="17" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" bodystart="17" bodyend="182"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2910">
+        <label>Editor</label>
+      </node>
+      <node id="2909">
+        <label>SeekerEditor</label>
+        <link refid="class_seeker_editor"/>
+        <childnode refid="2910" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2912">
+        <label>Editor</label>
+      </node>
+      <node id="2911">
+        <label>SeekerEditor</label>
+        <link refid="class_seeker_editor"/>
+        <childnode refid="2912" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" line="11" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/SeekerEditor.cs" bodystart="11" bodyend="183"/>
+    <listofallmembers>
+      <member refid="class_seeker_editor_1ac79f959ce3f92e7790d73b619fef1b84" prot="public" virt="non-virtual"><scope>SeekerEditor</scope><name>modifiersOpen</name></member>
+      <member refid="class_seeker_editor_1ad0f6158db46e09617bde5cffe8109413" prot="private" virt="non-virtual"><scope>SeekerEditor</scope><name>mods</name></member>
+      <member refid="class_seeker_editor_1a9292d21427a3a3c9c6727380f50ec25a" prot="public" virt="non-virtual"><scope>SeekerEditor</scope><name>OnInspectorGUI</name></member>
+      <member refid="class_seeker_editor_1a8494393847e92dd506e68e37c4457b7e" prot="public" virt="non-virtual"><scope>SeekerEditor</scope><name>tagPenaltiesOpen</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

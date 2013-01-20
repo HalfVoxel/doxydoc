@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_path_types_demo" kind="class" prot="public">
+    <compoundname>PathTypesDemo</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <briefdescription>
+<para>Demos different path types. </para>    </briefdescription>
+    <detaileddescription>
+<para>This script is an example script demoing a number of different path types included in the project. Since only the Pro version has access to many path types, it is only included in the pro version <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2572">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2571">
+        <label>PathTypesDemo</label>
+        <link refid="class_path_types_demo"/>
+        <childnode refid="2572" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2574">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2573">
+        <label>PathTypesDemo</label>
+        <link refid="class_path_types_demo"/>
+        <childnode refid="2574" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example8_PathTypes/PathTypesDemo.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/Example8_PathTypes/PathTypesDemo.cs" bodystart="13" bodyend="344"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

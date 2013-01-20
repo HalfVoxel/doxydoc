@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_pathfinding_1_1_graph_hit_info" kind="struct" prot="public">
+    <compoundname>Pathfinding::GraphHitInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_pathfinding_1_1_graph_hit_info_1ad38a0e14c26a92de3abc582d51413e1b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+        <definition>GraphNode node</definition>
+        <argsstring></argsstring>
+        <name>node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="116" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_graph_hit_info_1a02b21174ba0d11e753b88c99cdc82cb0" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 origin</definition>
+        <argsstring></argsstring>
+        <name>origin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="114" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_graph_hit_info_1a0efa5f9e105af469b987713ac8773b75" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 point</definition>
+        <argsstring></argsstring>
+        <name>point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="115" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_graph_hit_info_1a7960f9c558f9ee2c3d4a8fdea096fb56" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool success</definition>
+        <argsstring></argsstring>
+        <name>success</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="119" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_graph_hit_info_1ad0bdb380a9f4dcdb6ae7b2f0efbf3235" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 tangent</definition>
+        <argsstring></argsstring>
+        <name>tangent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="118" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_pathfinding_1_1_graph_hit_info_1a499cc444f82d8ff3fa04b967ca04beaa" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 tangentOrigin</definition>
+        <argsstring></argsstring>
+        <name>tangentOrigin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="117" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_pathfinding_1_1_graph_hit_info_1a06f14a9abd47b91465f895d5259cdc1b" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>float</type>
+        <definition>float distance</definition>
+        <argsstring></argsstring>
+        <name>distance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="125" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_pathfinding_1_1_graph_hit_info_1ad114f95585e34f13e08a73bd45f4ad49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GraphHitInfo</definition>
+        <argsstring>(Vector3 point)</argsstring>
+        <name>GraphHitInfo</name>
+        <param>
+          <type>Vector3</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="127" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="127" bodyend="135"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Returned by graph ray- or linecasts containing info about the hit. </para>    </briefdescription>
+    <detaileddescription>
+<para>This will only be set up if something was hit. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="2004">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2003">
+        <label>GraphHitInfo</label>
+        <link refid="struct_pathfinding_1_1_graph_hit_info"/>
+        <childnode refid="2004" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" line="113" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/astarclasses.cs" bodystart="113" bodyend="136"/>
+    <listofallmembers>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1a06f14a9abd47b91465f895d5259cdc1b" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>distance</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1ad114f95585e34f13e08a73bd45f4ad49" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>GraphHitInfo</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1ad38a0e14c26a92de3abc582d51413e1b" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>node</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1a02b21174ba0d11e753b88c99cdc82cb0" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>origin</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1a0efa5f9e105af469b987713ac8773b75" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>point</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1a7960f9c558f9ee2c3d4a8fdea096fb56" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>success</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1ad0bdb380a9f4dcdb6ae7b2f0efbf3235" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>tangent</name></member>
+      <member refid="struct_pathfinding_1_1_graph_hit_info_1a499cc444f82d8ff3fa04b967ca04beaa" prot="public" virt="non-virtual"><scope>Pathfinding::GraphHitInfo</scope><name>tangentOrigin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

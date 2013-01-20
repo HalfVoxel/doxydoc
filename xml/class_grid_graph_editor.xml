@@ -1,0 +1,905 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_grid_graph_editor" kind="class" prot="public">
+    <compoundname>GridGraphEditor</compoundname>
+    <basecompoundref refid="class_graph_editor" prot="public" virt="non-virtual">GraphEditor</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6c" prot="public" static="no">
+        <name>GridPivot</name>
+        <enumvalue id="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6ca4f1f6016fc9f3f2353c0cc7c67b292bd" prot="public">
+          <name>Center</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6cab32beb056fbfe36afbabc6c88c81ab36" prot="public">
+          <name>TopLeft</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6ca1d85a557894c340c318493f33bfa8efb" prot="public">
+          <name>TopRight</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6ca98e5a1c44509157ebcaf46c515c78875" prot="public">
+          <name>BottomLeft</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6ca9146bfc669fddc88db2c4d89297d0e9a" prot="public">
+          <name>BottomRight</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="682" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="682" bodyend="688"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_grid_graph_editor_1a82f95918776da9f155229f565f4ea492" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isMouseDown</definition>
+        <argsstring></argsstring>
+        <name>isMouseDown</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="33" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1a18a0f1e6c3d21c252b14ea6ae162e2ff" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool locked</definition>
+        <argsstring></argsstring>
+        <name>locked</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="17" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1a8ced58ee77d2de635d7c51e1dc50581a" prot="public" static="no" mutable="no">
+        <type>GridPivot</type>
+        <definition>GridPivot pivot</definition>
+        <argsstring></argsstring>
+        <name>pivot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="36" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1aeef633c9ae4d004a31792d7504c21c29" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool showExtra</definition>
+        <argsstring></argsstring>
+        <name>showExtra</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="22" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1a23345056c8b67cf2525de8d2eac0ff66" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool textureVisible</definition>
+        <argsstring></argsstring>
+        <name>textureVisible</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Should textures be allowed to be used. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can be set to false by inheriting graphs not implemeting that feature </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="27" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="27" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">OnInspectorGUI</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_grid_graph_editor_1a4d56ba39f82f83034021901ac4be0b24" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float newNodeSize</definition>
+        <argsstring></argsstring>
+        <name>newNodeSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="19" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1ac5f909fc72701ea6f33884579f96b8c0" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+        <definition>GraphNode node1</definition>
+        <argsstring></argsstring>
+        <name>node1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="38" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1a3669925052b9cf71ba2fa9fa9c1bc625" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 savedCenter</definition>
+        <argsstring></argsstring>
+        <name>savedCenter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="31" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grid_graph_editor_1a209f45dd679738ae8de3922f88102c81" prot="private" static="no" mutable="no">
+        <type>Matrix4x4</type>
+        <definition>Matrix4x4 savedMatrix</definition>
+        <argsstring></argsstring>
+        <name>savedMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="29" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_grid_graph_editor_1a56cb39d39ea73e5fee9ab57139e1dde0" prot="public" static="yes" mutable="no">
+        <type>readonly string[]</type>
+        <definition>readonly string [] ChannelUseNames</definition>
+        <argsstring></argsstring>
+        <name>ChannelUseNames</name>
+        <initializer>= new string[4] {&quot;None&quot;,&quot;Penalty&quot;,&quot;Height&quot;,&quot;Walkability and Penalty&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="395" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grid_graph_editor_1a289586b34988eb287f6eba463e2d3257" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DrawTextureData</definition>
+        <argsstring>(GridGraph.TextureData data, GridGraph graph)</argsstring>
+        <name>DrawTextureData</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_graph_1_1_texture_data" kindref="compound">GridGraph.TextureData</ref></type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+<para>Draws settings for using a texture as source for a grid. </para>        </briefdescription>
+        <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="399" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="399" bodyend="471"/>
+        <references refid="class_graph_editor_1acd00495fe993f6447e0cfb55c76e8e0e" compoundref="_graph_editor_8cs" startline="153" endline="155">GraphEditor.ToggleGroup</references>
+        <references refid="class_graph_editor_1a5544a34e469b9b130932281cafe52f75" compoundref="_graph_editor_8cs" startline="130" endline="142">GraphEditor.FixLabel</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a56fdf7ca63100e3e572e7190c1da4631" compoundref="_grid_generator_8cs" startline="115">GridGraph.collision</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" compoundref="_base_8cs" startline="441">GraphCollision.heightCheck</references>
+        <references refid="class_graph_editor_1a411c3c8de2178430cc3dbf30f9c9100a" compoundref="_graph_editor_8cs" startline="145" endline="150">GraphEditor.HelpBox</references>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">OnInspectorGUI</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1a7b7e8cddf732e5ae91c572436b7e7b76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int IntField</definition>
+        <argsstring>(string label, int value, int offset, int adjust, out Rect r, out bool selected)</argsstring>
+        <name>IntField</name>
+        <param>
+          <type>string</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>adjust</declname>
+        </param>
+        <param>
+          <type>out Rect</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>selected</declname>
+        </param>
+        <briefdescription>
+<para>Draws an integer field. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="41" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="41" bodyend="43"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">OnInspectorGUI</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1a667739ff8879372bf537d5c4dbb413ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int IntField</definition>
+        <argsstring>(GUIContent label, int value, int offset, int adjust, out Rect r, out bool selected)</argsstring>
+        <name>IntField</name>
+        <param>
+          <type>GUIContent</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>adjust</declname>
+        </param>
+        <param>
+          <type>out Rect</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>selected</declname>
+        </param>
+        <briefdescription>
+<para>Draws an integer field. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="46" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="46" bodyend="78"/>
+        <references refid="class_editor_g_u_i_layoutx_1a4f537ee14854fa37ddcab45dad7df29e" compoundref="_editor_g_u_ix_8cs" startline="457" endline="460">EditorGUILayoutx.BeginIndent</references>
+        <references refid="class_editor_g_u_i_layoutx_1a89d954078f1b81e8814f8e52bd9beaeb" compoundref="_editor_g_u_ix_8cs" startline="479" endline="481">EditorGUILayoutx.EndIndent</references>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnInspectorGUI</definition>
+        <argsstring>(NavGraph target)</argsstring>
+        <name>OnInspectorGUI</name>
+        <reimplements refid="class_graph_editor_1a0222629eaa6e800ee75768ad62973200">OnInspectorGUI</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Override to implement graph inspectors. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="80" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="80" bodyend="300"/>
+        <references refid="class_grid_graph_editor_1a7b7e8cddf732e5ae91c572436b7e7b76" compoundref="_grid_generator_editor_8cs" startline="41" endline="43">IntField</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" compoundref="_grid_generator_8cs" startline="91">GridGraph.width</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" compoundref="_grid_generator_8cs" startline="92">GridGraph.depth</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" compoundref="_grid_generator_8cs" startline="109">GridGraph.nodeSize</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a5c2c11f6d7929bafc3926f68dd5c00f3" compoundref="_grid_generator_8cs" startline="95">GridGraph.aspectRatio</references>
+        <references refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" compoundref="_base_8cs" startline="69">NavGraph.matrix</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" compoundref="_grid_generator_8cs" startline="463" endline="500">GridGraph.GenerateMatrix</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a6991668443ae95f9091a971ab70ae6a8" compoundref="_grid_generator_8cs" startline="106">GridGraph.unclampedSize</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ae037808a191021995ac2ab44255dc4f1" compoundref="_grid_generator_8cs" startline="103">GridGraph.center</references>
+        <references refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" compoundref="_astar_path_8cs" startline="64">AstarPath.active</references>
+        <references refid="class_editor_g_u_i_layoutx_1a4f537ee14854fa37ddcab45dad7df29e" compoundref="_editor_g_u_ix_8cs" startline="457" endline="460">EditorGUILayoutx.BeginIndent</references>
+        <references refid="class_editor_g_u_i_layoutx_1a89d954078f1b81e8814f8e52bd9beaeb" compoundref="_editor_g_u_ix_8cs" startline="479" endline="481">EditorGUILayoutx.EndIndent</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1aa20f4df5769ec2f2f32b43a05c7dc44c" compoundref="_grid_generator_8cs" startline="98">GridGraph.rotation</references>
+        <references refid="class_graph_editor_1a7a5500b26894ff8564fdbf054395503c" compoundref="_graph_editor_8cs" startline="116" endline="127">GraphEditor.Separator</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2de5531c24dd5054dbed9ef5159c9dde" compoundref="_grid_generator_8cs" startline="180">GridGraph.cutCorners</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" compoundref="_grid_generator_8cs" startline="176">GridGraph.neighbours</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a109a64ff8260b94b3a91f4fe1e29d2c3" compoundref="_grid_generator_8cs" startline="119">GridGraph.maxClimb</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a907a3a548be3fcff688b1a1b2580741a" compoundref="_grid_generator_8cs" startline="123">GridGraph.maxClimbAxis</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" compoundref="_grid_generator_8cs" startline="127">GridGraph.maxSlope</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" compoundref="_grid_generator_8cs" startline="147">GridGraph.erodeIterations</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1af156f09628f08d32091ea67e48e42b71" compoundref="_grid_generator_8cs" startline="157">GridGraph.erosionUseTags</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a7aa57887040aed878e8c41d959330e40" compoundref="_grid_generator_8cs" startline="164">GridGraph.erosionFirstTag</references>
+        <references refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a56fdf7ca63100e3e572e7190c1da4631" compoundref="_grid_generator_8cs" startline="115">GridGraph.collision</references>
+        <references refid="class_graph_editor_1acd00495fe993f6447e0cfb55c76e8e0e" compoundref="_graph_editor_8cs" startline="153" endline="155">GraphEditor.ToggleGroup</references>
+        <references refid="class_graph_editor_1a411c3c8de2178430cc3dbf30f9c9100a" compoundref="_graph_editor_8cs" startline="145" endline="150">GraphEditor.HelpBox</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a51c5b666f367c8e4a190595473c5e2dc" compoundref="_grid_generator_8cs" startline="188">GridGraph.penaltyPosition</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1add85970217c573057e81b043be6e41b2" compoundref="_grid_generator_8cs" startline="185">GridGraph.penaltyPositionOffset</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ab57f82b9228153229f8dd7aea6e9c434" compoundref="_grid_generator_8cs" startline="193">GridGraph.penaltyPositionFactor</references>
+        <references refid="struct_pathfinding_1_1_int3_1a54f4f0d327a1ddbc574dc9bf5a44a66c" compoundref="_int3_8cs" startline="19">Int3.Precision</references>
+        <references refid="class_grid_graph_editor_1a23345056c8b67cf2525de8d2eac0ff66" compoundref="_grid_generator_editor_8cs" startline="27">textureVisible</references>
+        <references refid="class_grid_graph_editor_1a289586b34988eb287f6eba463e2d3257" compoundref="_grid_generator_editor_8cs" startline="399" endline="471">DrawTextureData</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac855bb1ba0ecd663efca9bda41527a6c" compoundref="_grid_generator_8cs" startline="211">GridGraph.textureData</references>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnSceneGUI</definition>
+        <argsstring>(NavGraph target)</argsstring>
+        <name>OnSceneGUI</name>
+        <reimplements refid="class_graph_editor_1a415758944c5a639ccbb5fec7db17da40">OnSceneGUI</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_nav_graph" kindref="compound">NavGraph</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Override to implement scene GUI drawing for the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="535" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="535" bodyend="680"/>
+        <references refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" compoundref="_base_8cs" startline="69">NavGraph.matrix</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" compoundref="_grid_generator_8cs" startline="463" endline="500">GridGraph.GenerateMatrix</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a318f4b8f16f2e64902afbb7f0aa7fb17" compoundref="_grid_generator_8cs" startline="77">GridGraph.uniformWidhtDepthGrid</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" compoundref="_grid_generator_8cs" startline="92">GridGraph.depth</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" compoundref="_grid_generator_8cs" startline="91">GridGraph.width</references>
+        <references refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" compoundref="_astar_path_8cs" startline="64">AstarPath.active</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a6991668443ae95f9091a971ab70ae6a8" compoundref="_grid_generator_8cs" startline="106">GridGraph.unclampedSize</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ae037808a191021995ac2ab44255dc4f1" compoundref="_grid_generator_8cs" startline="103">GridGraph.center</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1aa20f4df5769ec2f2f32b43a05c7dc44c" compoundref="_grid_generator_8cs" startline="98">GridGraph.rotation</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac25355bbfbcbac3f5a421fab839e8e01" compoundref="_grid_generator_8cs" startline="508" endline="527">GridGraph.GetNearest</references>
+        <references refid="struct_pathfinding_1_1_n_n_info_1ad38a0e14c26a92de3abc582d51413e1b" compoundref="astarclasses_8cs" startline="247">NNInfo.node</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" compoundref="_grid_generator_8cs" startline="109">GridGraph.nodeSize</references>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1acddd2d9822d68a814b320f4b3a13770c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UnityEngine.Object</type>
+        <definition>UnityEngine.Object ResourcesField</definition>
+        <argsstring>(string label, UnityEngine.Object obj, System.Type type)</argsstring>
+        <name>ResourcesField</name>
+        <param>
+          <type>string</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>UnityEngine.Object</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>System.Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Displays an object field for objects which must be in the &apos;Resources&apos; folder. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the selected object is not in the resources folder, a warning message with a Fix button will be shown </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="361" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="361" bodyend="391"/>
+        <references refid="class_graph_editor_1a5544a34e469b9b130932281cafe52f75" compoundref="_graph_editor_8cs" startline="130" endline="142">GraphEditor.FixLabel</references>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1a57fe2fafc38f295e9a0b95dca9804f79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SaveReferenceTexture</definition>
+        <argsstring>(GridGraph graph)</argsstring>
+        <name>SaveReferenceTexture</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="304" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="304" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grid_graph_editor_1ac7ebc4e1c58a0411acf21e892b9200f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SnapSizeToNodes</definition>
+        <argsstring>(int newWidth, int newDepth, GridGraph graph)</argsstring>
+        <name>SnapSizeToNodes</name>
+        <param>
+          <type>int</type>
+          <declname>newWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>newDepth</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref></type>
+          <declname>graph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="474" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="474" bodyend="493"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_grid_graph_editor_1ac4da71653917755153fe1c1f00b72a4d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GridPivot</type>
+        <definition>static GridPivot PivotPointSelector</definition>
+        <argsstring>(GridPivot pivot)</argsstring>
+        <name>PivotPointSelector</name>
+        <param>
+          <type>GridPivot</type>
+          <declname>pivot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="495" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="495" bodyend="530"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2078">
+        <label>GraphEditor</label>
+        <link refid="class_graph_editor"/>
+        <childnode refid="2079" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2077">
+        <label>GridGraphEditor</label>
+        <link refid="class_grid_graph_editor"/>
+        <childnode refid="2078" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2079">
+        <label>GraphEditorBase</label>
+        <link refid="class_pathfinding_1_1_graph_editor_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2093">
+        <label>AstarData</label>
+        <link refid="class_pathfinding_1_1_astar_data"/>
+        <childnode refid="2083" relation="usage">
+          <edgelabel>graphs</edgelabel>
+        </childnode>
+        <childnode refid="2088" relation="usage">
+          <edgelabel>nodeRuns</edgelabel>
+        </childnode>
+        <childnode refid="2094" relation="usage">
+          <edgelabel>userConnections</edgelabel>
+        </childnode>
+        <childnode refid="2095" relation="usage">
+          <edgelabel>navmesh</edgelabel>
+        </childnode>
+        <childnode refid="2091" relation="usage">
+          <edgelabel>graphTypes</edgelabel>
+        </childnode>
+        <childnode refid="2106" relation="usage">
+          <edgelabel>pointGraph</edgelabel>
+        </childnode>
+        <childnode refid="2109" relation="usage">
+          <edgelabel>gridGraph</edgelabel>
+        </childnode>
+      </node>
+      <node id="2112">
+        <label>GridNode</label>
+        <link refid="class_pathfinding_1_1_grid_node"/>
+        <childnode refid="2089" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2109" relation="usage">
+          <edgelabel>_gridGraphs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2117">
+        <label>Editor</label>
+      </node>
+      <node id="2109">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2083" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2097" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2098" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2099" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2110" relation="usage">
+          <edgelabel>collision</edgelabel>
+        </childnode>
+        <childnode refid="2111" relation="usage">
+          <edgelabel>textureData</edgelabel>
+        </childnode>
+        <childnode refid="2112" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2105">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="2101" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="2105" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2114">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="2104">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="2102" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="2105" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="2089">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2103">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="2103" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="2081">
+        <label>GraphEditor</label>
+        <link refid="class_graph_editor"/>
+        <childnode refid="2082" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2116" relation="usage">
+          <edgelabel>editor</edgelabel>
+        </childnode>
+      </node>
+      <node id="2084">
+        <label>AstarPath</label>
+        <link refid="class_astar_path"/>
+        <childnode refid="2085" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2086" relation="usage">
+          <edgelabel>threadInfos</edgelabel>
+        </childnode>
+        <childnode refid="2092" relation="usage">
+          <edgelabel>pathReturnStack</edgelabel>
+        </childnode>
+        <childnode refid="2093" relation="usage">
+          <edgelabel>astarData</edgelabel>
+        </childnode>
+        <childnode refid="2091" relation="usage">
+          <edgelabel>safeUpdateLock</edgelabel>
+          <edgelabel>TotalSearchedNodes</edgelabel>
+          <edgelabel>TotalSearchTime</edgelabel>
+        </childnode>
+        <childnode refid="2113" relation="usage">
+          <edgelabel>pathReturnPop</edgelabel>
+          <edgelabel>debugPath</edgelabel>
+        </childnode>
+        <childnode refid="2115" relation="usage">
+          <edgelabel>colorSettings</edgelabel>
+        </childnode>
+        <childnode refid="2084" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2118">
+        <label>EditorGUILayoutx</label>
+        <link refid="class_editor_g_u_i_layoutx"/>
+      </node>
+      <node id="2080">
+        <label>GridGraphEditor</label>
+        <link refid="class_grid_graph_editor"/>
+        <childnode refid="2081" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2089" relation="usage">
+          <edgelabel>node1</edgelabel>
+        </childnode>
+      </node>
+      <node id="2113">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="2088" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="2087" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="2091" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="2113" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2089" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="2114" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2097">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2086">
+        <label>PathThreadInfo</label>
+        <link refid="struct_pathfinding_1_1_path_thread_info"/>
+        <childnode refid="2087" relation="usage">
+          <edgelabel>runData</edgelabel>
+        </childnode>
+        <childnode refid="2091" relation="usage">
+          <edgelabel>_lock</edgelabel>
+        </childnode>
+        <childnode refid="2084" relation="usage">
+          <edgelabel>astar</edgelabel>
+        </childnode>
+      </node>
+      <node id="2098">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="2110">
+        <label>GraphCollision</label>
+        <link refid="class_pathfinding_1_1_graph_collision"/>
+      </node>
+      <node id="2094">
+        <label>UserConnection</label>
+        <link refid="class_pathfinding_1_1_user_connection"/>
+      </node>
+      <node id="2116">
+        <label>AstarPathEditor</label>
+        <link refid="class_astar_path_editor"/>
+        <childnode refid="2117" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2092" relation="usage">
+          <edgelabel>serializationSettings</edgelabel>
+        </childnode>
+        <childnode refid="2118" relation="usage">
+          <edgelabel>GUILayoutx</edgelabel>
+        </childnode>
+        <childnode refid="2091" relation="usage">
+          <edgelabel>latestAstarVersion</edgelabel>
+          <edgelabel>_lastUpdateCheck</edgelabel>
+        </childnode>
+        <childnode refid="2089" relation="usage">
+          <edgelabel>firstShiftNode</edgelabel>
+        </childnode>
+        <childnode refid="2084" relation="usage">
+          <edgelabel>astarDistribution</edgelabel>
+          <edgelabel>script</edgelabel>
+        </childnode>
+        <childnode refid="2081" relation="usage">
+          <edgelabel>graphEditors</edgelabel>
+        </childnode>
+      </node>
+      <node id="2102">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="2095">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="2083" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2096" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2097" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2098" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2099" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2100" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2103" relation="usage">
+          <edgelabel>_vertices</edgelabel>
+        </childnode>
+        <childnode refid="2104" relation="usage">
+          <edgelabel>_bbTree</edgelabel>
+        </childnode>
+      </node>
+      <node id="2099">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="2108">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2107">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2089" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2108" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2103" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="2089" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2115">
+        <label>AstarColor</label>
+        <link refid="class_pathfinding_1_1_astar_color"/>
+      </node>
+      <node id="2100">
+        <label>TriangleMeshNode</label>
+        <link refid="class_pathfinding_1_1_triangle_mesh_node"/>
+        <childnode refid="2101" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2102" relation="usage">
+          <edgelabel>_navmeshHolders</edgelabel>
+        </childnode>
+      </node>
+      <node id="2091">
+        <label>System</label>
+      </node>
+      <node id="2088">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="2088" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="2089" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="2101">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="2089" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2101" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2106">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="2083" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2097" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2107" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2090">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="2088" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2085">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2087">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="2088" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2090" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="2091" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2096">
+        <label>INavmesh</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh"/>
+      </node>
+      <node id="2111">
+        <label>GridGraph.TextureData</label>
+        <link refid="class_pathfinding_1_1_grid_graph_1_1_texture_data"/>
+      </node>
+      <node id="2083">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+        <childnode refid="2084" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2082">
+        <label>GraphEditorBase</label>
+        <link refid="class_pathfinding_1_1_graph_editor_base"/>
+        <childnode refid="2083" relation="usage">
+          <edgelabel>target</edgelabel>
+        </childnode>
+      </node>
+      <node id="2092">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" bodystart="14" bodyend="689"/>
+    <listofallmembers>
+      <member refid="class_grid_graph_editor_1a56cb39d39ea73e5fee9ab57139e1dde0" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>ChannelUseNames</name></member>
+      <member refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>DrawCollisionEditor</name></member>
+      <member refid="class_grid_graph_editor_1a289586b34988eb287f6eba463e2d3257" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>DrawTextureData</name></member>
+      <member refid="class_graph_editor_1a41d648d818cd79adbf4f7cf401d232a9" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>DrawWireCube</name></member>
+      <member refid="class_graph_editor_1a8ae91ee18aba4d5c048b3ebf1648eb16" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>editor</name></member>
+      <member refid="class_graph_editor_1a5544a34e469b9b130932281cafe52f75" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>FixLabel</name></member>
+      <member refid="class_grid_graph_editor_1af31175a77ec57f3bd8529fcc4f03cb6c" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>GridPivot</name></member>
+      <member refid="class_graph_editor_1a411c3c8de2178430cc3dbf30f9c9100a" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>HelpBox</name></member>
+      <member refid="class_grid_graph_editor_1a7b7e8cddf732e5ae91c572436b7e7b76" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>IntField</name></member>
+      <member refid="class_grid_graph_editor_1a667739ff8879372bf537d5c4dbb413ed" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>IntField</name></member>
+      <member refid="class_grid_graph_editor_1a82f95918776da9f155229f565f4ea492" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>isMouseDown</name></member>
+      <member refid="class_grid_graph_editor_1a18a0f1e6c3d21c252b14ea6ae162e2ff" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>locked</name></member>
+      <member refid="class_grid_graph_editor_1a4d56ba39f82f83034021901ac4be0b24" prot="private" virt="non-virtual"><scope>GridGraphEditor</scope><name>newNodeSize</name></member>
+      <member refid="class_grid_graph_editor_1ac5f909fc72701ea6f33884579f96b8c0" prot="private" virt="non-virtual"><scope>GridGraphEditor</scope><name>node1</name></member>
+      <member refid="class_graph_editor_1a8b92ecf44175e00122a7933e2b0f6b9b" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>ObjectField</name></member>
+      <member refid="class_graph_editor_1a79e968ca05d5d2e26e9e4ea69f0bebfa" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>ObjectField</name></member>
+      <member refid="class_graph_editor_1a0fd5497c6f8251140a5af5f299d54314" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>OnBaseInspectorGUI</name></member>
+      <member refid="class_graph_editor_1a1be5f5b23715843a7bfc4f2ebd6c7894" prot="public" virt="virtual"><scope>GridGraphEditor</scope><name>OnDestroy</name></member>
+      <member refid="class_graph_editor_1a1aac1c9a4ae04ef3e2fbf26b0aa570cc" prot="public" virt="virtual"><scope>GridGraphEditor</scope><name>OnDisable</name></member>
+      <member refid="class_graph_editor_1ad5bbbcbbe8c563b720c6f214771062b9" prot="public" virt="virtual"><scope>GridGraphEditor</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_graph_editor_1a34316462014f78aba29c389590f6b104" prot="public" virt="virtual"><scope>GridGraphEditor</scope><name>OnEnable</name></member>
+      <member refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" prot="public" virt="virtual"><scope>GridGraphEditor</scope><name>OnInspectorGUI</name></member>
+      <member refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" prot="public" virt="virtual"><scope>GridGraphEditor</scope><name>OnSceneGUI</name></member>
+      <member refid="class_grid_graph_editor_1a8ced58ee77d2de635d7c51e1dc50581a" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>pivot</name></member>
+      <member refid="class_grid_graph_editor_1ac4da71653917755153fe1c1f00b72a4d" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>PivotPointSelector</name></member>
+      <member refid="class_grid_graph_editor_1acddd2d9822d68a814b320f4b3a13770c" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>ResourcesField</name></member>
+      <member refid="class_grid_graph_editor_1a3669925052b9cf71ba2fa9fa9c1bc625" prot="private" virt="non-virtual"><scope>GridGraphEditor</scope><name>savedCenter</name></member>
+      <member refid="class_grid_graph_editor_1a209f45dd679738ae8de3922f88102c81" prot="private" virt="non-virtual"><scope>GridGraphEditor</scope><name>savedMatrix</name></member>
+      <member refid="class_grid_graph_editor_1a57fe2fafc38f295e9a0b95dca9804f79" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>SaveReferenceTexture</name></member>
+      <member refid="class_graph_editor_1a7a5500b26894ff8564fdbf054395503c" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>Separator</name></member>
+      <member refid="class_grid_graph_editor_1aeef633c9ae4d004a31792d7504c21c29" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>showExtra</name></member>
+      <member refid="class_grid_graph_editor_1ac7ebc4e1c58a0411acf21e892b9200f1" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>SnapSizeToNodes</name></member>
+      <member refid="class_pathfinding_1_1_graph_editor_base_1a5176cc0bc64e4f4762196b5e96535600" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>target</name></member>
+      <member refid="class_grid_graph_editor_1a23345056c8b67cf2525de8d2eac0ff66" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>textureVisible</name></member>
+      <member refid="class_graph_editor_1acd00495fe993f6447e0cfb55c76e8e0e" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>ToggleGroup</name></member>
+      <member refid="class_graph_editor_1ad5186cf3139ab312ebd950e8053b0125" prot="public" virt="non-virtual"><scope>GridGraphEditor</scope><name>ToggleGroup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

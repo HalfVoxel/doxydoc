@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_size_profiler_1_1_profile_size_point" kind="struct" prot="public">
+    <compoundname>SizeProfiler::ProfileSizePoint</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_size_profiler_1_1_profile_size_point_1a450a7eaa87f50d5b9ab22b05736e8fd1" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long lastBegin</definition>
+        <argsstring></argsstring>
+        <name>lastBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" line="13" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_size_profiler_1_1_profile_size_point_1a8c7e45250b1eb6821dd59fb2a9a016d7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool open</definition>
+        <argsstring></argsstring>
+        <name>open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" line="15" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_size_profiler_1_1_profile_size_point_1aede0c2ffda0a9062cedf84cfa9a43641" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long totalSize</definition>
+        <argsstring></argsstring>
+        <name>totalSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" line="14" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" line="12" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/SizeProfiler.cs" bodystart="12" bodyend="16"/>
+    <listofallmembers>
+      <member refid="struct_size_profiler_1_1_profile_size_point_1a450a7eaa87f50d5b9ab22b05736e8fd1" prot="public" virt="non-virtual"><scope>SizeProfiler::ProfileSizePoint</scope><name>lastBegin</name></member>
+      <member refid="struct_size_profiler_1_1_profile_size_point_1a8c7e45250b1eb6821dd59fb2a9a016d7" prot="public" virt="non-virtual"><scope>SizeProfiler::ProfileSizePoint</scope><name>open</name></member>
+      <member refid="struct_size_profiler_1_1_profile_size_point_1aede0c2ffda0a9062cedf84cfa9a43641" prot="public" virt="non-virtual"><scope>SizeProfiler::ProfileSizePoint</scope><name>totalSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

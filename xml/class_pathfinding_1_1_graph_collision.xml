@@ -1,0 +1,514 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_graph_collision" kind="class" prot="public">
+    <compoundname>Pathfinding::GraphCollision</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a7b285cb247d2cca3876488c3f43e3872" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool collisionCheck</definition>
+        <argsstring></argsstring>
+        <name>collisionCheck</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Toggle collision check. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="440" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="440" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1aa5f13f9dd72d3f1c1c082669407bbc54" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float collisionOffset</definition>
+        <argsstring></argsstring>
+        <name>collisionOffset</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="395" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a917f89a3bf5986b82c6e560173a6d1da" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float diameter</definition>
+        <argsstring></argsstring>
+        <name>diameter</name>
+        <initializer>= 1F</initializer>
+        <briefdescription>
+<para>Diameter of capsule or sphere when checking for collision. </para>        </briefdescription>
+        <detaileddescription>
+<para>1 equals <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize </ref>. If <ref refid="class_pathfinding_1_1_graph_collision_1a8b89c5359b1bc089f8dfb2602a7e6df2" kindref="member">type</ref> is set to Ray, this does not affect anything </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="389" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="389" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1aa0fb02ce79e98cd3e4e3ce9d657ecab6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float fromHeight</definition>
+        <argsstring></argsstring>
+        <name>fromHeight</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+<para>The height to check from when checking height. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="411" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="411" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" compoundref="_base_8cs" startline="579" endline="650">GraphCollision.CheckHeightAll</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a48083b65ac9a863566dc3e3fff09a5b4" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <initializer>= 2F</initializer>
+        <briefdescription>
+<para>Height of capsule or length of ray when checking for collision. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="class_pathfinding_1_1_graph_collision_1a8b89c5359b1bc089f8dfb2602a7e6df2" kindref="member">type</ref> is set to Sphere, this does not affect anything </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="394" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="394" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool heightCheck</definition>
+        <argsstring></argsstring>
+        <name>heightCheck</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Toggle height check. </para>        </briefdescription>
+        <detaileddescription>
+<para>If false, the grid will be flat </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="441" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="441" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_grid_graph_editor_1a289586b34988eb287f6eba463e2d3257" compoundref="_grid_generator_editor_8cs" startline="399" endline="471">GridGraphEditor.DrawTextureData</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" compoundref="_base_8cs" startline="579" endline="650">GraphCollision.CheckHeightAll</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1ae9b18d4ebda86d3a65bf8533f8822c15" prot="public" static="no" mutable="no">
+        <type>LayerMask</type>
+        <definition>LayerMask heightMask</definition>
+        <argsstring></argsstring>
+        <name>heightMask</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>Layer mask to use for height check. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="408" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="408" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a427e7d78bb1a767d205d60ef36cdf39c" prot="public" static="no" mutable="no">
+        <type>LayerMask</type>
+        <definition>LayerMask mask</definition>
+        <argsstring></argsstring>
+        <name>mask</name>
+        <briefdescription>
+<para>Layer mask to use for collision check. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should only contain layers of objects defined as obstacles </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="405" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="405" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1af8800a1dd4080d1b43676b181b9c3547" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float RaycastErrorMargin</definition>
+        <argsstring></argsstring>
+        <name>RaycastErrorMargin</name>
+        <initializer>= 0.005F</initializer>
+        <briefdescription>
+<para>Offset to apply after each raycast to make sure we don&apos;t hit the same point again in CheckHeightAll. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="437" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="437" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" compoundref="_base_8cs" startline="579" endline="650">GraphCollision.CheckHeightAll</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a5e1a9516e5e980803cf6000feba739a3" prot="public" static="no" mutable="no">
+        <type><ref refid="namespace_pathfinding_1a16f9c3aa9bde65601667f4c1a7f2d2a1" kindref="member">RayDirection</ref></type>
+        <definition>RayDirection rayDirection</definition>
+        <argsstring></argsstring>
+        <name>rayDirection</name>
+        <initializer>= RayDirection.Both</initializer>
+        <briefdescription>
+<para>Direction of the ray when checking for collision. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="class_pathfinding_1_1_graph_collision_1a8b89c5359b1bc089f8dfb2602a7e6df2" kindref="member">type</ref> is not Ray, this does not affect anything <simplesect kind="note"><para>This variable is not used currently, it does not affect anything </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="401" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="401" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a264d5f661a491686d8841cd329815849" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool thickRaycast</definition>
+        <argsstring></argsstring>
+        <name>thickRaycast</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Toggles thick raycast. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="414" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="414" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" compoundref="_base_8cs" startline="579" endline="650">GraphCollision.CheckHeightAll</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1ac9e988e5537a1b0d9d3ed1aab4cd5619" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float thickRaycastDiameter</definition>
+        <argsstring></argsstring>
+        <name>thickRaycastDiameter</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Diameter of the thick raycast in nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>1 equals <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize </ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="418" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="418" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a8b89c5359b1bc089f8dfb2602a7e6df2" prot="public" static="no" mutable="no">
+        <type><ref refid="namespace_pathfinding_1a7f138e75fc3cc79e825c39e040690395" kindref="member">ColliderType</ref></type>
+        <definition>ColliderType type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <initializer>= ColliderType.Capsule</initializer>
+        <briefdescription>
+<para>Collision shape to use. </para>        </briefdescription>
+        <detaileddescription>
+<para><ref refid="namespace_pathfinding_1a7f138e75fc3cc79e825c39e040690395" kindref="member">Pathfinding.ColliderType</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="384" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="384" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a265261e50b607ac479d27610217837f2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool unwalkableWhenNoGround</definition>
+        <argsstring></argsstring>
+        <name>unwalkableWhenNoGround</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Make nodes unwalkable when no ground was found with the height raycast. </para>        </briefdescription>
+        <detaileddescription>
+<para>If height raycast is turned off, this doesn&apos;t affect anything. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="460" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="460" bodyend="-1"/>
+        <referencedby refid="class_graph_editor_1af4a74c8300a6eddde7e07a17a3ee8c44" compoundref="_graph_editor_8cs" startline="172" endline="257">GraphEditor.DrawCollisionEditor</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 up</definition>
+        <argsstring></argsstring>
+        <name>up</name>
+        <briefdescription>
+<para>Direction to use as <emphasis>UP</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" kindref="member">Initialize</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="422" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="422" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" compoundref="_base_8cs" startline="579" endline="650">GraphCollision.CheckHeightAll</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a3ac61f3ec90aa6bd42d262bf730a7085" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float finalRadius</definition>
+        <argsstring></argsstring>
+        <name>finalRadius</name>
+        <briefdescription>
+<para><ref refid="class_pathfinding_1_1_graph_collision_1a917f89a3bf5986b82c6e560173a6d1da" kindref="member">diameter</ref> * scale * 0.5. </para>        </briefdescription>
+        <detaileddescription>
+<para>Where <emphasis>scale</emphasis> usually is <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize </ref> <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" kindref="member">Initialize</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="431" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="431" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a6ffd4a2777936ef97e438646ec1af585" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float finalRaycastRadius</definition>
+        <argsstring></argsstring>
+        <name>finalRaycastRadius</name>
+        <briefdescription>
+<para><ref refid="class_pathfinding_1_1_graph_collision_1ac9e988e5537a1b0d9d3ed1aab4cd5619" kindref="member">thickRaycastDiameter</ref> * scale * 0.5. </para>        </briefdescription>
+        <detaileddescription>
+<para>Where <emphasis>scale</emphasis> usually is <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize </ref> <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" kindref="member">Initialize</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="434" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="434" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" compoundref="_base_8cs" startline="512" endline="541">GraphCollision.CheckHeight</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_graph_collision_1a904ea6a21842e18612c45d5143bde80b" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 upheight</definition>
+        <argsstring></argsstring>
+        <name>upheight</name>
+        <briefdescription>
+<para><ref refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" kindref="member">up</ref> * <ref refid="class_pathfinding_1_1_graph_collision_1a48083b65ac9a863566dc3e3fff09a5b4" kindref="member">height</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" kindref="member">Initialize</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="426" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="426" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</referencedby>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Check</definition>
+        <argsstring>(Vector3 position)</argsstring>
+        <name>Check</name>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Returns if the position is obstructed. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="class_pathfinding_1_1_graph_collision_1a7b285cb247d2cca3876488c3f43e3872" kindref="member">collisionCheck</ref> is false, this will always return true.<linebreak/>
+ </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="478" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="478" bodyend="501"/>
+        <references refid="class_pathfinding_1_1_graph_collision_1a7b285cb247d2cca3876488c3f43e3872" compoundref="_base_8cs" startline="440">GraphCollision.collisionCheck</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" compoundref="_base_8cs" startline="422">GraphCollision.up</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a8b89c5359b1bc089f8dfb2602a7e6df2" compoundref="_base_8cs" startline="384">GraphCollision.type</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a904ea6a21842e18612c45d5143bde80b" compoundref="_base_8cs" startline="426">GraphCollision.upheight</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a3ac61f3ec90aa6bd42d262bf730a7085" compoundref="_base_8cs" startline="431">GraphCollision.finalRadius</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a427e7d78bb1a767d205d60ef36cdf39c" compoundref="_base_8cs" startline="405">GraphCollision.mask</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a5e1a9516e5e980803cf6000feba739a3" compoundref="_base_8cs" startline="401">GraphCollision.rayDirection</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a48083b65ac9a863566dc3e3fff09a5b4" compoundref="_base_8cs" startline="394">GraphCollision.height</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_graph_collision_1a041821812e508ad6393a5cfe88e5a12e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 CheckHeight</definition>
+        <argsstring>(Vector3 position)</argsstring>
+        <name>CheckHeight</name>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Returns the position with the correct height. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" kindref="member">heightCheck</ref> is false, this will return <emphasis>position</emphasis>.<linebreak/>
+ </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="504" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="504" bodyend="508"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 CheckHeight</definition>
+        <argsstring>(Vector3 position, out RaycastHit hit, out bool walkable)</argsstring>
+        <name>CheckHeight</name>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>out RaycastHit</type>
+          <declname>hit</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>walkable</declname>
+        </param>
+        <briefdescription>
+<para>Returns the position with the correct height. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" kindref="member">heightCheck</ref> is false, this will return <emphasis>position</emphasis>.<linebreak/>
+ <emphasis>walkable</emphasis> will be set to false if nothing was hit. The ray will check a tiny bit further than to the grids base to avoid floating point errors when the ground is exactly at the base of the grid </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="512" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="512" bodyend="541"/>
+        <references refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" compoundref="_base_8cs" startline="441">GraphCollision.heightCheck</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a264d5f661a491686d8841cd329815849" compoundref="_base_8cs" startline="414">GraphCollision.thickRaycast</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" compoundref="_base_8cs" startline="422">GraphCollision.up</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1aa0fb02ce79e98cd3e4e3ce9d657ecab6" compoundref="_base_8cs" startline="411">GraphCollision.fromHeight</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a6ffd4a2777936ef97e438646ec1af585" compoundref="_base_8cs" startline="434">GraphCollision.finalRaycastRadius</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1ae9b18d4ebda86d3a65bf8533f8822c15" compoundref="_base_8cs" startline="408">GraphCollision.heightMask</references>
+        <references refid="class_pathfinding_1_1_mathfx_1aa1dba9eb530bc137662868cea7c891cd" compoundref="_astar_math_8cs" startline="106" endline="112">Mathfx.NearestPoint</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a265261e50b607ac479d27610217837f2" compoundref="_base_8cs" startline="460">GraphCollision.unwalkableWhenNoGround</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>RaycastHit[]</type>
+        <definition>RaycastHit [] CheckHeightAll</definition>
+        <argsstring>(Vector3 position)</argsstring>
+        <name>CheckHeightAll</name>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Returns all hits when checking height for <emphasis>position</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Does not work well with thick raycast, will only return an object a single time </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="579" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="579" bodyend="650"/>
+        <references refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" compoundref="_base_8cs" startline="441">GraphCollision.heightCheck</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a264d5f661a491686d8841cd329815849" compoundref="_base_8cs" startline="414">GraphCollision.thickRaycast</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" compoundref="_base_8cs" startline="422">GraphCollision.up</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1aa0fb02ce79e98cd3e4e3ce9d657ecab6" compoundref="_base_8cs" startline="411">GraphCollision.fromHeight</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" compoundref="_base_8cs" startline="545" endline="574">GraphCollision.Raycast</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1af8800a1dd4080d1b43676b181b9c3547" compoundref="_base_8cs" startline="437">GraphCollision.RaycastErrorMargin</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Initialize</definition>
+        <argsstring>(Matrix4x4 matrix, float scale)</argsstring>
+        <name>Initialize</name>
+        <param>
+          <type>Matrix4x4</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Sets up several variables using the specified matrix and scale. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" kindref="member">GraphCollision.up</ref> </para><simplesectsep/><para><ref refid="class_pathfinding_1_1_graph_collision_1a904ea6a21842e18612c45d5143bde80b" kindref="member">GraphCollision.upheight</ref> </para><simplesectsep/><para><ref refid="class_pathfinding_1_1_graph_collision_1a3ac61f3ec90aa6bd42d262bf730a7085" kindref="member">GraphCollision.finalRadius</ref> </para><simplesectsep/><para><ref refid="class_pathfinding_1_1_graph_collision_1a6ffd4a2777936ef97e438646ec1af585" kindref="member">GraphCollision.finalRaycastRadius</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="470" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="470" bodyend="475"/>
+        <references refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" compoundref="_base_8cs" startline="422">GraphCollision.up</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a904ea6a21842e18612c45d5143bde80b" compoundref="_base_8cs" startline="426">GraphCollision.upheight</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a48083b65ac9a863566dc3e3fff09a5b4" compoundref="_base_8cs" startline="394">GraphCollision.height</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a3ac61f3ec90aa6bd42d262bf730a7085" compoundref="_base_8cs" startline="431">GraphCollision.finalRadius</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a917f89a3bf5986b82c6e560173a6d1da" compoundref="_base_8cs" startline="389">GraphCollision.diameter</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a6ffd4a2777936ef97e438646ec1af585" compoundref="_base_8cs" startline="434">GraphCollision.finalRaycastRadius</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1ac9e988e5537a1b0d9d3ed1aab4cd5619" compoundref="_base_8cs" startline="418">GraphCollision.thickRaycastDiameter</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 Raycast</definition>
+        <argsstring>(Vector3 origin, out RaycastHit hit, out bool walkable)</argsstring>
+        <name>Raycast</name>
+        <param>
+          <type>Vector3</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>out RaycastHit</type>
+          <declname>hit</declname>
+        </param>
+        <param>
+          <type>out bool</type>
+          <declname>walkable</declname>
+        </param>
+        <briefdescription>
+<para>Same as <ref refid="class_pathfinding_1_1_graph_collision_1a041821812e508ad6393a5cfe88e5a12e" kindref="member">CheckHeight</ref>, except that the raycast will always start exactly at <emphasis>origin</emphasis> <emphasis>walkable</emphasis> will be set to false if nothing was hit. </para>        </briefdescription>
+        <detaileddescription>
+<para>The ray will check a tiny bit further than to the grids base to avoid floating point errors when the ground is exactly at the base of the grid </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="545" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="545" bodyend="574"/>
+        <references refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" compoundref="_base_8cs" startline="441">GraphCollision.heightCheck</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" compoundref="_base_8cs" startline="422">GraphCollision.up</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1aa0fb02ce79e98cd3e4e3ce9d657ecab6" compoundref="_base_8cs" startline="411">GraphCollision.fromHeight</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a264d5f661a491686d8841cd329815849" compoundref="_base_8cs" startline="414">GraphCollision.thickRaycast</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a6ffd4a2777936ef97e438646ec1af585" compoundref="_base_8cs" startline="434">GraphCollision.finalRaycastRadius</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1ae9b18d4ebda86d3a65bf8533f8822c15" compoundref="_base_8cs" startline="408">GraphCollision.heightMask</references>
+        <references refid="class_pathfinding_1_1_mathfx_1aa1dba9eb530bc137662868cea7c891cd" compoundref="_astar_math_8cs" startline="106" endline="112">Mathfx.NearestPoint</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a265261e50b607ac479d27610217837f2" compoundref="_base_8cs" startline="460">GraphCollision.unwalkableWhenNoGround</references>
+        <referencedby refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" compoundref="_base_8cs" startline="579" endline="650">GraphCollision.CheckHeightAll</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Handles collision checking for graphs. </para>    </briefdescription>
+    <detaileddescription>
+<para>Mostly used by grid based graphs </para>    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" line="380" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/Base.cs" bodystart="380" bodyend="651"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>Check</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a041821812e508ad6393a5cfe88e5a12e" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>CheckHeight</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1abfa96f3d3e395c6e6e412f76b24e2d66" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>CheckHeight</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1aaa88a19de51712e2fe96367991576623" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>CheckHeightAll</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a7b285cb247d2cca3876488c3f43e3872" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>collisionCheck</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1aa5f13f9dd72d3f1c1c082669407bbc54" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>collisionOffset</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a917f89a3bf5986b82c6e560173a6d1da" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>diameter</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a3ac61f3ec90aa6bd42d262bf730a7085" prot="private" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>finalRadius</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a6ffd4a2777936ef97e438646ec1af585" prot="private" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>finalRaycastRadius</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1aa0fb02ce79e98cd3e4e3ce9d657ecab6" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>fromHeight</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a48083b65ac9a863566dc3e3fff09a5b4" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>height</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>heightCheck</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1ae9b18d4ebda86d3a65bf8533f8822c15" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>heightMask</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>Initialize</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a427e7d78bb1a767d205d60ef36cdf39c" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>mask</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a948f1b2cb16462b44af9ce22d844cc1f" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>Raycast</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1af8800a1dd4080d1b43676b181b9c3547" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>RaycastErrorMargin</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a5e1a9516e5e980803cf6000feba739a3" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>rayDirection</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a264d5f661a491686d8841cd329815849" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>thickRaycast</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1ac9e988e5537a1b0d9d3ed1aab4cd5619" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>thickRaycastDiameter</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a8b89c5359b1bc089f8dfb2602a7e6df2" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>type</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a265261e50b607ac479d27610217837f2" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>unwalkableWhenNoGround</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" prot="public" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>up</name></member>
+      <member refid="class_pathfinding_1_1_graph_collision_1a904ea6a21842e18612c45d5143bde80b" prot="private" virt="non-virtual"><scope>Pathfinding::GraphCollision</scope><name>upheight</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

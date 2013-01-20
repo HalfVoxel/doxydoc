@@ -1,0 +1,2239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_grid_graph" kind="class" prot="public">
+    <compoundname>Pathfinding::GridGraph</compoundname>
+    <basecompoundref refid="class_pathfinding_1_1_nav_graph" prot="public" virt="non-virtual">NavGraph</basecompoundref>
+    <basecompoundref refid="interface_pathfinding_1_1_i_updatable_graph" prot="public" virt="non-virtual">IUpdatableGraph</basecompoundref>
+    <basecompoundref refid="interface_i_funnel_graph" prot="public" virt="non-virtual">IFunnelGraph</basecompoundref>
+    <basecompoundref refid="interface_pathfinding_1_1_i_raycastable_graph" prot="public" virt="non-virtual">IRaycastableGraph</basecompoundref>
+    <innerclass refid="class_pathfinding_1_1_grid_graph_1_1_texture_data" prot="public">Pathfinding::GridGraph::TextureData</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Inspector - Settings</header>
+      <memberdef kind="property" id="class_pathfinding_1_1_grid_graph_1a3042d897d9a2d63c64f853e8b93d43c2" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>bool</type>
+        <definition>bool useRaycastNormal</definition>
+        <argsstring></argsstring>
+        <name>useRaycastNormal</name>
+        <briefdescription>
+<para>Use heigh raycasting normal for max slope calculation. </para>        </briefdescription>
+        <detaileddescription>
+<para>True if <ref refid="class_pathfinding_1_1_grid_graph_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" kindref="member">maxSlope</ref> is less than 90 degrees. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="132" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="132" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+<para>Width of the grid in nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="91" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="91" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" compoundref="_grid_generator_8cs" startline="1007" endline="1016">GridGraph.CalculateConnections</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" compoundref="_grid_generator_8cs" startline="1100" endline="1217">GridGraph.OnPostScan</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1aa0cb789749df5a663588e38cf4f37d46" compoundref="_grid_generator_8cs" startline="2015" endline="2050">GridGraph.PostDeserialization</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int depth</definition>
+        <argsstring></argsstring>
+        <name>depth</name>
+        <briefdescription>
+<para>Depth (height) of the grid in nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="92" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="92" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" compoundref="_grid_generator_8cs" startline="1100" endline="1217">GridGraph.OnPostScan</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1aa0cb789749df5a663588e38cf4f37d46" compoundref="_grid_generator_8cs" startline="2015" endline="2050">GridGraph.PostDeserialization</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a5c2c11f6d7929bafc3926f68dd5c00f3" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float aspectRatio</definition>
+        <argsstring></argsstring>
+        <name>aspectRatio</name>
+        <initializer>= 1F</initializer>
+        <briefdescription>
+<para>Scaling of the graph along the X axis. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be used if you want different scales on the X and Y axis of the grid </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="95" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="95" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1aa20f4df5769ec2f2f32b43a05c7dc44c" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 rotation</definition>
+        <argsstring></argsstring>
+        <name>rotation</name>
+        <briefdescription>
+<para>Rotation of the grid in degrees. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="98" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="98" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a024318f4225ee6bedb20b7f865205d34" prot="public" static="no" mutable="no">
+        <type>Bounds</type>
+        <definition>Bounds bounds</definition>
+        <argsstring></argsstring>
+        <name>bounds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="100" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ae037808a191021995ac2ab44255dc4f1" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 center</definition>
+        <argsstring></argsstring>
+        <name>center</name>
+        <briefdescription>
+<para>Center point of the grid. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="103" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a6991668443ae95f9091a971ab70ae6a8" prot="public" static="no" mutable="no">
+        <type>Vector2</type>
+        <definition>Vector2 unclampedSize</definition>
+        <argsstring></argsstring>
+        <name>unclampedSize</name>
+        <briefdescription>
+<para>Size of the grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Might be negative or smaller than <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="106" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="106" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float nodeSize</definition>
+        <argsstring></argsstring>
+        <name>nodeSize</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Size of one node in world units. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="109" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="109" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2075178ecda4935789b7cfc4531a5bf0" compoundref="_grid_generator_8cs" startline="1688" endline="1831">GridGraph.Linecast</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a56fdf7ca63100e3e572e7190c1da4631" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_graph_collision" kindref="compound">GraphCollision</ref></type>
+        <definition>GraphCollision collision</definition>
+        <argsstring></argsstring>
+        <name>collision</name>
+        <briefdescription>
+<para>Settings on how to check for walkability and height. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="115" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="115" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1a289586b34988eb287f6eba463e2d3257" compoundref="_grid_generator_editor_8cs" startline="399" endline="471">GridGraphEditor.DrawTextureData</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a109a64ff8260b94b3a91f4fe1e29d2c3" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxClimb</definition>
+        <argsstring></argsstring>
+        <name>maxClimb</name>
+        <initializer>= 0.4F</initializer>
+        <briefdescription>
+<para>The max position difference between two nodes to enable a connection. </para>        </briefdescription>
+        <detaileddescription>
+<para>Set to 0 to ignore the value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="119" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="119" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1afdffd3605e182b69aedbcedf94c82009" compoundref="_grid_generator_8cs" startline="987" endline="997">GridGraph.IsValidConnection</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a907a3a548be3fcff688b1a1b2580741a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int maxClimbAxis</definition>
+        <argsstring></argsstring>
+        <name>maxClimbAxis</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>The axis to use for <ref refid="class_pathfinding_1_1_grid_graph_1a109a64ff8260b94b3a91f4fe1e29d2c3" kindref="member">maxClimb</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>X = 0, Y = 1, Z = 2. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="123" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="123" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1afdffd3605e182b69aedbcedf94c82009" compoundref="_grid_generator_8cs" startline="987" endline="997">GridGraph.IsValidConnection</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxSlope</definition>
+        <argsstring></argsstring>
+        <name>maxSlope</name>
+        <initializer>= 90</initializer>
+        <briefdescription>
+<para>The max slope in degrees for a node to be walkable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="127" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="127" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int erodeIterations</definition>
+        <argsstring></argsstring>
+        <name>erodeIterations</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Erosion of the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para>The graph can be eroded after calculation. This means a margin is put around unwalkable nodes or other unwalkable connections. It is really good if your graph contains ledges where the nodes without erosion are walkable too close to the edge.</para><para>Below is an image showing a graph with erode iterations 0, 1 and 2 <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/erosion.png&quot;/&gt;&lt;/div&gt;</htmlonly></para><para><simplesect kind="note"><para>A high number of erode iterations can seriously slow down graph updates during runtime (<ref refid="class_pathfinding_1_1_graph_update_object" kindref="compound">GraphUpdateObject</ref>) and should be kept as low as possible. </para></simplesect>
+<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1af156f09628f08d32091ea67e48e42b71" kindref="member">erosionUseTags</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="147" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="147" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a3ca6fdbdfb2a0b92d095ed64da1f696e" compoundref="_grid_generator_8cs" startline="891" endline="984">GridGraph.ErodeWalkableArea</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1af156f09628f08d32091ea67e48e42b71" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool erosionUseTags</definition>
+        <argsstring></argsstring>
+        <name>erosionUseTags</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Use tags instead of walkability for erosion. </para>        </briefdescription>
+        <detaileddescription>
+<para>Tags will be used for erosion instead of marking nodes as unwalkable. The nodes will be marked with tags in an increasing order starting with the tag <ref refid="class_pathfinding_1_1_grid_graph_1a7aa57887040aed878e8c41d959330e40" kindref="member">erosionFirstTag</ref>. Debug with the Tags mode to see the effect. With this enabled you can in effect set how close different AIs are allowed to get to walls using the Valid Tags field on the <ref refid="class_seeker" kindref="compound">Seeker</ref> component. <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/erosionTags.png&quot;/&gt;&lt;/div&gt;</htmlonly> <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/erosionTags2.png&quot;/&gt;&lt;/div&gt;</htmlonly> <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a7aa57887040aed878e8c41d959330e40" kindref="member">erosionFirstTag</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="157" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="157" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a3ca6fdbdfb2a0b92d095ed64da1f696e" compoundref="_grid_generator_8cs" startline="891" endline="984">GridGraph.ErodeWalkableArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a7aa57887040aed878e8c41d959330e40" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int erosionFirstTag</definition>
+        <argsstring></argsstring>
+        <name>erosionFirstTag</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Tag to start from when using tags for erosion. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1af156f09628f08d32091ea67e48e42b71" kindref="member">erosionUseTags</ref> </para><simplesectsep/><para><ref refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" kindref="member">erodeIterations</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="164" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="164" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a3ca6fdbdfb2a0b92d095ed64da1f696e" compoundref="_grid_generator_8cs" startline="891" endline="984">GridGraph.ErodeWalkableArea</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a31bf58248e8796ce718861f6c751d2aa" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool autoLinkGrids</definition>
+        <argsstring></argsstring>
+        <name>autoLinkGrids</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Auto link the graph&apos;s edge nodes together with other GridGraphs in the scene on Scan. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a3d2a72058d81d89df042b9f32df38da9" kindref="member">autoLinkDistLimit</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="168" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="168" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" compoundref="_grid_generator_8cs" startline="1100" endline="1217">GridGraph.OnPostScan</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a3d2a72058d81d89df042b9f32df38da9" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float autoLinkDistLimit</definition>
+        <argsstring></argsstring>
+        <name>autoLinkDistLimit</name>
+        <initializer>= 10F</initializer>
+        <briefdescription>
+<para>Distance limit for grid graphs to be auto linked. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a31bf58248e8796ce718861f6c751d2aa" kindref="member">autoLinkGrids</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="172" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="172" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" compoundref="_grid_generator_8cs" startline="1100" endline="1217">GridGraph.OnPostScan</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" prot="public" static="no" mutable="no">
+        <type>NumNeighbours</type>
+        <definition>NumNeighbours neighbours</definition>
+        <argsstring></argsstring>
+        <name>neighbours</name>
+        <initializer>= NumNeighbours.Eight</initializer>
+        <briefdescription>
+<para>Number of neighbours for each node. </para>        </briefdescription>
+        <detaileddescription>
+<para>Either four directional or eight directional </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="176" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="176" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a0dc52f5435a7019b6b79d9c85e8a6dfa" compoundref="_grid_generator_8cs" startline="1967" endline="1990">GridGraph.CheckConnection</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a2de5531c24dd5054dbed9ef5159c9dde" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool cutCorners</definition>
+        <argsstring></argsstring>
+        <name>cutCorners</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>If disabled, will not cut corners on obstacles. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" kindref="member">connections </ref> is Eight, obstacle corners might be cut by a connection, setting this to false disables that.<image type="html" name="cutCorners.png"></image>
+ </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="180" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="180" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1add85970217c573057e81b043be6e41b2" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float penaltyPositionOffset</definition>
+        <argsstring></argsstring>
+        <name>penaltyPositionOffset</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Offset for the position when calculating penalty. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a51c5b666f367c8e4a190595473c5e2dc" kindref="member">penaltyPosition</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="185" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="185" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a51c5b666f367c8e4a190595473c5e2dc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool penaltyPosition</definition>
+        <argsstring></argsstring>
+        <name>penaltyPosition</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Use position (y-coordinate) to calculate penalty. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="188" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="188" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ab57f82b9228153229f8dd7aea6e9c434" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float penaltyPositionFactor</definition>
+        <argsstring></argsstring>
+        <name>penaltyPositionFactor</name>
+        <initializer>= 1F</initializer>
+        <briefdescription>
+<para>Scale factor for penalty when calculating from position. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a51c5b666f367c8e4a190595473c5e2dc" kindref="member">penaltyPosition</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="193" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="193" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a457e30083dec688369847b32522163e8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool penaltyAngle</definition>
+        <argsstring></argsstring>
+        <name>penaltyAngle</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="196" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a31d49224c97eed94c0233ecd373ea82d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float penaltyAngleFactor</definition>
+        <argsstring></argsstring>
+        <name>penaltyAngleFactor</name>
+        <initializer>= 100F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="198" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ac855bb1ba0ecd663efca9bda41527a6c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_grid_graph_1_1_texture_data" kindref="compound">TextureData</ref></type>
+        <definition>TextureData textureData</definition>
+        <argsstring></argsstring>
+        <name>textureData</name>
+        <initializer>= new <ref refid="class_pathfinding_1_1_grid_graph_1_1_texture_data" kindref="compound">TextureData</ref> ()</initializer>
+        <briefdescription>
+<para>Holds settings for using a texture as source for a grid graph. </para>        </briefdescription>
+        <detaileddescription>
+<para>Texure data can be used for fine grained control over how the graph will look. It can be used for positioning, penalty and walkability control.<linebreak/>
+ Below is a screenshot of a grid graph with a penalty map applied. It has the effect of the AI taking the longer path along the green (low penalty) areas.<linebreak/>
+ <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/penaltymap.png&quot;/&gt;&lt;/div&gt;</htmlonly> Color data is got as 0...255 values. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+<simplesect kind="warning"><para>Can only be used with Unity 3.4 and up </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="211" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="211" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_pathfinding_1_1_grid_graph_1ac66dbe0e082fd3cc29bc1572a4dccc09" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int Depth</definition>
+        <argsstring></argsstring>
+        <name>Depth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="362" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_grid_graph_1a318f4b8f16f2e64902afbb7f0aa7fb17" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>bool</type>
+        <definition>virtual bool uniformWidhtDepthGrid</definition>
+        <argsstring></argsstring>
+        <name>uniformWidhtDepthGrid</name>
+        <briefdescription>
+<para>This is placed here so generators inheriting from this one can override it and set it to false. </para>        </briefdescription>
+        <detaileddescription>
+<para>If it is true, it means that the nodes array&apos;s length will always be equal to width*depth It is used mainly in the editor to do auto-scanning calls, setting it to false for a non-uniform grid will reduce the number of scans </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="81" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="77" bodyend="-1"/>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_grid_graph_1abbe7749c3b402f7dfe64f936774cfcd4" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int Width</definition>
+        <argsstring></argsstring>
+        <name>Width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="354" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="347" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ad0f2899201e2f1d96389e8e1c54f6872" prot="public" static="no" mutable="no">
+        <type>Matrix4x4</type>
+        <definition>Matrix4x4 boundsMatrix</definition>
+        <argsstring></argsstring>
+        <name>boundsMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="330" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a32f0d83f994efa43ba0692e553f4e827" prot="public" static="no" mutable="no">
+        <type>Matrix4x4</type>
+        <definition>Matrix4x4 boundsMatrix2</definition>
+        <argsstring></argsstring>
+        <name>boundsMatrix2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="331" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a9b30bb3675921209bb67193078405f69" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int getNearestForceOverlap</definition>
+        <argsstring></argsstring>
+        <name>getNearestForceOverlap</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>In GetNearestForce, determines how far to search after a valid node has been found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="242" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ac1afd90286789028da46494a398d2502" prot="public" static="no" mutable="no">
+        <type>readonly uint[]</type>
+        <definition>readonly uint [] neighbourCosts</definition>
+        <argsstring></argsstring>
+        <name>neighbourCosts</name>
+        <initializer>= new uint[8]</initializer>
+        <briefdescription>
+<para>Costs to neighbour nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="226" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" prot="public" static="no" mutable="no">
+        <type>readonly int[]</type>
+        <definition>readonly int [] neighbourOffsets</definition>
+        <argsstring></argsstring>
+        <name>neighbourOffsets</name>
+        <initializer>= new int[8]</initializer>
+        <briefdescription>
+<para>Index offset to get neighbour nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Added to a node&apos;s index to get a neighbour node index </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="222" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="222" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a5b6c7839d18d2f469f3c3b91534c20f2" compoundref="_grid_generator_8cs" startline="399" endline="411">GridGraph.GetNodeConnection</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a83885fff18b5b16a4169dd3c03cb2c75" compoundref="_grid_generator_8cs" startline="1846" endline="1960">GridGraph.SnappedLinecast</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a0dc52f5435a7019b6b79d9c85e8a6dfa" compoundref="_grid_generator_8cs" startline="1967" endline="1990">GridGraph.CheckConnection</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ab856cb1769fb30815358519b9e25f6f1" prot="public" static="no" mutable="no">
+        <type>readonly int[]</type>
+        <definition>readonly int [] neighbourXOffsets</definition>
+        <argsstring></argsstring>
+        <name>neighbourXOffsets</name>
+        <initializer>= new int[8]</initializer>
+        <briefdescription>
+<para>Offsets in the X direction for neighbour nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Only 1, 0 or -1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="230" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="230" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a5b6c7839d18d2f469f3c3b91534c20f2" compoundref="_grid_generator_8cs" startline="399" endline="411">GridGraph.GetNodeConnection</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1ade0f7989d929e467001992ce46e8d515" prot="public" static="no" mutable="no">
+        <type>readonly int[]</type>
+        <definition>readonly int [] neighbourZOffsets</definition>
+        <argsstring></argsstring>
+        <name>neighbourZOffsets</name>
+        <initializer>= new int[8]</initializer>
+        <briefdescription>
+<para>Offsets in the Z direction for neighbour nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Only 1, 0 or -1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="234" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="234" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a5b6c7839d18d2f469f3c3b91534c20f2" compoundref="_grid_generator_8cs" startline="399" endline="411">GridGraph.GetNodeConnection</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a7111c22525f4f5e5d724ec46478a78aa" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref>[]</type>
+        <definition>GridNode [] nodes</definition>
+        <argsstring></argsstring>
+        <name>nodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="364" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a3951fe56aa9984ce4197dd14f1d189ad" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int scans</definition>
+        <argsstring></argsstring>
+        <name>scans</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="333" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1aef1d073726fc4b857570fbae3230b8dd" prot="public" static="no" mutable="no">
+        <type>Vector2</type>
+        <definition>Vector2 size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>Size of the grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Will always be positive and larger than <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize</ref>.<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" kindref="member">GenerateMatrix</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="216" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_grid_graph_1a14d0a41221cec7889d7b5a5fd453d9d6" prot="protected" static="no" mutable="no">
+        <type>int[]</type>
+        <definition>int [] corners</definition>
+        <argsstring></argsstring>
+        <name>corners</name>
+        <briefdescription>
+<para>To reduce memory allocations this array is reused. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used in the CalculateConnections function <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" kindref="member">CalculateConnections</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1003" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1003" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a299daff5855daa7d3ceb3525c3921cf6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GridGraph</definition>
+        <argsstring>()</argsstring>
+        <name>GridGraph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="335" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="335" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a925b5499ab27dbe0d20f23eef28ceacd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddPortal</definition>
+        <argsstring>(GraphNode n1, GraphNode n2, List&lt; Vector3 &gt; left, List&lt; Vector3 &gt; right)</argsstring>
+        <name>AddPortal</name>
+        <reimplements refid="interface_i_funnel_graph_1a925b5499ab27dbe0d20f23eef28ceacd">AddPortal</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>n1</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>n2</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+<para>Add the portal between node <emphasis>n1</emphasis> and <emphasis>n2</emphasis> to the funnel corridor. </para>        </briefdescription>
+        <detaileddescription>
+<para>The left and right edges does not necesarily need to be the left and right edges (right can be left), they will be swapped if that is detected. But that works only as long as the edges do not switch between left and right in the middle of the path. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1593" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1593" bodyend="1595"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a41fd5b31a800397fbf28e047628748e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddPortal</definition>
+        <argsstring>(GridNode n1, GridNode n2, List&lt; Vector3 &gt; left, List&lt; Vector3 &gt; right)</argsstring>
+        <name>AddPortal</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>n1</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>n2</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1597" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1597" bodyend="1657"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a368a2bd3c5c3e650cb5303d2b63f9427" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BuildFunnelCorridor</definition>
+        <argsstring>(List&lt; GraphNode &gt; path, int sIndex, int eIndex, List&lt; Vector3 &gt; left, List&lt; Vector3 &gt; right)</argsstring>
+        <name>BuildFunnelCorridor</name>
+        <reimplements refid="interface_i_funnel_graph_1a368a2bd3c5c3e650cb5303d2b63f9427">BuildFunnelCorridor</reimplements>
+        <param>
+          <type>List&lt; <ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref> &gt;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>eIndex</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1582" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1582" bodyend="1591"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void CalculateConnections</definition>
+        <argsstring>(GridNode[] nodes, int x, int z, GridNode node)</argsstring>
+        <name>CalculateConnections</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref>[]</type>
+          <declname>nodes</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the grid connections for a single node. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1019" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1019" bodyend="1095"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1a14d0a41221cec7889d7b5a5fd453d9d6" compoundref="_grid_generator_8cs" startline="1003">GridGraph.corners</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ab856cb1769fb30815358519b9e25f6f1" compoundref="_grid_generator_8cs" startline="230">GridGraph.neighbourXOffsets</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ade0f7989d929e467001992ce46e8d515" compoundref="_grid_generator_8cs" startline="234">GridGraph.neighbourZOffsets</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" compoundref="_grid_generator_8cs" startline="222">GridGraph.neighbourOffsets</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1afdffd3605e182b69aedbcedf94c82009" compoundref="_grid_generator_8cs" startline="987" endline="997">GridGraph.IsValidConnection</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" compoundref="_grid_generator_8cs" startline="176">GridGraph.neighbours</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2de5531c24dd5054dbed9ef5159c9dde" compoundref="_grid_generator_8cs" startline="180">GridGraph.cutCorners</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a0dc52f5435a7019b6b79d9c85e8a6dfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CheckConnection</definition>
+        <argsstring>(GridNode node, int dir)</argsstring>
+        <name>CheckConnection</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>node</emphasis> is connected to it&apos;s neighbour in the specified direction. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will also return true if <ref refid="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" kindref="member">neighbours</ref> = NumNeighbours.Four, the direction is diagonal and one can move through one of the adjacent nodes to the targeted node. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1967" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1967" bodyend="1990"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" compoundref="_grid_generator_8cs" startline="176">GridGraph.neighbours</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" compoundref="_grid_generator_8cs" startline="222">GridGraph.neighbourOffsets</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a83885fff18b5b16a4169dd3c03cb2c75" compoundref="_grid_generator_8cs" startline="1846" endline="1960">GridGraph.SnappedLinecast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a67d101f1ccea9b204d4c2f680206daa6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void CreateNodes</definition>
+        <argsstring>(int number)</argsstring>
+        <name>CreateNodes</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1af9cb6ab12f8f1fe5d71fa6158d3b23bb">CreateNodes</reimplements>
+        <param>
+          <type>int</type>
+          <declname>number</declname>
+        </param>
+        <briefdescription>
+<para>Creates a number of nodes with the correct type for the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should not set the #nodes array, only return the nodes. Called by graph generators and when deserializing a graph with nodes. Override this function if you do not use the default Pathfinding.Node class. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="47" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="47" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a6679c85f7a48983b3dd718254dc39d25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ErodeWalkableArea</definition>
+        <argsstring>()</argsstring>
+        <name>ErodeWalkableArea</name>
+        <briefdescription>
+<para>Erodes the walkable area. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" kindref="member">erodeIterations</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="881" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="881" bodyend="883"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a3ca6fdbdfb2a0b92d095ed64da1f696e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void ErodeWalkableArea</definition>
+        <argsstring>(int xmin, int zmin, int xmax, int zmax)</argsstring>
+        <name>ErodeWalkableArea</name>
+        <param>
+          <type>int</type>
+          <declname>xmin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>zmin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>xmax</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>zmax</declname>
+        </param>
+        <briefdescription>
+<para>Erodes the walkable area. </para>        </briefdescription>
+        <detaileddescription>
+<para>xmin, zmin (inclusive)<linebreak/>
+ xmax, zmax (exclusive)</para><para><simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" kindref="member">erodeIterations</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="891" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="891" bodyend="984"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1af156f09628f08d32091ea67e48e42b71" compoundref="_grid_generator_8cs" startline="157">GridGraph.erosionUseTags</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" compoundref="_grid_generator_8cs" startline="147">GridGraph.erodeIterations</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" compoundref="_grid_generator_8cs" startline="1007" endline="1016">GridGraph.CalculateConnections</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a7aa57887040aed878e8c41d959330e40" compoundref="_grid_generator_8cs" startline="164">GridGraph.erosionFirstTag</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void GenerateMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>GenerateMatrix</name>
+        <briefdescription>
+<para>Generates the matrix used for translating nodes from grid coordinates to world coordintes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="463" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="463" bodyend="500"/>
+        <referencedby refid="class_grid_graph_editor_1a18b9b7a1add549aa8462c4e80cfc6376" compoundref="_grid_generator_editor_8cs" startline="80" endline="300">GridGraphEditor.OnInspectorGUI</referencedby>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1aa0cb789749df5a663588e38cf4f37d46" compoundref="_grid_generator_8cs" startline="2015" endline="2050">GridGraph.PostDeserialization</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a41dd84d5be7d7d00ba53763d2b5ac652" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void GetBoundsMinMax</definition>
+        <argsstring>(Bounds b, Matrix4x4 matrix, out Vector3 min, out Vector3 max)</argsstring>
+        <name>GetBoundsMinMax</name>
+        <param>
+          <type>Bounds</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Matrix4x4</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>out Vector3</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>out Vector3</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>Calculates minimum and maximum points for bounds <emphasis>b</emphasis> when multiplied with the matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1285" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1285" bodyend="1303"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a9f3c0c3e561ceafbe1a0c4cccda7f17d" compoundref="_grid_generator_8cs" startline="1329" endline="1365">GridGraph.GetNodesInArea</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a1eb9a9eb6201a69b8d14f2cf743f387f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint</type>
+        <definition>uint GetConnectionCost</definition>
+        <argsstring>(int dir)</argsstring>
+        <name>GetConnectionCost</name>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="366" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="366" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1ac25355bbfbcbac3f5a421fab839e8e01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override <ref refid="struct_pathfinding_1_1_n_n_info" kindref="compound">NNInfo</ref></type>
+        <definition>override NNInfo GetNearest</definition>
+        <argsstring>(Vector3 position, NNConstraint constraint, GraphNode hint)</argsstring>
+        <name>GetNearest</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1af25bf6726c21398948bd3e9293afd3f0">GetNearest</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">NNConstraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>hint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000008"><xreftitle>Todo</xreftitle><xrefdescription><para>Set clamped position for Grid Graph </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="508" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="508" bodyend="527"/>
+        <referencedby refid="class_grid_graph_editor_1af7b5f3067d5b3f687a01a4b01283e068" compoundref="_grid_generator_editor_8cs" startline="535" endline="680">GridGraphEditor.OnSceneGUI</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" compoundref="_grid_generator_8cs" startline="1100" endline="1217">GridGraph.OnPostScan</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a83885fff18b5b16a4169dd3c03cb2c75" compoundref="_grid_generator_8cs" startline="1846" endline="1960">GridGraph.SnappedLinecast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a4392354376e264b1971b44ba3b303123" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override <ref refid="struct_pathfinding_1_1_n_n_info" kindref="compound">NNInfo</ref></type>
+        <definition>override NNInfo GetNearestForce</definition>
+        <argsstring>(Vector3 position, NNConstraint constraint)</argsstring>
+        <name>GetNearestForce</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1a01ce7413474f02c0498c49c63ef6223e">GetNearestForce</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_n_n_constraint" kindref="compound">NNConstraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000009"><xreftitle>Todo</xreftitle><xrefdescription><para>Set clamped position for Grid Graph </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="530" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="530" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a9c2af9d089fdd3ad576848333621c1f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+        <definition>GridNode GetNodeConnection</definition>
+        <argsstring>(GridNode node, int dir)</argsstring>
+        <name>GetNodeConnection</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="370" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="370" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a5b6c7839d18d2f469f3c3b91534c20f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+        <definition>GridNode GetNodeConnection</definition>
+        <argsstring>(int index, int x, int z, int dir)</argsstring>
+        <name>GetNodeConnection</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+<para>Get the connecting node from the node at (x,z) in the specified direction. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A <ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref> if the node has a connection to that node. Null if no connection in that direction exists</para></simplesect>
+<simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="399" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="399" bodyend="411"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1ab856cb1769fb30815358519b9e25f6f1" compoundref="_grid_generator_8cs" startline="230">GridGraph.neighbourXOffsets</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ade0f7989d929e467001992ce46e8d515" compoundref="_grid_generator_8cs" startline="234">GridGraph.neighbourZOffsets</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" compoundref="_grid_generator_8cs" startline="222">GridGraph.neighbourOffsets</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a1bfcd2868759161a05921438639197ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_pathfinding_1_1_int3" kindref="compound">Int3</ref></type>
+        <definition>Int3 GetNodePosition</definition>
+        <argsstring>(int index, int yOffset)</argsstring>
+        <name>GetNodePosition</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>yOffset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="341" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="341" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a03623f3b4f0993c79abaec6a5f988a82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GetNodes</definition>
+        <argsstring>(GraphNodeDelegateCancelable del)</argsstring>
+        <name>GetNodes</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1ae75022788c1a996be58e50ed2f4d7f3a">GetNodes</reimplements>
+        <param>
+          <type>GraphNodeDelegateCancelable</type>
+          <declname>del</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="83" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1af9b6f673a76829b7c60b9f3ae6b6e4cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref> &gt;</type>
+        <definition>List&lt;GraphNode&gt; GetNodesInArea</definition>
+        <argsstring>(Bounds b)</argsstring>
+        <name>GetNodesInArea</name>
+        <param>
+          <type>Bounds</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>All nodes inside the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Be nice to the garbage collector and release the list when you have used it (optional) </para></simplesect>
+<simplesect kind="see"><para>Pathfinding.Util.ListPool</para><simplesectsep/><para><ref refid="class_pathfinding_1_1_grid_graph_1a4ebadd6c06c5a229bbd445b0c7853fe2" kindref="member">GetNodesInArea(GraphUpdateShape)</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1311" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1311" bodyend="1313"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a4ebadd6c06c5a229bbd445b0c7853fe2" compoundref="_grid_generator_8cs" startline="1321" endline="1323">GridGraph.GetNodesInArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a4ebadd6c06c5a229bbd445b0c7853fe2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref> &gt;</type>
+        <definition>List&lt;GraphNode&gt; GetNodesInArea</definition>
+        <argsstring>(GraphUpdateShape shape)</argsstring>
+        <name>GetNodesInArea</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_update_shape" kindref="compound">GraphUpdateShape</ref></type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>All nodes inside the shape. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Be nice to the garbage collector and release the list when you have used it (optional) </para></simplesect>
+<simplesect kind="see"><para>Pathfinding.Util.ListPool</para><simplesectsep/><para><ref refid="class_pathfinding_1_1_grid_graph_1af9b6f673a76829b7c60b9f3ae6b6e4cc" kindref="member">GetNodesInArea(Bounds)</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1321" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1321" bodyend="1323"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1af9b6f673a76829b7c60b9f3ae6b6e4cc" compoundref="_grid_generator_8cs" startline="1311" endline="1313">GridGraph.GetNodesInArea</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a1204c1fee8c0e18ceba650aa87fb4538" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool HasNodeConnection</definition>
+        <argsstring>(GridNode node, int dir)</argsstring>
+        <name>HasNodeConnection</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="378" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="378" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1ab02cd90692cf158ad7dde66aff8d20b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool HasNodeConnection</definition>
+        <argsstring>(int index, int x, int z, int dir)</argsstring>
+        <name>HasNodeConnection</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="442" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="442" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1afdffd3605e182b69aedbcedf94c82009" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool IsValidConnection</definition>
+        <argsstring>(GridNode n1, GridNode n2)</argsstring>
+        <name>IsValidConnection</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>n1</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>n2</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if a connection between the adjacent nodes <emphasis>n1</emphasis> and <emphasis>n2</emphasis> is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Also takes into account if the nodes are walkable </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="987" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="987" bodyend="997"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1a109a64ff8260b94b3a91f4fe1e29d2c3" compoundref="_grid_generator_8cs" startline="119">GridGraph.maxClimb</references>
+        <references refid="class_pathfinding_1_1_grid_node_1a63eb892b6257f68ae3fe679f5a4342f4" compoundref="_graph_node_8cs" startline="378">GridNode.Position</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a907a3a548be3fcff688b1a1b2580741a" compoundref="_grid_generator_8cs" startline="123">GridGraph.maxClimbAxis</references>
+        <references refid="struct_pathfinding_1_1_int3_1a54f4f0d327a1ddbc574dc9bf5a44a66c" compoundref="_int3_8cs" startline="19">Int3.Precision</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" compoundref="_grid_generator_8cs" startline="1019" endline="1095">GridGraph.CalculateConnections</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a94692fe658e5961985f692dd1f10b3e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Linecast</definition>
+        <argsstring>(Vector3 _a, Vector3 _b)</argsstring>
+        <name>Linecast</name>
+        <reimplements refid="interface_pathfinding_1_1_i_raycastable_graph_1a96c34881eb1309138d8ff506d5324af5">Linecast</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>_a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>_b</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>_b</emphasis> is visible from <emphasis>_a</emphasis> on the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is not the same as Physics.Linecast, this function traverses the graph and looks for collisions. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1665" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1665" bodyend="1668"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a9ea78e0381f0bba5ae7172a2f17d5260" compoundref="_grid_generator_8cs" startline="1676" endline="1679">GridGraph.Linecast</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a9ea78e0381f0bba5ae7172a2f17d5260" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Linecast</definition>
+        <argsstring>(Vector3 _a, Vector3 _b, GraphNode hint)</argsstring>
+        <name>Linecast</name>
+        <reimplements refid="interface_pathfinding_1_1_i_raycastable_graph_1a453bbcab5eb1054a50b2b288691ef3cd">Linecast</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>_a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>_b</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>hint</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>_b</emphasis> is visible from <emphasis>_a</emphasis> on the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Point to linecast from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Point to linecast to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">hint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If you have some idea of what the start node might be (the one close to <emphasis>_a</emphasis>), pass it to hint since it can enable faster lookups This is not the same as Physics.Linecast, this function traverses the graph and looks for collisions. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1676" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1676" bodyend="1679"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1a94692fe658e5961985f692dd1f10b3e9" compoundref="_grid_generator_8cs" startline="1665" endline="1668">GridGraph.Linecast</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a2075178ecda4935789b7cfc4531a5bf0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Linecast</definition>
+        <argsstring>(Vector3 _a, Vector3 _b, GraphNode hint, out GraphHitInfo hit)</argsstring>
+        <name>Linecast</name>
+        <reimplements refid="interface_pathfinding_1_1_i_raycastable_graph_1abcb4791b19492f904d9a0d94aa27bcad">Linecast</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>_a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>_b</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>hint</declname>
+        </param>
+        <param>
+          <type>out <ref refid="struct_pathfinding_1_1_graph_hit_info" kindref="compound">GraphHitInfo</ref></type>
+          <declname>hit</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>_b</emphasis> is visible from <emphasis>_a</emphasis> on the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Point to linecast from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Point to linecast to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">hit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contains info on what was hit, see <ref refid="struct_pathfinding_1_1_graph_hit_info" kindref="compound">GraphHitInfo</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">hint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If you have some idea of what the start node might be (the one close to <emphasis>_a</emphasis>), pass it to hint since it can enable faster lookups This is not the same as Physics.Linecast, this function traverses the graph and looks for collisions. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1688" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1688" bodyend="1831"/>
+        <references refid="class_pathfinding_1_1_polygon_1a9927668ddd18d78e4eea0dc6ce78a784" compoundref="_astar_math_8cs" startline="794" endline="825">Polygon.SegmentIntersectionPoint</references>
+        <references refid="class_pathfinding_1_1_polygon_1a93389f87146114020dd189dc5ddd4287" compoundref="_astar_math_8cs" startline="504" endline="506">Polygon.Left</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" compoundref="_grid_generator_8cs" startline="109">GridGraph.nodeSize</references>
+        <references refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" compoundref="_base_8cs" startline="69">NavGraph.matrix</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1aafb2e5ff9ac0b154ba7c920402922a91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnDestroy</definition>
+        <argsstring>()</argsstring>
+        <name>OnDestroy</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1a1be5f5b23715843a7bfc4f2ebd6c7894">OnDestroy</reimplements>
+        <briefdescription>
+<para>This function will be called when this graph is destroyed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="63" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="63" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a55d1dfeffeed145bbd7c6553a81d949a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void OnDrawGizmos</definition>
+        <argsstring>(bool drawNodes)</argsstring>
+        <name>OnDrawGizmos</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1a58a7f39571aa2ed35b24e37537e8be93">OnDrawGizmos</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>drawNodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1219" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1219" bodyend="1282"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OnPostScan</definition>
+        <argsstring>(AstarPath script)</argsstring>
+        <name>OnPostScan</name>
+        <param>
+          <type><ref refid="class_astar_path" kindref="compound">AstarPath</ref></type>
+          <declname>script</declname>
+        </param>
+        <briefdescription>
+<para>Auto links grid graphs together. </para>        </briefdescription>
+        <detaileddescription>
+<para>Called after all graphs have been scanned. <simplesect kind="see"><para><ref refid="class_pathfinding_1_1_grid_graph_1a31bf58248e8796ce718861f6c751d2aa" kindref="member">autoLinkGrids</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1100" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1100" bodyend="1217"/>
+        <references refid="class_astar_path_1a0f85ab95acf0f5ad88a3ac590efaa0b5" compoundref="_astar_path_8cs" startline="395">AstarPath.OnPostScan</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a31bf58248e8796ce718861f6c751d2aa" compoundref="_grid_generator_8cs" startline="168">GridGraph.autoLinkGrids</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a3d2a72058d81d89df042b9f32df38da9" compoundref="_grid_generator_8cs" startline="172">GridGraph.autoLinkDistLimit</references>
+        <references refid="struct_pathfinding_1_1_int3_1a54f4f0d327a1ddbc574dc9bf5a44a66c" compoundref="_int3_8cs" startline="19">Int3.Precision</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" compoundref="_grid_generator_8cs" startline="91">GridGraph.width</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac25355bbfbcbac3f5a421fab839e8e01" compoundref="_grid_generator_8cs" startline="508" endline="527">GridGraph.GetNearest</references>
+        <references refid="struct_pathfinding_1_1_n_n_info_1ad38a0e14c26a92de3abc582d51413e1b" compoundref="astarclasses_8cs" startline="247">NNInfo.node</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" compoundref="_grid_generator_8cs" startline="92">GridGraph.depth</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1aa0cb789749df5a663588e38cf4f37d46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void PostDeserialization</definition>
+        <argsstring>()</argsstring>
+        <name>PostDeserialization</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1aec1349b074fefbf56b083f616cf3a6a6">PostDeserialization</reimplements>
+        <briefdescription>
+<para>Called after all deserialization has been done for all graphs. </para>        </briefdescription>
+        <detaileddescription>
+<para>Can be used to set up more graph data which is not serialized </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="2015" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="2015" bodyend="2050"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" compoundref="_grid_generator_8cs" startline="463" endline="500">GridGraph.GenerateMatrix</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a038d51f45f12cafafdcdf404a12c77cf" compoundref="_grid_generator_8cs" startline="644" endline="690">GridGraph.SetUpOffsetsAndCosts</references>
+        <references refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" compoundref="_astar_path_8cs" startline="64">AstarPath.active</references>
+        <references refid="class_astar_path_1ae505e02a52d4b9573e5d861ec48aa0ab" compoundref="_astar_path_8cs" startline="61">AstarPath.astarData</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" compoundref="_grid_generator_8cs" startline="92">GridGraph.depth</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" compoundref="_grid_generator_8cs" startline="91">GridGraph.width</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1ad0834b33e2960b8cde3dad13089af0ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RemoveGridGraphFromStatic</definition>
+        <argsstring>()</argsstring>
+        <name>RemoveGridGraphFromStatic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="70" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a90227378af44ec239626da2800e7c626" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Scan</definition>
+        <argsstring>()</argsstring>
+        <name>Scan</name>
+        <reimplements refid="class_pathfinding_1_1_nav_graph_1a702cb806adb2081c11b7a999a1fa4b44">Scan</reimplements>
+        <briefdescription>
+<para>Scans the graph, called from <ref refid="class_astar_path_1a69a25908bb9a9244e74df95d05001c77" kindref="member">AstarPath.Scan</ref> Override this function to implement custom scanning logic </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="692" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="692" bodyend="819"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a8711e6597cc69d8e34aeb378c7a73dc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SetNodeConnection</definition>
+        <argsstring>(GridNode node, int dir, bool value)</argsstring>
+        <name>SetNodeConnection</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="386" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="386" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1ab4163960810cf097d8c7f2345e6b8677" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SetNodeConnection</definition>
+        <argsstring>(int index, int x, int z, int dir, bool value)</argsstring>
+        <name>SetNodeConnection</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set if connection in the specified direction should be enabled. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note that bounds checking will still be done when getting the connection value again, so it is not necessarily true that HasNodeConnection will return true just because you used SetNodeConnection on a node to set a connection to true.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the node </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X coordinate of the node </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z coordinate of the node </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable or disable the connection</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This is identical to Pathfinding.Node.SetConnectionInternal</para></simplesect>
+<xrefsect id="deprecated_1_deprecated000012"><xreftitle>Deprecated</xreftitle><xrefdescription></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="427" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="427" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a038d51f45f12cafafdcdf404a12c77cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void SetUpOffsetsAndCosts</definition>
+        <argsstring>()</argsstring>
+        <name>SetUpOffsetsAndCosts</name>
+        <briefdescription>
+<para>Sets up <ref refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" kindref="member">neighbourOffsets</ref> with the current settings. </para>        </briefdescription>
+        <detaileddescription>
+<para><ref refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" kindref="member">neighbourOffsets</ref>, <ref refid="class_pathfinding_1_1_grid_graph_1ac1afd90286789028da46494a398d2502" kindref="member">neighbourCosts</ref>, <ref refid="class_pathfinding_1_1_grid_graph_1ab856cb1769fb30815358519b9e25f6f1" kindref="member">neighbourXOffsets</ref> and <ref refid="class_pathfinding_1_1_grid_graph_1ade0f7989d929e467001992ce46e8d515" kindref="member">neighbourZOffsets</ref> are set up.<linebreak/>
+ The cost for a non-diagonal movement between two adjacent nodes is RoundToInt (<ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize</ref> * <ref refid="struct_pathfinding_1_1_int3_1a54f4f0d327a1ddbc574dc9bf5a44a66c" kindref="member">Int3.Precision</ref>)<linebreak/>
+ The cost for a diagonal movement between two adjacent nodes is RoundToInt (<ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize</ref> * Sqrt (2) * <ref refid="struct_pathfinding_1_1_int3_1a54f4f0d327a1ddbc574dc9bf5a44a66c" kindref="member">Int3.Precision</ref>) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="644" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="644" bodyend="690"/>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1aa0cb789749df5a663588e38cf4f37d46" compoundref="_grid_generator_8cs" startline="2015" endline="2050">GridGraph.PostDeserialization</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a83885fff18b5b16a4169dd3c03cb2c75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SnappedLinecast</definition>
+        <argsstring>(Vector3 _a, Vector3 _b, GraphNode hint, out GraphHitInfo hit)</argsstring>
+        <name>SnappedLinecast</name>
+        <param>
+          <type>Vector3</type>
+          <declname>_a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>_b</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref></type>
+          <declname>hint</declname>
+        </param>
+        <param>
+          <type>out <ref refid="struct_pathfinding_1_1_graph_hit_info" kindref="compound">GraphHitInfo</ref></type>
+          <declname>hit</declname>
+        </param>
+        <briefdescription>
+<para>Returns if <emphasis>_b</emphasis> is visible from <emphasis>_a</emphasis> on the graph. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is different from the other Linecast functions since it 1) snaps the start and end positions directly to the graph and it uses Bresenham&apos;s line drawing algorithm as opposed to the others which use sampling at fixed intervals. If you only care about if one <bold>node</bold> can see another <bold>node</bold>, then this function is great, but if you need more precision than one node, use the normal linecast functions</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Point to linecast from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Point to linecast to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">hit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contains info on what was hit, see <ref refid="struct_pathfinding_1_1_graph_hit_info" kindref="compound">GraphHitInfo</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">hint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If you have some idea of what the start node might be (the one close to <emphasis>_a</emphasis>), pass it to hint since it can enable faster lookups</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+This is not the same as Physics.Linecast, this function traverses the graph and looks for collisions. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1846" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1846" bodyend="1960"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1ac25355bbfbcbac3f5a421fab839e8e01" compoundref="_grid_generator_8cs" startline="508" endline="527">GridGraph.GetNearest</references>
+        <references refid="class_pathfinding_1_1_n_n_constraint_1a769a9ff45dd76b15d1f50c89e50702eb" compoundref="astarclasses_8cs" startline="201">NNConstraint.None</references>
+        <references refid="struct_pathfinding_1_1_n_n_info_1ad38a0e14c26a92de3abc582d51413e1b" compoundref="astarclasses_8cs" startline="247">NNInfo.node</references>
+        <references refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" compoundref="_base_8cs" startline="69">NavGraph.matrix</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" compoundref="_grid_generator_8cs" startline="222">GridGraph.neighbourOffsets</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a0dc52f5435a7019b6b79d9c85e8a6dfa" compoundref="_grid_generator_8cs" startline="1967" endline="1990">GridGraph.CheckConnection</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateArea</definition>
+        <argsstring>(GraphUpdateObject o)</argsstring>
+        <name>UpdateArea</name>
+        <reimplements refid="interface_pathfinding_1_1_i_updatable_graph_1a2ad812267c37b8c2d7d44e829696e186">UpdateArea</reimplements>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_update_object" kindref="compound">GraphUpdateObject</ref></type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Internal function to update an area of the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1369" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1369" bodyend="1578"/>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a024318f4225ee6bedb20b7f865205d34" compoundref="astarclasses_8cs" startline="370">GraphUpdateObject.bounds</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a41dd84d5be7d7d00ba53763d2b5ac652" compoundref="_grid_generator_8cs" startline="1285" endline="1303">GridGraph.GetBoundsMinMax</references>
+        <references refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" compoundref="_base_8cs" startline="69">NavGraph.matrix</references>
+        <references refid="struct_pathfinding_1_1_int_rect_1a500004c5601a79c123e5849a1da942da" compoundref="astarclasses_8cs" startline="570" endline="580">IntRect.DebugDraw</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a62de4bd11cc168fe0e75cb5bfdb4b269" compoundref="astarclasses_8cs" startline="389">GraphUpdateObject.updatePhysics</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a2861ffb55997ec06c4bab822ca1f6eb7" compoundref="astarclasses_8cs" startline="401">GraphUpdateObject.modifyWalkability</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a56fdf7ca63100e3e572e7190c1da4631" compoundref="_grid_generator_8cs" startline="115">GridGraph.collision</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a7b285cb247d2cca3876488c3f43e3872" compoundref="_base_8cs" startline="440">GraphCollision.collisionCheck</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a917f89a3bf5986b82c6e560173a6d1da" compoundref="_base_8cs" startline="389">GraphCollision.diameter</references>
+        <references refid="struct_pathfinding_1_1_int_rect_1a97228037b37dd4c2e2ac66f521312173" compoundref="astarclasses_8cs" startline="547" endline="556">IntRect.Union</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" compoundref="_grid_generator_8cs" startline="147">GridGraph.erodeIterations</references>
+        <references refid="struct_pathfinding_1_1_int_rect_1a5bc29b8c763740fc1513a73635c7576b" compoundref="astarclasses_8cs" startline="561" endline="567">IntRect.Expand</references>
+        <references refid="struct_pathfinding_1_1_int_rect_1a0e43f7eb18fcbb615348660e584875a2" compoundref="astarclasses_8cs" startline="533" endline="542">IntRect.Intersection</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a2fdee9b328643f752ecb42fc6abb905f" compoundref="astarclasses_8cs" startline="426" endline="433">GraphUpdateObject.WillUpdateNode</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a744ea6d17daab83d70c499936aeb14a8" compoundref="_base_8cs" startline="470" endline="475">GraphCollision.Initialize</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" compoundref="_grid_generator_8cs" startline="109">GridGraph.nodeSize</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" compoundref="_grid_generator_8cs" startline="823" endline="878">GridGraph.UpdateNodePositionCollision</references>
+        <references refid="class_pathfinding_1_1_graph_update_object_1a07c9193c307065c2a9f21d428f140e23" compoundref="astarclasses_8cs" startline="452" endline="468">GraphUpdateObject.Apply</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" compoundref="_grid_generator_8cs" startline="1007" endline="1016">GridGraph.CalculateConnections</references>
+        <references refid="class_pathfinding_1_1_grid_node_1a63eb892b6257f68ae3fe679f5a4342f4" compoundref="_graph_node_8cs" startline="378">GridNode.Position</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a6679c85f7a48983b3dd718254dc39d25" compoundref="_grid_generator_8cs" startline="881" endline="883">GridGraph.ErodeWalkableArea</references>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateNodePositionCollision</definition>
+        <argsstring>(GridNode node, int x, int z)</argsstring>
+        <name>UpdateNodePositionCollision</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Updates position, walkability and penalty for the node. </para>        </briefdescription>
+        <detaileddescription>
+<para>Assumes that collision.Initialize (...) has been called before this function </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="823" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="823" bodyend="878"/>
+        <references refid="class_pathfinding_1_1_grid_node_1ada3e82286d738e4043e434a792daeaef" compoundref="_graph_node_8cs" startline="362">GridNode.YOffset</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a56fdf7ca63100e3e572e7190c1da4631" compoundref="_grid_generator_8cs" startline="115">GridGraph.collision</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a041821812e508ad6393a5cfe88e5a12e" compoundref="_base_8cs" startline="504" endline="508">GraphCollision.CheckHeight</references>
+        <references refid="class_pathfinding_1_1_grid_node_1a63eb892b6257f68ae3fe679f5a4342f4" compoundref="_graph_node_8cs" startline="378">GridNode.Position</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1aa0fb02ce79e98cd3e4e3ce9d657ecab6" compoundref="_base_8cs" startline="411">GraphCollision.fromHeight</references>
+        <references refid="struct_pathfinding_1_1_int3_1a54f4f0d327a1ddbc574dc9bf5a44a66c" compoundref="_int3_8cs" startline="19">Int3.Precision</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a51c5b666f367c8e4a190595473c5e2dc" compoundref="_grid_generator_8cs" startline="188">GridGraph.penaltyPosition</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1add85970217c573057e81b043be6e41b2" compoundref="_grid_generator_8cs" startline="185">GridGraph.penaltyPositionOffset</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1ab57f82b9228153229f8dd7aea6e9c434" compoundref="_grid_generator_8cs" startline="193">GridGraph.penaltyPositionFactor</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a3042d897d9a2d63c64f853e8b93d43c2" compoundref="_grid_generator_8cs" startline="132">GridGraph.useRaycastNormal</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1ab35aba2fc7d8091c96eedf9f416ad06e" compoundref="_base_8cs" startline="441">GraphCollision.heightCheck</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1abca6edc712cc585d919d49cbdb6350b4" compoundref="_base_8cs" startline="422">GraphCollision.up</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" compoundref="_grid_generator_8cs" startline="127">GridGraph.maxSlope</references>
+        <references refid="class_pathfinding_1_1_graph_collision_1a4487bdd07ae5b132efb2b956114af9dd" compoundref="_base_8cs" startline="478" endline="501">GraphCollision.Check</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1af229d03df2592684413d9c2d78aa42c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UpdateSizeFromWidthDepth</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateSizeFromWidthDepth</name>
+        <briefdescription>
+<para>Updates <ref refid="class_pathfinding_1_1_grid_graph_1aef1d073726fc4b857570fbae3230b8dd" kindref="member">size</ref> from <ref refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" kindref="member">width</ref>, <ref refid="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" kindref="member">depth</ref> and <ref refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" kindref="member">nodeSize</ref> values. </para>        </briefdescription>
+        <detaileddescription>
+<para>Also <ref refid="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" kindref="member">generates a new matrix </ref>. <simplesect kind="note"><para>This does not rescan the graph, that must be done with Scan </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="457" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="457" bodyend="460"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CalculateConnections</definition>
+        <argsstring>(GridNode node)</argsstring>
+        <name>CalculateConnections</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_grid_node" kindref="compound">GridNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the grid connections for a single node. </para>        </briefdescription>
+        <detaileddescription>
+<para>Convenience function, it&apos;s faster to use CalculateConnections(GridNode[],int,int,node) but that will only show when calculating for a large number of nodes <xrefsect id="todo_1_todo000010"><xreftitle>Todo</xreftitle><xrefdescription><para>Test this function, should work ok, but you never know </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1007" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1007" bodyend="1016"/>
+        <references refid="class_pathfinding_1_1_astar_data_1aca6b7917c5eadfd0b165a59775662c3f" compoundref="_astar_data_8cs" startline="524" endline="545">AstarData.GetGraph</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" compoundref="_grid_generator_8cs" startline="91">GridGraph.width</references>
+        <references refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" compoundref="_grid_generator_8cs" startline="1007" endline="1016">GridGraph.CalculateConnections</references>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a3ca6fdbdfb2a0b92d095ed64da1f696e" compoundref="_grid_generator_8cs" startline="891" endline="984">GridGraph.ErodeWalkableArea</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" compoundref="_grid_generator_8cs" startline="1007" endline="1016">GridGraph.CalculateConnections</referencedby>
+        <referencedby refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" compoundref="_grid_generator_8cs" startline="1369" endline="1578">GridGraph.UpdateArea</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_grid_graph_1a9f3c0c3e561ceafbe1a0c4cccda7f17d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_graph_node" kindref="compound">GraphNode</ref> &gt;</type>
+        <definition>List&lt;GraphNode&gt; GetNodesInArea</definition>
+        <argsstring>(Bounds b, GraphUpdateShape shape)</argsstring>
+        <name>GetNodesInArea</name>
+        <param>
+          <type>Bounds</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_graph_update_shape" kindref="compound">GraphUpdateShape</ref></type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>All nodes inside the shape or if null, the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+<para>If a shape is supplied, it is assumed to be contained inside the bounding box. <simplesect kind="see"><para>GraphUpdateShape.GetBounds </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="1329" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="1329" bodyend="1365"/>
+        <references refid="class_pathfinding_1_1_grid_graph_1a41dd84d5be7d7d00ba53763d2b5ac652" compoundref="_grid_generator_8cs" startline="1285" endline="1303">GridGraph.GetBoundsMinMax</references>
+        <references refid="struct_pathfinding_1_1_int_rect_1a0e43f7eb18fcbb615348660e584875a2" compoundref="astarclasses_8cs" startline="533" endline="542">IntRect.Intersection</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generates a grid of nodes. </para>    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="class_pathfinding_1_1_grid_graph" kindref="compound">GridGraph</ref> does exactly what the name implies, generates nodes in a grid pattern.<linebreak/>
+ Grid graphs suit well to when you already have a grid based world. Features:<itemizedlist>
+<listitem><para>You can update the graph during runtime (good for e.g Tower Defence or RTS games)</para></listitem><listitem><para>Throw any scene at it, with minimal configurations you can get a good graph from it.</para></listitem><listitem><para>Supports raycast and the funnel algorithm</para></listitem><listitem><para>Predictable pattern</para></listitem><listitem><para>Can apply penalty and walkability values from a supplied image</para></listitem><listitem><para>Perfect for terrain worlds since it can make areas unwalkable depending on the slope</para></listitem></itemizedlist>
+</para><para><htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/gridgraph_graph.png&quot;/&gt;&lt;/div&gt;</htmlonly> <htmlonly> &lt;div class=&quot;tinyshadow&quot;&gt;&lt;img src=&quot;images/gridgraph_inspector.png&quot;/&gt;&lt;/div&gt;</htmlonly></para><para>The <bold>The Snap Size</bold> button snaps the internal size of the graph to exactly contain the current number of nodes, i.e not contain 100.3 nodes but exactly 100 nodes.<linebreak/>
+ This will make the &quot;center&quot; coordinate more accurate.<linebreak/>
+</para><para><bold>The Graph During Runtime</bold> Any graph which implements the <ref refid="interface_pathfinding_1_1_i_updatable_graph" kindref="compound">IUpdatableGraph</ref> interface can be updated during runtime.<linebreak/>
+ For grid graphs this is a great feature since you can update only a small part of the grid without causing any lag like a complete rescan would.<linebreak/>
+ If you for example just have instantiated a sphere obstacle in the scene and you want to update the grid where that sphere was instantiated, you can do this:<linebreak/>
+ <programlisting><codeline><highlight class="normal"><ref refid="class_astar_path" kindref="compound" tooltip="Main Pathfinding System.">AstarPath</ref>.<ref refid="class_astar_path_1afd00b3509dcd7d1a4ac45bcef6c7e200" kindref="member" tooltip="Returns the active AstarPath object in the scene.">active</ref>.<ref refid="class_astar_path_1ab418dfc993a7451f87bd9c7f9a5b5ef5" kindref="member" tooltip="Update all graphs within bounds after t seconds.">UpdateGraphs</ref><sp/>(ob.collider.bounds);<sp/></highlight></codeline>
+</programlisting> Where <emphasis>ob</emphasis> is the obstacle you just instantiated (a GameObject).<linebreak/>
+ As you can see, the UpdateGraphs function takes a Bounds parameter and it will send an update call to all updateable graphs.<linebreak/>
+ A grid graph will update that area and a small margin around it equal to <ref refid="class_pathfinding_1_1_graph_collision_1a917f89a3bf5986b82c6e560173a6d1da" kindref="member">collision testing diameter/2 </ref> <simplesect kind="see"><para>graph-updates for more info about updating <ref refid="group__graphs" kindref="compound">Graph Types</ref> during runtime </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2039">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2040" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2041" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2042" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2043" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2041">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2042">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="2043">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="2040">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2055">
+        <label>AstarData</label>
+        <link refid="class_pathfinding_1_1_astar_data"/>
+        <childnode refid="2045" relation="usage">
+          <edgelabel>graphs</edgelabel>
+        </childnode>
+        <childnode refid="2050" relation="usage">
+          <edgelabel>nodeRuns</edgelabel>
+        </childnode>
+        <childnode refid="2056" relation="usage">
+          <edgelabel>userConnections</edgelabel>
+        </childnode>
+        <childnode refid="2057" relation="usage">
+          <edgelabel>navmesh</edgelabel>
+        </childnode>
+        <childnode refid="2053" relation="usage">
+          <edgelabel>graphTypes</edgelabel>
+        </childnode>
+        <childnode refid="2068" relation="usage">
+          <edgelabel>pointGraph</edgelabel>
+        </childnode>
+        <childnode refid="2044" relation="usage">
+          <edgelabel>gridGraph</edgelabel>
+        </childnode>
+      </node>
+      <node id="2076">
+        <label>GridNode</label>
+        <link refid="class_pathfinding_1_1_grid_node"/>
+        <childnode refid="2051" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2044" relation="usage">
+          <edgelabel>_gridGraphs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2044">
+        <label>GridGraph</label>
+        <link refid="class_pathfinding_1_1_grid_graph"/>
+        <childnode refid="2045" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2059" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2060" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2061" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2074" relation="usage">
+          <edgelabel>collision</edgelabel>
+        </childnode>
+        <childnode refid="2075" relation="usage">
+          <edgelabel>textureData</edgelabel>
+        </childnode>
+        <childnode refid="2076" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2067">
+        <label>BBTreeBox</label>
+        <link refid="class_pathfinding_1_1_b_b_tree_box"/>
+        <childnode refid="2063" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+        <childnode refid="2067" relation="usage">
+          <edgelabel>c1</edgelabel>
+          <edgelabel>c2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2072">
+        <label>NNConstraint</label>
+        <link refid="class_pathfinding_1_1_n_n_constraint"/>
+      </node>
+      <node id="2066">
+        <label>BBTree</label>
+        <link refid="class_pathfinding_1_1_b_b_tree"/>
+        <childnode refid="2064" relation="usage">
+          <edgelabel>graph</edgelabel>
+        </childnode>
+        <childnode refid="2067" relation="usage">
+          <edgelabel>root</edgelabel>
+        </childnode>
+      </node>
+      <node id="2051">
+        <label>GraphNode</label>
+        <link refid="class_pathfinding_1_1_graph_node"/>
+      </node>
+      <node id="2065">
+        <label>Int3</label>
+        <link refid="struct_pathfinding_1_1_int3"/>
+        <childnode refid="2065" relation="usage">
+          <edgelabel>_zero</edgelabel>
+        </childnode>
+      </node>
+      <node id="2046">
+        <label>AstarPath</label>
+        <link refid="class_astar_path"/>
+        <childnode refid="2047" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2048" relation="usage">
+          <edgelabel>threadInfos</edgelabel>
+        </childnode>
+        <childnode refid="2054" relation="usage">
+          <edgelabel>pathReturnStack</edgelabel>
+        </childnode>
+        <childnode refid="2055" relation="usage">
+          <edgelabel>astarData</edgelabel>
+        </childnode>
+        <childnode refid="2053" relation="usage">
+          <edgelabel>safeUpdateLock</edgelabel>
+          <edgelabel>TotalSearchedNodes</edgelabel>
+          <edgelabel>TotalSearchTime</edgelabel>
+        </childnode>
+        <childnode refid="2071" relation="usage">
+          <edgelabel>pathReturnPop</edgelabel>
+          <edgelabel>debugPath</edgelabel>
+        </childnode>
+        <childnode refid="2073" relation="usage">
+          <edgelabel>colorSettings</edgelabel>
+        </childnode>
+        <childnode refid="2046" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2071">
+        <label>Path</label>
+        <link refid="class_pathfinding_1_1_path"/>
+        <childnode refid="2050" relation="usage">
+          <edgelabel>currentR</edgelabel>
+        </childnode>
+        <childnode refid="2049" relation="usage">
+          <edgelabel>pathHandler</edgelabel>
+        </childnode>
+        <childnode refid="2053" relation="usage">
+          <edgelabel>callTime</edgelabel>
+          <edgelabel>stateLock</edgelabel>
+        </childnode>
+        <childnode refid="2071" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="2051" relation="usage">
+          <edgelabel>_path</edgelabel>
+        </childnode>
+        <childnode refid="2072" relation="usage">
+          <edgelabel>nnConstraint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2059">
+        <label>IUpdatableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_updatable_graph"/>
+      </node>
+      <node id="2048">
+        <label>PathThreadInfo</label>
+        <link refid="struct_pathfinding_1_1_path_thread_info"/>
+        <childnode refid="2049" relation="usage">
+          <edgelabel>runData</edgelabel>
+        </childnode>
+        <childnode refid="2053" relation="usage">
+          <edgelabel>_lock</edgelabel>
+        </childnode>
+        <childnode refid="2046" relation="usage">
+          <edgelabel>astar</edgelabel>
+        </childnode>
+      </node>
+      <node id="2060">
+        <label>IFunnelGraph</label>
+        <link refid="interface_i_funnel_graph"/>
+      </node>
+      <node id="2074">
+        <label>GraphCollision</label>
+        <link refid="class_pathfinding_1_1_graph_collision"/>
+      </node>
+      <node id="2056">
+        <label>UserConnection</label>
+        <link refid="class_pathfinding_1_1_user_connection"/>
+      </node>
+      <node id="2064">
+        <label>INavmeshHolder</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh_holder"/>
+      </node>
+      <node id="2057">
+        <label>NavMeshGraph</label>
+        <link refid="class_pathfinding_1_1_nav_mesh_graph"/>
+        <childnode refid="2045" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2058" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2059" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2060" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2061" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2062" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2065" relation="usage">
+          <edgelabel>_vertices</edgelabel>
+        </childnode>
+        <childnode refid="2066" relation="usage">
+          <edgelabel>_bbTree</edgelabel>
+        </childnode>
+      </node>
+      <node id="2061">
+        <label>IRaycastableGraph</label>
+        <link refid="interface_pathfinding_1_1_i_raycastable_graph"/>
+      </node>
+      <node id="2070">
+        <label>IPositionedNode</label>
+        <link refid="interface_pathfinding_1_1_i_positioned_node"/>
+      </node>
+      <node id="2069">
+        <label>PointNode</label>
+        <link refid="class_pathfinding_1_1_point_node"/>
+        <childnode refid="2051" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2070" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2065" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+        <childnode refid="2051" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2073">
+        <label>AstarColor</label>
+        <link refid="class_pathfinding_1_1_astar_color"/>
+      </node>
+      <node id="2062">
+        <label>TriangleMeshNode</label>
+        <link refid="class_pathfinding_1_1_triangle_mesh_node"/>
+        <childnode refid="2063" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2064" relation="usage">
+          <edgelabel>_navmeshHolders</edgelabel>
+        </childnode>
+      </node>
+      <node id="2053">
+        <label>System</label>
+      </node>
+      <node id="2050">
+        <label>PathNode</label>
+        <link refid="class_pathfinding_1_1_path_node"/>
+        <childnode refid="2050" relation="usage">
+          <edgelabel>parent</edgelabel>
+        </childnode>
+        <childnode refid="2051" relation="usage">
+          <edgelabel>node</edgelabel>
+        </childnode>
+      </node>
+      <node id="2063">
+        <label>MeshNode</label>
+        <link refid="class_pathfinding_1_1_mesh_node"/>
+        <childnode refid="2051" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2063" relation="usage">
+          <edgelabel>connections</edgelabel>
+        </childnode>
+      </node>
+      <node id="2068">
+        <label>PointGraph</label>
+        <link refid="class_pathfinding_1_1_point_graph"/>
+        <childnode refid="2045" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2059" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2069" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2052">
+        <label>BinaryHeapM</label>
+        <link refid="class_pathfinding_1_1_binary_heap_m"/>
+        <childnode refid="2050" relation="usage">
+          <edgelabel>binaryHeap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2047">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2049">
+        <label>PathHandler</label>
+        <link refid="class_pathfinding_1_1_path_handler"/>
+        <childnode refid="2050" relation="usage">
+          <edgelabel>nodes</edgelabel>
+        </childnode>
+        <childnode refid="2052" relation="usage">
+          <edgelabel>heap</edgelabel>
+        </childnode>
+        <childnode refid="2053" relation="usage">
+          <edgelabel>DebugStringBuilder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2058">
+        <label>INavmesh</label>
+        <link refid="interface_pathfinding_1_1_i_navmesh"/>
+      </node>
+      <node id="2075">
+        <label>GridGraph.TextureData</label>
+        <link refid="class_pathfinding_1_1_grid_graph_1_1_texture_data"/>
+      </node>
+      <node id="2045">
+        <label>NavGraph</label>
+        <link refid="class_pathfinding_1_1_nav_graph"/>
+        <childnode refid="2046" relation="usage">
+          <edgelabel>active</edgelabel>
+        </childnode>
+      </node>
+      <node id="2054">
+        <label>Pathfinding</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" line="45" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Generators/GridGenerator.cs" bodystart="41" bodyend="2051"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_nav_graph_1a1a7a624b2d1e6da7b424032a806a73ff" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>_sguid</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a434d5613ef9ff4b88d1be0ce9527825e" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>active</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a925b5499ab27dbe0d20f23eef28ceacd" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>AddPortal</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a41fd5b31a800397fbf28e047628748e3" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>AddPortal</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a5c2c11f6d7929bafc3926f68dd5c00f3" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>aspectRatio</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a3d2a72058d81d89df042b9f32df38da9" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>autoLinkDistLimit</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a31bf58248e8796ce718861f6c751d2aa" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>autoLinkGrids</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1affb6ac8f8f08d515a8b74f5c213c2c52" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>Awake</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a024318f4225ee6bedb20b7f865205d34" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>bounds</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ad0f2899201e2f1d96389e8e1c54f6872" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>boundsMatrix</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a32f0d83f994efa43ba0692e553f4e827" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>boundsMatrix2</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a368a2bd3c5c3e650cb5303d2b63f9427" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>BuildFunnelCorridor</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a0d2509ee59efa9795af10bad683d50ef" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>CalculateConnections</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a05d05c75ebc37040a662d3717e859d18" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>CalculateConnections</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ae037808a191021995ac2ab44255dc4f1" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>center</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a0dc52f5435a7019b6b79d9c85e8a6dfa" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>CheckConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a56fdf7ca63100e3e572e7190c1da4631" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>collision</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a14d0a41221cec7889d7b5a5fd453d9d6" prot="protected" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>corners</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a67d101f1ccea9b204d4c2f680206daa6" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>CreateNodes</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a2de5531c24dd5054dbed9ef5159c9dde" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>cutCorners</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ac66dbe0e082fd3cc29bc1572a4dccc09" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>Depth</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1acb5ba97551079e0b072c62c21d784ac5" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>depth</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a575ba0b88685f2e09789add16e4bbafb" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>DeserializeExtraInfo</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1ae9c11225f455a44cd7086edfb44f1dda" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>drawGizmos</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a5d5f816947928ce3ebcdeebdaccf5728" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>erodeIterations</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a6679c85f7a48983b3dd718254dc39d25" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>ErodeWalkableArea</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a3ca6fdbdfb2a0b92d095ed64da1f696e" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>ErodeWalkableArea</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a7aa57887040aed878e8c41d959330e40" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>erosionFirstTag</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1af156f09628f08d32091ea67e48e42b71" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>erosionUseTags</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a762b3aeb27bbdfcc463725fc15673987" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GenerateMatrix</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a41dd84d5be7d7d00ba53763d2b5ac652" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetBoundsMinMax</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a1eb9a9eb6201a69b8d14f2cf743f387f" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetConnectionCost</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ac25355bbfbcbac3f5a421fab839e8e01" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>GetNearest</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1ac28f08f7bddc85579649b5f6ebe57cd4" prot="public" virt="non-virtual" ambiguityscope="Pathfinding::NavGraph."><scope>Pathfinding::GridGraph</scope><name>GetNearest</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1aae44d9d57ed269658eef4dddae3af43e" prot="public" virt="non-virtual" ambiguityscope="Pathfinding::NavGraph."><scope>Pathfinding::GridGraph</scope><name>GetNearest</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a4392354376e264b1971b44ba3b303123" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>GetNearestForce</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a9b30bb3675921209bb67193078405f69" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>getNearestForceOverlap</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a9c2af9d089fdd3ad576848333621c1f3" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a5b6c7839d18d2f469f3c3b91534c20f2" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a1bfcd2868759161a05921438639197ec" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodePosition</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a03623f3b4f0993c79abaec6a5f988a82" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodes</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1af9b6f673a76829b7c60b9f3ae6b6e4cc" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodesInArea</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a4ebadd6c06c5a229bbd445b0c7853fe2" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodesInArea</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a9f3c0c3e561ceafbe1a0c4cccda7f17d" prot="private" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GetNodesInArea</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a299daff5855daa7d3ceb3525c3921cf6" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>GridGraph</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a0c8f65c9d3118ff62b1d40950e5154f8" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>guid</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a1204c1fee8c0e18ceba650aa87fb4538" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>HasNodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ab02cd90692cf158ad7dde66aff8d20b3" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>HasNodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a446b024d347557e040a2487a4dad35d4" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>infoScreenOpen</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a8ce0a60a61300cf40e5b80d38d725618" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>initialPenalty</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a19e846610475809a8a6026f0eb66061f" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>InSearchTree</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1afb324eca94dcbe6ba08d65cc718ed7f7" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>inverseMatrix</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1afdffd3605e182b69aedbcedf94c82009" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>IsValidConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a94692fe658e5961985f692dd1f10b3e9" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>Linecast</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a9ea78e0381f0bba5ae7172a2f17d5260" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>Linecast</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a2075178ecda4935789b7cfc4531a5bf0" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>Linecast</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a0fe016efbd0e96eb5b62f08da732b9f6" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>matrix</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a109a64ff8260b94b3a91f4fe1e29d2c3" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>maxClimb</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a907a3a548be3fcff688b1a1b2580741a" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>maxClimbAxis</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a1b3ccfcd6d92aafbc9274eaf0e86bff5" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>maxSlope</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a8ccf841cb59e451791bcb2e1ac4f1edc" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>name</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ac1afd90286789028da46494a398d2502" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>neighbourCosts</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a33b21d81193b401670f85882ee240733" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>neighbourOffsets</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ac2c77e79829b685a1d1183712cd33b3e" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>neighbours</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ab856cb1769fb30815358519b9e25f6f1" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>neighbourXOffsets</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ade0f7989d929e467001992ce46e8d515" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>neighbourZOffsets</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1aa24893229da881765c71a20d468f6bd5" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>NodeColor</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a7111c22525f4f5e5d724ec46478a78aa" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>nodes</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a08ea566fbbbc4abd87ac7f1b066ec1df" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>nodeSize</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1aafb2e5ff9ac0b154ba7c920402922a91" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>OnDestroy</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a55d1dfeffeed145bbd7c6553a81d949a" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>OnDrawGizmos</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ae892dc081b8ed18f31e18d9a0b4485b7" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>OnPostScan</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a8c7e45250b1eb6821dd59fb2a9a016d7" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>open</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a457e30083dec688369847b32522163e8" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>penaltyAngle</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a31d49224c97eed94c0233ecd373ea82d" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>penaltyAngleFactor</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a51c5b666f367c8e4a190595473c5e2dc" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>penaltyPosition</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ab57f82b9228153229f8dd7aea6e9c434" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>penaltyPositionFactor</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1add85970217c573057e81b043be6e41b2" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>penaltyPositionOffset</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1aa0cb789749df5a663588e38cf4f37d46" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>PostDeserialization</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a9f94661379d6d8394f335c9add8c00a5" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>RelocateNodes</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ad0834b33e2960b8cde3dad13089af0ea" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>RemoveGridGraphFromStatic</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1aa20f4df5769ec2f2f32b43a05c7dc44c" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>rotation</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a75833509db1f3435c4a995248e667f88" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>SafeOnDestroy</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a90227378af44ec239626da2800e7c626" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>Scan</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1a05761001095e332b4947063865381a7c" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>ScanGraph</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a3951fe56aa9984ce4197dd14f1d189ad" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>scans</name></member>
+      <member refid="class_pathfinding_1_1_nav_graph_1ab80fa342322ac71dd3b111aa9e4c0a73" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>SerializeExtraInfo</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a8711e6597cc69d8e34aeb378c7a73dc9" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>SetNodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ab4163960810cf097d8c7f2345e6b8677" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>SetNodeConnection</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a038d51f45f12cafafdcdf404a12c77cf" prot="public" virt="virtual"><scope>Pathfinding::GridGraph</scope><name>SetUpOffsetsAndCosts</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1aef1d073726fc4b857570fbae3230b8dd" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>size</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a83885fff18b5b16a4169dd3c03cb2c75" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>SnappedLinecast</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1ac855bb1ba0ecd663efca9bda41527a6c" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>textureData</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a6991668443ae95f9091a971ab70ae6a8" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>unclampedSize</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a318f4b8f16f2e64902afbb7f0aa7fb17" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>uniformWidhtDepthGrid</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a2ad812267c37b8c2d7d44e829696e186" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>UpdateArea</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a1b0d6e6187c7e9c4a3a39d2cbb2b16d5" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>UpdateNodePositionCollision</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1af229d03df2592684413d9c2d78aa42c9" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>UpdateSizeFromWidthDepth</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a3042d897d9a2d63c64f853e8b93d43c2" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>useRaycastNormal</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1abbe7749c3b402f7dfe64f936774cfcd4" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>Width</name></member>
+      <member refid="class_pathfinding_1_1_grid_graph_1a2474a5474cbff19523a51eb1de01cda4" prot="public" virt="non-virtual"><scope>Pathfinding::GridGraph</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

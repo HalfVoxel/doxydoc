@@ -1,0 +1,1048 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_r_v_o_1_1_agent" kind="class" prot="public">
+    <compoundname>Pathfinding::RVO::Agent</compoundname>
+    <basecompoundref refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent" prot="public" virt="non-virtual">IAgent</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aae87304c6923138c031ff9918dd3a997" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float agentTimeHorizon</definition>
+        <argsstring></argsstring>
+        <name>agentTimeHorizon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a52a5f75a7b8a9e7a03152c01f92d36c6" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 desiredVelocity</definition>
+        <argsstring></argsstring>
+        <name>desiredVelocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a48083b65ac9a863566dc3e3fff09a5b4" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a3c105180f93a78cf3fb0903df278cf3f" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float maxSpeed</definition>
+        <argsstring></argsstring>
+        <name>maxSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ac6a0745845c06ab9b18b14e5b1f7d653" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float neighbourDist</definition>
+        <argsstring></argsstring>
+        <name>neighbourDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a158711b1fc1ed240c180163730b23f20" prot="private" static="no" mutable="no">
+        <type>List&lt; float &gt;</type>
+        <definition>List&lt;float&gt; neighbourDists</definition>
+        <argsstring></argsstring>
+        <name>neighbourDists</name>
+        <initializer>= new List&lt;float&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="127" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ae17be8d800427b9315d5dc01d5f99d21" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_r_v_o_1_1_agent" kindref="compound">Agent</ref> &gt;</type>
+        <definition>List&lt;Agent&gt; neighbours</definition>
+        <argsstring></argsstring>
+        <name>neighbours</name>
+        <initializer>= new List&lt;<ref refid="class_pathfinding_1_1_r_v_o_1_1_agent" kindref="compound">Agent</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="126" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ae93a8c7fb96ba8a01a8dcf4cc9bfdf2f" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 newVelocity</definition>
+        <argsstring></argsstring>
+        <name>newVelocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="118" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a7e56bf2b7c4558350dc3e0b4d92bde96" prot="private" static="no" mutable="no">
+        <type>List&lt; float &gt;</type>
+        <definition>List&lt;float&gt; obstacleDists</definition>
+        <argsstring></argsstring>
+        <name>obstacleDists</name>
+        <initializer>= new List&lt;float&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="130" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aa913b435c2cdde6b9871be474e7f91b1" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref> &gt;</type>
+        <definition>List&lt;ObstacleVertex&gt; obstacles</definition>
+        <argsstring></argsstring>
+        <name>obstacles</name>
+        <initializer>= new List&lt;<ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="129" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1adf2b61ff62b4405ccf9c1d9ab5ec3e0f" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref> &gt;</type>
+        <definition>List&lt;ObstacleVertex&gt; obstaclesBuffered</definition>
+        <argsstring></argsstring>
+        <name>obstaclesBuffered</name>
+        <initializer>= new List&lt;<ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="128" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aaae09db88e3bf152d9ad44de274b7a5c" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float obstacleTimeHorizon</definition>
+        <argsstring></argsstring>
+        <name>obstacleTimeHorizon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a94ec488efae28fd86c05dabd3a5c7df7" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref> &gt;</type>
+        <definition>List&lt;Line&gt; orcaLines</definition>
+        <argsstring></argsstring>
+        <name>orcaLines</name>
+        <initializer>= new List&lt;<ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="132" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a5f75c99e4ae0a22677367e7979f93b28" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 prevSmoothPos</definition>
+        <argsstring></argsstring>
+        <name>prevSmoothPos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a4da224114e2e53c2d976594573934b34" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref> &gt;</type>
+        <definition>List&lt;Line&gt; projLines</definition>
+        <argsstring></argsstring>
+        <name>projLines</name>
+        <initializer>= new List&lt;<ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="134" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1afccc842b55377e619a4aa3ee23d84825" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 smoothPos</definition>
+        <argsstring></argsstring>
+        <name>smoothPos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="84" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a657f2be2faad1298aeefc486884ce193" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 velocity</definition>
+        <argsstring></argsstring>
+        <name>velocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="117" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a8128625c9e3fd04c27b82957732d8781" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float weight</definition>
+        <argsstring></argsstring>
+        <name>weight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a53ad184600a4f4546ddf43377761b275" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>float</type>
+        <definition>float AgentTimeHorizon</definition>
+        <argsstring></argsstring>
+        <name>AgentTimeHorizon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="110" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ae1a88904d72ce85a469c2daface2c5c6" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>bool</type>
+        <definition>bool DebugDraw</definition>
+        <argsstring></argsstring>
+        <name>DebugDraw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="113" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ad9b8f86a3b262ac014a841ab729a8c8d" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>Vector3</type>
+        <definition>Vector3 DesiredVelocity</definition>
+        <argsstring></argsstring>
+        <name>DesiredVelocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="95" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a0f776a4ace9e9771de0a864193f3de0b" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>float</type>
+        <definition>float Height</definition>
+        <argsstring></argsstring>
+        <name>Height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="107" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a11465363f6e783dd91eb4a352dc6c050" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>Vector3</type>
+        <definition>Vector3 InterpolatedPosition</definition>
+        <argsstring></argsstring>
+        <name>InterpolatedPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="93" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a9a51bc25d2b015467b0e28a2697df225" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>bool</type>
+        <definition>bool Locked</definition>
+        <argsstring></argsstring>
+        <name>Locked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="105" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aefa0a2fa749eaaf8b7f42a52644147d4" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int MaxNeighbours</definition>
+        <argsstring></argsstring>
+        <name>MaxNeighbours</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="115" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a59dd60dd4af16d02d7ef44afbab5b5bd" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>float</type>
+        <definition>float MaxSpeed</definition>
+        <argsstring></argsstring>
+        <name>MaxSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="108" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a2b331457dd0de4b32c7be20e4e8f69ce" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>float</type>
+        <definition>float NeighbourDist</definition>
+        <argsstring></argsstring>
+        <name>NeighbourDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="109" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a160952674c149b48b338d5a1e5231a86" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>List&lt; <ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref> &gt;</type>
+        <definition>List&lt;ObstacleVertex&gt; NeighbourObstacles</definition>
+        <argsstring></argsstring>
+        <name>NeighbourObstacles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="140" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a4bb69978b1050721b4a0e4ae16934681" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>float</type>
+        <definition>float ObstacleTimeHorizon</definition>
+        <argsstring></argsstring>
+        <name>ObstacleTimeHorizon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="111" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a1a9a536dcc6338f318a4a3f4f146d28b" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>Vector3</type>
+        <definition>Vector3 Position</definition>
+        <argsstring></argsstring>
+        <name>Position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="89" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a062172106d8148f032b915309c6ff4e6" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>float</type>
+        <definition>float Radius</definition>
+        <argsstring></argsstring>
+        <name>Radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="106" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_pathfinding_1_1_r_v_o_1_1_agent_1af8c81063d0d740c6958ccc043ed51b2c" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>Vector3</type>
+        <definition>Vector3 Velocity</definition>
+        <argsstring></argsstring>
+        <name>Velocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="112" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a18a0f1e6c3d21c252b14ea6ae162e2ff" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool locked</definition>
+        <argsstring></argsstring>
+        <name>locked</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="100" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1afc4894bb6cdea8cdd3fb808617a6783a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int maxNeighbours</definition>
+        <argsstring></argsstring>
+        <name>maxNeighbours</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="102" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1acfb76c74e507fea066625f69fbc8a146" prot="public" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="103" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a5050a760c11da521cd4aee6336f6529f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float radius</definition>
+        <argsstring></argsstring>
+        <name>radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="99" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a1015df8222470d6426d5d3fd91018c09" prot="public" static="no" mutable="no">
+        <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Simulator</ref></type>
+        <definition>Simulator simulator</definition>
+        <argsstring></argsstring>
+        <name>simulator</name>
+        <briefdescription>
+<para><ref refid="class_pathfinding_1_1_r_v_o_1_1_simulator" kindref="compound">Simulator</ref> which handles this agent. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used by this script as a reference and to prevent adding this agent to multiple simulations. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="124" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="124" bodyend="-1"/>
+        <referencedby refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a38f12c64701af3a6dcfa425b7a6a54ca" compoundref="_r_v_o_core_simulator_8cs" startline="172" endline="191">Simulator.AddAgent</referencedby>
+        <referencedby refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1a169b4085ca36bd46a365cdf1b0ca6228" compoundref="_r_v_o_core_simulator_8cs" startline="220" endline="235">Simulator.RemoveAgent</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a43caf1d74f792cf4fbad717a20658655" prot="public" static="yes" mutable="no">
+        <type>System.Diagnostics.Stopwatch</type>
+        <definition>System.Diagnostics.Stopwatch watch1</definition>
+        <argsstring></argsstring>
+        <name>watch1</name>
+        <initializer>= new System.Diagnostics.Stopwatch()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="200" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a50c5596b5e55a4d5386c5be79fa34d18" prot="public" static="yes" mutable="no">
+        <type>System.Diagnostics.Stopwatch</type>
+        <definition>System.Diagnostics.Stopwatch watch2</definition>
+        <argsstring></argsstring>
+        <name>watch2</name>
+        <initializer>= new System.Diagnostics.Stopwatch()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="201" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aa59dd159c6397b1d03b58ec2eb5b33db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Agent</definition>
+        <argsstring>(Vector3 pos)</argsstring>
+        <name>Agent</name>
+        <param>
+          <type>Vector3</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="142" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="142" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ac2597db2d70e101f8e9b4dbb4a8b1b75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BufferSwitch</definition>
+        <argsstring>()</argsstring>
+        <name>BufferSwitch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="162" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="162" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a94d57937c7cf356bf8f15a6e3a418e11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CalculateNeighbours</definition>
+        <argsstring>()</argsstring>
+        <name>CalculateNeighbours</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="203" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="203" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a88688605b2cd956ad0d2622368c42e2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CalculateVelocity</definition>
+        <argsstring>()</argsstring>
+        <name>CalculateVelocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="235" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="235" bodyend="642"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a120f0e8c699bc42748b6291a46b255c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float det</definition>
+        <argsstring>(Vector3 a, Vector3 b)</argsstring>
+        <name>det</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="227" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="227" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a0dd11439b1ccdb1ef5e49eed93ec01a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float det</definition>
+        <argsstring>(Vector2 a, Vector2 b)</argsstring>
+        <name>det</name>
+        <param>
+          <type>Vector2</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="231" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="231" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aaec61461c9981c59c6004c571f7527c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float InsertAgentNeighbour</definition>
+        <argsstring>(Agent agent, float rangeSq)</argsstring>
+        <name>InsertAgentNeighbour</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_agent" kindref="compound">Agent</ref></type>
+          <declname>agent</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rangeSq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="646" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="646" bodyend="672"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1abceb565ca756f30fbef90428bcf5bfb6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void InsertObstacleNeighbour</definition>
+        <argsstring>(ObstacleVertex ob1, float rangeSq)</argsstring>
+        <name>InsertObstacleNeighbour</name>
+        <param>
+          <type><ref refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex" kindref="compound">ObstacleVertex</ref></type>
+          <declname>ob1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rangeSq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="689" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="689" bodyend="708"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a004faa81be5016e4618b5246dfb22cdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Interpolate</definition>
+        <argsstring>(float t)</argsstring>
+        <name>Interpolate</name>
+        <param>
+          <type>float</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="195" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="195" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1abc6f592210e475cee07c8b1b3fd0e602" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PreUpdatePosition</definition>
+        <argsstring>()</argsstring>
+        <name>PreUpdatePosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="158" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1aec0783b5a136e042adcc47bae4fe5291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="184" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="184" bodyend="193"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1ae07c36af1b270a136ed2e23d7a41c898" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool LinearProgram1</definition>
+        <argsstring>(List&lt; Line &gt; lines, int lineNo, float radius, Vector2 optVelocity, bool directionOpt, ref Vector2 result)</argsstring>
+        <name>LinearProgram1</name>
+        <param>
+          <type>List&lt; <ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref> &gt;</type>
+          <declname>lines</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lineNo</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>optVelocity</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>directionOpt</declname>
+        </param>
+        <param>
+          <type>ref Vector2</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="710" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="710" bodyend="775"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1afff864ebe06e93b1c4cd6ca262855867" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int LinearProgram2</definition>
+        <argsstring>(List&lt; Line &gt; lines, float radius, Vector2 optVelocity, bool directionOpt, ref Vector2 result)</argsstring>
+        <name>LinearProgram2</name>
+        <param>
+          <type>List&lt; <ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref> &gt;</type>
+          <declname>lines</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>optVelocity</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>directionOpt</declname>
+        </param>
+        <param>
+          <type>ref Vector2</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="777" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="777" bodyend="804"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a40829fd4fb06acb94c4037d1f4d14e29" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LinearProgram3</definition>
+        <argsstring>(List&lt; Line &gt; lines, int numObstLines, int beginLine, float radius, ref Vector2 result)</argsstring>
+        <name>LinearProgram3</name>
+        <param>
+          <type>List&lt; <ref refid="struct_pathfinding_1_1_r_v_o_1_1_line" kindref="compound">Line</ref> &gt;</type>
+          <declname>lines</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>numObstLines</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>beginLine</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>ref Vector2</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="806" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="806" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1afc0d9cdc5626df6ec54ae64ae52d0f7c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Sqr</definition>
+        <argsstring>(float v)</argsstring>
+        <name>Sqr</name>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="644" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="644" bodyend="644"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a804f30aa8af6747aa97940ffcff907f3" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float DistSqPointLineSegment</definition>
+        <argsstring>(Vector3 a, Vector3 b, Vector3 c)</argsstring>
+        <name>DistSqPointLineSegment</name>
+        <param>
+          <type>Vector3</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="674" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="674" bodyend="676"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_r_v_o_1_1_agent_1a81dec52058cce2cc6150cf7a1e00c3cc" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float DistSqPointLineSegment</definition>
+        <argsstring>(Vector2 a, Vector2 b, Vector2 c)</argsstring>
+        <name>DistSqPointLineSegment</name>
+        <param>
+          <type>Vector2</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="678" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="678" bodyend="687"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="namespace_pathfinding_1_1_r_v_o" kindref="compound">RVO</ref> <ref refid="class_pathfinding_1_1_r_v_o_1_1_agent" kindref="compound">Agent</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>Handles calculation of an individual agent&apos;s velocity. <variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1581">
+        <label>Agent</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_agent"/>
+        <childnode refid="1582" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1582">
+        <label>IAgent</label>
+        <link refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1586">
+        <label>KDTree</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree"/>
+        <childnode refid="1585" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+        <childnode refid="1587" relation="usage">
+          <edgelabel>agentTree</edgelabel>
+        </childnode>
+        <childnode refid="1588" relation="usage">
+          <edgelabel>obstacleRoot</edgelabel>
+        </childnode>
+      </node>
+      <node id="1590">
+        <label>Simulator.Worker</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_simulator_1_1_worker"/>
+        <childnode refid="1585" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+      </node>
+      <node id="1583">
+        <label>Agent</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_agent"/>
+        <childnode refid="1584" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1585" relation="usage">
+          <edgelabel>simulator</edgelabel>
+        </childnode>
+        <childnode refid="1591" relation="usage">
+          <edgelabel>watch1</edgelabel>
+          <edgelabel>watch2</edgelabel>
+        </childnode>
+      </node>
+      <node id="1587">
+        <label>KDTree.AgentTreeNode</label>
+        <link refid="struct_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_agent_tree_node"/>
+      </node>
+      <node id="1589">
+        <label>ObstacleVertex</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_obstacle_vertex"/>
+        <childnode refid="1589" relation="usage">
+          <edgelabel>prev</edgelabel>
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="1591">
+        <label>System</label>
+      </node>
+      <node id="1584">
+        <label>IAgent</label>
+        <link refid="interface_pathfinding_1_1_r_v_o_1_1_i_agent"/>
+      </node>
+      <node id="1588">
+        <label>KDTree.ObstacleTreeNode</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_k_d_tree_1_1_obstacle_tree_node"/>
+        <childnode refid="1589" relation="usage">
+          <edgelabel>obstacle</edgelabel>
+        </childnode>
+        <childnode refid="1588" relation="usage">
+          <edgelabel>right</edgelabel>
+          <edgelabel>left</edgelabel>
+        </childnode>
+      </node>
+      <node id="1585">
+        <label>Simulator</label>
+        <link refid="class_pathfinding_1_1_r_v_o_1_1_simulator"/>
+        <childnode refid="1586" relation="usage">
+          <edgelabel>kdTree</edgelabel>
+        </childnode>
+        <childnode refid="1590" relation="usage">
+          <edgelabel>workers</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" line="82" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Core/RVO/RVOAgent.cs" bodystart="82" bodyend="855"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aa59dd159c6397b1d03b58ec2eb5b33db" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Agent</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aae87304c6923138c031ff9918dd3a997" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>agentTimeHorizon</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a53ad184600a4f4546ddf43377761b275" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>AgentTimeHorizon</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ac2597db2d70e101f8e9b4dbb4a8b1b75" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>BufferSwitch</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a94d57937c7cf356bf8f15a6e3a418e11" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>CalculateNeighbours</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a88688605b2cd956ad0d2622368c42e2e" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>CalculateVelocity</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ae1a88904d72ce85a469c2daface2c5c6" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>DebugDraw</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ad9b8f86a3b262ac014a841ab729a8c8d" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>DesiredVelocity</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a52a5f75a7b8a9e7a03152c01f92d36c6" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>desiredVelocity</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a120f0e8c699bc42748b6291a46b255c0" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>det</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a0dd11439b1ccdb1ef5e49eed93ec01a4" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>det</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a804f30aa8af6747aa97940ffcff907f3" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>DistSqPointLineSegment</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a81dec52058cce2cc6150cf7a1e00c3cc" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>DistSqPointLineSegment</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a0f776a4ace9e9771de0a864193f3de0b" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Height</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a48083b65ac9a863566dc3e3fff09a5b4" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>height</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aaec61461c9981c59c6004c571f7527c9" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>InsertAgentNeighbour</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1abceb565ca756f30fbef90428bcf5bfb6" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>InsertObstacleNeighbour</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a004faa81be5016e4618b5246dfb22cdf" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Interpolate</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a11465363f6e783dd91eb4a352dc6c050" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>InterpolatedPosition</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ae07c36af1b270a136ed2e23d7a41c898" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>LinearProgram1</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1afff864ebe06e93b1c4cd6ca262855867" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>LinearProgram2</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a40829fd4fb06acb94c4037d1f4d14e29" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>LinearProgram3</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a9a51bc25d2b015467b0e28a2697df225" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Locked</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a18a0f1e6c3d21c252b14ea6ae162e2ff" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>locked</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aefa0a2fa749eaaf8b7f42a52644147d4" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>MaxNeighbours</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1afc4894bb6cdea8cdd3fb808617a6783a" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>maxNeighbours</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a59dd60dd4af16d02d7ef44afbab5b5bd" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>MaxSpeed</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a3c105180f93a78cf3fb0903df278cf3f" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>maxSpeed</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ac6a0745845c06ab9b18b14e5b1f7d653" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>neighbourDist</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a2b331457dd0de4b32c7be20e4e8f69ce" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>NeighbourDist</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a158711b1fc1ed240c180163730b23f20" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>neighbourDists</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a160952674c149b48b338d5a1e5231a86" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>NeighbourObstacles</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ae17be8d800427b9315d5dc01d5f99d21" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>neighbours</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1ae93a8c7fb96ba8a01a8dcf4cc9bfdf2f" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>newVelocity</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a7e56bf2b7c4558350dc3e0b4d92bde96" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>obstacleDists</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aa913b435c2cdde6b9871be474e7f91b1" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>obstacles</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1adf2b61ff62b4405ccf9c1d9ab5ec3e0f" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>obstaclesBuffered</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a4bb69978b1050721b4a0e4ae16934681" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>ObstacleTimeHorizon</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aaae09db88e3bf152d9ad44de274b7a5c" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>obstacleTimeHorizon</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a94ec488efae28fd86c05dabd3a5c7df7" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>orcaLines</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1acfb76c74e507fea066625f69fbc8a146" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>position</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a1a9a536dcc6338f318a4a3f4f146d28b" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Position</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1abc6f592210e475cee07c8b1b3fd0e602" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>PreUpdatePosition</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a5f75c99e4ae0a22677367e7979f93b28" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>prevSmoothPos</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a4da224114e2e53c2d976594573934b34" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>projLines</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a5050a760c11da521cd4aee6336f6529f" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>radius</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a062172106d8148f032b915309c6ff4e6" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Radius</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a1015df8222470d6426d5d3fd91018c09" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>simulator</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1afccc842b55377e619a4aa3ee23d84825" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>smoothPos</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1afc0d9cdc5626df6ec54ae64ae52d0f7c" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Sqr</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1aec0783b5a136e042adcc47bae4fe5291" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Update</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1af8c81063d0d740c6958ccc043ed51b2c" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>Velocity</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a657f2be2faad1298aeefc486884ce193" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>velocity</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a43caf1d74f792cf4fbad717a20658655" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>watch1</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a50c5596b5e55a4d5386c5be79fa34d18" prot="public" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>watch2</name></member>
+      <member refid="class_pathfinding_1_1_r_v_o_1_1_agent_1a8128625c9e3fd04c27b82957732d8781" prot="private" virt="non-virtual"><scope>Pathfinding::RVO::Agent</scope><name>weight</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="struct_advanced_smooth_1_1_turn" kind="struct" prot="public">
+    <compoundname>AdvancedSmooth::Turn</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IComparable&lt; Turn &gt;</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_advanced_smooth_1_1_turn_1a02e652b733486a5734db79756f4afc88" prot="public" static="no" mutable="no">
+        <type><ref refid="class_advanced_smooth_1_1_turn_constructor" kindref="compound">TurnConstructor</ref></type>
+        <definition>TurnConstructor constructor</definition>
+        <argsstring></argsstring>
+        <name>constructor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="694" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="694" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_advanced_smooth_1_1_turn_1a7441ef0865bcb3db9b8064dd7375c1ea" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="692" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="692" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_advanced_smooth_1_1_turn_1a6150639f5295064e97e299a9206d16b1" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="691" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="691" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_advanced_smooth_1_1_turn_1a8c5cd9b525ee73a24b1d9d8e34982d1c" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>float</type>
+        <definition>float score</definition>
+        <argsstring></argsstring>
+        <name>score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="700" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="696" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_advanced_smooth_1_1_turn_1a8696c5ac7fbd8dab8e7a59d948a95828" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Turn</definition>
+        <argsstring>(float length, TurnConstructor constructor, int id=0)</argsstring>
+        <name>Turn</name>
+        <param>
+          <type>float</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="class_advanced_smooth_1_1_turn_constructor" kindref="compound">TurnConstructor</ref></type>
+          <declname>constructor</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="702" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="702" bodyend="706"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_advanced_smooth_1_1_turn_1aace3e1f4873df101c2d37fe7cb539262" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CompareTo</definition>
+        <argsstring>(Turn t)</argsstring>
+        <name>CompareTo</name>
+        <param>
+          <type><ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="712" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="712" bodyend="715"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_advanced_smooth_1_1_turn_1a8fb1f2da7eab9812a83e9497ce271fc0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void GetPath</definition>
+        <argsstring>(List&lt; Vector3 &gt; output)</argsstring>
+        <name>GetPath</name>
+        <param>
+          <type>List&lt; Vector3 &gt;</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="708" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="708" bodyend="710"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_advanced_smooth_1_1_turn_1a9be815db702c13223651ce4cb9a747ec" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool operator&lt;</definition>
+        <argsstring>(Turn lhs, Turn rhs)</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type><ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref></type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="717" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="717" bodyend="719"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_advanced_smooth_1_1_turn_1aa7ac78ccedb18ad39f7920762ab82821" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool operator&gt;</definition>
+        <argsstring>(Turn lhs, Turn rhs)</argsstring>
+        <name>operator&gt;</name>
+        <param>
+          <type><ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref></type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_advanced_smooth_1_1_turn" kindref="compound">Turn</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="721" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="721" bodyend="723"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><bold>A* Pro Feature:</bold></term></varlistentry>
+<listitem><para>This is an A* Pathfinding Project Pro feature only. This function/class/variable might not exist in the Free version of the A* Pathfinding Project or the functionality might be limited<linebreak/>
+The Pro version can be bought <ulink url="http://www.arongranberg.com/shop/a-pathfinding-project-pro/">here</ulink></para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3020">
+        <label>AdvancedSmooth.Turn</label>
+        <link refid="struct_advanced_smooth_1_1_turn"/>
+        <childnode refid="3021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3021">
+        <label>IComparable&lt;Turn&gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3022">
+        <label>AdvancedSmooth.Turn</label>
+        <link refid="struct_advanced_smooth_1_1_turn"/>
+        <childnode refid="3023" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3024" relation="usage">
+          <edgelabel>constructor</edgelabel>
+        </childnode>
+      </node>
+      <node id="3024">
+        <label>AdvancedSmooth.TurnConstructor</label>
+        <link refid="class_advanced_smooth_1_1_turn_constructor"/>
+      </node>
+      <node id="3023">
+        <label>IComparable&lt;Turn&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" line="690" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Modifiers/AdvancedSmooth.cs" bodystart="690" bodyend="724"/>
+    <listofallmembers>
+      <member refid="struct_advanced_smooth_1_1_turn_1aace3e1f4873df101c2d37fe7cb539262" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>CompareTo</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a02e652b733486a5734db79756f4afc88" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>constructor</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a8fb1f2da7eab9812a83e9497ce271fc0" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>GetPath</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a7441ef0865bcb3db9b8064dd7375c1ea" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>id</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a6150639f5295064e97e299a9206d16b1" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>length</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a9be815db702c13223651ce4cb9a747ec" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>operator&lt;</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1aa7ac78ccedb18ad39f7920762ab82821" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>operator&gt;</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a8c5cd9b525ee73a24b1d9d8e34982d1c" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>score</name></member>
+      <member refid="struct_advanced_smooth_1_1_turn_1a8696c5ac7fbd8dab8e7a59d948a95828" prot="public" virt="non-virtual"><scope>AdvancedSmooth::Turn</scope><name>Turn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

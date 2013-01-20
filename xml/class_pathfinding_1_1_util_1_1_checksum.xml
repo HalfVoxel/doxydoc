@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="class_pathfinding_1_1_util_1_1_checksum" kind="class" prot="public">
+    <compoundname>Pathfinding::Util::Checksum</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_pathfinding_1_1_util_1_1_checksum_1a017a4f57a998a6a0b572052c6ef6151b" prot="private" static="yes" mutable="no">
+        <type>readonly UInt32[]</type>
+        <definition>readonly UInt32 [] CRCTable</definition>
+        <argsstring></argsstring>
+        <name>CRCTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" line="63" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_checksum_1aee8eb57b0b080a34d2a9a00c00717ce5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint</type>
+        <definition>static uint GetChecksum</definition>
+        <argsstring>(byte[] Value)</argsstring>
+        <name>GetChecksum</name>
+        <param>
+          <type>byte[]</type>
+          <declname>Value</declname>
+        </param>
+        <briefdescription>
+<para>Calculate checksum for the byte array. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" line="67" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pathfinding_1_1_util_1_1_checksum_1a2a1e311199b80beee44b53180e2ea252" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint</type>
+        <definition>static uint GetChecksum</definition>
+        <argsstring>(byte[] Value, uint CRCVal)</argsstring>
+        <name>GetChecksum</name>
+        <param>
+          <type>byte[]</type>
+          <declname>Value</declname>
+        </param>
+        <param>
+          <type>uint</type>
+          <declname>CRCVal</declname>
+        </param>
+        <briefdescription>
+<para>Calculate checksum for the byte array starting from a previous values. </para>        </briefdescription>
+        <detaileddescription>
+<para>Useful if data is split up between several byte arrays </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" line="74" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" bodystart="74" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Calculates checksums of byte arrays. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" line="6" bodyfile="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/Utilities/AstarChecksum.cs" bodystart="5" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_pathfinding_1_1_util_1_1_checksum_1a017a4f57a998a6a0b572052c6ef6151b" prot="private" virt="non-virtual"><scope>Pathfinding::Util::Checksum</scope><name>CRCTable</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_checksum_1aee8eb57b0b080a34d2a9a00c00717ce5" prot="public" virt="non-virtual"><scope>Pathfinding::Util::Checksum</scope><name>GetChecksum</name></member>
+      <member refid="class_pathfinding_1_1_util_1_1_checksum_1a2a1e311199b80beee44b53180e2ea252" prot="public" virt="non-virtual"><scope>Pathfinding::Util::Checksum</scope><name>GetChecksum</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="group__utils" kind="group">
+    <compoundname>utils</compoundname>
+    <title>Utilities</title>
+    <innerclass refid="class_pathfinding_1_1_astar_splines" prot="public">Pathfinding::AstarSplines</innerclass>
+    <innerclass refid="class_pathfinding_1_1_graph_update_utilities" prot="public">Pathfinding::GraphUpdateUtilities</innerclass>
+    <innerclass refid="class_pathfinding_1_1_mathfx" prot="public">Pathfinding::Mathfx</innerclass>
+    <innerclass refid="class_pathfinding_1_1_path_utilities" prot="public">Pathfinding::PathUtilities</innerclass>
+    <innerclass refid="class_pathfinding_1_1_polygon" prot="public">Pathfinding::Polygon</innerclass>
+    <briefdescription>
+<para>Collection of utility classes which might be useful. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

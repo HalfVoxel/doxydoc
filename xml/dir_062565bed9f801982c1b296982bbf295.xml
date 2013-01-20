@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3">
+  <compounddef id="dir_062565bed9f801982c1b296982bbf295" kind="dir">
+    <compoundname>/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts</compoundname>
+    <innerfile refid="_a_i_follow_8cs">AIFollow.cs</innerfile>
+    <innerfile refid="_door_controller_8cs">DoorController.cs</innerfile>
+    <innerfile refid="_dynamic_grid_obstacle_8cs">DynamicGridObstacle.cs</innerfile>
+    <innerfile refid="_local_avoidance_mover_8cs">LocalAvoidanceMover.cs</innerfile>
+    <innerfile refid="_mine_bot_a_i_8cs">MineBotAI.cs</innerfile>
+    <innerfile refid="_navmesh_clamp_8cs">NavmeshClamp.cs</innerfile>
+    <innerfile refid="_object_placer_8cs">ObjectPlacer.cs</innerfile>
+    <innerfile refid="_shadow_align_8cs">ShadowAlign.cs</innerfile>
+    <innerfile refid="_target_mover_8cs">TargetMover.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/aron/Unity/AstarPathfindingGIT/Assets/AstarPathfindingProject/ExampleScenes/ExampleScripts/"/>
+  </compounddef>
+</doxygen>
