@@ -4,6 +4,8 @@ import doxyext
 from os import listdir
 from os.path import isfile, join,splitext
 from progressbar import *
+from doxycompound import *
+from cStringIO import StringIO
 
 def try_call_function (name, arg):
     try:
@@ -14,14 +16,11 @@ def try_call_function (name, arg):
     result = methodToCall(arg)
     return result, True
 
-docobjs = {}
-
 def register_compound (xml):
 
     obj = DocObj ()
     obj.kind = xml.get("kind")
 
-    print (obj.kind)
     obj.id = xml.get("id")
     
     obj.name = xml.find("compoundname").text
@@ -58,10 +57,25 @@ def register_compound (xml):
             #print (obj.full_url())
 
     #print (docobjs)
-    
+
 
 def test_id_ref (path):
     
+    dom = ET.parse(path)
+
+    root = dom.getroot()
+
+    refs = root.findall (".//*[@refid]")
+    print("\nTesting References...")
+    for i in range(1,len(refs)):
+        ref = refs[i]
+        progressbar (i+1,len(refs))
+
+        id = ref.get("refid")
+        refobj = docobjs[id]
+        assert refobj
+        #print ("Referenced " + refobj.name)
+
 def main ():
 
     #filenames = ["xml/class_a_i_path.xml"]
@@ -86,17 +100,19 @@ def main ():
 
             root = dom.getroot()
 
-            print (root.tag)
             compound = root.find("compounddef")
             if compound != None:
                 register_compound (compound)
 
         except Exception as e:
             print (fname)
-            throw e
-    print("\nBuilding docs...")
+            raise e
+
+    
 
     test_id_ref (join("xml", "index.xml"))
+
+    print("\nBuilding docs...")
 
     for i in range(0,len(filenames)):
         fname = filenames[i]
@@ -112,5 +128,8 @@ def main ():
 
         root = dom.getroot()
 
+        compound = root.find("compounddef")
+        if compound != None:
+            generate_compound_doc (compound)
 
 main ()

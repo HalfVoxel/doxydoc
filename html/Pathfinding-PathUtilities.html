@@ -1,0 +1,9 @@
+<html><header><link rel='stylesheet' type='text/css' href='style.css'></header><body><div class='content'>
+<h1>Pathfinding::PathUtilities</h1>
+<div class ='member-sec'><h2>Public Static Functions</h2><div class='memberdef'>Public static <a href='Pathfinding-GraphNode.html' title='None'>GraphNode</a> > <b>GetReachableNodes</b><p>Returns all nodes reachable from the seed node. </p><p>This function performs a BFS (breadth-first-search) or flood fill of the graph and returns all nodes which can be reached from the seed node. In almost all cases this will be identical to returning all nodes which have the same area as the seed node. In the editor areas are displayed as different colors of the nodes. The only case where it will not be so is when there is a one way path from some part of the area to the seed node but no path from the seed node to that part of the graph.</p><p>seed to that node would pass through. Note that the distance measurement does not take heuristics, penalties or tag penalties.</p><p>Depending on the number of reachable nodes, this function can take quite some time to calculate so don't use it too often or it might affect the framerate of your game.</p><p>
+
+</p></div><div class='memberdef'>Public static bool <b>IsPathPossible</b><p>n1 to n2. </p><p>
+
+</p></div><div class='memberdef'>Public static bool <b>IsPathPossible</b><p>Returns if there are walkable paths between all nodes. </p><p>
+
+</p></div></div></div></body></html>
