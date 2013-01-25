@@ -36,13 +36,25 @@ class StringBuilder:
         self.arr.append(self.cache)
         return self.cache
 
+    def clear (self):
+        del self.arr[:]
+
 class DocState:
-    writer = None
+    writer = StringBuilder()
     compound = None
+
+class DocSettings:
+    header = "<html>"
+    footer = "</html>"
+    external = {}
 
 class DocObj:
     
     def full_url (self):
+
+        if hasattr(self,'exturl'):
+            return self.exturl
+        
         global FILE_EXT
         if hasattr(self,'path'):
             url = self.path + FILE_EXT

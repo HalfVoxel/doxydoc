@@ -37,6 +37,28 @@ def get_anchor (id):
 	obj = docobjs[id]
 	return obj.anchor
 
+def refcompound (refnode):
+	refid = refnode.get("refid")
+
+	if refid == "":
+		markup (refnode)
+		return
+
+	assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
+
+	kind = refnode.get("kindref")
+	external = refnode.get("external")
+	tooltip = refnode.get("tooltip")
+	obj = docobjs[refid]
+
+	DocState.writer += "<a href='%s' title='%s'>" % (obj.full_url(), tooltip)
+
+	obj = obj.compound
+	assert obj
+
+	DocState.writer += obj.name
+	DocState.writer += "</a>"
+
 def ref (refnode):
 	refid = refnode.get("refid")
 
@@ -54,9 +76,27 @@ def ref (refnode):
 	markup (refnode)
 	DocState.writer += "</a>"
 
+def ref_explicit (obj, text, tooltip = None):
+	DocState.writer += "<a href='%s' title='%s'>" % (obj.full_url(), tooltip)
+	DocState.writer += text
+	DocState.writer += "</a>"
+
+def match_external_ref (text):
+	words = text.split ()
+	for i in range(0,len(words)):
+		try:
+			obj = docobjs["__external__" + words[i].strip()]
+			ref_explicit (obj, words[i], obj.tooltip if hasattr (obj,"tooltip") else None)
+		except KeyError:
+			if i > 0:
+				DocState.writer += " "
+			DocState.writer += words[i]
+
+
 def linked_text (node):
-	if len(node) == 0 and node.text != None:
-		DocState.writer += node.text
+	if node.text != None:
+		match_external_ref (node.text)
+		#DocState.writer += node.text
 
 	for n in node:
 
@@ -64,25 +104,19 @@ def linked_text (node):
 			ref (n)
 		else:
 			if n.text != None:
-				DocState.writer += n.text
+				match_external_ref (n.text)
 
 		if n.tail != None:
-			DocState.writer += n.tail
+			match_external_ref (n.tail)
+			#DocState.writer += n.tail
 
 
 
 def header ():
-	DocState.writer += ("<html>"
-	"<header>"
-	"<link rel='stylesheet' type='text/css' href='style.css'>"
-	"</header>"
-	"<body>"
-	"<div class='content'>")
+	DocState.writer += DocSettings.header
 
 def footer ():
-	DocState.writer += ("</div>"
-	"</body>"
-	"</html>")
+	DocState.writer += DocSettings.footer
 
 def pagetitle (title):
 	DocState.writer += "\n<h1>" + title + "</h1>\n"
@@ -115,6 +149,9 @@ def members (xml):
 
 def member_heading (m):
 	
+	obj = docobjs[m.get("id")]
+
+	DocState.writer += "<h3 id=%s>" % (obj.anchor)
 	DocState.writer += prettify_prefix (m)
 
 
@@ -129,6 +166,8 @@ def member_heading (m):
 	name = m.find("name")
 	DocState.writer += "<b>" + name.text + "</b>"
 
+	DocState.writer += "</h3>"
+
 def desctitle (text):
 	DocState.writer += "<h3>" + text + "</h3>"
 
@@ -138,7 +177,7 @@ def sect (sectnode, depth):
 	title = sectnode.find("title")
 	if title != None:
 		DocState.writer += "<h" + str(depth) + " "
-		id = sectnode.get(id)
+		id = sectnode.get("id")
 		if id != None:
 			DocState.writer += " id='get_anchor (id)' "
 
@@ -156,7 +195,7 @@ def paragraph (paranode):
 def markup (node):
 	''' Markup like nodes '''
 
-	if len (node) == 0 and node.text != None:
+	if node.text != None:
 		DocState.writer += node.text
 
 	for n in node:
@@ -191,7 +230,9 @@ def sectbase (node):
 			sect (n,4)
 		elif n.tag == "sect5":
 			sect (n,5)
-
+		elif n.tag == "title":
+			#A sect should have been the parent, so it should have been handled
+			pass
 		elif n.tag == "internal":
 			internal (n)
 		else:
@@ -212,6 +253,20 @@ def member_description (m):
 	detdesc = m.find("detaileddescription")
 	description (detdesc)
 	
+def member_reimplements (m):
+	reimps = m.findall("reimplementedby")
+	for reimp in reimps:
+		obj = docobjs[reimp.get("refid")]
+		DocState.writer += "<span>Reimplemented in "
+		refcompound (reimp)
+		DocState.writer += "</span>"
+
+	reimps = m.findall("reimplements")
+	for reimp in reimps:
+		obj = docobjs[reimp.get("refid")]
+		DocState.writer += "<span>Overrides implementation in "
+		refcompound (reimp)
+		DocState.writer += "</span>"
 
 def member (m):
 
@@ -221,5 +276,28 @@ def member (m):
 
 	member_description (m)
 
+	member_reimplements (m)
+
 	DocState.writer += "</div>"
 
+def compound_desc (compxml):
+
+	briefdesc = compxml.find ("briefdescription")
+	detdesc = compxml.find ("detaileddescription")
+
+	description(briefdesc)
+	description(detdesc)
+
+def namespace_list_inner (xml):
+
+	DocState.writer += "<ul>"
+	for node in xml.findall("innerclass"):
+		namespace_inner_class (node)
+	DocState.writer += "</ul>"
+
+def namespace_inner_class (node):
+	DocState.writer += "<li>"
+
+	ref (node)
+
+	DocState.writer += "</li>"

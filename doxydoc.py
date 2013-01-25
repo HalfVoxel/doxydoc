@@ -6,6 +6,8 @@ from os.path import isfile, join,splitext
 from progressbar import *
 from doxycompound import *
 from cStringIO import StringIO
+import shutil
+import os
 
 def try_call_function (name, arg):
     try:
@@ -30,6 +32,11 @@ def register_compound (xml):
     #dump(obj)
 
     docobjs[obj.id] = obj
+
+    #Workaround for doxygen apparently generating refid:s which do not exist as id:s
+    id2 = obj.id + "_1" + obj.id
+    print ("Generating " + id2)
+    docobjs[id2] = obj
 
     ids = xml.findall (".//*[@id]")
     
@@ -58,6 +65,25 @@ def register_compound (xml):
 
     #print (docobjs)
 
+def read_external ():
+
+    try:
+        f = open ("external.csv")
+    except:
+        print "Noes"
+
+    for line in f:
+        arr = line.split (",")
+        if len(arr) >= 2:
+            name = "__external__" + arr[0].strip()
+            url = arr[1].strip()
+            obj = DocObj()
+            obj.id = name
+            obj.name = name
+            obj.exturl = url
+            docobjs[obj.id] = obj
+
+    f.close ()
 
 def test_id_ref (path):
     
@@ -79,6 +105,38 @@ def test_id_ref (path):
 def main ():
 
     #filenames = ["xml/class_a_i_path.xml"]
+
+    print ("Copying resources")
+
+    try:
+        resbase = "resources"
+        for root,dirs,files in os.walk (resbase):
+            dstroot = root.replace (resbase+"/", "")
+            dstroot = dstroot.replace (resbase, "")
+
+            try:
+                os.makedirs (os.path.join("html", dstroot))
+            except:
+                pass
+
+            for fn in files:
+                fn2 = os.path.join(root, fn)
+                print (fn2)
+                shutil.copy2 (fn2, os.path.join(os.path.join("html", dstroot), fn))
+
+        #shutil.copytree("resources", "html")
+    except OSError as exc: # python >2.5
+        print ("No resources directory found")
+        raise
+
+    header = file ("resources/header.html")
+    DocSettings.header = header.read()
+
+    footer = file ("resources/footer.html")
+    DocSettings.footer = footer.read()
+
+    print ("Reading exteral")
+    read_external ()
 
     filenames = [ f for f in listdir("xml") if isfile(join("xml",f)) ]
 

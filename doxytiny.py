@@ -1,3 +1,5 @@
+# coding=UTF-8
+
 from doxybase import *
 import doxylayout
 
@@ -28,16 +30,30 @@ def indexentry(n):
 	pass
 
 def orderedlist(n):
-	pass
+	DocState.writer += "<ol>"
+	_doclist(n)
+	DocState.writer += "</ol>"
 
-def itermizedlist(n):
-	pass
+def itemizedlist(n):
+	DocState.writer += "<ul>"
+	_doclist(n)
+	DocState.writer += "</ul>"
+
+def _doclist (n):
+	#Guaranteed to only contain listitem nodes
+	for child in n:
+		assert child.tag == "listitem"
+
+		DocState.writer += "<li>"
+		doxylayout.markup (child)
+		DocState.writer += "</li>"		
+
 
 def simplesect(n):
 	pass
 
 def title(n):
-	pass
+	raise false, "Title tags should have been handled"
 
 def variablelist(n):
 	pass
@@ -66,16 +82,81 @@ def copydoc(n):
 def blockquote(n):
 	pass
 
+##########################
+#### docTitleCmdGroup ####
+##########################
+
+def ulink(n):
+	DocState.writer += "<a href='" + n.get("url") + "'>"
+	doxylayout.markup (n)
+	DocState.writer += "</a>"
+
 def bold (n):
 	DocState.writer += "<b>"
 	doxylayout.markup (n)
 	DocState.writer += "</b>"
 
-def sp (n):
-	DocState.writer += " "
+def emphasis (n):
+	bold(n)
+
+def computeroutput(n):
+	preformatted (n)
+
+def subscript(n):
+	pass
+
+def superscript(n):
+	pass
+
+def center(n):
+	pass
+
+def small(n):
+	pass
+
+def htmlonly (n):
+	doxylayout.markup (n)
+
+## These should be pass only functions actually
+
+def manonly (n):
+	pass
+
+def xmlonly (n):
+	pass
+	
+def rtfonly (n):
+	pass
+	
+def latexonly (n):
+	pass
+
+##May look similar to mdash in a monospace font, but it is not
+def ndash (n):
+	DocState.writer += "–"
+
+def mdash (n):
+	DocState.writer += "—"
+
+###...
+
 
 def ref (n):
 	doxylayout.ref (n)
+
+##########################
+#### docTitleCmdGroup ####
+##########################
+
+def para (n):
+	DocState.writer += "<p>"
+	doxylayout.markup (n)
+	DocState.writer += "</p>"
+
+def sp (n):
+	DocState.writer += " "
+
+
 
 def highlight (n):
 	doxylayout.markup (n)

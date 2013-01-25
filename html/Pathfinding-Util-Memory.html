@@ -1,7 +1,0 @@
-<html><header><link rel='stylesheet' type='text/css' href='style.css'></header><body><div class='content'>
-<h1>Pathfinding::Util::Memory</h1>
-<div class ='member-sec'><h2>Public Static Functions</h2><div class='memberdef'>Public static void <b>MemSet</b><p>Sets all values in an array to a specific value faster than a loop. </p><p>Only faster for large arrays. Slower for small ones. Tests indicate it becomes faster somewhere when the length of the array grows above around 100. For large arrays this can be magnitudes faster. Up to 40 times faster has been measured.</p><p>
-</p></div><div class='memberdef'>Public static void <b>MemSet< T ></b><p>Sets all values in an array to a specific value faster than a loop. </p><p>Only faster for large arrays. Slower for small ones. Tests indicate it becomes faster somewhere when the length of the array grows above around 100. For large arrays this can be magnitudes faster. Up to 40 times faster has been measured.</p><p>
-
-<code> all values to 8 in the array<br>int arr = new int[20000];<br>Pathfinding.Util.Memory.MemSet<int (arr, 8, sizeof(int));<br></code> 
-</p></div></div></div></body></html>
