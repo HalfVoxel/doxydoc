@@ -1,5 +1,6 @@
 from doxybase import *
 import doxytiny
+import re
 
 def try_call_tiny (name, arg):
     try:
@@ -20,6 +21,15 @@ def prettify_prefix (node):
 	virt = node.get("virt")
 	if virt != None and virt != "non-virtual":
 		s.append (virt)
+
+	override = node.find("reimplements") != None and virt == "virtual"
+
+	if override:
+		assert node.find("type").text
+		overrideType = node.find("type").text.split()[0]
+		assert (overrideType != "override" and overrideType != "new", "Invalid override type: "+overrideType) 
+
+		s.append(overrideType)
 
 	static = node.get ("static")
 	if static == "yes":
@@ -51,13 +61,30 @@ def refcompound (refnode):
 	tooltip = refnode.get("tooltip")
 	obj = docobjs[refid]
 
-	DocState.writer += "<a href='%s' title='%s'>" % (obj.full_url(), tooltip)
-
 	obj = obj.compound
 	assert obj
 
-	DocState.writer += obj.name
-	DocState.writer += "</a>"
+	DocState.depth_ref += 1
+	if DocState.depth_ref > 1:
+		DocState.writer += obj.name
+	else:
+		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
+	DocState.depth_ref -= 1
+
+def docobjref (obj):
+	DocState.depth_ref += 1
+	if DocState.depth_ref > 1:
+		DocState.writer += obj.name
+	else:
+		if hasattr(obj,"briefdescription") and obj.briefdescription != None:
+			DocState.pushwriter()
+			description(obj.briefdescription)
+			tooltip = DocState.popwriter()
+		else:
+			tooltip = None
+
+		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
+	DocState.depth_ref -= 1
 
 def ref (refnode):
 	refid = refnode.get("refid")
@@ -72,24 +99,33 @@ def ref (refnode):
 	external = refnode.get("external")
 	tooltip = refnode.get("tooltip")
 	obj = docobjs[refid]
-	DocState.writer += "<a href='%s' title='%s'>" % (obj.full_url(), tooltip)
-	markup (refnode)
-	DocState.writer += "</a>"
+
+	DocState.depth_ref += 1
+	if DocState.depth_ref > 1:
+		markup (refnode)
+	else:
+		DocState.writer.element("a", None, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
+		markup (refnode)
+		DocState.writer.element("/a")
+	DocState.depth_ref -= 1
 
 def ref_explicit (obj, text, tooltip = None):
-	DocState.writer += "<a href='%s' title='%s'>" % (obj.full_url(), tooltip)
-	DocState.writer += text
-	DocState.writer += "</a>"
+	DocState.depth_ref += 1
+	if DocState.depth_ref > 1:
+		DocState.writer += text
+	else:
+		DocState.writer.element("a", text, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
+	DocState.depth_ref -= 1
 
 def match_external_ref (text):
 	words = text.split ()
 	for i in range(0,len(words)):
+		if i > 0:
+			DocState.writer += " "
 		try:
 			obj = docobjs["__external__" + words[i].strip()]
 			ref_explicit (obj, words[i], obj.tooltip if hasattr (obj,"tooltip") else None)
 		except KeyError:
-			if i > 0:
-				DocState.writer += " "
 			DocState.writer += words[i]
 
 
@@ -99,7 +135,6 @@ def linked_text (node):
 		#DocState.writer += node.text
 
 	for n in node:
-
 		if n.tag == "ref":
 			ref (n)
 		else:
@@ -113,84 +148,108 @@ def linked_text (node):
 
 
 def header ():
-	DocState.writer += DocSettings.header
+	DocState.writer.html(DocSettings.header)
 
 def footer ():
-	DocState.writer += DocSettings.footer
+	DocState.writer.html(DocSettings.footer)
 
 def pagetitle (title):
-	DocState.writer += "\n<h1>" + title + "</h1>\n"
+	DocState.writer.element ("h1", title)
 
 def member_section_heading (section):
-	skind = section.get("kind")
-	skind = skind.replace ("-"," ")
-	skind = skind.replace ("attrib","attributes")
-	skind = skind.replace ("func","functions")
-	skind = skind.replace ("property","properties")
-	skind = skind.title ()
+	#skind = section.get("kind")
+	#skind = skind.replace ("-"," ")
+	#skind = skind.replace ("attrib","attributes")
+	#skind = skind.replace ("func","functions")
+	#skind = skind.replace ("property","properties")
+	#skind = skind.title ()
 
-	DocState.writer += "<h2>" + skind + "</h2>"
+	DocState.writer.element ("h2", section[0])
 
-def members (xml):
+def members (docobj):
 
-	sections = xml.findall ("sectiondef")
+	members = docobj.members
+
+	sections = []
+	sections.append (("Public Variables", filter (lambda m: m.protection == "public" and m.kind == "variable", members)))
+	sections.append (("All Members", members))
+
 	for section in sections:
 
-		DocState.writer += "<div class ='member-sec'>"
+		DocState.writer.html ("<div class ='member-sec'>")
 
 		member_section_heading(section)
 
-		members = section.findall ("memberdef")
+		members = section[1]
 		for m in members:
 			member (m)
 
-		DocState.writer += "</div>"
+		DocState.writer.html ("</div>")
 
 
 def member_heading (m):
-	
-	obj = docobjs[m.get("id")]
+	#Note, slightly unsafe, could possibly break html
+	DocState.writer.html("<h3 id=%s>" % (m.anchor))
 
-	DocState.writer += "<h3 id=%s>" % (obj.anchor)
-	DocState.writer += prettify_prefix (m)
-
-
-	type = m.find("type")
+	type = m.type
 	if type != None:
-		DocState.writer += " "
+
 		#Write type
 		linked_text(type)
 
 	DocState.writer += " "
 		
-	name = m.find("name")
-	DocState.writer += "<b>" + name.text + "</b>"
+	name = m.name
+	#DocState.writer.element ("b",name)
+	DocState.writer += name
 
-	DocState.writer += "</h3>"
+	DocState.writer.html("</h3>")
+
+	if m.protection != None:
+		labelStyle = ""
+		if m.protection == "public":
+			labelStyle = "label-success"
+		elif m.protection == "private":
+			labelStyle = "label-inverse"
+		elif m.protection == "protected":
+			labelStyle = "label-warning"
+		elif m.protection == "package":
+			labelStyle = "label-info"
+
+		DocState.writer.element ("span", m.protection.title(), {"class": "label " + labelStyle})
+
+	if m.readonly:
+		DocState.writer.element ("span", "Readonly", {"class": "label label-warning"})
+	if m.static:
+		DocState.writer.element ("span", "Static", {"class": "label label-info"})
+		
 
 def desctitle (text):
-	DocState.writer += "<h3>" + text + "</h3>"
+	DocState.writer.element ("h3", text)
 
 def sect (sectnode, depth):
 	''' sect* nodes '''
 
 	title = sectnode.find("title")
 	if title != None:
-		DocState.writer += "<h" + str(depth) + " "
+		DocState.writer.html("<h" + str(depth) + " ")
 		id = sectnode.get("id")
 		if id != None:
-			DocState.writer += " id='get_anchor (id)' "
+			#note slightly unsafe, might break html
+			DocState.writer.html(" id='" + get_anchor (id) + "' ")
 
-		DocState.writer += ">" + title.text + "</h" + str(depth) + ">"
+		DocState.writer.html (">")
+		DocState.writer += title.text
+		DocState.writer.html ("</h" + str(depth) + ">")
 
 	sectbase (sectnode)
 
 def paragraph (paranode):
 	''' para nodes '''
 
-	DocState.writer += "<p>"
+	DocState.writer.elem("p")
 	markup (paranode)
-	DocState.writer += "</p>"
+	DocState.writer.elem ("/p")
 
 def markup (node):
 	''' Markup like nodes '''
@@ -246,39 +305,31 @@ def description (descnode):
 
 		sectbase (descnode)
 
-def member_description (m):
-	briefdesc = m.find("briefdescription")
-	description (briefdesc)
-
-	detdesc = m.find("detaileddescription")
-	description (detdesc)
-	
 def member_reimplements (m):
 	reimps = m.findall("reimplementedby")
 	for reimp in reimps:
 		obj = docobjs[reimp.get("refid")]
-		DocState.writer += "<span>Reimplemented in "
+		DocState.writer.html("<span>Reimplemented in ")
 		refcompound (reimp)
-		DocState.writer += "</span>"
+		DocState.writer.hmtl ("</span>")
 
 	reimps = m.findall("reimplements")
 	for reimp in reimps:
 		obj = docobjs[reimp.get("refid")]
-		DocState.writer += "<span>Overrides implementation in "
+		DocState.writer.html ("<span>Overrides implementation in ")
 		refcompound (reimp)
-		DocState.writer += "</span>"
+		DocState.writer.html ("</span>")
 
 def member (m):
 
-	DocState.writer += "<div class='memberdef'>"
+	DocState.writer.html ("<div class='memberdef'>")
 
 	member_heading (m)
 
-	member_description (m)
+	description (m.briefdescription)
+	description (m.detaileddescription)
 
-	member_reimplements (m)
-
-	DocState.writer += "</div>"
+	DocState.writer.html ("</div>")
 
 def compound_desc (compxml):
 
@@ -288,16 +339,16 @@ def compound_desc (compxml):
 	description(briefdesc)
 	description(detdesc)
 
-def namespace_list_inner (xml):
+def namespace_list_inner (compound):
 
-	DocState.writer += "<ul>"
-	for node in xml.findall("innerclass"):
-		namespace_inner_class (node)
-	DocState.writer += "</ul>"
+	DocState.writer.elem ("ul")
+	for obj in compound.innerclasses:
+		namespace_inner_class (obj)
+	DocState.writer.elem ("/ul")
 
-def namespace_inner_class (node):
-	DocState.writer += "<li>"
+def namespace_inner_class (obj):
+	DocState.writer.elem ("li")
 
-	ref (node)
+	docobjref (obj)
 
-	DocState.writer += "</li>"
+	DocState.writer.elem ("/li")

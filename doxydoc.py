@@ -5,9 +5,9 @@ from os import listdir
 from os.path import isfile, join,splitext
 from progressbar import *
 from doxycompound import *
-from cStringIO import StringIO
 import shutil
 import os
+from sys import getsizeof
 
 def try_call_function (name, arg):
     try:
@@ -21,21 +21,22 @@ def try_call_function (name, arg):
 def register_compound (xml):
 
     obj = DocObj ()
-    obj.kind = xml.get("kind")
 
     obj.id = xml.get("id")
-    
+    obj.kind = xml.get("kind")
+    #Will only be used for debugging if even that. Formatted name will be added later
     obj.name = xml.find("compoundname").text
-    obj.data = None
     obj.path = obj.name.replace ("::","-")
-
     #dump(obj)
 
     docobjs[obj.id] = obj
+    xml.set ("docobj", obj)
 
     #Workaround for doxygen apparently generating refid:s which do not exist as id:s
     id2 = obj.id + "_1" + obj.id
-    print ("Generating " + id2)
+    if id2 in docobjs:
+        print "Warning: Overwriting id " + id2
+    
     docobjs[id2] = obj
 
     ids = xml.findall (".//*[@id]")
@@ -60,6 +61,8 @@ def register_compound (xml):
 
         if obj != None:
             obj.compound = parent
+
+            idnode.set ("docobj", obj)
             docobjs[obj.id] = obj
             #print (obj.full_url())
 
@@ -92,7 +95,6 @@ def test_id_ref (path):
     root = dom.getroot()
 
     refs = root.findall (".//*[@refid]")
-    print("\nTesting References...")
     for i in range(1,len(refs)):
         ref = refs[i]
         progressbar (i+1,len(refs))
@@ -131,9 +133,11 @@ def main ():
 
     header = file ("resources/header.html")
     DocSettings.header = header.read()
+    header.close ()
 
     footer = file ("resources/footer.html")
     DocSettings.footer = footer.read()
+    footer.close ()
 
     print ("Reading exteral")
     read_external ()
@@ -142,6 +146,9 @@ def main ():
 
 
     print ("Scanning input")
+
+    compounds = []
+    roots = []
 
     for i in range(0,len(filenames)):
         try:
@@ -158,36 +165,40 @@ def main ():
 
             root = dom.getroot()
 
-            compound = root.find("compounddef")
-            if compound != None:
-                register_compound (compound)
+            roots.append (root)
 
+            compound = root.find("compounddef")
+
+            if compound != None:
+                compounds.append (compound)
+                register_compound (compound)
         except Exception as e:
             print (fname)
             raise e
 
-    
-
+    print("\nTesting References...")
     test_id_ref (join("xml", "index.xml"))
 
-    print("\nBuilding docs...")
+    print("\nProcessing References...")
+    for i in range(0,len(roots)):
+        root = roots[i]
+        progressbar (i+1,len(roots))
 
-    for i in range(0,len(filenames)):
-        fname = filenames[i]
+        process_references (root)
 
-        extension = splitext(fname)[1]
+    print("\nProcessing Compounds...")
+    for i in range(0,len(compounds)):
+        compound = compounds[i]
+        progressbar (i+1,len(compounds))
 
-        progressbar (i+1,len(filenames))
+        gather_compound_doc (compound)
 
-        if extension != ".xml":
-            continue
+    print("\nBuilding Output...")
+    for i in range(0,len(compounds)):
+        compound = compounds[i]
+        progressbar (i+1,len(compounds))
 
-        dom = ET.parse(join("xml",fname))
+        generate_compound_doc (compound)
 
-        root = dom.getroot()
-
-        compound = root.find("compounddef")
-        if compound != None:
-            generate_compound_doc (compound)
-
-main ()
+if __name__ == "__main__":
+   main()

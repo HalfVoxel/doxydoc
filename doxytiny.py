@@ -4,49 +4,49 @@ from doxybase import *
 import doxylayout
 
 def linebreak (n):
-	DocState.writer += "<br>"
+	DocState.writer.elem("br")
 
 def hruler (n):
 	pass
 
 def preformatted(n):
-	DocState.writer += "<pre>"
+	DocState.writer.elem("pre")
 	DocState.writer += n.text
-	DocState.writer += "</pre>"
+	DocState.writer.elem("/pre")
 
 def programlisting(n):
-	DocState.writer += "<code>"
+	DocState.writer.elem("code")
 	for line in n:
 		''' \todo ID '''
 		doxylayout.markup (line)
-		DocState.writer += "<br>"
+		DocState.writer.elem("br")
 
-	DocState.writer += "</code>"
+	DocState.writer.elem("/code")
 
 def verbatim (n):
-	DocState.writer += n.text
+	DocState.writer.html(n.text)
 
 def indexentry(n):
 	pass
 
 def orderedlist(n):
-	DocState.writer += "<ol>"
+	DocState.writer.elem("ol")
 	_doclist(n)
-	DocState.writer += "</ol>"
+	DocState.writer.elem("/ol")
 
 def itemizedlist(n):
-	DocState.writer += "<ul>"
+	DocState.writer.elem("ul")
 	_doclist(n)
-	DocState.writer += "</ul>"
+	DocState.writer.elem("/ul")
 
 def _doclist (n):
 	#Guaranteed to only contain listitem nodes
 	for child in n:
 		assert child.tag == "listitem"
 
-		DocState.writer += "<li>"
+		DocState.writer.elem("li")
 		doxylayout.markup (child)
-		DocState.writer += "</li>"		
+		DocState.writer.elem("/li")		
 
 
 def simplesect(n):
@@ -87,14 +87,14 @@ def blockquote(n):
 ##########################
 
 def ulink(n):
-	DocState.writer += "<a href='" + n.get("url") + "'>"
+	DocState.writer.elem("a href='" + n.get("url") + "'")
 	doxylayout.markup (n)
-	DocState.writer += "</a>"
+	DocState.writer.elem("/a")
 
 def bold (n):
-	DocState.writer += "<b>"
+	DocState.writer.elem("b")
 	doxylayout.markup (n)
-	DocState.writer += "</b>"
+	DocState.writer.elem("/b")
 
 def emphasis (n):
 	bold(n)
@@ -115,7 +115,7 @@ def small(n):
 	pass
 
 def htmlonly (n):
-	doxylayout.markup (n)
+	verbatim (n)
 
 ## These should be pass only functions actually
 
@@ -149,9 +149,9 @@ def ref (n):
 ##########################
 
 def para (n):
-	DocState.writer += "<p>"
+	DocState.writer.elem("p")
 	doxylayout.markup (n)
-	DocState.writer += "</p>"
+	DocState.writer.elem("/p")
 
 def sp (n):
 	DocState.writer += " "
