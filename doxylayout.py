@@ -40,11 +40,11 @@ def prettify_prefix (node):
 	return " ".join(s)
 
 def get_href (id):
-	obj = docobjs[id]
+	obj = DocState.get_docobj(id)
 	return obj.full_url()
 
 def get_anchor (id):
-	obj = docobjs[id]
+	obj = DocState.get_docobj(id)
 	return obj.anchor
 
 def refcompound (refnode):
@@ -59,7 +59,7 @@ def refcompound (refnode):
 	kind = refnode.get("kindref")
 	external = refnode.get("external")
 	tooltip = refnode.get("tooltip")
-	obj = docobjs[refid]
+	obj = DocState.get_docobj(id)
 
 	obj = obj.compound
 	assert obj
@@ -87,18 +87,17 @@ def docobjref (obj):
 	DocState.depth_ref -= 1
 
 def ref (refnode):
-	refid = refnode.get("refid")
+	obj = refnode.get("ref")
 
-	if refid == "":
+	if obj == None:
 		markup (refnode)
 		return
 
-	assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
+	#assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
 
 	kind = refnode.get("kindref")
 	external = refnode.get("external")
 	tooltip = refnode.get("tooltip")
-	obj = docobjs[refid]
 
 	DocState.depth_ref += 1
 	if DocState.depth_ref > 1:
@@ -123,7 +122,7 @@ def match_external_ref (text):
 		if i > 0:
 			DocState.writer += " "
 		try:
-			obj = docobjs["__external__" + words[i].strip()]
+			obj = DocState.get_docobj("__external__" + words[i].strip())
 			ref_explicit (obj, words[i], obj.tooltip if hasattr (obj,"tooltip") else None)
 		except KeyError:
 			DocState.writer += words[i]
@@ -152,6 +151,17 @@ def header ():
 
 def footer ():
 	DocState.writer.html(DocSettings.footer)
+
+def navheader ():
+
+	DocState.writer.html ("<div class='navbar'><ul>")
+	for item in DocState.navitems:
+		DocState.writer.element ("li")
+		print (vars(item))
+		DocState.writer.element ("a", item.label, {"href": item.ref.full_url()})
+		DocState.writer.element ("/li")
+		
+	DocState.writer.html ("</div></ul>")
 
 def pagetitle (title):
 	DocState.writer.element ("h1", title)
@@ -191,8 +201,21 @@ def member_heading (m):
 	#Note, slightly unsafe, could possibly break html
 	DocState.writer.html("<h3 id=%s>" % (m.anchor))
 
+	ls = []
+	if m.protection != None:
+		ls.append (m.protection.title())
+	if m.readonly:
+		ls.append ("readonly")
+
+	if m.static:
+		ls.append ("static")
+
+	DocState.writer += ' '.join (ls)
+
 	type = m.type
 	if type != None:
+		if len(ls) > 0:
+			DocState.writer += " "
 
 		#Write type
 		linked_text(type)
@@ -200,28 +223,9 @@ def member_heading (m):
 	DocState.writer += " "
 		
 	name = m.name
-	#DocState.writer.element ("b",name)
 	DocState.writer += name
 
 	DocState.writer.html("</h3>")
-
-	if m.protection != None:
-		labelStyle = ""
-		if m.protection == "public":
-			labelStyle = "label-success"
-		elif m.protection == "private":
-			labelStyle = "label-inverse"
-		elif m.protection == "protected":
-			labelStyle = "label-warning"
-		elif m.protection == "package":
-			labelStyle = "label-info"
-
-		DocState.writer.element ("span", m.protection.title(), {"class": "label " + labelStyle})
-
-	if m.readonly:
-		DocState.writer.element ("span", "Readonly", {"class": "label label-warning"})
-	if m.static:
-		DocState.writer.element ("span", "Static", {"class": "label label-info"})
 		
 
 def desctitle (text):
@@ -308,14 +312,14 @@ def description (descnode):
 def member_reimplements (m):
 	reimps = m.findall("reimplementedby")
 	for reimp in reimps:
-		obj = docobjs[reimp.get("refid")]
+		obj = reimp.get("ref")
 		DocState.writer.html("<span>Reimplemented in ")
 		refcompound (reimp)
 		DocState.writer.hmtl ("</span>")
 
 	reimps = m.findall("reimplements")
 	for reimp in reimps:
-		obj = docobjs[reimp.get("refid")]
+		obj = reimp.get("ref")
 		DocState.writer.html ("<span>Overrides implementation in ")
 		refcompound (reimp)
 		DocState.writer.html ("</span>")

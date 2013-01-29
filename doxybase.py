@@ -1,5 +1,6 @@
 from pprint import pprint
 from xml.sax.saxutils import escape
+from heapq import *
 
 def try_call_function (name, arg):
     try:
@@ -29,7 +30,6 @@ class StringBuilder:
 
     def __init__ (self):
         self.arr = []
-        self.cache = ""
 
     def __add__ (self, t):
         assert t != None
@@ -72,35 +72,73 @@ class StringBuilder:
         self.arr.append ("<" + t + ">")
 
     def __str__ (self):
-        self.cache = ''.join(self.arr)
+        cache = ''.join(self.arr)
         del self.arr[:]
-        self.arr.append(self.cache)
-        return self.cache
+        self.arr.append(cache)
+        return cache
 
     def clear (self):
         del self.arr[:]
 
 class DocState:
-    stack = []
+    _stack = []
     writer = StringBuilder()
-    compound = None
+    currentobj = None
+    navitems = []
+
+    roots = None
+    compounds = None
 
     ''' Prevents infinte loops of tooltips in links by disabling links after a certain depth '''
     depth_ref = 0
 
+    _events = []
+    _docobjs = {}
+
+    @staticmethod
+    def add_docobj (obj, id=None):
+        assert hasattr (obj, "name"), "DocObjects must have names"
+        assert hasattr (obj, "kind"), "DocObjects must have kinds"
+        assert hasattr (obj, "id"), "DocObjects must have ids"
+        if id == None:
+            id = obj.id
+        DocState._docobjs[id] = obj
+    
+    @staticmethod    
+    def get_docobj (id):
+        return DocState._docobjs[id]
+
+    @staticmethod
+    def add_event (priority, callback):
+        heappush (DocState._events, (priority, callback))
+
+    @staticmethod
+    def next_event ():
+        try:
+            prio, callback = heappop (DocState._events)
+        except IndexError:
+            return False
+
+        callback ()
+        return True
+
+    @staticmethod
+    def empty_writerstack ():
+        return len(DocState._stack) == 0
+
     @staticmethod
     def pushwriter ():
         if DocState.writer != None:
-            DocState.stack.append (DocState.writer)
+            DocState._stack.append (DocState.writer)
         DocState.writer = StringBuilder()
 
     @staticmethod
     def popwriter ():
         s = str(DocState.writer)
-        if len(DocState.stack) == 0:
+        if DocState.empty_writerstack():
             DocState.writer.clear()
         else:
-            DocState.writer = DocState.stack.pop()
+            DocState.writer = DocState._stack.pop()
         return s
 
 
@@ -113,6 +151,13 @@ class DocMember:
 
     pass
     
+class NavItem:
+    def __init__ (self):
+        self.label = ""
+        self.obj = None
+        self.url = None
+
+
 class DocObj:
     
     def __str__ (self):

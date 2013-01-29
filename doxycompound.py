@@ -4,7 +4,7 @@ import doxyext
 import doxylayout
 import re
 
-def process_references (root):
+def process_references_root (root):
 
     # for node in root.findall(".//*[@refid]"):
     #     try:
@@ -22,7 +22,7 @@ def process_references (root):
             try:
                 # Doxygen can sometimes generate refid=""
                 id = node.get("refid")
-                obj = docobjs[id]
+                obj = DocState.get_docobj(id)
                 node.set ("ref", obj)
             except KeyError:
                 #print "Invalid refid: '" + node.get("refid") + "' in compound " + xml.find("compoundname").text
@@ -39,10 +39,12 @@ def process_references (root):
     #    except KeyError:
     #        pass
         
+def pre_output ():
+    pass
 
 def gather_compound_doc (xml):
     id = xml.get("id")
-    compound = docobjs[id]
+    compound = xml.get("docobj")
 
     DocState.compound = compound
     
@@ -230,29 +232,37 @@ def generate_compound_doc (xml):
     compound = xml.get("docobj")
     
     DocState.pushwriter()
-    DocState.compound = compound
+    DocState.currentobj = compound
 
     if compound.kind == "class" or compound.kind == "struct":
         generate_class_doc (xml)
     elif compound.kind == "page":
+        print ("Writing Page... " + compound.name)
         generate_page_doc (xml)
     elif compound.kind == "namespace":
         generate_namespace_doc (xml)
     else:
         print ("Skipping " + compound.kind + " " + compound.name)
+        DocState.popwriter()
         return
 
     f = file(compound.full_path(), "w")
-    f.write (DocState.popwriter())
+    s = DocState.popwriter()
+    print ("Writing: " + str(len (s)))
+    f.write (s)
     f.close()
+
+    assert DocState.empty_writerstack()
 
     #generage_page_doc (compound)
 
 def generate_class_doc (xml):
     id = xml.get("id")
-    compound = docobjs[id]
+    compound = xml.get("docobj")
 
     doxylayout.header ()
+
+    doxylayout.navheader ()
 
     doxylayout.pagetitle (compound.kind.title() + " " + compound.name)
 
@@ -264,9 +274,15 @@ def generate_class_doc (xml):
 
 def generate_page_doc (xml):
     id = xml.get("id")
-    compound = docobjs[id]
+    compound = xml.get("docobj")
 
     doxylayout.header ()
+
+    doxylayout.navheader ()
+
+    from random import random
+
+    DocState.writer.element ("b",str(random ()))
 
     doxylayout.pagetitle (compound.name)
 
@@ -277,9 +293,11 @@ def generate_page_doc (xml):
 
 def generate_namespace_doc (xml):
     id = xml.get("id")
-    compound = docobjs[id]
+    compound = xml.get("docobj")
 
     doxylayout.header ()
+
+    doxylayout.navheader ()
 
     doxylayout.pagetitle ("Namespace " + compound.name)
 

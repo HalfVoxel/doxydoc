@@ -2,11 +2,16 @@ import xml.etree.cElementTree as ET
 from doxybase import *
 import doxyext
 from os import listdir
-from os.path import isfile, join,splitext
+from os.path import isfile, isdir, join,splitext
 from progressbar import *
 from doxycompound import *
 import shutil
 import os
+import imp
+import doxytiny
+import doxylayout
+import doxyspecial
+
 from sys import getsizeof
 
 def try_call_function (name, arg):
@@ -24,20 +29,20 @@ def register_compound (xml):
 
     obj.id = xml.get("id")
     obj.kind = xml.get("kind")
-    #Will only be used for debugging if even that. Formatted name will be added later
+    # Will only be used for debugging if even that. Formatted name will be added later
     obj.name = xml.find("compoundname").text
+    # Format path. Use - instead of :: in path names (more url friendly)
     obj.path = obj.name.replace ("::","-")
-    #dump(obj)
 
-    docobjs[obj.id] = obj
+    DocState.add_docobj(obj)
     xml.set ("docobj", obj)
 
     #Workaround for doxygen apparently generating refid:s which do not exist as id:s
     id2 = obj.id + "_1" + obj.id
-    if id2 in docobjs:
-        print "Warning: Overwriting id " + id2
+    #if id2 in docobjs:
+    #    print "Warning: Overwriting id " + id2
     
-    docobjs[id2] = obj
+    DocState.add_docobj(obj, id2)
 
     ids = xml.findall (".//*[@id]")
     
@@ -49,6 +54,8 @@ def register_compound (xml):
         if not ok:
             obj = DocObj ()
             obj.id = idnode.get("id")
+            obj.kind = idnode.get("kind")
+
             #print (idnode.get("id"))
             namenode = idnode.find("name")
 
@@ -63,13 +70,51 @@ def register_compound (xml):
             obj.compound = parent
 
             idnode.set ("docobj", obj)
-            docobjs[obj.id] = obj
+            DocState.add_docobj(obj)
             #print (obj.full_url())
 
     #print (docobjs)
 
-def read_external ():
+def load_plugins ():
 
+    print ("Loading Plugins...")
+
+    plugList = [ f for f in listdir("themes") if isdir(join("themes",f)) ]
+    
+    for moduleName in plugList:
+        mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName),["themes"])
+        mObject = imp.load_module(moduleName, mFile, mPath, mDescription)
+        print ("Loading Theme: " + moduleName)
+
+        try:
+            obj = getattr(mObject, "tiny")
+            print ("Loading Tiny Overrides...")
+            for k,v in obj.__dict__.iteritems():
+                if not k.startswith("_"):
+                    setattr (doxytiny, k, v)
+        except AttributeError:
+            pass
+
+        try:
+            obj = getattr(mObject, "layout")
+            print ("Loading Layout Overrides...")
+            for k,v in obj.__dict__.iteritems():
+                if not k.startswith("_"):
+                    setattr (doxylayout, k, v)
+        except AttributeError:
+            pass
+
+        try:
+            obj = getattr(mObject, "compound")
+            print ("Loading Compound Overrides...")
+            for k,v in obj.__dict__.iteritems():
+                if not k.startswith("_"):
+                    setattr (doxylayout, k, v)
+        except AttributeError:
+            pass
+
+def read_external ():
+    print ("Reading exteral")
     try:
         f = open ("external.csv")
     except:
@@ -82,9 +127,10 @@ def read_external ():
             url = arr[1].strip()
             obj = DocObj()
             obj.id = name
+            obj.kind = "external"
             obj.name = name
             obj.exturl = url
-            docobjs[obj.id] = obj
+            DocState.add_docobj(obj)
 
     f.close ()
 
@@ -100,14 +146,11 @@ def test_id_ref (path):
         progressbar (i+1,len(refs))
 
         id = ref.get("refid")
-        refobj = docobjs[id]
+        refobj = ref.get("ref")
         assert refobj
         #print ("Referenced " + refobj.name)
 
-def main ():
-
-    #filenames = ["xml/class_a_i_path.xml"]
-
+def copy_resources ():
     print ("Copying resources")
 
     try:
@@ -123,7 +166,6 @@ def main ():
 
             for fn in files:
                 fn2 = os.path.join(root, fn)
-                print (fn2)
                 shutil.copy2 (fn2, os.path.join(os.path.join("html", dstroot), fn))
 
         #shutil.copytree("resources", "html")
@@ -131,6 +173,7 @@ def main ():
         print ("No resources directory found")
         raise
 
+def read_prefs ():
     header = file ("resources/header.html")
     DocSettings.header = header.read()
     header.close ()
@@ -139,21 +182,18 @@ def main ():
     DocSettings.footer = footer.read()
     footer.close ()
 
-    print ("Reading exteral")
-    read_external ()
-
+def scan_input ():
     filenames = [ f for f in listdir("xml") if isfile(join("xml",f)) ]
 
 
     print ("Scanning input")
 
-    compounds = []
-    roots = []
+    compounds = DocState.compounds = []
+    roots = DocState.roots = []
 
-    for i in range(0,len(filenames)):
+    i = 0
+    for fname in filenames:
         try:
-            fname = filenames[i]
-
             extension = splitext(fname)[1]
 
             progressbar (i+1,len(filenames))
@@ -169,36 +209,100 @@ def main ():
 
             compound = root.find("compounddef")
 
+            assert root != None, "Root is None"
+            assert dom != None, "Dom is None"
+
             if compound != None:
                 compounds.append (compound)
                 register_compound (compound)
         except Exception as e:
             print (fname)
             raise e
+        i += 1
 
-    print("\nTesting References...")
-    test_id_ref (join("xml", "index.xml"))
-
+def process_references ():
     print("\nProcessing References...")
-    for i in range(0,len(roots)):
-        root = roots[i]
+
+    roots = DocState.roots
+
+    i = 0
+    for root in roots:
         progressbar (i+1,len(roots))
 
-        process_references (root)
+        process_references_root (root)
+        i += 1
 
+def process_compounds ():
     print("\nProcessing Compounds...")
-    for i in range(0,len(compounds)):
-        compound = compounds[i]
+
+    compounds = DocState.compounds
+
+    i = 0
+    for compound in compounds:
         progressbar (i+1,len(compounds))
 
         gather_compound_doc (compound)
+        i+= 1
 
+def build_compound_output ():
     print("\nBuilding Output...")
-    for i in range(0,len(compounds)):
-        compound = compounds[i]
+
+    compounds = DocState.compounds
+
+    i = 0
+    for compound in compounds:
         progressbar (i+1,len(compounds))
 
         generate_compound_doc (compound)
+        i+= 1
+
+def main ():
+
+    #filenames = ["xml/class_a_i_path.xml"]
+
+    ## Events:
+    # 0    - 999    Initializaton
+    # 1000 - 1999   Reading input
+    # 2000 - 2999   Structuring data
+    # 3000 - 4000   Building output
+    #
+    DocState.add_event (200, load_plugins)
+
+    DocState.add_event (400, copy_resources)
+
+    DocState.add_event (600, read_prefs)
+    DocState.add_event (700, read_external)
+
+    DocState.add_event (1000, scan_input)
+
+    DocState.add_event (2000, process_references)
+
+    DocState.add_event (2300, process_compounds)
+
+    DocState.add_event (2500, pre_output)
+
+    DocState.add_event (3000, build_compound_output)
+
+    DocState.add_event (3100, doxyspecial.build_specials)
+
+    while (DocState.next_event ()):
+        print ("Next Event")
+        pass
+
+    #return
+
+
+    #print("\nTesting References...")
+    #test_id_ref (join("xml", "index.xml"))
+
+    
+
+    
+
+    #print("\nPreprocessing Output...")
+    #
+    
+    
 
 if __name__ == "__main__":
    main()
