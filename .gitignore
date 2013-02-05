@@ -1,3 +1,5 @@
 *.pyc
 html
 xml
+test
+.sass-cache

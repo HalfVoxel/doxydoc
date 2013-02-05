@@ -2,14 +2,16 @@ from doxybase import *
 import doxytiny
 import re
 
-def try_call_tiny (name, arg):
-    try:
-        methodToCall = getattr(doxytiny, name)
-    except AttributeError:
-        return None, False
+INITIAL_HEADING_DEPTH = 2
 
-    result = methodToCall(arg)
-    return result, True
+def try_call_tiny (name, arg):
+	try:
+		methodToCall = getattr(doxytiny, name)
+	except AttributeError:
+		return None, False
+
+	result = methodToCall(arg)
+	return result, True
 
 def prettify_prefix (node):
 	s = []
@@ -97,12 +99,20 @@ def ref (refnode):
 
 	kind = refnode.get("kindref")
 	external = refnode.get("external")
-	tooltip = refnode.get("tooltip")
+	#tooltip = refnode.get("tooltip")
 
 	DocState.depth_ref += 1
 	if DocState.depth_ref > 1:
 		markup (refnode)
 	else:
+
+		if hasattr(obj,"briefdescription") and obj.briefdescription != None:
+			DocState.pushwriter()
+			description(obj.briefdescription)
+			tooltip = DocState.popwriter()
+		else:
+			tooltip = None
+
 		DocState.writer.element("a", None, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
 		markup (refnode)
 		DocState.writer.element("/a")
@@ -152,12 +162,19 @@ def header ():
 def footer ():
 	DocState.writer.html(DocSettings.footer)
 
+def begin_content ():
+	DocState.writer.html("<div class='content'>")
+
+def end_content ():
+	DocState.writer.html("</div>")
+
 def navheader ():
 
 	DocState.writer.html ("<div class='navbar'><ul>")
+	DocState.navitems.sort(key=lambda v: v.order)
+
 	for item in DocState.navitems:
 		DocState.writer.element ("li")
-		print (vars(item))
 		DocState.writer.element ("a", item.label, {"href": item.ref.full_url()})
 		DocState.writer.element ("/li")
 		
@@ -176,13 +193,75 @@ def member_section_heading (section):
 
 	DocState.writer.element ("h2", section[0])
 
-def members (docobj):
-
-	members = docobj.members
-
+def get_member_sections (members):
 	sections = []
 	sections.append (("Public Variables", filter (lambda m: m.protection == "public" and m.kind == "variable", members)))
 	sections.append (("All Members", members))
+	return sections
+
+def members_list (docobj):
+
+	sections = get_member_sections(docobj.members)
+
+	for section in sections:
+
+		DocState.writer.element ("h2", section[0])
+
+		DocState.writer.element ("table", None, {'class': 'table table-condensed table-striped member-list'})
+
+		
+
+		members = section[1]
+		for m in members:
+			DocState.writer.element("tr")
+
+
+			# DocState.writer.element("td", None, {'class': 'member-prot'})
+			# if m.protection != None:
+			# 	labelStyle = ""
+			# 	if m.protection == "public":
+			# 		labelStyle = "label-success"
+			# 	elif m.protection == "private":
+			# 		labelStyle = "label-inverse"
+			# 	elif m.protection == "protected":
+			# 		labelStyle = "label-warning"
+			# 	elif m.protection == "package":
+			# 		labelStyle = "label-info"
+
+			# 	DocState.writer.element ("span", m.protection.title(), {"class": "label " + labelStyle})
+
+			# if m.readonly:
+			# 	DocState.writer.element ("span", "Readonly", {"class": "label label-warning"})
+			# if m.static:
+			# 	DocState.writer.element ("span", "Static", {"class": "label label-info"})
+
+			# DocState.writer.element("/td")
+
+			# DocState.writer.element("td", None, {'class': 'member-type'})
+			# type = m.type
+			# if type != None:
+
+			# 	#Write type
+			# 	linked_text(type)
+			# DocState.writer.element("/td")
+
+			DocState.writer.element("td", None, {'class': 'member-name'})
+			ref_explicit (m, m.name)
+			#DocState.writer += m.name
+			DocState.writer.element("/td")
+
+			DocState.writer.element("td", None, {'class': 'member-desc'})
+			description(m.briefdescription)
+
+			DocState.writer.element("/td")
+
+			DocState.writer.element("/tr")
+
+		DocState.writer.element ("/table")
+
+def members (docobj):
+
+	sections = get_member_sections(docobj.members)
 
 	for section in sections:
 
@@ -198,8 +277,7 @@ def members (docobj):
 
 
 def member_heading (m):
-	#Note, slightly unsafe, could possibly break html
-	DocState.writer.html("<h3 id=%s>" % (m.anchor))
+	DocState.writer.element ("h3")
 
 	ls = []
 	if m.protection != None:
@@ -215,17 +293,46 @@ def member_heading (m):
 	type = m.type
 	if type != None:
 		if len(ls) > 0:
-			DocState.writer += " "
+			DocState.writer.element ("span",None, {"class": 'member-type'})
 
 		#Write type
 		linked_text(type)
 
-	DocState.writer += " "
+	DocState.writer.element ("/span")
+	DocState.writer.element ("span",None, {"class": 'member-name'})
 		
 	name = m.name
 	DocState.writer += name
 
-	DocState.writer.html("</h3>")
+	DocState.writer.element ("/span")
+
+	if m.params != None:
+		DocState.writer += " "
+
+		DocState.writer.element ("span",None,{"class": "member-params"})
+		DocState.writer += "("
+		for i, param in enumerate (m.params):
+			DocState.writer += " "
+			markup(param.type)
+
+			DocState.writer += " "
+
+			if param.description != None:
+				DocState.pushwriter()
+				description(param.description)
+				tooltip = DocState.popwriter()
+				DocState.writer.element ("span", None, {"data-original-title": tooltip})
+				DocState.writer += param.name
+				DocState.writer.element ("/span")
+			else:
+				DocState.writer += param.name
+			
+			if i < len(m.params)-1:
+				DocState.writer += ","
+
+		DocState.writer.element ("/span")
+
+	DocState.writer.element("/h3")
 		
 
 def desctitle (text):
@@ -236,15 +343,7 @@ def sect (sectnode, depth):
 
 	title = sectnode.find("title")
 	if title != None:
-		DocState.writer.html("<h" + str(depth) + " ")
-		id = sectnode.get("id")
-		if id != None:
-			#note slightly unsafe, might break html
-			DocState.writer.html(" id='" + get_anchor (id) + "' ")
-
-		DocState.writer.html (">")
-		DocState.writer += title.text
-		DocState.writer.html ("</h" + str(depth) + ">")
+		DocState.writer.element("h" + str(depth + INITIAL_HEADING_DEPTH), title.text, {"id": get_anchor (sectnode.get("id"))})
 
 	sectbase (sectnode)
 
@@ -293,6 +392,8 @@ def sectbase (node):
 			sect (n,4)
 		elif n.tag == "sect5":
 			sect (n,5)
+		elif n.tag == "simplesectsep":
+			doxytiny.simplesectsep (n)
 		elif n.tag == "title":
 			#A sect should have been the parent, so it should have been handled
 			pass
@@ -326,14 +427,14 @@ def member_reimplements (m):
 
 def member (m):
 
-	DocState.writer.html ("<div class='memberdef'>")
+	DocState.writer.element ("div", None, {"class": 'memberdef', "id": m.anchor});
 
 	member_heading (m)
 
 	description (m.briefdescription)
 	description (m.detaileddescription)
 
-	DocState.writer.html ("</div>")
+	DocState.writer.element ("/div")
 
 def compound_desc (compxml):
 
@@ -343,12 +444,121 @@ def compound_desc (compxml):
 	description(briefdesc)
 	description(detdesc)
 
-def namespace_list_inner (compound):
+def page_list_inner (obj):
+	
 
-	DocState.writer.elem ("ul")
-	for obj in compound.innerclasses:
-		namespace_inner_class (obj)
-	DocState.writer.elem ("/ul")
+	pages = []
+	if obj == None:
+		for k,obj2 in DocState._docobjs.iteritems():
+			if obj2.kind == "page" and (not hasattr (obj2, "parentpage") or obj2.parentpage == None) and not obj2 in pages:
+				pages.append (obj2)
+	else:
+		pages = obj.subpages
+
+	if pages == None or len(pages) == 0:
+		return
+
+	DocState.writer.element ("ul")
+
+	for p in pages:
+		DocState.writer.element ("li")
+		print ("Depth: " + str(DocState.depth_ref))
+		docobjref (p)
+		page_list_inner (p)
+		DocState.writer.element ("/li")
+
+	DocState.writer.element ("/ul")
+
+def namespace_list_inner (obj):
+
+	DocState.writer.element ("table",None,{"class": "compound-view"})
+
+	namespaces = []
+	gridobjs = []
+	if hasattr(obj, "innerclasses"):
+		for obj2 in obj.innerclasses:
+			if (obj2.kind == "class" or obj2.kind == "struct") and not obj2 in gridobjs:
+				gridobjs.append (obj2)
+	else:
+		for k,obj2 in DocState._docobjs.iteritems():
+			if (obj2.kind == "class" or obj2.kind == "struct") and not obj2 in gridobjs:
+				gridobjs.append (obj2)
+
+	if hasattr(obj,"innernamespaces"):
+		for ns in obj.innernamespaces:
+			namespaces.append (ns)
+	else:
+		for k,obj2 in DocState._docobjs.iteritems():
+			if obj2.kind == "namespace" and not obj2 in namespaces:
+				if hasattr (obj2,"innerclasses") and len(obj2.innerclasses) > 0:
+					namespaces.append (obj2)
+
+
+
+	# Apparently, this manages to sort them by name.
+	# Even without me specifying what to sort by.
+	# Python...
+	gridobjs.sort()
+	namespaces.sort()
+	
+	# Number of columns
+	xwidth = 4
+	ns_colspan = int(xwidth/2)
+
+	counter = 0
+
+	for obj2 in namespaces:
+		if counter % xwidth == 0:
+			if counter > 0:
+				DocState.writer.element ("/tr")
+			DocState.writer.element ("tr")
+
+		DocState.writer.element ("td", None, {"colspan": str(ns_colspan)})
+		DocState.depth_ref += 1
+		DocState.writer.element ("a", None, {"href": obj2.full_url()})
+		DocState.writer.element ("b", obj2.name)
+
+		#doxylayout.docobjref (obj2)
+		#DocState.writer.element ("p")
+		description (obj2.briefdescription)
+		#DocState.writer.element ("/p")
+		DocState.writer.element ("/a")
+		DocState.writer.element ("/td")
+
+		counter += ns_colspan
+
+		DocState.depth_ref -= 1
+
+	if (len(namespaces) > 0):
+		DocState.writer.element ("/tr")
+
+	counter = 0
+
+	for obj2 in gridobjs:
+		# NOTE: Add enum
+		if counter % xwidth == 0:
+			if counter > 0:
+				DocState.writer.element ("/tr")
+			DocState.writer.element ("tr")
+
+		DocState.writer.element ("td")
+
+		DocState.depth_ref += 1
+		DocState.writer.element ("a", None, {"href": obj2.full_url()})
+		DocState.writer.element ("b", obj2.name)
+
+		#doxylayout.docobjref (obj2)
+		#DocState.writer.element ("p")
+		description (obj2.briefdescription)
+		#DocState.writer.element ("/p")
+		DocState.writer.element ("/a")
+		DocState.writer.element ("/td")
+		DocState.depth_ref -= 1
+
+		counter += 1
+
+	DocState.writer.element ("/tr")
+	DocState.writer.element ("/table")
 
 def namespace_inner_class (obj):
 	DocState.writer.elem ("li")

@@ -88,7 +88,7 @@ def gather_class_doc(xml):
 
 
     obj.briefdescription = xml.find("briefdescription")
-    obj.detaileddescrption = xml.find("detaileddescrption")
+    obj.detaileddescription = xml.find("detaileddescription")
     
     obj.final = xml.get("final") == "yes"
     obj.sealed = xml.get("sealed") == "yes"
@@ -157,22 +157,86 @@ def gather_member_doc (member):
     if override:
         assert member.find("type").text
         overrideType = member.find("type").text.split()[0]
-        assert (overrideType != "override" and overrideType != "new", "Invalid override type: "+overrideType) 
+        override = overrideType == "override" or overrideType == "new"
 
-        m.override = overrideType
+        # For abstract classes or interfaces, it might reimplement some function without overriding it
+        # thus the need to check again here
+        if override:
+            m.override = overrideType
+        else:
+            m.override = None
     else:
         m.override = None
 
+    # Find descriptions
     m.briefdescription = member.find("briefdescription")
     m.detaileddescription = member.find("detaileddescription")
 
+    # Find type
     m.type = member.find("type")
 
+    # Is the member read only. Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
     m.readonly = False if m.type == None or m.type.text == None else m.type.text.startswith("readonly")
     
     if m.type != None and m.type.text != None:
         # Remove eventual 'override ' text at start of type.
         m.type.text = re.sub ("^(?:override|new|readonly)\s", "", m.type.text, 1)
+
+
+    # Parse (function) arguments
+    argsstring = member.find("argsstring")
+    # Test if this member has arguments (.text will be None if the tag is empty)
+    if argsstring != None and argsstring.text != None:
+        m.argsstring = argsstring.text
+
+        params = member.findall("param")
+        m.params = []
+        for param in params:
+            o = DocObj()
+            o.xml = param
+            o.name = param.find("declname").text
+            o.type = param.find("type")
+
+            # Description will be filled in later if found
+            o.description = None
+            m.params.append (o)
+    else:
+        m.params = None
+
+    if m.detaileddescription != None:
+        paramdescs = m.detaileddescription.findall(".//parameterlist")
+        m.paramdescs = []
+
+        for pd in paramdescs:
+            kind = pd.get("kind")
+            ## Note use 'kind'
+            
+            # Note, should be just a simple object
+            o = DocObj()
+            o.names = []
+            o.description = None
+
+            for n in pd:
+                names = n.findall ("parameternamelist")
+                o.description = n.find ("parameterdescription")
+                if names != None:
+                    for name in names:
+                        o.names.append (name.text)
+                        ## Note use direction and type
+            
+            m.paramdescs.append (o)
+        
+        if m.params == None and m.paramdescs != None:
+            print ("Wait wut " + DocState.compound.name + "::" + m.name)
+        # Set descriptions on the parameter objects
+        for pd in m.paramdescs:
+            for name in pd.names:
+                for p in m.params:
+                    if p.name == name:
+                        p.description = pd.description
+                        print ("Found matching parameter " + p.name)
+                        break
+
 
 def gather_page_doc (xml):
 
@@ -182,13 +246,30 @@ def gather_page_doc (xml):
     # kind
     # briefdesc
     # detaileddesc
+    # innerpage
     
     obj = xml.get("docobj")
     #id should already be set
-    obj.name = formatname (xml.find("compoundname").text)
+    
+    title = xml.find("title")
+    if title != None and title.text != None:
+        obj.name = formatname (title.text)
+    else:
+        obj.name = ""
+
+    # title = xml.find("compoundname")
+
     obj.kind = xml.get("kind")
     obj.briefdescription = xml.find("briefdescription")
     obj.detaileddescription = xml.find("detaileddescription")
+
+    obj.subpages = []
+    for n in xml.findall("innerpage"):
+        obj.subpages.append (n.get("ref"))
+
+    for p in obj.subpages:
+        p.parentpage = obj
+
 
 def gather_namespace_doc (xml):
     
@@ -235,12 +316,11 @@ def generate_compound_doc (xml):
     DocState.currentobj = compound
 
     if compound.kind == "class" or compound.kind == "struct":
-        generate_class_doc (xml)
+        generate_class_doc (compound)
     elif compound.kind == "page":
-        print ("Writing Page... " + compound.name)
-        generate_page_doc (xml)
+        generate_page_doc (compound)
     elif compound.kind == "namespace":
-        generate_namespace_doc (xml)
+        generate_namespace_doc (compound)
     else:
         print ("Skipping " + compound.kind + " " + compound.name)
         DocState.popwriter()
@@ -248,7 +328,6 @@ def generate_compound_doc (xml):
 
     f = file(compound.full_path(), "w")
     s = DocState.popwriter()
-    print ("Writing: " + str(len (s)))
     f.write (s)
     f.close()
 
@@ -256,49 +335,47 @@ def generate_compound_doc (xml):
 
     #generage_page_doc (compound)
 
-def generate_class_doc (xml):
-    id = xml.get("id")
-    compound = xml.get("docobj")
+def generate_class_doc (compound):
 
     doxylayout.header ()
 
     doxylayout.navheader ()
 
+    doxylayout.begin_content()
     doxylayout.pagetitle (compound.kind.title() + " " + compound.name)
 
-    #doxylayout.compound_desc (compound)
+    doxylayout.description (compound.briefdescription)
+    doxylayout.description (compound.detaileddescription)
 
+    doxylayout.members_list (compound)
     doxylayout.members (compound)
 
+    doxylayout.end_content()
     doxylayout.footer ()
 
-def generate_page_doc (xml):
-    id = xml.get("id")
-    compound = xml.get("docobj")
+def generate_page_doc (compound):
 
     doxylayout.header ()
 
     doxylayout.navheader ()
 
-    from random import random
-
-    DocState.writer.element ("b",str(random ()))
+    doxylayout.begin_content()
 
     doxylayout.pagetitle (compound.name)
 
     doxylayout.description (compound.briefdescription)
     doxylayout.description (compound.detaileddescription)
 
+    doxylayout.end_content()
     doxylayout.footer ()
 
-def generate_namespace_doc (xml):
-    id = xml.get("id")
-    compound = xml.get("docobj")
+def generate_namespace_doc (compound):
 
     doxylayout.header ()
 
     doxylayout.navheader ()
 
+    doxylayout.begin_content()
     doxylayout.pagetitle ("Namespace " + compound.name)
 
     doxylayout.description (compound.briefdescription)
@@ -306,4 +383,5 @@ def generate_namespace_doc (xml):
 
     doxylayout.namespace_list_inner (compound)
 
+    doxylayout.end_content()
     doxylayout.footer ()

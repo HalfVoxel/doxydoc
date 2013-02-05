@@ -1,0 +1,117 @@
+
+
+@mixin border-radius ($radius: 5px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+
+body {
+    padding-top: 25px;
+}
+
+.memberdef {
+    border-width: 2px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    box-shadow: 0px 2px 5px #CCC;
+
+    @include border-radius(5);
+
+    margin: 5px;
+    padding: 5px;
+
+    h3 {
+        margin-top: 0px;
+        padding-top: 3px;
+        font-size: 20px;
+        line-height: normal;
+    }
+}
+
+table.compound-view tr {
+    margin: 4px;
+
+    td {
+        font-size: 11px;
+    }
+
+    a {
+        transition: background-color 0.1s;
+        -webkit-transition: background-color 0.1s;
+
+        display: block;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #FFF;
+        height: 60px;
+        
+        background-color: #EEE;
+        text-align: center;
+        padding: 5px;
+        color: #222;
+
+        b {
+            color: #0D5484;
+        }
+    }
+
+    a:hover {
+        text-decoration: none;
+        background-color: #DDD;
+    }
+}
+
+img {
+    border-radius: 5px;
+}
+
+code {
+    display: block;
+    white-space: pre;
+}
+
+/** Needs a bit of resetting since it can turn out basically anywhere in the DOM */
+.tooltip {
+    margin: 0px;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    line-height: normal;
+    white-space: normal;
+    font-family: Hevetica, Arial, Sans-serif;
+    text-shadow: none;
+
+    p {
+        display: inline;
+        margin: 0px;
+    }
+}
+
+.simplesect {
+    border-style: solid;
+    border-width: 0px 0px 0px 4px;
+    padding-left: 5px;
+
+    h3 {
+        font-size: 16px;
+        line-height: normal;
+        margin-top: 2px;
+
+        margin-bottom: 3px;
+    }
+
+    > p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 14px;
+    }
+}
+
+.simplesect-see {
+    border-color: #008B00;
+}

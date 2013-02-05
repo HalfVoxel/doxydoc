@@ -11,6 +11,7 @@ import imp
 import doxytiny
 import doxylayout
 import doxyspecial
+import argparse
 
 from sys import getsizeof
 
@@ -258,6 +259,16 @@ def build_compound_output ():
 
 def main ():
 
+    parser = argparse.ArgumentParser(description='Build the A* Pathfinding Project Packages.')
+    parser.add_argument("-r", "--resources", help="Copy Resources Only", action="store_true")
+
+    args = parser.parse_args()
+
+    if args.resources:
+        load_plugins ()
+        copy_resources ()
+        return
+        
     #filenames = ["xml/class_a_i_path.xml"]
 
     ## Events:

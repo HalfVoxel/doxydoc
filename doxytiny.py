@@ -15,13 +15,14 @@ def preformatted(n):
 	DocState.writer.elem("/pre")
 
 def programlisting(n):
-	DocState.writer.elem("code")
+	# can add class linenums here if needed
+	DocState.writer.element("code",None, {"class":"prettyprint"})
 	for line in n:
 		''' \todo ID '''
 		doxylayout.markup (line)
-		DocState.writer.elem("br")
+		DocState.writer.element("br")
 
-	DocState.writer.elem("/code")
+	DocState.writer.element("/code")
 
 def verbatim (n):
 	DocState.writer.html(n.text)
@@ -50,6 +51,24 @@ def _doclist (n):
 
 
 def simplesect(n):
+	kind = n.get("kind")
+	title = n.find("title")
+	DocState.writer.element("div", None, {"class": "simplesect simplesect-" + kind})
+
+	DocState.writer.element ("h3")
+	if title != None:
+		doxylayout.markup(title)
+	else:
+		DocState.writer += kind.title()
+		
+	DocState.writer.element ("/h3")
+
+	doxylayout.sectbase (n)
+
+	DocState.writer.element ("/div")
+
+def simplesectsep (n):
+	#DocState.writer.element ("hr")
 	pass
 
 def title(n):
@@ -109,10 +128,14 @@ def superscript(n):
 	pass
 
 def center(n):
-	pass
+	DocState.writer.elem ("center")
+	doxylayout.markup (n)
+	DocState.writer.elem ("/center")
 
 def small(n):
-	pass
+	DocState.writer.elem ("small")
+	doxylayout.markup (n)
+	DocState.writer.elem ("/small")
 
 def htmlonly (n):
 	verbatim (n)
