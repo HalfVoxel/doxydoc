@@ -2,7 +2,7 @@ import sys
 
 progressbar_counter = 0
 
-def progressbar (done, total):
+def progressbar(done, total):
     global progressbar_counter
     progressbar_counter += 1
 
@@ -14,12 +14,11 @@ def progressbar (done, total):
 
     consoleMargin = 20
     maxDot = width - len(tail) - consoleMargin
-    for x in range (0,done*maxDot / total):
+    for x in range(0, done * maxDot / total):
         sys.stdout.write('*')
 
-    sys.stdout.write (tail)
+    sys.stdout.write(tail)
 
     if (progressbar_counter > 0):
         progressbar_counter = 0
         sys.stdout.flush()
-

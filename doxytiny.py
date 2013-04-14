@@ -3,10 +3,11 @@
 from doxybase import *
 import doxylayout
 
-def linebreak (n):
+
+def linebreak(n):
 	DocState.writer.elem("br")
 
-def hruler (n):
+def hruler(n):
 	pass
 
 def preformatted(n):
@@ -16,15 +17,15 @@ def preformatted(n):
 
 def programlisting(n):
 	# can add class linenums here if needed
-	DocState.writer.element("code",None, {"class":"prettyprint"})
+	DocState.writer.element("code", None, {"class": "prettyprint"})
 	for line in n:
 		''' \todo ID '''
-		doxylayout.markup (line)
+		doxylayout.markup(line)
 		DocState.writer.element("br")
 
 	DocState.writer.element("/code")
 
-def verbatim (n):
+def verbatim(n):
 	DocState.writer.html(n.text)
 
 def indexentry(n):
@@ -40,14 +41,14 @@ def itemizedlist(n):
 	_doclist(n)
 	DocState.writer.elem("/ul")
 
-def _doclist (n):
+def _doclist(n):
 	#Guaranteed to only contain listitem nodes
 	for child in n:
 		assert child.tag == "listitem"
 
 		DocState.writer.elem("li")
-		doxylayout.markup (child)
-		DocState.writer.elem("/li")		
+		doxylayout.markup(child)
+		DocState.writer.elem("/li")
 
 
 def simplesect(n):
@@ -55,19 +56,19 @@ def simplesect(n):
 	title = n.find("title")
 	DocState.writer.element("div", None, {"class": "simplesect simplesect-" + kind})
 
-	DocState.writer.element ("h3")
-	if title != None:
+	DocState.writer.element("h3")
+	if title is not None:
 		doxylayout.markup(title)
 	else:
 		DocState.writer += kind.title()
-		
-	DocState.writer.element ("/h3")
 
-	doxylayout.sectbase (n)
+	DocState.writer.element("/h3")
 
-	DocState.writer.element ("/div")
+	doxylayout.sectbase(n)
 
-def simplesectsep (n):
+	DocState.writer.element("/div")
+
+def simplesectsep(n):
 	#DocState.writer.element ("hr")
 	pass
 
@@ -107,19 +108,19 @@ def blockquote(n):
 
 def ulink(n):
 	DocState.writer.elem("a href='" + n.get("url") + "'")
-	doxylayout.markup (n)
+	doxylayout.markup(n)
 	DocState.writer.elem("/a")
 
-def bold (n):
+def bold(n):
 	DocState.writer.elem("b")
-	doxylayout.markup (n)
+	doxylayout.markup(n)
 	DocState.writer.elem("/b")
 
-def emphasis (n):
+def emphasis(n):
 	bold(n)
 
 def computeroutput(n):
-	preformatted (n)
+	preformatted(n)
 
 def subscript(n):
 	pass
@@ -128,58 +129,56 @@ def superscript(n):
 	pass
 
 def center(n):
-	DocState.writer.elem ("center")
-	doxylayout.markup (n)
-	DocState.writer.elem ("/center")
+	DocState.writer.elem("center")
+	doxylayout.markup(n)
+	DocState.writer.elem("/center")
 
 def small(n):
-	DocState.writer.elem ("small")
-	doxylayout.markup (n)
-	DocState.writer.elem ("/small")
+	DocState.writer.elem("small")
+	doxylayout.markup(n)
+	DocState.writer.elem("/small")
 
-def htmlonly (n):
-	verbatim (n)
+def htmlonly(n):
+	verbatim(n)
 
 ## These should be pass only functions actually
 
-def manonly (n):
+def manonly(n):
 	pass
 
-def xmlonly (n):
+def xmlonly(n):
 	pass
-	
-def rtfonly (n):
+
+def rtfonly(n):
 	pass
-	
-def latexonly (n):
+
+def latexonly(n):
 	pass
 
 ##May look similar to mdash in a monospace font, but it is not
-def ndash (n):
+def ndash(n):
 	DocState.writer += "–"
 
-def mdash (n):
+def mdash(n):
 	DocState.writer += "—"
 
 ###...
 
 
-def ref (n):
-	doxylayout.ref (n)
+def ref(n):
+	doxylayout.ref(n)
 
 ##########################
 #### docTitleCmdGroup ####
 ##########################
 
-def para (n):
+def para(n):
 	DocState.writer.elem("p")
-	doxylayout.markup (n)
+	doxylayout.markup(n)
 	DocState.writer.elem("/p")
 
-def sp (n):
+def sp(n):
 	DocState.writer += " "
 
-
-
-def highlight (n):
-	doxylayout.markup (n)
+def highlight(n):
+	doxylayout.markup(n)
