@@ -20,20 +20,20 @@ def prettify_prefix(node):
 		s.append(prot)
 
 	virt = node.get("virt")
-	if virt is not None and virt is not "non-virtual":
+	if virt is not None and virt != "non-virtual":
 		s.append(virt)
 
-	override = node.find("reimplements") is not None and virt is "virtual"
+	override = node.find("reimplements") is not None and virt == "virtual"
 
 	if override:
 		assert node.find("type").text
 		overrideType = node.find("type").text.split()[0]
-		assert overrideType is not "override" and overrideType is not "new", "Invalid override type: " + overrideType
+		assert(overrideType != "override" and overrideType != "new", "Invalid override type: " + overrideType)
 
 		s.append(overrideType)
 
 	static = node.get("static")
-	if static is "yes":
+	if static == "yes":
 		s.append("static")
 
 	# mutable?
@@ -51,7 +51,7 @@ def get_anchor(id):
 def refcompound(refnode):
 	refid = refnode.get("refid")
 
-	if refid is "":
+	if refid == "":
 		markup(refnode)
 		return
 
@@ -143,7 +143,7 @@ def linked_text(node):
 		#DocState.writer += node.text
 
 	for n in node:
-		if n.tag is "ref":
+		if n.tag == "ref":
 			ref(n)
 		else:
 			if n.text is not None:
@@ -370,7 +370,7 @@ def internal(internalnode):
 
 def sectbase(node):
 	for n in node:
-		if n is node:
+		if n == node:
 			continue
 
 		if n.tag is "para":
@@ -390,7 +390,7 @@ def sectbase(node):
 		elif n.tag is "title":
 			#A sect should have been the parent, so it should have been handled
 			pass
-		elif n.tag is "internal":
+		elif n.tag == "internal":
 			internal(n)
 		else:
 			print("Not handled: " + n.tag)
@@ -442,12 +442,12 @@ def page_list_inner(obj):
 	pages = []
 	if obj is None:
 		for k, obj2 in DocState._docobjs.iteritems():
-			if obj2.kind is "page" and(not hasattr(obj2, "parentpage") or obj2.parentpage is None) and not obj2 in pages:
+			if obj2.kind == "page" and(not hasattr(obj2, "parentpage") or obj2.parentpage is None) and not obj2 in pages:
 				pages.append(obj2)
 	else:
 		pages = obj.subpages
 
-	if pages is None or len(pages) is 0:
+	if pages is None or len(pages) == 0:
 		return
 
 	DocState.writer.element("ul")
@@ -469,11 +469,11 @@ def namespace_list_inner(obj):
 	gridobjs = []
 	if hasattr(obj, "innerclasses"):
 		for obj2 in obj.innerclasses:
-			if(obj2.kind is "class" or obj2.kind is "struct") and not obj2 in gridobjs:
+			if(obj2.kind == "class" or obj2.kind == "struct") and not obj2 in gridobjs:
 				gridobjs.append(obj2)
 	else:
 		for k, obj2 in DocState._docobjs.iteritems():
-			if(obj2.kind is "class" or obj2.kind is "struct") and not obj2 in gridobjs:
+			if(obj2.kind == "class" or obj2.kind == "struct") and not obj2 in gridobjs:
 				gridobjs.append(obj2)
 
 	if hasattr(obj, "innernamespaces"):
@@ -481,7 +481,7 @@ def namespace_list_inner(obj):
 			namespaces.append(ns)
 	else:
 		for k, obj2 in DocState._docobjs.iteritems():
-			if obj2.kind is "namespace" and not obj2 in namespaces:
+			if obj2.kind == "namespace" and not obj2 in namespaces:
 				if hasattr(obj2, "innerclasses") and len(obj2.innerclasses) > 0:
 					namespaces.append(obj2)
 
@@ -526,7 +526,7 @@ def namespace_list_inner(obj):
 
 	for obj2 in gridobjs:
 		# NOTE: Add enum
-		if counter % xwidth is 0:
+		if counter % xwidth == 0:
 			if counter > 0:
 				DocState.writer.element("/tr")
 			DocState.writer.element("tr")

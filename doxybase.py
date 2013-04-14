@@ -58,7 +58,7 @@ class StringBuilder:
         else:
             self.arr.append("<" + t + " ")
             for k, v in params.iteritems():
-                if v is not None and v is not "":
+                if v is not None and v != "":
                     self.arr.append(k + "='" + paramescape(v) + "' ")
 
             self.arr.append(">")
@@ -110,7 +110,7 @@ class DocState:
 
     @staticmethod
     def add_event(priority, callback):
-        heappush(DocState._events, (priority, callback))
+        heappush(DocState._events,(priority, callback))
 
     @staticmethod
     def next_event():

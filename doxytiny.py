@@ -69,7 +69,7 @@ def simplesect(n):
 	DocState.writer.element("/div")
 
 def simplesectsep(n):
-	#DocState.writer.element ("hr")
+	#DocState.writer.element("hr")
 	pass
 
 def title(n):

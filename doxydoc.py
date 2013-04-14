@@ -196,7 +196,7 @@ def scan_input():
 
             progressbar(i + 1, len(filenames))
 
-            if extension is not ".xml":
+            if extension != ".xml":
                 continue
 
             dom = ET.parse(join("xml", fname))
@@ -256,7 +256,7 @@ def build_compound_output():
 
 def main():
 
-    print ("Running...")
+    print("Running...")
 
     parser = argparse.ArgumentParser(description='Build the A* Pathfinding Project Packages.')
     parser.add_argument("-r", "--resources", help="Copy Resources Only", action="store_true")
@@ -308,5 +308,5 @@ def main():
     #print("\nPreprocessing Output...")
 
 if __name__ == "__main__":
-    print ("Stuff")
+    print("Stuff")
     main()

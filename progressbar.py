@@ -19,6 +19,6 @@ def progressbar(done, total):
 
     sys.stdout.write(tail)
 
-    if (progressbar_counter > 0):
+    if(progressbar_counter > 0):
         progressbar_counter = 0
         sys.stdout.flush()

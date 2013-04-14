@@ -45,11 +45,11 @@ def gather_compound_doc(xml):
 
     DocState.compound = compound
     
-    if compound.kind is "class" or compound.kind is "struct":
+    if compound.kind == "class" or compound.kind == "struct":
         gather_class_doc(xml)
-    elif compound.kind is "page":
+    elif compound.kind == "page":
         gather_page_doc(xml)
-    elif compound.kind is "namespace":
+    elif compound.kind == "namespace":
         gather_namespace_doc(xml)
     else:
         print("Skipping " + compound.kind + " " + compound.name)
@@ -86,9 +86,9 @@ def gather_class_doc(xml):
     obj.briefdescription = xml.find("briefdescription")
     obj.detaileddescription = xml.find("detaileddescription")
     
-    obj.final = xml.get("final") is "yes"
-    obj.sealed = xml.get("sealed") is "yes"
-    obj.abstract = xml.get("abstract") is "yes"
+    obj.final = xml.get("final") == "yes"
+    obj.sealed = xml.get("sealed") == "yes"
+    obj.abstract = xml.get("abstract") == "yes"
 
     obj.inherited = []
     for node in xml.findall("basecompoundref"):
@@ -131,12 +131,12 @@ def gather_member_doc(member):
         m.protection = None
 
     virt = member.get("virt")
-    if virt is not None and virt is not "non-virtual":
+    if virt is not None and virt != "non-virtual":
         m.virtual = virt
     else:
         m.virtual = None
 
-    m.static = member.get("static") is "yes"
+    m.static = member.get_docobj("static") == "yes"
 
     m.reimplementedby = []
     for reimp in member.findall("reimplementedby"):
@@ -148,12 +148,12 @@ def gather_member_doc(member):
         obj = reimp.get("ref")
         m.reimplements.append(obj)
     
-    override = len(m.reimplements) > 0 and m.virtual is "virtual"
+    override = len(m.reimplements) > 0 and m.virtual == "virtual"
 
     if override:
         assert member.find("type").text
         overrideType = member.find("type").text.split()[0]
-        override = overrideType is "override" or overrideType is "new"
+        override = overrideType == "override" or overrideType == "new"
 
         # For abstract classes or interfaces, it might reimplement some function without overriding it
         # thus the need to check again here
@@ -172,7 +172,7 @@ def gather_member_doc(member):
     m.type = member.find("type")
 
     # Is the member read only. Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
-    m.readonly = False if m.type is None or m.type.text is None else m.type.text.startswith("readonly")
+    m.readonly = False if m.type is not None or m.type.text is not None else m.type.text.startswith("readonly")
     
     if m.type is not None and m.type.text is not None:
         # Remove eventual 'override ' text at start of type.
@@ -222,13 +222,13 @@ def gather_member_doc(member):
             
             m.paramdescs.append(o)
         
-        if m.params is None and m.paramdescs is not None:
+        if m.params is not None and m.paramdescs is not None:
             print("Wait wut " + DocState.compound.name + "::" + m.name)
         # Set descriptions on the parameter objects
         for pd in m.paramdescs:
             for name in pd.names:
                 for p in m.params:
-                    if p.name is name:
+                    if p.name == name:
                         p.description = pd.description
                         print("Found matching parameter " + p.name)
                         break
@@ -311,11 +311,11 @@ def generate_compound_doc(xml):
     DocState.pushwriter()
     DocState.currentobj = compound
 
-    if compound.kind is "class" or compound.kind is "struct":
+    if compound.kind == "class" or compound.kind == "struct":
         generate_class_doc(compound)
-    elif compound.kind is "page":
+    elif compound.kind == "page":
         generate_page_doc(compound)
-    elif compound.kind is "namespace":
+    elif compound.kind == "namespace":
         generate_namespace_doc(compound)
     else:
         print("Skipping " + compound.kind + " " + compound.name)

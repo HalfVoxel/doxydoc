@@ -91,13 +91,13 @@ def member_heading(m):
 
     if m.protection is not None:
         labelStyle = ""
-        if m.protection is "public":
+        if m.protection == "public":
             labelStyle = "label-success"
-        elif m.protection is "private":
+        elif m.protection == "private":
             labelStyle = "label-inverse"
-        elif m.protection is "protected":
+        elif m.protection == "protected":
             labelStyle = "label-warning"
-        elif m.protection is "package":
+        elif m.protection == "package":
             labelStyle = "label-info"
 
         DocState.writer.element("span", m.protection.title(), {"class": "label " + labelStyle})
