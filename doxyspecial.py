@@ -26,6 +26,13 @@ def gather_specials():
     obj.generator = generate_classes_page
     DocState.add_docobj(obj)
 
+    # Add navigation item
+    navitem = NavItem()
+    navitem.label = "Classes"
+    navitem.order = 5
+    navitem.ref = obj
+    DocState.navitems.append(navitem)
+
     # Pages Page
     obj = DocObj()
     obj.kind = "special"
@@ -40,26 +47,21 @@ def gather_specials():
     obj.generator = generate_pages_page
     DocState.add_docobj(obj)
 
-    ######
+    # Add navigation item
     navitem = NavItem()
-    navitem.label = "Classes"
-    navitem.order = 5
+    navitem.label = "Pages"
+    navitem.order = 2
     navitem.ref = obj
     DocState.navitems.append(navitem)
 
     # Index Page
+    # Add navigation item
     navitem = NavItem()
     navitem.label = "Home"
     navitem.order = 0
     navitem.ref = DocState.get_docobj("indexpage")
     DocState.navitems.append(navitem)
-
-    # Index Page
-    navitem = NavItem()
-    navitem.label = "Pages"
-    navitem.order = 2
-    navitem.ref = DocState.get_docobj("page-listing")
-    DocState.navitems.append(navitem)
+    
 
 def generate_pages_page(obj):
     DocState.pushwriter()

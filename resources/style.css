@@ -6,7 +6,7 @@ body {
   border-style: solid;
   border-width: 2px;
   border-color: black;
-  box-shadow: 0px 2px 5px #cccccc;
+  box-shadow: 0px 2px 5px #CCC;
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5;
@@ -79,3 +79,14 @@ code {
 
 .simplesect-see {
   border-color: #008B00; }
+
+table.member-list td {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em; }
+table.member-list .member-desc p, table.member-list .member-name p, table.member-list .member-name a {
+  font-size: 0.9em;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  -webkit-margin-after: 0px;
+  line-height: 1.5em;
+  vertical-align: center; }

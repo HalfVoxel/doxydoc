@@ -115,3 +115,21 @@ code {
 .simplesect-see {
     border-color: #008B00;
 }
+
+table.member-list {
+
+    td {
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+    }
+
+    .member-desc p,  .member-name p, .member-name a {
+        font-size: 0.9em;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        -webkit-margin-after: 0px;
+        line-height: 1.5em;
+        vertical-align: center;
+    }
+
+}

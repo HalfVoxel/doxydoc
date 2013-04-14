@@ -3,3 +3,4 @@ html
 xml
 test
 .sass-cache
+.DS_STORE
