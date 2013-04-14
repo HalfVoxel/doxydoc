@@ -105,12 +105,16 @@ class DocState:
         DocState._docobjs[id] = obj
     
     @staticmethod
+    def has_docobj(id):
+        return id in DocState._docobjs
+
+    @staticmethod
     def get_docobj(id):
         return DocState._docobjs[id]
 
     @staticmethod
     def add_event(priority, callback):
-        heappush(DocState._events,(priority, callback))
+        heappush(DocState._events, (priority, callback))
 
     @staticmethod
     def next_event():

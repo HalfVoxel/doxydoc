@@ -28,7 +28,7 @@ def prettify_prefix(node):
 	if override:
 		assert node.find("type").text
 		overrideType = node.find("type").text.split()[0]
-		assert(overrideType != "override" and overrideType != "new", "Invalid override type: " + overrideType)
+		assert overrideType != "override" and overrideType != "new", "Invalid override type: " + overrideType
 
 		s.append(overrideType)
 
@@ -135,7 +135,6 @@ def match_external_ref(text):
 			ref_explicit(obj, words[i], obj.tooltip if hasattr(obj, "tooltip") else None)
 		except KeyError:
 			DocState.writer += words[i]
-
 
 def linked_text(node):
 	if node.text is not None:
@@ -283,14 +282,14 @@ def member_heading(m):
 		ls.append("static")
 
 	DocState.writer += ' '.join(ls)
-
-	type = m.type
-	if type is not None:
+	
+	#These kinds of members have a () list
+	if m.kind == "function":
 		if len(ls) > 0:
 			DocState.writer.element("span", None, {"class": 'member-type'})
 
 		#Write type
-		linked_text(type)
+		linked_text(m.type)
 
 	DocState.writer.element("/span")
 	DocState.writer.element("span", None, {"class": 'member-name'})
@@ -307,7 +306,7 @@ def member_heading(m):
 		DocState.writer += "("
 		for i, param in enumerate(m.params):
 			DocState.writer += " "
-			markup(param.type)
+			linked_text(param.type)
 
 			DocState.writer += " "
 
@@ -356,7 +355,7 @@ def markup(node):
 	for n in node:
 		result, ok = try_call_tiny(n.tag, n)
 		if not ok:
-			print("Not handled: " + n.tag)
+			print("[W1] Not handled: " + n.tag)
 			if n.text is not None:
 				DocState.writer += n.text
 
@@ -373,27 +372,28 @@ def sectbase(node):
 		if n == node:
 			continue
 
-		if n.tag is "para":
+
+		if n.tag == "para":
 			paragraph(n)
-		elif n.tag is "sect1":
+		elif n.tag == "sect1":
 			sect(n, 1)
-		elif n.tag is "sect2":
+		elif n.tag == "sect2":
 			sect(n, 2)
-		elif n.tag is "sect3":
+		elif n.tag == "sect3":
 			sect(n, 3)
-		elif n.tag is "sect4":
+		elif n.tag == "sect4":
 			sect(n, 4)
-		elif n.tag is "sect5":
+		elif n.tag == "sect5":
 			sect(n, 5)
-		elif n.tag is "simplesectsep":
+		elif n.tag == "simplesectsep":
 			doxytiny.simplesectsep(n)
-		elif n.tag is "title":
+		elif n.tag == "title":
 			#A sect should have been the parent, so it should have been handled
 			pass
 		elif n.tag == "internal":
 			internal(n)
 		else:
-			print("Not handled: " + n.tag)
+			print("[W2] Not handled: " + n.tag)
 
 def description(descnode):
 	if descnode is not None:

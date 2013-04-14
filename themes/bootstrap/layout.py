@@ -58,14 +58,17 @@ def member_heading(m):
     #DocState.writer.element("b",name)
     DocState.writer += name
 
-    if m.params is not None:
+    #These kinds of members have a () list
+    if m.kind == "function":
         DocState.writer += " "
 
         DocState.writer.element("span", None, {"class": "member-params"})
         DocState.writer += "("
         for i, param in enumerate(m.params):
             DocState.writer += " "
-            markup(param.type)
+
+            # Print the type of the parameter. Will also do some checking to add external types
+            linked_text(param.type)
 
             DocState.writer += " "
 

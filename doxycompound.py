@@ -136,7 +136,7 @@ def gather_member_doc(member):
     else:
         m.virtual = None
 
-    m.static = member.get_docobj("static") == "yes"
+    m.static = member.get("static") == "yes"
 
     m.reimplementedby = []
     for reimp in member.findall("reimplementedby"):
@@ -168,16 +168,19 @@ def gather_member_doc(member):
     m.briefdescription = member.find("briefdescription")
     m.detaileddescription = member.find("detaileddescription")
 
-    # Find type
-    m.type = member.find("type")
+    if m.kind != "enum":
+        # Find type
+        m.type = member.find("type")
 
-    # Is the member read only. Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
-    m.readonly = False if m.type is not None or m.type.text is not None else m.type.text.startswith("readonly")
-    
-    if m.type is not None and m.type.text is not None:
-        # Remove eventual 'override ' text at start of type.
-        m.type.text = re.sub("^(?:override|new|readonly)\s", "", m.type.text, 1)
-
+        # Is the member read only. Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
+        m.readonly = False if m.type is not None or m.type.text is not None else m.type.text.startswith("readonly")
+        
+        if m.type is not None and m.type.text is not None:
+            # Remove eventual 'override ' text at start of type.
+            m.type.text = re.sub("^(?:override|new|readonly)\s", "", m.type.text, 1)
+    else:
+        m.type = None
+        m.readonly = False
 
     # Parse(function) arguments
     argsstring = member.find("argsstring")
@@ -197,12 +200,14 @@ def gather_member_doc(member):
             o.description = None
             m.params.append(o)
     else:
-        m.params = None
+        m.params = []
 
     if m.detaileddescription is not None:
         paramdescs = m.detaileddescription.findall(".//parameterlist")
         m.paramdescs = []
 
+        ### TODO, Take care of 'Exception' "parameters"
+        
         for pd in paramdescs:
             #kind = pd.get("kind")
             ## Note use 'kind'
@@ -222,8 +227,9 @@ def gather_member_doc(member):
             
             m.paramdescs.append(o)
         
-        if m.params is not None and m.paramdescs is not None:
+        if m.params is None and len(m.paramdescs) > 0:
             print("Wait wut " + DocState.compound.name + "::" + m.name)
+       
         # Set descriptions on the parameter objects
         for pd in m.paramdescs:
             for name in pd.names:

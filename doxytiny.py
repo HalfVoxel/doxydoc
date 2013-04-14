@@ -72,6 +72,10 @@ def simplesectsep(n):
 	#DocState.writer.element("hr")
 	pass
 
+''' Parameter lists have been collected and stored in a more object oriented manner'''
+def parameterlist(n):
+	pass
+
 def title(n):
 	raise false, "Title tags should have been handled"
 

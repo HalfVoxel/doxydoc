@@ -122,10 +122,10 @@ def read_external():
     for line in f:
         arr = line.split(",")
         if len(arr) >= 2:
-            name = "__external__" + arr[0].strip()
+            name = arr[0].strip()
             url = arr[1].strip()
             obj = DocObj()
-            obj.id = name
+            obj.id = "__external__" + name
             obj.kind = "external"
             obj.name = name
             obj.exturl = url
@@ -153,6 +153,25 @@ def copy_resources():
     print("Copying resources")
 
     try:
+        plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
+        for moduleName in plugList:
+            resbase = os.path.join(os.path.join("themes", moduleName), "resources")
+            for root, dirs, files in os.walk(resbase):
+                dstroot = root.replace(resbase + "/", "")
+                dstroot = dstroot.replace(resbase, "")
+
+                try:
+                    os.makedirs(os.path.join("html", dstroot))
+                except:
+                    pass
+
+                for fn in files:
+                    fn2 = os.path.join(root, fn)
+                    shutil.copy2(fn2, os.path.join(os.path.join("html", dstroot), fn))
+    except OSError:
+        print("Error while copying theme resources")
+
+    try:
         resbase = "resources"
         for root, dirs, files in os.walk(resbase):
             dstroot = root.replace(resbase + "/", "")
@@ -173,11 +192,39 @@ def copy_resources():
         raise
 
 def read_prefs():
-    header = file("resources/header.html")
+
+    header = None
+    footer = None
+
+    try:
+        plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
+        for moduleName in plugList:
+            resbase = os.path.join(os.path.join("themes", moduleName), "resources")
+            if os.path.exists(os.path.join(resbase, "header.html")):
+                header = file(os.path.join(resbase, "header.html"))
+
+            if os.path.exists(os.path.join(resbase, "footer.html")):
+                footer = file(os.path.join(resbase, "footer.html"))
+    except OSError:
+        print ("Error reading theme header and footer")
+
+    if os.path.exists("resources/header.html"):
+        header = file("resources/header.html")
+
+    if os.path.exists("resources/footer.html"):
+        footer = file("resources/footer.html")
+
+    if header is None:
+        print ("Could not find a header.html file in either 'resources' or a theme's 'resources' folder")
+        sys.exit(1)
+
+    if footer is None:
+        print ("Could not find a footer.html file in either 'resources' or a theme's 'resources' folder")
+        sys.exit(1)
+
     DocSettings.header = header.read()
     header.close()
 
-    footer = file("resources/footer.html")
     DocSettings.footer = footer.read()
     footer.close()
 
