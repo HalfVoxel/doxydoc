@@ -11,7 +11,15 @@ body {
     padding-top: 25px;
 }
 
+h1 {
+}
+
+span.file-location {
+    color: #BDBDBD;
+}
+
 .memberdef {
+    position: relative;
     border-width: 2px;
     border-style: solid;
     border-width: 2px;
@@ -92,6 +100,33 @@ code {
     }
 }
 
+.label {
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.member-side-prot {
+    position: absolute;
+    left: -75px;
+    width: 70px;
+    text-align: right;
+
+    span {
+        margin-bottom: 3px;
+    }
+    //width: 100px;
+
+}
+
+.empty-section {
+    font-size: 0.9em;
+    color: #BBB;
+}
+
+.compound-kind {
+    color: #888;
+}
+
 .simplesect {
     border-style: solid;
     border-width: 0px 0px 0px 4px;
@@ -112,24 +147,45 @@ code {
     }
 }
 
-.simplesect-see {
-    border-color: #008B00;
+.simplesect-return                          { border-color: #505050; }
+.simplesect-author, .simplesect-authors     { border-color: #0BAA0B; }
+.simplesect-version                         { border-color: #0BAA0B; }
+.simplesect-since                           { border-color: #D48B0D; }
+.simplesect-date                            { border-color: #505050; }
+.simplesect-note                            { border-color: #15458C; }
+.simplesect-warning                         { border-color: #D40D0D; }
+.simplesect-pre                             { border-color: #505050; }
+.simplesect-post                            { border-color: #505050; }
+.simplesect-copyright                       { border-color: #505050; }
+.simplesect-invariant                       { border-color: #505050; }
+.simplesect-remark                          { border-color: #15458C; }
+.simplesect-attention                       { border-color: #D48B0D; }
+.simplesect-par                             { border-color: #505050; }
+.simplesect-rcs                             { border-color: #505050; }
+.simplesect-see                             { border-color: #0BAA0B; }
+
+
+.member-list h2 {
+    font-size: 2em;
+    line-height: 1.2em;
 }
 
-table.member-list {
+table.member-list-section {
 
     td {
         padding-top: 0.1em;
         padding-bottom: 0.1em;
     }
 
-    .member-desc p,  .member-name p, .member-name a {
+    .member-desc, .member-name, .member-type {
         font-size: 0.9em;
         margin-bottom: 0px;
         padding-bottom: 0px;
+    }
+
+    a, p, span {
         -webkit-margin-after: 0px;
         line-height: 1.5em;
         vertical-align: center;
     }
-
 }

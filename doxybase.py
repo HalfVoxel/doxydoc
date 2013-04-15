@@ -1,6 +1,7 @@
 from pprint import pprint
 from xml.sax.saxutils import escape
 from heapq import *
+import types
 
 def try_call_function(name, arg):
     try:
@@ -64,7 +65,11 @@ class StringBuilder:
             self.arr.append(">")
         
         if c is not None:
-            self.arr.append(escape(c))
+            if isinstance(c, types.FunctionType):
+                c()
+            else:
+                self.arr.append(escape(c))
+
             self.arr.append("</" + t + ">")
 
     def elem(self, t):
@@ -145,12 +150,6 @@ class DocState:
             DocState.writer = DocState._stack.pop()
         return s
 
-
-class DocSettings:
-    header = "<html>"
-    footer = "</html>"
-    external = {}
-
 class DocMember:
 
     pass
@@ -163,7 +162,11 @@ class NavItem:
 
 
 class DocObj:
-    
+    def __init__(self):
+        self.hidden = False
+        self.name = ""
+        self.id = ""
+
     def __str__(self):
         return "DocObj: " + self.id
 

@@ -22,6 +22,8 @@ def try_call_function(name, arg):
     result = methodToCall(arg)
     return result, True
 
+usedPaths = set()
+
 def register_compound(xml):
 
     obj = DocObj()
@@ -30,8 +32,18 @@ def register_compound(xml):
     obj.kind = xml.get("kind")
     # Will only be used for debugging if even that. Formatted name will be added later
     obj.name = xml.find("compoundname").text
-    # Format path. Use - instead of :: in path names(more url friendly)
+    # Format path. Use - instead of :: in path names (more url friendly)
     obj.path = obj.name.replace("::", "-")
+    #obj.path = obj.name.replace(".", "-")
+
+    counter = 1
+    while (obj.path + ("" if counter == 1 else str(counter))) in usedPaths:
+        counter += 1
+
+    if counter > 1:
+        obj.path = obj.path + str(counter)
+
+    usedPaths.add(obj.path)
 
     DocState.add_docobj(obj)
     xml.set("docobj", obj)
@@ -90,6 +102,8 @@ def load_plugins():
             print("Loading Tiny Overrides...")
             for k, v in obj.__dict__.iteritems():
                 if not k.startswith("_"):
+                    if (hasattr(doxytiny, k)):
+                        setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
                     setattr(doxytiny, k, v)
         except AttributeError:
             pass
@@ -99,6 +113,9 @@ def load_plugins():
             print("Loading Layout Overrides...")
             for k, v in obj.__dict__.iteritems():
                 if not k.startswith("_"):
+                    if (hasattr(doxylayout, k)):
+                        print ("Trying to override " + k + " adding _base_" + k)
+                        setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
                     setattr(doxylayout, k, v)
         except AttributeError:
             pass
@@ -108,7 +125,9 @@ def load_plugins():
             print("Loading Compound Overrides...")
             for k, v in obj.__dict__.iteritems():
                 if not k.startswith("_"):
-                    setattr(doxylayout, k, v)
+                    if (hasattr(doxycompound, k)):
+                        setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
+                    setattr(doxycompound, k, v)
         except AttributeError:
             pass
 

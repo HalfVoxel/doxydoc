@@ -1,5 +1,6 @@
 from doxybase import *
 import doxytiny
+from doxysettings import DocSettings
 
 INITIAL_HEADING_DEPTH = 2
 
@@ -11,6 +12,11 @@ def try_call_tiny(name, arg):
 
 	result = methodToCall(arg)
 	return result, True
+
+def is_hidden(docobj):
+	if docobj.hidden:
+		return True
+	return False
 
 def prettify_prefix(node):
 	s = []
@@ -65,16 +71,20 @@ def refcompound(refnode):
 	obj = obj.compound
 	assert obj
 
+
+	# Prevent recursive loops of links in the tooltips
 	DocState.depth_ref += 1
-	if DocState.depth_ref > 1:
+	if DocState.depth_ref > 1 or is_hidden(obj):
 		DocState.writer += obj.name
 	else:
+		# Write out anchor element
 		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
 	DocState.depth_ref -= 1
 
 def docobjref(obj):
+	# Prevent recursive loops of links in the tooltips
 	DocState.depth_ref += 1
-	if DocState.depth_ref > 1:
+	if DocState.depth_ref > 1 or is_hidden(obj):
 		DocState.writer += obj.name
 	else:
 		if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
@@ -84,6 +94,7 @@ def docobjref(obj):
 		else:
 			tooltip = None
 
+		# Write out anchor element
 		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
 	DocState.depth_ref -= 1
 
@@ -101,7 +112,7 @@ def ref(refnode):
 	#tooltip = refnode.get("tooltip")
 
 	DocState.depth_ref += 1
-	if DocState.depth_ref > 1:
+	if DocState.depth_ref > 1 or is_hidden(obj):
 		markup(refnode)
 	else:
 
@@ -119,7 +130,7 @@ def ref(refnode):
 
 def ref_explicit(obj, text, tooltip=None):
 	DocState.depth_ref += 1
-	if DocState.depth_ref > 1:
+	if DocState.depth_ref > 1 or is_hidden(obj):
 		DocState.writer += text
 	else:
 		DocState.writer.element("a", text, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
@@ -179,6 +190,12 @@ def navheader():
 def pagetitle(title):
 	DocState.writer.element("h1", title)
 
+def file_path(path):
+	if path is None:
+		return
+
+	DocState.writer.element("span", path, {"class": "file-location"})
+
 def member_section_heading(section):
 	#skind = section.get("kind")
 	#skind = skind.replace("-"," ")
@@ -189,54 +206,72 @@ def member_section_heading(section):
 
 	DocState.writer.element("h2", section[0])
 
-def get_member_sections(members):
+''' Returns a list of sections in which to group members for display '''
+def get_member_sections(compound, members):
 	sections = []
-	sections.append(("Public Variables", filter(lambda m: m.protection is "public" and m.kind is "variable", members)))
-	sections.append(("All Members", members))
+
+	sections.append(("Public Variables", filter(lambda m: m.protection == "public" and m.kind == "variable" and not m.static and m.compound == compound, members)))
+	sections.append(("Public Methods", filter(lambda m: m.protection == "public" and m.kind == "function" and not m.static and m.compound == compound, members)))
+	sections.append(("Public Static Variables", filter(lambda m: m.protection == "public" and m.kind == "variable" and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Methods", filter(lambda m: m.protection == "public" and m.kind == "function" and m.static and m.compound == compound, members)))
+	sections.append(("Private Members", filter(lambda m: m.protection != "public" and m.compound == compound, members)))
+	
+	# Handling it specially, it's no point explicitly showing an empty section when a class does no inherit any members
+	ls = filter(lambda m: m.compound != compound, members)
+	if len(ls) > 0:
+		sections.append(("Inherited Members", ls))
+	
+	#sections.append(("All Members", members))
 	return sections
+
+''' Shows the protection of a member in the table/list view '''
+def member_list_protection(member):
+
+	DocState.writer.element("span", member.protection.title())
+
+	if member.readonly:
+		DocState.writer.element("span", "Readonly")
+	if member.static:
+		DocState.writer.element("span", "Static")
+
+''' Displays the member's type. Used in the members table '''
+def member_list_type(member):
+	if member.type is not None:
+		# Write type
+		linked_text(member.type)
+	
 
 def members_list(docobj):
 
-	sections = get_member_sections(docobj.members)
+	DocState.writer.element("div", None, {"class": "member-list"})
+
+	sections = get_member_sections(docobj, docobj.all_members)
 
 	for section in sections:
 
+		members = section[1]
+
+		if len(members) == 0:
+			continue
+
 		DocState.writer.element("h2", section[0])
 
-		DocState.writer.element("table", None, {'class': 'table table-condensed table-striped member-list'})
+		DocState.writer.element("table", None, {'class': 'table table-condensed table-striped member-list-section'})
 
-		members = section[1]
 		for m in members:
 			DocState.writer.element("tr")
 
-			# DocState.writer.element("td", None, {'class': 'member-prot'})
-			# if m.protection is not None:
-			# 	labelStyle = ""
-			# 	if m.protection is "public":
-			# 		labelStyle = "label-success"
-			# 	elif m.protection is "private":
-			# 		labelStyle = "label-inverse"
-			# 	elif m.protection is "protected":
-			# 		labelStyle = "label-warning"
-			# 	elif m.protection is "package":
-			# 		labelStyle = "label-info"
-
-			# 	DocState.writer.element("span", m.protection.title(), {"class": "label " + labelStyle})
-
-			# if m.readonly:
-			# 	DocState.writer.element("span", "Readonly", {"class": "label label-warning"})
-			# if m.static:
-			# 	DocState.writer.element("span", "Static", {"class": "label label-info"})
-
-			# DocState.writer.element("/td")
-
-			# DocState.writer.element("td", None, {'class': 'member-type'})
-			# type = m.type
-			# if type is not None:
-
-			# 	#Write type
-			# 	linked_text(type)
-			# DocState.writer.element("/td")
+			# Show protection in table if requested
+			if DocSettings.show_member_protection_in_list:
+				DocState.writer.element("td", None, {'class': 'member-prot'})
+				member_list_protection(m)
+				DocState.writer.element("/td")
+			
+			# Show type in table if requested
+			if DocSettings.show_member_protection_in_list:
+				DocState.writer.element("td", None, {'class': 'member-type'})
+				member_list_type(m)
+				DocState.writer.element("/td")
 
 			DocState.writer.element("td", None, {'class': 'member-name'})
 			ref_explicit(m, m.name)
@@ -252,19 +287,37 @@ def members_list(docobj):
 
 		DocState.writer.element("/table")
 
+	DocState.writer.element("/div")
+
+def members_section_empty_message(section):
+	DocState.writer.element("p", "Seems there are no members to be listed here", {"class": "empty-section"})
+
 def members(docobj):
 
-	sections = get_member_sections(docobj.members)
+	sections = get_member_sections(docobj, docobj.members)
 
 	for section in sections:
+
+		members = section[1]
+
+		if not DocSettings.keep_empty_member_sections:
+			if sum(not is_hidden(m) for m in members) == 0:
+				continue
 
 		DocState.writer.html("<div class ='member-sec'>")
 
 		member_section_heading(section)
 
+		count = 0
 		members = section[1]
 		for m in members:
-			member(m)
+			# Ignore hidden members
+			if not is_hidden(m):
+				member(m)
+				count += 1
+
+		if count == 0:
+			members_section_empty_message(section)
 
 		DocState.writer.html("</div>")
 
@@ -454,12 +507,42 @@ def page_list_inner(obj):
 
 	for p in pages:
 		DocState.writer.element("li")
-		print("Depth: " + str(DocState.depth_ref))
 		docobjref(p)
 		page_list_inner(p)
 		DocState.writer.element("/li")
 
 	DocState.writer.element("/ul")
+
+def group_list_inner_classes(objs):
+	DocState.writer.element("table", None, {"class": "inner-class-list table table-condensed table-striped"})
+	for n in objs:
+		DocState.writer.element("tr")
+		DocState.writer.element("td", lambda: docobjref(n))
+		DocState.writer.element("td", lambda: description(n.briefdescription))
+		DocState.writer.element("/tr")
+
+	DocState.writer.element("/table")
+
+def group_list_inner_namespaces(objs):
+	group_list_inner_classes(objs)
+
+def group_list_inner_groups(objs):
+	group_list_inner_classes(objs)
+
+''' Show a list of classes a file contains.
+	\param obj A list of DocObj
+'''
+def file_list_inner_classes(obj):
+	''' \bug Either class, struct or interface '''
+	DocState.writer.element("h4", "This file defines the following class" + ("es" if len(obj) > 1 else "") + ":")
+	DocState.writer.element("ul", None, {"class": "inner-class-list"})
+	for n in obj:
+		DocState.writer.element("li", lambda: docobjref(n))
+
+	DocState.writer.element("/ul")
+
+def file_list_inner_namespaces(obj):
+	pass
 
 def namespace_list_inner(obj):
 

@@ -62,6 +62,70 @@ def gather_specials():
     navitem.ref = DocState.get_docobj("indexpage")
     DocState.navitems.append(navitem)
     
+    gather_examples_page()
+
+def gather_examples_page():
+
+    anyExamples = False
+    for k, obj in DocState._docobjs.iteritems():
+        if obj.kind == "example":
+            anyExamples = True
+            break
+
+    if not anyExamples:
+        return
+
+    # Examples Page
+    obj = DocObj()
+    obj.kind = "special"
+    obj.compound = None
+    obj.id = "examples-listing"
+    obj.name = "Examples"
+    obj.briefdescription = "Listing of all examples"
+    obj.detaileddescription = ""
+    obj.path = "examples"
+
+    #Generator function required for special pages
+    obj.generator = generate_examples_page
+    DocState.add_docobj(obj)
+
+    # Add navigation item
+    navitem = NavItem()
+    navitem.label = "Examples"
+    navitem.order = 5
+    navitem.ref = obj
+    DocState.navitems.append(navitem)
+
+def generate_examples_page(obj):
+    DocState.pushwriter()
+    DocState.currentobj = obj
+
+    doxylayout.header()
+    doxylayout.navheader()
+
+    doxylayout.begin_content()
+    if obj.briefdescription is not None:
+        DocState.writer.element("p", obj.briefdescription)
+    if obj.detaileddescription is not None:
+        DocState.writer.element("p", obj.detaileddescription)
+
+    #doxylayout.examples_list_inner()
+    DocState.writer.element("ul", None, {"class": "examples-list"})
+    for k, o in DocState._docobjs.iteritems():
+        if o.kind == "example":
+            DocState.writer.element("li", lambda: doxylayout.docobjref(o))
+
+    DocState.writer.element("/ul")
+
+    doxylayout.end_content()
+
+    doxylayout.footer()
+
+    print ("Generating examples page at " + obj.full_path())
+    f = open(obj.full_path(), "w")
+    s = DocState.popwriter()
+    f.write(s)
+    f.close()
 
 def generate_pages_page(obj):
     DocState.pushwriter()

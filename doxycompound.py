@@ -2,6 +2,8 @@ from doxybase import *
 #import doxyext
 import doxylayout
 import re
+import doxytiny
+from doxysettings import DocSettings
 
 def process_references_root(root):
 
@@ -45,18 +47,112 @@ def gather_compound_doc(xml):
 
     DocState.compound = compound
     
-    if compound.kind == "class" or compound.kind == "struct":
+    if compound.kind == "class" or compound.kind == "struct" or compound.kind == "interface":
         gather_class_doc(xml)
     elif compound.kind == "page":
         gather_page_doc(xml)
     elif compound.kind == "namespace":
         gather_namespace_doc(xml)
+    elif compound.kind == "file":
+        gather_file_doc(xml)
+    elif compound.kind == "example":
+        gather_example_doc(xml)
+    elif compound.kind == "group":
+        gather_group_doc(xml)
     else:
         print("Skipping " + compound.kind + " " + compound.name)
         return
 
 def formatname(t):
     return t.replace("::", ".")
+
+''' Returns if the member's detailed view should be hidden '''
+def is_detail_hidden(member):
+    # Check if the member is undocumented
+    if DocSettings.hide_undocumented and (member.detaileddescription.text is None or member.detaileddescription.text.isspace()):
+        if member.detaileddescription.text is None:
+            return True
+
+        count = 0
+        for v in member.detaileddescription.iter():
+            count += 1
+            if (count > 1):
+                break
+
+        # If we only visited the root node (member.detaileddescription), then it has no children and so the detaileddescription is empty
+        if count == 1:
+            return True
+
+    return False
+
+def gather_group_doc(xml):
+
+    # name
+    # kind
+    # briefdesc
+    # detaileddesc
+        
+    obj = xml.get("docobj")
+    #id should already be set
+    obj.name = formatname(xml.find("compoundname").text)
+    obj.title = formatname(xml.find("title").text)
+    obj.kind = xml.get("kind")
+    obj.briefdescription = xml.find("briefdescription")
+    obj.detaileddescription = xml.find("detaileddescription")
+
+    obj.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
+    obj.innernamespaces = [node.get("ref") for node in xml.findall("innernamespace")]
+
+    obj.innergroups = [node.get("ref") for node in xml.findall("innergroup")]
+
+def gather_example_doc(xml):
+
+    # name
+    # kind
+    # briefdesc
+    # detaileddesc
+        
+    obj = xml.get("docobj")
+    #id should already be set
+    obj.name = formatname(xml.find("compoundname").text)
+    obj.kind = xml.get("kind")
+    obj.briefdescription = xml.find("briefdescription")
+    obj.detaileddescription = xml.find("detaileddescription")
+
+def gather_file_doc(xml):
+
+    # name
+    # kind
+    # briefdesc
+    # detaileddesc
+    # innerclasses
+    # innernamespaces
+    # contents (programlisting)
+    # location
+        
+    obj = xml.get("docobj")
+    #id should already be set
+    obj.name = formatname(xml.find("compoundname").text)
+    obj.kind = xml.get("kind")
+    obj.briefdescription = xml.find("briefdescription")
+    obj.detaileddescription = xml.find("detaileddescription")
+
+    obj.innerclasses = []
+    for node in xml.findall("innerclass"):
+        obj.innerclasses.append(node.get("ref"))
+
+    obj.innernamespaces = []
+    for node in xml.findall("innernamespace"):
+        obj.innernamespaces.append(node.get("ref"))
+
+    obj.contents = xml.find("programlisting")
+
+    # Find location of file
+    loc = xml.find("location")
+    obj.location = loc.get("file") if loc is not None else None
+
+    if not DocSettings.show_source_files:
+        obj.hidden = True
 
 def gather_class_doc(xml):
 
@@ -98,6 +194,12 @@ def gather_class_doc(xml):
     for node in xml.findall("derivedcompoundref"):
         obj.derived.append(node.get("ref"))
 
+    # All members, also inherited ones
+    obj.all_members = [m.get("ref") for m in xml.find("listofallmembers")]
+    for m in xml.find("listofallmembers"):
+        if m.get("ref") is None:
+            print ("NULL REFERENCE " + m.find("name").text + " " + m.find("scope").text)
+            print ("Sure not old files are in the xml directory")
 
 def gather_member_doc(member):
 
@@ -240,6 +342,10 @@ def gather_member_doc(member):
                         break
 
 
+    # Depending on settings, this object be hidden
+    # If .hidden is true, no links to it will be generated, instead just plain text
+    m.hidden = is_detail_hidden(m)
+
 def gather_page_doc(xml):
 
     # xml
@@ -309,11 +415,13 @@ def gather_namespace_doc(xml):
         obj.members.append(member.get("docobj"))
 
 
-
 def generate_compound_doc(xml):
 
     compound = xml.get("docobj")
     
+    if compound.hidden:
+        return
+
     DocState.pushwriter()
     DocState.currentobj = compound
 
@@ -323,6 +431,12 @@ def generate_compound_doc(xml):
         generate_page_doc(compound)
     elif compound.kind == "namespace":
         generate_namespace_doc(compound)
+    elif compound.kind == "file":
+        generate_file_doc(compound)
+    elif compound.kind == "example":
+        generate_example_doc(compound)
+    elif compound.kind == "group":
+        generate_group_doc(compound)
     else:
         print("Skipping " + compound.kind + " " + compound.name)
         DocState.popwriter()
@@ -337,6 +451,80 @@ def generate_compound_doc(xml):
 
     #generage_page_doc(compound)
 
+def generate_group_doc(compound):
+    
+    doxylayout.header()
+
+    doxylayout.navheader()
+
+    doxylayout.begin_content()
+
+    def title():
+        DocState.writer.element("span", compound.kind.title(), {"class": "compound-kind"})
+        DocState.writer.element("span", " " + compound.title)
+
+    doxylayout.pagetitle(title)
+
+    doxylayout.description(compound.briefdescription)
+    doxylayout.description(compound.detaileddescription)
+
+    doxylayout.group_list_inner_groups(compound.innergroups)
+    doxylayout.group_list_inner_classes(compound.innerclasses)
+    doxylayout.group_list_inner_namespaces(compound.innernamespaces)
+
+    doxylayout.end_content()
+    doxylayout.footer()
+
+def generate_example_doc(compound):
+
+    doxylayout.header()
+
+    doxylayout.navheader()
+
+    doxylayout.begin_content()
+
+    def title():
+        DocState.writer.element("span", compound.kind.title(), {"class": "compound-kind"})
+        DocState.writer.element("span", " " + compound.name)
+
+    doxylayout.pagetitle(title)
+
+    doxylayout.description(compound.briefdescription)
+    doxylayout.description(compound.detaileddescription)
+
+    doxylayout.end_content()
+    doxylayout.footer()
+
+def generate_file_doc(compound):
+
+    doxylayout.header()
+
+    doxylayout.navheader()
+
+    doxylayout.begin_content()
+
+    def title():
+        DocState.writer.element("span", compound.kind.title(), {"class": "compound-kind"})
+        DocState.writer.element("span", " " + compound.name)
+
+    doxylayout.pagetitle(title)
+
+    if DocSettings.show_file_paths:
+        doxylayout.file_path(compound.location)
+
+    doxylayout.description(compound.briefdescription)
+    doxylayout.description(compound.detaileddescription)
+
+    if len(compound.innerclasses) > 0:
+        doxylayout.file_list_inner_classes(compound.innerclasses)
+
+    if len(compound.innernamespaces) > 0:
+        doxylayout.file_list_inner_namespaces(compound.innernamespaces)
+
+    doxytiny.programlisting(compound.contents)
+    doxylayout.end_content()
+    doxylayout.footer()
+
 def generate_class_doc(compound):
 
     doxylayout.header()
@@ -344,7 +532,12 @@ def generate_class_doc(compound):
     doxylayout.navheader()
 
     doxylayout.begin_content()
-    doxylayout.pagetitle(compound.kind.title() + " " + compound.name)
+
+    def title():
+        DocState.writer.element("span", compound.kind.title(), {"class": "compound-kind"})
+        DocState.writer.element("span", " " + compound.name)
+
+    doxylayout.pagetitle(title)
 
     doxylayout.description(compound.briefdescription)
     doxylayout.description(compound.detaileddescription)
@@ -378,7 +571,12 @@ def generate_namespace_doc(compound):
     doxylayout.navheader()
 
     doxylayout.begin_content()
-    doxylayout.pagetitle("Namespace " + compound.name)
+    
+    def title():
+        DocState.writer.element("span", compound.kind.title(), {"class": "compound-kind"})
+        DocState.writer.element("span", " " + compound.name)
+
+    doxylayout.pagetitle(title)
 
     doxylayout.description(compound.briefdescription)
     doxylayout.description(compound.detaileddescription)
