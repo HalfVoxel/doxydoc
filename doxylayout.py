@@ -210,6 +210,10 @@ def member_section_heading(section):
 def get_member_sections(compound, members):
 	sections = []
 
+	for m in members:
+		if not hasattr(m,"protection"):
+			dump(m)
+
 	sections.append(("Public Variables", filter(lambda m: m.protection == "public" and m.kind == "variable" and not m.static and m.compound == compound, members)))
 	sections.append(("Public Methods", filter(lambda m: m.protection == "public" and m.kind == "function" and not m.static and m.compound == compound, members)))
 	sections.append(("Public Static Variables", filter(lambda m: m.protection == "public" and m.kind == "variable" and m.static and m.compound == compound, members)))

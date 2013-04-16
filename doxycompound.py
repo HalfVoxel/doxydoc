@@ -96,7 +96,6 @@ def gather_group_doc(xml):
     #id should already be set
     obj.name = formatname(xml.find("compoundname").text)
     obj.title = formatname(xml.find("title").text)
-    obj.kind = xml.get("kind")
     obj.briefdescription = xml.find("briefdescription")
     obj.detaileddescription = xml.find("detaileddescription")
 
@@ -115,7 +114,6 @@ def gather_example_doc(xml):
     obj = xml.get("docobj")
     #id should already be set
     obj.name = formatname(xml.find("compoundname").text)
-    obj.kind = xml.get("kind")
     obj.briefdescription = xml.find("briefdescription")
     obj.detaileddescription = xml.find("detaileddescription")
 
@@ -133,7 +131,6 @@ def gather_file_doc(xml):
     obj = xml.get("docobj")
     #id should already be set
     obj.name = formatname(xml.find("compoundname").text)
-    obj.kind = xml.get("kind")
     obj.briefdescription = xml.find("briefdescription")
     obj.detaileddescription = xml.find("detaileddescription")
 
@@ -270,12 +267,14 @@ def gather_member_doc(member):
     m.briefdescription = member.find("briefdescription")
     m.detaileddescription = member.find("detaileddescription")
 
+    m.initializer = member.find("initializer")
+
     if m.kind != "enum":
         # Find type
         m.type = member.find("type")
 
         # Is the member read only. Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
-        m.readonly = False if m.type is not None or m.type.text is not None else m.type.text.startswith("readonly")
+        m.readonly = False if m.type is None or m.type.text is None else m.type.text.startswith("readonly")
         
         if m.type is not None and m.type.text is not None:
             # Remove eventual 'override ' text at start of type.
@@ -283,6 +282,15 @@ def gather_member_doc(member):
     else:
         m.type = None
         m.readonly = False
+
+        vals = member.findall("enumvalue")
+        m.enumvalues = []
+        for val in vals:
+            # Doxygen does not set the kind for these members, so we set it here for simplicity
+            val.set("kind","enumvalue")
+            gather_member_doc(val)
+            m.enumvalues.append(val.get("docobj"))
+
 
     # Parse(function) arguments
     argsstring = member.find("argsstring")
