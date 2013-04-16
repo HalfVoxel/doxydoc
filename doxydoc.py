@@ -22,114 +22,52 @@ def try_call_function(name, arg):
     result = methodToCall(arg)
     return result, True
 
-usedPaths = set()
-
-def register_compound(xml):
-
-    obj = DocObj()
-
-    obj.id = xml.get("id")
-    obj.kind = xml.get("kind")
-    # Will only be used for debugging if even that. Formatted name will be added later
-    obj.name = xml.find("compoundname").text
-    # Format path. Use - instead of :: in path names (more url friendly)
-    obj.path = obj.name.replace("::", "-")
-    #obj.path = obj.name.replace(".", "-")
-
-    counter = 1
-    while (obj.path + ("" if counter == 1 else str(counter))) in usedPaths:
-        counter += 1
-
-    if counter > 1:
-        obj.path = obj.path + str(counter)
-
-    usedPaths.add(obj.path)
-
-    DocState.add_docobj(obj)
-    xml.set("docobj", obj)
-
-    #Workaround for doxygen apparently generating refid:s which do not exist as id:s
-    id2 = obj.id + "_1" + obj.id
-    #if id2 in docobjs:
-    #    print "Warning: Overwriting id " + id2
-
-    DocState.add_docobj(obj, id2)
-
-    ids = xml.findall(".//*[@id]")
-
-    parent = obj
-
-    for idnode in ids:
-
-        obj, ok = try_call_function("parseid_" + idnode.tag, idnode)
-        if not ok:
-            obj = DocObj()
-            obj.id = idnode.get("id")
-            obj.kind = idnode.get("kind")
-
-            #print(idnode.get("id"))
-            namenode = idnode.find("name")
-
-            if namenode is not None:
-                obj.name = namenode.text
-            else:
-                obj.name = "<undefined " + idnode.tag + "-" + obj.id + " >"
-
-            obj.anchor = obj.name
-
-        if obj is not None:
-            obj.compound = parent
-
-            idnode.set("docobj", obj)
-            DocState.add_docobj(obj)
-            #print(obj.full_url())
-
-    #print(docobjs)
-
 def load_plugins():
 
     print("Loading Plugins...")
 
-    plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
+    dirs = ["plugins", "themes"]
 
-    for moduleName in plugList:
-        mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), ["themes"])
-        mObject = imp.load_module(moduleName, mFile, mPath, mDescription)
-        print("Loading Theme: " + moduleName)
+    for dir in dirs:
+        plugList = [f for f in listdir(dir) if isdir(join(dir, f))]
 
-        try:
-            obj = getattr(mObject, "tiny")
-            print("Loading Tiny Overrides...")
-            for k, v in obj.__dict__.iteritems():
-                if not k.startswith("_"):
-                    if (hasattr(doxytiny, k)):
-                        setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
-                    setattr(doxytiny, k, v)
-        except AttributeError:
-            pass
+        for moduleName in plugList:
+            mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), [dir])
+            mObject = imp.load_module(moduleName, mFile, mPath, mDescription)
+            print("Loading Theme/Plugin: " + moduleName)
 
-        try:
-            obj = getattr(mObject, "layout")
-            print("Loading Layout Overrides...")
-            for k, v in obj.__dict__.iteritems():
-                if not k.startswith("_"):
-                    if (hasattr(doxylayout, k)):
-                        print ("Trying to override " + k + " adding _base_" + k)
-                        setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
-                    setattr(doxylayout, k, v)
-        except AttributeError:
-            pass
+            try:
+                obj = getattr(mObject, "tiny")
+                print("Loading Tiny Overrides...")
+                for k, v in obj.__dict__.iteritems():
+                    if not k.startswith("_"):
+                        if (hasattr(doxytiny, k)):
+                            setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
+                        setattr(doxytiny, k, v)
+            except AttributeError:
+                pass
 
-        try:
-            obj = getattr(mObject, "compound")
-            print("Loading Compound Overrides...")
-            for k, v in obj.__dict__.iteritems():
-                if not k.startswith("_"):
-                    if (hasattr(doxycompound, k)):
-                        setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
-                    setattr(doxycompound, k, v)
-        except AttributeError:
-            pass
+            try:
+                obj = getattr(mObject, "layout")
+                print("Loading Layout Overrides...")
+                for k, v in obj.__dict__.iteritems():
+                    if not k.startswith("_"):
+                        if (hasattr(doxylayout, k)):
+                            setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
+                        setattr(doxylayout, k, v)
+            except AttributeError:
+                pass
+
+            try:
+                obj = getattr(mObject, "compound")
+                print("Loading Compound Overrides...")
+                for k, v in obj.__dict__.iteritems():
+                    if not k.startswith("_"):
+                        if (hasattr(doxycompound, k)):
+                            setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
+                        setattr(doxycompound, k, v)
+            except AttributeError:
+                pass
 
 def read_external():
     print("Reading exteral")
@@ -252,7 +190,7 @@ def scan_input():
 
     print("Scanning input")
 
-    compounds = DocState.compounds = []
+    compounds = DocState.input_xml = []
     roots = DocState.roots = []
 
     i = 0
@@ -278,7 +216,7 @@ def scan_input():
 
             if compound is not None:
                 compounds.append(compound)
-                register_compound(compound)
+                DocState.register_compound(compound)
         except Exception as e:
             print(fname)
             raise e
@@ -299,7 +237,7 @@ def process_references():
 def process_compounds():
     print("\nProcessing Compounds...")
 
-    compounds = DocState.compounds
+    compounds = DocState.input_xml
 
     i = 0
     for compound in compounds:
@@ -311,13 +249,13 @@ def process_compounds():
 def build_compound_output():
     print("\nBuilding Output...")
 
-    compounds = DocState.compounds
+    pages = DocState.pages
 
     i = 0
-    for compound in compounds:
-        progressbar(i + 1, len(compounds))
+    for page in pages:
+        progressbar(i + 1, len(pages))
 
-        generate_compound_doc(compound)
+        generate_compound_doc(page)
         i += 1
 
 def main():

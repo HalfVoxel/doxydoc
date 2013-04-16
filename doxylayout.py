@@ -211,14 +211,49 @@ def get_member_sections(compound, members):
 	sections = []
 
 	for m in members:
-		if not hasattr(m,"protection"):
+		if not hasattr(m, "protection"):
 			dump(m)
 
-	sections.append(("Public Variables", filter(lambda m: m.protection == "public" and m.kind == "variable" and not m.static and m.compound == compound, members)))
-	sections.append(("Public Methods", filter(lambda m: m.protection == "public" and m.kind == "function" and not m.static and m.compound == compound, members)))
-	sections.append(("Public Static Variables", filter(lambda m: m.protection == "public" and m.kind == "variable" and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Methods", filter(lambda m: m.protection == "public" and m.kind == "function" and m.static and m.compound == compound, members)))
-	sections.append(("Private Members", filter(lambda m: m.protection != "public" and m.compound == compound, members)))
+# <xsd:simpleType name="DoxMemberKind">
+#     <xsd:restriction base="xsd:string">
+#       <xsd:enumeration value="define" />
+#       <xsd:enumeration value="property" />
+#       <xsd:enumeration value="event" />
+#       <xsd:enumeration value="variable" />
+#       <xsd:enumeration value="typedef" />
+#       <xsd:enumeration value="enum" />
+#       <xsd:enumeration value="function" />
+#       <xsd:enumeration value="signal" />
+#       <xsd:enumeration value="prototype" />
+#       <xsd:enumeration value="friend" />
+#       <xsd:enumeration value="dcop" />
+#       <xsd:enumeration value="slot" />
+#     </xsd:restriction>
+#   </xsd:simpleType>
+
+
+	sections.append(("Public Methods", filter(lambda m: m.protection 	== "public" and m.kind == "function" 	and not m.static and m.compound == compound, members)))
+	sections.append(("Public Properties", filter(lambda m: m.protection == "public" and m.kind == "property" 	and not m.static and m.compound == compound, members)))
+	sections.append(("Public Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and not m.static and m.compound == compound, members)))
+	sections.append(("Public Events", filter(lambda m: m.protection 	== "public" and m.kind == "event" 		and not m.static and m.compound == compound, members)))
+	sections.append(("Public Typedefs", filter(lambda m: m.protection 	== "public" and m.kind == "typedef" 	and not m.static and m.compound == compound, members)))
+	sections.append(("Public Signals", filter(lambda m: m.protection 	== "public" and m.kind == "signal" 		and not m.static and m.compound == compound, members)))
+	sections.append(("Public Prototypes", filter(lambda m: m.protection == "public" and m.kind == "prototype" 	and not m.static and m.compound == compound, members)))
+	sections.append(("Public Friends", filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and not m.static and m.compound == compound, members)))
+	sections.append(("Public Slots", filter(lambda m: m.protection 		== "public" and m.kind == "slot" 		and not m.static and m.compound == compound, members)))
+
+	sections.append(("Public Static Methods", filter(lambda m: m.protection 	== "public" and m.kind == "function" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Properties", filter(lambda m: m.protection 	== "public" and m.kind == "property" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Events", filter(lambda m: m.protection 		== "public" and m.kind == "event" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Typedefs", filter(lambda m: m.protection 	== "public" and m.kind == "typedef" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Signals", filter(lambda m: m.protection 	== "public" and m.kind == "signal" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Prototypes", filter(lambda m: m.protection 	== "public" and m.kind == "prototype" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Friends", filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Slots", filter(lambda m: m.protection 		== "public" and m.kind == "slot" 		and m.static and m.compound == compound, members)))
+
+	sections.append(("Private Members", filter(lambda m: m.protection 			!= "public" and m.compound == compound, members)))
 	
 	# Handling it specially, it's no point explicitly showing an empty section when a class does no inherit any members
 	ls = filter(lambda m: m.compound != compound, members)
@@ -243,7 +278,32 @@ def member_list_type(member):
 	if member.type is not None:
 		# Write type
 		linked_text(member.type)
-	
+
+def enum_members(members):
+
+	DocState.writer.element("ul", None, {'class': 'enum-members'})
+
+	for m in members:
+		DocState.writer.element("li")
+		
+		DocState.writer.element("p")
+		DocState.writer.element("b")
+		ref_explicit(m, m.name)
+		DocState.writer += " "
+		DocState.writer.element("/b")
+		if m.initializer is not None:
+			DocState.writer.element("span", lambda: linked_text(m.initializer))
+		DocState.writer.element("/p")
+
+		description(m.briefdescription)
+		description(m.detaileddescription)
+
+		DocState.writer.element("/td")
+
+		DocState.writer.element("/li")
+
+
+	DocState.writer.element("/ul")
 
 def members_list(docobj):
 

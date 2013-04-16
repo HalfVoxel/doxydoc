@@ -2,6 +2,7 @@ from pprint import pprint
 from xml.sax.saxutils import escape
 from heapq import *
 import types
+import doxyext
 
 def try_call_function(name, arg):
     try:
@@ -91,14 +92,17 @@ class DocState:
     currentobj = None
     navitems = []
 
+    pages = []
     roots = None
-    compounds = None
+    input_xml = None
 
     ''' Prevents infinte loops of tooltips in links by disabling links after a certain depth '''
     depth_ref = 0
 
     _events = []
     _docobjs = {}
+
+    _usedPaths = set()
 
     @staticmethod
     def add_docobj(obj, id=None):
@@ -150,6 +154,103 @@ class DocState:
             DocState.writer = DocState._stack.pop()
         return s
 
+    ''' Register a page with a docobj and xml node.
+        Assumed to be a node in a previously found compound xml file
+    '''
+    @staticmethod
+    def register_page(obj, xml):
+        obj.path = obj.name.replace("::", "-")
+        obj.anchor = None
+
+        DocState.pages.append(obj)
+
+        counter = 1
+        while (obj.path + ("" if counter == 1 else str(counter))) in DocState._usedPaths:
+            counter += 1
+
+        if counter > 1:
+            obj.path = obj.path + str(counter)
+
+        DocState._usedPaths.add(obj.path)
+
+        DocState.add_docobj(obj)
+
+        ids = xml.findall(".//*[@id]")
+
+        parent = obj
+
+        # Set all child nodes to refer to this page instead of the original page
+        for idnode in ids:
+
+            obj = idnode.get("docobj")
+
+            if obj is not None:
+                obj.compound = parent
+    
+    @staticmethod
+    def register_compound(xml):
+
+        obj = DocObj()
+
+        DocState.pages.append(obj)
+        obj.id = xml.get("id")
+        obj.kind = xml.get("kind")
+        # Will only be used for debugging if even that. Formatted name will be added later
+        obj.name = xml.find("compoundname").text
+        # Format path. Use - instead of :: in path names (more url friendly)
+        obj.path = obj.name.replace("::", "-")
+        #obj.path = obj.name.replace(".", "-")
+
+        counter = 1
+        while (obj.path + ("" if counter == 1 else str(counter))) in DocState._usedPaths:
+            counter += 1
+
+        if counter > 1:
+            obj.path = obj.path + str(counter)
+
+        DocState._usedPaths.add(obj.path)
+
+        DocState.add_docobj(obj)
+        xml.set("docobj", obj)
+
+        #Workaround for doxygen apparently generating refid:s which do not exist as id:s
+        id2 = obj.id + "_1" + obj.id
+        #if id2 in docobjs:
+        #    print "Warning: Overwriting id " + id2
+
+        DocState.add_docobj(obj, id2)
+
+        ids = xml.findall(".//*[@id]")
+
+        parent = obj
+
+        for idnode in ids:
+
+            obj, ok = try_call_function("parseid_" + idnode.tag, idnode)
+            if not ok:
+                obj = DocObj()
+                obj.id = idnode.get("id")
+                obj.kind = idnode.get("kind")
+
+                #print(idnode.get("id"))
+                namenode = idnode.find("name")
+
+                if namenode is not None:
+                    obj.name = namenode.text
+                else:
+                    obj.name = "<undefined " + idnode.tag + "-" + obj.id + " >"
+
+                obj.anchor = obj.name
+
+            if obj is not None:
+                obj.compound = parent
+
+                idnode.set("docobj", obj)
+                DocState.add_docobj(obj)
+                #print(obj.full_url())
+
+        #print(docobjs)
+
 class DocMember:
 
     pass
@@ -170,8 +271,15 @@ class DocObj:
     def __str__(self):
         return "DocObj: " + self.id
 
+    ''' Url to the page (including eventual anchor) where the DocObj exists '''
     def full_url(self):
+        url = self.page_url()
+        if hasattr(self, 'anchor') and self.anchor is not None:
+            url += "#" + self.anchor
+        return url
 
+    ''' Url to the page where the DocObj exists '''
+    def page_url(self):
         if hasattr(self, 'exturl'):
             return self.exturl
 
@@ -180,14 +288,14 @@ class DocObj:
             url = self.path + FILE_EXT
         else:
             if hasattr(self, 'compound'):
-                url = self.compound.full_url()
+                url = self.compound.page_url()
+            elif hasattr(self, 'parent'):
+                url = self.parent.page_url()
             else:
                 print("NO COMPOUND ON OBJECT WITHOUT PATH")
                 dump(self)
                 url = "<undefined>"
 
-        if hasattr(self, 'anchor'):
-            url += "#" + self.anchor
         return url
 
     def full_path(self):

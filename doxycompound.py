@@ -68,6 +68,11 @@ def formatname(t):
 
 ''' Returns if the member's detailed view should be hidden '''
 def is_detail_hidden(member):
+
+    # Enums show up as members, but they should always be shown.
+    if member.kind == "enum":
+        return False
+
     # Check if the member is undocumented
     if DocSettings.hide_undocumented and (member.detaileddescription.text is None or member.detaileddescription.text.isspace()):
         if member.detaileddescription.text is None:
@@ -144,6 +149,10 @@ def gather_file_doc(xml):
 
     obj.contents = xml.find("programlisting")
 
+    gather_members(xml)
+    # Only one members list
+    obj.all_members = obj.members
+
     # Find location of file
     loc = xml.find("location")
     obj.location = loc.get("file") if loc is not None else None
@@ -169,12 +178,7 @@ def gather_class_doc(xml):
     obj = xml.get("docobj")
     obj.protection = xml.get("prot")
     obj.name = formatname(xml.find("compoundname").text)
-    obj.members = []
-
-    for member in xml.findall("sectiondef/memberdef"):
-        
-        gather_member_doc(member)
-        obj.members.append(member.get("docobj"))
+    gather_members(xml)
 
     obj.briefdescription = xml.find("briefdescription")
     obj.detaileddescription = xml.find("detaileddescription")
@@ -197,6 +201,15 @@ def gather_class_doc(xml):
         if m.get("ref") is None:
             print ("NULL REFERENCE " + m.find("name").text + " " + m.find("scope").text)
             print ("Sure not old files are in the xml directory")
+
+def gather_members(xml):
+    obj = xml.get("docobj")
+
+    obj.members = []
+    for member in xml.findall("sectiondef/memberdef"):
+        
+        gather_member_doc(member)
+        obj.members.append(member.get("docobj"))
 
 def gather_member_doc(member):
 
@@ -284,13 +297,15 @@ def gather_member_doc(member):
         m.readonly = False
 
         vals = member.findall("enumvalue")
-        m.enumvalues = []
+        m.members = []
         for val in vals:
             # Doxygen does not set the kind for these members, so we set it here for simplicity
-            val.set("kind","enumvalue")
+            val.set("kind", "enumvalue")
             gather_member_doc(val)
-            m.enumvalues.append(val.get("docobj"))
+            m.members.append(val.get("docobj"))
 
+        # Only one members list
+        m.all_members = m.members
 
     # Parse(function) arguments
     argsstring = member.find("argsstring")
@@ -415,17 +430,10 @@ def gather_namespace_doc(xml):
     for node in xml.findall("innernamespace"):
         obj.innernamespaces.append(node.get("ref"))
 
-    obj.members = []
-
-    for member in xml.findall("sectiondef/memberdef"):
-        
-        gather_member_doc(member)
-        obj.members.append(member.get("docobj"))
+    gather_members(xml)
 
 
-def generate_compound_doc(xml):
-
-    compound = xml.get("docobj")
+def generate_compound_doc(compound):
     
     if compound.hidden:
         return
@@ -445,6 +453,8 @@ def generate_compound_doc(xml):
         generate_example_doc(compound)
     elif compound.kind == "group":
         generate_group_doc(compound)
+    elif compound.kind == "enum":
+        generate_enum_doc(compound)
     else:
         print("Skipping " + compound.kind + " " + compound.name)
         DocState.popwriter()
@@ -458,6 +468,27 @@ def generate_compound_doc(xml):
     assert DocState.empty_writerstack()
 
     #generage_page_doc(compound)
+
+def generate_enum_doc(compound):
+    doxylayout.header()
+
+    doxylayout.navheader()
+
+    doxylayout.begin_content()
+
+    def title():
+        DocState.writer.element("span", compound.kind.title(), {"class": "compound-kind"})
+        DocState.writer.element("span", " " + compound.name)
+
+    doxylayout.pagetitle(title)
+
+    doxylayout.description(compound.briefdescription)
+    doxylayout.description(compound.detaileddescription)
+
+    doxylayout.enum_members(compound.members)
+
+    doxylayout.end_content()
+    doxylayout.footer()
 
 def generate_group_doc(compound):
     
