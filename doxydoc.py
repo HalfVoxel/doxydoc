@@ -12,6 +12,7 @@ import doxytiny
 import doxylayout
 import doxyspecial
 import argparse
+import sys
 
 def try_call_function(name, arg):
     try:
@@ -24,7 +25,8 @@ def try_call_function(name, arg):
 
 def load_plugins():
 
-    print("Loading Plugins...")
+    if not DocSettings.args.quiet:
+        print("Loading Plugins...")
 
     dirs = ["plugins", "themes"]
 
@@ -34,11 +36,15 @@ def load_plugins():
         for moduleName in plugList:
             mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), [dir])
             mObject = imp.load_module(moduleName, mFile, mPath, mDescription)
-            print("Loading Theme/Plugin: " + moduleName)
+
+            if DocSettings.args.verbose:
+                print("Loading Theme/Plugin: " + moduleName)
 
             try:
                 obj = getattr(mObject, "tiny")
-                print("Loading Tiny Overrides...")
+
+                if DocSettings.args.verbose:
+                    print("\tLoading Tiny Overrides...")
                 for k, v in obj.__dict__.iteritems():
                     if not k.startswith("_"):
                         if (hasattr(doxytiny, k)):
@@ -49,7 +55,8 @@ def load_plugins():
 
             try:
                 obj = getattr(mObject, "layout")
-                print("Loading Layout Overrides...")
+                if DocSettings.args.verbose:
+                    print("\tLoading Layout Overrides...")
                 for k, v in obj.__dict__.iteritems():
                     if not k.startswith("_"):
                         if (hasattr(doxylayout, k)):
@@ -60,7 +67,8 @@ def load_plugins():
 
             try:
                 obj = getattr(mObject, "compound")
-                print("Loading Compound Overrides...")
+                if DocSettings.args.verbose:
+                    print("\tLoading Compound Overrides...")
                 for k, v in obj.__dict__.iteritems():
                     if not k.startswith("_"):
                         if (hasattr(doxycompound, k)):
@@ -70,7 +78,9 @@ def load_plugins():
                 pass
 
 def read_external():
-    print("Reading exteral")
+    if not DocSettings.args.quiet:
+        print("Reading exteral...")
+
     try:
         f = open("external.csv")
     except:
@@ -107,7 +117,8 @@ def test_id_ref(path):
         #print("Referenced " + refobj.name)
 
 def copy_resources():
-    print("Copying resources")
+    if not DocSettings.args.quiet:
+        print("Copying resources...")
 
     try:
         plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
@@ -150,6 +161,9 @@ def copy_resources():
 
 def read_prefs():
 
+    if not DocSettings.args.quiet:
+        print ("Reading resources...")
+
     header = None
     footer = None
 
@@ -188,17 +202,19 @@ def read_prefs():
 def scan_input():
     filenames = [f for f in listdir("xml") if isfile(join("xml", f))]
 
-    print("Scanning input")
+    if not DocSettings.args.quiet:
+        print("Scanning input")
 
     compounds = DocState.input_xml = []
     roots = DocState.roots = []
 
-    i = 0
-    for fname in filenames:
+    for i in xrange(0, len(filenames)):
+        fname = filenames[i]
+
+        progressbar(i + 1, len(filenames))
+
         try:
             extension = splitext(fname)[1]
-
-            progressbar(i + 1, len(filenames))
 
             if extension != ".xml":
                 continue
@@ -220,22 +236,22 @@ def scan_input():
         except Exception as e:
             print(fname)
             raise e
-        i += 1
 
 def process_references():
-    print("\nProcessing References...")
+    if not DocSettings.args.quiet:
+        print("Processing References...")
 
     roots = DocState.roots
 
     i = 0
-    for root in roots:
+    for i in xrange(0, len(roots)):
         progressbar(i + 1, len(roots))
 
-        process_references_root(root)
-        i += 1
+        process_references_root(roots[i])
 
 def process_compounds():
-    print("\nProcessing Compounds...")
+    if not DocSettings.args.quiet:
+        print("Processing Compounds...")
 
     compounds = DocState.input_xml
 
@@ -247,7 +263,8 @@ def process_compounds():
         i += 1
 
 def build_compound_output():
-    print("\nBuilding Output...")
+    if not DocSettings.args.quiet:
+        print("Building Output...")
 
     pages = DocState.pages
 
@@ -260,12 +277,25 @@ def build_compound_output():
 
 def main():
 
-    print("Running...")
+    
+
+    # Set default encoding to UTF-8 to avoid errors when docs have unusual characters
+    reload(sys)
+    sys.setdefaultencoding('UTF-8')
 
     parser = argparse.ArgumentParser(description='Build the A* Pathfinding Project Packages.')
     parser.add_argument("-r", "--resources", help="Copy Resources Only", action="store_true")
+    parser.add_argument("-v", "--verbose", help="Verbose output", action="store_true")
+    parser.add_argument("-q", "--quiet", help="Quiet output", action="store_true")
 
     args = parser.parse_args()
+
+    DocSettings.args = args
+
+    args.verbose = args.verbose and (not args.quiet)
+
+    if DocSettings.args.verbose:
+        print("Running...")
 
     if args.resources:
         load_plugins()
@@ -292,6 +322,7 @@ def main():
     DocState.add_event(2000, process_references)
 
     DocState.add_event(2300, process_compounds)
+    DocState.add_event(2340, doxyspecial.gather_specials)
 
     DocState.add_event(2500, pre_output)
 
@@ -299,18 +330,11 @@ def main():
 
     DocState.add_event(3100, doxyspecial.build_specials)
 
+    # Progress through the event heap until everything has been done
     while(DocState.next_event()):
-        print("Next Event")
         pass
 
-    #return
-
-
-    #print("\nTesting References...")
-    #test_id_ref(join("xml", "index.xml"))
-
-    #print("\nPreprocessing Output...")
+    # Done
 
 if __name__ == "__main__":
-    print("Stuff")
     main()

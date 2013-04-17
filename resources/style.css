@@ -155,6 +155,10 @@ code {
 table.member-list-section td {
   padding-top: 0.1em;
   padding-bottom: 0.1em; }
+table.member-list-section .member-prot {
+  white-space: nowrap; }
+table.member-list-section .member-desc {
+  width: 100%; }
 table.member-list-section .member-desc, table.member-list-section .member-name, table.member-list-section .member-type {
   font-size: 0.9em;
   margin-bottom: 0px;

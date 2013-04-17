@@ -60,7 +60,8 @@ def gather_compound_doc(xml):
     elif compound.kind == "group":
         gather_group_doc(xml)
     else:
-        print("Skipping " + compound.kind + " " + compound.name)
+        if DocSettings.args.verbose:
+            print("Skipping " + compound.kind + " " + compound.name)
         return
 
 def formatname(t):
@@ -435,37 +436,43 @@ def gather_namespace_doc(xml):
 
 def generate_compound_doc(compound):
     
+
     if compound.hidden:
         return
 
     DocState.pushwriter()
     DocState.currentobj = compound
 
-    if compound.kind == "class" or compound.kind == "struct":
-        generate_class_doc(compound)
-    elif compound.kind == "page":
-        generate_page_doc(compound)
-    elif compound.kind == "namespace":
-        generate_namespace_doc(compound)
-    elif compound.kind == "file":
-        generate_file_doc(compound)
-    elif compound.kind == "example":
-        generate_example_doc(compound)
-    elif compound.kind == "group":
-        generate_group_doc(compound)
-    elif compound.kind == "enum":
-        generate_enum_doc(compound)
-    else:
-        print("Skipping " + compound.kind + " " + compound.name)
-        DocState.popwriter()
-        return
+    try:
+        if compound.kind == "class" or compound.kind == "struct":
+            generate_class_doc(compound)
+        elif compound.kind == "page":
+            generate_page_doc(compound)
+        elif compound.kind == "namespace":
+            generate_namespace_doc(compound)
+        elif compound.kind == "file":
+            generate_file_doc(compound)
+        elif compound.kind == "example":
+            generate_example_doc(compound)
+        elif compound.kind == "group":
+            generate_group_doc(compound)
+        elif compound.kind == "enum":
+            generate_enum_doc(compound)
+        else:
+            if DocSettings.args.verbose:
+                print("Skipping " + compound.kind + " " + compound.name)
+            DocState.popwriter()
+            return
 
-    f = file(compound.full_path(), "w")
-    s = DocState.popwriter()
-    f.write(s)
-    f.close()
+        f = file(compound.full_path(), "w")
+        s = DocState.popwriter()
+        f.write(s)
+        f.close()
 
-    assert DocState.empty_writerstack()
+        assert DocState.empty_writerstack()
+    except:
+        print (DocState.currentobj)
+        raise
 
     #generage_page_doc(compound)
 

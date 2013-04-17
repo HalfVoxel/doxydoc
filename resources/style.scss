@@ -177,6 +177,13 @@ table.member-list-section {
         padding-bottom: 0.1em;
     }
 
+    .member-prot {
+        white-space: nowrap;
+    }
+    .member-desc {
+        width: 100%;
+    }
+
     .member-desc, .member-name, .member-type {
         font-size: 0.9em;
         margin-bottom: 0px;

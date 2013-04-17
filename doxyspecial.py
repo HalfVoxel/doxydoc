@@ -121,7 +121,6 @@ def generate_examples_page(obj):
 
     doxylayout.footer()
 
-    print ("Generating examples page at " + obj.full_path())
     f = open(obj.full_path(), "w")
     s = DocState.popwriter()
     f.write(s)
@@ -169,7 +168,3 @@ def generate_classes_page(obj):
     s = DocState.popwriter()
     f.write(s)
     f.close()
-
-
-DocState.add_event(2500, gather_specials)
-DocState.add_event(3100, build_specials)

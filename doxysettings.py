@@ -8,3 +8,4 @@ class DocSettings:
     show_source_files = True
     show_file_paths = True
     keep_empty_member_sections = False
+    args = None

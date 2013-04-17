@@ -77,13 +77,44 @@ def parameterlist(n):
 	pass
 
 def title(n):
-	raise false, "Title tags should have been handled"
+	raise "Title tags should have been handled"
+
+def anchor(n):
+	doxylayout.ref(n)
 
 def variablelist(n):
-	pass
+	entries = n.findall("varlistentry")
+	items = n.findall("listitem")
+	assert len(entries) == len(items)
+
+	DocState.writer.element("ul")
+
+	for i in xrange(0, len(entries)):
+		entry = entries[i]
+		item = items[i]
+		term = entry.find("term")
+		#id = term.find("anchor").get("id")
+		#refobj = term.find("ref")
+
+		assert term is not None, DocState.currentobj
+		DocState.writer.element("li")
+		DocState.writer.element("h4", lambda: doxylayout.markup(term))
+		doxylayout.markup(item)
+		DocState.writer.element("/li")
+
+	DocState.writer.element("/ul")
 
 def table(n):
-	pass
+	DocState.writer.element("table")
+	for row in n:
+		DocState.writer.element("tr")
+		for cell in row:
+			th = cell.get("thead") == "yes"
+			DocState.writer.element("th" if th else "td")
+			doxylayout.markup(cell)
+			DocState.writer.element("/th" if th else "/td")
+		DocState.writer.element("/tr")
+	DocState.writer.element("/table")
 
 def heading(n):
 	pass
