@@ -185,6 +185,7 @@ def navheader():
 		DocState.writer.element("a", item.label, {"href": item.ref.full_url()})
 		DocState.writer.element("/li")
 
+	DocState.trigger("navheader")
 	DocState.writer.html("</div></ul>")
 
 def pagetitle(title):
@@ -513,6 +514,11 @@ def sectbase(node):
 			print("[W2] Not handled: " + n.tag)
 
 def description(descnode):
+	### \todo Ugly to have multiple possible types for description objects
+	if isinstance(descnode, str):
+		DocState.writer += descnode
+		return
+
 	if descnode is not None:
 		title = descnode.find("title")
 		if title is not None:

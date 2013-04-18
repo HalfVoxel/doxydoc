@@ -35,6 +35,8 @@ def navheader():
         DocState.writer.element("a", item.label, {"href": item.ref.full_url()})
         DocState.writer.element("/li")
     
+    DocState.trigger("navheader")
+
     DocState.writer.element("/ul")
 
     DocState.writer.element("/div")

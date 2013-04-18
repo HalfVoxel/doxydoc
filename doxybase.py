@@ -3,6 +3,7 @@ from xml.sax.saxutils import escape
 from heapq import *
 import types
 import doxyext
+from doxysettings import DocSettings
 
 def try_call_function(name, arg):
     try:
@@ -86,6 +87,53 @@ class StringBuilder:
     def clear(self):
         del self.arr[:]
 
+class StringBuilderPlain:
+
+    def __init__(self):
+        self.arr = []
+
+    def __add__(self, t):
+        assert t is not None
+        self.arr.append(t)
+        return self
+
+    def __iadd__(self, t):
+        assert t is not None
+        self.arr.append(t)
+        return self
+
+    def html(self, t):
+        assert t is not None
+        self.arr.append(t)
+        return self
+
+    #def element(self, t, c):
+    #    assert t is not None
+    #    assert c is not None
+    #    self.arr.append("<" + t + ">" + escape(t) + "</" + t + ">")
+
+    def element(self, t, c=None, params=None):
+        assert t
+        if c is None:
+            return
+
+        if isinstance(c, types.FunctionType):
+            c()
+        else:
+            self.arr.append(c)
+
+    def elem(self, t):
+        assert t is not None
+
+    def __str__(self):
+        cache = ''.join(self.arr)
+        del self.arr[:]
+        self.arr.append(cache)
+        return cache
+
+    def clear(self):
+        del self.arr[:]
+
 class DocState:
     _stack = []
     writer = StringBuilder()
@@ -101,8 +149,16 @@ class DocState:
 
     _events = []
     _docobjs = {}
+    
+    _trigger_heaps = {}
 
     _usedPaths = set()
+
+    @staticmethod
+    def iter_unique_docobjs():
+        for k, v in DocState._docobjs.iteritems():
+            if k == v.id:
+                yield v
 
     @staticmethod
     def add_docobj(obj, id=None):
@@ -122,6 +178,31 @@ class DocState:
         return DocState._docobjs[id]
 
     @staticmethod
+    def trigger_listener(name, priority, callback):
+        assert callback
+        assert name
+
+        if DocSettings.args.verbose:
+            print ("Adding listener for " + name + " with priority " + priority)
+
+        if not name in DocState._trigger_heaps:
+            DocState._trigger_heaps[name] = []
+
+        DocState._trigger_heaps[name].append((priority, callback))
+        DocState._trigger_heaps[name].sort(key=lambda tup: tup[0])
+
+    @staticmethod
+    def trigger(name):
+
+        if not name in DocState._trigger_heaps:
+            return
+
+        events = DocState._trigger_heaps[name]
+
+        for event in events:
+            event[1]()
+
+    @staticmethod
     def add_event(priority, callback):
         heappush(DocState._events, (priority, callback))
 
@@ -139,11 +220,23 @@ class DocState:
     def empty_writerstack():
         return len(DocState._stack) is 0
 
+    ''' Push a new writer.
+        Call #popwriter to remove the writer and get the resulting written string.
+    '''
     @staticmethod
     def pushwriter():
         if DocState.writer is not None:
             DocState._stack.append(DocState.writer)
         DocState.writer = StringBuilder()
+
+    ''' Pushes a new writer which will not write html elements.
+        Exception is the html() function which will function as outputting plain text
+    '''
+    @staticmethod
+    def pushwriterplain():
+        if DocState.writer is not None:
+            DocState._stack.append(DocState.writer)
+        DocState.writer = StringBuilderPlain()
 
     @staticmethod
     def popwriter():
