@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1>{{ compound.name|title }}</h1>
+
+	{{ compound.briefdescription|markup }}
+	{{ compound.detaileddescription|markup }}
+
+	{# compound.detaileddescription #}
+	
+{% endblock %}

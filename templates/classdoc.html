@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1>{{ compound.name|title }}</h1>
+
+	{{ compound.briefdescription|markup }}
+
+	<table>
+	{% for member in compound.members %}
+		{% block member_list_item scoped %}
+		<tr><td>{{ member.name }}</td><td>{{ member.type }}</td></tr>
+		{% endblock %}
+	{% endfor %}
+	</table>
+
+	{{ compound.detaileddescription|markup }}
+
+	{# compound.detaileddescription #}
+	
+{% endblock %}

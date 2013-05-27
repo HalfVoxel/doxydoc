@@ -393,6 +393,7 @@ def gather_page_doc(xml):
 
     obj.kind = xml.get("kind")
     obj.briefdescription = xml.find("briefdescription")
+
     obj.detaileddescription = xml.find("detaileddescription")
 
     obj.subpages = []

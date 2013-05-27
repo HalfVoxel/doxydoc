@@ -467,6 +467,9 @@ def paragraph(paranode):
 def markup(node):
 	''' Markup like nodes '''
 
+	if not node:
+		return
+
 	if node.text is not None:
 		DocState.writer += node.text
 

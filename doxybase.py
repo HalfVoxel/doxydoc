@@ -4,6 +4,7 @@ from heapq import *
 import types
 import doxyext
 from doxysettings import DocSettings
+import jinja2
 
 def try_call_function(name, arg):
     try:
@@ -143,6 +144,8 @@ class DocState:
     pages = []
     roots = None
     input_xml = None
+    environment = None
+    _filters = []
 
     ''' Prevents infinte loops of tooltips in links by disabling links after a certain depth '''
     depth_ref = 0
@@ -153,6 +156,16 @@ class DocState:
     _trigger_heaps = {}
 
     _usedPaths = set()
+
+    @staticmethod
+    def add_filter(name, func):
+        DocState._filters.append((name, func))
+
+    @staticmethod
+    def create_template_env(dir):
+        DocState.environment = jinja2.Environment(loader=jinja2.FileSystemLoader(dir))
+        for name, func in DocState._filters:
+            DocState.environment.filters[name] = func
 
     @staticmethod
     def iter_unique_docobjs():

@@ -13,6 +13,7 @@ import doxylayout
 import doxyspecial
 import argparse
 import sys
+import doxyfilters
 
 def try_call_function(name, arg):
     try:
@@ -263,10 +264,43 @@ def process_compounds():
         i += 1
 
 def build_compound_output():
+
+    pages = DocState.pages
+
+    for page in pages:
+        template = ""
+        if page.kind == "class" or page.kind == "struct":
+            template = "classdoc"
+        elif page.kind == "page":
+            template = "pagedoc"
+        elif page.kind == "namespace":
+            template = "namespacedoc"
+            continue
+        elif page.kind == "file":
+            template = "filedoc"
+            continue
+        elif page.kind == "example":
+            template = "exampledoc"
+            continue
+        elif page.kind == "group":
+            template = "groupdoc"
+            continue
+        elif page.kind == "enum":
+            template = "enumdoc"
+            continue
+        else:
+            if DocSettings.args.verbose:
+                print("Skipping " + page.kind + " " + page.name)
+            continue
+        
+        print DocState.environment.get_template(template + ".html").render(compound=page)
+
+    return
+
     if not DocSettings.args.quiet:
         print("Building Output...")
 
-    pages = DocState.pages
+    
 
     i = 0
     for page in pages:
@@ -274,6 +308,9 @@ def build_compound_output():
 
         generate_compound_doc(page)
         i += 1
+
+def create_env():
+    DocState.create_template_env("templates")
 
 def main():
 
@@ -301,7 +338,8 @@ def main():
         load_plugins()
         copy_resources()
         return
-        
+    
+
     #filenames = ["xml/class_a_i_path.xml"]
 
     ## Events:
@@ -317,6 +355,7 @@ def main():
     DocState.add_event(600, read_prefs)
     DocState.add_event(700, read_external)
 
+    DocState.add_event(750, create_env)
     DocState.add_event(1000, scan_input)
 
     DocState.add_event(2000, process_references)
@@ -325,7 +364,7 @@ def main():
     DocState.add_event(2340, doxyspecial.gather_specials)
 
     DocState.add_event(2500, pre_output)
-
+    
     DocState.add_event(3000, build_compound_output)
 
     DocState.add_event(3100, doxyspecial.build_specials)
