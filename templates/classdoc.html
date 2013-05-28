@@ -4,14 +4,30 @@
 	<h1>{{ compound.name|title }}</h1>
 
 	{{ compound.briefdescription|markup }}
+	
+	<div class="member-list">
+	
+	{% set sections = doxylayout.get_member_sections(compound, compound.all_members) %}
+	{% for section in sections if section[1]|length != 0 %}
+		
+		<h2>{{ section[0] }}</h2>
+		{% set members = section[1] %}
 
-	<table>
-	{% for member in compound.members %}
-		{% block member_list_item scoped %}
-		<tr><td>{{ member.name }}</td><td>{{ member.type }}</td></tr>
-		{% endblock %}
+		<table class="table table-condensed table-striped member-list-section">
+		{% for member in members %}
+			{% block member_list_item scoped %}
+			<tr>
+				<td><span>{{ member.protection|title }}</span> {% if member.readonly %}<span> Readonly</span>{% endif %}{% if member.static%}<span> Static</span>{%endif%}</td>
+				<td>{{ member.type|linked_text }}</td>
+				<td>{{ member.name }}</td>
+				<td>{{ member.type }}</td>
+				<td></td>
+			</tr>
+			{% endblock %}
+		{% endfor %}
+		</table>
 	{% endfor %}
-	</table>
+	</div>
 
 	{{ compound.detaileddescription|markup }}
 

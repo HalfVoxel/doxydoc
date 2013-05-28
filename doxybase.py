@@ -135,6 +135,20 @@ class StringBuilderPlain:
     def clear(self):
         del self.arr[:]
 
+class jinjafilter:
+    def __init__(self,f):
+        def v(*args):
+            DocState.pushwriter()
+            f(*args)
+
+            s = DocState.popwriter()
+            print ("FILTER: " + s)
+            return s
+        self.f = f
+        DocState.add_filter(f.__name__,v)
+    def __call__(self,*args):
+        self.f(*args)
+
 class DocState:
     _stack = []
     writer = StringBuilder()

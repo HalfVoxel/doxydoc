@@ -54,6 +54,7 @@ def get_anchor(id):
 	obj = DocState.get_docobj(id)
 	return obj.anchor
 
+@jinjafilter
 def refcompound(refnode):
 	refid = refnode.get("refid")
 
@@ -81,6 +82,7 @@ def refcompound(refnode):
 		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
 	DocState.depth_ref -= 1
 
+@jinjafilter
 def docobjref(obj):
 	# Prevent recursive loops of links in the tooltips
 	DocState.depth_ref += 1
@@ -128,6 +130,7 @@ def ref(refnode):
 		DocState.writer.element("/a")
 	DocState.depth_ref -= 1
 
+@jinjafilter
 def ref_explicit(obj, text, tooltip=None):
 	DocState.depth_ref += 1
 	if DocState.depth_ref > 1 or is_hidden(obj):
@@ -147,7 +150,11 @@ def match_external_ref(text):
 		except KeyError:
 			DocState.writer += words[i]
 
+@jinjafilter
 def linked_text(node):
+	if not node or node is None:
+		return
+
 	if node.text is not None:
 		match_external_ref(node.text)
 		#DocState.writer += node.text

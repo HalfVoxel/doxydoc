@@ -267,36 +267,6 @@ def build_compound_output():
 
     pages = DocState.pages
 
-    for page in pages:
-        template = ""
-        if page.kind == "class" or page.kind == "struct":
-            template = "classdoc"
-        elif page.kind == "page":
-            template = "pagedoc"
-        elif page.kind == "namespace":
-            template = "namespacedoc"
-            continue
-        elif page.kind == "file":
-            template = "filedoc"
-            continue
-        elif page.kind == "example":
-            template = "exampledoc"
-            continue
-        elif page.kind == "group":
-            template = "groupdoc"
-            continue
-        elif page.kind == "enum":
-            template = "enumdoc"
-            continue
-        else:
-            if DocSettings.args.verbose:
-                print("Skipping " + page.kind + " " + page.name)
-            continue
-        
-        print DocState.environment.get_template(template + ".html").render(compound=page)
-
-    return
-
     if not DocSettings.args.quiet:
         print("Building Output...")
 

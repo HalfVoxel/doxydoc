@@ -4,6 +4,7 @@ import doxylayout
 import re
 import doxytiny
 from doxysettings import DocSettings
+import jinja2
 
 def process_references_root(root):
 
@@ -441,6 +442,40 @@ def generate_compound_doc(compound):
     if compound.hidden:
         return
 
+
+    template = ""
+    if compound.kind == "class" or compound.kind == "struct":
+        template = "classdoc"
+    elif compound.kind == "compound":
+        template = "compounddoc"
+    elif compound.kind == "namespace":
+        template = "namespacedoc"
+        return
+    elif compound.kind == "file":
+        template = "filedoc"
+        return
+    elif compound.kind == "example":
+        template = "exampledoc"
+        return
+    elif compound.kind == "group":
+        template = "groupdoc"
+        return
+    elif compound.kind == "enum":
+        template = "enumdoc"
+        return
+    else:
+        if DocSettings.args.verbose:
+            print("Skipping " + compound.kind + " " + compound.name)
+        return 
+
+    f = file(compound.full_path(), "w")
+    s = DocState.environment.get_template(template + ".html").render(compound=compound, doxylayout=doxylayout)
+    f.write(s)
+    f.close()
+
+    assert DocState.empty_writerstack()
+    return
+
     DocState.pushwriter()
     DocState.currentobj = compound
 
@@ -474,8 +509,6 @@ def generate_compound_doc(compound):
     except:
         print (DocState.currentobj)
         raise
-
-    #generage_page_doc(compound)
 
 def generate_enum_doc(compound):
     doxylayout.header()
