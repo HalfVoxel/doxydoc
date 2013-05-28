@@ -315,6 +315,7 @@ def gather_member_doc(member):
     if argsstring is not None and argsstring.text is not None:
         m.argsstring = argsstring.text
 
+        m.hasparams = True
         params = member.findall("param")
         m.params = []
         for param in params:
@@ -327,6 +328,7 @@ def gather_member_doc(member):
             o.description = None
             m.params.append(o)
     else:
+        m.hasparams = False
         m.params = []
 
     if m.detaileddescription is not None:
@@ -442,12 +444,13 @@ def generate_compound_doc(compound):
     if compound.hidden:
         return
 
+    DocState.currentobj = compound
 
     template = ""
     if compound.kind == "class" or compound.kind == "struct":
         template = "classdoc"
-    elif compound.kind == "compound":
-        template = "compounddoc"
+    elif compound.kind == "page":
+        template = "pagedoc"
     elif compound.kind == "namespace":
         template = "namespacedoc"
         return
@@ -459,17 +462,16 @@ def generate_compound_doc(compound):
         return
     elif compound.kind == "group":
         template = "groupdoc"
-        return
     elif compound.kind == "enum":
         template = "enumdoc"
         return
     else:
         if DocSettings.args.verbose:
             print("Skipping " + compound.kind + " " + compound.name)
-        return 
+        return
 
     f = file(compound.full_path(), "w")
-    s = DocState.environment.get_template(template + ".html").render(compound=compound, doxylayout=doxylayout)
+    s = DocState.environment.get_template(template + ".html").render(compound=compound, doxylayout=doxylayout, DocState=DocState)
     f.write(s)
     f.close()
 
@@ -477,7 +479,6 @@ def generate_compound_doc(compound):
     return
 
     DocState.pushwriter()
-    DocState.currentobj = compound
 
     try:
         if compound.kind == "class" or compound.kind == "struct":

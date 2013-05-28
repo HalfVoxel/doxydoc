@@ -3,9 +3,7 @@
 {% block content %}
 	<h1>{{ compound.name|title }}</h1>
 
-	{{ compound.briefdescription|markup }}
-	{{ compound.detaileddescription|markup }}
-
-	{# compound.detaileddescription #}
+	{{ compound.briefdescription|description }}
+	{{ compound.detaileddescription|description }}
 	
 {% endblock %}

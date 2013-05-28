@@ -136,17 +136,16 @@ class StringBuilderPlain:
         del self.arr[:]
 
 class jinjafilter:
-    def __init__(self,f):
+    def __init__(self, f):
         def v(*args):
             DocState.pushwriter()
             f(*args)
-
             s = DocState.popwriter()
-            print ("FILTER: " + s)
             return s
         self.f = f
-        DocState.add_filter(f.__name__,v)
-    def __call__(self,*args):
+        DocState.add_filter(f.__name__, v)
+    
+    def __call__(self, *args):
         self.f(*args)
 
 class DocState:
@@ -177,7 +176,7 @@ class DocState:
 
     @staticmethod
     def create_template_env(dir):
-        DocState.environment = jinja2.Environment(loader=jinja2.FileSystemLoader(dir))
+        DocState.environment = jinja2.Environment(loader=jinja2.FileSystemLoader(dir), line_statement_prefix="#", line_comment_prefix="##")
         for name, func in DocState._filters:
             DocState.environment.filters[name] = func
 
@@ -436,3 +435,10 @@ class DocObj:
 
 def dump(obj):
     pprint(vars(obj))
+
+
+# Cannot add as decorator since the DocState class is not defined at function definition time
+jinjafilter(DocState.trigger)
+
+# Sort navitems before build
+DocState.add_event(2500, lambda: DocState.navitems.sort(key=lambda v: v.order))

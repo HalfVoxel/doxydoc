@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1><span class="compound-kind">{{ compound.kind|title }}</span><span> {{ compound.name|title }}</span></h1>
+
+	{{ compound.briefdescription|description }}
+	{{ compound.detaileddescription|description }}
+	
+	## innergroups, innerclassses, innernamespaces
+
+	<table class="table inner-class-list table-condensed table-striped">
+		# for n in compound.innergroups
+			<tr>
+				<td>{{ n|docobjref }}</td>
+				<td>{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
+
+{% endblock %}

@@ -18,18 +18,18 @@ def is_hidden(docobj):
 		return True
 	return False
 
-def prettify_prefix(node):
+def prettify_prefix(docobj):
 	s = []
-	prot = node.get("prot")
+	prot = node.protection
 	if prot is not None:
 		prot = prot.title()
 		s.append(prot)
 
-	virt = node.get("virt")
+	virt = node.virtual
 	if virt is not None and virt != "non-virtual":
 		s.append(virt)
 
-	override = node.find("reimplements") is not None and virt == "virtual"
+	#override = node.reimplements") is not None and virt == "virtual"
 
 	if override:
 		assert node.find("type").text
@@ -152,7 +152,8 @@ def match_external_ref(text):
 
 @jinjafilter
 def linked_text(node):
-	if not node or node is None:
+
+	if node is None:
 		return
 
 	if node.text is not None:
@@ -393,7 +394,6 @@ def members(docobj):
 
 		DocState.writer.html("</div>")
 
-
 def member_heading(m):
 	DocState.writer.element("h3")
 
@@ -452,6 +452,18 @@ def member_heading(m):
 
 	DocState.writer.element("/h3")
 
+@jinjafilter
+def member_parameter_name(param):
+	if param.description is not None:
+		DocState.pushwriter()
+		description(param.description)
+		tooltip = DocState.popwriter()
+		DocState.writer.element("span", None, {"data-original-title": tooltip})
+		DocState.writer += param.name
+		DocState.writer.element("/span")
+	else:
+		DocState.writer += param.name
+		
 def desctitle(text):
 	DocState.writer.element("h3", text)
 
@@ -474,7 +486,7 @@ def paragraph(paranode):
 def markup(node):
 	''' Markup like nodes '''
 
-	if not node:
+	if node is None:
 		return
 
 	if node.text is not None:
@@ -523,6 +535,7 @@ def sectbase(node):
 		else:
 			print("[W2] Not handled: " + n.tag)
 
+@jinjafilter
 def description(descnode):
 	### \todo Ugly to have multiple possible types for description objects
 	if isinstance(descnode, str):

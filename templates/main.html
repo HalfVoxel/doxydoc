@@ -7,13 +7,34 @@
 	<link rel='stylesheet' type='text/css' href='css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' href='css/prettify.css'>
     <link rel='stylesheet' type='text/css' href='style.css'>
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
 </head>
     <body>
         <div class="container">
             <div class="row">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <a class="brand" href="#">Sample Docs</a>
+                        <ul class="nav">
+                            # for item in DocState.navitems
+                                <li>
+                                    <a href="{{item.ref.full_url()}}">{{item.label}}</a>
+                                </li>
+                            #endfor
+                            {{ "navheader"|trigger }}
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
             	{% block content %}{% endblock %}
+                </div>
             </div>
         </div>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/prettify.js"></script>
+        <script src="docs.js"></script>
+        <script src="js/fullproof-all-debug.js"></script>
+
 	</body>
 </html>
