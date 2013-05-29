@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1><span class="compound-kind">{{ compound.kind|title }}</span><span> {{ compound.name|title }}</span></h1>
+
+	{{ compound.briefdescription|description }}
+	{{ compound.detaileddescription|description }}
+
+{% endblock %}

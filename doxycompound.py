@@ -456,10 +456,8 @@ def generate_compound_doc(compound):
         return
     elif compound.kind == "file":
         template = "filedoc"
-        return
     elif compound.kind == "example":
         template = "exampledoc"
-        return
     elif compound.kind == "group":
         template = "groupdoc"
     elif compound.kind == "enum":

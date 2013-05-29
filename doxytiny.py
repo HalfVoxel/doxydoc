@@ -15,6 +15,7 @@ def preformatted(n):
 	DocState.writer += n.text
 	DocState.writer.elem("/pre")
 
+@jinjafilter
 def programlisting(n):
 	# can add class linenums here if needed
 	DocState.writer.element("code", None, {"class": "prettyprint"})

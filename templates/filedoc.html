@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1><span class="compound-kind">{{ compound.kind|title }}</span><span> {{ compound.name|title }}</span></h1>
+	
+	<span class="file-location">{{ compound.location }}</span>
+
+	{{ compound.briefdescription|description }}
+	{{ compound.detaileddescription|description }}
+	
+	<p>This file contains definitions for the following objects</p>
+	<table class="table inner-class-list  member-list-section table-condensed table-striped">
+		# for n in compound.innerclasses
+			<tr>
+				<td class="member-name">{{ n|docobjref }}</td>
+				<td class="member-desc">{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
+
+	<p>This file contains the following namespaces</p>
+	<table class="table inner-class-list member-list-section table-condensed table-striped">
+		# for n in compound.innernamespaces
+			<tr>
+				<td class="member-name">{{ n|docobjref }}</td>
+				<td class="member-desc">{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
+
+	{{ compound.contents|programlisting }}
+
+{% endblock %}

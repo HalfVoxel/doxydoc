@@ -16,5 +16,21 @@
 			</tr>
 		#endfor
 	</table>
+	<table class="table inner-class-list table-condensed table-striped">
+		# for n in compound.innerclasses
+			<tr>
+				<td>{{ n|docobjref }}</td>
+				<td>{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
+	<table class="table inner-class-list table-condensed table-striped">
+		# for n in compound.innernamespaces
+			<tr>
+				<td>{{ n|docobjref }}</td>
+				<td>{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
 
 {% endblock %}
