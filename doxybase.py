@@ -150,6 +150,8 @@ class jinjafilter:
 
 class DocState:
     _stack = []
+    _writercache = []
+    _plainwritercache = []
     writer = StringBuilder()
     currentobj = None
     navitems = []
@@ -253,7 +255,10 @@ class DocState:
     def pushwriter():
         if DocState.writer is not None:
             DocState._stack.append(DocState.writer)
-        DocState.writer = StringBuilder()
+        if len(DocState._writercache) > 0:
+            DocState.writer = DocState._writercache.pop()
+        else:
+            DocState.writer = StringBuilder()
 
     ''' Pushes a new writer which will not write html elements.
         Exception is the html() function which will function as outputting plain text
@@ -262,7 +267,10 @@ class DocState:
     def pushwriterplain():
         if DocState.writer is not None:
             DocState._stack.append(DocState.writer)
-        DocState.writer = StringBuilderPlain()
+        if len(DocState._plainwritercache) > 0:
+            DocState.writer = DocState._plainwritercache.pop()
+        else:
+            DocState.writer = StringBuilderPlain()
 
     @staticmethod
     def popwriter():
@@ -270,6 +278,11 @@ class DocState:
         if DocState.empty_writerstack():
             DocState.writer.clear()
         else:
+            DocState.writer.clear()
+            if not isinstance(DocState.writer,StringBuilderPlain):
+                DocState._writercache.append(DocState.writer)
+            else:
+                DocState._plainwritercache.append(DocState.writer)
             DocState.writer = DocState._stack.pop()
         return s
 

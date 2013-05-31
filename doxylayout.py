@@ -251,22 +251,26 @@ def get_member_sections(compound, members):
 	sections.append(("Public Friends", filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and not m.static and m.compound == compound, members)))
 	sections.append(("Public Slots", filter(lambda m: m.protection 		== "public" and m.kind == "slot" 		and not m.static and m.compound == compound, members)))
 
-	sections.append(("Public Static Methods", filter(lambda m: m.protection 	== "public" and m.kind == "function" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Properties", filter(lambda m: m.protection 	== "public" and m.kind == "property" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Methods", 	filter(lambda m: m.protection 	== "public" and m.kind == "function" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Properties",filter(lambda m: m.protection 	== "public" and m.kind == "property" 	and m.static and m.compound == compound, members)))
 	sections.append(("Public Static Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and m.static and m.compound == compound, members)))
 	sections.append(("Public Static Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Events", filter(lambda m: m.protection 		== "public" and m.kind == "event" 		and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Typedefs", filter(lambda m: m.protection 	== "public" and m.kind == "typedef" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Signals", filter(lambda m: m.protection 	== "public" and m.kind == "signal" 		and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Prototypes", filter(lambda m: m.protection 	== "public" and m.kind == "prototype" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Friends", filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Slots", filter(lambda m: m.protection 		== "public" and m.kind == "slot" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Events", 	filter(lambda m: m.protection 	== "public" and m.kind == "event" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Typedefs", 	filter(lambda m: m.protection 	== "public" and m.kind == "typedef" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Signals", 	filter(lambda m: m.protection 	== "public" and m.kind == "signal" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Prototypes",filter(lambda m: m.protection 	== "public" and m.kind == "prototype" 	and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Friends",	filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and m.static and m.compound == compound, members)))
+	sections.append(("Public Static Slots", 	filter(lambda m: m.protection 	== "public" and m.kind == "slot" 		and m.static and m.compound == compound, members)))
 
-	sections.append(("Private Members", filter(lambda m: m.protection 			!= "public" and m.compound == compound, members)))
+	sections.append(("Private/Protected Members", filter(lambda m: m.protection != "public" and m.compound == compound, members)))
 	
 	# Handling it specially, it's no point explicitly showing an empty section when a class does no inherit any members
 	ls = filter(lambda m: m.compound != compound, members)
 	if len(ls) > 0:
+		for v in ls:
+			if v.name == "PostProcess":
+				dump(v)
+
 		sections.append(("Inherited Members", ls))
 	
 	#sections.append(("All Members", members))
@@ -583,15 +587,20 @@ def compound_desc(compxml):
 	description(briefdesc)
 	description(detdesc)
 
-def page_list_inner(obj):
-
+def get_inner_pages(obj):
 	pages = []
 	if obj is None:
 		for k, obj2 in DocState._docobjs.iteritems():
-			if obj2.kind == "page" and(not hasattr(obj2, "parentpage") or obj2.parentpage is None) and not obj2 in pages:
+			if obj2.kind == "page" and(not hasattr(obj2, "parentpage") or obj2.parentpage is None) and not obj2 in pages and not obj2.id=="indexpage":
 				pages.append(obj2)
 	else:
-		pages = obj.subpages
+		pages = obj.subpages if obj.subpages is not None else []
+
+	return pages
+
+def page_list_inner(obj):
+
+	pages = get_inner_pages(obj)
 
 	if pages is None or len(pages) == 0:
 		return

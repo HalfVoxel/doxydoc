@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1>{{ compound.name|title }}</span></h1>
+	
+	{{ compound.briefdescription|description}}
+	{{ compound.detaileddescription|description}}
+	<table class="table inner-class-list table-condensed table-striped">
+		# for n in compound.innerpages
+			<tr>
+				<td>{{ n|docobjref }}</td>
+				<td class="member-desc">{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
+
+	{{ compound.contents|programlisting }}
+
+{% endblock %}

@@ -266,17 +266,23 @@ def gather_member_doc(member):
 
     if override:
         assert member.find("type").text
-        overrideType = member.find("type").text.split()[0]
-        override = overrideType == "override" or overrideType == "new"
+        types = member.find("type").text.split()
+        overrideType = None
+        if "override" in types:
+            overrideType = "override"
+        if "new" in types:
+            print types, overrideType, m.id
+            assert(overrideType is None)
+            overrideType = "new"
+
+        override = overrideType
 
         # For abstract classes or interfaces, it might reimplement some function without overriding it
         # thus the need to check again here
-        if override:
-            m.override = overrideType
-        else:
-            m.override = None
+        m.override = overrideType
     else:
         m.override = None
+
 
     # Find descriptions
     m.briefdescription = member.find("briefdescription")
@@ -289,11 +295,11 @@ def gather_member_doc(member):
         m.type = member.find("type")
 
         # Is the member read only. Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
-        m.readonly = False if m.type is None or m.type.text is None else m.type.text.startswith("readonly")
+        m.readonly = False if m.type is None or m.type.text is None else "readonly " in m.type.text
         
         if m.type is not None and m.type.text is not None:
             # Remove eventual 'override ' text at start of type.
-            m.type.text = re.sub("^(?:override|new|readonly)\s", "", m.type.text, 1)
+            m.type.text = re.sub("(?:override|new|readonly|abstract)\s", "", m.type.text, 1)
     else:
         m.type = None
         m.readonly = False
@@ -398,13 +404,14 @@ def gather_page_doc(xml):
     obj.briefdescription = xml.find("briefdescription")
 
     obj.detaileddescription = xml.find("detaileddescription")
-
     obj.subpages = []
     for n in xml.findall("innerpage"):
         obj.subpages.append(n.get("ref"))
 
     for p in obj.subpages:
         p.parentpage = obj
+
+    obj.innerpages = obj.subpages
 
 
 def gather_namespace_doc(xml):
@@ -438,13 +445,20 @@ def gather_namespace_doc(xml):
     gather_members(xml)
 
 
+def write_from_template (template, compound):
+    DocState.currentobj = compound
+    f = file(compound.full_path(), "w")
+    s = DocState.environment.get_template(template + ".html").render(compound=compound, doxylayout=doxylayout, DocState=DocState)
+    f.write(s)
+    f.close()
+
+    assert DocState.empty_writerstack()
+
 def generate_compound_doc(compound):
     
 
     if compound.hidden:
         return
-
-    DocState.currentobj = compound
 
     template = ""
     if compound.kind == "class" or compound.kind == "struct":
@@ -453,7 +467,6 @@ def generate_compound_doc(compound):
         template = "pagedoc"
     elif compound.kind == "namespace":
         template = "namespacedoc"
-        return
     elif compound.kind == "file":
         template = "filedoc"
     elif compound.kind == "example":
@@ -468,12 +481,8 @@ def generate_compound_doc(compound):
             print("Skipping " + compound.kind + " " + compound.name)
         return
 
-    f = file(compound.full_path(), "w")
-    s = DocState.environment.get_template(template + ".html").render(compound=compound, doxylayout=doxylayout, DocState=DocState)
-    f.write(s)
-    f.close()
+    write_from_template(template,compound)
 
-    assert DocState.empty_writerstack()
     return
 
     DocState.pushwriter()

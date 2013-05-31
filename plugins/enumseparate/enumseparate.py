@@ -10,4 +10,4 @@ def separate_enum_def():
 			DocState.register_page(obj, node)
 
 
-DocState.add_event(2030, separate_enum_def)
+#DocState.add_event(2030, separate_enum_def)

@@ -1,5 +1,6 @@
 from doxybase import *
 import doxylayout
+import doxycompound
 
 def build_specials():
     print("Building Special Pages...")
@@ -41,6 +42,7 @@ def gather_specials():
     obj.name = "Pages"
     obj.briefdescription = "Listing of all pages"
     obj.detaileddescription = ""
+    obj.innerpages = doxylayout.get_inner_pages(None)
     obj.path = "pages"
 
     #Generator function required for special pages
@@ -127,25 +129,26 @@ def generate_examples_page(obj):
     f.close()
 
 def generate_pages_page(obj):
-    DocState.pushwriter()
+    
+    # DocState.pushwriter()
+    # DocState.currentobj = obj
+
+    # doxylayout.header()
+    # doxylayout.navheader()
+
+    # doxylayout.begin_content()
+    # DocState.writer.element("p", "Listing of all pages")
+
+    # doxylayout.page_list_inner(None)
+
+    # doxylayout.end_content()
+
+    # doxylayout.footer()
+    
     DocState.currentobj = obj
+    template = "special_pages_list"
 
-    doxylayout.header()
-    doxylayout.navheader()
-
-    doxylayout.begin_content()
-    DocState.writer.element("p", "Listing of all pages")
-
-    doxylayout.page_list_inner(None)
-
-    doxylayout.end_content()
-
-    doxylayout.footer()
-
-    f = open(obj.full_path(), "w")
-    s = DocState.popwriter()
-    f.write(s)
-    f.close()
+    doxycompound.write_from_template(template, obj)
 
 def generate_classes_page(obj):
 

@@ -121,7 +121,12 @@ def heading(n):
 	pass
 
 def image(n):
-	pass
+	name = "images/"+n.get("name")
+	DocState.writer.element("div",None,{"class":"tinyshadow"})
+	DocState.writer.element("img",None,{"src":name})
+	doxylayout.markup(n)
+	DocState.writer.element("/img")
+	DocState.writer.element("/div")
 
 def dotfile(n):
 	pass
