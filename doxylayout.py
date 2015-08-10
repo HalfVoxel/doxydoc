@@ -1,227 +1,267 @@
-from doxybase import *
+from doxybase import DocState, JinjaFilter, dump
 import doxytiny
 from doxysettings import DocSettings
+from str_tree import StrTree
 
 INITIAL_HEADING_DEPTH = 2
 
-def try_call_tiny(name, arg):
-	try:
-		methodToCall = getattr(doxytiny, name)
-	except AttributeError:
-		return None, False
-
-	result = methodToCall(arg)
-	return result, True
 
 def is_hidden(docobj):
-	if docobj.hidden:
-		return True
-	return False
+    if docobj.hidden:
+        return True
+    return False
 
-def prettify_prefix(docobj):
-	s = []
-	prot = node.protection
-	if prot is not None:
-		prot = prot.title()
-		s.append(prot)
 
-	virt = node.virtual
-	if virt is not None and virt != "non-virtual":
-		s.append(virt)
+# def prettify_prefix(docobj):
+#     s = []
+#     prot = node.protection
+#     if prot is not None:
+#         prot = prot.title()
+#         s.append(prot)
 
-	#override = node.reimplements") is not None and virt == "virtual"
+#     virt = node.virtual
+#     if virt is not None and virt != "non-virtual":
+#         s.append(virt)
 
-	if override:
-		assert node.find("type").text
-		overrideType = node.find("type").text.split()[0]
-		assert overrideType != "override" and overrideType != "new", "Invalid override type: " + overrideType
+#     # override = node.reimplements") is not None and virt == "virtual"
 
-		s.append(overrideType)
+#     if override:
+#         assert node.find("type").text
+#         override_type = node.find("type").text.split()[0]
+#         assert (
+#            override_type != "override" and
+#            override_type != "new"
+#            ), "Invalid override type: " + override_type
 
-	static = node.get("static")
-	if static == "yes":
-		s.append("static")
+#         s.append(override_type)
 
-	# mutable?
+#     static = node.get("static")
+#     if static == "yes":
+#         s.append("static")
 
-	return " ".join(s)
+#     # mutable?
+
+#     return " ".join(s)
+
 
 def get_href(id):
-	obj = DocState.get_docobj(id)
-	return obj.full_url()
+    obj = DocState.get_docobj(id)
+    return obj.full_url()
+
 
 def get_anchor(id):
-	obj = DocState.get_docobj(id)
-	return obj.anchor
+    obj = DocState.get_docobj(id)
+    return obj.anchor
 
-@jinjafilter
+
+@JinjaFilter
 def refcompound(refnode):
-	refid = refnode.get("refid")
+    result = StrTree()
+    refid = refnode.get("refid")
 
-	if refid == "":
-		markup(refnode)
-		return
+    if refid == "":
+        result += markup(refnode)
+        return result
 
-	assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
+    assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
 
-	#kind = refnode.get("kindref")
-	#external = refnode.get("external")
-	tooltip = refnode.get("tooltip")
-	obj = DocState.get_docobj(id)
+    # kind = refnode.get("kindref")
+    # external = refnode.get("external")
+    tooltip = refnode.get("tooltip")
+    obj = DocState.get_docobj(id)
 
-	obj = obj.compound
-	assert obj
+    obj = obj.compound
+    assert obj
+
+    # Prevent recursive loops of links in the tooltips
+    DocState.depth_ref += 1
+    if DocState.depth_ref > 1 or is_hidden(obj):
+        result += obj.name
+    else:
+        # Write out anchor element
+        result.element("a", obj.name, {
+            "href": obj.full_url(),
+            "rel": 'tooltip',
+            "data-original-title": tooltip
+        })
+    DocState.depth_ref -= 1
+    return result
 
 
-	# Prevent recursive loops of links in the tooltips
-	DocState.depth_ref += 1
-	if DocState.depth_ref > 1 or is_hidden(obj):
-		DocState.writer += obj.name
-	else:
-		# Write out anchor element
-		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
-	DocState.depth_ref -= 1
-
-@jinjafilter
+@JinjaFilter
 def docobjref(obj):
-	# Prevent recursive loops of links in the tooltips
-	DocState.depth_ref += 1
-	if DocState.depth_ref > 1 or is_hidden(obj):
-		DocState.writer += obj.name
-	else:
-		if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
-			DocState.pushwriter()
-			description(obj.briefdescription)
-			tooltip = DocState.popwriter()
-		else:
-			tooltip = None
+    result = StrTree()
+    # Prevent recursive loops of links in the tooltips
+    DocState.depth_ref += 1
+    if DocState.depth_ref > 1 or is_hidden(obj):
+        result += obj.name
+    else:
+        if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
+            tooltip = description(obj.briefdescription)
+        else:
+            tooltip = None
 
-		# Write out anchor element
-		DocState.writer.element("a", obj.name, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
-	DocState.depth_ref -= 1
+        # Write out anchor element
+        result.element("a", obj.name, {
+            "href": obj.full_url(),
+            "rel": 'tooltip',
+            "data-original-title": tooltip
+        })
+    DocState.depth_ref -= 1
+    return result
+
 
 def ref(refnode):
-	obj = refnode.get("ref")
+    obj = refnode.get("ref")
 
-	if obj is None:
-		markup(refnode)
-		return
+    if obj is None:
+        return markup(refnode)
 
-	#assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
+    # assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
 
-	#kind = refnode.get("kindref")
-	#external = refnode.get("external")
-	#tooltip = refnode.get("tooltip")
+    # kind = refnode.get("kindref")
+    # external = refnode.get("external")
+    # tooltip = refnode.get("tooltip")
 
-	DocState.depth_ref += 1
-	if DocState.depth_ref > 1 or is_hidden(obj):
-		markup(refnode)
-	else:
+    result = StrTree()
+    DocState.depth_ref += 1
+    if DocState.depth_ref > 1 or is_hidden(obj):
+        result += markup(refnode)
+    else:
 
-		if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
-			DocState.pushwriter()
-			description(obj.briefdescription)
-			tooltip = DocState.popwriter()
-		else:
-			tooltip = None
+        if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
+            tooltip = description(obj.briefdescription)
+        else:
+            tooltip = None
 
-		DocState.writer.element("a", None, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
-		markup(refnode)
-		DocState.writer.element("/a")
-	DocState.depth_ref -= 1
+        result.element("a", None, {
+            "href": obj.full_url(),
+            "rel": 'tooltip',
+            "data-original-title": tooltip
+        })
+        result += markup(refnode)
+        result.element("/a")
+    DocState.depth_ref -= 1
+    return result
 
-@jinjafilter
+
+@JinjaFilter
 def ref_explicit(obj, text, tooltip=None):
-	DocState.depth_ref += 1
-	if DocState.depth_ref > 1 or is_hidden(obj):
-		DocState.writer += text
-	else:
-		DocState.writer.element("a", text, {"href": obj.full_url(), "rel": 'tooltip', "data-original-title": tooltip})
-	DocState.depth_ref -= 1
+    result = StrTree()
+    DocState.depth_ref += 1
+    if DocState.depth_ref > 1 or is_hidden(obj):
+        result += text
+    else:
+        result.element("a", text, {
+            "href": obj.full_url(),
+            "rel": 'tooltip',
+            "data-original-title": tooltip
+        })
+    DocState.depth_ref -= 1
+    return result
+
 
 def match_external_ref(text):
-	words = text.split()
-	for i in range(0, len(words)):
-		if i > 0:
-			DocState.writer += " "
-		try:
-			obj = DocState.get_docobj("__external__" + words[i].strip())
-			ref_explicit(obj, words[i], obj.tooltip if hasattr(obj, "tooltip") else None)
-		except KeyError:
-			DocState.writer += words[i]
+    result = StrTree()
+    words = text.split()
+    for i in range(0, len(words)):
+        if i > 0:
+            result += " "
+        try:
+            obj = DocState.get_docobj("__external__" + words[i].strip())
+            result += ref_explicit(obj, words[i], obj.tooltip if hasattr(obj, "tooltip") else None)
+        except KeyError:
+            result += words[i]
 
-@jinjafilter
+    return result
+
+
+@JinjaFilter
 def linked_text(node):
+    result = StrTree()
 
-	if node is None:
-		return
+    if node is None:
+        return result
 
-	if node.text is not None:
-		match_external_ref(node.text)
-		#DocState.writer += node.text
+    if node.text is not None:
+        result += match_external_ref(node.text)
+        # result += node.text
 
-	for n in node:
-		if n.tag == "ref":
-			ref(n)
-		else:
-			if n.text is not None:
-				match_external_ref(n.text)
+    for n in node:
+        if n.tag == "ref":
+            result += ref(n)
+        else:
+            if n.text is not None:
+                result += match_external_ref(n.text)
 
-		if n.tail is not None:
-			match_external_ref(n.tail)
-			#DocState.writer += n.tail
+        if n.tail is not None:
+            result += match_external_ref(n.tail)
+            # result += n.tail
+
+    return result
+
 
 def header():
-	DocState.writer.html(DocSettings.header)
+    return StrTree(DocSettings.header)
+
 
 def footer():
-	DocState.writer.html(DocSettings.footer)
+    return StrTree(DocSettings.footer)
+
 
 def begin_content():
-	DocState.writer.html("<div class='content'>")
+    return StrTree("<div class='content'>")
+
 
 def end_content():
-	DocState.writer.html("</div>")
+    return StrTree("</div>")
+
 
 def navheader():
+    result = StrTree()
+    result.append("<div class='navbar'><ul>")
 
-	DocState.writer.html("<div class='navbar'><ul>")
-	DocState.navitems.sort(key=lambda v: v.order)
+    DocState.navitems.sort(key=lambda v: v.order)
 
-	for item in DocState.navitems:
-		DocState.writer.element("li")
-		DocState.writer.element("a", item.label, {"href": item.ref.full_url()})
-		DocState.writer.element("/li")
+    for item in DocState.navitems:
+        result.element("li")
+        result.element("a", item.label, {"href": item.ref.full_url()})
+        result.element("/li")
 
-	DocState.trigger("navheader")
-	DocState.writer.html("</div></ul>")
+    DocState.trigger("navheader")
+    result.append("</div></ul>")
+    return result
+
 
 def pagetitle(title):
-	DocState.writer.element("h1", title)
+    return StrTree().element("h1", title)
+
 
 def file_path(path):
-	if path is None:
-		return
+    if path is None:
+        return StrTree()
 
-	DocState.writer.element("span", path, {"class": "file-location"})
+    return StrTree().element("span", path, {"class": "file-location"})
+
 
 def member_section_heading(section):
-	#skind = section.get("kind")
-	#skind = skind.replace("-"," ")
-	#skind = skind.replace("attrib","attributes")
-	#skind = skind.replace("func","functions")
-	#skind = skind.replace("property","properties")
-	#skind = skind.title()
+    # skind = section.get("kind")
+    # skind = skind.replace("-"," ")
+    # skind = skind.replace("attrib","attributes")
+    # skind = skind.replace("func","functions")
+    # skind = skind.replace("property","properties")
+    # skind = skind.title()
 
-	DocState.writer.element("h2", section[0])
+    return StrTree().element("h2", section[0])
 
-''' Returns a list of sections in which to group members for display '''
+
 def get_member_sections(compound, members):
-	sections = []
+    ''' Returns a list of sections in which to group members for display '''
+    sections = []
 
-	for m in members:
-		if not hasattr(m, "protection"):
-			dump(m)
+    for m in members:
+        if not hasattr(m, "protection"):
+            dump(m)
 
 # <xsd:simpleType name="DoxMemberKind">
 #     <xsd:restriction base="xsd:string">
@@ -240,504 +280,617 @@ def get_member_sections(compound, members):
 #     </xsd:restriction>
 #   </xsd:simpleType>
 
+    our_methods = [m for m in members if m.compound == compound]
+    instance_methods = [m for m in our_methods if not m.static]
+    static_methods = [m for m in our_methods if m.static]
 
-	sections.append(("Public Methods", filter(lambda m: m.protection 	== "public" and m.kind == "function" 	and not m.static and m.compound == compound, members)))
-	sections.append(("Public Properties", filter(lambda m: m.protection == "public" and m.kind == "property" 	and not m.static and m.compound == compound, members)))
-	sections.append(("Public Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and not m.static and m.compound == compound, members)))
-	sections.append(("Public Events", filter(lambda m: m.protection 	== "public" and m.kind == "event" 		and not m.static and m.compound == compound, members)))
-	sections.append(("Public Typedefs", filter(lambda m: m.protection 	== "public" and m.kind == "typedef" 	and not m.static and m.compound == compound, members)))
-	sections.append(("Public Signals", filter(lambda m: m.protection 	== "public" and m.kind == "signal" 		and not m.static and m.compound == compound, members)))
-	sections.append(("Public Prototypes", filter(lambda m: m.protection == "public" and m.kind == "prototype" 	and not m.static and m.compound == compound, members)))
-	sections.append(("Public Friends", filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and not m.static and m.compound == compound, members)))
-	sections.append(("Public Slots", filter(lambda m: m.protection 		== "public" and m.kind == "slot" 		and not m.static and m.compound == compound, members)))
+    public_instance_methods = [m for m in instance_methods if m.protection == "public"]
+    public_static_methods = [m for m in static_methods if m.protection == "public"]
 
-	sections.append(("Public Static Methods", 	filter(lambda m: m.protection 	== "public" and m.kind == "function" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Properties",filter(lambda m: m.protection 	== "public" and m.kind == "property" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Variables", filter(lambda m: m.protection 	== "public" and m.kind == "variable" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Events", 	filter(lambda m: m.protection 	== "public" and m.kind == "event" 		and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Typedefs", 	filter(lambda m: m.protection 	== "public" and m.kind == "typedef" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Signals", 	filter(lambda m: m.protection 	== "public" and m.kind == "signal" 		and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Prototypes",filter(lambda m: m.protection 	== "public" and m.kind == "prototype" 	and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Friends",	filter(lambda m: m.protection 	== "public" and m.kind == "friend" 		and m.static and m.compound == compound, members)))
-	sections.append(("Public Static Slots", 	filter(lambda m: m.protection 	== "public" and m.kind == "slot" 		and m.static and m.compound == compound, members)))
+    sections.append((
+        "Public Methods",
+        [m for m in public_instance_methods if m.kind == "function"]
+    ))
+    sections.append((
+        "Public Properties",
+        [m for m in public_instance_methods if m.kind == "property"]
+    ))
+    sections.append((
+        "Public Variables",
+        [m for m in public_instance_methods if m.kind == "variable"]
+    ))
+    sections.append((
+        "Public Events",
+        [m for m in public_instance_methods if m.kind == "event"]
+    ))
+    sections.append((
+        "Public Typedefs",
+        [m for m in public_instance_methods if m.kind == "typedef"]
+    ))
+    sections.append((
+        "Public Signals",
+        [m for m in public_instance_methods if m.kind == "signal"]
+    ))
+    sections.append((
+        "Public Prototypes",
+        [m for m in public_instance_methods if m.kind == "prototype"]
+    ))
+    sections.append((
+        "Public Friends",
+        [m for m in public_instance_methods if m.kind == "friend"]
+    ))
+    sections.append((
+        "Public Slots",
+        [m for m in public_instance_methods if m.kind == "slot"]
+    ))
 
-	sections.append(("Private/Protected Members", filter(lambda m: m.protection != "public" and m.compound == compound, members)))
-	
-	# Handling it specially, it's no point explicitly showing an empty section when a class does no inherit any members
-	ls = filter(lambda m: m.compound != compound, members)
-	if len(ls) > 0:
-		for v in ls:
-			if v.name == "PostProcess":
-				dump(v)
+    sections.append((
+        "Public Static Methods",
+        [m for m in public_static_methods if m.kind == "function"]
+    ))
+    sections.append((
+        "Public Static Properties",
+        [m for m in public_static_methods if m.kind == "property"]
+    ))
+    sections.append((
+        "Public Static Variables",
+        [m for m in public_static_methods if m.kind == "variable"]
+    ))
+    sections.append((
+        "Public Static Variables",
+        [m for m in public_static_methods if m.kind == "variable"]
+    ))
+    sections.append((
+        "Public Static Events",
+        [m for m in public_static_methods if m.kind == "event"]
+    ))
+    sections.append((
+        "Public Static Typedefs",
+        [m for m in public_static_methods if m.kind == "typedef"]
+    ))
+    sections.append((
+        "Public Static Signals",
+        [m for m in public_static_methods if m.kind == "signal"]
+    ))
+    sections.append((
+        "Public Static Prototypes",
+        [m for m in public_static_methods if m.kind == "prototype"]
+    ))
+    sections.append((
+        "Public Static Friends",
+        [m for m in public_static_methods if m.kind == "friend"]
+    ))
+    sections.append((
+        "Public Static Slots",
+        [m for m in public_static_methods if m.kind == "slot"]
+    ))
 
-		sections.append(("Inherited Members", ls))
-	
-	#sections.append(("All Members", members))
-	return sections
+    sections.append((
+        "Private/Protected Members",
+        filter(lambda m: m.protection != "public" and m.compound == compound, members)
+    ))
 
-''' Shows the protection of a member in the table/list view '''
+    # Handling it specially
+    # There no point explicitly showing an empty section when a class does no inherit any members
+    ls = filter(lambda m: m.compound != compound, members)
+    if len(ls) > 0:
+        for v in ls:
+            if v.name == "PostProcess":
+                dump(v)
+
+        sections.append(("Inherited Members", ls))
+
+    # sections.append(("All Members", members))
+    return sections
+
+
 def member_list_protection(member):
+    ''' Shows the protection of a member in the table/list view '''
 
-	DocState.writer.element("span", member.protection.title())
+    result = StrTree()
+    result.element("span", member.protection.title())
 
-	if member.readonly:
-		DocState.writer.element("span", "Readonly")
-	if member.static:
-		DocState.writer.element("span", "Static")
+    if member.readonly:
+        result.element("span", "Readonly")
+    if member.static:
+        result.element("span", "Static")
 
-''' Displays the member's type. Used in the members table '''
+    return result
+
+
 def member_list_type(member):
-	if member.type is not None:
-		# Write type
-		linked_text(member.type)
+    ''' Displays the member's type. Used in the members table '''
+
+    if member.type is not None:
+        # Write type
+        return linked_text(member.type)
+    else:
+        return StrTree()
+
 
 def enum_members(members):
 
-	DocState.writer.element("ul", None, {'class': 'enum-members'})
+    result = StrTree()
+    result.element("ul", None, {'class': 'enum-members'})
 
-	for m in members:
-		DocState.writer.element("li")
-		
-		DocState.writer.element("p")
-		DocState.writer.element("b")
-		ref_explicit(m, m.name)
-		DocState.writer += " "
-		DocState.writer.element("/b")
-		if m.initializer is not None:
-			DocState.writer.element("span", lambda: linked_text(m.initializer))
-		DocState.writer.element("/p")
+    for m in members:
+        result.element("li")
 
-		description(m.briefdescription)
-		description(m.detaileddescription)
+        result.element("p")
+        result.element("b")
+        result += ref_explicit(m, m.name)
+        result += " "
+        result.element("/b")
+        if m.initializer is not None:
+            result.element("span", lambda: linked_text(m.initializer))
+        result.element("/p")
 
-		DocState.writer.element("/td")
+        result += description(m.briefdescription)
+        result += description(m.detaileddescription)
 
-		DocState.writer.element("/li")
+        result.element("/td")
+        result.element("/li")
 
+    result.element("/ul")
+    return result
 
-	DocState.writer.element("/ul")
 
 def members_list(docobj):
 
-	DocState.writer.element("div", None, {"class": "member-list"})
+    result = StrTree()
+    result.element("div", None, {"class": "member-list"})
 
-	sections = get_member_sections(docobj, docobj.all_members)
+    sections = get_member_sections(docobj, docobj.all_members)
 
-	for section in sections:
+    for section in sections:
 
-		members = section[1]
+        members = section[1]
 
-		if len(members) == 0:
-			continue
+        if len(members) == 0:
+            continue
 
-		DocState.writer.element("h2", section[0])
+        result.element("h2", section[0])
 
-		DocState.writer.element("table", None, {'class': 'table table-condensed table-striped member-list-section'})
+        result.element("table", None, {
+            'class': 'table table-condensed table-striped member-list-section'
+        })
 
-		for m in members:
-			DocState.writer.element("tr")
+        for m in members:
+            result.element("tr")
 
-			# Show protection in table if requested
-			if DocSettings.show_member_protection_in_list:
-				DocState.writer.element("td", None, {'class': 'member-prot'})
-				member_list_protection(m)
-				DocState.writer.element("/td")
-			
-			# Show type in table if requested
-			if DocSettings.show_member_protection_in_list:
-				DocState.writer.element("td", None, {'class': 'member-type'})
-				member_list_type(m)
-				DocState.writer.element("/td")
+            # Show protection in table if requested
+            if DocSettings.show_member_protection_in_list:
+                result.element("td", None, {'class': 'member-prot'})
+                result += member_list_protection(m)
+                result.element("/td")
 
-			DocState.writer.element("td", None, {'class': 'member-name'})
-			ref_explicit(m, m.name)
-			#DocState.writer += m.name
-			DocState.writer.element("/td")
+            # Show type in table if requested
+            if DocSettings.show_member_protection_in_list:
+                result.element("td", None, {'class': 'member-type'})
+                result += member_list_type(m)
+                result.element("/td")
 
-			DocState.writer.element("td", None, {'class': 'member-desc'})
-			description(m.briefdescription)
+            result.element("td", None, {'class': 'member-name'})
+            result += ref_explicit(m, m.name)
+            # result += m.name
+            result.element("/td")
 
-			DocState.writer.element("/td")
+            result.element("td", None, {'class': 'member-desc'})
+            result += description(m.briefdescription)
 
-			DocState.writer.element("/tr")
+            result.element("/td")
 
-		DocState.writer.element("/table")
+            result.element("/tr")
 
-	DocState.writer.element("/div")
+        result.element("/table")
+
+    result.element("/div")
+    return result
+
 
 def members_section_empty_message(section):
-	DocState.writer.element("p", "Seems there are no members to be listed here", {"class": "empty-section"})
+    return StrTree().element("p", "Seems there are no members to be listed here", {
+        "class": "empty-section"
+    })
+
 
 def members(docobj):
+    result = StrTree()
+    sections = get_member_sections(docobj, docobj.members)
 
-	sections = get_member_sections(docobj, docobj.members)
+    for section in sections:
+        members = section[1]
 
-	for section in sections:
+        if not DocSettings.keep_empty_member_sections:
+            if sum(not is_hidden(m) for m in members) == 0:
+                continue
 
-		members = section[1]
+        result.html("<div class ='member-sec'>")
 
-		if not DocSettings.keep_empty_member_sections:
-			if sum(not is_hidden(m) for m in members) == 0:
-				continue
+        result += member_section_heading(section)
 
-		DocState.writer.html("<div class ='member-sec'>")
+        count = 0
+        members = section[1]
+        for m in members:
+            # Ignore hidden members
+            if not is_hidden(m):
+                result += member(m)
+                count += 1
 
-		member_section_heading(section)
+        if count == 0:
+            result += members_section_empty_message(section)
 
-		count = 0
-		members = section[1]
-		for m in members:
-			# Ignore hidden members
-			if not is_hidden(m):
-				member(m)
-				count += 1
+        result.html("</div>")
 
-		if count == 0:
-			members_section_empty_message(section)
+    return result
 
-		DocState.writer.html("</div>")
 
 def member_heading(m):
-	DocState.writer.element("h3")
+    result = StrTree()
+    result.element("h3")
 
-	ls = []
-	if m.protection is not None:
-		ls.append(m.protection.title())
-	if m.readonly:
-		ls.append("readonly")
+    ls = []
+    if m.protection is not None:
+        ls.append(m.protection.title())
+    if m.readonly:
+        ls.append("readonly")
+    if m.static:
+        ls.append("static")
 
-	if m.static:
-		ls.append("static")
+    result += ' '.join(ls)
 
-	DocState.writer += ' '.join(ls)
-	
-	#These kinds of members have a () list
-	if m.kind == "function":
-		if len(ls) > 0:
-			DocState.writer.element("span", None, {"class": 'member-type'})
+    # These kinds of members have a () list
+    if m.kind == "function":
+        if len(ls) > 0:
+            result.element("span", None, {"class": 'member-type'})
 
-		#Write type
-		linked_text(m.type)
+        # Write type
+        result += linked_text(m.type)
 
-	DocState.writer.element("/span")
-	DocState.writer.element("span", None, {"class": 'member-name'})
+    result.element("/span")
+    result.element("span", None, {"class": 'member-name'})
 
-	name = m.name
-	DocState.writer += name
+    result += m.name
 
-	DocState.writer.element("/span")
+    result.element("/span")
 
-	if m.params is not None:
-		DocState.writer += " "
+    if m.params is not None:
+        result += " "
 
-		DocState.writer.element("span", None, {"class": "member-params"})
-		DocState.writer += "("
-		for i, param in enumerate(m.params):
-			DocState.writer += " "
-			linked_text(param.type)
+        result.element("span", None, {"class": "member-params"})
+        result += "("
+        for i, param in enumerate(m.params):
+            result += " "
+            result += linked_text(param.type)
 
-			DocState.writer += " "
+            result += " "
 
-			if param.description is not None:
-				DocState.pushwriter()
-				description(param.description)
-				tooltip = DocState.popwriter()
-				DocState.writer.element("span", None, {"data-original-title": tooltip})
-				DocState.writer += param.name
-				DocState.writer.element("/span")
-			else:
-				DocState.writer += param.name
+            if param.description is not None:
+                tooltip = description(param.description)
+                result.element("span", None, {"data-original-title": tooltip})
+                result += param.name
+                result.element("/span")
+            else:
+                result += param.name
 
-			if i < len(m.params) - 1:
-				DocState.writer += ","
+            if i < len(m.params) - 1:
+                result += ","
 
-		DocState.writer.element("/span")
+        result.element("/span")
 
-	DocState.writer.element("/h3")
+    result.element("/h3")
+    return result
 
-@jinjafilter
+
+@JinjaFilter
 def member_parameter_name(param):
-	if param.description is not None:
-		DocState.pushwriter()
-		description(param.description)
-		tooltip = DocState.popwriter()
-		DocState.writer.element("span", None, {"data-original-title": tooltip})
-		DocState.writer += param.name
-		DocState.writer.element("/span")
-	else:
-		DocState.writer += param.name
-		
+    result = StrTree()
+    if param.description is not None:
+        tooltip = description(param.description)
+        result.element("span", None, {"data-original-title": tooltip})
+        result += param.name
+        result.element("/span")
+    else:
+        result += param.name
+    return result
+
+
 def desctitle(text):
-	DocState.writer.element("h3", text)
+    return StrTree().element("h3", text)
+
 
 def sect(sectnode, depth):
-	''' sect* nodes '''
+    ''' sect* nodes '''
 
-	title = sectnode.find("title")
-	if title is not None:
-		DocState.writer.element("h" + str(depth + INITIAL_HEADING_DEPTH), title.text, {"id": get_anchor(sectnode.get("id"))})
+    result = StrTree()
+    title = sectnode.find("title")
+    if title is not None:
+        result.element("h" + str(depth + INITIAL_HEADING_DEPTH), title.text, {
+            "id": get_anchor(sectnode.get("id"))
+        }
+        )
 
-	sectbase(sectnode)
+    result += sectbase(sectnode)
+    return result
+
 
 def paragraph(paranode):
-	''' para nodes '''
+    ''' para nodes '''
 
-	DocState.writer.elem("p")
-	markup(paranode)
-	DocState.writer.elem("/p")
+    result = StrTree()
+    result.elem("p")
+    result += markup(paranode)
+    result.elem("/p")
+    return result
+
 
 def markup(node):
-	''' Markup like nodes '''
+    ''' Markup like nodes '''
 
-	if node is None:
-		return
+    result = StrTree()
+    if node is None:
+        return result
 
-	if node.text is not None:
-		DocState.writer += node.text
+    if node.text is not None:
+        result += node.text
 
-	for n in node:
-		result, ok = try_call_tiny(n.tag, n)
-		if not ok:
-			print("[W1] Not handled: " + n.tag)
-			if n.text is not None:
-				DocState.writer += n.text
+    # Traverse children
+    for n in node:
+        child_result = doxytiny.write_xml(n)
+        if child_result is not None:
+            result += child_result
+        else:
+            print("[W1] Not handled: " + n.tag)
+            if n.text is not None:
+                result += n.text
 
-		if n.tail is not None:
-			DocState.writer += n.tail
+        if n.tail is not None:
+            result += n.tail
+
+    return result
+
 
 def internal(internalnode):
-	''' internal nodes '''
+    ''' internal nodes '''
 
-	print("Skipping internal data")
+    print("Skipping internal data")
+    return StrTree()
+
 
 def sectbase(node):
-	for n in node:
-		if n == node:
-			continue
+    result = StrTree()
+    for n in node:
+        if n == node:
+            continue
+
+        if n.tag == "para":
+            result += paragraph(n)
+        elif n.tag == "sect1":
+            result += sect(n, 1)
+        elif n.tag == "sect2":
+            result += sect(n, 2)
+        elif n.tag == "sect3":
+            result += sect(n, 3)
+        elif n.tag == "sect4":
+            result += sect(n, 4)
+        elif n.tag == "sect5":
+            result += sect(n, 5)
+        elif n.tag == "simplesectsep":
+            result += doxytiny.simplesectsep(n)
+        elif n.tag == "title":
+            # A sect should have been the parent, so it should have been handled
+            pass
+        elif n.tag == "internal":
+            result += internal(n)
+        else:
+            print("[W2] Not handled: " + n.tag)
+
+    return result
 
 
-		if n.tag == "para":
-			paragraph(n)
-		elif n.tag == "sect1":
-			sect(n, 1)
-		elif n.tag == "sect2":
-			sect(n, 2)
-		elif n.tag == "sect3":
-			sect(n, 3)
-		elif n.tag == "sect4":
-			sect(n, 4)
-		elif n.tag == "sect5":
-			sect(n, 5)
-		elif n.tag == "simplesectsep":
-			doxytiny.simplesectsep(n)
-		elif n.tag == "title":
-			#A sect should have been the parent, so it should have been handled
-			pass
-		elif n.tag == "internal":
-			internal(n)
-		else:
-			print("[W2] Not handled: " + n.tag)
-
-@jinjafilter
+@JinjaFilter
 def description(descnode):
-	### \todo Ugly to have multiple possible types for description objects
-	if isinstance(descnode, str):
-		DocState.writer += descnode
-		return
+    result = StrTree()
+    # \todo Ugly to have multiple possible types for description objects
+    if isinstance(descnode, str):
+        result += descnode
+        return result
 
-	if descnode is not None:
-		title = descnode.find("title")
-		if title is not None:
-			desctitle(title.text)
+    if descnode is not None:
+        title = descnode.find("title")
+        if title is not None:
+            result += desctitle(title.text)
 
-		sectbase(descnode)
+        result += sectbase(descnode)
 
-def member_reimplements(m):
-	reimps = m.findall("reimplementedby")
-	for reimp in reimps:
-		#obj = reimp.get("ref")
-		DocState.writer.html("<span>Reimplemented in ")
-		refcompound(reimp)
-		DocState.writer.hmtl("</span>")
+    return result
 
-	reimps = m.findall("reimplements")
-	for reimp in reimps:
-		#obj = reimp.get("ref")
-		DocState.writer.html("<span>Overrides implementation in ")
-		refcompound(reimp)
-		DocState.writer.html("</span>")
 
 def member(m):
 
-	DocState.writer.element("div", None, {"class": 'memberdef', "id": m.anchor})
+    result = StrTree()
+    result.element("div", None, {"class": 'memberdef', "id": m.anchor})
 
-	member_heading(m)
+    result += member_heading(m)
 
-	description(m.briefdescription)
-	description(m.detaileddescription)
+    result += description(m.briefdescription)
+    result += description(m.detaileddescription)
 
-	DocState.writer.element("/div")
+    result.element("/div")
 
-def compound_desc(compxml):
-
-	briefdesc = compxml.find("briefdescription")
-	detdesc = compxml.find("detaileddescription")
-
-	description(briefdesc)
-	description(detdesc)
 
 def get_inner_pages(obj):
-	pages = []
-	if obj is None:
-		for k, obj2 in DocState._docobjs.iteritems():
-			if obj2.kind == "page" and(not hasattr(obj2, "parentpage") or obj2.parentpage is None) and not obj2 in pages and not obj2.id=="indexpage":
-				pages.append(obj2)
-	else:
-		pages = obj.subpages if obj.subpages is not None else []
+    pages = []
+    if obj is None:
+        for k, obj2 in DocState._docobjs.iteritems():
+            if (
+                obj2.kind == "page" and
+                (not hasattr(obj2, "parentpage") or obj2.parentpage is None) and
+                obj2 not in pages and
+                obj2.id != "indexpage"
+            ):
+                pages.append(obj2)
+    else:
+        pages = obj.subpages if obj.subpages is not None else []
 
-	return pages
+    return pages
+
 
 def page_list_inner(obj):
+    result = StrTree()
 
-	pages = get_inner_pages(obj)
+    pages = get_inner_pages(obj)
 
-	if pages is None or len(pages) == 0:
-		return
+    if pages is None or len(pages) == 0:
+        return result
 
-	DocState.writer.element("ul")
+    result.element("ul")
 
-	for p in pages:
-		DocState.writer.element("li")
-		docobjref(p)
-		page_list_inner(p)
-		DocState.writer.element("/li")
+    for p in pages:
+        result.element("li")
+        result += docobjref(p)
+        result += page_list_inner(p)
+        result.element("/li")
 
-	DocState.writer.element("/ul")
+    result.element("/ul")
+    return result
+
 
 def group_list_inner_classes(objs):
-	DocState.writer.element("table", None, {"class": "inner-class-list table table-condensed table-striped"})
-	for n in objs:
-		DocState.writer.element("tr")
-		DocState.writer.element("td", lambda: docobjref(n))
-		DocState.writer.element("td", lambda: description(n.briefdescription))
-		DocState.writer.element("/tr")
+    result = StrTree()
+    result.element("table", None, {"class": "inner-class-list table table-condensed table-striped"})
+    for n in objs:
+        result.element("tr")
+        result.element("td", lambda: docobjref(n))
+        result.element("td", lambda: description(n.briefdescription))
+        result.element("/tr")
 
-	DocState.writer.element("/table")
+    result.element("/table")
+    return result
+
 
 def group_list_inner_namespaces(objs):
-	group_list_inner_classes(objs)
+    group_list_inner_classes(objs)
+
 
 def group_list_inner_groups(objs):
-	group_list_inner_classes(objs)
+    group_list_inner_classes(objs)
 
-''' Show a list of classes a file contains.
-	\param obj A list of DocObj
-'''
+
 def file_list_inner_classes(obj):
-	''' \bug Either class, struct or interface '''
-	DocState.writer.element("h4", "This file defines the following class" + ("es" if len(obj) > 1 else "") + ":")
-	DocState.writer.element("ul", None, {"class": "inner-class-list"})
-	for n in obj:
-		DocState.writer.element("li", lambda: docobjref(n))
+    """
+    Show a list of classes a file contains.
+    \param obj A list of Entity
+    """
+    # \bug Either class, struct or interface
+    result = StrTree()
+    header_text = "This file defines the following class" + ("es" if len(obj) > 1 else "") + ":"
+    result.element("h4", header_text)
+    result.element("ul", None, {"class": "inner-class-list"})
+    for n in obj:
+        result.element("li", lambda: docobjref(n))
 
-	DocState.writer.element("/ul")
+    result.element("/ul")
+    return result
+
 
 def file_list_inner_namespaces(obj):
-	pass
+    return StrTree()
+
 
 def namespace_list_inner(obj):
+    result = StrTree()
+    result.element("table", None, {"class": "compound-view"})
 
-	DocState.writer.element("table", None, {"class": "compound-view"})
+    namespaces = []
+    gridobjs = []
+    if hasattr(obj, "innerclasses"):
+        for obj2 in obj.innerclasses:
+            if(obj2.kind == "class" or obj2.kind == "struct") and obj2 not in gridobjs:
+                gridobjs.append(obj2)
+    else:
+        for k, obj2 in DocState._docobjs.iteritems():
+            if(obj2.kind == "class" or obj2.kind == "struct") and obj2 not in gridobjs:
+                gridobjs.append(obj2)
 
-	namespaces = []
-	gridobjs = []
-	if hasattr(obj, "innerclasses"):
-		for obj2 in obj.innerclasses:
-			if(obj2.kind == "class" or obj2.kind == "struct") and not obj2 in gridobjs:
-				gridobjs.append(obj2)
-	else:
-		for k, obj2 in DocState._docobjs.iteritems():
-			if(obj2.kind == "class" or obj2.kind == "struct") and not obj2 in gridobjs:
-				gridobjs.append(obj2)
+    if hasattr(obj, "innernamespaces"):
+        for ns in obj.innernamespaces:
+            namespaces.append(ns)
+    else:
+        for k, obj2 in DocState._docobjs.iteritems():
+            if obj2.kind == "namespace" and obj2 not in namespaces:
+                if hasattr(obj2, "innerclasses") and len(obj2.innerclasses) > 0:
+                    namespaces.append(obj2)
 
-	if hasattr(obj, "innernamespaces"):
-		for ns in obj.innernamespaces:
-			namespaces.append(ns)
-	else:
-		for k, obj2 in DocState._docobjs.iteritems():
-			if obj2.kind == "namespace" and not obj2 in namespaces:
-				if hasattr(obj2, "innerclasses") and len(obj2.innerclasses) > 0:
-					namespaces.append(obj2)
+    # Apparently, this manages to sort them by name.
+    # Even without me specifying what to sort by.
+    # Python...
+    gridobjs.sort()
+    namespaces.sort()
 
-	# Apparently, this manages to sort them by name.
-	# Even without me specifying what to sort by.
-	# Python...
-	gridobjs.sort()
-	namespaces.sort()
+    # Number of columns
+    xwidth = 4
+    ns_colspan = int(xwidth / 2)
 
-	# Number of columns
-	xwidth = 4
-	ns_colspan = int(xwidth / 2)
+    counter = 0
 
-	counter = 0
+    for obj2 in namespaces:
+        if counter % xwidth is 0:
+            if counter > 0:
+                result.element("/tr")
+            result.element("tr")
 
-	for obj2 in namespaces:
-		if counter % xwidth is 0:
-			if counter > 0:
-				DocState.writer.element("/tr")
-			DocState.writer.element("tr")
+        result.element("td", None, {"colspan": str(ns_colspan)})
+        DocState.depth_ref += 1
+        result.element("a", None, {"href": obj2.full_url()})
+        result.element("b", obj2.name)
 
-		DocState.writer.element("td", None, {"colspan": str(ns_colspan)})
-		DocState.depth_ref += 1
-		DocState.writer.element("a", None, {"href": obj2.full_url()})
-		DocState.writer.element("b", obj2.name)
+        # result += doxylayout.docobjref(obj2)
+        # result.element("p")
+        result += description(obj2.briefdescription)
+        # result.element("/p")
+        result.element("/a")
+        result.element("/td")
 
-		#doxylayout.docobjref(obj2)
-		#DocState.writer.element("p")
-		description(obj2.briefdescription)
-		#DocState.writer.element("/p")
-		DocState.writer.element("/a")
-		DocState.writer.element("/td")
+        counter += ns_colspan
 
-		counter += ns_colspan
+        DocState.depth_ref -= 1
 
-		DocState.depth_ref -= 1
+    if(len(namespaces) > 0):
+        result.element("/tr")
 
-	if(len(namespaces) > 0):
-		DocState.writer.element("/tr")
+    counter = 0
+    for obj2 in gridobjs:
+        # NOTE: Add enum
+        if counter % xwidth == 0:
+            if counter > 0:
+                result.element("/tr")
+            result.element("tr")
 
-	counter = 0
+        result.element("td")
 
-	for obj2 in gridobjs:
-		# NOTE: Add enum
-		if counter % xwidth == 0:
-			if counter > 0:
-				DocState.writer.element("/tr")
-			DocState.writer.element("tr")
+        DocState.depth_ref += 1
+        result.element("a", None, {"href": obj2.full_url()})
+        result.element("b", obj2.name)
 
-		DocState.writer.element("td")
+        # result += doxylayout.docobjref(obj2)
+        # result.element("p")
+        result += description(obj2.briefdescription)
+        # result.element("/p")
+        result.element("/a")
+        result.element("/td")
+        DocState.depth_ref -= 1
 
-		DocState.depth_ref += 1
-		DocState.writer.element("a", None, {"href": obj2.full_url()})
-		DocState.writer.element("b", obj2.name)
+        counter += 1
 
-		#doxylayout.docobjref(obj2)
-		#DocState.writer.element("p")
-		description(obj2.briefdescription)
-		#DocState.writer.element("/p")
-		DocState.writer.element("/a")
-		DocState.writer.element("/td")
-		DocState.depth_ref -= 1
+    result.element("/tr")
+    result.element("/table")
+    return result
 
-		counter += 1
-
-	DocState.writer.element("/tr")
-	DocState.writer.element("/table")
 
 def namespace_inner_class(obj):
-	DocState.writer.elem("li")
-
-	docobjref(obj)
-
-	DocState.writer.elem("/li")
+    result = StrTree()
+    result.elem("li")
+    result += docobjref(obj)
+    result.elem("/li")
+    return result

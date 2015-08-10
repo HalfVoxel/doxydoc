@@ -1,6 +1,7 @@
 import doxylayout
-from doxybase import *
+from doxybase import JinjaFilter
 
-@jinjafilter
+
+@JinjaFilter
 def markup(element):
-	doxylayout.markup(element)
+    return doxylayout.markup(element)

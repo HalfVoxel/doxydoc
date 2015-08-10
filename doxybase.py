@@ -1,19 +1,8 @@
 from pprint import pprint
 from xml.sax.saxutils import escape
-from heapq import *
-import types
-import doxyext
 from doxysettings import DocSettings
 import jinja2
-
-def try_call_function(name, arg):
-    try:
-        methodToCall = getattr(doxyext, name)
-    except AttributeError:
-        return None, False
-
-    result = methodToCall(arg)
-    return result, True
+import re
 
 FILE_EXT = ".html"
 OUTPUT_DIR = "html"
@@ -27,285 +16,114 @@ html_escape_table = {
 }
 html_unescape_table = {v: k for k, v in html_escape_table.items()}
 
+
 def paramescape(v):
     return escape(v, html_escape_table)
 
-class StringBuilder:
 
-    def __init__(self):
-        self.arr = []
-
-    def __add__(self, t):
-        assert t is not None
-        self.arr.append(escape(t))
-        return self
-
-    def __iadd__(self, t):
-        assert t is not None
-        self.arr.append(escape(t))
-        return self
-
-    def html(self, t):
-        assert t is not None
-        self.arr.append(t)
-        return self
-
-    #def element(self, t, c):
-    #    assert t is not None
-    #    assert c is not None
-    #    self.arr.append("<" + t + ">" + escape(t) + "</" + t + ">")
-
-    def element(self, t, c=None, params=None):
-        assert t
-        if params is None:
-            self.arr.append("<" + t + ">")
-        else:
-            self.arr.append("<" + t + " ")
-            for k, v in params.iteritems():
-                if v is not None and v != "":
-                    self.arr.append(k + "='" + paramescape(v) + "' ")
-
-            self.arr.append(">")
-        
-        if c is not None:
-            if isinstance(c, types.FunctionType):
-                c()
-            else:
-                self.arr.append(escape(c))
-
-            self.arr.append("</" + t + ">")
-
-    def elem(self, t):
-        assert t is not None
-        self.arr.append("<" + t + ">")
-
-    def __str__(self):
-        cache = ''.join(self.arr)
-        del self.arr[:]
-        self.arr.append(cache)
-        return cache
-
-    def clear(self):
-        del self.arr[:]
-
-class StringBuilderPlain:
-
-    def __init__(self):
-        self.arr = []
-
-    def __add__(self, t):
-        assert t is not None
-        self.arr.append(t)
-        return self
-
-    def __iadd__(self, t):
-        assert t is not None
-        self.arr.append(t)
-        return self
-
-    def html(self, t):
-        assert t is not None
-        self.arr.append(t)
-        return self
-
-    #def element(self, t, c):
-    #    assert t is not None
-    #    assert c is not None
-    #    self.arr.append("<" + t + ">" + escape(t) + "</" + t + ">")
-
-    def element(self, t, c=None, params=None):
-        assert t
-        if c is None:
-            return
-
-        if isinstance(c, types.FunctionType):
-            c()
-        else:
-            self.arr.append(c)
-
-    def elem(self, t):
-        assert t is not None
-
-    def __str__(self):
-        cache = ''.join(self.arr)
-        del self.arr[:]
-        self.arr.append(cache)
-        return cache
-
-    def clear(self):
-        del self.arr[:]
-
-class jinjafilter:
+class JinjaFilter:
     def __init__(self, f):
         def v(*args):
-            DocState.pushwriter()
-            f(*args)
-            s = DocState.popwriter()
-            return s
+            return str(f(*args))
         self.f = f
-        DocState.add_filter(f.__name__, v)
-    
+        print ("Warning: Jinja filters are not functional yet")
+        # DocState.add_filter(f.__name__, v)
+
     def __call__(self, *args):
+        # TODO: No return, how does this work??
         self.f(*args)
 
+
 class DocState:
-    _stack = []
-    _writercache = []
-    _plainwritercache = []
-    writer = StringBuilder()
-    currentobj = None
-    navitems = []
 
-    pages = []
-    roots = None
-    input_xml = None
-    environment = None
-    _filters = []
+    def __init__(self):
+        self.currentobj = None
+        self.navitems = []
 
-    ''' Prevents infinte loops of tooltips in links by disabling links after a certain depth '''
-    depth_ref = 0
+        self.pages = []
+        self.roots = None
+        self.input_xml = None
+        self.environment = None
+        self._filters = []
 
-    _events = []
-    _docobjs = {}
-    
-    _trigger_heaps = {}
+        ''' Prevents infinte loops of tooltips in links by disabling links after a certain depth '''
+        self.depth_ref = 0
 
-    _usedPaths = set()
+        self._docobjs = {}
 
-    @staticmethod
-    def add_filter(name, func):
-        DocState._filters.append((name, func))
+        self._trigger_heaps = {}
 
-    @staticmethod
-    def create_template_env(dir):
-        DocState.environment = jinja2.Environment(loader=jinja2.FileSystemLoader(dir), line_statement_prefix="#", line_comment_prefix="##")
-        for name, func in DocState._filters:
-            DocState.environment.filters[name] = func
+        self._usedPaths = set()
 
-    @staticmethod
-    def iter_unique_docobjs():
-        for k, v in DocState._docobjs.iteritems():
+    def add_filter(self, name, func):
+        self._filters.append((name, func))
+
+    def create_template_env(self, dir):
+        self.environment = jinja2.Environment(
+            loader=jinja2.FileSystemLoader(dir),
+            line_statement_prefix="#", line_comment_prefix="##"
+        )
+        for name, func in self._filters:
+            self.environment.filters[name] = func
+
+    def iter_unique_docobjs(self):
+        for k, v in self._docobjs.iteritems():
             if k == v.id:
                 yield v
 
-    @staticmethod
-    def add_docobj(obj, id=None):
-        assert hasattr(obj, "name"), "DocObjects must have names"
-        assert hasattr(obj, "kind"), "DocObjects must have kinds"
-        assert hasattr(obj, "id"), "DocObjects must have ids"
+    def add_docobj(self, obj, id=None):
         if id is None:
             id = obj.id
-        DocState._docobjs[id] = obj
-    
-    @staticmethod
-    def has_docobj(id):
-        return id in DocState._docobjs
+        self._docobjs[id] = obj
 
-    @staticmethod
-    def get_docobj(id):
-        return DocState._docobjs[id]
+    def has_docobj(self, id):
+        return id in self._docobjs
 
-    @staticmethod
-    def trigger_listener(name, priority, callback):
+    def get_docobj(self, id):
+        return self._docobjs[id]
+
+    def trigger_listener(self, name, priority, callback):
         assert callback
         assert name
 
         if DocSettings.args.verbose:
             print ("Adding listener for " + name + " with priority " + priority)
 
-        if not name in DocState._trigger_heaps:
-            DocState._trigger_heaps[name] = []
+        if name not in self._trigger_heaps:
+            self._trigger_heaps[name] = []
 
-        DocState._trigger_heaps[name].append((priority, callback))
-        DocState._trigger_heaps[name].sort(key=lambda tup: tup[0])
+        self._trigger_heaps[name].append((priority, callback))
+        self._trigger_heaps[name].sort(key=lambda tup: tup[0])
 
-    @staticmethod
-    def trigger(name):
+    def trigger(self, name):
 
-        if not name in DocState._trigger_heaps:
+        if name not in self._trigger_heaps:
             return
 
-        events = DocState._trigger_heaps[name]
+        events = self._trigger_heaps[name]
 
         for event in events:
             event[1]()
 
-    @staticmethod
-    def add_event(priority, callback):
-        heappush(DocState._events, (priority, callback))
-
-    @staticmethod
-    def next_event():
-        try:
-            prio, callback = heappop(DocState._events)
-        except IndexError:
-            return False
-
-        callback()
-        return True
-
-    @staticmethod
-    def empty_writerstack():
-        return len(DocState._stack) is 0
-
-    ''' Push a new writer.
-        Call #popwriter to remove the writer and get the resulting written string.
-    '''
-    @staticmethod
-    def pushwriter():
-        if DocState.writer is not None:
-            DocState._stack.append(DocState.writer)
-        if len(DocState._writercache) > 0:
-            DocState.writer = DocState._writercache.pop()
-        else:
-            DocState.writer = StringBuilder()
-
-    ''' Pushes a new writer which will not write html elements.
-        Exception is the html() function which will function as outputting plain text
-    '''
-    @staticmethod
-    def pushwriterplain():
-        if DocState.writer is not None:
-            DocState._stack.append(DocState.writer)
-        if len(DocState._plainwritercache) > 0:
-            DocState.writer = DocState._plainwritercache.pop()
-        else:
-            DocState.writer = StringBuilderPlain()
-
-    @staticmethod
-    def popwriter():
-        s = str(DocState.writer)
-        if DocState.empty_writerstack():
-            DocState.writer.clear()
-        else:
-            DocState.writer.clear()
-            if not isinstance(DocState.writer,StringBuilderPlain):
-                DocState._writercache.append(DocState.writer)
-            else:
-                DocState._plainwritercache.append(DocState.writer)
-            DocState.writer = DocState._stack.pop()
-        return s
-
     ''' Register a page with a docobj and xml node.
         Assumed to be a node in a previously found compound xml file
     '''
-    @staticmethod
-    def register_page(obj, xml):
+    def register_page(self, obj, xml):
         obj.path = obj.name.replace("::", "-")
         obj.anchor = None
 
-        DocState.pages.append(obj)
+        self.pages.append(obj)
 
         counter = 1
-        while (obj.path + ("" if counter == 1 else str(counter))) in DocState._usedPaths:
+        while (obj.path + ("" if counter == 1 else str(counter))) in self._usedPaths:
             counter += 1
 
         if counter > 1:
             obj.path = obj.path + str(counter)
 
-        DocState._usedPaths.add(obj.path)
+        self._usedPaths.add(obj.path)
 
-        DocState.add_docobj(obj)
+        self.add_docobj(obj)
 
         ids = xml.findall(".//*[@id]")
 
@@ -318,75 +136,125 @@ class DocState:
 
             if obj is not None:
                 obj.compound = parent
-    
-    @staticmethod
-    def register_compound(xml):
 
-        obj = DocObj()
+    def register_compound(self, xml):
 
-        DocState.pages.append(obj)
-        obj.id = xml.get("id")
-        obj.kind = xml.get("kind")
+        print(xml)
+        kind = xml.get("kind")
+
+        if kind == "class" or kind == "struct" or kind == "interface":
+            entity = ClassEntity()
+        elif kind == "file":
+            entity = FileEntity()
+        elif kind == "namespace":
+            entity = NamespaceEntity()
+        elif kind == "group":
+            entity = GroupEntity()
+        elif kind == "page":
+            entity = PageEntity()
+        elif kind == "Example":
+            entity = ExampleEntity()
+        else:
+            # Unsupported entity type
+            # union, protocol, category, exception, dir
+            entity = Entity()
+
+        entity.id = xml.get("id")
+        entity.kind = kind
+
+        # TODO: Separate page class
+        self.pages.append(entity)
+
+        entity.read_from_xml(xml)
+
         # Will only be used for debugging if even that. Formatted name will be added later
-        obj.name = xml.find("compoundname").text
+        entity.name = xml.find("compoundname").text
+
         # Format path. Use - instead of :: in path names (more url friendly)
-        obj.path = obj.name.replace("::", "-")
-        #obj.path = obj.name.replace(".", "-")
 
-        counter = 1
-        while (obj.path + ("" if counter == 1 else str(counter))) in DocState._usedPaths:
-            counter += 1
+        # TODO: Separate page class #### !!
+        # entity.path = entity.name.replace("::", "-")
 
-        if counter > 1:
-            obj.path = obj.path + str(counter)
+        # counter = 1
+        # while (entity.path + ("" if counter == 1 else str(counter))) in self._usedPaths:
+        #     counter += 1
 
-        DocState._usedPaths.add(obj.path)
+        # if counter > 1:
+        #     entity.path = entity.path + str(counter)
 
-        DocState.add_docobj(obj)
-        xml.set("docobj", obj)
+        # self._usedPaths.add(entity.path)
 
-        #Workaround for doxygen apparently generating refid:s which do not exist as id:s
-        id2 = obj.id + "_1" + obj.id
-        #if id2 in docobjs:
-        #    print "Warning: Overwriting id " + id2
+        self.add_docobj(entity)
+        xml.set("docobj", entity)
 
-        DocState.add_docobj(obj, id2)
+        # Workaround for doxygen apparently generating refid:s which do not exist as id:s
+        id2 = entity.id + "_1" + entity.id
+        self.add_docobj(entity, id2)
 
-        ids = xml.findall(".//*[@id]")
+        # Can be added later
+        # For plugins to be able to extract more entities from the xml
+        # ids = xml.findall(".//*[@id]")
 
-        parent = obj
+        # parent = entity
 
-        for idnode in ids:
+        # for idnode in ids:
 
-            obj, ok = try_call_function("parseid_" + idnode.tag, idnode)
-            if not ok:
-                obj = DocObj()
-                obj.id = idnode.get("id")
-                obj.kind = idnode.get("kind")
+        #     entity, ok = try_call_function("parseid_" + idnode.tag, idnode)
+        #     if not ok:
+        #         entity = Entity()
+        #         entity.id = idnode.get("id")
+        #         entity.kind = idnode.get("kind")
 
-                #print(idnode.get("id"))
-                namenode = idnode.find("name")
+        #         # print(idnode.get("id"))
+        #         namenode = idnode.find("name")
 
-                if namenode is not None:
-                    obj.name = namenode.text
-                else:
-                    obj.name = "<undefined " + idnode.tag + "-" + obj.id + " >"
+        #         if namenode is not None:
+        #             entity.name = namenode.text
+        #         else:
+        #             entity.name = "<undefined " + idnode.tag + "-" + entity.id + " >"
 
-                obj.anchor = obj.name
+        #         entity.anchor = entity.name
 
-            if obj is not None:
-                obj.compound = parent
+        #     if entity is not None:
+        #         entity.compound = parent
 
-                idnode.set("docobj", obj)
-                DocState.add_docobj(obj)
-                #print(obj.full_url())
+        #         idnode.set("docobj", entity)
+        #         self.add_docobj(entity)
+        #         # print(entity.full_url())
 
-        #print(docobjs)
+
+def is_detail_hidden(member):
+    """Returns if the member's detailed view should be hidden"""
+
+    # Enums show up as members, but they should always be shown.
+    if member.kind == "enum":
+        return False
+
+    # Check if the member is undocumented
+    if DocSettings.hide_undocumented and (
+        member.detaileddescription.text is None or member.detaileddescription.text.isspace()
+    ):
+        if member.detaileddescription.text is None:
+            return True
+
+        count = 0
+        for v in member.detaileddescription.iter():
+            count += 1
+            if (count > 1):
+                break
+
+        # If we only visited the root node (member.detaileddescription)
+        # then it has no children and so the detaileddescription is empty
+        if count == 1:
+            return True
+
+    return False
+
 
 class DocMember:
-
     pass
-    
+
+
 class NavItem:
     def __init__(self):
         self.label = ""
@@ -394,34 +262,31 @@ class NavItem:
         self.url = None
 
 
-class DocObj:
+class EntityPath:
     def __init__(self):
-        self.hidden = False
-        self.name = ""
-        self.id = ""
+        self.path = None
+        self.anchor = None
+        self.parent = None
 
-    def __str__(self):
-        return "DocObj: " + self.id
-
-    ''' Url to the page (including eventual anchor) where the DocObj exists '''
     def full_url(self):
+        ''' Url to the page (including possible anchor) where the Entity exists '''
+
         url = self.page_url()
-        if hasattr(self, 'anchor') and self.anchor is not None:
+        if self.anchor is not None:
             url += "#" + self.anchor
         return url
 
-    ''' Url to the page where the DocObj exists '''
     def page_url(self):
+        ''' Url to the page where the Entity exists '''
+
         if hasattr(self, 'exturl'):
             return self.exturl
 
         global FILE_EXT
-        if hasattr(self, 'path'):
+        if self.path is not None:
             url = self.path + FILE_EXT
         else:
-            if hasattr(self, 'compound'):
-                url = self.compound.page_url()
-            elif hasattr(self, 'parent'):
+            if self.parent is not None:
                 url = self.parent.page_url()
             else:
                 print("NO COMPOUND ON OBJECT WITHOUT PATH")
@@ -431,14 +296,16 @@ class DocObj:
         return url
 
     def full_path(self):
+        ''' Path to the file which contains this Entity '''
+
         global FILE_EXT
         global OUTPUT_DIR
 
-        if hasattr(self, 'path'):
+        if self.path is not None:
             url = self.path + FILE_EXT
         else:
-            if hasattr(self, 'compound'):
-                url = self.compound.full_url()
+            if self.parent is not None:
+                url = self.parent.full_url()
             else:
                 print("NO COMPOUND ON OBJECT WITHOUT PATH")
                 dump(self)
@@ -446,12 +313,385 @@ class DocObj:
 
         return OUTPUT_DIR + "/" + url
 
+
+class Entity:
+    def __init__(self):
+        self.hidden = False
+        self.name = ""
+        self.briefdescription = None
+        self.detaileddescription = None
+        self.id = ""
+        self.path = EntityPath()
+
+    def __str__(self):
+        return "Entity: " + self.id
+
+    @staticmethod
+    def formatname(name):
+        return name.replace("::", ".")
+
+    def read_from_xml(self, xml):
+        self.name = Entity.formatname(xml.find("compoundname").text)
+        self.briefdescription = xml.find("briefdescription")
+        self.detaileddescription = xml.find("detaileddescription")
+
+
+class GroupEntity(Entity):
+    def __init__(self):
+        super().__init__()
+        self.innerclasses = []
+        self.innernamespaces = []
+        self.innergroups = []
+
+    def read_from_xml(self, xml):
+        super().read_from_xml(xml)
+        self.title = Entity.formatname(xml.find("title").text)
+
+        self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
+        self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespace")]
+
+        self.innergroups = [node.get("ref") for node in xml.findall("innergroup")]
+
+
+class ExampleEntity(Entity):
+    pass
+
+
+def gather_members(xml):
+    members = []
+    for member in xml.findall("sectiondef/memberdef"):
+        member.get("docobj").read_from_xml(member)
+        members.append(member)
+
+    return members
+
+
+class FileEntity(Entity):
+    def __init__(self):
+        super().__init__()
+
+        self.innerclasses = []
+        self.innernamespaces = []
+        self.contents = None
+        self.location = None  # TODO: Unknown location
+        # TODO gather_members
+
+    def read_from_xml(self, xml):
+
+        self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
+        self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespace")]
+
+        self.contents = xml.find("programlisting")
+
+        self.members = gather_members(xml)
+        # Only one members list
+        self.all_members = self.members
+
+        # Find location of file
+        loc = xml.find("location")
+        self.location = loc.get("file") if loc is not None else None
+
+        if not DocSettings.show_source_files:
+            self.hidden = True
+
+
+class Protection:
+    def __init__(self):
+        self.final = False
+        self.sealed = False
+        self.abstract = False
+
+
+class ClassEntity(Entity):
+    def __init__(self):
+        super().__init__()
+
+        self.protection = Protection()
+        self.inherited = []
+        self.derived = []
+        self.all_members = []
+
+        # TODO gather_members
+
+    def read_from_xml(self, xml):
+        self.protection = xml.get("prot")
+        gather_members(xml)
+
+        self.briefdescription = xml.find("briefdescription")
+        self.detaileddescription = xml.find("detaileddescription")
+
+        self.final = xml.get("final") == "yes"
+        self.sealed = xml.get("sealed") == "yes"
+        self.abstract = xml.get("abstract") == "yes"
+
+        self.inherited = [node.get("ref") for node in xml.findall("basecompoundref")]
+        self.derived = [node.get("ref") for node in xml.findall("derivedcompoundref")]
+
+        # All members, also inherited ones
+        self.all_members = [m.get("ref") for m in xml.find("listofallmembers")]
+        for m in xml.find("listofallmembers"):
+            if m.get("ref") is None:
+                print ("NULL REFERENCE " + m.find("name").text + " " + m.find("scope").text)
+                print ("Sure not old files are in the xml directory")
+
+
+class PageEntity(Entity):
+    def __init__(self):
+        super().__init__()
+
+        self.subpages = []
+
+        # TODO: Why subpages AND innerpages?
+        self.innerpages = []
+
+    def read_from_xml(self, xml):
+        # xml
+        # id
+        # name
+        # kind
+        # briefdesc
+        # detaileddesc
+        # innerpage
+
+        title = xml.find("title")
+        if title is not None and title.text is not None:
+            self.name = Entity.formatname(title.text)
+        else:
+            self.name = ""
+
+        self.kind = xml.get("kind")
+        self.briefdescription = xml.find("briefdescription")
+        self.detaileddescription = xml.find("detaileddescription")
+
+        self.subpages = [node.get("ref") for node in xml.findall("innerpage")]
+        for p in self.subpages:
+            p.parentpage = self
+
+        self.innerpages = self.subpages
+
+
+class NamespaceEntity(Entity):
+    def __init__(self):
+        super().__init__()
+
+        self.innerclasses = []
+        self.innernamespaces = []
+
+    def read_from_xml(self, xml):
+        super().read_from_xml(xml)
+
+        self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
+        self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespaces")]
+        self.members = gather_members(xml)
+
+
+class MemberEntity(Entity):
+    def __init__(self):
+        super().__init__()
+
+        self.protection = Protection()
+
+        self.virtual = False
+        self.static = False
+
+        self.reimplementedby = []
+
+        self.reimplements = []
+
+        # TODO: Rename to overrides
+        self.override = None
+
+        # TODO: What is this?
+        self.initializer = None
+
+        self.type = None
+
+        self.readonly = False
+
+        # TODO: Remove?
+        self.members = []
+
+        # TODO: Remove?
+        self.all_members = []
+
+        self.argsstring = None
+
+        # TODO: Remove?
+        self.hasparams = False
+        self.params = []
+
+        self.paramdescs = []
+
+    def read_from_xml(self, xml):
+
+        # xml
+        # id
+        # name
+        # kind
+        # protection
+        # virtual
+        # static
+        # override
+        # readonly
+        # reimplements
+        # reimplementedby
+        # briefdesc
+        # detaileddesc
+        # type
+
+        self.xml = xml
+
+        self.name = Entity.formatname(xml.find("name").text)
+        self.kind = xml.get("kind")
+
+        # Find descriptions
+        self.briefdescription = xml.find("briefdescription")
+        self.detaileddescription = xml.find("detaileddescription")
+
+        prot = xml.get("prot")
+        if prot is not None:
+            self.protection = prot
+        else:
+            self.protection = None
+
+        virt = xml.get("virt")
+        if virt is not None and virt != "non-virtual":
+            self.virtual = virt
+        else:
+            self.virtual = None
+
+        self.static = xml.get("static") == "yes"
+
+        self.reimplementedby = [node.get("ref") for node in xml.findall("reimplementedby")]
+        self.reimplements = [node.get("ref") for node in xml.findall("reimplements")]
+
+        override = len(self.reimplements) > 0 and self.virtual == "virtual"
+
+        if override:
+            assert xml.find("type").text
+            types = xml.find("type").text.split()
+            override_type = None
+            if "override" in types:
+                override_type = "override"
+            if "new" in types:
+                print (types, override_type, self.id)
+                assert(override_type is None)
+                override_type = "new"
+
+            override = override_type
+
+            # For abstract classes or interfaces, it might reimplement some function
+            # without overriding it thus the need to check again here
+            self.override = override_type
+        else:
+            self.override = None
+
+        self.initializer = xml.find("initializer")
+
+        if self.kind != "enum":
+            # Find type
+            # TODO: no XML items here
+            self.type = xml.find("type")
+
+            # Is the xml read only.
+            # Doxygen will put 'readonly' at the start of the 'type' field if it is readonly
+            self.readonly = (
+                self.type is not None and
+                self.type.text is not None and
+                "readonly " in self.type.text
+            )
+
+            if self.type is not None and self.type.text is not None:
+                # Remove eventual 'override ' text at start of type.
+                override_pattern = "(?:override|new|readonly|abstract)\s"
+                self.type.text = re.sub(override_pattern, "", self.type.text, 1)
+        else:
+            self.type = None
+            self.readonly = False
+
+            self.members = [node.get("docobj") for node in xml.findall("enumvalue")]
+            # TODO Need to set val.set("kind", "enumvalue") on the children during read_xml
+            # for val in vals:
+            #     # Doxygen does not set the kind for these members
+            #     # so we set it here for simplicity
+            #     val.set("kind", "enumvalue")
+            #     gather_member_doc(val)
+            #     self.members.append(val.get("docobj"))
+
+            # Only one members list
+            self.all_members = self.members
+
+        # Parse(function) arguments
+        argsstring = xml.find("argsstring")
+        # Test if this member has arguments(.text will be None if the tag is empty)
+        if argsstring is not None and argsstring.text is not None:
+            self.argsstring = argsstring.text
+
+            self.hasparams = True
+            params = xml.findall("param")
+            self.params = []
+            for param in params:
+                o = Entity()
+                o.xml = param
+                o.name = param.find("declname").text
+                o.type = param.find("type")
+
+                # Description will be filled in later if found
+                o.description = None
+                self.params.append(o)
+        else:
+            self.hasparams = False
+            self.params = []
+
+        if self.detaileddescription is not None:
+            paramdescs = self.detaileddescription.findall(".//parameterlist")
+            self.paramdescs = []
+
+            # TODO, Take care of 'Exception' "parameters"
+
+            for pd in paramdescs:
+                # kind = pd.get("kind")
+                # Note use 'kind'
+
+                # Note, should be just a simple object
+                o = Entity()
+                o.names = []
+                o.description = None
+
+                for n in pd:
+                    names = n.findall("parameternamelist")
+                    o.description = n.find("parameterdescription")
+                    if names is not None:
+                        for name in names:
+                            o.names.append(name.text)
+                            # Note use direction and type
+
+                self.paramdescs.append(o)
+
+            if self.params is None and len(self.paramdescs) > 0:
+                print("Wait wut " + DocState.compound.name + "::" + self.name)
+
+            # Set descriptions on the parameter objects
+            for pd in self.paramdescs:
+                for name in pd.names:
+                    for p in self.params:
+                        if p.name == name:
+                            p.description = pd.description
+                            print("Found matching parameter " + p.name)
+                            break
+
+        # Depending on settings, this object be hidden
+        # If .hidden is true, no links to it will be generated, instead just plain text
+        self.hidden = is_detail_hidden(self)
+
+
 def dump(obj):
     pprint(vars(obj))
 
 
 # Cannot add as decorator since the DocState class is not defined at function definition time
-jinjafilter(DocState.trigger)
+JinjaFilter(DocState.trigger)
 
 # Sort navitems before build
-DocState.add_event(2500, lambda: DocState.navitems.sort(key=lambda v: v.order))
+# TODO!!
+# DocState.add_event(2500, lambda: DocState.navitems.sort(key=lambda v: v.order))

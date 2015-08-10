@@ -1,349 +1,300 @@
 import xml.etree.cElementTree as ET
-from doxybase import *
-import doxyext
+# from doxybase import *
 from os import listdir
-from os.path import isfile, isdir, join, splitext
-from progressbar import *
-from doxycompound import *
+from os.path import isfile, isdir, join
+from progressbar import progressbar
+from doxycompound import Entity
+import doxycompound
+from doxysettings import DocSettings
+from doxybase import DocState
 import shutil
 import os
-import imp
-import doxytiny
-import doxylayout
 import doxyspecial
 import argparse
-import sys
-import doxyfilters
 
-def try_call_function(name, arg):
-    try:
-        methodToCall = getattr(doxyext, name)
-    except AttributeError:
-        return None, False
 
-    result = methodToCall(arg)
-    return result, True
+class DoxyDoc:
 
-def load_plugins():
+    def __init__(self):
+        self.settings = DocSettings()
+        self.state = DocState()
 
-    if not DocSettings.args.quiet:
-        print("Loading Plugins...")
+    def load_plugins(self):
 
-    dirs = ["plugins", "themes"]
+        if not self.settings.args.quiet:
+            print("Loading Plugins...")
 
-    for dir in dirs:
-        plugList = [f for f in listdir(dir) if isdir(join(dir, f))]
+        # dirs = ["plugins", "themes"]
 
-        for moduleName in plugList:
-            mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), [dir])
-            mObject = imp.load_module(moduleName, mFile, mPath, mDescription)
+        # for dir in dirs:
+        #     plugins = [f for f in listdir(dir) if isdir(join(dir, f))]
 
-            if DocSettings.args.verbose:
-                print("Loading Theme/Plugin: " + moduleName)
+        #     for moduleName in plugins:
+        #         mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), [dir])
+        #         module_object = imp.load_module(moduleName, mFile, mPath, mDescription)
 
-            try:
-                obj = getattr(mObject, "tiny")
+        #         if self.settings.args.verbose:
+        #             print("Loading Theme/Plugin: " + moduleName)
 
-                if DocSettings.args.verbose:
-                    print("\tLoading Tiny Overrides...")
-                for k, v in obj.__dict__.iteritems():
-                    if not k.startswith("_"):
-                        if (hasattr(doxytiny, k)):
-                            setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
-                        setattr(doxytiny, k, v)
-            except AttributeError:
-                pass
+        #         try:
+        #             obj = getattr(module_object, "tiny")
 
-            try:
-                obj = getattr(mObject, "layout")
-                if DocSettings.args.verbose:
-                    print("\tLoading Layout Overrides...")
-                for k, v in obj.__dict__.iteritems():
-                    if not k.startswith("_"):
-                        if (hasattr(doxylayout, k)):
-                            setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
-                        setattr(doxylayout, k, v)
-            except AttributeError:
-                pass
+        #             if self.settings.args.verbose:
+        #                 print("\tLoading Tiny Overrides...")
+        #             for k, v in obj.__dict__.iteritems():
+        #                 if not k.startswith("_"):
+        #                     if (hasattr(doxytiny, k)):
+        #                         setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
+        #                     setattr(doxytiny, k, v)
+        #         except AttributeError:
+        #             pass
 
-            try:
-                obj = getattr(mObject, "compound")
-                if DocSettings.args.verbose:
-                    print("\tLoading Compound Overrides...")
-                for k, v in obj.__dict__.iteritems():
-                    if not k.startswith("_"):
-                        if (hasattr(doxycompound, k)):
-                            setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
-                        setattr(doxycompound, k, v)
-            except AttributeError:
-                pass
+        #         try:
+        #             obj = getattr(module_object, "layout")
+        #             if self.settings.args.verbose:
+        #                 print("\tLoading Layout Overrides...")
+        #             for k, v in obj.__dict__.iteritems():
+        #                 if not k.startswith("_"):
+        #                     if (hasattr(doxylayout, k)):
+        #                         setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
+        #                     setattr(doxylayout, k, v)
+        #         except AttributeError:
+        #             pass
 
-def read_external():
-    if not DocSettings.args.quiet:
-        print("Reading exteral...")
+        #         try:
+        #             obj = getattr(module_object, "compound")
+        #             if self.settings.args.verbose:
+        #                 print("\tLoading Entity Overrides...")
+        #             for k, v in obj.__dict__.iteritems():
+        #                 if not k.startswith("_"):
+        #                     if (hasattr(doxycompound, k)):
+        #                         setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
+        #                     setattr(doxycompound, k, v)
+        #         except AttributeError:
+        #             pass
 
-    try:
-        f = open("external.csv")
-    except:
-        print "Noes"
+    def read_external(self):
+        if not self.settings.args.quiet:
+            print("Reading exteral...")
 
-    for line in f:
-        arr = line.split(",")
-        if len(arr) >= 2:
-            name = arr[0].strip()
-            url = arr[1].strip()
-            obj = DocObj()
-            obj.id = "__external__" + name
-            obj.kind = "external"
-            obj.name = name
-            obj.exturl = url
-            DocState.add_docobj(obj)
+        try:
+            f = open("external.csv")
+        except:
+            print("Could not read external.csv")
 
-    f.close()
+        for line in f:
+            arr = line.split(",")
+            if len(arr) >= 2:
+                name = arr[0].strip()
+                url = arr[1].strip()
+                obj = Entity()
+                obj.id = "__external__" + name
+                obj.kind = "external"
+                obj.name = name
+                obj.exturl = url
+                self.state.add_docobj(obj)
 
-def test_id_ref(path):
+        f.close()
 
-    dom = ET.parse(path)
+    def test_id_ref(self, path):
 
-    root = dom.getroot()
+        dom = ET.parse(path)
 
-    refs = root.findall(".//*[@refid]")
-    for i in range(1, len(refs)):
-        ref = refs[i]
-        progressbar(i + 1, len(refs))
+        root = dom.getroot()
 
-        #id = ref.get("refid")
-        refobj = ref.get("ref")
-        assert refobj
-        #print("Referenced " + refobj.name)
+        refs = root.findall(".//*[@refid]")
+        for i, ref in enumerate(refs):
+            progressbar(i + 1, len(refs))
 
-def copy_resources():
-    if not DocSettings.args.quiet:
-        print("Copying resources...")
+            # id = ref.get("refid")
+            refobj = ref.get("ref")
+            assert refobj
+            # print("Referenced " + refobj.name)
 
-    try:
-        plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
-        for moduleName in plugList:
-            resbase = os.path.join(os.path.join("themes", moduleName), "resources")
+    def copy_resources(self):
+        if not self.settings.args.quiet:
+            print("Copying resources...")
+
+        try:
+            plugins = [f for f in listdir("themes") if isdir(join("themes", f))]
+            for moduleName in plugins:
+                resbase = os.path.join(os.path.join("themes", moduleName), "resources")
+                for root, dirs, files in os.walk(resbase):
+                    dstroot = root.replace(resbase + "/", "")
+                    dstroot = dstroot.replace(resbase, "")
+
+                    target_dir = os.path.join("html", dstroot)
+                    try:
+                        os.makedirs(target_dir)
+                    except:
+                        pass
+
+                    for fn in files:
+                        source_path = os.path.join(root, fn)
+                        target_path = os.path.join(target_dir, fn)
+                        shutil.copy2(source_path, target_path)
+        except OSError:
+            print("Error while copying theme resources")
+
+        try:
+            resbase = "resources"
             for root, dirs, files in os.walk(resbase):
                 dstroot = root.replace(resbase + "/", "")
                 dstroot = dstroot.replace(resbase, "")
 
+                target_dir = os.path.join("html", dstroot)
                 try:
-                    os.makedirs(os.path.join("html", dstroot))
+                    os.makedirs(target_dir)
                 except:
                     pass
 
                 for fn in files:
-                    fn2 = os.path.join(root, fn)
-                    shutil.copy2(fn2, os.path.join(os.path.join("html", dstroot), fn))
-    except OSError:
-        print("Error while copying theme resources")
+                    source_path = os.path.join(root, fn)
+                    target_path = os.path.join(target_dir, fn)
+                    shutil.copy2(source_path, target_path)
 
-    try:
-        resbase = "resources"
-        for root, dirs, files in os.walk(resbase):
-            dstroot = root.replace(resbase + "/", "")
-            dstroot = dstroot.replace(resbase, "")
+            # shutil.copytree("resources", "html")
+        except OSError:  # python >2.5
+            print("No resources directory found")
+            raise
+
+    def read_prefs(self):
+        if not self.settings.args.quiet:
+            print ("Reading resources...")
+
+    def find_xml_files(self):
+        return [f for f in listdir("xml") if isfile(join("xml", f))]
+
+    def scan_input(self):
+        filenames = self.find_xml_files()
+
+        if not self.settings.args.quiet:
+            print("Scanning input")
+
+        input_xml = []
+        roots = []
+
+        for i, fname in enumerate(filenames):
+            progressbar(i + 1, len(filenames))
 
             try:
-                os.makedirs(os.path.join("html", dstroot))
-            except:
-                pass
+                extension = os.path.splitext(fname)[1]
 
-            for fn in files:
-                fn2 = os.path.join(root, fn)
-                shutil.copy2(fn2, os.path.join(os.path.join("html", dstroot), fn))
+                if extension != ".xml":
+                    continue
 
-        #shutil.copytree("resources", "html")
-    except OSError:  # python >2.5
-        print("No resources directory found")
-        raise
+                dom = ET.parse(os.path.join("xml", fname))
 
-def read_prefs():
+                assert dom is not None, "No DOM"
 
-    if not DocSettings.args.quiet:
-        print ("Reading resources...")
+                root = dom.getroot()
 
-    header = None
-    footer = None
+                roots.append(root)
 
-    try:
-        plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
-        for moduleName in plugList:
-            resbase = os.path.join(os.path.join("themes", moduleName), "resources")
-            if os.path.exists(os.path.join(resbase, "header.html")):
-                header = file(os.path.join(resbase, "header.html"))
+                compound = root.find("compounddef")
 
-            if os.path.exists(os.path.join(resbase, "footer.html")):
-                footer = file(os.path.join(resbase, "footer.html"))
-    except OSError:
-        print ("Error reading theme header and footer")
+                assert root is not None, "No Root"
 
-    if os.path.exists("resources/header.html"):
-        header = file("resources/header.html")
+                if compound is not None:
+                    input_xml.append(compound)
+                    self.state.register_compound(compound)
+            except Exception as e:
+                print(fname)
+                raise e
 
-    if os.path.exists("resources/footer.html"):
-        footer = file("resources/footer.html")
+        self.state.roots = roots
+        self.state.input_xml = input_xml
 
-    if header is None:
-        print ("Could not find a header.html file in either 'resources' or a theme's 'resources' folder")
-        sys.exit(1)
+    def process_references(self):
+        if not self.settings.args.quiet:
+            print("Processing References...")
 
-    if footer is None:
-        print ("Could not find a footer.html file in either 'resources' or a theme's 'resources' folder")
-        sys.exit(1)
+        roots = self.state.roots
 
-    DocSettings.header = header.read()
-    header.close()
+        for i, root in enumerate(roots):
+            progressbar(i + 1, len(roots))
 
-    DocSettings.footer = footer.read()
-    footer.close()
+            doxycompound.process_references_root(root)
 
-def scan_input():
-    filenames = [f for f in listdir("xml") if isfile(join("xml", f))]
+    def process_compounds(self):
+        if not self.settings.args.quiet:
+            print("Processing Entitys...")
 
-    if not DocSettings.args.quiet:
-        print("Scanning input")
+        compounds = self.state.input_xml
 
-    compounds = DocState.input_xml = []
-    roots = DocState.roots = []
+        for i, compound in enumerate(compounds):
+            progressbar(i + 1, len(compounds))
 
-    for i in xrange(0, len(filenames)):
-        fname = filenames[i]
+            doxycompound.gather_compound_doc(compound)
 
-        progressbar(i + 1, len(filenames))
+    def build_compound_output(self):
+        pages = self.state.pages
 
-        try:
-            extension = splitext(fname)[1]
+        if not self.settings.args.quiet:
+            print("Building Output...")
 
-            if extension != ".xml":
-                continue
+        for i, page in enumerate(pages):
+            progressbar(i + 1, len(pages))
 
-            dom = ET.parse(join("xml", fname))
+            doxycompound.generate_compound_doc(page)
 
-            root = dom.getroot()
+    def create_env(self):
+        self.state.create_template_env("templates")
 
-            roots.append(root)
+    def generate(self, args):
 
-            compound = root.find("compounddef")
+        self.settings.args = args
 
-            assert root is not None, "Root is None"
-            assert dom is not None, "Dom is None"
+        args.verbose = args.verbose and (not args.quiet)
 
-            if compound is not None:
-                compounds.append(compound)
-                DocState.register_compound(compound)
-        except Exception as e:
-            print(fname)
-            raise e
+        if self.settings.args.verbose:
+            print("Running...")
 
-def process_references():
-    if not DocSettings.args.quiet:
-        print("Processing References...")
+        if args.resources:
+            self.load_plugins()
+            self.copy_resources()
+            return
 
-    roots = DocState.roots
+        # filenames = ["xml/class_a_i_path.xml"]
 
-    i = 0
-    for i in xrange(0, len(roots)):
-        progressbar(i + 1, len(roots))
+        # Events:
+        # 0    - 999    Initializaton
+        self.load_plugins()
 
-        process_references_root(roots[i])
+        self.copy_resources()
 
-def process_compounds():
-    if not DocSettings.args.quiet:
-        print("Processing Compounds...")
+        self.read_prefs()
+        self.read_external()
 
-    compounds = DocState.input_xml
+        self.create_env()
+        # Reading input
+        self.scan_input()
 
-    i = 0
-    for compound in compounds:
-        progressbar(i + 1, len(compounds))
+        print ("DONE")
+        return
 
-        gather_compound_doc(compound)
-        i += 1
+        # Structuring data
+        self.process_references()
 
-def build_compound_output():
+        self.process_compounds()
+        doxyspecial.gather_specials()
 
-    pages = DocState.pages
+        doxycompound.pre_output()
 
-    if not DocSettings.args.quiet:
-        print("Building Output...")
+        # Building output
+        self.build_compound_output()
 
-    
+        doxyspecial.build_specials()
 
-    i = 0
-    for page in pages:
-        progressbar(i + 1, len(pages))
+        # Done
 
-        generate_compound_doc(page)
-        i += 1
 
-def create_env():
-    DocState.create_template_env("templates")
-
-def main():
-
-    
-
-    # Set default encoding to UTF-8 to avoid errors when docs have unusual characters
-    reload(sys)
-    sys.setdefaultencoding('UTF-8')
-
-    parser = argparse.ArgumentParser(description='Build the A* Pathfinding Project Packages.')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Generate HTML from Doxygen\'s XML output')
     parser.add_argument("-r", "--resources", help="Copy Resources Only", action="store_true")
     parser.add_argument("-v", "--verbose", help="Verbose output", action="store_true")
     parser.add_argument("-q", "--quiet", help="Quiet output", action="store_true")
 
     args = parser.parse_args()
 
-    DocSettings.args = args
-
-    args.verbose = args.verbose and (not args.quiet)
-
-    if DocSettings.args.verbose:
-        print("Running...")
-
-    if args.resources:
-        load_plugins()
-        copy_resources()
-        return
-    
-
-    #filenames = ["xml/class_a_i_path.xml"]
-
-    ## Events:
-    # 0    - 999    Initializaton
-    # 1000 - 1999   Reading input
-    # 2000 - 2999   Structuring data
-    # 3000 - 4000   Building output
-    #
-    DocState.add_event(200, load_plugins)
-
-    DocState.add_event(400, copy_resources)
-
-    DocState.add_event(600, read_prefs)
-    DocState.add_event(700, read_external)
-
-    DocState.add_event(750, create_env)
-    DocState.add_event(1000, scan_input)
-
-    DocState.add_event(2000, process_references)
-
-    DocState.add_event(2300, process_compounds)
-    DocState.add_event(2340, doxyspecial.gather_specials)
-
-    DocState.add_event(2500, pre_output)
-    
-    DocState.add_event(3000, build_compound_output)
-
-    DocState.add_event(3100, doxyspecial.build_specials)
-
-    # Progress through the event heap until everything has been done
-    while(DocState.next_event()):
-        pass
-
-    # Done
-
-if __name__ == "__main__":
-    main()
+    DoxyDoc().generate(args)

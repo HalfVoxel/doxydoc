@@ -5,9 +5,9 @@
 
 	{{ compound.briefdescription|description }}
 	{{ compound.detaileddescription|description }}
-	
+
 	## innergroups, innerclassses, innernamespaces
-	
+
 	<div class="member-list">
 		<h2>Namespaces</h2>
 		<table class="table inner-class-list member-list-section table-condensed table-striped">
@@ -16,9 +16,9 @@
 					<td class="member-name">{{ n|docobjref }}</td>
 					<td class="member-desc">{{ n.briefdescription|description }}</td>
 				</tr>
-			#endfor
+			# endfor
 		</table>
-		
+
 		<h2>Classes</h2>
 		<table class="table inner-class-list member-list-section table-condensed table-striped">
 			# for n in compound.innerclasses
@@ -26,7 +26,7 @@
 					<td class="member-name">{{ n|docobjref }}</td>
 					<td class="member-desc">{{ n.briefdescription|description }}</td>
 				</tr>
-			#endfor
+			# endfor
 		</table>
 	</div>
 
