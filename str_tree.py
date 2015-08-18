@@ -16,7 +16,7 @@ def paramescape(v):
 class StrTree:
     """ Efficient string concatenation and some helper methods for dealing with HTML """
 
-    def __init__(self, initial_contents):
+    def __init__(self, initial_contents=None):
         self.contents = []
         self.append(initial_contents)
 
@@ -38,9 +38,11 @@ class StrTree:
             self.contents.append("<" + t + ">")
         else:
             self.contents.append("<" + t + " ")
-            for k, v in params:
-                if v is not None and v != "":
-                    self.contents.append(k + "='" + paramescape(v) + "' ")
+            for k, v in params.items():
+                if v is not None:
+                    sv = str(v)
+                    if len(sv) > 0:
+                        self.contents.append(k + "='" + paramescape(sv) + "' ")
 
             self.contents.append(">")
 
@@ -63,8 +65,8 @@ class StrTree:
 
     def _gather(self, into):
         for s in self.contents:
-            if s is StrTree:
-                s.gather(into)
+            if isinstance(s, StrTree):
+                s._gather(into)
             else:
                 into.append(s)
 

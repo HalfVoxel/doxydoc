@@ -3,17 +3,20 @@
 # set bootstrap_protection = True
 
 # block content
-	<h1><span class="compound-kind">{{ compound.kind|title }}</span><span> {{ compound.name|title }}</span></h1>
+	<h1><span class="compound-kind">{{ entity.kind|title }}</span><span> {{ entity.name|title }}</span></h1>
 
-	{{ compound.briefdescription|description }}
+	{{ "here" }}
+	{{ entity }}
 
-	{{ compound.detaileddescription|description }}
+	{{ entity.briefdescription|description }}
+
+	{{ entity.detaileddescription|description }}
 
 	<div class="member-list">
-	
-	# set sections = doxylayout.get_member_sections(compound, compound.all_members)
+
+	# set sections = doxylayout.get_member_sections(entity, entity.all_members)
 	# for section in sections if section[1]|length != 0
-		
+
 		<h2>{{ section[0] }}</h2>
 		# set members = section[1]
 
@@ -127,5 +130,5 @@
 	# endfor
 
 	</div>
-	
+
 # endblock

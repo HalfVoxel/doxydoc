@@ -15,12 +15,11 @@
                     <div class="navbar-inner">
                         <a class="brand" href="#">Sample Docs</a>
                         <ul class="nav">
-                            # for item in DocState.navitems
+                            # for item in state.navitems
                                 <li>
                                     <a href="{{item.ref.full_url()}}">{{item.label}}</a>
                                 </li>
                             #endfor
-                            {{ "navheader"|trigger }}
                         </ul>
                     </div>
                 </div>

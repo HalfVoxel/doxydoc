@@ -1,9 +1,9 @@
 {% extends "main.html" %}
 
 {% block content %}
-	<h1>{{ compound.name|title }}</h1>
+	<h1>{{ entity.name|title }}</h1>
 
-	{{ compound.briefdescription|description }}
-	{{ compound.detaileddescription|description }}
-	
+	{{ entity.briefdescription|description }}
+	{{ entity.detaileddescription|description }}
+
 {% endblock %}

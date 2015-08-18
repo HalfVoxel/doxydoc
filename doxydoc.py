@@ -3,13 +3,14 @@ import xml.etree.cElementTree as ET
 from os import listdir
 from os.path import isfile, isdir, join
 from progressbar import progressbar
-from doxycompound import Entity
 import doxycompound
 from doxysettings import DocSettings
-from doxybase import DocState
+from doxybase import DocState, ExternalEntity
+import doxypages
 import shutil
 import os
-import doxyspecial
+import doxylayout
+# import doxyspecial
 import argparse
 
 
@@ -18,6 +19,8 @@ class DoxyDoc:
     def __init__(self):
         self.settings = DocSettings()
         self.state = DocState()
+        self.state.settings = self.settings
+        self.settings.outdir = "html"
 
     def load_plugins(self):
 
@@ -87,7 +90,7 @@ class DoxyDoc:
             if len(arr) >= 2:
                 name = arr[0].strip()
                 url = arr[1].strip()
-                obj = Entity()
+                obj = ExternalEntity()
                 obj.id = "__external__" + name
                 obj.kind = "external"
                 obj.name = name
@@ -123,7 +126,7 @@ class DoxyDoc:
                     dstroot = root.replace(resbase + "/", "")
                     dstroot = dstroot.replace(resbase, "")
 
-                    target_dir = os.path.join("html", dstroot)
+                    target_dir = os.path.join(self.settings.outdir, dstroot)
                     try:
                         os.makedirs(target_dir)
                     except:
@@ -142,7 +145,7 @@ class DoxyDoc:
                 dstroot = root.replace(resbase + "/", "")
                 dstroot = dstroot.replace(resbase, "")
 
-                target_dir = os.path.join("html", dstroot)
+                target_dir = os.path.join(self.settings.outdir, dstroot)
                 try:
                     os.makedirs(target_dir)
                 except:
@@ -153,7 +156,7 @@ class DoxyDoc:
                     target_path = os.path.join(target_dir, fn)
                     shutil.copy2(source_path, target_path)
 
-            # shutil.copytree("resources", "html")
+            # shutil.copytree("resources", self.settings.outdir)
         except OSError:  # python >2.5
             print("No resources directory found")
             raise
@@ -205,6 +208,15 @@ class DoxyDoc:
         self.state.roots = roots
         self.state.input_xml = input_xml
 
+    def gather_entity_info(self):
+        if not self.settings.args.quiet:
+            print("Processing Entities...")
+
+        entities = self.state.entities
+        for i, entity in enumerate(entities):
+            progressbar(i + 1, len(entities))
+            doxycompound.gather_entity_doc(entity)
+
     def process_references(self):
         if not self.settings.args.quiet:
             print("Processing References...")
@@ -214,32 +226,41 @@ class DoxyDoc:
         for i, root in enumerate(roots):
             progressbar(i + 1, len(roots))
 
-            doxycompound.process_references_root(root)
+            doxycompound.process_references_root(root, self.state)
 
-    def process_compounds(self):
-        if not self.settings.args.quiet:
-            print("Processing Entitys...")
-
-        compounds = self.state.input_xml
-
-        for i, compound in enumerate(compounds):
-            progressbar(i + 1, len(compounds))
-
-            doxycompound.gather_compound_doc(compound)
-
-    def build_compound_output(self):
+    def build_output(self):
         pages = self.state.pages
 
         if not self.settings.args.quiet:
             print("Building Output...")
 
+        entities = self.state.entities
+
+        generator = doxypages.PageGenerator()
+        classes = [generator.class_page(ent) for ent in entities if ent.kind == "class"]
+        examples = [generator.example_page(ent) for ent in entities if ent.kind == "example"]
+        page_pages = [generator.page_page(ent) for ent in entities if ent.kind == "page"]
+
+        # Copy parent mappings
+        # for page in page_pages:
+        #    if page.primary_entity.parent is not None:
+        #        page.parent = page.primary_entity.parent.path.page
+
+        # pages = classes + page_pages + examples
+        pages = page_pages
+
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
 
-            doxycompound.generate_compound_doc(page)
+            generator.generate(page, self.state)
 
     def create_env(self):
-        self.state.create_template_env("templates")
+        filters = {
+            "markup": doxylayout.markup,
+            "description": doxylayout.description,
+            "linked_text": doxylayout.linked_text
+        }
+        self.state.create_template_env("templates", filters)
 
     def generate(self, args):
 
@@ -267,24 +288,22 @@ class DoxyDoc:
         self.read_external()
 
         self.create_env()
-        # Reading input
+        # Finding xml input
         self.scan_input()
 
-        print ("DONE")
-        return
-
-        # Structuring data
+        # Reading and structuring data
         self.process_references()
 
-        self.process_compounds()
-        doxyspecial.gather_specials()
+        self.gather_entity_info()
+
+        # doxyspecial.gather_specials()
 
         doxycompound.pre_output()
 
         # Building output
-        self.build_compound_output()
+        self.build_output()
 
-        doxyspecial.build_specials()
+        # doxyspecial.build_specials()
 
         # Done
 

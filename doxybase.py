@@ -1,6 +1,7 @@
 from pprint import pprint
 from xml.sax.saxutils import escape
 from doxysettings import DocSettings
+from writing_context import WritingContext
 import jinja2
 import re
 
@@ -23,15 +24,7 @@ def paramescape(v):
 
 class JinjaFilter:
     def __init__(self, f):
-        def v(*args):
-            return str(f(*args))
-        self.f = f
         print ("Warning: Jinja filters are not functional yet")
-        # DocState.add_filter(f.__name__, v)
-
-    def __call__(self, *args):
-        # TODO: No return, how does this work??
-        self.f(*args)
 
 
 class DocState:
@@ -45,6 +38,7 @@ class DocState:
         self.input_xml = None
         self.environment = None
         self._filters = []
+        self.entities = []
 
         ''' Prevents infinte loops of tooltips in links by disabling links after a certain depth '''
         self.depth_ref = 0
@@ -58,16 +52,20 @@ class DocState:
     def add_filter(self, name, func):
         self._filters.append((name, func))
 
-    def create_template_env(self, dir):
+    def create_template_env(self, dir, filters):
         self.environment = jinja2.Environment(
             loader=jinja2.FileSystemLoader(dir),
             line_statement_prefix="#", line_comment_prefix="##"
         )
-        for name, func in self._filters:
-            self.environment.filters[name] = func
+
+        for key, fun in filters.items():
+            def wrapper(args):
+                return str(fun(args, WritingContext(self)))
+
+            self.environment.filters[key] = wrapper
 
     def iter_unique_docobjs(self):
-        for k, v in self._docobjs.iteritems():
+        for k, v in self._docobjs.items():
             if k == v.id:
                 yield v
 
@@ -75,6 +73,10 @@ class DocState:
         if id is None:
             id = obj.id
         self._docobjs[id] = obj
+        # Workaround for doxygen apparently generating refid:s which do not exist as id:s
+        id2 = obj.id + "_1" + obj.id
+        self._docobjs[id2] = obj
+        self.entities.append(obj)
 
     def has_docobj(self, id):
         return id in self._docobjs
@@ -137,9 +139,7 @@ class DocState:
             if obj is not None:
                 obj.compound = parent
 
-    def register_compound(self, xml):
-
-        print(xml)
+    def create_entity(self, xml):
         kind = xml.get("kind")
 
         if kind == "class" or kind == "struct" or kind == "interface":
@@ -152,44 +152,68 @@ class DocState:
             entity = GroupEntity()
         elif kind == "page":
             entity = PageEntity()
-        elif kind == "Example":
+        elif kind == "example":
             entity = ExampleEntity()
+        elif (kind == "define" or
+                kind == "property" or
+                kind == "event" or
+                kind == "variable" or
+                kind == "typedef" or
+                kind == "enum" or
+                kind == "function" or
+                kind == "signal" or
+                kind == "prototype" or
+                kind == "friend" or
+                kind == "dcop" or
+                kind == "slot"):
+            entity = MemberEntity()
+        elif (kind == "union" or
+                kind == "protocol" or
+                kind == "category" or
+                kind == "exception" or
+                kind == "dir"):
+            # Unsupported known entity type
+            entity = Entity()
+        elif kind is None and "sect" in xml.tag:
+            # Valid for things like sect[1-4]
+            entity = SectEntity()
         else:
-            # Unsupported entity type
-            # union, protocol, category, exception, dir
+            print("Unexpected kind: " + kind)
             entity = Entity()
 
-        entity.id = xml.get("id")
-        entity.kind = kind
+        entity.xml = xml
+        entity.read_base_xml()
+
+        if entity.id == "":
+            print ("Warning: Found an entity without an ID. Skipping")
+            return None
+
+        self.add_docobj(entity)
+        xml.set("docobj", entity)
+        return entity
+
+    def register_compound(self, xml):
+
+        entity = self.create_entity(xml)
 
         # TODO: Separate page class
         self.pages.append(entity)
 
-        entity.read_from_xml(xml)
-
         # Will only be used for debugging if even that. Formatted name will be added later
         entity.name = xml.find("compoundname").text
 
-        # Format path. Use - instead of :: in path names (more url friendly)
+        memberdefs = xml.findall("sectiondef/memberdef")
+        for member in memberdefs:
+            self.create_entity(member)
 
-        # TODO: Separate page class #### !!
-        # entity.path = entity.name.replace("::", "-")
+        # Find sect[1-4]
+        sects = (xml.findall(".//sect1") +
+                 xml.findall(".//sect2") +
+                 xml.findall(".//sect3") +
+                 xml.findall(".//sect4"))
 
-        # counter = 1
-        # while (entity.path + ("" if counter == 1 else str(counter))) in self._usedPaths:
-        #     counter += 1
-
-        # if counter > 1:
-        #     entity.path = entity.path + str(counter)
-
-        # self._usedPaths.add(entity.path)
-
-        self.add_docobj(entity)
-        xml.set("docobj", entity)
-
-        # Workaround for doxygen apparently generating refid:s which do not exist as id:s
-        id2 = entity.id + "_1" + entity.id
-        self.add_docobj(entity, id2)
+        for sect in sects:
+            entity = self.create_entity(sect)
 
         # Can be added later
         # For plugins to be able to extract more entities from the xml
@@ -223,7 +247,7 @@ class DocState:
         #         # print(entity.full_url())
 
 
-def is_detail_hidden(member):
+def is_detail_hidden(member, settings):
     """Returns if the member's detailed view should be hidden"""
 
     # Enums show up as members, but they should always be shown.
@@ -231,7 +255,7 @@ def is_detail_hidden(member):
         return False
 
     # Check if the member is undocumented
-    if DocSettings.hide_undocumented and (
+    if settings.hide_undocumented and (
         member.detaileddescription.text is None or member.detaileddescription.text.isspace()
     ):
         if member.detaileddescription.text is None:
@@ -267,6 +291,7 @@ class EntityPath:
         self.path = None
         self.anchor = None
         self.parent = None
+        self.page = None
 
     def full_url(self):
         ''' Url to the page (including possible anchor) where the Entity exists '''
@@ -282,9 +307,8 @@ class EntityPath:
         if hasattr(self, 'exturl'):
             return self.exturl
 
-        global FILE_EXT
         if self.path is not None:
-            url = self.path + FILE_EXT
+            url = self.path
         else:
             if self.parent is not None:
                 url = self.parent.page_url()
@@ -298,11 +322,8 @@ class EntityPath:
     def full_path(self):
         ''' Path to the file which contains this Entity '''
 
-        global FILE_EXT
-        global OUTPUT_DIR
-
         if self.path is not None:
-            url = self.path + FILE_EXT
+            url = self.path
         else:
             if self.parent is not None:
                 url = self.parent.full_url()
@@ -322,6 +343,10 @@ class Entity:
         self.detaileddescription = None
         self.id = ""
         self.path = EntityPath()
+        self.xml = None
+
+        # Sections in descriptions that can be linked to
+        self.sections = []
 
     def __str__(self):
         return "Entity: " + self.id
@@ -330,10 +355,47 @@ class Entity:
     def formatname(name):
         return name.replace("::", ".")
 
-    def read_from_xml(self, xml):
-        self.name = Entity.formatname(xml.find("compoundname").text)
+    def read_base_xml(self):
+        self.id = self.xml.get("id")
+        self.kind = self.xml.get("kind")
+
+    def read_from_xml(self):
+        xml = self.xml
+
+        if xml is None:
+            print("XML is None on " + self.id + " " + self.kind)
+        name_node = xml.find("title")
+        if name_node is None:
+            name_node = xml.find("compoundname")
+        if name_node is None:
+            name_node = xml.find("name")
+
+        if name_node is not None:
+            self.name = Entity.formatname(name_node.text)
+        else:
+            self.name = "#" + self.kind + "#"
+
         self.briefdescription = xml.find("briefdescription")
         self.detaileddescription = xml.find("detaileddescription")
+
+        # Find sections
+        # TODO: Optimize
+        section_xml = []
+        if self.briefdescription is not None:
+            section_xml = (section_xml +
+                           self.briefdescription.findall(".//sect1") +
+                           self.briefdescription.findall(".//sect2") +
+                           self.briefdescription.findall(".//sect3") +
+                           self.briefdescription.findall(".//sect4"))
+
+        if self.detaileddescription is not None:
+            section_xml = (section_xml +
+                           self.detaileddescription.findall(".//sect1") +
+                           self.detaileddescription.findall(".//sect2") +
+                           self.detaileddescription.findall(".//sect3") +
+                           self.detaileddescription.findall(".//sect4"))
+
+        self.sections = [sec.get("docobj") for sec in section_xml if sec.get("docobj") is not None]
 
 
 class GroupEntity(Entity):
@@ -343,8 +405,10 @@ class GroupEntity(Entity):
         self.innernamespaces = []
         self.innergroups = []
 
-    def read_from_xml(self, xml):
-        super().read_from_xml(xml)
+    def read_from_xml(self):
+        super().read_from_xml()
+        xml = self.xml
+
         self.title = Entity.formatname(xml.find("title").text)
 
         self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
@@ -358,12 +422,7 @@ class ExampleEntity(Entity):
 
 
 def gather_members(xml):
-    members = []
-    for member in xml.findall("sectiondef/memberdef"):
-        member.get("docobj").read_from_xml(member)
-        members.append(member)
-
-    return members
+    return [memberdef.get("docobj") for memberdef in xml.findall("sectiondef/memberdef")]
 
 
 class FileEntity(Entity):
@@ -376,7 +435,9 @@ class FileEntity(Entity):
         self.location = None  # TODO: Unknown location
         # TODO gather_members
 
-    def read_from_xml(self, xml):
+    def read_from_xml(self):
+        super().read_from_xml()
+        xml = self.xml
 
         self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
         self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespace")]
@@ -390,9 +451,6 @@ class FileEntity(Entity):
         # Find location of file
         loc = xml.find("location")
         self.location = loc.get("file") if loc is not None else None
-
-        if not DocSettings.show_source_files:
-            self.hidden = True
 
 
 class Protection:
@@ -409,13 +467,17 @@ class ClassEntity(Entity):
         self.protection = Protection()
         self.inherited = []
         self.derived = []
+        self.members = []
         self.all_members = []
 
         # TODO gather_members
 
-    def read_from_xml(self, xml):
+    def read_from_xml(self):
+        super().read_from_xml()
+        xml = self.xml
+
         self.protection = xml.get("prot")
-        gather_members(xml)
+        self.members = gather_members(xml)
 
         self.briefdescription = xml.find("briefdescription")
         self.detaileddescription = xml.find("detaileddescription")
@@ -444,7 +506,10 @@ class PageEntity(Entity):
         # TODO: Why subpages AND innerpages?
         self.innerpages = []
 
-    def read_from_xml(self, xml):
+    def read_from_xml(self):
+        super().read_from_xml()
+        xml = self.xml
+
         # xml
         # id
         # name
@@ -458,10 +523,6 @@ class PageEntity(Entity):
             self.name = Entity.formatname(title.text)
         else:
             self.name = ""
-
-        self.kind = xml.get("kind")
-        self.briefdescription = xml.find("briefdescription")
-        self.detaileddescription = xml.find("detaileddescription")
 
         self.subpages = [node.get("ref") for node in xml.findall("innerpage")]
         for p in self.subpages:
@@ -477,8 +538,9 @@ class NamespaceEntity(Entity):
         self.innerclasses = []
         self.innernamespaces = []
 
-    def read_from_xml(self, xml):
-        super().read_from_xml(xml)
+    def read_from_xml(self):
+        super().read_from_xml()
+        xml = self.xml
 
         self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
         self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespaces")]
@@ -522,7 +584,9 @@ class MemberEntity(Entity):
 
         self.paramdescs = []
 
-    def read_from_xml(self, xml):
+    def read_from_xml(self):
+        super().read_from_xml()
+        xml = self.xml
 
         # xml
         # id
@@ -538,15 +602,6 @@ class MemberEntity(Entity):
         # briefdesc
         # detaileddesc
         # type
-
-        self.xml = xml
-
-        self.name = Entity.formatname(xml.find("name").text)
-        self.kind = xml.get("kind")
-
-        # Find descriptions
-        self.briefdescription = xml.find("briefdescription")
-        self.detaileddescription = xml.find("detaileddescription")
 
         prot = xml.get("prot")
         if prot is not None:
@@ -568,13 +623,13 @@ class MemberEntity(Entity):
         override = len(self.reimplements) > 0 and self.virtual == "virtual"
 
         if override:
-            assert xml.find("type").text
-            types = xml.find("type").text.split()
+            assert xml.find("definition").text
+            types = xml.find("definition").text.split()
             override_type = None
             if "override" in types:
                 override_type = "override"
             if "new" in types:
-                print (types, override_type, self.id)
+                # print (types, override_type, self.id)
                 assert(override_type is None)
                 override_type = "new"
 
@@ -682,12 +737,25 @@ class MemberEntity(Entity):
 
         # Depending on settings, this object be hidden
         # If .hidden is true, no links to it will be generated, instead just plain text
-        self.hidden = is_detail_hidden(self)
+        # TODO: Should not be set in the read_xml method
+        # self.hidden = is_detail_hidden(self)
+
+
+class ExternalEntity(Entity):
+    def read_from_xml(self):
+        # Nothing to read since this
+        # entity is not based on an XML file
+        pass
+
+
+class SectEntity(Entity):
+    def read_from_xml(self):
+        title = self.xml.find("title")
+        self.name = Entity.formatname(title.text)
 
 
 def dump(obj):
     pprint(vars(obj))
-
 
 # Cannot add as decorator since the DocState class is not defined at function definition time
 JinjaFilter(DocState.trigger)

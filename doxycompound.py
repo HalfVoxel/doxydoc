@@ -1,10 +1,10 @@
-from doxybase import *
+from doxybase import DocState
 import doxylayout
 import doxytiny
 from doxysettings import DocSettings
 
 
-def process_references_root(root):
+def process_references_root(root, state):
 
     # for node in root.findall(".//*[@refid]"):
     #     try:
@@ -22,7 +22,7 @@ def process_references_root(root):
         if id is not None:
             try:
                 # Doxygen can sometimes generate refid=""
-                obj = DocState.get_docobj(id)
+                obj = state.get_docobj(id)
                 node.set("ref", obj)
             except KeyError:
                 # print "Invalid refid: '" + id + "' in compound " + xml.find("compoundname").text
@@ -42,13 +42,8 @@ def pre_output():
     pass
 
 
-def gather_compound_doc(xml):
-    # id = xml.get("id")
-    compound = xml.get("docobj")
-
-    DocState.compound = compound
-
-    compound.read_from_xml(xml)
+def gather_entity_doc(entity):
+    entity.read_from_xml()
 
 
 def write_from_template(template, compound):

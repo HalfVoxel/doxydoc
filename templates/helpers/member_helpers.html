@@ -1,0 +1,39 @@
+# macro heading(member)
+	<h3>
+	<span>
+	{{ member.protection.title() }} {{ "readonly" if member.protection.readonly else "" }}
+    # if member.protection.static
+        static
+    # endif
+    </span>
+
+    ## These kinds of members have a () list
+    # if member.kind == "function"
+        <span "class"="member-type">
+        {{ member.type|linked_text }}
+        </span>
+
+    <span "class": "member-name">{{member.name}}</span>
+
+    # if member.params is not None:
+        <span "class"="member-params">
+        (
+        # for param in member.params:
+            {{ param.type|linked_text }}
+
+            # if param.description is not None
+                tooltip = description(param.description)
+                <span "data-original-title"={{ param.description|description }}>
+                param.name
+                </span>
+            # else
+                param.name
+
+            # if not loop.last
+                ,
+            # endif
+        # endfor
+        )
+        </span>
+    </h3>
+# endmacro
