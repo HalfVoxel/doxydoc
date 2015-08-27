@@ -5,61 +5,61 @@ from str_tree import StrTree
 import doxylayout
 
 
-def linebreak(n, ctx):
+def linebreak(ctx, n):
     return StrTree().elem("br")
 
 
-def hruler(n, ctx):
+def hruler(ctx, n):
     return StrTree()
 
 
-def preformatted(n, ctx):
+def preformatted(ctx, n):
     return StrTree().element("pre", n.text)
 
 
-def programlisting(n, ctx):
+def programlisting(ctx, n):
     # can add class linenums here if needed
     result = StrTree()
     result.element("code", None, {"class": "prettyprint"})
     for line in n:
         ''' \todo ID '''
-        result += doxylayout.markup(line, ctx)
+        result += doxylayout.markup(ctx, line)
         result.element("br")
 
     result.element("/code")
     return result
 
 
-def verbatim(n, ctx):
+def verbatim(ctx, n):
     return StrTree().html(n.text)
 
 
-def indexentry(n, ctx):
+def indexentry(ctx, n):
     return StrTree()
 
 
-def orderedlist(n, ctx):
-    return StrTree().element("ol", _doclist(n, ctx))
+def orderedlist(ctx, n):
+    return StrTree().element("ol", _doclist(ctx, n))
 
 
-def itemizedlist(n, ctx):
-    return StrTree().element("ul", _doclist(n, ctx))
+def itemizedlist(ctx, n):
+    return StrTree().element("ul", _doclist(ctx, n))
 
 
-def _doclist(n, ctx):
+def _doclist(ctx, n):
     # Guaranteed to only contain listitem nodes
     result = StrTree()
     for child in n:
         assert child.tag == "listitem"
 
         result.elem("li")
-        result += doxylayout.markup(child, ctx)
+        result += doxylayout.markup(ctx, child)
         result.elem("/li")
 
     return result
 
 
-def simplesect(n, ctx):
+def simplesect(ctx, n):
     result = StrTree()
     kind = n.get("kind")
     title = n.find("title")
@@ -67,34 +67,34 @@ def simplesect(n, ctx):
 
     result.element("h3")
     if title is not None:
-        result += doxylayout.markup(title, ctx)
+        result += doxylayout.markup(ctx, title)
     else:
         result += kind.title()
 
     result.element("/h3")
-    result += doxylayout.sectbase(n, ctx)
+    result += doxylayout.sectbase(ctx, n)
     result.element("/div")
     return result
 
 
-def simplesectsep(n, ctx):
+def simplesectsep(ctx, n):
     return StrTree()
 
 
-def parameterlist(n, ctx):
+def parameterlist(ctx, n):
     ''' Parameter lists have been collected and stored in a more object oriented manner'''
     return StrTree()
 
 
-def title(n, ctx):
+def title(ctx, n):
     raise "Title tags should have been handled"
 
 
-def anchor(n, ctx):
-    return doxylayout.ref(n, ctx)
+def anchor(ctx, n):
+    return doxylayout.ref(ctx, n)
 
 
-def variablelist(n, ctx):
+def variablelist(ctx, n):
     entries = n.findall("varlistentry")
     items = n.findall("listitem")
     assert len(entries) == len(items)
@@ -111,15 +111,15 @@ def variablelist(n, ctx):
 
         assert term is not None, DocState.currentobj
         result.elem("li")
-        result.element("h4", lambda: doxylayout.markup(term, ctx))
-        result += doxylayout.markup(item, ctx)
+        result.element("h4", lambda: doxylayout.markup(ctx, term))
+        result += doxylayout.markup(ctx, item)
         result.elem("/li")
 
     result.elem("/ul")
     return result
 
 
-def table(n, ctx):
+def table(ctx, n):
     result = StrTree()
     result.element("table")
     for row in n:
@@ -127,45 +127,45 @@ def table(n, ctx):
         for cell in row:
             th = cell.get("thead") == "yes"
             result.element("th" if th else "td")
-            result += doxylayout.markup(cell, ctx)
+            result += doxylayout.markup(ctx, cell)
             result.element("/th" if th else "/td")
         result.element("/tr")
     result.element("/table")
     return result
 
 
-def heading(n, ctx):
+def heading(ctx, n):
     return StrTree()
 
 
-def image(n, ctx):
+def image(ctx, n):
     result = StrTree()
     name = "images/" + n.get("name")
     result.element("div", None, {"class": "tinyshadow"})
     result.element("img", None, {"src": name})
-    result += doxylayout.markup(n, ctx)
+    result += doxylayout.markup(ctx, n)
     result.element("/img")
     result.element("/div")
     return result
 
 
-def dotfile(n, ctx):
+def dotfile(ctx, n):
     return StrTree()
 
 
-def toclist(n, ctx):
+def toclist(ctx, n):
     return StrTree()
 
 
-def xrefsect(n, ctx):
+def xrefsect(ctx, n):
     return StrTree()
 
 
-def copydoc(n, ctx):
+def copydoc(ctx, n):
     return StrTree()
 
 
-def blockquote(n, ctx):
+def blockquote(ctx, n):
     return StrTree()
 
 ##########################
@@ -173,91 +173,91 @@ def blockquote(n, ctx):
 ##########################
 
 
-def ulink(n, ctx):
-    return StrTree().element("a href='" + n.get("url") + "'", doxylayout.markup(n, ctx))
+def ulink(ctx, n):
+    return StrTree().element("a href='" + n.get("url") + "'", doxylayout.markup(ctx, n))
 
 
-def bold(n, ctx):
-    return StrTree().element("b", doxylayout.markup(n, ctx))
+def bold(ctx, n):
+    return StrTree().element("b", doxylayout.markup(ctx, n))
 
 
-def emphasis(n, ctx):
-    return bold(n, ctx)
+def emphasis(ctx, n):
+    return bold(ctx, n)
 
 
-def computeroutput(n, ctx):
-    return preformatted(n, ctx)
+def computeroutput(ctx, n):
+    return preformatted(ctx, n)
 
 
-def subscript(n, ctx):
+def subscript(ctx, n):
     return StrTree()
 
 
-def superscript(n, ctx):
+def superscript(ctx, n):
     return StrTree()
 
 
-def center(n, ctx):
-    return StrTree().element("center", doxylayout.markup(n, ctx))
+def center(ctx, n):
+    return StrTree().element("center", doxylayout.markup(ctx, n))
 
 
-def small(n, ctx):
-    return StrTree().element("small", doxylayout.markup(n, ctx))
+def small(ctx, n):
+    return StrTree().element("small", doxylayout.markup(ctx, n))
 
 
-def htmlonly(n, ctx):
-    return verbatim(n, ctx)
+def htmlonly(ctx, n):
+    return verbatim(ctx, n)
 
 
 # These should be pass only functions actually
 
 
-def manonly(n, ctx):
+def manonly(ctx, n):
     return StrTree()
 
 
-def xmlonly(n, ctx):
+def xmlonly(ctx, n):
     return StrTree()
 
 
-def rtfonly(n, ctx):
+def rtfonly(ctx, n):
     return StrTree()
 
 
-def latexonly(n, ctx):
+def latexonly(ctx, n):
     return StrTree()
 
 
 # May look similar to mdash in a monospace font, but it is not
-def ndash(n, ctx):
+def ndash(ctx, n):
     return StrTree("–")
 
 
-def mdash(n, ctx):
+def mdash(ctx, n):
     return StrTree("—")
 
 
 # ...
 
 
-def ref(n, ctx):
-    return doxylayout.ref(n, ctx)
+def ref(ctx, n):
+    return doxylayout.ref(ctx, n)
 
 ##########################
 # docTitleCmdGroup #######
 ##########################
 
 
-def para(n, ctx):
-    return StrTree().element("p", doxylayout.markup(n, ctx))
+def para(ctx, n):
+    return StrTree().element("p", doxylayout.markup(ctx, n))
 
 
-def sp(n, ctx):
+def sp(ctx, n):
     return StrTree(" ")
 
 
-def highlight(n, ctx):
-    return doxylayout.markup(n, ctx)
+def highlight(ctx, n):
+    return doxylayout.markup(ctx, n)
 
 
 xml_mapping = {
@@ -305,6 +305,6 @@ xml_mapping = {
 }
 
 
-def write_xml(node, ctx):
+def write_xml(ctx, node):
     f = xml_mapping.get(node.tag)
-    return f(node, ctx) if f is not None else StrTree()
+    return f(ctx, node) if f is not None else StrTree()

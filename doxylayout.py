@@ -1,4 +1,4 @@
-from doxybase import DocState, dump
+from doxybase import DocState
 import doxytiny
 from str_tree import StrTree
 
@@ -43,12 +43,12 @@ def is_hidden(docobj):
 #     return " ".join(s)
 
 
-def get_href(id, ctx):
+def get_href(ctx, id):
     obj = ctx.state.get_docobj(id)
     return obj.path.full_url()
 
 
-def get_anchor(id, ctx):
+def get_anchor(ctx, id):
     # sect nodes are sometimes left without an id
     # Error on the user side, but check for this
     # to improve compatibility
@@ -58,12 +58,12 @@ def get_anchor(id, ctx):
     return obj.path.anchor
 
 
-def refcompound(refnode, ctx):
+def refcompound(ctx, refnode):
     result = StrTree()
     refid = refnode.get("refid")
 
     if refid == "":
-        result += markup(refnode, ctx)
+        result += markup(ctx, refnode)
         return result
 
     assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
@@ -90,14 +90,14 @@ def refcompound(refnode, ctx):
     return result
 
 
-def docobjref(obj, ctx):
+def docobjref(ctx, obj):
     result = StrTree()
     # Prevent recursive loops of links in the tooltips
     if ctx.strip_links or is_hidden(obj):
         result += obj.name
     else:
         if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
-            tooltip = description(obj.briefdescription, ctx)
+            tooltip = description(ctx, obj.briefdescription)
         else:
             tooltip = None
 
@@ -110,11 +110,18 @@ def docobjref(obj, ctx):
     return result
 
 
-def ref(refnode, ctx):
+def _tooltip(ctx, entity):
+    if entity.briefdescription is not None:
+        return description(ctx.with_link_stripping(), entity.briefdescription)
+    else:
+        return None
+
+
+def ref(ctx, refnode):
     obj = refnode.get("ref")
 
     if obj is None:
-        return markup(refnode, ctx)
+        return markup(ctx, refnode)
 
     # assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
 
@@ -124,28 +131,27 @@ def ref(refnode, ctx):
 
     result = StrTree()
     if ctx.strip_links or is_hidden(obj):
-        result += markup(refnode, ctx)
+        result += markup(ctx, refnode)
     else:
-        if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
-            tooltip = description(obj.briefdescription, ctx.with_link_stripping())
-        else:
-            tooltip = None
 
         result.element("a", None, {
             "href": obj.path.full_url(),
             "rel": 'tooltip',
-            "data-original-title": tooltip
+            "data-original-title": _tooltip(ctx, obj)
         })
-        result += markup(refnode, ctx.with_link_stripping())
+        result += markup(ctx.with_link_stripping(), refnode)
         result.element("/a")
     return result
 
 
-def ref_explicit(obj, text, tooltip, ctx):
+def ref_explicit(ctx, obj, text, tooltip=None):
     result = StrTree()
     if ctx.strip_links or is_hidden(obj):
         result += text
     else:
+        if tooltip is None:
+            tooltip = _tooltip(ctx, obj)
+
         result.element("a", text, {
             "href": obj.path.full_url(),
             "rel": 'tooltip',
@@ -154,7 +160,7 @@ def ref_explicit(obj, text, tooltip, ctx):
     return result
 
 
-def match_external_ref(text, ctx):
+def match_external_ref(ctx, text):
     result = StrTree()
     words = text.split()
     for i in range(0, len(words)):
@@ -163,32 +169,32 @@ def match_external_ref(text, ctx):
         try:
             obj = ctx.state.get_docobj("__external__" + words[i].strip())
             tooltip = obj.tooltip if hasattr(obj, "tooltip") else None
-            result += ref_explicit(obj, words[i], tooltip, ctx)
+            result += ref_explicit(ctx, obj, words[i], tooltip)
         except KeyError:
             result += words[i]
 
     return result
 
 
-def linked_text(node, ctx):
+def linked_text(ctx, node):
     result = StrTree()
 
     if node is None:
         return result
 
     if node.text is not None:
-        result += match_external_ref(node.text, ctx)
+        result += match_external_ref(ctx, node.text)
         # result += node.text
 
     for n in node:
         if n.tag == "ref":
-            result += ref(n)
+            result += ref(ctx, n)
         else:
             if n.text is not None:
-                result += match_external_ref(n.text, ctx)
+                result += match_external_ref(ctx, n.text)
 
         if n.tail is not None:
-            result += match_external_ref(n.tail, ctx)
+            result += match_external_ref(ctx, n.tail)
             # result += n.tail
 
     return result
@@ -246,17 +252,17 @@ def member_list_protection(member):
     return result
 
 
-def member_list_type(member, ctx):
+def member_list_type(ctx, member):
     ''' Displays the member's type. Used in the members table '''
 
     if member.type is not None:
         # Write type
-        return linked_text(member.type, ctx)
+        return linked_text(ctx, member.type)
     else:
         return StrTree()
 
 
-# def enum_members(members, ctx):
+# def enum_members(ctx, members):
 
 #     result = StrTree()
 #     result.element("ul", None, {'class': 'enum-members'})
@@ -266,15 +272,15 @@ def member_list_type(member, ctx):
 
 #         result.element("p")
 #         result.element("b")
-#         result += ref_explicit(m, m.name, None, ctx)
+#         result += ref_explicit(ctx, m, m.name, None)
 #         result += " "
 #         result.element("/b")
 #         if m.initializer is not None:
-#             result.element("span", lambda: linked_text(m.initializer, ctx))
+#             result.element("span", lambda: linked_text(ctx, m.initializer))
 #         result.element("/p")
 
-#         result += description(m.briefdescription, ctx)
-#         result += description(m.detaileddescription, ctx)
+#         result += description(ctx, m.briefdescription)
+#         result += description(ctx, m.detaileddescription)
 
 #         result.element("/td")
 #         result.element("/li")
@@ -319,7 +325,7 @@ def member_list_type(member, ctx):
 #                 result.element("/td")
 
 #             result.element("td", None, {'class': 'member-name'})
-#             result += ref_explicit(m, m.name, None, ctx)
+#             result += ref_explicit(ctx, m, m.name, None)
 #             # result += m.name
 #             result.element("/td")
 
@@ -446,32 +452,32 @@ def desctitle(text):
     return StrTree().element("h3", text)
 
 
-def sect(sectnode, depth, ctx):
+def sect(ctx, sectnode, depth):
     ''' sect* nodes '''
 
     result = StrTree()
     title = sectnode.find("title")
     if title is not None:
         result.element("h" + str(depth + INITIAL_HEADING_DEPTH), title.text, {
-            "id": get_anchor(sectnode.get("id"), ctx)
+            "id": get_anchor(ctx, sectnode.get("id"))
         }
         )
 
-    result += sectbase(sectnode, ctx)
+    result += sectbase(ctx, sectnode)
     return result
 
 
-def paragraph(paranode, ctx):
+def paragraph(ctx, paranode):
     ''' para nodes '''
 
     result = StrTree()
     result.elem("p")
-    result += markup(paranode, ctx)
+    result += markup(ctx, paranode)
     result.elem("/p")
     return result
 
 
-def markup(node, ctx):
+def markup(ctx, node):
     ''' Markup like nodes '''
 
     result = StrTree()
@@ -483,7 +489,7 @@ def markup(node, ctx):
 
     # Traverse children
     for n in node:
-        child_result = doxytiny.write_xml(n, ctx)
+        child_result = doxytiny.write_xml(ctx, n)
         if child_result is not None:
             result += child_result
         else:
@@ -497,45 +503,45 @@ def markup(node, ctx):
     return result
 
 
-def internal(internalnode, ctx):
+def internal(ctx, internalnode):
     ''' internal nodes '''
 
     print("Skipping internal data")
     return StrTree()
 
 
-def sectbase(node, ctx):
+def sectbase(ctx, node):
     result = StrTree()
     for n in node:
         if n == node:
             continue
 
         if n.tag == "para":
-            result += paragraph(n, ctx)
+            result += paragraph(ctx, n)
         elif n.tag == "sect1":
-            result += sect(n, 1, ctx)
+            result += sect(ctx, n, 1)
         elif n.tag == "sect2":
-            result += sect(n, 2, ctx)
+            result += sect(ctx, n, 2)
         elif n.tag == "sect3":
-            result += sect(n, 3, ctx)
+            result += sect(ctx, n, 3)
         elif n.tag == "sect4":
-            result += sect(n, 4, ctx)
+            result += sect(ctx, n, 4)
         elif n.tag == "sect5":
-            result += sect(n, 5, ctx)
+            result += sect(ctx, n, 5)
         elif n.tag == "simplesectsep":
-            result += doxytiny.simplesectsep(n, ctx)
+            result += doxytiny.simplesectsep(ctx, n)
         elif n.tag == "title":
             # A sect should have been the parent, so it should have been handled
             pass
         elif n.tag == "internal":
-            result += internal(n, ctx)
+            result += internal(ctx, n)
         else:
             print("[W2] Not handled: " + n.tag)
 
     return result
 
 
-def description(descnode, ctx):
+def description(ctx, descnode):
     result = StrTree()
     # \todo Ugly to have multiple possible types for description objects
     if isinstance(descnode, str):
@@ -545,9 +551,9 @@ def description(descnode, ctx):
     if descnode is not None:
         title = descnode.find("title")
         if title is not None:
-            result += desctitle(title.text, ctx)
+            result += desctitle(ctx, title.text)
 
-        result += sectbase(descnode, ctx)
+        result += sectbase(ctx, descnode)
 
     return result
 
@@ -591,7 +597,8 @@ def description(descnode, ctx):
 
 # def group_list_inner_classes(objs):
 #     result = StrTree()
-#     result.element("table", None, {"class": "inner-class-list table table-condensed table-striped"})
+#     result.element("table", None, {
+#        "class": "inner-class-list table table-condensed table-striped"})
 #     for n in objs:
 #         result.element("tr")
 #         result.element("td", lambda: docobjref(n))

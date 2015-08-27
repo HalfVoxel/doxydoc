@@ -1,7 +1,7 @@
 from doxybase import dump
 
 
-def get_member_sections(compound, members):
+def get_member_sections(entity, members):
     ''' Returns a list of sections in which to group members for display '''
     sections = []
 
@@ -26,7 +26,7 @@ def get_member_sections(compound, members):
 #     </xsd:restriction>
 #   </xsd:simpleType>
 
-    our_methods = [m for m in members if True]  # TODO: m.compound == compound]
+    our_methods = [m for m in members if m.defined_in_entity == entity]
     instance_methods = [m for m in our_methods if not m.static]
     static_methods = [m for m in our_methods if m.static]
 
@@ -113,18 +113,15 @@ def get_member_sections(compound, members):
 
     sections.append((
         "Private/Protected Members",
-        filter(lambda m: m.protection != "public", members)  # TODO and m.compound == compound, members)
+        [m for m in members if m.protection != "public" and m.defined_in_entity == entity]
     ))
 
     # Handling it specially
     # There no point explicitly showing an empty section when a class does no inherit any members
-    ls = list(filter(lambda m: True, members))  # m.compound != compound, members))
-    if len(ls) > 0:
-        for v in ls:
-            if v.name == "PostProcess":
-                dump(v)
-
-        sections.append(("Inherited Members", ls))
+    sections.append((
+        "Inherited Members",
+        [m for m in members if m.defined_in_entity != entity]
+    ))
 
     # sections.append(("All Members", members))
     return sections

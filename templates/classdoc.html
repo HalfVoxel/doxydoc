@@ -1,13 +1,10 @@
 # extends "main.html"
-# include "helpers/member_helpers.html"
+# import "helpers/member_helpers.html" as helpers
 
 # set bootstrap_protection = True
 
 # block content
-	<h1><span class="compound-kind">{{ entity.kind|title }}</span><span> {{ entity.name|title }}</span></h1>
-
-	{{ "here" }}
-	{{ entity }}
+	<h1><span class="compound-kind">{{ entity.kind|title }}</span><span> {{ entity.name }}</span></h1>
 
 	{{ entity.briefdescription|description }}
 
@@ -115,7 +112,7 @@
 								 # for param in member.params
 									{{ delim () }}
 									{{ param.type|linked_text}}
-									{{ member_parameter_name(param) }}
+									{{ helpers.member_parameter_name(param) }}
 								 # endfor
 								 )
 							</span>

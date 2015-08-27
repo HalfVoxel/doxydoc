@@ -60,7 +60,7 @@ class DocState:
 
         def create_wrapper(key, fun, context):
             def wrapper(*args):
-                return str(fun(*args, ctx=context))
+                return str(fun(context, *args))
             return wrapper
 
         for key, fun in filters.items():
@@ -144,7 +144,7 @@ class DocState:
             if obj is not None:
                 obj.compound = parent
 
-    def create_entity(self, xml):
+    def create_entity(self, xml, parent_entity=None):
         kind = xml.get("kind")
 
         if kind == "class" or kind == "struct" or kind == "interface":
@@ -172,6 +172,8 @@ class DocState:
                 kind == "dcop" or
                 kind == "slot"):
             entity = MemberEntity()
+            assert(parent_entity is not None)
+            entity.defined_in_entity = parent_entity
         elif (kind == "union" or
                 kind == "protocol" or
                 kind == "category" or
@@ -209,7 +211,7 @@ class DocState:
 
         memberdefs = xml.findall("sectiondef/memberdef")
         for member in memberdefs:
-            self.create_entity(member)
+            self.create_entity(member, entity)
 
         # Find sect[1-4]
         sects = (xml.findall(".//sect1") +
@@ -218,7 +220,7 @@ class DocState:
                  xml.findall(".//sect4"))
 
         for sect in sects:
-            entity = self.create_entity(sect)
+            entity = self.create_entity(sect, entity)
 
         # Can be added later
         # For plugins to be able to extract more entities from the xml
@@ -588,6 +590,9 @@ class MemberEntity(Entity):
         self.params = []
 
         self.paramdescs = []
+
+        # ClassEntity probably
+        self.defined_in_entity = None
 
     def read_from_xml(self):
         super().read_from_xml()
