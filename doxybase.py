@@ -58,11 +58,16 @@ class DocState:
             line_statement_prefix="#", line_comment_prefix="##"
         )
 
-        for key, fun in filters.items():
-            def wrapper(args):
-                return str(fun(args, WritingContext(self)))
+        def create_wrapper(key, fun, context):
+            def wrapper(*args):
+                return str(fun(*args, ctx=context))
+            return wrapper
 
+        for key, fun in filters.items():
+            wrapper = create_wrapper(key, fun, WritingContext(self))
             self.environment.filters[key] = wrapper
+            wrapper_no_links = create_wrapper(key, fun, WritingContext(self).with_link_stripping())
+            self.environment.filters[key + "_no_links"] = wrapper_no_links
 
     def iter_unique_docobjs(self):
         for k, v in self._docobjs.items():

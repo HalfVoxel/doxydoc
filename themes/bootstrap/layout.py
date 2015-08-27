@@ -3,11 +3,6 @@ from doxybase import *
 import doxylayout
 #import doxytiny
 
-def begin_content():
-    DocState.writer.html("<div class='span12'>")
-
-def end_content():
-    DocState.writer.html("</div>")
 
 def navheader():
 #     <div class="navbar">
@@ -34,7 +29,7 @@ def navheader():
         DocState.writer.element("li")
         DocState.writer.element("a", item.label, {"href": item.ref.full_url()})
         DocState.writer.element("/li")
-    
+
     DocState.trigger("navheader")
 
     DocState.writer.element("/ul")
@@ -63,9 +58,9 @@ def member_list_protection(member):
         DocState.writer.element("span", "Static", {"class": "label label-info"})
 
 def member(m):
-    
+
     #member_list_protection(m)
-    
+
 
     doxylayout._base_member(m)
 
@@ -89,7 +84,7 @@ def member_heading(m):
         DocState.writer.element("span", "Readonly", {"class": "label label-warning"})
     if m.static:
         DocState.writer.element("span", "Static", {"class": "label label-info"})
-    
+
     DocState.writer.element("/div")
 
     #Note, slightly unsafe, could possibly break html
@@ -102,7 +97,7 @@ def member_heading(m):
         linked_text(type)
 
     DocState.writer += " "
-    
+
     DocState.writer.element("/span")
     DocState.writer.element("span", None, {"class": 'member-name'})
 
@@ -133,7 +128,7 @@ def member_heading(m):
                 DocState.writer.element("/span")
             else:
                 DocState.writer += param.name
-            
+
             if i < len(m.params) - 1:
                 DocState.writer += ","
 

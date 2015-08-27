@@ -247,7 +247,7 @@ class DoxyDoc:
         #        page.parent = page.primary_entity.parent.path.page
 
         # pages = classes + page_pages + examples
-        pages = page_pages
+        pages = page_pages + classes
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
@@ -258,7 +258,8 @@ class DoxyDoc:
         filters = {
             "markup": doxylayout.markup,
             "description": doxylayout.description,
-            "linked_text": doxylayout.linked_text
+            "linked_text": doxylayout.linked_text,
+            "ref_explicit": doxylayout.ref_explicit
         }
         self.state.create_template_env("templates", filters)
 

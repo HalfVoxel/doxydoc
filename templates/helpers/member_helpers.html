@@ -12,22 +12,24 @@
         <span "class"="member-type">
         {{ member.type|linked_text }}
         </span>
+    # endif
 
     <span "class": "member-name">{{member.name}}</span>
 
-    # if member.params is not None:
+    # if member.params
         <span "class"="member-params">
         (
-        # for param in member.params:
+        # for param in member.params
             {{ param.type|linked_text }}
 
-            # if param.description is not None
+            # if param.description
                 tooltip = description(param.description)
-                <span "data-original-title"={{ param.description|description }}>
+                <span "data-original-title"={{ param.description|description_no_links }}>
                 param.name
                 </span>
             # else
                 param.name
+            # endif
 
             # if not loop.last
                 ,
@@ -35,5 +37,16 @@
         # endfor
         )
         </span>
+    # endif
     </h3>
+# endmacro
+
+# macro member_parameter_name(param):
+    # if param.description
+        <span "data-original-title": {{ param.description|description_no_links }}>
+        {{ param.name }}
+        </span>
+    # else
+        {{ param.name }}
+    # endif
 # endmacro

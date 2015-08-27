@@ -1,4 +1,5 @@
 import os
+import layout_helpers
 
 
 class Page:
@@ -75,7 +76,7 @@ class PageGenerator:
     def generate(self, page, state):
         f = open(os.path.join(state.settings.outdir, page.path), "w")
         template = state.environment.get_template(page.template + ".html")
-        print("Rendering entity " + page.primary_entity.name)
-        text = template.render(entity=page.primary_entity, state=state)
+        text = template.render(entity=page.primary_entity, state=state, layout=layout_helpers)
         f.write(text)
+        print("Rendering entity " + page.primary_entity.name)
         f.close()
