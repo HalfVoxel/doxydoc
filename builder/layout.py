@@ -1,6 +1,5 @@
-from doxybase import DocState
-import doxytiny
-from str_tree import StrTree
+import builder.elements
+from .str_tree import StrTree
 
 INITIAL_HEADING_DEPTH = 2
 
@@ -200,20 +199,20 @@ def linked_text(ctx, node):
     return result
 
 
-def navheader():
-    result = StrTree()
-    result.append("<div class='navbar'><ul>")
+# def navheader():
+#     result = StrTree()
+#     result.append("<div class='navbar'><ul>")
 
-    DocState.navitems.sort(key=lambda v: v.order)
+#     Importer.navitems.sort(key=lambda v: v.order)
 
-    for item in DocState.navitems:
-        result.element("li")
-        result.element("a", item.label, {"href": item.ref.path.full_url()})
-        result.element("/li")
+#     for item in Importer.navitems:
+#         result.element("li")
+#         result.element("a", item.label, {"href": item.ref.path.full_url()})
+#         result.element("/li")
 
-    DocState.trigger("navheader")
-    result.append("</div></ul>")
-    return result
+#     Importer.trigger("navheader")
+#     result.append("</div></ul>")
+#     return result
 
 
 def pagetitle(title):
@@ -489,7 +488,7 @@ def markup(ctx, node):
 
     # Traverse children
     for n in node:
-        child_result = doxytiny.write_xml(ctx, n)
+        child_result = builder.elements.write_xml(ctx, n)
         if child_result is not None:
             result += child_result
         else:
@@ -529,7 +528,7 @@ def sectbase(ctx, node):
         elif n.tag == "sect5":
             result += sect(ctx, n, 5)
         elif n.tag == "simplesectsep":
-            result += doxytiny.simplesectsep(ctx, n)
+            result += builder.elements.simplesectsep(ctx, n)
         elif n.tag == "title":
             # A sect should have been the parent, so it should have been handled
             pass
@@ -561,7 +560,7 @@ def description(ctx, descnode):
 # def get_inner_pages(obj):
 #     pages = []
 #     if obj is None:
-#         for k, obj2 in DocState._docobjs.iteritems():
+#         for k, obj2 in Importer._docobjs.iteritems():
 #             if (
 #                 obj2.kind == "page" and
 #                 (not hasattr(obj2, "parentpage") or obj2.parentpage is None) and
@@ -641,7 +640,7 @@ def description(ctx, descnode):
 #             if(obj2.kind == "class" or obj2.kind == "struct") and obj2 not in gridobjs:
 #                 gridobjs.append(obj2)
 #     else:
-#         for k, obj2 in DocState._docobjs.iteritems():
+#         for k, obj2 in Importer._docobjs.iteritems():
 #             if(obj2.kind == "class" or obj2.kind == "struct") and obj2 not in gridobjs:
 #                 gridobjs.append(obj2)
 
@@ -649,7 +648,7 @@ def description(ctx, descnode):
 #         for ns in obj.innernamespaces:
 #             namespaces.append(ns)
 #     else:
-#         for k, obj2 in DocState._docobjs.iteritems():
+#         for k, obj2 in Importer._docobjs.iteritems():
 #             if obj2.kind == "namespace" and obj2 not in namespaces:
 #                 if hasattr(obj2, "innerclasses") and len(obj2.innerclasses) > 0:
 #                     namespaces.append(obj2)
@@ -673,7 +672,7 @@ def description(ctx, descnode):
 #             result.element("tr")
 
 #         result.element("td", None, {"colspan": str(ns_colspan)})
-#         DocState.depth_ref += 1
+#         Importer.depth_ref += 1
 #         result.element("a", None, {"href": obj2.path.full_url()})
 #         result.element("b", obj2.name)
 
@@ -686,7 +685,7 @@ def description(ctx, descnode):
 
 #         counter += ns_colspan
 
-#         DocState.depth_ref -= 1
+#         Importer.depth_ref -= 1
 
 #     if(len(namespaces) > 0):
 #         result.element("/tr")
@@ -701,7 +700,7 @@ def description(ctx, descnode):
 
 #         result.element("td")
 
-#         DocState.depth_ref += 1
+#         Importer.depth_ref += 1
 #         result.element("a", None, {"href": obj2.path.full_url()})
 #         result.element("b", obj2.name)
 
@@ -711,7 +710,7 @@ def description(ctx, descnode):
 #         # result.element("/p")
 #         result.element("/a")
 #         result.element("/td")
-#         DocState.depth_ref -= 1
+#         Importer.depth_ref -= 1
 
 #         counter += 1
 

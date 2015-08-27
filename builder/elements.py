@@ -1,8 +1,7 @@
 # coding=UTF-8
 
-from doxybase import DocState
-from str_tree import StrTree
-import doxylayout
+from .str_tree import StrTree
+import builder.layout
 
 
 def linebreak(ctx, n):
@@ -23,7 +22,7 @@ def programlisting(ctx, n):
     result.element("code", None, {"class": "prettyprint"})
     for line in n:
         ''' \todo ID '''
-        result += doxylayout.markup(ctx, line)
+        result += builder.layout.markup(ctx, line)
         result.element("br")
 
     result.element("/code")
@@ -53,7 +52,7 @@ def _doclist(ctx, n):
         assert child.tag == "listitem"
 
         result.elem("li")
-        result += doxylayout.markup(ctx, child)
+        result += builder.layout.markup(ctx, child)
         result.elem("/li")
 
     return result
@@ -67,12 +66,12 @@ def simplesect(ctx, n):
 
     result.element("h3")
     if title is not None:
-        result += doxylayout.markup(ctx, title)
+        result += builder.layout.markup(ctx, title)
     else:
         result += kind.title()
 
     result.element("/h3")
-    result += doxylayout.sectbase(ctx, n)
+    result += builder.layout.sectbase(ctx, n)
     result.element("/div")
     return result
 
@@ -91,7 +90,7 @@ def title(ctx, n):
 
 
 def anchor(ctx, n):
-    return doxylayout.ref(ctx, n)
+    return builder.layout.ref(ctx, n)
 
 
 def variablelist(ctx, n):
@@ -109,10 +108,10 @@ def variablelist(ctx, n):
         # id = term.find("anchor").get("id")
         # refobj = term.find("ref")
 
-        assert term is not None, DocState.currentobj
+        assert term is not None
         result.elem("li")
-        result.element("h4", lambda: doxylayout.markup(ctx, term))
-        result += doxylayout.markup(ctx, item)
+        result.element("h4", lambda: builder.layout.markup(ctx, term))
+        result += builder.layout.markup(ctx, item)
         result.elem("/li")
 
     result.elem("/ul")
@@ -127,7 +126,7 @@ def table(ctx, n):
         for cell in row:
             th = cell.get("thead") == "yes"
             result.element("th" if th else "td")
-            result += doxylayout.markup(ctx, cell)
+            result += builder.layout.markup(ctx, cell)
             result.element("/th" if th else "/td")
         result.element("/tr")
     result.element("/table")
@@ -143,7 +142,7 @@ def image(ctx, n):
     name = "images/" + n.get("name")
     result.element("div", None, {"class": "tinyshadow"})
     result.element("img", None, {"src": name})
-    result += doxylayout.markup(ctx, n)
+    result += builder.layout.markup(ctx, n)
     result.element("/img")
     result.element("/div")
     return result
@@ -174,11 +173,11 @@ def blockquote(ctx, n):
 
 
 def ulink(ctx, n):
-    return StrTree().element("a href='" + n.get("url") + "'", doxylayout.markup(ctx, n))
+    return StrTree().element("a href='" + n.get("url") + "'", builder.layout.markup(ctx, n))
 
 
 def bold(ctx, n):
-    return StrTree().element("b", doxylayout.markup(ctx, n))
+    return StrTree().element("b", builder.layout.markup(ctx, n))
 
 
 def emphasis(ctx, n):
@@ -198,11 +197,11 @@ def superscript(ctx, n):
 
 
 def center(ctx, n):
-    return StrTree().element("center", doxylayout.markup(ctx, n))
+    return StrTree().element("center", builder.layout.markup(ctx, n))
 
 
 def small(ctx, n):
-    return StrTree().element("small", doxylayout.markup(ctx, n))
+    return StrTree().element("small", builder.layout.markup(ctx, n))
 
 
 def htmlonly(ctx, n):
@@ -241,7 +240,7 @@ def mdash(ctx, n):
 
 
 def ref(ctx, n):
-    return doxylayout.ref(ctx, n)
+    return builder.layout.ref(ctx, n)
 
 ##########################
 # docTitleCmdGroup #######
@@ -249,7 +248,7 @@ def ref(ctx, n):
 
 
 def para(ctx, n):
-    return StrTree().element("p", doxylayout.markup(ctx, n))
+    return StrTree().element("p", builder.layout.markup(ctx, n))
 
 
 def sp(ctx, n):
@@ -257,7 +256,7 @@ def sp(ctx, n):
 
 
 def highlight(ctx, n):
-    return doxylayout.markup(ctx, n)
+    return builder.layout.markup(ctx, n)
 
 
 xml_mapping = {

@@ -1,15 +1,14 @@
-import xml.etree.cElementTree as ET
 # from doxybase import *
 from os import listdir
 from os.path import isfile, isdir, join
 from progressbar import progressbar
-import doxycompound
-from doxysettings import DocSettings
-from doxybase import DocState, ExternalEntity
-import doxypages
+from importer import Importer
+from importer.entities import ExternalEntity
 import shutil
 import os
-import doxylayout
+import builder.layout
+from builder import Builder
+import builder.settings
 # import doxyspecial
 import argparse
 
@@ -17,10 +16,10 @@ import argparse
 class DoxyDoc:
 
     def __init__(self):
-        self.settings = DocSettings()
-        self.state = DocState()
-        self.state.settings = self.settings
-        self.settings.outdir = "html"
+        self.importer = Importer()
+        self.settings = builder.settings.Settings()
+        self.settings.out_dir = "html"
+        self.settings.template_dir = "templates"
 
     def load_plugins(self):
 
@@ -58,9 +57,9 @@ class DoxyDoc:
         #                 print("\tLoading Layout Overrides...")
         #             for k, v in obj.__dict__.iteritems():
         #                 if not k.startswith("_"):
-        #                     if (hasattr(doxylayout, k)):
-        #                         setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
-        #                     setattr(doxylayout, k, v)
+        #                     if (hasattr(builder.layout, k)):
+        #                         setattr(builder.layout, "_base_" + k, getattr(builder.layout, k))
+        #                     setattr(builder.layout, k, v)
         #         except AttributeError:
         #             pass
 
@@ -95,24 +94,9 @@ class DoxyDoc:
                 obj.kind = "external"
                 obj.name = name
                 obj.exturl = url
-                self.state.add_docobj(obj)
+                self.importer._add_docobj(obj)
 
         f.close()
-
-    def test_id_ref(self, path):
-
-        dom = ET.parse(path)
-
-        root = dom.getroot()
-
-        refs = root.findall(".//*[@refid]")
-        for i, ref in enumerate(refs):
-            progressbar(i + 1, len(refs))
-
-            # id = ref.get("refid")
-            refobj = ref.get("ref")
-            assert refobj
-            # print("Referenced " + refobj.name)
 
     def copy_resources(self):
         if not self.settings.args.quiet:
@@ -126,7 +110,7 @@ class DoxyDoc:
                     dstroot = root.replace(resbase + "/", "")
                     dstroot = dstroot.replace(resbase, "")
 
-                    target_dir = os.path.join(self.settings.outdir, dstroot)
+                    target_dir = os.path.join(self.settings.out_dir, dstroot)
                     try:
                         os.makedirs(target_dir)
                     except:
@@ -145,7 +129,7 @@ class DoxyDoc:
                 dstroot = root.replace(resbase + "/", "")
                 dstroot = dstroot.replace(resbase, "")
 
-                target_dir = os.path.join(self.settings.outdir, dstroot)
+                target_dir = os.path.join(self.settings.out_dir, dstroot)
                 try:
                     os.makedirs(target_dir)
                 except:
@@ -156,7 +140,7 @@ class DoxyDoc:
                     target_path = os.path.join(target_dir, fn)
                     shutil.copy2(source_path, target_path)
 
-            # shutil.copytree("resources", self.settings.outdir)
+            # shutil.copytree("resources", self.settings.out_dir)
         except OSError:  # python >2.5
             print("No resources directory found")
             raise
@@ -166,77 +150,25 @@ class DoxyDoc:
             print ("Reading resources...")
 
     def find_xml_files(self):
-        return [f for f in listdir("xml") if isfile(join("xml", f))]
+        return [join("xml", f) for f in listdir("xml")
+                if isfile(join("xml", f)) and f.endswith(".xml")]
 
     def scan_input(self):
-        filenames = self.find_xml_files()
-
         if not self.settings.args.quiet:
             print("Scanning input")
 
-        input_xml = []
-        roots = []
-
-        for i, fname in enumerate(filenames):
-            progressbar(i + 1, len(filenames))
-
-            try:
-                extension = os.path.splitext(fname)[1]
-
-                if extension != ".xml":
-                    continue
-
-                dom = ET.parse(os.path.join("xml", fname))
-
-                assert dom is not None, "No DOM"
-
-                root = dom.getroot()
-
-                roots.append(root)
-
-                compound = root.find("compounddef")
-
-                assert root is not None, "No Root"
-
-                if compound is not None:
-                    input_xml.append(compound)
-                    self.state.register_compound(compound)
-            except Exception as e:
-                print(fname)
-                raise e
-
-        self.state.roots = roots
-        self.state.input_xml = input_xml
-
-    def gather_entity_info(self):
-        if not self.settings.args.quiet:
-            print("Processing Entities...")
-
-        entities = self.state.entities
-        for i, entity in enumerate(entities):
-            progressbar(i + 1, len(entities))
-            doxycompound.gather_entity_doc(entity)
-
-    def process_references(self):
-        if not self.settings.args.quiet:
-            print("Processing References...")
-
-        roots = self.state.roots
-
-        for i, root in enumerate(roots):
-            progressbar(i + 1, len(roots))
-
-            doxycompound.process_references_root(root, self.state)
+        self.importer.read(self.find_xml_files())
 
     def build_output(self):
-        pages = self.state.pages
-
         if not self.settings.args.quiet:
             print("Building Output...")
 
-        entities = self.state.entities
+        builder = Builder(self.importer, self.settings)
+        self.create_env(builder)
 
-        generator = doxypages.PageGenerator()
+        entities = self.importer.entities
+
+        generator = builder.page_generator
         classes = [generator.class_page(ent) for ent in entities if ent.kind == "class"]
         examples = [generator.example_page(ent) for ent in entities if ent.kind == "example"]
         page_pages = [generator.page_page(ent) for ent in entities if ent.kind == "page"]
@@ -246,22 +178,21 @@ class DoxyDoc:
         #    if page.primary_entity.parent is not None:
         #        page.parent = page.primary_entity.parent.path.page
 
-        # pages = classes + page_pages + examples
-        pages = page_pages + classes
+        pages = classes + page_pages + examples
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
+            # print("Rendering entity " + page.primary_entity.name)
+            generator.generate(page)
 
-            generator.generate(page, self.state)
-
-    def create_env(self):
+    def create_env(self, builder_obj):
         filters = {
-            "markup": doxylayout.markup,
-            "description": doxylayout.description,
-            "linked_text": doxylayout.linked_text,
-            "ref_explicit": doxylayout.ref_explicit
+            "markup": builder.layout.markup,
+            "description": builder.layout.description,
+            "linked_text": builder.layout.linked_text,
+            "ref_explicit": builder.layout.ref_explicit
         }
-        self.state.create_template_env("templates", filters)
+        builder_obj.add_filters(filters)
 
     def generate(self, args):
 
@@ -277,10 +208,6 @@ class DoxyDoc:
             self.copy_resources()
             return
 
-        # filenames = ["xml/class_a_i_path.xml"]
-
-        # Events:
-        # 0    - 999    Initializaton
         self.load_plugins()
 
         self.copy_resources()
@@ -288,18 +215,10 @@ class DoxyDoc:
         self.read_prefs()
         self.read_external()
 
-        self.create_env()
         # Finding xml input
         self.scan_input()
 
-        # Reading and structuring data
-        self.process_references()
-
-        self.gather_entity_info()
-
         # doxyspecial.gather_specials()
-
-        doxycompound.pre_output()
 
         # Building output
         self.build_output()

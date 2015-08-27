@@ -1,5 +1,8 @@
-from doxybase import dump
+from pprint import pprint
 
+
+def dump(obj):
+    pprint(vars(obj))
 
 def get_member_sections(entity, members):
     ''' Returns a list of sections in which to group members for display '''

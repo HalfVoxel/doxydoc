@@ -9,7 +9,7 @@ def generate_index():
 
 	f = file(filename, "w")
 
-	for obj in DocState.iter_unique_docobjs():
+	for obj in Importer.iter_unique_docobjs():
 		try:
 			id = obj.full_url()
 			name = obj.name
@@ -17,9 +17,9 @@ def generate_index():
 			compound = ""
 			kind = ""
 			if hasattr(obj, "briefdescription"):
-				DocState.pushwriterplain()
+				Importer.pushwriterplain()
 				doxylayout.description(obj.briefdescription)
-				desc = DocState.popwriter()
+				desc = Importer.popwriter()
 
 			if hasattr(obj, "compound") and obj.compound is not None:
 				compound = obj.compound.name
@@ -35,13 +35,13 @@ def generate_index():
 	f.close()
 
 def searchbar():
-	DocState.writer.element("li")
-	DocState.writer.element("form", None, {"class": "navbar-search pull-right", "id": "searchform"})
-	DocState.writer.element("input", None, {"type": "text", "class": "search-query", "id": "searchfield", "placeholder": "Search", "data-toggle": "dropdown", "autocomplete": "off"})
-	DocState.writer.html("<ul class='dropdown-menu' role='menu' id='search-dropdown' aria-labelledby='dLabel'></ul>")
-	DocState.writer.element("/form")
-	DocState.writer.element("/li")
+	Importer.writer.element("li")
+	Importer.writer.element("form", None, {"class": "navbar-search pull-right", "id": "searchform"})
+	Importer.writer.element("input", None, {"type": "text", "class": "search-query", "id": "searchfield", "placeholder": "Search", "data-toggle": "dropdown", "autocomplete": "off"})
+	Importer.writer.html("<ul class='dropdown-menu' role='menu' id='search-dropdown' aria-labelledby='dLabel'></ul>")
+	Importer.writer.element("/form")
+	Importer.writer.element("/li")
 
-DocState.add_event(2600, generate_index)
+Importer.add_event(2600, generate_index)
 
-DocState.trigger_listener("navheader", 100, searchbar)
+Importer.trigger_listener("navheader", 100, searchbar)

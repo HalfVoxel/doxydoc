@@ -1,11 +1,11 @@
-from doxybase import Entity, DocState, NavItem
+from doxybase import Entity, Importer, NavItem
 import doxylayout
 import doxycompound
 
 
 def build_specials():
     print("Building Special Pages...")
-    for k, obj in DocState._docobjs.iteritems():
+    for k, obj in Importer._docobjs.iteritems():
         if obj.kind == "special":
             if not hasattr(obj, "generator"):
                 print("Special " + obj.name + " missing required 'generator' function")
@@ -27,14 +27,14 @@ def gather_specials():
 
     # Generator function required for special pages
     obj.generator = generate_classes_page
-    DocState.add_docobj(obj)
+    Importer.add_docobj(obj)
 
     # Add navigation item
     navitem = NavItem()
     navitem.label = "Classes"
     navitem.order = 5
     navitem.ref = obj
-    DocState.navitems.append(navitem)
+    Importer.navitems.append(navitem)
 
     # Pages Page
     obj = Entity()
@@ -49,29 +49,29 @@ def gather_specials():
 
     # Generator function required for special pages
     obj.generator = generate_pages_page
-    DocState.add_docobj(obj)
+    Importer.add_docobj(obj)
 
     # Add navigation item
     navitem = NavItem()
     navitem.label = "Pages"
     navitem.order = 2
     navitem.ref = obj
-    DocState.navitems.append(navitem)
+    Importer.navitems.append(navitem)
 
     # Index Page
     # Add navigation item
     navitem = NavItem()
     navitem.label = "Home"
     navitem.order = 0
-    navitem.ref = DocState.get_docobj("indexpage")
-    DocState.navitems.append(navitem)
+    navitem.ref = Importer.get_docobj("indexpage")
+    Importer.navitems.append(navitem)
 
     gather_examples_page()
 
 
 def gather_examples_page():
 
-    any_examples = any(obj.kind == "example" for obj in DocState._docobjs)
+    any_examples = any(obj.kind == "example" for obj in Importer._docobjs)
 
     if not any_examples:
         return
@@ -88,19 +88,19 @@ def gather_examples_page():
 
     # Generator function required for special pages
     obj.generator = generate_examples_page
-    DocState.add_docobj(obj)
+    Importer.add_docobj(obj)
 
     # Add navigation item
     navitem = NavItem()
     navitem.label = "Examples"
     navitem.order = 5
     navitem.ref = obj
-    DocState.navitems.append(navitem)
+    Importer.navitems.append(navitem)
 
 
 def generate_examples_page(obj):
-    DocState.pushwriter()
-    DocState.currentobj = obj
+    Importer.pushwriter()
+    Importer.currentobj = obj
 
     result = doxylayout.StrTree()
     result += doxylayout.header()
@@ -113,7 +113,7 @@ def generate_examples_page(obj):
         result.element("p", obj.detaileddescription)
 
     result.element("ul", None, {"class": "examples-list"})
-    for k, o in DocState._docobjs.iteritems():
+    for k, o in Importer._docobjs.iteritems():
         if o.kind == "example":
             result.element("li", lambda: doxylayout.docobjref(o))
 
@@ -129,7 +129,7 @@ def generate_examples_page(obj):
 
 
 def generate_pages_page(obj):
-    DocState.currentobj = obj
+    Importer.currentobj = obj
     template = "special_pages_list"
 
     return doxycompound.write_from_template(template, obj)
@@ -137,14 +137,14 @@ def generate_pages_page(obj):
 
 def generate_classes_page(obj):
     pass
-    # DocState.pushwriter()
-    # DocState.currentobj = obj
+    # Importer.pushwriter()
+    # Importer.currentobj = obj
 
     # doxylayout.header()
     # doxylayout.navheader()
 
     # doxylayout.begin_content()
-    # DocState.writer.element("p", "Listing of all classes")
+    # Importer.writer.element("p", "Listing of all classes")
 
     # doxylayout.namespace_list_inner(obj)
 
@@ -153,6 +153,6 @@ def generate_classes_page(obj):
     # doxylayout.footer()
 
     # f = open(obj.full_path(), "w")
-    # s = DocState.popwriter()
+    # s = Importer.popwriter()
     # f.write(s)
     # f.close()
