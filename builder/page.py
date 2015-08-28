@@ -23,7 +23,7 @@ def generate_io_safe_name(name, tail, reserved):
         if name_with_tail not in reserved:
             return name_with_tail
 
-        for i in range(1, 100):
+        for i in range(2, 100):
             name_with_tail = filename + str(i) + tail
             if name_with_tail not in reserved:
                 return name_with_tail
@@ -38,7 +38,7 @@ class PageGenerator:
         self.reserved_filenames = set()
 
     def reserve_filename(self, filename):
-        self.reserved_filenames.update(filename)
+        self.reserved_filenames.add(filename)
 
     def _page(self, template, primary_entity, entities):
         path = generate_io_safe_name(primary_entity.name, ".html", self.reserved_filenames)
@@ -61,7 +61,7 @@ class PageGenerator:
             if entity is not primary_entity:
                 # Set anchor
                 entity.path.anchor = generate_io_safe_name(entity.name, "", used_anchors)
-                used_anchors.update(entity.path.anchor)
+                used_anchors.add(entity.path.anchor)
 
         return page
 
