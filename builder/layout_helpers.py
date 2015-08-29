@@ -4,6 +4,7 @@ from pprint import pprint
 def dump(obj):
     pprint(vars(obj))
 
+
 def get_member_sections(entity, members):
     ''' Returns a list of sections in which to group members for display '''
     sections = []
@@ -80,10 +81,6 @@ def get_member_sections(entity, members):
     sections.append((
         "Public Static Properties",
         [m for m in public_static_methods if m.kind == "property"]
-    ))
-    sections.append((
-        "Public Static Variables",
-        [m for m in public_static_methods if m.kind == "variable"]
     ))
     sections.append((
         "Public Static Variables",
