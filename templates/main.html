@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Documentation</title>
-    <link rel='stylesheet' type='text/css' href='css/bootstrap.css'>
-    <link rel='stylesheet' type='text/css' href='css/prettify.css'>
-    <link rel='stylesheet' type='text/css' href='style.css'>
+    <link rel='stylesheet' type='text/css' href='resources/css/bootstrap.css'>
+    <link rel='stylesheet' type='text/css' href='resources/css/prettify.css'>
+    <link rel='stylesheet' type='text/css' href='resources/style.css'>
 </head>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <a class="brand" href="#">Sample Docs</a>
-                        <ul class="nav">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Sample Docs</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
                             # for item in state.navitems
                                 <li>
                                     <a href="{{item.ref.full_url()}}">{{item.label}}</a>
@@ -25,16 +27,15 @@
                         </ul>
                     </div>
                 </div>
-                <div class='col-md-12'>
-                {% block content %}{% endblock %}
-                </div>
+            </nav>
+            <div class='col-md-12'>
+            {% block content %}{% endblock %}
             </div>
         </div>
-
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/prettify.js"></script>
-        <script src="docs.js"></script>
-        <script src="js/fullproof-all-debug.js"></script>
+        <script src="resources/js/jquery.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/prettify.js"></script>
+        <script src="resources/docs.js"></script>
+        <script src="resources/js/fullproof-all-debug.js"></script>
     </body>
 </html>

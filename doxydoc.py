@@ -9,6 +9,7 @@ import os
 import builder.layout
 from builder import Builder
 import builder.settings
+from subprocess import call
 # import doxyspecial
 import argparse
 
@@ -98,38 +99,12 @@ class DoxyDoc:
 
         f.close()
 
-    def copy_resources(self):
-        if not self.settings.args.quiet:
-            print("Copying resources...")
-
+    def copy_resources_dir(self, source_dir, target_dir):
         try:
-            plugins = [f for f in listdir("themes") if isdir(join("themes", f))]
-            for moduleName in plugins:
-                resbase = os.path.join(os.path.join("themes", moduleName), "resources")
-                for root, dirs, files in os.walk(resbase):
-                    dstroot = root.replace(resbase + "/", "")
-                    dstroot = dstroot.replace(resbase, "")
+            for root, dirs, files in os.walk(source_dir):
+                dstroot = root.replace(source_dir + "/", "").replace(source_dir, "")
 
-                    target_dir = os.path.join(self.settings.out_dir, dstroot)
-                    try:
-                        os.makedirs(target_dir)
-                    except:
-                        pass
-
-                    for fn in files:
-                        source_path = os.path.join(root, fn)
-                        target_path = os.path.join(target_dir, fn)
-                        shutil.copy2(source_path, target_path)
-        except OSError:
-            print("Error while copying theme resources")
-
-        try:
-            resbase = "resources"
-            for root, dirs, files in os.walk(resbase):
-                dstroot = root.replace(resbase + "/", "")
-                dstroot = dstroot.replace(resbase, "")
-
-                target_dir = os.path.join(self.settings.out_dir, dstroot)
+                target_dir = os.path.join(target_dir, dstroot)
                 try:
                     os.makedirs(target_dir)
                 except:
@@ -138,12 +113,34 @@ class DoxyDoc:
                 for fn in files:
                     source_path = os.path.join(root, fn)
                     target_path = os.path.join(target_dir, fn)
-                    shutil.copy2(source_path, target_path)
 
-            # shutil.copytree("resources", self.settings.out_dir)
-        except OSError:  # python >2.5
-            print("No resources directory found")
-            raise
+                    if source_path.endswith(".scss"):
+                        target_path = target_path.replace(".scss", ".css")
+                        # Process scss files using sass
+                        call(["sass", os.path.realpath(source_path), os.path.realpath(target_path)])
+                    else:
+                        shutil.copy2(source_path, target_path)
+
+                # Copy subdirectories
+                for subdir in dirs:
+                    source_subdir = os.path.join(source_dir, subdir)
+                    target_subdir = os.path.join(target_dir, subdir)
+                    self.copy_resources_dir(source_subdir, target_subdir)
+        except OSError as e:
+            print("Error while copying resources: " + str(e))
+
+    def copy_resources(self):
+        if not self.settings.args.quiet:
+            print("Copying resources...")
+
+        target_dir = os.path.join(self.settings.out_dir, "resources")
+
+        self.copy_resources_dir("resources", target_dir)
+
+        themes = [f for f in listdir("themes") if isdir(join("themes", f))]
+        for moduleName in themes:
+            resbase = os.path.join(os.path.join("themes", moduleName), "resources")
+            self.copy_resources_dir(resbase, target_dir)
 
     def read_prefs(self):
         if not self.settings.args.quiet:
