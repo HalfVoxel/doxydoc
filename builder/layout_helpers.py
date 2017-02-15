@@ -7,7 +7,6 @@ def dump(obj):
 
 def get_member_sections(entity, members):
     ''' Returns a list of sections in which to group members for display '''
-    sections = []
 
     for m in members:
         if not hasattr(m, "protection"):
@@ -30,98 +29,40 @@ def get_member_sections(entity, members):
 #     </xsd:restriction>
 #   </xsd:simpleType>
 
-    our_methods = [m for m in members if m.defined_in_entity == entity]
-    instance_methods = [m for m in our_methods if not m.static]
-    static_methods = [m for m in our_methods if m.static]
+    # Partition the members into different sections using lambdas
+    section_spec = [
+        (lambda m: not m.static and m.protection == "public" and m.defined_in_entity == entity, [
+            ("Public Methods", lambda m: m.kind == "function"),
+            ("Public Properties", lambda m: m.kind == "property"),
+            ("Public Variables", lambda m: m.kind == "variable"),
+            ("Public Events", lambda m: m.kind == "event"),
+            ("Public Typedefs", lambda m: m.kind == "typedef"),
+            ("Public Signals", lambda m: m.kind == "signal"),
+            ("Public Prototypes", lambda m: m.kind == "prototype"),
+            ("Public Friends", lambda m: m.kind == "friend"),
+            ("Public Slots", lambda m: m.kind == "slot"),
+        ]),
+        (lambda m: m.static and m.protection == "public" and m.defined_in_entity == entity, [
+            ("Public Static Methods", lambda m: m.kind == "function"),
+            ("Public Static Properties", lambda m: m.kind == "property"),
+            ("Public Static Variables", lambda m: m.kind == "variable"),
+            ("Public Static Events", lambda m: m.kind == "event"),
+            ("Public Static Typedefs", lambda m: m.kind == "typedef"),
+            ("Public Static Signals", lambda m: m.kind == "signal"),
+            ("Public Static Prototypes", lambda m: m.kind == "prototype"),
+            ("Public Static Friends", lambda m: m.kind == "friend"),
+            ("Public Static Slots", lambda m: m.kind == "slot"),
+        ]),
+        (lambda m: True, [
+            ("Private/Protected Members", lambda m: m.protection != "public" and m.defined_in_entity == entity),
+            ("Inherited Members", lambda m: m.defined_in_entity != entity),
+        ])
+    ]
 
-    public_instance_methods = [m for m in instance_methods if m.protection == "public"]
-    public_static_methods = [m for m in static_methods if m.protection == "public"]
+    sections = []
+    for outer in section_spec:
+        filtered = list(filter(outer[0], members))
+        for s in outer[1]:
+            sections.append((s[0], list(filter(s[1], filtered))))
 
-    sections.append((
-        "Public Methods",
-        [m for m in public_instance_methods if m.kind == "function"]
-    ))
-    sections.append((
-        "Public Properties",
-        [m for m in public_instance_methods if m.kind == "property"]
-    ))
-    sections.append((
-        "Public Variables",
-        [m for m in public_instance_methods if m.kind == "variable"]
-    ))
-    sections.append((
-        "Public Events",
-        [m for m in public_instance_methods if m.kind == "event"]
-    ))
-    sections.append((
-        "Public Typedefs",
-        [m for m in public_instance_methods if m.kind == "typedef"]
-    ))
-    sections.append((
-        "Public Signals",
-        [m for m in public_instance_methods if m.kind == "signal"]
-    ))
-    sections.append((
-        "Public Prototypes",
-        [m for m in public_instance_methods if m.kind == "prototype"]
-    ))
-    sections.append((
-        "Public Friends",
-        [m for m in public_instance_methods if m.kind == "friend"]
-    ))
-    sections.append((
-        "Public Slots",
-        [m for m in public_instance_methods if m.kind == "slot"]
-    ))
-
-    sections.append((
-        "Public Static Methods",
-        [m for m in public_static_methods if m.kind == "function"]
-    ))
-    sections.append((
-        "Public Static Properties",
-        [m for m in public_static_methods if m.kind == "property"]
-    ))
-    sections.append((
-        "Public Static Variables",
-        [m for m in public_static_methods if m.kind == "variable"]
-    ))
-    sections.append((
-        "Public Static Events",
-        [m for m in public_static_methods if m.kind == "event"]
-    ))
-    sections.append((
-        "Public Static Typedefs",
-        [m for m in public_static_methods if m.kind == "typedef"]
-    ))
-    sections.append((
-        "Public Static Signals",
-        [m for m in public_static_methods if m.kind == "signal"]
-    ))
-    sections.append((
-        "Public Static Prototypes",
-        [m for m in public_static_methods if m.kind == "prototype"]
-    ))
-    sections.append((
-        "Public Static Friends",
-        [m for m in public_static_methods if m.kind == "friend"]
-    ))
-    sections.append((
-        "Public Static Slots",
-        [m for m in public_static_methods if m.kind == "slot"]
-    ))
-
-    sections.append((
-        "Private/Protected Members",
-        [m for m in members if m.protection != "public" and m.defined_in_entity == entity]
-    ))
-
-    # Handling it specially
-    # There no point explicitly showing an empty section when a class does no inherit any members
-    sections.append((
-        "Inherited Members",
-        [m for m in members if m.defined_in_entity != entity]
-    ))
-
-    # sections.append(("All Members", members))
     return sections
