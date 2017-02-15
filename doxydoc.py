@@ -106,19 +106,22 @@ class DoxyDoc:
             resbase = os.path.join(os.path.join("themes", moduleName), "resources")
             self.copy_resources_dir(resbase, target_dir)
 
+        target_dir = os.path.join(self.settings.out_dir, "images")
+        self.copy_resources_dir("input/images", target_dir)
+
     def read_prefs(self):
         if not self.settings.args.quiet:
             print ("Reading resources...")
 
-    def find_xml_files(self):
-        return [join("xml", f) for f in listdir("xml")
-                if isfile(join("xml", f)) and f.endswith(".xml")]
+    def find_xml_files(self, path):
+        return [join(path, f) for f in listdir(path)
+                if isfile(join(path, f)) and f.endswith(".xml")]
 
     def scan_input(self):
         if not self.settings.args.quiet:
             print("Scanning input")
 
-        self.importer.read(self.find_xml_files())
+        self.importer.read(self.find_xml_files("input/xml"))
 
     def create_navbar(self, pages):
         navbar = plugins.navbar.navbar.Navbar()
