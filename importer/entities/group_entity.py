@@ -1,4 +1,6 @@
 from .entity import Entity
+from typing import Dict
+import xml.etree.ElementTree as ET
 
 
 class GroupEntity(Entity):
@@ -8,8 +10,8 @@ class GroupEntity(Entity):
         self.innernamespaces = []
         self.innergroups = []
 
-    def read_from_xml(self):
-        super().read_from_xml()
+    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
+        super().read_from_xml(xml2entity)
         xml = self.xml
 
         self.title = Entity.formatname(xml.find("title").text)

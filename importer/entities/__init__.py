@@ -1,3 +1,4 @@
+from .param_entity import ParamEntity
 from .class_entity import ClassEntity
 from .example_entity import ExampleEntity
 from .external_entity import ExternalEntity

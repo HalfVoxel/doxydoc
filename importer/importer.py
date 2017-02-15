@@ -1,12 +1,10 @@
 from pprint import pprint
 from xml.sax.saxutils import escape
-import xml.etree.cElementTree as ET
+import xml.etree.ElementTree as ET
 import importer.entities as entities
-
+from importer.entities import Entity
 FILE_EXT = ".html"
 OUTPUT_DIR = "html"
-
-docobjs = {}
 
 # escape() and unescape() takes care of &, < and >.
 html_escape_table = {
@@ -22,16 +20,17 @@ def paramescape(v):
 
 class Importer:
 
-    def __init__(self):
-        self.entities = []
-        self._docobjs = {}
+    def __init__(self) -> None:
+        self.entities = []  # type: List[Entity]
+        self._docobjs = {}  # type: Dict[str,Entity]
+        self._xml2entity = {}  # type: Dict[ET.Element,Entity]
 
     def iter_unique_docobjs(self):
         for k, v in self._docobjs.items():
             if k == v.id:
                 yield v
 
-    def _add_docobj(self, obj, id=None):
+    def _add_docobj(self, obj: Entity, id: str=None):
         if id is None:
             id = obj.id
         self._docobjs[id] = obj
@@ -91,11 +90,12 @@ class Importer:
         entity.read_base_xml()
 
         if entity.id == "":
-            print ("Warning: Found an entity without an ID. Skipping")
+            print("Warning: Found an entity without an ID. Skipping")
             return None
 
         self._add_docobj(entity)
         xml.set("docobj", entity)
+        self._xml2entity[xml] = entity
         return entity
 
     def read(self, xml_filenames):
@@ -120,7 +120,7 @@ class Importer:
     def _read_entity_xml(self):
         for entity in self.entities:
             try:
-                entity.read_from_xml()
+                entity.read_from_xml(self._xml2entity)
             except:
                 print("Exception when parsing " + str(entity.id) + " of type " + str(entity.kind))
                 raise

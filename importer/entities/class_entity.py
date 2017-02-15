@@ -1,5 +1,7 @@
 from .entity import Entity, gather_members
 from importer.protection import Protection
+from typing import Dict
+import xml.etree.ElementTree as ET
 
 
 class ClassEntity(Entity):
@@ -26,8 +28,8 @@ class ClassEntity(Entity):
     def parent_in_canonical_path(self):
         return self.parent
 
-    def read_from_xml(self):
-        super().read_from_xml()
+    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
+        super().read_from_xml(xml2entity)
         xml = self.xml
 
         self.protection = xml.get("prot")

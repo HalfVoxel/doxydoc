@@ -1,4 +1,6 @@
 from .entity import Entity, gather_members
+from typing import Dict
+import xml.etree.ElementTree as ET
 
 
 class FileEntity(Entity):
@@ -11,8 +13,8 @@ class FileEntity(Entity):
         self.location = None  # TODO: Unknown location
         # TODO gather_members
 
-    def read_from_xml(self):
-        super().read_from_xml()
+    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
+        super().read_from_xml(xml2entity)
         xml = self.xml
 
         self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]

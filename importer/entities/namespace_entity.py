@@ -1,4 +1,6 @@
 from .entity import Entity, gather_members
+from typing import Dict
+import xml.etree.ElementTree as ET
 
 
 class NamespaceEntity(Entity):
@@ -13,8 +15,8 @@ class NamespaceEntity(Entity):
     def parent_in_canonical_path(self):
         return self.parent_namespace
 
-    def read_from_xml(self):
-        super().read_from_xml()
+    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
+        super().read_from_xml(xml2entity)
         xml = self.xml
 
         self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]

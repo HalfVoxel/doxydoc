@@ -1,4 +1,6 @@
 from .entity import Entity
+from typing import Dict
+import xml.etree.ElementTree as ET
 
 
 class PageEntity(Entity):
@@ -10,8 +12,8 @@ class PageEntity(Entity):
         # TODO: Why subpages AND innerpages?
         self.innerpages = []
 
-    def read_from_xml(self):
-        super().read_from_xml()
+    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
+        super().read_from_xml(xml2entity)
         xml = self.xml
 
         # xml
@@ -24,7 +26,7 @@ class PageEntity(Entity):
 
         title = xml.find("title")
         if title is not None and title.text is not None:
-            self.name = Entity.formatname(title.text)
+            self.name = Entity.formatname(str(title.text))
         else:
             self.name = ""
 

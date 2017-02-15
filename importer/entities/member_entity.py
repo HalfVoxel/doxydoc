@@ -1,6 +1,9 @@
 import re
 from .entity import Entity
+from .param_entity import ParamEntity
 from importer.protection import Protection
+from typing import Dict
+import xml.etree.ElementTree as ET
 
 
 class MemberEntity(Entity):
@@ -22,10 +25,10 @@ class MemberEntity(Entity):
         # TODO: Rename to overrides
         self.override = None
 
-        # TODO: What is this?
+        ''' The value the member is initialized to. TODO: What is the type? '''
         self.initializer = None
 
-        self.type = None
+        self.type = None  # type: ET.Element
 
         self.readonly = False
 
@@ -41,16 +44,14 @@ class MemberEntity(Entity):
         self.hasparams = False
         self.params = []
 
-        self.paramdescs = []
-
         # ClassEntity probably
         self.defined_in_entity = None
 
     def parent_in_canonical_path(self):
         return self.defined_in_entity
 
-    def read_from_xml(self):
-        super().read_from_xml()
+    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
+        super().read_from_xml(xml2entity)
         xml = self.xml
 
         # xml
@@ -98,8 +99,6 @@ class MemberEntity(Entity):
                 assert(override_type is None)
                 override_type = "new"
 
-            override = override_type
-
             # For abstract classes or interfaces, it might reimplement some function
             # without overriding it thus the need to check again here
             self.override = override_type
@@ -124,7 +123,7 @@ class MemberEntity(Entity):
             if self.type is not None and self.type.text is not None:
                 # Remove eventual 'override ' text at start of type.
                 override_pattern = "(?:override|new|readonly|abstract)\s"
-                self.type.text = re.sub(override_pattern, "", self.type.text, 1)
+                self.type.text = re.sub(override_pattern, "", str(self.type.text), 1)
         else:
             self.type = None
             self.readonly = False
@@ -151,13 +150,9 @@ class MemberEntity(Entity):
             params = xml.findall("param")
             self.params = []
             for param in params:
-                o = Entity()
+                o = ParamEntity()
                 o.xml = param
-                o.name = param.find("declname").text
-                o.type = param.find("type")
-
-                # Description will be filled in later if found
-                o.description = None
+                o.read_from_xml(xml2entity)
                 self.params.append(o)
         else:
             self.hasparams = False
@@ -165,40 +160,26 @@ class MemberEntity(Entity):
 
         if self.detaileddescription is not None:
             paramdescs = self.detaileddescription.findall(".//parameterlist")
-            self.paramdescs = []
+            for parameterList in paramdescs:
+                for parameterItem in parameterList:
+                    # kind = parameterItem.get("kind")
+                    # Note use 'kind'
 
-            # TODO, Take care of 'Exception' "parameters"
+                    nameLists = parameterItem.findall("parameternamelist")
+                    description = parameterItem.find("parameterdescription")
+                    names = []
+                    for ls in nameLists:
+                        names += [name.text for name in ls]
 
-            for pd in paramdescs:
-                # kind = pd.get("kind")
-                # Note use 'kind'
+                    # TODO use direction and type
 
-                # Note, should be just a simple object
-                o = Entity()
-                o.names = []
-                o.description = None
-
-                for n in pd:
-                    names = n.findall("parameternamelist")
-                    o.description = n.find("parameterdescription")
-                    if names is not None:
-                        for name in names:
-                            o.names.append(name.text)
-                            # Note use direction and type
-
-                self.paramdescs.append(o)
-
-            if self.params is None and len(self.paramdescs) > 0:
-                print("Wait wut " + self.defined_in_entity.name + "::" + self.name)
-
-            # Set descriptions on the parameter objects
-            for pd in self.paramdescs:
-                for name in pd.names:
-                    for p in self.params:
-                        if p.name == name:
-                            p.description = pd.description
-                            print("Found matching parameter " + p.name)
-                            break
+                    # Set descriptions on the parameter objects
+                    for name in names:
+                        for p in self.params:
+                            if p.name == name:
+                                p.detaileddescription = description
+                                print("Found matching parameter " + p.name)
+                                break
 
         # Depending on settings, this object be hidden
         # If .hidden is true, no links to it will be generated, instead just plain text
