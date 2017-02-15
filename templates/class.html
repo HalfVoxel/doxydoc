@@ -1,5 +1,7 @@
 # extends "main.html"
 # import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed
 
 # set bootstrap_protection = True
 
@@ -28,11 +30,7 @@
             </div>
             <div class="row" style="display: none;" id="{{ member.path.anchor }}">
                 <div class="col-md-12" style="background: #EEE;">
-                # block member_item2 scoped
-                    {{ member_detailed_header(member, true) }}
-                    {{ member.briefdescription|description }}
-                    {{ member.detaileddescription|description }}
-                # endblock
+                {{ member_detailed(member) }}
                 </div>
             </div>
             # endblock

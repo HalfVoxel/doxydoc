@@ -429,8 +429,8 @@ def member_list_type(ctx, member):
 
 def member_parameter_name(param):
     result = StrTree()
-    if param.description is not None:
-        tooltip = description(param.description)
+    if param.detaileddescription is not None:
+        tooltip = description(param.detaileddescription)
         result.element("span", None, {"data-original-title": tooltip})
         result += param.name
         result.element("/span")

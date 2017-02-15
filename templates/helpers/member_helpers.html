@@ -22,9 +22,8 @@
         # for param in member.params
             {{ param.type|linked_text }}
 
-            # if param.description
-                tooltip = description(param.description)
-                <span "data-original-title"={{ param.description|description_no_links }}>
+            # if param.detaileddescription
+                <span "data-original-title"="{{ param.detaileddescription|description_no_links }}">
                 param.name
                 </span>
             # else
@@ -41,21 +40,13 @@
     </h3>
 # endmacro
 
-{%- macro member_parameter_name(param) %}
-    #- if param.description
-        <span "data-original-title": {{ param.description|description_no_links }}>{{ param.name }}</span>
-    #- else
-        {{- param.name }}
-    #- endif
-{% endmacro -%}
-
 
 {%- macro paramlist(member, write_type) %}
     # set delim = joiner(", ")
     <span class="member-params">
         {{- "(" -}}
          {%- for param in member.params -%}
-            {{ delim() }}{% if write_type %}{{ param.type|linked_text }} {% endif %}{{ member_parameter_name(param) }}
+            {{ delim() }}{% if write_type %}{{ param.type|linked_text }} {% endif %}{{- param.name }}
          {%- endfor %}
          {{- ")" -}}
     </span>

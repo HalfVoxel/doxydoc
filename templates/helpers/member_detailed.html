@@ -1,5 +1,18 @@
 # import "helpers/member_helpers.html" as helpers
 
+# macro member_detailed(member)
+    {{ member_detailed_header(member, true) }}
+    {{ member.members|pprint }}
+    # for m in member.members
+        # if m is not none:
+            {{ m.briefdescription|description }}
+            {{ m.detaileddescription|description }}
+        # endif
+    # endfor
+    {{ member.briefdescription|description }}
+    {{ member.detaileddescription|description }}
+# endmacro
+
 # macro member_detailed_header(member, bootstrap_protection)
     # if bootstrap_protection
     <div class="member-side-prot">
@@ -26,7 +39,7 @@
     </div>
     #endif
 
-    <h4 style="font-family: monospace;">
+    <h5 style="font-family: monospace;">
     # if not bootstrap_protection
         {% if member.protection %}{{ member.protection|title }}{%endif %}
         {% if member.readonly %}readonly{%endif%}
@@ -39,7 +52,30 @@
     <span class="member-name">{{ member.name }}</span>
 
     # if member.hasparams
-        {{ helpers.paramlist(member, true) }}
+        {{ param_description_list(member, true) }}
     # endif
-    </h4>
+    </h5>
 # endmacro
+
+
+## <span "data-original-title"="{{ param.detaileddescription|description_no_links }}">{{ param.name }}</span>
+
+{%- macro member_parameter_name(param) %}
+    #- if param.detaileddescription
+        <td><p>{{ param.name }}</p></td><td>{{ param.detaileddescription|description }}</td>
+    #- else
+        <td><p>{{- param.name }}</p></td><td></td>
+    #- endif
+{% endmacro -%}
+
+{%- macro param_description_list(member, write_type) %}
+    {{- '(' -}}
+    <table class="member-params-detail">
+        {%- for param in member.params -%}
+            <tr>
+            {% if write_type %}<td><p>{{ param.type|linked_text }}</p></td>{% endif %}{{- member_parameter_name(param) }}
+            </tr>
+        {%- endfor %}
+    </table>
+    <span>)</span>
+{% endmacro -%}
