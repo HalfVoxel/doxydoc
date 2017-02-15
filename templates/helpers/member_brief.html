@@ -1,0 +1,40 @@
+# import "helpers/member_helpers.html" as helpers
+
+# macro member_brief_protection(member, bootstrap_protection)
+	<div class="col-md-1 col-xs-2 member-prot">
+	    <span style="font-family: monospace; color: #888; font-weight: bold; cursor: pointer;"> + </span>
+	    # if bootstrap_protection
+	        # if member.protection is not none:
+	            # set labelStyle = ""
+	        # endif
+	        # if member.protection == "public":
+	            # set labelStyle = "label-success"
+	        # elif member.protection == "private":
+	            # set labelStyle = "label-default"
+	        # elif member.protection == "protected":
+	            # set labelStyle = "label-warning"
+	        # elif member.protection == "package":
+	            # set labelStyle = "label-info"
+	        # endif
+	        <span class="label {{labelStyle}}"> </span>
+	        ## {{ member.protection|title }}
+	        # if member.readonly:
+	            <span class="label label-warning"> </span>
+	        # endif
+	        # if member.static:
+	            <span class="label label-info"> </span>
+	        # endif
+
+	    # else
+	        <span>{{ member.protection|title }}</span> {% if member.readonly %}<span> Readonly</span>{% endif %}{% if member.static%}<span> Static</span>{%endif%}
+	    # endif
+	    </div>
+
+	    ## <div class="col-md-2 col-xs-4 member-type" style="font-family: monospace;">{{ member.type|linked_text }}</div>
+	    <div class="col-md-5 col-xs-10 member-name" style="font-family: monospace;">
+	    {{ member.name }}
+	    # if member.hasparams
+	        <span style="color: #5b5b5b;">{{ helpers.paramlist(member, false) }}</span>
+	    # endif
+    </div>
+# endmacro

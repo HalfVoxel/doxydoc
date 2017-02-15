@@ -1,4 +1,9 @@
-{% extends "main.html" %}
+# extends "main.html"
+# import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed_header
+
+# set bootstrap_protection = True
 
 {% block content %}
 	<h1><small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span></h1>
@@ -28,6 +33,34 @@
 				</tr>
 			# endfor
 		</table>
+
+    # set sections = layout.get_member_sections(entity, entity.members)
+    # for section in sections if section[1]|length != 0
+
+        <h2>{{ section[0] }}</h2>
+        # set members = section[1]
+
+        # for member in members
+            # block member_list_item scoped
+            <div class="row" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
+                {{ member_brief_protection(member, true) }}
+                <div class="col-md-0 col-xs-2"></div>
+                <div class="col-md-6 col-xs-10 member-desc">
+                {{ member.briefdescription|description }}
+                </div>
+            </div>
+            <div class="row" style="display: none;" id="{{ member.path.anchor }}">
+                <div class="col-md-12" style="background: #EEE;">
+                # block member_item2 scoped
+                    {{ member_detailed_header(member, true) }}
+                    {{ member.briefdescription|description }}
+                    {{ member.detaileddescription|description }}
+                # endblock
+                </div>
+            </div>
+            # endblock
+        # endfor
+    # endfor
 	</div>
 
 {% endblock %}
