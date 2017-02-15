@@ -142,13 +142,14 @@ class DoxyDoc:
 
         generator = builder.page_generator
         classes = [generator.class_page(ent) for ent in entities if ent.kind == "class"]
+        structs = [generator.class_page(ent) for ent in entities if ent.kind == "struct"]
         examples = [generator.example_page(ent) for ent in entities if ent.kind == "example"]
         page_pages = [generator.page_page(ent) for ent in entities if ent.kind == "page"]
         namespaces = [generator.namespace_page(ent) for ent in entities if ent.kind == "namespace"]
 
         special_list = plugins.list_specials.list_specials.define_page(self.importer, builder)
 
-        pages = classes + page_pages + examples + namespaces + [special_list]
+        pages = classes + structs + page_pages + examples + namespaces + [special_list]
 
         # Build lookup from entities to their pages
         entity2page = {e: page for page in pages for e in page.entities}
