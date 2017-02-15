@@ -53,5 +53,5 @@ class ClassEntity(Entity):
         self.all_members = [m.get("ref") for m in xml.find("listofallmembers")]
         for m in xml.find("listofallmembers"):
             if m.get("ref") is None:
-                print ("NULL REFERENCE " + m.find("name").text + " " + m.find("scope").text)
-                print ("Sure not old files are in the xml directory")
+                print("NULL REFERENCE " + str(m.find("name").text) + " " + str(m.find("scope").text))
+                print("Sure not old files are in the xml directory")

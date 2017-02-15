@@ -14,7 +14,7 @@ class GroupEntity(Entity):
         super().read_from_xml(xml2entity)
         xml = self.xml
 
-        self.title = Entity.formatname(xml.find("title").text)
+        self.title = Entity.formatname(str(xml.find("title").text))
 
         self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
         self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespace")]

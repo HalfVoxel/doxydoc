@@ -167,9 +167,9 @@ class MemberEntity(Entity):
 
                     nameLists = parameterItem.findall("parameternamelist")
                     description = parameterItem.find("parameterdescription")
-                    names = []
+                    names = []  # type: List[str]
                     for ls in nameLists:
-                        names += [name.text for name in ls]
+                        names += [str(name.text) for name in ls]
 
                     # TODO use direction and type
 
