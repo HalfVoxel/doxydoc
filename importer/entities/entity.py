@@ -36,7 +36,7 @@ class Entity:
         if name_node is None:
             name_node = xml.find("name")
 
-        if name_node is not None:
+        if name_node is not None and name_node.text is not None:
             self.name = Entity.formatname(name_node.text)
         else:
             self.name = "#" + self.kind + "#"
