@@ -139,9 +139,9 @@ def heading(ctx, n):
 
 def image(ctx, n):
     result = StrTree()
-    name = "images/" + n.get("name")
+    url = ctx.relpath("images/" + n.get("name"))
     result.element("div", None, {"class": "tinyshadow"})
-    result.element("img", None, {"src": name})
+    result.element("img", None, {"src": url})
     result += builder.layout.markup(ctx, n)
     result.element("/img")
     result.element("/div")
