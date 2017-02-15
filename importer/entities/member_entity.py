@@ -4,6 +4,9 @@ from importer.protection import Protection
 
 
 class MemberEntity(Entity):
+    def __repr__(self):
+        return "<entity name=" + self.name + " id=" + self.id + ">"
+
     def __init__(self):
         super().__init__()
 
