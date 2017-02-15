@@ -4,54 +4,56 @@ from .param_entity import ParamEntity
 from importer.protection import Protection
 from typing import Dict
 import xml.etree.ElementTree as ET
+from importer.importer_context import ImporterContext
 
 
 class MemberEntity(Entity):
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "<entity name=" + self.name + " id=" + self.id + ">"
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-        self.protection = Protection()
+        # TODO: Use Protection class
+        self.protection = None  # type: str
 
-        self.virtual = False
+        self.virtual = None  # type: str
         self.static = False
 
-        self.reimplementedby = []
+        self.reimplementedby = []  # type: List[Entity]
 
-        self.reimplements = []
+        self.reimplements = []  # type: List[Entity]
 
         # TODO: Rename to overrides
-        self.override = None
+        self.override = None  # type: str
 
         ''' The value the member is initialized to. TODO: What is the type? '''
-        self.initializer = None
+        self.initializer = None  # type: ET.Element
 
         self.type = None  # type: ET.Element
 
         self.readonly = False
 
         # TODO: Remove?
-        self.members = []
+        self.members = []  # type: List[Entity]
 
         # TODO: Remove?
-        self.all_members = []
+        self.all_members = []  # type: List[Entity]
 
-        self.argsstring = None
+        self.argsstring = None  # type: str
 
         # TODO: Remove?
         self.hasparams = False
-        self.params = []
+        self.params = []  # type: List[ParamEntity]
 
         # ClassEntity probably
-        self.defined_in_entity = None
+        self.defined_in_entity = None  # type: Entity
 
-    def parent_in_canonical_path(self):
+    def parent_in_canonical_path(self) -> Entity:
         return self.defined_in_entity
 
-    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
-        super().read_from_xml(xml2entity)
+    def read_from_xml(self, ctx: ImporterContext) -> None:
+        super().read_from_xml(ctx)
         xml = self.xml
 
         # xml
@@ -83,8 +85,8 @@ class MemberEntity(Entity):
 
         self.static = xml.get("static") == "yes"
 
-        self.reimplementedby = [node.get("ref") for node in xml.findall("reimplementedby")]
-        self.reimplements = [node.get("ref") for node in xml.findall("reimplements")]
+        self.reimplementedby = [ctx.getref(node) for node in xml.findall("reimplementedby")]
+        self.reimplements = [ctx.getref(node) for node in xml.findall("reimplements")]
 
         override = len(self.reimplements) > 0 and self.virtual == "virtual"
 
@@ -128,7 +130,7 @@ class MemberEntity(Entity):
             self.type = None
             self.readonly = False
 
-            self.members = [node.get("docobj") for node in xml.findall("enumvalue")]
+            self.members = [ctx.getentity(node) for node in xml.findall("enumvalue")]
             # TODO Need to set val.set("kind", "enumvalue") on the children during read_xml
             # for val in vals:
             #     # Doxygen does not set the kind for these members
@@ -144,7 +146,7 @@ class MemberEntity(Entity):
         argsstring = xml.find("argsstring")
         # Test if this member has arguments(.text will be None if the tag is empty)
         if argsstring is not None and argsstring.text is not None:
-            self.argsstring = argsstring.text
+            self.argsstring = str(argsstring.text)
 
             self.hasparams = True
             params = xml.findall("param")
@@ -152,7 +154,7 @@ class MemberEntity(Entity):
             for param in params:
                 o = ParamEntity()
                 o.xml = param
-                o.read_from_xml(xml2entity)
+                o.read_from_xml(ctx)
                 self.params.append(o)
         else:
             self.hasparams = False

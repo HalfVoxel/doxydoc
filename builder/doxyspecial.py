@@ -1,6 +1,5 @@
-from doxybase import Entity, Importer, NavItem
-import doxylayout
-import doxycompound
+from importer import Entity, Importer, NavItem
+import layout
 
 
 def build_specials():

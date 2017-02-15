@@ -1,9 +1,6 @@
 import xml.etree.ElementTree as ET
-from typing import Dict
-
-
-def gather_members(xml):
-    return [memberdef.get("docobj") for memberdef in xml.findall("sectiondef/memberdef")]
+import importer.importer_context
+from typing import List
 
 
 class Entity:
@@ -28,7 +25,7 @@ class Entity:
         self.id = self.xml.get("id")
         self.kind = self.xml.get("kind")
 
-    def read_from_xml(self, xml2entity: Dict[ET.Element, 'Entity']) -> None:
+    def read_from_xml(self, ctx: importer.importer_context.ImporterContext) -> None:
         xml = self.xml
 
         short_name_node = xml.find("compoundname")
@@ -72,4 +69,8 @@ class Entity:
                            self.detaileddescription.findall(".//sect3") +
                            self.detaileddescription.findall(".//sect4"))
 
-        self.sections = [xml2entity[sec] for sec in section_xml if sec.get("docobj") is not None]
+        self.sections = [ctx.getentity(sec) for sec in section_xml if ctx.getentity(sec) is not None]
+
+
+def gather_members(xml, ctx: importer.importer_context.ImporterContext) -> List[Entity]:
+    return [ctx.getentity(memberdef) for memberdef in xml.findall("sectiondef/memberdef")]

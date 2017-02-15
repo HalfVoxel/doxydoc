@@ -12,3 +12,6 @@ class WritingContext:
         ctx = WritingContext(self.state)
         ctx.strip_links = True
         return ctx
+
+    def getref(self, xml):
+        return self.state.ctx.getref(xml)

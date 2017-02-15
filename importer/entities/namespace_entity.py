@@ -1,26 +1,27 @@
 from .entity import Entity, gather_members
 from typing import Dict
 import xml.etree.ElementTree as ET
+from importer.importer_context import ImporterContext
 
 
 class NamespaceEntity(Entity):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-        self.innerclasses = []
-        self.innernamespaces = []
+        self.innerclasses = []  # type: List[Entity]
+        self.innernamespaces = []  # type: List[NamespaceEntity]
 
-        self.parent_namespace = None
+        self.parent_namespace = None  # type: NamespaceEntity
 
-    def parent_in_canonical_path(self):
+    def parent_in_canonical_path(self) -> Entity:
         return self.parent_namespace
 
-    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
-        super().read_from_xml(xml2entity)
+    def read_from_xml(self, ctx: ImporterContext) -> None:
+        super().read_from_xml(ctx)
         xml = self.xml
 
-        self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
-        self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespaces")]
+        self.innerclasses = [ctx.getref(node) for node in xml.findall("innerclass")]
+        self.innernamespaces = [ctx.getref(node) for node in xml.findall("innernamespaces")]
 
         for innerclass in self.innerclasses:
             innerclass.parent = self
@@ -28,4 +29,4 @@ class NamespaceEntity(Entity):
         for innernamespace in self.innernamespaces:
             innernamespace.parent_namespace = self
 
-        self.members = gather_members(xml)
+        self.members = gather_members(xml, ctx)

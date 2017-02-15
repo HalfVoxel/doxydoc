@@ -1,8 +1,10 @@
 from pprint import pprint
 from xml.sax.saxutils import escape
 import xml.etree.ElementTree as ET
+from importer.importer_context import ImporterContext
 import importer.entities as entities
 from importer.entities import Entity
+from typing import Iterable, List
 FILE_EXT = ".html"
 OUTPUT_DIR = "html"
 
@@ -23,14 +25,14 @@ class Importer:
     def __init__(self) -> None:
         self.entities = []  # type: List[Entity]
         self._docobjs = {}  # type: Dict[str,Entity]
-        self._xml2entity = {}  # type: Dict[ET.Element,Entity]
+        self.ctx = ImporterContext()
 
-    def iter_unique_docobjs(self):
+    def iter_unique_docobjs(self) -> Iterable[Entity]:
         for k, v in self._docobjs.items():
             if k == v.id:
                 yield v
 
-    def _add_docobj(self, obj: Entity, id: str=None):
+    def _add_docobj(self, obj: Entity, id: str=None) -> None:
         if id is None:
             id = obj.id
         self._docobjs[id] = obj
@@ -39,11 +41,12 @@ class Importer:
         self._docobjs[id2] = obj
         self.entities.append(obj)
 
-    def get_entity(self, id):
+    def get_entity(self, id: str) -> Entity:
         return self._docobjs[id]
 
-    def _create_entity(self, xml, parent_entity=None):
+    def _create_entity(self, xml: ET.Element, parent_entity: Entity=None) -> Entity:
         kind = xml.get("kind")
+        entity = None  # type: Entity
 
         if kind == "class" or kind == "struct" or kind == "interface":
             entity = entities.ClassEntity()
@@ -94,11 +97,10 @@ class Importer:
             return None
 
         self._add_docobj(entity)
-        xml.set("docobj", entity)
-        self._xml2entity[xml] = entity
+        self.ctx.setentity(xml, entity)
         return entity
 
-    def read(self, xml_filenames):
+    def read(self, xml_filenames: List[str]) -> None:
         roots = []
 
         for fname in xml_filenames:
@@ -117,36 +119,36 @@ class Importer:
         self._process_references(roots)
         self._read_entity_xml()
 
-    def _read_entity_xml(self):
+    def _read_entity_xml(self) -> None:
         for entity in self.entities:
             try:
-                entity.read_from_xml(self._xml2entity)
+                entity.read_from_xml(self.ctx)
             except:
                 print("Exception when parsing " + str(entity.id) + " of type " + str(entity.kind))
                 raise
 
-    def _process_references(self, roots):
+    def _process_references(self, roots: List[ET.Element]) -> None:
         for root in roots:
             self._process_references_root(root)
 
-    def _process_references_root(self, xml):
+    def _process_references_root(self, xml: ET.Element) -> None:
         for node in xml.iter():
             id = node.get("refid")
             if id is not None:
                 try:
                     # Doxygen can sometimes generate refid=""
                     obj = self.get_entity(id)
-                    node.set("ref", obj)
+                    self.ctx.setref(node, obj)
                 except KeyError:
                     # raise
                     pass
 
-    def _register_compound(self, xml):
+    def _register_compound(self, xml: ET.Element) -> None:
 
         entity = self._create_entity(xml)
 
         # Will only be used for debugging if even that. Formatted name will be added later
-        entity.name = xml.find("compoundname").text
+        entity.name = str(xml.find("compoundname").text)
 
         memberdefs = xml.findall("sectiondef/memberdef")
         for member in memberdefs:
@@ -193,7 +195,7 @@ class Importer:
         #         # print(entity.full_url())
 
 
-def is_detail_hidden(member, settings):
+def is_detail_hidden(member, settings) -> bool:
     """Returns if the member's detailed view should be hidden"""
 
     # Enums show up as members, but they should always be shown.
@@ -221,16 +223,12 @@ def is_detail_hidden(member, settings):
     return False
 
 
-class DocMember:
-    pass
-
-
 class NavItem:
-    def __init__(self):
+    def __init__(self) -> None:
         self.label = ""
-        self.obj = None
-        self.url = None
+        self.obj = None  # type: Entity
+        self.url = None  # type: str
 
 
-def dump(obj):
+def dump(obj) -> None:
     pprint(vars(obj))

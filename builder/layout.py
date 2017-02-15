@@ -109,7 +109,7 @@ def _tooltip(ctx, entity):
 
 
 def ref(ctx, refnode):
-    obj = refnode.get("ref")
+    obj = ctx.getref(refnode)
 
     if obj is None:
         return markup(ctx, refnode)

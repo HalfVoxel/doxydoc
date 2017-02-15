@@ -3,13 +3,14 @@ from os import listdir
 from os.path import isfile, isdir, join
 from progressbar import progressbar
 from importer import Importer
-from importer.entities import ExternalEntity
+from importer.entities import ExternalEntity, Entity
 import shutil
 import os
 import builder.layout
 from builder import Builder
 import builder.settings
 from subprocess import call
+from typing import Any, List
 # import doxyspecial
 import argparse
 import plugins.list_specials.list_specials
@@ -18,14 +19,14 @@ import plugins.navbar.navbar
 
 class DoxyDoc:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.importer = Importer()
         self.settings = builder.settings.Settings()
         self.settings.out_dir = "html"
         self.settings.template_dirs = ["templates"]
-        self.plugin_context = {}
+        self.plugin_context = {}  # type: Dict[str,Any]
 
-    def load_plugins(self):
+    def load_plugins(self) -> None:
 
         if not self.settings.args.quiet:
             print("Loading Plugins...")
@@ -40,7 +41,7 @@ class DoxyDoc:
 
         print(self.settings.template_dirs)
 
-    def read_external(self):
+    def read_external(self) -> None:
         if not self.settings.args.quiet:
             print("Reading exteral...")
 
@@ -63,7 +64,7 @@ class DoxyDoc:
 
         f.close()
 
-    def copy_resources_dir(self, source_dir, target_dir):
+    def copy_resources_dir(self, source_dir: str, target_dir: str) -> None:
         try:
             for root, dirs, files in os.walk(source_dir):
                 dstroot = root.replace(source_dir + "/", "").replace(source_dir, "")
@@ -93,7 +94,7 @@ class DoxyDoc:
         except OSError as e:
             print("Error while copying resources: " + str(e))
 
-    def copy_resources(self):
+    def copy_resources(self) -> None:
         if not self.settings.args.quiet:
             print("Copying resources...")
 
@@ -109,21 +110,21 @@ class DoxyDoc:
         target_dir = os.path.join(self.settings.out_dir, "images")
         self.copy_resources_dir("input/images", target_dir)
 
-    def read_prefs(self):
+    def read_prefs(self) -> None:
         if not self.settings.args.quiet:
-            print ("Reading resources...")
+            print("Reading resources...")
 
-    def find_xml_files(self, path):
+    def find_xml_files(self, path: str) -> List[str]:
         return [join(path, f) for f in listdir(path)
                 if isfile(join(path, f)) and f.endswith(".xml")]
 
-    def scan_input(self):
+    def scan_input(self) -> None:
         if not self.settings.args.quiet:
             print("Scanning input")
 
         self.importer.read(self.find_xml_files("input/xml"))
 
-    def create_navbar(self, pages):
+    def create_navbar(self, pages: List[Entity]) -> None:
         navbar = plugins.navbar.navbar.Navbar()
 
         for page in pages:
@@ -131,7 +132,7 @@ class DoxyDoc:
 
         self.plugin_context["navbar"] = navbar
 
-    def build_output(self):
+    def build_output(self) -> None:
         if not self.settings.args.quiet:
             print("Building Output...")
 
@@ -164,7 +165,7 @@ class DoxyDoc:
             # print("Rendering entity " + page.primary_entity.name)
             generator.generate(page)
 
-    def create_env(self, builder_obj):
+    def create_env(self, builder_obj: Builder) -> None:
         filters = {
             "markup": builder.layout.markup,
             "description": builder.layout.description,
@@ -174,7 +175,7 @@ class DoxyDoc:
         }
         builder_obj.add_filters(filters)
 
-    def generate(self, args):
+    def generate(self, args) -> None:
 
         self.settings.args = args
 

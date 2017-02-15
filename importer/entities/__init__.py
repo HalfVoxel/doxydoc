@@ -1,3 +1,4 @@
+from .entity import Entity
 from .param_entity import ParamEntity
 from .class_entity import ClassEntity
 from .example_entity import ExampleEntity
@@ -8,4 +9,3 @@ from .member_entity import MemberEntity
 from .namespace_entity import NamespaceEntity
 from .page_entity import PageEntity
 from .sect_entity import SectEntity
-from .entity import Entity

@@ -1,19 +1,18 @@
 from .entity import Entity
-from typing import Dict
-import xml.etree.ElementTree as ET
+from importer.importer_context import ImporterContext
 
 
 class PageEntity(Entity):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-        self.subpages = []
+        self.subpages = []  # type: List[Entity]
 
         # TODO: Why subpages AND innerpages?
-        self.innerpages = []
+        self.innerpages = []  # type: List[Entity]
 
-    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
-        super().read_from_xml(xml2entity)
+    def read_from_xml(self, ctx: ImporterContext) -> None:
+        super().read_from_xml(ctx)
         xml = self.xml
 
         # xml
@@ -30,8 +29,5 @@ class PageEntity(Entity):
         else:
             self.name = ""
 
-        self.subpages = [node.get("ref") for node in xml.findall("innerpage")]
-        for p in self.subpages:
-            p.parentpage = self
-
+        self.subpages = [ctx.getref(node) for node in xml.findall("innerpage")]
         self.innerpages = self.subpages

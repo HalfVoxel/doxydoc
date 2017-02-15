@@ -1,28 +1,29 @@
 from .entity import Entity, gather_members
 from typing import Dict
 import xml.etree.ElementTree as ET
+from importer.importer_context import ImporterContext
 
 
 class FileEntity(Entity):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
-        self.innerclasses = []
-        self.innernamespaces = []
-        self.contents = None
-        self.location = None  # TODO: Unknown location
+        self.innerclasses = []  # type: List[Entity]
+        self.innernamespaces = []  # type: List[Entity]
+        self.contents = None  # type: ET.Element
+        self.location = None  # type: str # TODO: Unknown location
         # TODO gather_members
 
-    def read_from_xml(self, xml2entity: Dict[ET.Element, Entity]) -> None:
-        super().read_from_xml(xml2entity)
+    def read_from_xml(self, ctx: ImporterContext) -> None:
+        super().read_from_xml(ctx)
         xml = self.xml
 
-        self.innerclasses = [node.get("ref") for node in xml.findall("innerclass")]
-        self.innernamespaces = [node.get("ref") for node in xml.findall("innernamespace")]
+        self.innerclasses = [ctx.getref(node) for node in xml.findall("innerclass")]
+        self.innernamespaces = [ctx.getref(node) for node in xml.findall("innernamespace")]
 
         self.contents = xml.find("programlisting")
 
-        self.members = gather_members(xml)
+        self.members = gather_members(xml, ctx)
         # Only one members list
         self.all_members = self.members
 
