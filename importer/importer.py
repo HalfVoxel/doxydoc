@@ -122,7 +122,11 @@ class Importer:
 
     def _read_entity_xml(self):
         for entity in self.entities:
-            entity.read_from_xml()
+            try:
+                entity.read_from_xml()
+            except:
+                print("Exception when parsing " + str(entity.id) + " of type " + str(entity.kind))
+                raise
 
     def _process_references(self, roots):
         for root in roots:
