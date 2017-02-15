@@ -35,6 +35,7 @@ def get_member_sections(entity, members):
             ("Public Methods", lambda m: m.kind == "function"),
             ("Public Properties", lambda m: m.kind == "property"),
             ("Public Variables", lambda m: m.kind == "variable"),
+            ("Public Enums", lambda m: m.kind == "enum"),
             ("Public Events", lambda m: m.kind == "event"),
             ("Public Typedefs", lambda m: m.kind == "typedef"),
             ("Public Signals", lambda m: m.kind == "signal"),
