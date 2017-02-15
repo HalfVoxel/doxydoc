@@ -1,5 +1,5 @@
 class Settings:
-    def __init__(self):
+    def __init__(self) -> None:
         self.external = {}
         self.hide_undocumented = True
         self.show_member_protection_in_list = True

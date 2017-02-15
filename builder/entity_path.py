@@ -1,14 +1,15 @@
 from pprint import pprint
+from .page import Page
 
 
 class EntityPath:
-    def __init__(self):
-        self.path = None
-        self.anchor = None
-        self.parent = None
-        self.page = None
+    def __init__(self) -> None:
+        self.path = None  # type: str
+        self.anchor = None  # type: str
+        self.parent = None  # type: EntityPath
+        self.page = None  # type: Page
 
-    def full_url(self):
+    def full_url(self) -> str:
         ''' Url to the page (including possible anchor) where the Entity exists '''
 
         url = self.page_url()
@@ -16,7 +17,7 @@ class EntityPath:
             url += "#" + self.anchor
         return url
 
-    def page_url(self):
+    def page_url(self) -> str:
         ''' Url to the page where the Entity exists '''
 
         if hasattr(self, 'exturl'):
@@ -32,7 +33,7 @@ class EntityPath:
 
         return url
 
-    def full_path(self):
+    def full_path(self) -> str:
         ''' Path to the file which contains this Entity '''
 
         if self.path is not None:
@@ -46,5 +47,5 @@ class EntityPath:
         return "todo" + "/" + url
 
 
-def dump(obj):
+def dump(obj) -> None:
     pprint(vars(obj))

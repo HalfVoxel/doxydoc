@@ -1,5 +1,6 @@
 import builder.elements
 from .str_tree import StrTree
+from .writing_context import WritingContext
 
 INITIAL_HEADING_DEPTH = 2
 
@@ -42,7 +43,7 @@ def is_hidden(docobj):
 #     return " ".join(s)
 
 
-def get_anchor(ctx, id):
+def get_anchor(ctx: WritingContext, id: str) -> str:
     # sect nodes are sometimes left without an id
     # Error on the user side, but check for this
     # to improve compatibility
@@ -108,7 +109,7 @@ def _tooltip(ctx, entity):
         return None
 
 
-def ref(ctx, refnode):
+def ref(ctx, refnode) -> StrTree:
     obj = ctx.getref(refnode)
 
     if obj is None:
@@ -427,19 +428,7 @@ def member_list_type(ctx, member):
 #     return result
 
 
-def member_parameter_name(param):
-    result = StrTree()
-    if param.detaileddescription is not None:
-        tooltip = description(param.detaileddescription)
-        result.element("span", None, {"data-original-title": tooltip})
-        result += param.name
-        result.element("/span")
-    else:
-        result += param.name
-    return result
-
-
-def desctitle(text):
+def desctitle(ctx, text):
     return StrTree().element("h3", text)
 
 

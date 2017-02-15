@@ -3,11 +3,11 @@ from os import listdir
 from os.path import isfile, isdir, join
 from progressbar import progressbar
 from importer import Importer
-from importer.entities import ExternalEntity, Entity
+from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity
 import shutil
 import os
 import builder.layout
-from builder import Builder
+from builder import Builder, Page
 import builder.settings
 from subprocess import call
 from typing import Any, List
@@ -123,7 +123,7 @@ class DoxyDoc:
 
         self.importer.read(self.find_xml_files("input/xml"))
 
-    def create_navbar(self, pages: List[Entity]) -> None:
+    def create_navbar(self, pages: List[Page]) -> None:
         navbar = plugins.navbar.navbar.Navbar()
 
         for page in pages:
@@ -141,15 +141,14 @@ class DoxyDoc:
         entities = self.importer.entities
 
         generator = builder.page_generator
-        classes = [generator.class_page(ent) for ent in entities if ent.kind == "class"]
-        structs = [generator.class_page(ent) for ent in entities if ent.kind == "struct"]
-        examples = [generator.example_page(ent) for ent in entities if ent.kind == "example"]
-        page_pages = [generator.page_page(ent) for ent in entities if ent.kind == "page"]
-        namespaces = [generator.namespace_page(ent) for ent in entities if ent.kind == "namespace"]
+        classes = [generator.class_page(ent) for ent in entities if isinstance(ent, ClassEntity)]
+        examples = [generator.example_page(ent) for ent in entities if isinstance(ent, ExampleEntity)]
+        page_pages = [generator.page_page(ent) for ent in entities if isinstance(ent, PageEntity)]
+        namespaces = [generator.namespace_page(ent) for ent in entities if isinstance(ent, NamespaceEntity)]
 
         special_list = plugins.list_specials.list_specials.define_page(self.importer, builder)
 
-        pages = classes + structs + page_pages + examples + namespaces + [special_list]
+        pages = classes + page_pages + examples + namespaces + [special_list]
 
         # Build lookup from entities to their pages
         entity2page = {e: page for page in pages for e in page.entities}

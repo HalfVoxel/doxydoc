@@ -1,11 +1,13 @@
 from pprint import pprint
+from importer.entities import Entity
+from typing import List, Tuple
 
 
 def dump(obj):
     pprint(vars(obj))
 
 
-def get_member_sections(entity, members):
+def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str, List[Entity]]]:
     ''' Returns a list of sections in which to group members for display '''
 
     for m in members:

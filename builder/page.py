@@ -1,9 +1,14 @@
 import os
 from . import layout_helpers
+from typing import List, Set, cast, TYPE_CHECKING
+from importer.entities import Entity, ClassEntity, FileEntity, NamespaceEntity, ExampleEntity, PageEntity
+from .writing_context import WritingContext
+if TYPE_CHECKING:
+    from .builder import Builder
 
 
 class Page:
-    def __init__(self, path, template, primary_entity, entities):
+    def __init__(self, path: str, template: str, primary_entity: Entity, entities: List[Entity]) -> None:
         self.title = "Untitled"
         self.path = path
         self.template = template
@@ -11,7 +16,7 @@ class Page:
         self.entities = entities
 
 
-def generate_io_safe_name(filename, tail, reserved):
+def generate_io_safe_name(filename: str, tail: str, reserved: Set[str]) -> str:
         # filename_comps = name.split(":")
 
         # Strip non alphanumeric characters
@@ -33,10 +38,10 @@ def generate_io_safe_name(filename, tail, reserved):
             if name_with_tail not in reserved:
                 return name_with_tail
 
-        raise "Cannot find a valid filename. Last try was " + name_with_tail
+        raise Exception("Cannot find a valid filename. Last try was " + name_with_tail)
 
 
-def clean_io_name(name):
+def clean_io_name(name: str) -> str:
     name = name.lower().replace(" ", "_").replace(".", "").replace(":", "").replace("/", "")
 
     # Replace non-alphanumeric characters with underscores
@@ -51,15 +56,15 @@ def clean_io_name(name):
 
 class PageGenerator:
 
-    def __init__(self, builder, default_writing_context):
+    def __init__(self, builder: 'Builder', default_writing_context: WritingContext) -> None:
         self.builder = builder
-        self.reserved_filenames = set()
+        self.reserved_filenames = set()  # type: Set[str]
         self.default_writing_context = default_writing_context
 
-    def reserve_filename(self, filename):
+    def reserve_filename(self, filename: str) -> None:
         self.reserved_filenames.add(filename)
 
-    def entity_path(self, entity):
+    def entity_path(self, entity: Entity) -> str:
         if hasattr(entity, "parent_in_canonical_path"):
             path = []
             ent = entity
@@ -76,7 +81,7 @@ class PageGenerator:
         else:
             return clean_io_name(entity.short_name)
 
-    def _page(self, template, desired_path, primary_entity, entities):
+    def _page(self, template: str, desired_path: str, primary_entity: Entity, entities: List[Entity]) -> Page:
         path = generate_io_safe_name(desired_path, ".html", self.reserved_filenames)
         self.reserve_filename(path)
 
@@ -88,10 +93,10 @@ class PageGenerator:
         if primary_entity is not None:
             assert primary_entity in entities
 
-        used_anchors = set()
+        used_anchors = set()  # type: Set[str]
         for entity in page.entities:
             if entity.path.path is not None:
-                print ("Warning: Entity included in multiple pages: " + entity.id)
+                print("Warning: Entity included in multiple pages: " + entity.id)
 
             entity.path.path = page.path
             if entity is not primary_entity:
@@ -101,35 +106,35 @@ class PageGenerator:
 
         return page
 
-    def _page_with_entity(self, template, primary_entity, entities):
+    def _page_with_entity(self, template: str, primary_entity: Entity, entities: List[Entity]) -> Page:
         desired_path = self.entity_path(primary_entity)
         page = self._page(template, desired_path, primary_entity, entities)
         page.title = primary_entity.name
         return page
 
-    def class_page(self, entity):
-        inner_entities = [entity] + entity.sections + entity.members
+    def class_page(self, entity: ClassEntity) -> Page:
+        inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
         page = self._page_with_entity("class", entity, inner_entities)
         return page
 
-    def page_page(self, entity):
-        page = self._page_with_entity("page", entity, [entity] + entity.sections)
+    def page_page(self, entity: PageEntity) -> Page:
+        page = self._page_with_entity("page", entity, [cast(Entity, entity)] + entity.sections)
         return page
 
-    def file_page(self, entity):
-        page = self._page_with_entity("file", entity, [entity] + entity.sections)
+    def file_page(self, entity: FileEntity) -> Page:
+        page = self._page_with_entity("file", entity, [cast(Entity, entity)] + entity.sections)
         return page
 
-    def example_page(self, entity):
-        page = self._page_with_entity("example", entity, [entity] + entity.sections)
+    def example_page(self, entity: ExampleEntity) -> Page:
+        page = self._page_with_entity("example", entity, [cast(Entity, entity)] + entity.sections)
         return page
 
-    def namespace_page(self, entity):
-        inner_entities = [entity] + entity.sections + entity.members
+    def namespace_page(self, entity: NamespaceEntity) -> Page:
+        inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
         page = self._page_with_entity("namespace", entity, inner_entities)
         return page
 
-    def generate(self, page):
+    def generate(self, page: Page) -> None:
         path = os.path.join(self.builder.settings.out_dir, page.path)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         f = open(path, "w")

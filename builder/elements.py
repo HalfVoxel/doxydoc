@@ -86,7 +86,7 @@ def parameterlist(ctx, n):
 
 
 def title(ctx, n):
-    raise "Title tags should have been handled"
+    raise Exception("Title tags should have been handled")
 
 
 def anchor(ctx, n):
