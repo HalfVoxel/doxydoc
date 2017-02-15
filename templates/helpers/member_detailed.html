@@ -2,41 +2,46 @@
 
 # macro member_detailed(member)
     {{ member_detailed_header(member, true) }}
-    {{ member.members|pprint }}
-    # for m in member.members
-        # if m is not none:
-            {{ m.briefdescription|description }}
-            {{ m.detaileddescription|description }}
-        # endif
-    # endfor
+
+    # if member.members|length > 0
+        <table class="member-params-detail">
+        # for m in member.members
+            <tr>
+            <td>{{ m.name }}</td>
+            <td>{{ m.briefdescription|description }}
+            {{ m.detaileddescription|description }}</td>
+            </tr>
+        # endfor
+        </table>
+    # endif
     {{ member.briefdescription|description }}
     {{ member.detaileddescription|description }}
 # endmacro
 
 # macro member_detailed_header(member, bootstrap_protection)
     # if bootstrap_protection
-    <div class="member-side-prot">
-    # if member.protection is not none:
-        # set labelStyle = ""
-    # endif
-    # if member.protection == "public":
-        # set labelStyle = "label-success"
-    # elif member.protection == "private":
-        # set labelStyle = "label-default"
-    # elif member.protection == "protected":
-        # set labelStyle = "label-warning"
-    # elif member.protection == "package":
-        # set labelStyle = "label-info"
-    # endif
-    <span class="label {{labelStyle}}">{{ member.protection|title }}</span>
+        <div class="member-side-prot">
+        # if member.protection is not none:
+            # set labelStyle = ""
+        # endif
+        # if member.protection == "public":
+            # set labelStyle = "label-success"
+        # elif member.protection == "private":
+            # set labelStyle = "label-default"
+        # elif member.protection == "protected":
+            # set labelStyle = "label-warning"
+        # elif member.protection == "package":
+            # set labelStyle = "label-info"
+        # endif
+        <span class="label {{labelStyle}}">{{ member.protection|title }}</span>
 
-    # if member.readonly:
-        <span class="label label-warning">Readonly</span>
-    # endif
-    # if member.static:
-        <span class="label label-info">Static</span>
-    # endif
-    </div>
+        # if member.readonly:
+            <span class="label label-warning">Readonly</span>
+        # endif
+        # if member.static:
+            <span class="label label-info">Static</span>
+        # endif
+        </div>
     #endif
 
     <h5 style="font-family: monospace;">
@@ -61,21 +66,24 @@
 ## <span "data-original-title"="{{ param.detaileddescription|description_no_links }}">{{ param.name }}</span>
 
 {%- macro member_parameter_name(param) %}
+    <td><p class="param-name">{{ param.name }}</p></td>
     #- if param.detaileddescription
-        <td><p>{{ param.name }}</p></td><td>{{ param.detaileddescription|description }}</td>
+        <td>{{ param.detaileddescription|description }}</td>
     #- else
-        <td><p>{{- param.name }}</p></td><td></td>
+        <td></td>
     #- endif
 {% endmacro -%}
 
 {%- macro param_description_list(member, write_type) %}
-    {{- '(' -}}
-    <table class="member-params-detail">
-        {%- for param in member.params -%}
-            <tr>
-            {% if write_type %}<td><p>{{ param.type|linked_text }}</p></td>{% endif %}{{- member_parameter_name(param) }}
-            </tr>
-        {%- endfor %}
-    </table>
+    <span>(</span>
+    {%- if member.params|length > 0 %}
+        <table class="member-params-detail">
+            {%- for param in member.params -%}
+                <tr>
+                {% if write_type %}<td><p>{{ param.type|linked_text }}</p></td>{% endif %}{{- member_parameter_name(param) }}
+                </tr>
+            {%- endfor %}
+        </table>
+    {% endif -%}
     <span>)</span>
 {% endmacro -%}

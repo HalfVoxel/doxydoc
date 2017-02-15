@@ -1,6 +1,7 @@
 import re
 from .entity import Entity
 from .param_entity import ParamEntity
+from .enum_value_entity import EnumValueEntity
 from importer.protection import Protection
 from typing import Dict
 import xml.etree.ElementTree as ET
@@ -130,14 +131,15 @@ class MemberEntity(Entity):
             self.type = None
             self.readonly = False
 
-            self.members = [ctx.getentity(node) for node in xml.findall("enumvalue")]
-            # TODO Need to set val.set("kind", "enumvalue") on the children during read_xml
-            # for val in vals:
-            #     # Doxygen does not set the kind for these members
-            #     # so we set it here for simplicity
-            #     val.set("kind", "enumvalue")
-            #     gather_member_doc(val)
-            #     self.members.append(val.get("docobj"))
+            self.members = []
+            for v in xml.findall("enumvalue"):
+                enumvalue = EnumValueEntity()
+                enumvalue.xml = v
+                enumvalue.read_from_xml(ctx)
+                # This is not set in the xml
+                enumvalue.kind = "enumvalue"
+                self.members.append(enumvalue)
+                ctx.setentity(v, enumvalue)
 
             # Only one members list
             self.all_members = self.members
@@ -180,7 +182,6 @@ class MemberEntity(Entity):
                         for p in self.params:
                             if p.name == name:
                                 p.detaileddescription = description
-                                print("Found matching parameter " + p.name)
                                 break
 
         # Depending on settings, this object be hidden
