@@ -2,10 +2,11 @@ import jinja2
 from .writing_context import WritingContext
 from .page import PageGenerator
 from .entity_path import EntityPath
+from importer.entities import ExternalEntity
 
 
 class Builder:
-    def __init__(self, importer, plugin_context, settings):
+    def __init__(self, importer, plugin_context, settings) -> None:
         self.environment = None
         self.importer = importer
         self.plugin_context = plugin_context
@@ -31,8 +32,7 @@ class Builder:
         for entity in importer.entities:
             entity.path = EntityPath()
 
-            # TODO: Hacky
-            if hasattr(entity, "exturl"):
+            if isinstance(entity, ExternalEntity):
                 entity.path.path = entity.exturl
 
     def add_filters(self, filters):

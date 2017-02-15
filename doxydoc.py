@@ -55,11 +55,10 @@ class DoxyDoc:
             if len(arr) >= 2:
                 name = arr[0].strip()
                 url = arr[1].strip()
-                obj = ExternalEntity()
+                obj = ExternalEntity(url)
                 obj.id = "__external__" + name
                 obj.kind = "external"
                 obj.name = name
-                obj.exturl = url
                 self.importer._add_docobj(obj)
 
         f.close()

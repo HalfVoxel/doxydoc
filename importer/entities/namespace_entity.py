@@ -1,6 +1,5 @@
 from .entity import Entity, gather_members
-from typing import Dict
-import xml.etree.ElementTree as ET
+from .class_entity import ClassEntity
 from importer.importer_context import ImporterContext
 
 
@@ -8,7 +7,7 @@ class NamespaceEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
 
-        self.innerclasses = []  # type: List[Entity]
+        self.innerclasses = []  # type: List[ClassEntity]
         self.innernamespaces = []  # type: List[NamespaceEntity]
 
         self.parent_namespace = None  # type: NamespaceEntity

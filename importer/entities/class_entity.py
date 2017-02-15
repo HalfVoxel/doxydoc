@@ -15,7 +15,7 @@ class ClassEntity(Entity):
         self.derived = []  # type: List[Entity]
         self.members = []  # type: List[Entity]
         self.all_members = []  # type: List[Entity]
-        self.inner_classes = []  # type: List[Entity]
+        self.inner_classes = []  # type: List[ClassEntity]
 
         # Namespace or class parent
         # If class, this is an inner class
