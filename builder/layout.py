@@ -42,18 +42,13 @@ def is_hidden(docobj):
 #     return " ".join(s)
 
 
-def get_href(ctx, id):
-    obj = ctx.state.get_docobj(id)
-    return obj.path.full_url()
-
-
 def get_anchor(ctx, id):
     # sect nodes are sometimes left without an id
     # Error on the user side, but check for this
     # to improve compatibility
     if id == "":
         return ""
-    obj = ctx.state.get_docobj(id)
+    obj = ctx.state.get_entity(id)
     return obj.path.anchor
 
 
@@ -70,7 +65,7 @@ def refcompound(ctx, refnode):
     # kind = refnode.get("kindref")
     # external = refnode.get("external")
     tooltip = refnode.get("tooltip")
-    obj = ctx.state.get_docobj(id)
+    obj = ctx.state.get_entity(id)
 
     obj = obj.compound
     assert obj
@@ -82,27 +77,24 @@ def refcompound(ctx, refnode):
     else:
         # Write out anchor element
         result.element("a", obj.name, {
-            "href": obj.path.full_url(),
+            "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
     return result
 
 
-def docobjref(ctx, obj):
+def ref_entity(ctx, obj):
     result = StrTree()
     # Prevent recursive loops of links in the tooltips
     if ctx.strip_links or is_hidden(obj):
         result += obj.name
     else:
-        if hasattr(obj, "briefdescription") and obj.briefdescription is not None:
-            tooltip = description(ctx, obj.briefdescription)
-        else:
-            tooltip = None
+        tooltip = _tooltip(ctx, obj)
 
         # Write out anchor element
         result.element("a", obj.name, {
-            "href": obj.path.full_url(),
+            "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
@@ -134,7 +126,7 @@ def ref(ctx, refnode):
     else:
 
         result.element("a", None, {
-            "href": obj.path.full_url(),
+            "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": _tooltip(ctx, obj)
         })
@@ -152,7 +144,7 @@ def ref_explicit(ctx, obj, text, tooltip=None):
             tooltip = _tooltip(ctx, obj)
 
         result.element("a", text, {
-            "href": obj.path.full_url(),
+            "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
@@ -166,7 +158,7 @@ def match_external_ref(ctx, text):
         if i > 0:
             result += " "
         try:
-            obj = ctx.state.get_docobj("__external__" + words[i].strip())
+            obj = ctx.state.get_entity("__external__" + words[i].strip())
             tooltip = obj.tooltip if hasattr(obj, "tooltip") else None
             result += ref_explicit(ctx, obj, words[i], tooltip)
         except KeyError:
@@ -542,8 +534,10 @@ def sectbase(ctx, node):
 
 def description(ctx, descnode):
     result = StrTree()
+
     # \todo Ugly to have multiple possible types for description objects
     if isinstance(descnode, str):
+        # TODO: Doesn't seem to happen
         result += descnode
         return result
 
@@ -586,7 +580,7 @@ def description(ctx, descnode):
 
 #     for p in pages:
 #         result.element("li")
-#         result += docobjref(p)
+#         result += ref_entity(p)
 #         result += page_list_inner(p)
 #         result.element("/li")
 
@@ -600,7 +594,7 @@ def description(ctx, descnode):
 #        "class": "inner-class-list table table-condensed table-striped"})
 #     for n in objs:
 #         result.element("tr")
-#         result.element("td", lambda: docobjref(n))
+#         result.element("td", lambda: ref_entity(n))
 #         result.element("td", lambda: description(n.briefdescription))
 #         result.element("/tr")
 
@@ -619,7 +613,7 @@ def description(ctx, descnode):
 #     result.element("h4", header_text)
 #     result.element("ul", None, {"class": "inner-class-list"})
 #     for n in obj:
-#         result.element("li", lambda: docobjref(n))
+#         result.element("li", lambda: ref_entity(n))
 
 #     result.element("/ul")
 #     return result
@@ -676,7 +670,7 @@ def description(ctx, descnode):
 #         result.element("a", None, {"href": obj2.path.full_url()})
 #         result.element("b", obj2.name)
 
-#         # result += doxylayout.docobjref(obj2)
+#         # result += doxylayout.ref_entity(obj2)
 #         # result.element("p")
 #         result += description(obj2.briefdescription)
 #         # result.element("/p")
@@ -704,7 +698,7 @@ def description(ctx, descnode):
 #         result.element("a", None, {"href": obj2.path.full_url()})
 #         result.element("b", obj2.name)
 
-#         # result += doxylayout.docobjref(obj2)
+#         # result += doxylayout.ref_entity(obj2)
 #         # result.element("p")
 #         result += description(obj2.briefdescription)
 #         # result.element("/p")
@@ -722,6 +716,6 @@ def description(ctx, descnode):
 # def namespace_inner_class(obj):
 #     result = StrTree()
 #     result.elem("li")
-#     result += docobjref(obj)
+#     result += ref_entity(obj)
 #     result.elem("/li")
 #     return result

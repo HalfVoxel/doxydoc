@@ -1,19 +1,19 @@
 {% extends "main.html" %}
 
 {% block content %}
-	<h1><span class="compound-kind">{{ compound.kind|title }}</span><span> {{ compound.name|title }}</span></h1>
+	<h1><small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span></h1>
 
-	{{ compound.briefdescription|description }}
-	{{ compound.detaileddescription|description }}
+	{{ entity.briefdescription|description }}
+	{{ entity.detaileddescription|description }}
 
 	## innergroups, innerclassses, innernamespaces
 
 	<div class="member-list">
 		<h2>Namespaces</h2>
 		<table class="table inner-class-list member-list-section table-condensed table-striped">
-			# for n in compound.innernamespaces
+			# for n in entity.innernamespaces
 				<tr>
-					<td class="member-name">{{ n|docobjref }}</td>
+					<td class="member-name">{{ n|ref_explicit(n.name, "") }}</td>
 					<td class="member-desc">{{ n.briefdescription|description }}</td>
 				</tr>
 			# endfor
@@ -21,9 +21,9 @@
 
 		<h2>Classes</h2>
 		<table class="table inner-class-list member-list-section table-condensed table-striped">
-			# for n in compound.innerclasses
+			# for n in entity.innerclasses
 				<tr>
-					<td class="member-name">{{ n|docobjref }}</td>
+					<td class="member-name">{{ n|ref_explicit(n.name, "") }}</td>
 					<td class="member-desc">{{ n.briefdescription|description }}</td>
 				</tr>
 			# endfor

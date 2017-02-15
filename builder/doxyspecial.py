@@ -63,7 +63,7 @@ def gather_specials():
     navitem = NavItem()
     navitem.label = "Home"
     navitem.order = 0
-    navitem.ref = Importer.get_docobj("indexpage")
+    navitem.ref = Importer.get_entity("indexpage")
     Importer.navitems.append(navitem)
 
     gather_examples_page()

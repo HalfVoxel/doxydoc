@@ -40,10 +40,7 @@ class Importer:
         self._docobjs[id2] = obj
         self.entities.append(obj)
 
-    def has_docobj(self, id):
-        return id in self._docobjs
-
-    def get_docobj(self, id):
+    def get_entity(self, id):
         return self._docobjs[id]
 
     def _create_entity(self, xml, parent_entity=None):
@@ -138,7 +135,7 @@ class Importer:
             if id is not None:
                 try:
                     # Doxygen can sometimes generate refid=""
-                    obj = self.get_docobj(id)
+                    obj = self.get_entity(id)
                     node.set("ref", obj)
                 except KeyError:
                     # raise

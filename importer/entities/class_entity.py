@@ -7,12 +7,24 @@ class ClassEntity(Entity):
         super().__init__()
 
         self.protection = Protection()
-        self.inherited = []
+        self.inherits_from = []
         self.derived = []
         self.members = []
         self.all_members = []
+        self.inner_classes = []
 
-        # TODO gather_members
+        # Namespace or class parent
+        # If class, this is an inner class
+        self.parent = None
+
+    # Parent in canonical path
+    # if this is
+    # A::B::C
+    # Then the class C has the namespace B as parent
+    # and Bs parent is A.
+    # A has None as the parent.
+    def parent_in_canonical_path(self):
+        return self.parent
 
     def read_from_xml(self):
         super().read_from_xml()
@@ -28,8 +40,12 @@ class ClassEntity(Entity):
         self.sealed = xml.get("sealed") == "yes"
         self.abstract = xml.get("abstract") == "yes"
 
-        self.inherited = [node.get("ref") for node in xml.findall("basecompoundref")]
+        self.inherits_from = [node.get("ref") for node in xml.findall("basecompoundref")]
         self.derived = [node.get("ref") for node in xml.findall("derivedcompoundref")]
+
+        self.inner_classes = [node.get("ref") for node in xml.findall("innerclass")]
+        for inner_class in self.inner_classes:
+            inner_class.parent = self
 
         # All members, also inherited ones
         self.all_members = [m.get("ref") for m in xml.find("listofallmembers")]

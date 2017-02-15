@@ -6,6 +6,7 @@ class Entity:
     def __init__(self):
         self.hidden = False
         self.name = ""
+        self.short_name = ""
         self.briefdescription = None
         self.detaileddescription = None
         self.id = ""
@@ -19,7 +20,7 @@ class Entity:
 
     @staticmethod
     def formatname(name):
-        return name.replace("::", ".")
+        return name.split("::")[-1]
 
     def read_base_xml(self):
         self.id = self.xml.get("id")
@@ -28,18 +29,26 @@ class Entity:
     def read_from_xml(self):
         xml = self.xml
 
-        if xml is None:
-            print("XML is None on " + self.id + " " + self.kind)
+        short_name_node = xml.find("compoundname")
         name_node = xml.find("title")
-        if name_node is None:
-            name_node = xml.find("compoundname")
+
         if name_node is None:
             name_node = xml.find("name")
+        if name_node is None:
+            name_node = short_name_node
+
+        if short_name_node is None:
+            short_name_node = name_node
 
         if name_node is not None and name_node.text is not None:
             self.name = Entity.formatname(name_node.text)
         else:
             self.name = "#" + self.kind + "#"
+
+        if short_name_node is not None:
+            self.short_name = Entity.formatname(short_name_node.text)
+        else:
+            self.short_name = "#" + self.kind + "#"
 
         self.briefdescription = xml.find("briefdescription")
         self.detaileddescription = xml.find("detaileddescription")

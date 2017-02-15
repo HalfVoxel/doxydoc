@@ -43,6 +43,9 @@ class MemberEntity(Entity):
         # ClassEntity probably
         self.defined_in_entity = None
 
+    def parent_in_canonical_path(self):
+        return self.defined_in_entity
+
     def read_from_xml(self):
         super().read_from_xml()
         xml = self.xml

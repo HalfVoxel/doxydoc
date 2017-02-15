@@ -56,7 +56,7 @@ table.compound-view tr {
         border-width: 1px;
         border-color: #FFF;
         height: 60px;
-        
+
         background-color: #EEE;
         text-align: center;
         padding: 5px;
@@ -170,6 +170,10 @@ code {
     line-height: 1.2em;
 }
 
+.member-prot {
+    white-space: nowrap;
+}
+
 table.member-list-section {
 
     td {
@@ -177,9 +181,6 @@ table.member-list-section {
         padding-bottom: 0.1em;
     }
 
-    .member-prot {
-        white-space: nowrap;
-    }
     .member-desc {
         width: 100%;
     }

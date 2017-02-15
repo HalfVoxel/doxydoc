@@ -9,4 +9,5 @@ class Settings:
         self.keep_empty_member_sections = False
         self.args = None
         self.out_dir = "html"
-        self.template_dir = "templates"
+        self.template_dirs = ["templates"]
+        self.flat_file_hierarchy = False

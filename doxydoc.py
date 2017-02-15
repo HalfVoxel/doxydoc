@@ -12,6 +12,8 @@ import builder.settings
 from subprocess import call
 # import doxyspecial
 import argparse
+import plugins.list_specials.list_specials
+import plugins.navbar.navbar
 
 
 class DoxyDoc:
@@ -20,61 +22,23 @@ class DoxyDoc:
         self.importer = Importer()
         self.settings = builder.settings.Settings()
         self.settings.out_dir = "html"
-        self.settings.template_dir = "templates"
+        self.settings.template_dirs = ["templates"]
+        self.plugin_context = {}
 
     def load_plugins(self):
 
         if not self.settings.args.quiet:
             print("Loading Plugins...")
 
-        # dirs = ["plugins", "themes"]
+        dirs = ["plugins", "themes"]
 
-        # for dir in dirs:
-        #     plugins = [f for f in listdir(dir) if isdir(join(dir, f))]
+        for dir in dirs:
+            plugins = [f for f in listdir(dir) if isdir(join(dir, f))]
 
-        #     for moduleName in plugins:
-        #         mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), [dir])
-        #         module_object = imp.load_module(moduleName, mFile, mPath, mDescription)
+            for plugin in plugins:
+                self.settings.template_dirs.append(join(dir, plugin, "templates"))
 
-        #         if self.settings.args.verbose:
-        #             print("Loading Theme/Plugin: " + moduleName)
-
-        #         try:
-        #             obj = getattr(module_object, "tiny")
-
-        #             if self.settings.args.verbose:
-        #                 print("\tLoading Tiny Overrides...")
-        #             for k, v in obj.__dict__.iteritems():
-        #                 if not k.startswith("_"):
-        #                     if (hasattr(doxytiny, k)):
-        #                         setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
-        #                     setattr(doxytiny, k, v)
-        #         except AttributeError:
-        #             pass
-
-        #         try:
-        #             obj = getattr(module_object, "layout")
-        #             if self.settings.args.verbose:
-        #                 print("\tLoading Layout Overrides...")
-        #             for k, v in obj.__dict__.iteritems():
-        #                 if not k.startswith("_"):
-        #                     if (hasattr(builder.layout, k)):
-        #                         setattr(builder.layout, "_base_" + k, getattr(builder.layout, k))
-        #                     setattr(builder.layout, k, v)
-        #         except AttributeError:
-        #             pass
-
-        #         try:
-        #             obj = getattr(module_object, "compound")
-        #             if self.settings.args.verbose:
-        #                 print("\tLoading Entity Overrides...")
-        #             for k, v in obj.__dict__.iteritems():
-        #                 if not k.startswith("_"):
-        #                     if (hasattr(doxycompound, k)):
-        #                         setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
-        #                     setattr(doxycompound, k, v)
-        #         except AttributeError:
-        #             pass
+        print(self.settings.template_dirs)
 
     def read_external(self):
         if not self.settings.args.quiet:
@@ -156,11 +120,19 @@ class DoxyDoc:
 
         self.importer.read(self.find_xml_files())
 
+    def create_navbar(self, pages):
+        navbar = plugins.navbar.navbar.Navbar()
+
+        for page in pages:
+            navbar.add(page)
+
+        self.plugin_context["navbar"] = navbar
+
     def build_output(self):
         if not self.settings.args.quiet:
             print("Building Output...")
 
-        builder = Builder(self.importer, self.settings)
+        builder = Builder(self.importer, self.plugin_context, self.settings)
         self.create_env(builder)
 
         entities = self.importer.entities
@@ -169,13 +141,19 @@ class DoxyDoc:
         classes = [generator.class_page(ent) for ent in entities if ent.kind == "class"]
         examples = [generator.example_page(ent) for ent in entities if ent.kind == "example"]
         page_pages = [generator.page_page(ent) for ent in entities if ent.kind == "page"]
+        namespaces = [generator.namespace_page(ent) for ent in entities if ent.kind == "namespace"]
 
-        # Copy parent mappings
-        # for page in page_pages:
-        #    if page.primary_entity.parent is not None:
-        #        page.parent = page.primary_entity.parent.path.page
+        special_list = plugins.list_specials.list_specials.define_page(self.importer, builder)
 
-        pages = classes + page_pages + examples
+        pages = classes + page_pages + examples + namespaces + [special_list]
+
+        # Build lookup from entities to their pages
+        entity2page = {e: page for page in pages for e in page.entities}
+
+        index = self.importer.get_entity("indexpage")
+        indexpage = entity2page[index]
+
+        self.create_navbar([indexpage, special_list])
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
@@ -187,7 +165,8 @@ class DoxyDoc:
             "markup": builder.layout.markup,
             "description": builder.layout.description,
             "linked_text": builder.layout.linked_text,
-            "ref_explicit": builder.layout.ref_explicit
+            "ref_explicit": builder.layout.ref_explicit,
+            "ref_entity": builder.layout.ref_entity,
         }
         builder_obj.add_filters(filters)
 

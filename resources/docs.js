@@ -10,6 +10,12 @@ $(document).ready(function() {
 	window.prettyPrint && prettyPrint()
 });
 
+$(document).ready(function() {
+	window.onhashchange = function() {
+		console.log("Here...");
+		$(window.location.hash).toggle();
+	};
+});
 
 var searchData = [];
 

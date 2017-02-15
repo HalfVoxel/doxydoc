@@ -4,6 +4,10 @@ class WritingContext:
         self.state = state
         self.strip_links = False
 
+        # Function mapping paths to paths relative to the current page
+        # Set by the page generator
+        self.relpath = None
+
     def with_link_stripping(self):
         ctx = WritingContext(self.state)
         ctx.strip_links = True
