@@ -125,7 +125,8 @@ class PageGenerator:
         return page
 
     def namespace_page(self, entity):
-        page = self._page_with_entity("namespace", entity, [entity] + entity.sections)
+        inner_entities = [entity] + entity.sections + entity.members
+        page = self._page_with_entity("namespace", entity, inner_entities)
         return page
 
     def generate(self, page):
