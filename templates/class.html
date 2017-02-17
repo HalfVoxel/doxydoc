@@ -1,7 +1,7 @@
 # extends "main.html"
 # import "helpers/member_helpers.html" as helpers
 # from "helpers/member_brief.html" import member_brief_protection
-# from "helpers/member_detailed.html" import member_detailed
+# from "helpers/member_detailed.html" import member_detailed_row
 
 # set bootstrap_protection = True
 
@@ -21,7 +21,7 @@
 
         # for member in members
             # block member_list_item scoped
-            <div class="row" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
+            <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
                 {{ member_brief_protection(member, true) }}
                 <div class="col-md-0 col-xs-2"></div>
                 <div class="col-md-6 col-xs-10 member-desc">
@@ -29,9 +29,7 @@
                 </div>
             </div>
             <div class="row" style="display: none;" id="{{ member.path.anchor }}">
-                <div class="col-md-12" style="background: #EEE;">
-                {{ member_detailed(member) }}
-                </div>
+                {{ member_detailed_row(member) }}
             </div>
             # endblock
         # endfor

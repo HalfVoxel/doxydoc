@@ -2,27 +2,14 @@
 
 # macro member_brief_protection(member, bootstrap_protection)
 	<div class="col-md-1 col-xs-2 member-prot">
-	    <span style="font-family: monospace; color: #888; font-weight: bold; cursor: pointer;"> + </span>
 	    # if bootstrap_protection
-	        # if member.protection is not none:
-	            # set labelStyle = ""
-	        # endif
-	        # if member.protection == "public":
-	            # set labelStyle = "label-success"
-	        # elif member.protection == "private":
-	            # set labelStyle = "label-default"
-	        # elif member.protection == "protected":
-	            # set labelStyle = "label-warning"
-	        # elif member.protection == "package":
-	            # set labelStyle = "label-info"
-	        # endif
-	        <span class="label {{labelStyle}}"> </span>
+	        <span class="protection protection-{{member.protection}}"> </span>
 	        ## {{ member.protection|title }}
 	        # if member.readonly:
-	            <span class="label label-warning"> </span>
+	            <span class="protection protection-readonly"> </span>
 	        # endif
 	        # if member.static:
-	            <span class="label label-info"> </span>
+	            <span class="protection protection-static"> </span>
 	        # endif
 
 	    # else
@@ -30,8 +17,8 @@
 	    # endif
 	    </div>
 
-	    ## <div class="col-md-2 col-xs-4 member-type" style="font-family: monospace;">{{ member.type|linked_text }}</div>
-	    <div class="col-md-5 col-xs-10 member-name" style="font-family: monospace;">
+	    ## <div class="col-md-2 col-xs-4 member-list-type" style="font-family: monospace;">{{ member.type|linked_text }}</div>
+	    <div class="col-md-5 col-xs-10 member-list-name" style="font-family: monospace;">
 	    {{ member.name }}
 	    # if member.hasparams
 	        <span style="color: #5b5b5b;">{{ helpers.paramlist(member, false) }}</span>

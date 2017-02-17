@@ -171,13 +171,27 @@ code {
 .simplesect-see                             { border-color: #0BAA0B; }
 
 
-.member-list h2 {
-    font-size: 2em;
-    line-height: 1.2em;
+.member-list {
+    .member-list-name {
+        color: #337ab7;
+    }
 }
 
 .member-prot {
     white-space: nowrap;
+}
+
+.member-list-item-header {
+    padding-top: 5px;
+    padding-bottom: 1px;
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+.member-list-item-header:focus, .member-list-item-header:hover {
+    background-color: rgba(0,0,0,0.05)
 }
 
 table.member-list-section {
@@ -224,4 +238,52 @@ table.member-list-section {
         color: #000;
         font-weight: bold;
     }
+}
+
+.protection {
+    display: inline;
+    padding: .4em .6em .0em .6em;
+    margin-right: .2em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .3em;
+    background-color: #fc20e6;
+}
+
+.member-side-prot {
+    line-height: 50%;
+
+    .protection {
+        display: inline-block;
+        padding: .4em .6em .4em .6em;
+    }
+}
+
+.protection-public {
+    background-color: #5cb85c;
+}
+
+.protection-private {
+    background-color: #777777;
+}
+
+.protection-protected {
+    background-color: #f0ad4e;
+}
+
+.protection-package {
+    background-color: #5bc0de;
+}
+
+.protection-readonly {
+    background-color: #f0ad4e;
+}
+
+.protection-static {
+    background-color: #5bc0de;
 }
