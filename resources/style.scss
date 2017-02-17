@@ -170,6 +170,8 @@ code {
 .simplesect-rcs                             { border-color: #505050; }
 .simplesect-see                             { border-color: #0BAA0B; }
 
+// xrefsects
+.simplesect-deprecated                      { border-color: #303030; }
 
 .member-list {
     .member-list-name {
@@ -262,6 +264,11 @@ table.member-list-section {
         display: inline-block;
         padding: .4em .6em .4em .6em;
     }
+}
+
+.deprecated {
+    text-decoration: line-through;
+    text-decoration-color: #555;
 }
 
 .protection-public {

@@ -151,7 +151,25 @@ def toclist(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def xrefsect(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    pass
+    with buffer.outside_paragraph():
+        title = n.find("xreftitle")
+        desc = n.find("xrefdescription")
+        id = n.get("id")
+
+        # This is based on how Doxygen generates the id, which looks (for example) like
+        # deprecated_1_deprecated000018
+        # This will extract 'deprecated' as the key
+        assert("_" in id)
+        assert(title is not None)
+        key = id.split("_")[0]
+
+        buffer.open("div", {"class": "simplesect simplesect-" + key})
+
+        buffer.open("h3")
+        builder.layout.markup(ctx, title, buffer)
+        buffer.close("h3")
+        builder.layout.sectbase(ctx, desc, buffer)
+        buffer.close("div")
 
 
 def copydoc(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:

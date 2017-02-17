@@ -21,7 +21,7 @@
 	    </div>
 
 	    ## <div class="col-md-2 col-xs-4 member-list-type" style="font-family: monospace;">{{ member.type|linked_text }}</div>
-	    <div class="col-md-5 col-xs-10 member-list-name" style="font-family: monospace;">
+	    <div class="col-md-5 col-xs-10 member-list-name {% if member.deprecated %}deprecated{% endif %}" style="font-family: monospace;">
 	    {{ member.name }}
 	    # if member.hasparams
 	        <span style="color: #5b5b5b;">{{ helpers.paramlist(member, false) }}</span>

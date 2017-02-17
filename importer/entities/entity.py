@@ -13,6 +13,7 @@ class Entity:
         self.xml = None  # type: ET.Element
         # Sections in descriptions that can be linked to
         self.sections = []  # type: List[Entity]
+        self.deprecated = False
 
     def __str__(self):
         return "Entity: " + self.id
@@ -55,12 +56,15 @@ class Entity:
         # Find sections
         # TODO: Simplify and optimize
         section_xml = []  # type: List[ET.Element]
+        xrefsects = []  # type: List[ET.Element]
         if self.briefdescription is not None:
             section_xml = (section_xml +
                            self.briefdescription.findall(".//sect1") +
                            self.briefdescription.findall(".//sect2") +
                            self.briefdescription.findall(".//sect3") +
                            self.briefdescription.findall(".//sect4"))
+
+            xrefsects += self.briefdescription.findall(".//xrefsect")
 
         if self.detaileddescription is not None:
             section_xml = (section_xml +
@@ -69,7 +73,22 @@ class Entity:
                            self.detaileddescription.findall(".//sect3") +
                            self.detaileddescription.findall(".//sect4"))
 
+            xrefsects += self.detaileddescription.findall(".//xrefsect")
+
         self.sections = [ctx.getentity(sec) for sec in section_xml if ctx.getentity(sec) is not None]
+
+        for xref in xrefsects:
+            id = xref.get("id")
+
+            # This is based on how Doxygen generates the id, which looks (for example) like
+            # deprecated_1_deprecated000018
+            # This will extract 'deprecated' as the key
+            assert("_" in id)
+            key = id.split("_")[0]
+            if key == "deprecated":
+                # Detected that the entity is deprecated
+                # This is not a completely accurate check as there might be some other thing in the description that was marked as deprecated
+                self.deprecated = True
 
 
 def gather_members(xml, ctx: importer.importer_context.ImporterContext) -> List[Entity]:

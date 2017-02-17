@@ -32,7 +32,7 @@ class ClassEntity(Entity):
 
         # TODO: Use Protection class
         self.protection = None  # type: str
-        self.inherits_from = []  # type: List[Entity]
+        self.inherits_from = []  # type: List[Extends]
         self.derived = []  # type: List[Entity]
         self.members = []  # type: List[Entity]
         self.all_members = []  # type: List[Entity]
