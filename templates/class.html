@@ -5,9 +5,24 @@
 
 # set bootstrap_protection = True
 
-# block content
-    <h1><small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span></h1>
+# macro class_header(entity)
+    <h1>
+    <small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span>
+    # if entity.inherits_from|length > 0:
+        <small>Extends
+        # for e in entity.inherits_from
+            # if e.entity is not none
+                {{ e.entity|ref_explicit(e.name, none) }}
+            # else
+                {{ e.name|description }}
+            # endif
+        # endfor
+    # endif
+    </h1>
+# endmacro
 
+# block content
+    {{ class_header(entity) }}
     {{ entity.briefdescription|description }}
     {{ entity.detaileddescription|description }}
 

@@ -5,6 +5,27 @@ import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
 
 
+class Extends:
+    def __init__(self, xml):
+        self.virtual = None  # type: str
+        self.protection = None  # type: str
+        self.entity = None  # type: Entity
+        # TODO: Can this be something more complicated than str? E.g if inheriting from a generic class?
+        self.name = None  # type: str
+        self.xml = xml  # type: ET.Element
+
+    def read_from_xml(self, ctx: ImporterContext) -> None:
+        xml = self.xml
+
+        self.name = str(xml.text)
+        self.protection = xml.get("prot")
+        self.virtual = xml.get("virt")
+        self.entity = ctx.getref(xml)
+
+    def __repr__(self):
+        return "<" + str(self.entity) + "|" + self.name + ">"
+
+
 class ClassEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
@@ -44,7 +65,10 @@ class ClassEntity(Entity):
         self.sealed = xml.get("sealed") == "yes"
         self.abstract = xml.get("abstract") == "yes"
 
-        self.inherits_from = [ctx.getref(node) for node in xml.findall("basecompoundref")]
+        self.inherits_from = [Extends(node) for node in xml.findall("basecompoundref")]
+        for x in self.inherits_from:
+            x.read_from_xml(ctx)
+
         self.derived = [ctx.getref(node) for node in xml.findall("derivedcompoundref")]
 
         self.inner_classes = [ctx.getref(node) for node in xml.findall("innerclass")]
