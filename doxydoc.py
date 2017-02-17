@@ -170,6 +170,7 @@ class DoxyDoc:
             "linked_text": builder.layout.linked_text,
             "ref_explicit": builder.layout.ref_explicit,
             "ref_entity": builder.layout.ref_entity,
+            "match_external_ref": builder.layout.match_external_ref,
         }
         builder_obj.add_filters(filters)
 

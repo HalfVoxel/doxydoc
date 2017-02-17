@@ -10,13 +10,15 @@
     <small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span>
     # if entity.inherits_from|length > 0:
         <small>Extends
-        # for e in entity.inherits_from
-            # if e.entity is not none
-                {{ e.entity|ref_explicit(e.name, none) }}
-            # else
-                {{ e.name|description }}
-            # endif
-        # endfor
+        # set comma = joiner(", ")
+        #- for e in entity.inherits_from
+            {{- comma() }}
+            #- if e.entity is not none
+                {{- e.entity|ref_explicit(e.name, none) }}
+            #- else
+                {{- e.name|match_external_ref }}
+            #- endif
+        #- endfor
     # endif
     </h1>
 
