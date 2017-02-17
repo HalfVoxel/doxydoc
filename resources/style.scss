@@ -269,15 +269,19 @@ table.member-list-section {
 }
 
 .protection-private {
-    background-color: #777777;
+    background-color: #666666;
 }
 
 .protection-protected {
-    background-color: #f0ad4e;
+    background-color: #c1c1c1;
 }
 
 .protection-package {
-    background-color: #5bc0de;
+    background-color: #7f3b2c;
+}
+
+.protection-abstract {
+    background-color: #865add;
 }
 
 .protection-readonly {

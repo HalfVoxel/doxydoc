@@ -25,11 +25,14 @@
         <div class="member-side-prot">
         <span class="protection protection-{{member.protection}}">{{ member.protection|title }}</span>
 
-        # if member.readonly:
-            <span class="protection protection-readonly">Readonly</span>
-        # endif
         # if member.static:
             <span class="protection protection-static">Static</span>
+        # endif
+        # if member.abstract:
+            <span class="protection protection-abstract">Abstract</span>
+        # endif
+        # if member.readonly:
+            <span class="protection protection-readonly">Readonly</span>
         # endif
         </div>
     #endif

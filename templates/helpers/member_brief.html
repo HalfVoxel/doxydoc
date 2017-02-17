@@ -5,11 +5,14 @@
 	    # if bootstrap_protection
 	        <span class="protection protection-{{member.protection}}"> </span>
 	        ## {{ member.protection|title }}
-	        # if member.readonly:
-	            <span class="protection protection-readonly"> </span>
-	        # endif
 	        # if member.static:
 	            <span class="protection protection-static"> </span>
+	        # endif
+	        # if member.abstract:
+	            <span class="protection protection-abstract"> </span>
+	        # endif
+	        # if member.readonly:
+	            <span class="protection protection-readonly"> </span>
 	        # endif
 
 	    # else

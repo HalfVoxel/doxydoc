@@ -19,6 +19,20 @@
         # endfor
     # endif
     </h1>
+
+    <div class="member-side-prot">
+    <span class="protection protection-{{entity.protection}}">{{ entity.protection|title }}</span>
+
+    # if entity.static:
+        <span class="protection protection-static">Static</span>
+    # endif
+    # if entity.abstract:
+        <span class="protection protection-abstract">Abstract</span>
+    # endif
+    # if entity.readonly:
+        <span class="protection protection-readonly">Readonly</span>
+    # endif
+    </div>
 # endmacro
 
 # block content
