@@ -60,19 +60,20 @@ def _doclist(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def simplesect(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    kind = n.get("kind")
-    title = n.find("title")
-    buffer.open("div", {"class": "simplesect simplesect-" + kind})
+    with buffer.outside_paragraph():
+        kind = n.get("kind")
+        title = n.find("title")
+        buffer.open("div", {"class": "simplesect simplesect-" + kind})
 
-    buffer.open("h3")
-    if title is not None:
-        builder.layout.markup(ctx, title, buffer)
-    else:
-        buffer += kind.title()
+        buffer.open("h3")
+        if title is not None:
+            builder.layout.markup(ctx, title, buffer)
+        else:
+            buffer += kind.title()
 
-    buffer.close("h3")
-    builder.layout.sectbase(ctx, n, buffer)
-    buffer.close("div")
+        buffer.close("h3")
+        builder.layout.sectbase(ctx, n, buffer)
+        buffer.close("div")
 
 
 def simplesectsep(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:

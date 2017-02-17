@@ -15,6 +15,20 @@ def paramescape(v: str) -> str:
     return escape(v, html_escape_table)
 
 
+class Reverter():
+    def __init__(self, buffer, tag):
+        self.buffer = buffer
+        self.tag = tag
+
+    def __enter__(self):
+        if self.tag is not None:
+            self.buffer.close(self.tag)
+
+    def __exit__(self, type, value, traceback):
+        if self.tag is not None:
+            self.buffer.open(self.tag)
+
+
 class StrTree:
     """ Efficient string concatenation and some helper methods for dealing with HTML """
 
@@ -36,6 +50,9 @@ class StrTree:
         assert s is not None
         self.contents.append(s)
         return self
+
+    def outside_paragraph(self) -> Reverter:
+        return Reverter(self, "p")
 
     def element(self, t: str, c: Any=None, params: Dict[str, str]=None) -> 'StrTree':
         assert t is not None
