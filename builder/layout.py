@@ -53,7 +53,7 @@ def get_anchor(ctx: WritingContext, id: str) -> str:
     return obj.path.anchor
 
 
-def refcompound(ctx, refnode, buffer):
+def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:
     refid = refnode.get("refid")
 
     if refid == "":
@@ -83,7 +83,7 @@ def refcompound(ctx, refnode, buffer):
         })
 
 
-def ref_entity(ctx, obj, buffer):
+def ref_entity(ctx: WritingContext, obj, buffer: StrTree) -> None:
     # Prevent recursive loops of links in the tooltips
     if ctx.strip_links or is_hidden(obj):
         buffer += obj.name
@@ -95,16 +95,16 @@ def ref_entity(ctx, obj, buffer):
         buffer.element("a", obj.name, {
             "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
-            "data-original-title": tooltip
+            "data-original-title": str(tooltip)
         })
 
 
-def _tooltip(ctx, entity, buffer):
+def _tooltip(ctx: WritingContext, entity, buffer: StrTree) -> None:
     if entity.briefdescription is not None:
         description(ctx.with_link_stripping(), entity.briefdescription, buffer)
 
 
-def ref(ctx, refnode, buffer) -> None:
+def ref(ctx: WritingContext, refnode, buffer) -> None:
     obj = ctx.getref(refnode)
 
     if obj is None:
@@ -122,16 +122,16 @@ def ref(ctx, refnode, buffer) -> None:
     else:
         tooltip = StrTree()
         _tooltip(ctx, obj, tooltip)
-        buffer.element("a", None, {
+        buffer.open("a", {
             "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
         markup(ctx.with_link_stripping(), refnode, buffer)
-        buffer.element("/a")
+        buffer.close("a")
 
 
-def ref_explicit(ctx, obj, text, tooltip, buffer):
+def ref_explicit(ctx: WritingContext, obj, text, tooltip, buffer: StrTree) -> None:
     if ctx.strip_links or is_hidden(obj):
         buffer += text
     else:
@@ -146,7 +146,7 @@ def ref_explicit(ctx, obj, text, tooltip, buffer):
         })
 
 
-def match_external_ref(ctx, text, buffer):
+def match_external_ref(ctx: WritingContext, text, buffer: StrTree) -> None:
     words = text.split()
     for i in range(0, len(words)):
         if i > 0:
@@ -158,10 +158,8 @@ def match_external_ref(ctx, text, buffer):
         except KeyError:
             buffer += words[i]
 
-    return buffer
 
-
-def linked_text(ctx, node, buffer):
+def linked_text(ctx: WritingContext, node, buffer: StrTree) -> None:
     if node is None:
         return
 
@@ -187,25 +185,25 @@ def linked_text(ctx, node, buffer):
 #     Importer.navitems.sort(key=lambda v: v.order)
 
 #     for item in Importer.navitems:
-#         buffer.element("li")
+#         buffer.open("li")
 #         buffer.element("a", item.label, {"href": item.ref.path.full_url()})
-#         buffer.element("/li")
+#         buffer.close("li")
 
 #     Importer.trigger("navheader")
 #     buffer.append("</div></ul>")
 #     return buffer
 
 
-def pagetitle(title, buffer):
+def pagetitle(title, buffer: StrTree) -> None:
     buffer.element("h1", title)
 
 
-def file_path(path, buffer):
+def file_path(path, buffer: StrTree) -> None:
     if path is not None:
         buffer.element("span", path, {"class": "file-location"})
 
 
-def member_section_heading(section, buffer):
+def member_section_heading(section, buffer: StrTree) -> None:
     # skind = section.get("kind")
     # skind = skind.replace("-"," ")
     # skind = skind.replace("attrib","attributes")
@@ -216,7 +214,7 @@ def member_section_heading(section, buffer):
     buffer.element("h2", section[0])
 
 
-def member_list_protection(member, buffer):
+def member_list_protection(member, buffer: StrTree) -> None:
     ''' Shows the protection of a member in the table/list view '''
 
     buffer.element("span", member.protection.title())
@@ -227,7 +225,7 @@ def member_list_protection(member, buffer):
         buffer.element("span", "Static")
 
 
-def member_list_type(ctx, member, buffer):
+def member_list_type(ctx: WritingContext, member, buffer: StrTree) -> None:
     ''' Displays the member's type. Used in the members table '''
 
     if member.type is not None:
@@ -235,30 +233,30 @@ def member_list_type(ctx, member, buffer):
         linked_text(ctx, member.type, buffer)
 
 
-# def enum_members(ctx, members):
+# def enum_members(ctx: WritingContext, members):
 
 #     result = StrTree()
 #     result.element("ul", None, {'class': 'enum-members'})
 
 #     for m in members:
-#         result.element("li")
+#         result.open("li")
 
-#         result.element("p")
-#         result.element("b")
+#         result.open("p")
+#         result.open("b")
 #         result += ref_explicit(ctx, m, m.name, None)
 #         result += " "
-#         result.element("/b")
+#         result.close("b")
 #         if m.initializer is not None:
 #             result.element("span", lambda: linked_text(ctx, m.initializer))
-#         result.element("/p")
+#         result.close("p")
 
 #         result += description(ctx, m.briefdescription)
 #         result += description(ctx, m.detaileddescription)
 
-#         result.element("/td")
-#         result.element("/li")
+#         result.close("td")
+#         result.close("li")
 
-#     result.element("/ul")
+#     result.close("ul")
 #     return result
 
 
@@ -283,35 +281,35 @@ def member_list_type(ctx, member, buffer):
 #         })
 
 #         for m in members:
-#             result.element("tr")
+#             result.open("tr")
 
 #             # Show protection in table if requested
 #             if DocSettings.show_member_protection_in_list:
 #                 result.element("td", None, {'class': 'member-prot'})
 #                 result += member_list_protection(m)
-#                 result.element("/td")
+#                 result.close("td")
 
 #             # Show type in table if requested
 #             if DocSettings.show_member_protection_in_list:
 #                 result.element("td", None, {'class': 'member-type'})
 #                 result += member_list_type(m)
-#                 result.element("/td")
+#                 result.close("td")
 
 #             result.element("td", None, {'class': 'member-name'})
 #             result += ref_explicit(ctx, m, m.name, None)
 #             # result += m.name
-#             result.element("/td")
+#             result.close("td")
 
 #             result.element("td", None, {'class': 'member-desc'})
 #             result += description(m.briefdescription)
 
-#             result.element("/td")
+#             result.close("td")
 
-#             result.element("/tr")
+#             result.close("tr")
 
-#         result.element("/table")
+#         result.close("table")
 
-#     result.element("/div")
+#     result.close("div")
 #     return result
 
 
@@ -354,7 +352,7 @@ def member_list_type(ctx, member, buffer):
 
 # def member_heading(m):
 #     result = StrTree()
-#     result.element("h3")
+#     result.open("h3")
 
 #     ls = []
 #     if m.protection is not None:
@@ -374,12 +372,12 @@ def member_list_type(ctx, member, buffer):
 #         # Write type
 #         result += linked_text(m.type)
 
-#     result.element("/span")
+#     result.close("span")
 #     result.element("span", None, {"class": 'member-name'})
 
 #     result += m.name
 
-#     result.element("/span")
+#     result.close("span")
 
 #     if m.params is not None:
 #         result += " "
@@ -396,24 +394,24 @@ def member_list_type(ctx, member, buffer):
 #                 tooltip = description(param.description)
 #                 result.element("span", None, {"data-original-title": tooltip})
 #                 result += param.name
-#                 result.element("/span")
+#                 result.close("span")
 #             else:
 #                 result += param.name
 
 #             if i < len(m.params) - 1:
 #                 result += ","
 
-#         result.element("/span")
+#         result.close("span")
 
-#     result.element("/h3")
+#     result.close("h3")
 #     return result
 
 
-def desctitle(ctx, text, buffer):
+def desctitle(ctx: WritingContext, text, buffer: StrTree) -> None:
     buffer.element("h3", text)
 
 
-def sect(ctx, sectnode, depth, buffer):
+def sect(ctx: WritingContext, sectnode, depth, buffer: StrTree) -> None:
     ''' sect* nodes '''
 
     title = sectnode.find("title")
@@ -426,15 +424,15 @@ def sect(ctx, sectnode, depth, buffer):
     sectbase(ctx, sectnode, buffer)
 
 
-def paragraph(ctx, paranode, buffer):
+def paragraph(ctx: WritingContext, paranode, buffer: StrTree) -> None:
     ''' para nodes '''
 
-    buffer.elem("p")
+    buffer.open("p")
     markup(ctx, paranode, buffer)
-    buffer.elem("/p")
+    buffer.close("p")
 
 
-def markup(ctx, node, buffer):
+def markup(ctx: WritingContext, node, buffer: StrTree) -> None:
     ''' Markup like nodes '''
 
     if node is None:
@@ -451,13 +449,13 @@ def markup(ctx, node, buffer):
             buffer += n.tail
 
 
-def internal(ctx, internalnode, buffer):
+def internal(ctx: WritingContext, internalnode, buffer: StrTree) -> None:
     ''' internal nodes '''
 
     print("Skipping internal data")
 
 
-def sectbase(ctx, node, buffer):
+def sectbase(ctx: WritingContext, node, buffer: StrTree) -> None:
     for n in node:
         if n == node:
             continue
@@ -485,7 +483,7 @@ def sectbase(ctx, node, buffer):
             print("[W2] Not handled: " + n.tag)
 
 
-def description(ctx, descnode, buffer):
+def description(ctx: WritingContext, descnode, buffer: StrTree) -> None:
     # \todo Ugly to have multiple possible types for description objects
     if isinstance(descnode, str):
         # TODO: Doesn't seem to happen
@@ -525,15 +523,15 @@ def description(ctx, descnode, buffer):
 #     if pages is None or len(pages) == 0:
 #         return result
 
-#     result.element("ul")
+#     result.open("ul")
 
 #     for p in pages:
-#         result.element("li")
+#         result.open("li")
 #         result += ref_entity(p)
 #         result += page_list_inner(p)
-#         result.element("/li")
+#         result.close("li")
 
-#     result.element("/ul")
+#     result.close("ul")
 #     return result
 
 
@@ -542,12 +540,12 @@ def description(ctx, descnode, buffer):
 #     result.element("table", None, {
 #        "class": "inner-class-list table table-condensed table-striped"})
 #     for n in objs:
-#         result.element("tr")
+#         result.open("tr")
 #         result.element("td", lambda: ref_entity(n))
 #         result.element("td", lambda: description(n.briefdescription))
-#         result.element("/tr")
+#         result.close("tr")
 
-#     result.element("/table")
+#     result.close("table")
 #     return result
 
 
@@ -564,7 +562,7 @@ def description(ctx, descnode, buffer):
 #     for n in obj:
 #         result.element("li", lambda: ref_entity(n))
 
-#     result.element("/ul")
+#     result.close("ul")
 #     return result
 
 
@@ -611,8 +609,8 @@ def description(ctx, descnode, buffer):
 #     for obj2 in namespaces:
 #         if counter % xwidth is 0:
 #             if counter > 0:
-#                 result.element("/tr")
-#             result.element("tr")
+#                 result.close("tr")
+#             result.open("tr")
 
 #         result.element("td", None, {"colspan": str(ns_colspan)})
 #         Importer.depth_ref += 1
@@ -620,51 +618,51 @@ def description(ctx, descnode, buffer):
 #         result.element("b", obj2.name)
 
 #         # result += doxylayout.ref_entity(obj2)
-#         # result.element("p")
+#         # result.open("p")
 #         result += description(obj2.briefdescription)
-#         # result.element("/p")
-#         result.element("/a")
-#         result.element("/td")
+#         # result.close("p")
+#         result.close("a")
+#         result.close("td")
 
 #         counter += ns_colspan
 
 #         Importer.depth_ref -= 1
 
 #     if(len(namespaces) > 0):
-#         result.element("/tr")
+#         result.close("tr")
 
 #     counter = 0
 #     for obj2 in gridobjs:
 #         # NOTE: Add enum
 #         if counter % xwidth == 0:
 #             if counter > 0:
-#                 result.element("/tr")
-#             result.element("tr")
+#                 result.close("tr")
+#             result.open("tr")
 
-#         result.element("td")
+#         result.open("td")
 
 #         Importer.depth_ref += 1
 #         result.element("a", None, {"href": obj2.path.full_url()})
 #         result.element("b", obj2.name)
 
 #         # result += doxylayout.ref_entity(obj2)
-#         # result.element("p")
+#         # result.open("p")
 #         result += description(obj2.briefdescription)
-#         # result.element("/p")
-#         result.element("/a")
-#         result.element("/td")
+#         # result.close("p")
+#         result.close("a")
+#         result.close("td")
 #         Importer.depth_ref -= 1
 
 #         counter += 1
 
-#     result.element("/tr")
-#     result.element("/table")
+#     result.close("tr")
+#     result.close("table")
 #     return result
 
 
 # def namespace_inner_class(obj):
 #     result = StrTree()
-#     result.elem("li")
+#     result.open("li")
 #     result += ref_entity(obj)
-#     result.elem("/li")
+#     result.close("li")
 #     return result

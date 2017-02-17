@@ -20,48 +20,72 @@ class StrTree:
 
     def __init__(self, initial_contents=None) -> None:
         self.contents = []  # type: List[Union[str, StrTree]]
-        self.append(initial_contents)
+        self.elementStack = []  # type: List[str]
+        if initial_contents is not None:
+            self.append(initial_contents)
 
     def append(self, s: Union[str, 'StrTree']) -> 'StrTree':
-        if s is not None:
-            if isinstance(s, str):
-                self.contents.append(escape(s))
-            else:
-                self.contents.append(s)
+        assert s is not None
+        if isinstance(s, str):
+            self.contents.append(escape(s))
+        else:
+            self.contents.append(s)
         return self
 
     def html(self, s: Union[str, 'StrTree']) -> 'StrTree':
-        assert s
+        assert s is not None
         self.contents.append(s)
         return self
 
     def element(self, t: str, c: Any=None, params: Dict[str, str]=None) -> 'StrTree':
-        assert t
-        if params is None:
-            self.contents.append("<" + t + ">")
+        assert t is not None
+        assert c is not None
+        self.open(t, params)
+
+        if isinstance(c, types.FunctionType):
+            c()
         else:
-            self.contents.append("<" + t + " ")
+            self.append(c)
+
+        self.close(t)
+        return self
+
+    def voidelem(self, t: str) -> 'StrTree':
+        self.open(t)
+        self.elementStack.pop()
+        return self
+
+    def elem(self, t: str) -> 'StrTree':
+        assert t is not None
+        self.contents.append("<")
+        self.contents.append(t)
+        self.contents.append(">")
+        return self
+
+    def open(self, t: str, params: Dict[str, str]=None) -> 'StrTree':
+        assert t is not None
+        self.contents.append("<")
+        self.contents.append(t)
+        if params is not None:
+            self.contents.append(" ")
             for k, v in params.items():
                 if v is not None:
                     sv = str(v)
                     if len(sv) > 0:
                         self.contents.append(k + "='" + paramescape(sv) + "' ")
 
-            self.contents.append(">")
-
-        if c is not None:
-            if isinstance(c, types.FunctionType):
-                c()
-            else:
-                self.append(c)
-
-            self.contents.append("</" + t + ">")
-
+        self.contents.append(">")
+        self.elementStack.append(t)
         return self
 
-    def elem(self, t: str) -> 'StrTree':
+    def close(self, t: str) -> 'StrTree':
         assert t is not None
-        self.contents.append("<")
+        if len(self.elementStack) == 0:
+            raise Exception("Tried to close element, but no elements have been opened")
+        elif self.elementStack[-1] != t:
+            raise Exception("Tried to close '%s', but the top element was '%s'" % (t, self.elementStack[-1]))
+        self.elementStack.pop()
+        self.contents.append("</")
         self.contents.append(t)
         self.contents.append(">")
         return self
