@@ -53,13 +53,12 @@ def get_anchor(ctx: WritingContext, id: str) -> str:
     return obj.path.anchor
 
 
-def refcompound(ctx, refnode):
-    result = StrTree()
+def refcompound(ctx, refnode, buffer):
     refid = refnode.get("refid")
 
     if refid == "":
-        result += markup(ctx, refnode)
-        return result
+        markup(ctx, refnode, buffer)
+        return
 
     assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
 
@@ -74,46 +73,43 @@ def refcompound(ctx, refnode):
     # Prevent recursive loops of links in the tooltips
 
     if ctx.strip_links or is_hidden(obj):
-        result += obj.name
+        buffer += obj.name
     else:
         # Write out anchor element
-        result.element("a", obj.name, {
+        buffer.element("a", obj.name, {
             "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
-    return result
 
 
-def ref_entity(ctx, obj):
-    result = StrTree()
+def ref_entity(ctx, obj, buffer):
     # Prevent recursive loops of links in the tooltips
     if ctx.strip_links or is_hidden(obj):
-        result += obj.name
+        buffer += obj.name
     else:
-        tooltip = _tooltip(ctx, obj)
+        tooltip = StrTree()
+        _tooltip(ctx, obj, tooltip)
 
         # Write out anchor element
-        result.element("a", obj.name, {
+        buffer.element("a", obj.name, {
             "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
-    return result
 
 
-def _tooltip(ctx, entity):
+def _tooltip(ctx, entity, buffer):
     if entity.briefdescription is not None:
-        return description(ctx.with_link_stripping(), entity.briefdescription)
-    else:
-        return None
+        description(ctx.with_link_stripping(), entity.briefdescription, buffer)
 
 
-def ref(ctx, refnode) -> StrTree:
+def ref(ctx, refnode, buffer) -> None:
     obj = ctx.getref(refnode)
 
     if obj is None:
-        return markup(ctx, refnode)
+        markup(ctx, refnode, buffer)
+        return
 
     # assert refid, refnode.tag + " was not a ref node. " + refnode.text + " " + str(refnode.attrib)
 
@@ -121,105 +117,95 @@ def ref(ctx, refnode) -> StrTree:
     # external = refnode.get("external")
     # tooltip = refnode.get("tooltip")
 
-    result = StrTree()
     if ctx.strip_links or is_hidden(obj):
-        result += markup(ctx, refnode)
+        markup(ctx, refnode, buffer)
     else:
-
-        result.element("a", None, {
-            "href": ctx.relpath(obj.path.full_url()),
-            "rel": 'tooltip',
-            "data-original-title": _tooltip(ctx, obj)
-        })
-        result += markup(ctx.with_link_stripping(), refnode)
-        result.element("/a")
-    return result
-
-
-def ref_explicit(ctx, obj, text, tooltip=None):
-    result = StrTree()
-    if ctx.strip_links or is_hidden(obj):
-        result += text
-    else:
-        if tooltip is None:
-            tooltip = _tooltip(ctx, obj)
-
-        result.element("a", text, {
+        tooltip = StrTree()
+        _tooltip(ctx, obj, tooltip)
+        buffer.element("a", None, {
             "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
-    return result
+        markup(ctx.with_link_stripping(), refnode, buffer)
+        buffer.element("/a")
 
 
-def match_external_ref(ctx, text):
-    result = StrTree()
+def ref_explicit(ctx, obj, text, tooltip, buffer):
+    if ctx.strip_links or is_hidden(obj):
+        buffer += text
+    else:
+        if tooltip is None:
+            tooltip = StrTree()
+            _tooltip(ctx, obj, tooltip)
+
+        buffer.element("a", text, {
+            "href": ctx.relpath(obj.path.full_url()),
+            "rel": 'tooltip',
+            "data-original-title": tooltip
+        })
+
+
+def match_external_ref(ctx, text, buffer):
     words = text.split()
     for i in range(0, len(words)):
         if i > 0:
-            result += " "
+            buffer += " "
         try:
             obj = ctx.state.get_entity("__external__" + words[i].strip())
             tooltip = obj.tooltip if hasattr(obj, "tooltip") else None
-            result += ref_explicit(ctx, obj, words[i], tooltip)
+            ref_explicit(ctx, obj, words[i], tooltip, buffer)
         except KeyError:
-            result += words[i]
+            buffer += words[i]
 
-    return result
+    return buffer
 
 
-def linked_text(ctx, node):
-    result = StrTree()
-
+def linked_text(ctx, node, buffer):
     if node is None:
-        return result
+        return
 
     if node.text is not None:
-        result += match_external_ref(ctx, node.text)
-        # result += node.text
+        match_external_ref(ctx, node.text, buffer)
+        # buffer += node.text
 
     for n in node:
         if n.tag == "ref":
-            result += ref(ctx, n)
+            ref(ctx, n, buffer)
         else:
             if n.text is not None:
-                result += match_external_ref(ctx, n.text)
+                match_external_ref(ctx, n.text, buffer)
 
         if n.tail is not None:
-            result += match_external_ref(ctx, n.tail)
-            # result += n.tail
-
-    return result
+            match_external_ref(ctx, n.tail, buffer)
 
 
 # def navheader():
-#     result = StrTree()
-#     result.append("<div class='navbar'><ul>")
+#     buffer = StrTree()
+#     buffer.append("<div class='navbar'><ul>")
 
 #     Importer.navitems.sort(key=lambda v: v.order)
 
 #     for item in Importer.navitems:
-#         result.element("li")
-#         result.element("a", item.label, {"href": item.ref.path.full_url()})
-#         result.element("/li")
+#         buffer.element("li")
+#         buffer.element("a", item.label, {"href": item.ref.path.full_url()})
+#         buffer.element("/li")
 
 #     Importer.trigger("navheader")
-#     result.append("</div></ul>")
-#     return result
+#     buffer.append("</div></ul>")
+#     return buffer
 
 
-def pagetitle(title):
-    return StrTree().element("h1", title)
+def pagetitle(title, buffer):
+    buffer.element("h1", title)
 
 
-def file_path(path):
-    if path is None:
-        return StrTree()
-
-    return StrTree().element("span", path, {"class": "file-location"})
+def file_path(path, buffer):
+    if path is not None:
+        buffer.element("span", path, {"class": "file-location"})
 
 
-def member_section_heading(section):
+def member_section_heading(section, buffer):
     # skind = section.get("kind")
     # skind = skind.replace("-"," ")
     # skind = skind.replace("attrib","attributes")
@@ -227,31 +213,26 @@ def member_section_heading(section):
     # skind = skind.replace("property","properties")
     # skind = skind.title()
 
-    return StrTree().element("h2", section[0])
+    buffer.element("h2", section[0])
 
 
-def member_list_protection(member):
+def member_list_protection(member, buffer):
     ''' Shows the protection of a member in the table/list view '''
 
-    result = StrTree()
-    result.element("span", member.protection.title())
+    buffer.element("span", member.protection.title())
 
     if member.readonly:
-        result.element("span", "Readonly")
+        buffer.element("span", "Readonly")
     if member.static:
-        result.element("span", "Static")
-
-    return result
+        buffer.element("span", "Static")
 
 
-def member_list_type(ctx, member):
+def member_list_type(ctx, member, buffer):
     ''' Displays the member's type. Used in the members table '''
 
     if member.type is not None:
         # Write type
-        return linked_text(ctx, member.type)
-    else:
-        return StrTree()
+        linked_text(ctx, member.type, buffer)
 
 
 # def enum_members(ctx, members):
@@ -428,116 +409,95 @@ def member_list_type(ctx, member):
 #     return result
 
 
-def desctitle(ctx, text):
-    return StrTree().element("h3", text)
+def desctitle(ctx, text, buffer):
+    buffer.element("h3", text)
 
 
-def sect(ctx, sectnode, depth):
+def sect(ctx, sectnode, depth, buffer):
     ''' sect* nodes '''
 
-    result = StrTree()
     title = sectnode.find("title")
     if title is not None:
-        result.element("h" + str(depth + INITIAL_HEADING_DEPTH), title.text, {
+        buffer.element("h" + str(depth + INITIAL_HEADING_DEPTH), title.text, {
             "id": get_anchor(ctx, sectnode.get("id"))
         }
         )
 
-    result += sectbase(ctx, sectnode)
-    return result
+    sectbase(ctx, sectnode, buffer)
 
 
-def paragraph(ctx, paranode):
+def paragraph(ctx, paranode, buffer):
     ''' para nodes '''
 
-    result = StrTree()
-    result.elem("p")
-    result += markup(ctx, paranode)
-    result.elem("/p")
-    return result
+    buffer.elem("p")
+    markup(ctx, paranode, buffer)
+    buffer.elem("/p")
 
 
-def markup(ctx, node):
+def markup(ctx, node, buffer):
     ''' Markup like nodes '''
 
-    result = StrTree()
     if node is None:
-        return result
+        return
 
     if node.text is not None:
-        result += node.text
+        buffer += node.text
 
     # Traverse children
     for n in node:
-        child_result = builder.elements.write_xml(ctx, n)
-        if child_result is not None:
-            result += child_result
-        else:
-            print("[W1] Not handled: " + n.tag)
-            if n.text is not None:
-                result += n.text
+        builder.elements.write_xml(ctx, n, buffer)
 
         if n.tail is not None:
-            result += n.tail
-
-    return result
+            buffer += n.tail
 
 
-def internal(ctx, internalnode):
+def internal(ctx, internalnode, buffer):
     ''' internal nodes '''
 
     print("Skipping internal data")
-    return StrTree()
 
 
-def sectbase(ctx, node):
-    result = StrTree()
+def sectbase(ctx, node, buffer):
     for n in node:
         if n == node:
             continue
 
         if n.tag == "para":
-            result += paragraph(ctx, n)
+            paragraph(ctx, n, buffer)
         elif n.tag == "sect1":
-            result += sect(ctx, n, 1)
+            sect(ctx, n, 1, buffer)
         elif n.tag == "sect2":
-            result += sect(ctx, n, 2)
+            sect(ctx, n, 2, buffer)
         elif n.tag == "sect3":
-            result += sect(ctx, n, 3)
+            sect(ctx, n, 3, buffer)
         elif n.tag == "sect4":
-            result += sect(ctx, n, 4)
+            sect(ctx, n, 4, buffer)
         elif n.tag == "sect5":
-            result += sect(ctx, n, 5)
+            sect(ctx, n, 5, buffer)
         elif n.tag == "simplesectsep":
-            result += builder.elements.simplesectsep(ctx, n)
+            builder.elements.simplesectsep(ctx, n, buffer)
         elif n.tag == "title":
             # A sect should have been the parent, so it should have been handled
             pass
         elif n.tag == "internal":
-            result += internal(ctx, n)
+            internal(ctx, n, buffer)
         else:
             print("[W2] Not handled: " + n.tag)
 
-    return result
 
-
-def description(ctx, descnode):
-    result = StrTree()
-
+def description(ctx, descnode, buffer):
     # \todo Ugly to have multiple possible types for description objects
     if isinstance(descnode, str):
         # TODO: Doesn't seem to happen
-        result += descnode
-        return result
+        buffer += descnode
+        return
 
     if descnode is not None:
         title = descnode.find("title")
         if title is not None:
-            result += desctitle(ctx, title.text)
+            desctitle(ctx, title.text, buffer)
 
-        result += sectbase(ctx, descnode)
-
-    return result
+        sectbase(ctx, descnode, buffer)
 
 
 # def get_inner_pages(obj):

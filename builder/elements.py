@@ -2,104 +2,98 @@
 
 from .str_tree import StrTree
 import builder.layout
+import xml.etree.ElementTree as ET
+from .writing_context import WritingContext
 
 
-def linebreak(ctx, n):
-    return StrTree().elem("br")
+def linebreak(ctx, n, buffer) -> None:
+    buffer.elem("br")
 
 
-def hruler(ctx, n):
-    return StrTree()
+def hruler(ctx, n, buffer) -> None:
+    pass
 
 
-def preformatted(ctx, n):
-    return StrTree().element("pre", n.text)
+def preformatted(ctx, n, buffer) -> None:
+    buffer.element("pre", n.text)
 
 
-def programlisting(ctx, n):
+def programlisting(ctx, n, buffer) -> None:
     # can add class linenums here if needed
-    result = StrTree()
-    result.element("code", None, {"class": "prettyprint"})
+    buffer.element("code", None, {"class": "prettyprint"})
     for line in n:
         ''' \todo ID '''
-        result += builder.layout.markup(ctx, line)
-        result.element("br")
+        builder.layout.markup(ctx, line, buffer)
+        buffer.element("br")
 
-    result.element("/code")
-    return result
-
-
-def verbatim(ctx, n):
-    return StrTree().html(n.text)
+    buffer.element("/code")
 
 
-def indexentry(ctx, n):
-    return StrTree()
+def verbatim(ctx, n, buffer) -> None:
+    buffer.html(n.text)
 
 
-def orderedlist(ctx, n):
-    return StrTree().element("ol", _doclist(ctx, n))
+def indexentry(ctx, n, buffer) -> None:
+    pass
 
 
-def itemizedlist(ctx, n):
-    return StrTree().element("ul", _doclist(ctx, n))
+def orderedlist(ctx, n, buffer) -> None:
+    buffer.element("ol", _doclist(ctx, n, buffer))
 
 
-def _doclist(ctx, n):
+def itemizedlist(ctx, n, buffer) -> None:
+    buffer.element("ul", _doclist(ctx, n, buffer))
+
+
+def _doclist(ctx, n, buffer) -> None:
     # Guaranteed to only contain listitem nodes
-    result = StrTree()
     for child in n:
         assert child.tag == "listitem"
 
-        result.elem("li")
-        result += builder.layout.markup(ctx, child)
-        result.elem("/li")
-
-    return result
+        buffer.elem("li")
+        builder.layout.markup(ctx, child, buffer)
+        buffer.elem("/li")
 
 
-def simplesect(ctx, n):
-    result = StrTree()
+def simplesect(ctx, n, buffer) -> None:
     kind = n.get("kind")
     title = n.find("title")
-    result.element("div", None, {"class": "simplesect simplesect-" + kind})
+    buffer.element("div", None, {"class": "simplesect simplesect-" + kind})
 
-    result.element("h3")
+    buffer.element("h3")
     if title is not None:
-        result += builder.layout.markup(ctx, title)
+        builder.layout.markup(ctx, title, buffer)
     else:
-        result += kind.title()
+        buffer += kind.title()
 
-    result.element("/h3")
-    result += builder.layout.sectbase(ctx, n)
-    result.element("/div")
-    return result
-
-
-def simplesectsep(ctx, n):
-    return StrTree()
+    buffer.element("/h3")
+    builder.layout.sectbase(ctx, n, buffer)
+    buffer.element("/div")
 
 
-def parameterlist(ctx, n):
+def simplesectsep(ctx, n, buffer) -> None:
+    pass
+
+
+def parameterlist(ctx, n, buffer) -> None:
     ''' Parameter lists have been collected and stored in a more object oriented manner'''
-    return StrTree()
+    pass
 
 
-def title(ctx, n):
+def title(ctx, n, buffer) -> None:
     raise Exception("Title tags should have been handled")
 
 
-def anchor(ctx, n):
-    return builder.layout.ref(ctx, n)
+def anchor(ctx, n, buffer) -> None:
+    builder.layout.ref(ctx, n, buffer)
 
 
-def variablelist(ctx, n):
+def variablelist(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     entries = n.findall("varlistentry")
     items = n.findall("listitem")
     assert len(entries) == len(items)
 
-    result = StrTree()
-    result.elem("ul")
+    buffer.elem("ul")
 
     for i in range(0, len(entries)):
         entry = entries[i]
@@ -109,154 +103,149 @@ def variablelist(ctx, n):
         # refobj = term.find("ref")
 
         assert term is not None
-        result.elem("li")
-        result.element("h4", lambda: builder.layout.markup(ctx, term))
-        result += builder.layout.markup(ctx, item)
-        result.elem("/li")
+        buffer.elem("li")
+        buffer.element("h4", lambda: builder.layout.markup(ctx, term, buffer))
+        builder.layout.markup(ctx, item, buffer)
+        buffer.elem("/li")
 
-    result.elem("/ul")
-    return result
+    buffer.elem("/ul")
 
 
-def table(ctx, n):
-    result = StrTree()
-    result.element("table")
+def table(ctx, n, buffer) -> None:
+    buffer.element("table")
     for row in n:
-        result.element("tr")
+        buffer.element("tr")
         for cell in row:
             th = cell.get("thead") == "yes"
-            result.element("th" if th else "td")
-            result += builder.layout.markup(ctx, cell)
-            result.element("/th" if th else "/td")
-        result.element("/tr")
-    result.element("/table")
-    return result
+            buffer.element("th" if th else "td")
+            builder.layout.markup(ctx, cell, buffer)
+            buffer.element("/th" if th else "/td")
+        buffer.element("/tr")
+    buffer.element("/table")
 
 
-def heading(ctx, n):
-    return StrTree()
+def heading(ctx, n, buffer) -> None:
+    pass
 
 
-def image(ctx, n):
-    result = StrTree()
+def image(ctx, n, buffer) -> None:
     url = ctx.relpath("images/" + n.get("name"))
-    result.element("div", None, {"class": "tinyshadow"})
-    result.element("img", None, {"src": url})
-    result += builder.layout.markup(ctx, n)
-    result.element("/img")
-    result.element("/div")
-    return result
+    buffer.element("div", None, {"class": "tinyshadow"})
+    buffer.element("img", None, {"src": url})
+    builder.layout.markup(ctx, n, buffer)
+    buffer.element("/img")
+    buffer.element("/div")
 
 
-def dotfile(ctx, n):
-    return StrTree()
+def dotfile(ctx, n, buffer) -> None:
+    pass
 
 
-def toclist(ctx, n):
-    return StrTree()
+def toclist(ctx, n, buffer) -> None:
+    pass
 
 
-def xrefsect(ctx, n):
-    return StrTree()
+def xrefsect(ctx, n, buffer) -> None:
+    pass
 
 
-def copydoc(ctx, n):
-    return StrTree()
+def copydoc(ctx, n, buffer) -> None:
+    pass
 
 
-def blockquote(ctx, n):
-    return StrTree()
+def blockquote(ctx, n, buffer) -> None:
+    pass
 
 ##########################
 # docTitleCmdGroup #######
 ##########################
 
 
-def ulink(ctx, n):
-    return StrTree().element("a href='" + n.get("url") + "'", builder.layout.markup(ctx, n))
+def ulink(ctx, n, buffer) -> None:
+    buffer.element("a href='" + n.get("url") + "'", lambda: builder.layout.markup(ctx, n, buffer))
 
 
-def bold(ctx, n):
-    return StrTree().element("b", builder.layout.markup(ctx, n))
+def bold(ctx, n, buffer) -> None:
+    buffer.element("b", lambda: builder.layout.markup(ctx, n, buffer))
 
 
-def emphasis(ctx, n):
-    return bold(ctx, n)
+def emphasis(ctx, n, buffer) -> None:
+    bold(ctx, n, buffer)
 
 
-def computeroutput(ctx, n):
-    return preformatted(ctx, n)
+def computeroutput(ctx, n, buffer) -> None:
+    preformatted(ctx, n, buffer)
 
 
-def subscript(ctx, n):
-    return StrTree()
+def subscript(ctx, n, buffer) -> None:
+    pass
 
 
-def superscript(ctx, n):
-    return StrTree()
+def superscript(ctx, n, buffer) -> None:
+    pass
 
 
-def center(ctx, n):
-    return StrTree().element("center", builder.layout.markup(ctx, n))
+def center(ctx, n, buffer) -> None:
+    buffer.element("center", lambda: builder.layout.markup(ctx, n, buffer))
 
 
-def small(ctx, n):
-    return StrTree().element("small", builder.layout.markup(ctx, n))
+def small(ctx, n, buffer) -> None:
+    buffer.element("small", lambda: builder.layout.markup(ctx, n, buffer))
 
 
-def htmlonly(ctx, n):
-    return verbatim(ctx, n)
+def htmlonly(ctx, n, buffer) -> None:
+    verbatim(ctx, n, buffer)
 
 
 # These should be pass only functions actually
 
 
-def manonly(ctx, n):
-    return StrTree()
+def manonly(ctx, n, buffer) -> None:
+    pass
 
 
-def xmlonly(ctx, n):
-    return StrTree()
+def xmlonly(ctx, n, buffer) -> None:
+    pass
 
 
-def rtfonly(ctx, n):
-    return StrTree()
+def rtfonly(ctx, n, buffer) -> None:
+    pass
 
 
-def latexonly(ctx, n):
-    return StrTree()
+def latexonly(ctx, n, buffer) -> None:
+    pass
 
 
 # May look similar to mdash in a monospace font, but it is not
-def ndash(ctx, n):
-    return StrTree("–")
+def ndash(ctx, n, buffer) -> None:
+    buffer += "–"
 
 
-def mdash(ctx, n):
-    return StrTree("—")
+def mdash(ctx, n, buffer) -> None:
+    buffer += "—"
 
 
 # ...
 
 
-def ref(ctx, n):
-    return builder.layout.ref(ctx, n)
+def ref(ctx, n, buffer) -> None:
+    builder.layout.ref(ctx, n, buffer)
 
 ##########################
 # docTitleCmdGroup #######
 ##########################
 
 
-def para(ctx, n):
-    return StrTree().element("p", builder.layout.markup(ctx, n))
+def para(ctx, n, buffer) -> None:
+    buffer.element("p", lambda: builder.layout.markup(ctx, n, buffer))
 
 
-def sp(ctx, n):
-    return StrTree(" ")
+def sp(ctx, n, buffer) -> None:
+    buffer += " "
 
 
-def highlight(ctx, n):
-    return builder.layout.markup(ctx, n)
+def highlight(ctx, n, buffer) -> None:
+    builder.layout.markup(ctx, n, buffer)
 
 
 xml_mapping = {
@@ -304,6 +293,9 @@ xml_mapping = {
 }
 
 
-def write_xml(ctx, node):
+def write_xml(ctx, node, buffer) -> None:
     f = xml_mapping.get(node.tag)
-    return f(ctx, node) if f is not None else StrTree()
+    if f is not None:
+        f(ctx, node, buffer)
+    else:
+        print("Not handled: " + node.tag)

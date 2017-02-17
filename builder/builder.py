@@ -2,6 +2,7 @@ import jinja2
 from .writing_context import WritingContext
 from .page import PageGenerator
 from .entity_path import EntityPath
+from .str_tree import StrTree
 from importer.entities import ExternalEntity
 
 
@@ -39,7 +40,9 @@ class Builder:
 
         def create_wrapper(key, fun, context):
             def wrapper(*args):
-                return str(fun(context, *args))
+                buffer = StrTree()
+                str(fun(context, *args, buffer))
+                return buffer
             return wrapper
 
         for key, fun in filters.items():

@@ -31,6 +31,7 @@ class StrTree:
         return self
 
     def html(self, s: Union[str, 'StrTree']) -> 'StrTree':
+        assert s
         self.contents.append(s)
         return self
 
@@ -50,7 +51,7 @@ class StrTree:
 
         if c is not None:
             if isinstance(c, types.FunctionType):
-                self.contents.append(c())
+                c()
             else:
                 self.append(c)
 
