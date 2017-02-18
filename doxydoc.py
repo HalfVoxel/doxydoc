@@ -171,6 +171,7 @@ class DoxyDoc:
             "ref_explicit": builder.layout.ref_explicit,
             "ref_entity": builder.layout.ref_entity,
             "match_external_ref": builder.layout.match_external_ref,
+            "log": lambda c, v, b: print(v)
         }
         builder_obj.add_filters(filters)
 
