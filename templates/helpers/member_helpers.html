@@ -60,8 +60,10 @@
 #- endmacro
 
 #- macro breadcrumb(entity)
-    <ul class="breadcrumb">
-        {{ breadcrumb_parent(entity.parent_in_canonical_path()) }}
-        <li class="active">{{ entity.name }}</li>
-    </ul>
+    # if entity.parent_in_canonical_path() is not none
+        <ul class="breadcrumb">
+            {{ breadcrumb_parent(entity.parent_in_canonical_path()) }}
+            <li class="active">{{ entity.name }}</li>
+        </ul>
+    # endif
 #- endmacro
