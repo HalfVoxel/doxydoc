@@ -3,7 +3,7 @@ from os import listdir
 from os.path import isfile, isdir, join
 from progressbar import progressbar
 from importer import Importer
-from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity
+from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity, GroupEntity
 import shutil
 import os
 import builder.layout
@@ -137,20 +137,18 @@ class DoxyDoc:
         generator = builder.page_generator
         classes = [generator.class_page(ent) for ent in entities if isinstance(ent, ClassEntity)]
         examples = [generator.example_page(ent) for ent in entities if isinstance(ent, ExampleEntity)]
+        groups = [generator.group_page(ent) for ent in entities if isinstance(ent, GroupEntity)]
         page_pages = [generator.page_page(ent) for ent in entities if isinstance(ent, PageEntity)]
         namespaces = [generator.namespace_page(ent) for ent in entities if isinstance(ent, NamespaceEntity)]
 
-        special_list = plugins.list_specials.list_specials.define_page(self.importer, builder)
+        lists = plugins.list_specials.list_specials.define_pages(self.importer, builder)
 
-        pages = classes + page_pages + examples + namespaces + [special_list]
+        pages = classes + page_pages + examples + namespaces + groups + lists
 
         # Build lookup from entities to their pages
         entity2page = {e: page for page in pages for e in page.entities}
 
-        index = self.importer.get_entity("indexpage")
-        indexpage = entity2page[index]
-
-        self.create_navbar([special_list])
+        self.create_navbar(lists)
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))

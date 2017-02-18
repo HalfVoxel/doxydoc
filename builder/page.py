@@ -1,7 +1,7 @@
 import os
 from . import layout_helpers
 from typing import List, Set, cast, TYPE_CHECKING
-from importer.entities import Entity, ClassEntity, FileEntity, NamespaceEntity, ExampleEntity, PageEntity
+from importer.entities import Entity, ClassEntity, FileEntity, NamespaceEntity, ExampleEntity, PageEntity, GroupEntity
 from .writing_context import WritingContext
 if TYPE_CHECKING:
     from .builder import Builder
@@ -128,6 +128,10 @@ class PageGenerator:
 
     def file_page(self, entity: FileEntity) -> Page:
         page = self._page_with_entity("file", entity, [cast(Entity, entity)] + entity.sections)
+        return page
+
+    def group_page(self, entity: GroupEntity) -> Page:
+        page = self._page_with_entity("group", entity, [cast(Entity, entity)] + entity.sections)
         return page
 
     def example_page(self, entity: ExampleEntity) -> Page:

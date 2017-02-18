@@ -1,7 +1,7 @@
 # import "helpers/member_helpers.html" as helpers
 
-# macro member_brief_protection(member, bootstrap_protection, link)
-    # if member.kind != "namespace"
+# macro member_brief_protection(member, bootstrap_protection, link, show_protection, depth=0)
+    # if member.kind != "namespace" and member.kind != "group" and member.kind != "special" and show_protection
         <div class="col-md-1 col-xs-2 member-prot">
             # if bootstrap_protection
                 <span class="protection protection-{{member.protection}}"> </span>
@@ -26,7 +26,7 @@
         # set colsmx = 12
     # endif
 
-    <div class="col-md-{{ colsmn }} col-xs-{{ colsmx }} member-list-name {% if member.deprecated %}deprecated{% endif %}">
+    <div class="col-md-{{ colsmn }} col-xs-{{ colsmx }} member-list-name {% if member.deprecated %}deprecated{% endif %} member-depth-{{ depth }}">
         # if link
             {{ member|ref_explicit(member.name, "") }}
         # else

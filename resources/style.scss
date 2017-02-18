@@ -1,4 +1,6 @@
-
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
 
 @mixin border-radius ($radius: 5px) {
     -webkit-border-radius: $radius;
@@ -111,19 +113,6 @@ code {
     margin-left: 2px;
 }
 
-.member-side-prot {
-    position: absolute;
-    left: -75px;
-    width: 70px;
-    text-align: right;
-
-    span {
-        margin-bottom: 3px;
-    }
-    //width: 100px;
-
-}
-
 .empty-section {
     font-size: 0.9em;
     color: #BBB;
@@ -221,6 +210,10 @@ table.member-list-section {
     }
 }
 
+.member-detailed {
+    background: #EEE;
+}
+
 .member-params-detail {
     margin-left: 30px;
     margin-top: 5px;
@@ -243,6 +236,11 @@ table.member-list-section {
     }
 }
 
+.member-side-prot {
+    
+
+}
+
 .protection {
     display: inline;
     padding: .4em .6em .0em .6em;
@@ -256,6 +254,25 @@ table.member-list-section {
     vertical-align: baseline;
     border-radius: .3em;
     background-color: #fc20e6;
+}
+
+.member-side-prot {
+    margin: 5px 5px 5px 0px;
+}
+
+@media (min-width: $screen-sm-min + 140px) {
+    .member-side-prot {
+        margin: 0px;
+        position: absolute;
+        left: -75px;
+        width: 70px;
+        text-align: right;
+
+        span {
+            margin-bottom: 3px;
+        }
+        //width: 100px;
+    }
 }
 
 .member-side-prot {
@@ -302,4 +319,38 @@ table.member-list-section {
 
 a:focus {
     outline: none;
+}
+
+.member-list {
+    list-style-type: none;
+    padding-left: 0px;
+
+    ul {
+        list-style-type: none;
+        padding-left: 0px;
+    }
+}
+
+.member-depth-1 {
+    padding-left: 32px;
+}
+
+.member-depth-2 {
+    padding-left: 52px;
+}
+
+.member-depth-3 {
+    padding-left: 72px;
+}
+
+.member-depth-4 {
+    padding-left: 92px;
+}
+
+.member-depth-5 {
+    padding-left: 112px;
+}
+
+.member-depth-6, .member-depth-7, .member-depth-8 {
+    padding-left: 132px;
 }
