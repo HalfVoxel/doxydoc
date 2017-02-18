@@ -26,12 +26,6 @@ class PageEntity(Entity):
         # detaileddesc
         # innerpage
 
-        title = xml.find("title")
-        if title is not None and title.text is not None:
-            self.name = Entity.formatname(str(title.text))
-        else:
-            self.name = ""
-
         self.innerpages = [ctx.getref(node) for node in xml.findall("innerpage")]
         for page in self.innerpages:
             assert(isinstance(page, PageEntity))

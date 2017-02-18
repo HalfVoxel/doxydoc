@@ -64,22 +64,27 @@ class PageGenerator:
     def reserve_filename(self, filename: str) -> None:
         self.reserved_filenames.add(filename)
 
-    def entity_path(self, entity: Entity) -> str:
-        if hasattr(entity, "parent_in_canonical_path"):
-            path = []
-            ent = entity
-            while ent is not None:
-                path.append(ent)
-                ent = ent.parent_in_canonical_path()
-
-            path.reverse()
-
-            # Join components either with underscores or with slashes
-            separator = '_' if self.builder.settings.flat_file_hierarchy else '/'
-
-            return separator.join([clean_io_name(component.name) for component in path])
+    def entity_path_name(self, entity: Entity) -> str:
+        ''' Name an entity uses in the file system '''
+        if entity.id == "indexpage":
+            return "index"
         else:
-            return clean_io_name(entity.short_name)
+            return entity.name
+
+    def entity_path(self, entity: Entity) -> str:
+        ''' Desired path for an entity in the file system. Does not include the file extension. May change due to conflicts. '''
+        path = []
+        ent = entity
+        while ent is not None:
+            path.append(ent)
+            ent = ent.parent_in_canonical_path()
+
+        path.reverse()
+
+        # Join components either with underscores or with slashes
+        separator = '_' if self.builder.settings.flat_file_hierarchy else '/'
+
+        return separator.join([clean_io_name(self.entity_path_name(component)) for component in path])
 
     def _page(self, template: str, desired_path: str, primary_entity: Entity, entities: List[Entity]) -> Page:
         path = generate_io_safe_name(desired_path, ".html", self.reserved_filenames)
