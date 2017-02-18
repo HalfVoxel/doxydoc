@@ -150,7 +150,7 @@ class DoxyDoc:
         index = self.importer.get_entity("indexpage")
         indexpage = entity2page[index]
 
-        self.create_navbar([indexpage, special_list])
+        self.create_navbar([special_list])
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))

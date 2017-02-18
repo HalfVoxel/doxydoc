@@ -160,6 +160,7 @@ class PageGenerator:
             page=page,
             entity=page.primary_entity,
             state=self.builder.importer,
+            settings=self.builder.settings,
             layout=layout_helpers,
             relpath=relpath,
             plugins=self.builder.plugin_context
