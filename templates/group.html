@@ -1,6 +1,8 @@
 {% extends "main.html" %}
+# import "helpers/member_helpers.html" as helpers
 
 {% block content %}
+	{{ helpers.breadcrumb(entity) }}
 	<h1><span class="compound-kind">{{ compound.kind|title }}</span><span> {{ compound.name|title }}</span></h1>
 
 	{{ compound.briefdescription|description }}

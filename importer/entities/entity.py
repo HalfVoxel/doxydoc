@@ -18,6 +18,9 @@ class Entity:
     def __str__(self):
         return "Entity: " + self.id
 
+    def parent_in_canonical_path(self) -> 'Entity':
+        return None
+
     @staticmethod
     def formatname(name: str) -> str:
         return name.split("::")[-1]

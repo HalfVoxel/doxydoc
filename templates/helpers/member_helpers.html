@@ -51,3 +51,17 @@
          {{- ")" -}}
     </span>
 {% endmacro -%}
+
+#- macro breadcrumb_parent(entity)
+    #- if entity is not none
+        {{- breadcrumb_parent(entity.parent_in_canonical_path()) }}
+        <li>{{- entity|ref_entity }}</li>
+    #- endif
+#- endmacro
+
+#- macro breadcrumb(entity)
+    <ul class="breadcrumb">
+        {{ breadcrumb_parent(entity.parent_in_canonical_path()) }}
+        <li class="active">{{ entity.name }}</li>
+    </ul>
+#- endmacro

@@ -20,7 +20,7 @@ class NamespaceEntity(Entity):
         xml = self.xml
 
         self.innerclasses = [ctx.getref(node) for node in xml.findall("innerclass")]
-        self.innernamespaces = [ctx.getref(node) for node in xml.findall("innernamespaces")]
+        self.innernamespaces = [ctx.getref(node) for node in xml.findall("innernamespace")]
 
         for innerclass in self.innerclasses:
             innerclass.parent = self

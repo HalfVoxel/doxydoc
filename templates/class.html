@@ -6,6 +6,7 @@
 # set bootstrap_protection = True
 
 # macro class_header(entity)
+    {{ helpers.breadcrumb(entity) }}
     <h1>
     <small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span>
     # if entity.inherits_from|length > 0:

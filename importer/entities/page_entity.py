@@ -6,10 +6,13 @@ class PageEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
 
-        self.subpages = []  # type: List[Entity]
-
-        # TODO: Why subpages AND innerpages?
         self.innerpages = []  # type: List[Entity]
+
+        # The page which has this page as an inner page
+        self.parent = None  # type: PageEntity
+
+    def parent_in_canonical_path(self) -> Entity:
+        return self.parent
 
     def read_from_xml(self, ctx: ImporterContext) -> None:
         super().read_from_xml(ctx)
@@ -29,5 +32,6 @@ class PageEntity(Entity):
         else:
             self.name = ""
 
-        self.subpages = [ctx.getref(node) for node in xml.findall("innerpage")]
-        self.innerpages = self.subpages
+        self.innerpages = [ctx.getref(node) for node in xml.findall("innerpage")]
+        for page in self.innerpages:
+            page.parent = self

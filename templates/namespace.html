@@ -6,6 +6,7 @@
 # set bootstrap_protection = True
 
 {% block content %}
+	{{ helpers.breadcrumb(entity) }}
 	<h1><small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span></h1>
 
 	{{ entity.briefdescription|description }}
