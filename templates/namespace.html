@@ -15,47 +15,51 @@
 	## innergroups, innerclassses, innernamespaces
 
 	<div class="member-list">
-		<h2>Namespaces</h2>
-		<table class="table inner-class-list member-list-section table-condensed table-striped">
-			# for n in entity.innernamespaces
-				<tr>
-					<td class="member-name">{{ n|ref_explicit(n.name, "") }}</td>
-					<td class="member-desc">{{ n.briefdescription|description }}</td>
-				</tr>
-			# endfor
-		</table>
+		# if entity.innernamespaces|length > 0
+			<h2>Namespaces</h2>
+			<table class="table inner-class-list member-list-section table-condensed table-striped">
+				# for n in entity.innernamespaces
+					<tr>
+						<td class="member-name">{{ n|ref_explicit(n.name, "") }}</td>
+						<td class="member-desc">{{ n.briefdescription|description }}</td>
+					</tr>
+				# endfor
+			</table>
+		# endif
 
-		<h2>Classes</h2>
-		<table class="table inner-class-list member-list-section table-condensed table-striped">
-			# for n in entity.innerclasses
-				<tr>
-					<td class="member-name">{{ n|ref_explicit(n.name, "") }}</td>
-					<td class="member-desc">{{ n.briefdescription|description }}</td>
-				</tr>
-			# endfor
-		</table>
+		# if entity.innerclasses|length > 0
+			<h2>Classes</h2>
+			<table class="table inner-class-list member-list-section table-condensed table-striped">
+				# for n in entity.innerclasses
+					<tr>
+						<td class="member-name">{{ n|ref_explicit(n.name, "") }}</td>
+						<td class="member-desc">{{ n.briefdescription|description }}</td>
+					</tr>
+				# endfor
+			</table>
+		# endif
 
-    # set sections = layout.get_member_sections(entity, entity.members)
-    # for section in sections if section[1]|length != 0
+		# set sections = layout.get_member_sections(entity, entity.members)
+		# for section in sections if section[1]|length != 0
 
-        <h2>{{ section[0] }}</h2>
-        # set members = section[1]
+		<h2>{{ section[0] }}</h2>
+		# set members = section[1]
 
-        # for member in members
-            # block member_list_item scoped
-            <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
-                {{ member_brief_protection(member, true) }}
-                <div class="col-md-0 col-xs-2"></div>
-                <div class="col-md-6 col-xs-10 member-desc">
-                {{ member.briefdescription|description }}
-                </div>
-            </div>
-            <div class="row" style="display: none;" id="{{ member.path.anchor }}">
-                {{ member_detailed_row(member) }}
-            </div>
-            # endblock
-        # endfor
-    # endfor
+		# for member in members
+			# block member_list_item scoped
+			<div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
+				{{ member_brief_protection(member, true) }}
+				<div class="col-md-0 col-xs-2"></div>
+				<div class="col-md-6 col-xs-10 member-desc">
+				{{ member.briefdescription|description }}
+				</div>
+			</div>
+			<div class="row" style="display: none;" id="{{ member.path.anchor }}">
+				{{ member_detailed_row(member) }}
+			</div>
+			# endblock
+		# endfor
+	# endfor
 	</div>
 
 {% endblock %}
