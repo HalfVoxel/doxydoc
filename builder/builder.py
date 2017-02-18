@@ -4,6 +4,7 @@ from .page import PageGenerator
 from .entity_path import EntityPath
 from .str_tree import StrTree
 from importer.entities import ExternalEntity
+from typing import Dict
 
 
 class Builder:
@@ -36,9 +37,9 @@ class Builder:
             if isinstance(entity, ExternalEntity):
                 entity.path.path = entity.exturl
 
-    def add_filters(self, filters):
+    def add_filters(self, filters: Dict[str, 'function']) -> None:
 
-        def create_wrapper(key, fun, context):
+        def create_wrapper(key: str, fun, context):
             def wrapper(*args):
                 buffer = StrTree()
                 str(fun(context, *args, buffer))

@@ -143,7 +143,7 @@ class PageGenerator:
         dir_in_outdir = os.path.dirname(page.path)
 
         # Relative paths from this page to target
-        def relpath(target):
+        def relpath(target: str) -> str:
             # Absolute path
             if target.startswith("http://") or target.startswith("https://"):
                 return target

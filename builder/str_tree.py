@@ -16,15 +16,15 @@ def paramescape(v: str) -> str:
 
 
 class Reverter():
-    def __init__(self, buffer, tag):
+    def __init__(self, buffer: 'StrTree', tag: str) -> None:
         self.buffer = buffer
         self.tag = tag
 
-    def __enter__(self):
+    def __enter__(self) -> None:
         if self.tag is not None:
             self.buffer.close(self.tag)
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, type, value, traceback) -> None:
         if self.tag is not None:
             self.buffer.open(self.tag)
 
