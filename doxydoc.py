@@ -29,7 +29,7 @@ class DoxyDoc:
     def load_plugins(self) -> None:
 
         if not self.settings.args.quiet:
-            print("Loading Plugins...")
+            print("Loading plugins...")
 
         dirs = ["plugins", "themes"]
 
@@ -38,8 +38,6 @@ class DoxyDoc:
 
             for plugin in plugins:
                 self.settings.template_dirs.append(join(dir, plugin, "templates"))
-
-        print(self.settings.template_dirs)
 
     def read_external(self) -> None:
         if not self.settings.args.quiet:
@@ -109,17 +107,13 @@ class DoxyDoc:
         target_dir = os.path.join(self.settings.out_dir, "images")
         self.copy_resources_dir("input/images", target_dir)
 
-    def read_prefs(self) -> None:
-        if not self.settings.args.quiet:
-            print("Reading resources...")
-
     def find_xml_files(self, path: str) -> List[str]:
         return [join(path, f) for f in listdir(path)
                 if isfile(join(path, f)) and f.endswith(".xml")]
 
     def scan_input(self) -> None:
         if not self.settings.args.quiet:
-            print("Scanning input")
+            print("Scanning input...")
 
         self.importer.read(self.find_xml_files("input/xml"))
 
@@ -133,7 +127,7 @@ class DoxyDoc:
 
     def build_output(self) -> None:
         if not self.settings.args.quiet:
-            print("Building Output...")
+            print("Building output...")
 
         builder = Builder(self.importer, self.plugin_context, self.settings)
         self.create_env(builder)
@@ -190,10 +184,7 @@ class DoxyDoc:
             return
 
         self.load_plugins()
-
         self.copy_resources()
-
-        self.read_prefs()
         self.read_external()
 
         # Finding xml input
