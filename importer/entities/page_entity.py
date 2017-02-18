@@ -6,7 +6,7 @@ class PageEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
 
-        self.innerpages = []  # type: List[Entity]
+        self.innerpages = []  # type: List[PageEntity]
 
         # The page which has this page as an inner page
         self.parent = None  # type: PageEntity
@@ -34,4 +34,5 @@ class PageEntity(Entity):
 
         self.innerpages = [ctx.getref(node) for node in xml.findall("innerpage")]
         for page in self.innerpages:
+            assert(isinstance(page, PageEntity))
             page.parent = self
