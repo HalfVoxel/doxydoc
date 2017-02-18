@@ -134,7 +134,11 @@ def heading(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def image(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    url = ctx.relpath("images/" + n.get("name"))
+    src = n.get("src")
+    if src is None:
+        src = "images/" + n.get("name")
+
+    url = ctx.relpath(src)
     buffer.open("div", {"class": "tinyshadow"})
     buffer.open("img", {"src": url})
     builder.layout.markup(ctx, n, buffer)
