@@ -354,3 +354,12 @@ a:focus {
 .member-depth-6, .member-depth-7, .member-depth-8 {
     padding-left: 132px;
 }
+
+.header-version {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    vertical-align: center;
+    line-height: 50px;
+    color: #777;
+}

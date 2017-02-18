@@ -13,4 +13,5 @@ class Settings:
         self.out_dir = "html"
         self.template_dirs = ["templates"]
         self.title = "A* Pathfinding Project"
+        self.version = "4.0.0"
         self.flat_file_hierarchy = False
