@@ -45,6 +45,18 @@
     {{ entity.detaileddescription|description }}
 
     <div class="member-list">
+        # if entity.inner_classes|length > 0
+            <h2>Inner Types</h2>
+            # for member in entity.inner_classes
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
 
     # set sections = layout.get_member_sections(entity, entity.all_members)
     # for section in sections if section[1]|length != 0
@@ -55,7 +67,7 @@
         # for member in members
             # block member_list_item scoped
             <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
-                {{ member_brief_protection(member, true) }}
+                {{ member_brief_protection(member, true, false) }}
                 <div class="col-md-0 col-xs-2"></div>
                 <div class="col-md-6 col-xs-10 member-desc">
                 {{ member.briefdescription|description }}

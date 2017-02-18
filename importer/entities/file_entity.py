@@ -8,8 +8,8 @@ class FileEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
 
-        self.innerclasses = []  # type: List[Entity]
-        self.innernamespaces = []  # type: List[Entity]
+        self.inner_classes = []  # type: List[Entity]
+        self.inner_namespaces = []  # type: List[Entity]
         self.contents = None  # type: ET.Element
         self.location = None  # type: str # TODO: Unknown location
         # TODO gather_members
@@ -18,8 +18,8 @@ class FileEntity(Entity):
         super().read_from_xml(ctx)
         xml = self.xml
 
-        self.innerclasses = [ctx.getref(node) for node in xml.findall("innerclass")]
-        self.innernamespaces = [ctx.getref(node) for node in xml.findall("innernamespace")]
+        self.inner_classes = [ctx.getref(node) for node in xml.findall("innerclass")]
+        self.inner_namespaces = [ctx.getref(node) for node in xml.findall("innernamespace")]
 
         self.contents = xml.find("programlisting")
 

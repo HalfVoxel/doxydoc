@@ -7,8 +7,8 @@ class NamespaceEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
 
-        self.innerclasses = []  # type: List[ClassEntity]
-        self.innernamespaces = []  # type: List[NamespaceEntity]
+        self.inner_classes = []  # type: List[ClassEntity]
+        self.inner_namespaces = []  # type: List[NamespaceEntity]
 
         self.parent_namespace = None  # type: NamespaceEntity
 
@@ -19,13 +19,13 @@ class NamespaceEntity(Entity):
         super().read_from_xml(ctx)
         xml = self.xml
 
-        self.innerclasses = [ctx.getref(node) for node in xml.findall("innerclass")]
-        self.innernamespaces = [ctx.getref(node) for node in xml.findall("innernamespace")]
+        self.inner_classes = [ctx.getref(node) for node in xml.findall("innerclass")]
+        self.inner_namespaces = [ctx.getref(node) for node in xml.findall("innernamespace")]
 
-        for innerclass in self.innerclasses:
+        for innerclass in self.inner_classes:
             innerclass.parent = self
 
-        for innernamespace in self.innernamespaces:
+        for innernamespace in self.inner_namespaces:
             innernamespace.parent_namespace = self
 
         self.members = gather_members(xml, ctx)

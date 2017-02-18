@@ -8,7 +8,7 @@
 	{{ compound.briefdescription|description }}
 	{{ compound.detaileddescription|description }}
 	
-	## innergroups, innerclassses, innernamespaces
+	## innergroups, innerclassses, inner_namespaces
 
 	<table class="table inner-class-list table-condensed table-striped">
 		# for n in compound.innergroups
@@ -19,7 +19,7 @@
 		#endfor
 	</table>
 	<table class="table inner-class-list table-condensed table-striped">
-		# for n in compound.innerclasses
+		# for n in compound.inner_classes
 			<tr>
 				<td>{{ n|docobjref }}</td>
 				<td>{{ n.briefdescription|description }}</td>
@@ -27,7 +27,7 @@
 		#endfor
 	</table>
 	<table class="table inner-class-list table-condensed table-striped">
-		# for n in compound.innernamespaces
+		# for n in compound.inner_namespaces
 			<tr>
 				<td>{{ n|docobjref }}</td>
 				<td>{{ n.briefdescription|description }}</td>

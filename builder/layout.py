@@ -576,8 +576,8 @@ def description(ctx: WritingContext, descnode, buffer: StrTree) -> None:
 
 #     namespaces = []
 #     gridobjs = []
-#     if hasattr(obj, "innerclasses"):
-#         for obj2 in obj.innerclasses:
+#     if hasattr(obj, "inner_classes"):
+#         for obj2 in obj.inner_classes:
 #             if(obj2.kind == "class" or obj2.kind == "struct") and obj2 not in gridobjs:
 #                 gridobjs.append(obj2)
 #     else:
@@ -585,13 +585,13 @@ def description(ctx: WritingContext, descnode, buffer: StrTree) -> None:
 #             if(obj2.kind == "class" or obj2.kind == "struct") and obj2 not in gridobjs:
 #                 gridobjs.append(obj2)
 
-#     if hasattr(obj, "innernamespaces"):
-#         for ns in obj.innernamespaces:
+#     if hasattr(obj, "inner_namespaces"):
+#         for ns in obj.inner_namespaces:
 #             namespaces.append(ns)
 #     else:
 #         for k, obj2 in Importer._docobjs.iteritems():
 #             if obj2.kind == "namespace" and obj2 not in namespaces:
-#                 if hasattr(obj2, "innerclasses") and len(obj2.innerclasses) > 0:
+#                 if hasattr(obj2, "inner_classes") and len(obj2.inner_classes) > 0:
 #                     namespaces.append(obj2)
 
 #     # Apparently, this manages to sort them by name.
