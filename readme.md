@@ -6,10 +6,12 @@ What this project is aiming to do is to parse that xml data and generate some â€
 
 The project is written in python mainly because of its dynamic nature, making it easy to customize. The performance is decent, it can generate html output from doxygen's xml output in a few seconds for a medium sized project (â‰ˆ40000 lines of code).
 
-It has currently only been tested with source code C#.
+It has currently only been tested with C# source code.
 
 Example output:
 ![example](/docs/example.png?raw=true "Example Output")
+
+A live demo can be found at: http://arongranberg.com/astar/docs_3.8_new
 
 ## Dependencies
 - jinja2
