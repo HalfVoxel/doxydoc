@@ -1,340 +1,290 @@
-import xml.etree.cElementTree as ET
-from doxybase import *
-import doxyext
+# from doxybase import *
 from os import listdir
-from os.path import isfile, isdir, join, splitext
-from progressbar import *
-from doxycompound import *
+from os.path import isfile, isdir, join
+from progressbar import progressbar
+from importer import Importer
+from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity, GroupEntity, MemberEntity
 import shutil
 import os
-import imp
-import doxytiny
-import doxylayout
-import doxyspecial
+import builder.layout
+from builder import Builder, Page, WritingContext, StrTree
+import builder.settings
+from subprocess import call
+import json
+from typing import Any, List
+# import doxyspecial
 import argparse
-import sys
+import plugins.list_specials.list_specials
+import plugins.navbar.navbar
 
-def try_call_function(name, arg):
-    try:
-        methodToCall = getattr(doxyext, name)
-    except AttributeError:
-        return None, False
 
-    result = methodToCall(arg)
-    return result, True
+class DoxyDoc:
 
-def load_plugins():
+    def __init__(self) -> None:
+        self.importer = Importer()
+        self.settings = builder.settings.Settings()
+        self.settings.out_dir = "html"
+        self.settings.template_dirs = ["templates"]
+        self.plugin_context = {}  # type: Dict[str,Any]
 
-    if not DocSettings.args.quiet:
-        print("Loading Plugins...")
+    def load_plugins(self) -> None:
 
-    dirs = ["plugins", "themes"]
+        if not self.settings.args.quiet:
+            print("Loading plugins...")
 
-    for dir in dirs:
-        plugList = [f for f in listdir(dir) if isdir(join(dir, f))]
+        dirs = ["plugins", "themes"]
 
-        for moduleName in plugList:
-            mFile, mPath, mDescription = imp.find_module(os.path.basename(moduleName), [dir])
-            mObject = imp.load_module(moduleName, mFile, mPath, mDescription)
+        for dir in dirs:
+            plugins = [f for f in listdir(dir) if isdir(join(dir, f))]
 
-            if DocSettings.args.verbose:
-                print("Loading Theme/Plugin: " + moduleName)
+            for plugin in plugins:
+                self.settings.template_dirs.append(join(dir, plugin, "templates"))
 
-            try:
-                obj = getattr(mObject, "tiny")
+    def read_external(self) -> None:
+        if not self.settings.args.quiet:
+            print("Reading exteral...")
 
-                if DocSettings.args.verbose:
-                    print("\tLoading Tiny Overrides...")
-                for k, v in obj.__dict__.iteritems():
-                    if not k.startswith("_"):
-                        if (hasattr(doxytiny, k)):
-                            setattr(doxytiny, "_base_" + k, getattr(doxytiny, k))
-                        setattr(doxytiny, k, v)
-            except AttributeError:
-                pass
+        try:
+            f = open("external.csv")
+        except:
+            print("Could not read external.csv")
 
-            try:
-                obj = getattr(mObject, "layout")
-                if DocSettings.args.verbose:
-                    print("\tLoading Layout Overrides...")
-                for k, v in obj.__dict__.iteritems():
-                    if not k.startswith("_"):
-                        if (hasattr(doxylayout, k)):
-                            setattr(doxylayout, "_base_" + k, getattr(doxylayout, k))
-                        setattr(doxylayout, k, v)
-            except AttributeError:
-                pass
+        for line in f:
+            arr = line.split(",")
+            if len(arr) >= 2:
+                name = arr[0].strip()
+                url = arr[1].strip()
+                obj = ExternalEntity(url)
+                obj.id = "__external__" + name
+                obj.kind = "external"
+                obj.name = name
+                self.importer._add_docobj(obj)
 
-            try:
-                obj = getattr(mObject, "compound")
-                if DocSettings.args.verbose:
-                    print("\tLoading Compound Overrides...")
-                for k, v in obj.__dict__.iteritems():
-                    if not k.startswith("_"):
-                        if (hasattr(doxycompound, k)):
-                            setattr(doxycompound, "_base_" + k, getattr(doxycompound, k))
-                        setattr(doxycompound, k, v)
-            except AttributeError:
-                pass
+        f.close()
 
-def read_external():
-    if not DocSettings.args.quiet:
-        print("Reading exteral...")
+    def copy_resources_dir(self, source_dir: str, target_dir: str) -> None:
+        try:
+            for root, dirs, files in os.walk(source_dir):
+                dstroot = root.replace(source_dir + "/", "").replace(source_dir, "")
 
-    try:
-        f = open("external.csv")
-    except:
-        print "Noes"
-
-    for line in f:
-        arr = line.split(",")
-        if len(arr) >= 2:
-            name = arr[0].strip()
-            url = arr[1].strip()
-            obj = DocObj()
-            obj.id = "__external__" + name
-            obj.kind = "external"
-            obj.name = name
-            obj.exturl = url
-            DocState.add_docobj(obj)
-
-    f.close()
-
-def test_id_ref(path):
-
-    dom = ET.parse(path)
-
-    root = dom.getroot()
-
-    refs = root.findall(".//*[@refid]")
-    for i in range(1, len(refs)):
-        ref = refs[i]
-        progressbar(i + 1, len(refs))
-
-        #id = ref.get("refid")
-        refobj = ref.get("ref")
-        assert refobj
-        #print("Referenced " + refobj.name)
-
-def copy_resources():
-    if not DocSettings.args.quiet:
-        print("Copying resources...")
-
-    try:
-        plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
-        for moduleName in plugList:
-            resbase = os.path.join(os.path.join("themes", moduleName), "resources")
-            for root, dirs, files in os.walk(resbase):
-                dstroot = root.replace(resbase + "/", "")
-                dstroot = dstroot.replace(resbase, "")
-
+                target_dir = os.path.join(target_dir, dstroot)
                 try:
-                    os.makedirs(os.path.join("html", dstroot))
+                    os.makedirs(target_dir)
                 except:
                     pass
 
                 for fn in files:
-                    fn2 = os.path.join(root, fn)
-                    shutil.copy2(fn2, os.path.join(os.path.join("html", dstroot), fn))
-    except OSError:
-        print("Error while copying theme resources")
+                    source_path = os.path.join(root, fn)
+                    target_path = os.path.join(target_dir, fn)
 
-    try:
-        resbase = "resources"
-        for root, dirs, files in os.walk(resbase):
-            dstroot = root.replace(resbase + "/", "")
-            dstroot = dstroot.replace(resbase, "")
+                    if source_path.endswith(".scss"):
+                        target_path = target_path.replace(".scss", ".css")
+                        # Process scss files using sass
+                        call(["sass", os.path.realpath(source_path), os.path.realpath(target_path)])
+                    else:
+                        shutil.copy2(source_path, target_path)
 
-            try:
-                os.makedirs(os.path.join("html", dstroot))
-            except:
-                pass
+                # Copy subdirectories
+                for subdir in dirs:
+                    source_subdir = os.path.join(source_dir, subdir)
+                    target_subdir = os.path.join(target_dir, subdir)
+                    self.copy_resources_dir(source_subdir, target_subdir)
+        except OSError as e:
+            print("Error while copying resources: " + str(e))
 
-            for fn in files:
-                fn2 = os.path.join(root, fn)
-                shutil.copy2(fn2, os.path.join(os.path.join("html", dstroot), fn))
+    def copy_resources(self) -> None:
+        if not self.settings.args.quiet:
+            print("Copying resources...")
 
-        #shutil.copytree("resources", "html")
-    except OSError:  # python >2.5
-        print("No resources directory found")
-        raise
+        target_dir = os.path.join(self.settings.out_dir, "resources")
 
-def read_prefs():
+        self.copy_resources_dir("resources", target_dir)
 
-    if not DocSettings.args.quiet:
-        print ("Reading resources...")
-
-    header = None
-    footer = None
-
-    try:
-        plugList = [f for f in listdir("themes") if isdir(join("themes", f))]
-        for moduleName in plugList:
+        themes = [f for f in listdir("themes") if isdir(join("themes", f))]
+        for moduleName in themes:
             resbase = os.path.join(os.path.join("themes", moduleName), "resources")
-            if os.path.exists(os.path.join(resbase, "header.html")):
-                header = file(os.path.join(resbase, "header.html"))
+            self.copy_resources_dir(resbase, target_dir)
 
-            if os.path.exists(os.path.join(resbase, "footer.html")):
-                footer = file(os.path.join(resbase, "footer.html"))
-    except OSError:
-        print ("Error reading theme header and footer")
+        target_dir = os.path.join(self.settings.out_dir, "images")
+        self.copy_resources_dir("input/images", target_dir)
 
-    if os.path.exists("resources/header.html"):
-        header = file("resources/header.html")
+    def find_xml_files(self, path: str) -> List[str]:
+        return [join(path, f) for f in listdir(path)
+                if isfile(join(path, f)) and f.endswith(".xml")]
 
-    if os.path.exists("resources/footer.html"):
-        footer = file("resources/footer.html")
+    def scan_input(self) -> None:
+        if not self.settings.args.quiet:
+            print("Scanning input...")
 
-    if header is None:
-        print ("Could not find a header.html file in either 'resources' or a theme's 'resources' folder")
-        sys.exit(1)
+        self.importer.read(self.find_xml_files("input/xml"))
 
-    if footer is None:
-        print ("Could not find a footer.html file in either 'resources' or a theme's 'resources' folder")
-        sys.exit(1)
+    def create_navbar(self, pages: List[Page]) -> None:
+        navbar = plugins.navbar.navbar.Navbar()
 
-    DocSettings.header = header.read()
-    header.close()
+        for page in pages:
+            navbar.add(page)
 
-    DocSettings.footer = footer.read()
-    footer.close()
+        self.plugin_context["navbar"] = navbar
 
-def scan_input():
-    filenames = [f for f in listdir("xml") if isfile(join("xml", f))]
+    def build_output(self) -> None:
+        if not self.settings.args.quiet:
+            print("Building output...")
 
-    if not DocSettings.args.quiet:
-        print("Scanning input")
+        builder = Builder(self.importer, self.plugin_context, self.settings)
+        self.create_env(builder)
 
-    compounds = DocState.input_xml = []
-    roots = DocState.roots = []
+        entities = self.importer.entities
 
-    for i in xrange(0, len(filenames)):
-        fname = filenames[i]
+        generator = builder.page_generator
+        classes = [generator.class_page(ent) for ent in entities if isinstance(ent, ClassEntity)]
+        examples = [generator.example_page(ent) for ent in entities if isinstance(ent, ExampleEntity)]
+        groups = [generator.group_page(ent) for ent in entities if isinstance(ent, GroupEntity)]
+        page_pages = [generator.page_page(ent) for ent in entities if isinstance(ent, PageEntity)]
+        namespaces = [generator.namespace_page(ent) for ent in entities if isinstance(ent, NamespaceEntity)]
 
-        progressbar(i + 1, len(filenames))
+        lists = plugins.list_specials.list_specials.define_pages(self.importer, builder)
 
-        try:
-            extension = splitext(fname)[1]
+        pages = classes + page_pages + examples + namespaces + groups + lists
 
-            if extension != ".xml":
-                continue
+        # Build lookup from entities to their pages
+        entity2page = {e: page for page in pages for e in page.entities}
 
-            dom = ET.parse(join("xml", fname))
+        self.create_navbar(lists)
 
-            root = dom.getroot()
+        for i, page in enumerate(pages):
+            progressbar(i + 1, len(pages))
+            # print("Rendering entity " + page.primary_entity.name)
+            generator.generate(page)
 
-            roots.append(root)
+        search_items = []
+        for ent in entities:
+            if isinstance(ent, ClassEntity):
+                search_items.append({
+                    "url": ent.path.full_url(),
+                    "name": ent.name,
+                    "fullname": ent.name,
+                    "boost": self.search_boost(None, ent),
+                })
 
-            compound = root.find("compounddef")
+                for m in ent.all_members:
+                    if m.name == ent.name:
+                        # Probably a constructor. Ignore those in the search results
+                        continue
 
-            assert root is not None, "Root is None"
-            assert dom is not None, "Dom is None"
+                    if m.defined_in_entity != ent:
+                        # Inherited member, ignore in search results
+                        continue
 
-            if compound is not None:
-                compounds.append(compound)
-                DocState.register_compound(compound)
-        except Exception as e:
-            print(fname)
-            raise e
+                    search_item = {
+                        "url": m.path.full_url(),
+                        "name": m.name,
+                        "fullname": self.search_full_name(ent, m),
+                        "boost": self.search_boost(ent, m),
+                    }
+                    search_items.append(search_item)
 
-def process_references():
-    if not DocSettings.args.quiet:
-        print("Processing References...")
+            if isinstance(ent, PageEntity):
+                search_items.append({
+                    "url": ent.path.full_url(),
+                    "name": ent.name,
+                    "fullname": ent.name,
+                    "boost": 1,
+                })
 
-    roots = DocState.roots
+            if isinstance(ent, GroupEntity):
+                search_items.append({
+                    "url": ent.path.full_url(),
+                    "name": ent.name,
+                    "fullname": ent.name,
+                    "boost": 1,
+                })
 
-    i = 0
-    for i in xrange(0, len(roots)):
-        progressbar(i + 1, len(roots))
+        f = open("html/search_data.json", "w")
+        f.write(json.dumps(search_items))
+        f.close()
 
-        process_references_root(roots[i])
+    def search_full_name(self, parent: ClassEntity, ent: MemberEntity) -> str:
+        result = parent.name + "." + ent.name
+        if ent.hasparams:
+            params = []
+            for param in ent.params:
+                ctx = WritingContext(self.importer).with_link_stripping()
+                buffer = StrTree()
+                builder.layout.markup(ctx, param.type, buffer)
+                params.append(str(buffer).replace(" ", ""))
 
-def process_compounds():
-    if not DocSettings.args.quiet:
-        print("Processing Compounds...")
+            result += "(" + ",".join(params) + ")"
+        return result
 
-    compounds = DocState.input_xml
+    def search_boost(self, parent: Entity, ent: Entity) -> float:
+        boost = 100
+        if isinstance(ent, ClassEntity):
+            boost *= 2.0
+        elif isinstance(ent, NamespaceEntity):
+            boost *= 1.5
+        elif isinstance(ent, PageEntity):
+            boost *= 2.0
+        elif isinstance(ent, ExternalEntity):
+            boost *= 0.5
 
-    i = 0
-    for compound in compounds:
-        progressbar(i + 1, len(compounds))
+        if ent.protection == "private":
+            boost *= 0.5
+        elif ent.protection == "package":
+            boost *= 0.6
+        elif ent.protection == "protected":
+            boost *= 0.8
 
-        gather_compound_doc(compound)
-        i += 1
+        return boost
 
-def build_compound_output():
-    if not DocSettings.args.quiet:
-        print("Building Output...")
+    def create_env(self, builder_obj: Builder) -> None:
+        filters = {
+            "markup": builder.layout.markup,
+            "description": builder.layout.description,
+            "linked_text": builder.layout.linked_text,
+            "ref_explicit": builder.layout.ref_explicit,
+            "ref_entity": builder.layout.ref_entity,
+            "match_external_ref": builder.layout.match_external_ref,
+            "log": lambda c, v, b: print(v)
+        }
+        builder_obj.add_filters(filters)
 
-    pages = DocState.pages
+    def generate(self, args) -> None:
 
-    i = 0
-    for page in pages:
-        progressbar(i + 1, len(pages))
+        self.settings.args = args
 
-        generate_compound_doc(page)
-        i += 1
+        args.verbose = args.verbose and (not args.quiet)
 
-def main():
+        if self.settings.args.verbose:
+            print("Running...")
 
-    
+        if args.resources:
+            self.load_plugins()
+            self.copy_resources()
+            return
 
-    # Set default encoding to UTF-8 to avoid errors when docs have unusual characters
-    reload(sys)
-    sys.setdefaultencoding('UTF-8')
+        self.load_plugins()
+        self.copy_resources()
+        self.read_external()
 
-    parser = argparse.ArgumentParser(description='Build the A* Pathfinding Project Packages.')
+        # Finding xml input
+        self.scan_input()
+
+        # doxyspecial.gather_specials()
+
+        # Building output
+        self.build_output()
+
+        # doxyspecial.build_specials()
+
+        # Done
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Generate HTML from Doxygen\'s XML output')
     parser.add_argument("-r", "--resources", help="Copy Resources Only", action="store_true")
     parser.add_argument("-v", "--verbose", help="Verbose output", action="store_true")
     parser.add_argument("-q", "--quiet", help="Quiet output", action="store_true")
 
     args = parser.parse_args()
 
-    DocSettings.args = args
-
-    args.verbose = args.verbose and (not args.quiet)
-
-    if DocSettings.args.verbose:
-        print("Running...")
-
-    if args.resources:
-        load_plugins()
-        copy_resources()
-        return
-        
-    #filenames = ["xml/class_a_i_path.xml"]
-
-    ## Events:
-    # 0    - 999    Initializaton
-    # 1000 - 1999   Reading input
-    # 2000 - 2999   Structuring data
-    # 3000 - 4000   Building output
-    #
-    DocState.add_event(200, load_plugins)
-
-    DocState.add_event(400, copy_resources)
-
-    DocState.add_event(600, read_prefs)
-    DocState.add_event(700, read_external)
-
-    DocState.add_event(1000, scan_input)
-
-    DocState.add_event(2000, process_references)
-
-    DocState.add_event(2300, process_compounds)
-    DocState.add_event(2340, doxyspecial.gather_specials)
-
-    DocState.add_event(2500, pre_output)
-
-    DocState.add_event(3000, build_compound_output)
-
-    DocState.add_event(3100, doxyspecial.build_specials)
-
-    # Progress through the event heap until everything has been done
-    while(DocState.next_event()):
-        pass
-
-    # Done
-
-if __name__ == "__main__":
-    main()
+    DoxyDoc().generate(args)

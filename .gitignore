@@ -1,7 +1,7 @@
 *.pyc
 html
 html2
-xml
+input
 test
 .sass-cache
 .DS_STORE

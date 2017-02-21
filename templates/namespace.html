@@ -1,0 +1,66 @@
+# extends "main.html"
+# import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed_row
+
+# set bootstrap_protection = True
+
+{% block content %}
+	{{ helpers.breadcrumb(entity) }}
+	<h1><small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span></h1>
+
+	{{ entity.briefdescription|description }}
+	{{ entity.detaileddescription|description }}
+
+	## innergroups, innerclassses, innernamespaces
+
+	<div class="member-list">
+        # if entity.inner_namespaces|length > 0
+            <h2>Namespaces</h2>
+            # for member in entity.inner_namespaces
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
+
+        # if entity.inner_classes|length > 0
+            <h2>Classes</h2>
+            # for member in entity.inner_classes
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
+
+		# set sections = layout.get_member_sections(entity, entity.members)
+		# for section in sections if section[1]|length != 0
+			<h2>{{ section[0] }}</h2>
+			# set members = section[1]
+
+			# for member in members
+				# block member_list_item scoped
+				<div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
+					{{ member_brief_protection(member, true, false) }}
+					<div class="col-md-0 col-xs-2"></div>
+					<div class="col-md-6 col-xs-10 member-desc">
+					{{ member.briefdescription|description }}
+					</div>
+				</div>
+				<div class="row member-detailed" style="display: none;" id="{{ member.path.anchor }}">
+					{{ member_detailed_row(member) }}
+				</div>
+				# endblock
+			# endfor
+		# endfor
+	</div>
+
+{% endblock %}

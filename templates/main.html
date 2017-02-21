@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Documentation</title>
+    <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/bootstrap.css") }}'>
+    <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/prettify.css") }}'>
+    <link rel='stylesheet' type='text/css' href='{{ relpath("resources/style.css") }}'>
+    <script type="text/javascript">var pathToRoot = "{{ relpath('a')[0:-1] }}"; console.log(pathToRoot);</script>
+</head>
+    <body>
+        <div class="container">
+            # include "navbar.html" ignore missing
+            {% block content %}{% endblock %}
+            # include "footer.html" ignore missing
+        </div>
+        <script src='{{ relpath("resources/js/jquery.js") }}'></script>
+        <script src='{{ relpath("resources/js/bootstrap.min.js") }}'></script>
+        <script src='{{ relpath("resources/js/prettify.js") }}'></script>
+        <script src='https://cdn.jsdelivr.net/fuse/2.5.0/fuse.min.js'></script>
+        <script src='{{ relpath("resources/js/elasticlunr.js") }}'></script>
+        <script src='{{ relpath("resources/docs.js") }}'></script>
+    </body>
+</html>

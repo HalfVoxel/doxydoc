@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1>{{ entity.name }}</h1>
+
+	<table class="table inner-class-list table-condensed table-striped">
+
+		# for n in entity.subpages
+			<tr>
+				<td>{{ n|ref_entity }}</td>
+				<td class="member-desc">{{ n.briefdescription|description }}</td>
+			</tr>
+		#endfor
+	</table>
+{% endblock %}

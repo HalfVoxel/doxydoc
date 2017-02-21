@@ -1,0 +1,82 @@
+# import "helpers/member_helpers.html" as helpers
+
+# macro member_detailed_row(member)
+    <div class="col-md-12">
+    {{ member_detailed_header(member, true) }}
+
+    # if member.members|length > 0
+        <table class="member-params-detail">
+        # for m in member.members
+            <tr>
+            <td><p class="param-name">{{ m.name }}</p></td>
+            <td>{{ m.briefdescription|description }}
+            {{ m.detaileddescription|description }}</td>
+            </tr>
+        # endfor
+        </table>
+    # endif
+    {{ member.briefdescription|description }}
+    {{ member.detaileddescription|description }}
+    </div>
+# endmacro
+
+# macro member_detailed_header(member, bootstrap_protection)
+    # if bootstrap_protection
+        <div class="member-side-prot">
+        <span class="protection protection-{{member.protection}}">{{ member.protection|title }}</span>
+
+        # if member.static:
+            <span class="protection protection-static">Static</span>
+        # endif
+        # if member.abstract:
+            <span class="protection protection-abstract">Abstract</span>
+        # endif
+        # if member.readonly:
+            <span class="protection protection-readonly">Readonly</span>
+        # endif
+        </div>
+    #endif
+
+    <h5 style="font-family: monospace;">
+    # if not bootstrap_protection
+        {% if member.protection %}{{ member.protection|title }}{%endif %}
+        {% if member.readonly %}readonly{%endif%}
+        {% if member.override %}{{ member.override }}{%endif%}
+        {% if member.static %}static{%endif%}
+    # endif
+
+    {{ member.type|linked_text }}
+
+    <span class="member-name">{{ member.name }}</span>
+
+    # if member.hasparams
+        {{ param_description_list(member, true) }}
+    # endif
+    </h5>
+# endmacro
+
+
+## <span "data-original-title"="{{ param.detaileddescription|description_no_links }}">{{ param.name }}</span>
+
+{%- macro member_parameter_name(param) %}
+    <td><p class="param-name">{{ param.name }}</p></td>
+    #- if param.detaileddescription
+        <td>{{ param.detaileddescription|description }}</td>
+    #- else
+        <td></td>
+    #- endif
+{% endmacro -%}
+
+{%- macro param_description_list(member, write_type) %}
+    <span>(</span>
+    {%- if member.params|length > 0 %}
+        <table class="member-params-detail">
+            {%- for param in member.params -%}
+                <tr>
+                {% if write_type %}<td><p>{{ param.type|linked_text }}</p></td>{% endif %}{{- member_parameter_name(param) }}
+                </tr>
+            {%- endfor %}
+        </table>
+    {% endif -%}
+    <span>)</span>
+{% endmacro -%}

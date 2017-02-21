@@ -1,0 +1,156 @@
+# extends "main.html"
+# import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed_row
+
+# set bootstrap_protection = True
+
+# macro class_header(entity)
+    {{ helpers.breadcrumb(entity) }}
+    <h1>
+    <small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span>
+    # if entity.inherits_from|length > 0:
+        <small>Extends
+        # set comma = joiner(", ")
+        #- for e in entity.inherits_from
+            {{- comma() }}
+            #- if e.entity is not none
+                {{- e.entity|ref_explicit(e.name, none) }}
+            #- else
+                {{- e.name|match_external_ref }}
+            #- endif
+        #- endfor
+        </small>
+    # endif
+    </h1>
+
+    <div class="member-side-prot">
+    <span class="protection protection-{{entity.protection}}">{{ entity.protection|title }}</span>
+
+    # if entity.static:
+        <span class="protection protection-static">Static</span>
+    # endif
+    # if entity.abstract:
+        <span class="protection protection-abstract">Abstract</span>
+    # endif
+    # if entity.readonly:
+        <span class="protection protection-readonly">Readonly</span>
+    # endif
+    </div>
+# endmacro
+
+# block content
+    {{ class_header(entity) }}
+    {{ entity.briefdescription|description }}
+    {{ entity.detaileddescription|description }}
+
+    <div class="member-list">
+        # if entity.inner_classes|length > 0
+            <h2>Inner Types</h2>
+            # for member in entity.inner_classes
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
+
+    # set sections = layout.get_member_sections(entity, entity.all_members)
+    # for section in sections if section[1]|length != 0
+
+        <h2>{{ section[0] }}</h2>
+        # set members = section[1]
+
+        # for member in members
+            # block member_list_item scoped
+            <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
+                {{ member_brief_protection(member, true, false) }}
+                <div class="col-md-0 col-xs-2"></div>
+                <div class="col-md-6 col-xs-10 member-desc">
+                {{ member.briefdescription|description }}
+                </div>
+            </div>
+            <div class="row member-detailed" style="display: none;" id="{{ member.path.anchor }}">
+                {{ member_detailed_row(member) }}
+            </div>
+            # endblock
+        # endfor
+    # endfor
+
+    # if false
+    # for section in sections if section[1]|length != 0
+        <div class="member-sec">
+            <h2>{{ section[0] }}</h2>
+
+            # set members = section[1]
+            # for member in members if not member.hidden
+
+                # block member_item scoped
+
+                    <div class="memberdef" id="{{ member.path.anchor }}">
+                    # if bootstrap_protection
+                        <div class="member-side-prot">
+                        # if member.protection is not none:
+                            # set labelStyle = ""
+                        # endif
+                        # if member.protection == "public":
+                            # set labelStyle = "label-success"
+                        # elif member.protection == "private":
+                            # set labelStyle = "label-inverse"
+                        # elif member.protection == "protected":
+                            # set labelStyle = "label-warning"
+                        # elif member.protection == "package":
+                            # set labelStyle = "label-info"
+                        # endif
+                        <span class="label {{labelStyle}}">{{ member.protection|title }}</span>
+
+                        # if member.readonly:
+                            <span class="label label-warning">Readonly</span>
+                        # endif
+                        # if member.static:
+                            <span class="label label-info">Static</span>
+                        # endif
+                        </div>
+                    #endif
+
+                    <h3>
+                        # if not bootstrap_protection
+                            {% if member.protection %}{{ member.protection|title }}{%endif %}
+                            {% if member.readonly %}readonly{%endif%}
+                            {% if member.override %}{{ member.override }}{%endif%}
+                            {% if member.static %}static{%endif%}
+                        # endif
+
+                        {{ member.type|linked_text }}
+
+                        <span class="member-name">{{ member.name }}</span>
+
+                        # if member.hasparams
+                            # set delim = joiner(",")
+                            <span class="member-params">
+                                 (
+                                 # for param in member.params
+                                    {{ delim () }}
+                                    {{ param.type|linked_text}}
+                                    {{ helpers.member_parameter_name(param) }}
+                                 # endfor
+                                 )
+                            </span>
+                        # endif
+                    </h3>
+                    {{ member.briefdescription|description }}
+                    {{ member.detaileddescription|description }}
+
+                    </div>
+                # endblock
+            # endfor
+        </div>
+    # endfor
+    # endif
+
+    </div>
+
+# endblock

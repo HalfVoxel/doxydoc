@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+# import "helpers/member_helpers.html" as helpers
+
+{% block content %}
+	{{ helpers.breadcrumb(entity) }}
+	<h1>{{ entity.name|title }}</h1>
+
+	{{ entity.briefdescription|description }}
+	{{ entity.detaileddescription|description }}
+
+{% endblock %}

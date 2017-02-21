@@ -1,11 +1,11 @@
 import sys
-from doxysettings import DocSettings
 
 progressbar_counter = 0
 
+
 def progressbar(done, total):
-    if DocSettings.args.quiet:
-        return
+    # if DocSettings.args["quiet"]:
+    #    return
 
     global progressbar_counter
     progressbar_counter += 1
@@ -16,9 +16,9 @@ def progressbar(done, total):
 
     tail = " [" + str(done) + "/" + str(total) + "]"
 
-    consoleMargin = 20
-    maxDot = width - len(tail) - consoleMargin
-    for x in range(0, done * maxDot / total):
+    console_margin = 20
+    max_dot = width - len(tail) - console_margin
+    for x in range(0, done * max_dot // total):
         sys.stdout.write('*')
 
     sys.stdout.write(tail)

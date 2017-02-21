@@ -1,4 +1,6 @@
-
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
 
 @mixin border-radius ($radius: 5px) {
     -webkit-border-radius: $radius;
@@ -56,7 +58,7 @@ table.compound-view tr {
         border-width: 1px;
         border-color: #FFF;
         height: 60px;
-        
+
         background-color: #EEE;
         text-align: center;
         padding: 5px;
@@ -75,6 +77,12 @@ table.compound-view tr {
 
 img {
     border-radius: 5px;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    max-height: 800px;
+    display: block;
 }
 
 code {
@@ -103,19 +111,6 @@ code {
 .label {
     margin-right: 2px;
     margin-left: 2px;
-}
-
-.member-side-prot {
-    position: absolute;
-    left: -75px;
-    width: 70px;
-    text-align: right;
-
-    span {
-        margin-bottom: 3px;
-    }
-    //width: 100px;
-
 }
 
 .empty-section {
@@ -164,10 +159,31 @@ code {
 .simplesect-rcs                             { border-color: #505050; }
 .simplesect-see                             { border-color: #0BAA0B; }
 
+// xrefsects
+.simplesect-deprecated                      { border-color: #303030; }
 
-.member-list h2 {
-    font-size: 2em;
-    line-height: 1.2em;
+.member-list {
+    .member-list-name {
+        color: #337ab7;
+        font-family: monospace;
+    }
+}
+
+.member-prot {
+    white-space: nowrap;
+}
+
+.member-list-item-header {
+    padding-top: 5px;
+    padding-bottom: 1px;
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+.member-list-item-header:focus, .member-list-item-header:hover {
+    background-color: rgba(0,0,0,0.05)
 }
 
 table.member-list-section {
@@ -177,9 +193,6 @@ table.member-list-section {
         padding-bottom: 0.1em;
     }
 
-    .member-prot {
-        white-space: nowrap;
-    }
     .member-desc {
         width: 100%;
     }
@@ -195,4 +208,213 @@ table.member-list-section {
         line-height: 1.5em;
         vertical-align: center;
     }
+}
+
+.member-detailed {
+    background: #EEE;
+}
+
+.member-params-detail {
+    margin-left: 30px;
+    margin-top: 5px;
+
+    td, th {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        vertical-align: top;
+
+        p {
+            margin: 0 0 5px;
+        }
+    }
+
+    .param-name {
+        color: #000;
+        font-weight: bold;
+    }
+}
+
+.member-side-prot {
+    
+
+}
+
+.protection {
+    display: inline;
+    padding: .4em .6em .0em .6em;
+    margin-right: .2em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .3em;
+    background-color: #fc20e6;
+}
+
+.member-side-prot {
+    margin: 5px 5px 5px 0px;
+}
+
+@media (min-width: $screen-sm-min + 140px) {
+    .member-side-prot {
+        margin: 0px;
+        position: absolute;
+        left: -75px;
+        width: 70px;
+        text-align: right;
+
+        span {
+            margin-bottom: 3px;
+        }
+        //width: 100px;
+    }
+}
+
+.member-side-prot {
+    line-height: 50%;
+
+    .protection {
+        display: inline-block;
+        padding: .4em .6em .4em .6em;
+    }
+}
+
+.deprecated {
+    text-decoration: line-through;
+    text-decoration-color: #555;
+}
+
+.protection-public {
+    background-color: #5cb85c;
+}
+
+.protection-private {
+    background-color: #666666;
+}
+
+.protection-protected {
+    background-color: #c1c1c1;
+}
+
+.protection-package {
+    background-color: #7f3b2c;
+}
+
+.protection-abstract {
+    background-color: #865add;
+}
+
+.protection-readonly {
+    background-color: #f0ad4e;
+}
+
+.protection-static {
+    background-color: #5bc0de;
+}
+
+a:focus {
+    outline: none;
+}
+
+.member-list {
+    list-style-type: none;
+    padding-left: 0px;
+
+    ul {
+        list-style-type: none;
+        padding-left: 0px;
+    }
+}
+
+.member-depth-1 {
+    padding-left: 32px;
+}
+
+.member-depth-2 {
+    padding-left: 52px;
+}
+
+.member-depth-3 {
+    padding-left: 72px;
+}
+
+.member-depth-4 {
+    padding-left: 92px;
+}
+
+.member-depth-5 {
+    padding-left: 112px;
+}
+
+.member-depth-6, .member-depth-7, .member-depth-8 {
+    padding-left: 132px;
+}
+
+.header-version {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    vertical-align: center;
+    line-height: 50px;
+    color: #777;
+}
+
+.inner-dropdown-menu {
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 0px;
+
+    > li > a {
+        display: block;
+        padding: 3px 20px 3px 40px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.42857143;
+        color: #333333;
+        white-space: nowrap;
+    }
+
+    > li > a:hover,
+    > li > a:focus {
+        text-decoration: none;
+        color: #262626;
+        background-color: #f5f5f5;
+    }
+
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+        color: #ffffff;
+        text-decoration: none;
+        outline: 0;
+        background-color: #337ab7;
+    }
+}
+
+.dropdown-menu {
+    a {
+        height: 26px;
+
+        span {
+            float: left;
+        }
+
+        small {
+            float: right;
+            margin-left: 10px;
+            line-height: 182%;
+        }
+    }
+}
+
+// To make the text in the search field align with the text in the dropdown
+.search-dropdown-align {
+    margin-left: 0px;
+    min-width: 208px;
 }

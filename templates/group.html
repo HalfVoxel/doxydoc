@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+# import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed_row
+
+{% block content %}
+	{{ helpers.breadcrumb(entity) }}
+	<h1>{% if entity.kind != "special" %}<small>{{ entity.kind|title }}</small>{% endif %}<span> {{ entity.name }}</span></h1>
+
+	{{ entity.briefdescription|description }}
+	{{ entity.detaileddescription|description }}
+	
+	## innergroups, innerclassses, inner_namespaces
+
+	<div class="member-list">
+		# if entity.inner_classes|length > 0
+            # for member in entity.inner_classes
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
+
+        # if entity.inner_namespaces|length > 0
+            # for member in entity.inner_namespaces
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
+
+        # if entity.inner_groups|length > 0
+            # for member in entity.inner_groups
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true) }}
+                    <div class="col-md-0 col-xs-2"></div>
+                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                </div>
+            # endfor
+        # endif
+    </div>
+
+{% endblock %}

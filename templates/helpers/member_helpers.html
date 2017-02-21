@@ -1,0 +1,69 @@
+# macro heading(member)
+	<h3>
+	<span>
+	{{ member.protection.title() }} {{ "readonly" if member.protection.readonly else "" }}
+    # if member.protection.static
+        static
+    # endif
+    </span>
+
+    ## These kinds of members have a () list
+    # if member.kind == "function"
+        <span "class"="member-type">
+        {{ member.type|linked_text }}
+        </span>
+    # endif
+
+    <span "class": "member-name">{{member.name}}</span>
+
+    # if member.params
+        <span "class"="member-params">
+        (
+        # for param in member.params
+            {{ param.type|linked_text }}
+
+            # if param.detaileddescription
+                <span "data-original-title"="{{ param.detaileddescription|description_no_links }}">
+                param.name
+                </span>
+            # else
+                param.name
+            # endif
+
+            # if not loop.last
+                ,
+            # endif
+        # endfor
+        )
+        </span>
+    # endif
+    </h3>
+# endmacro
+
+
+{%- macro paramlist(member, write_type) %}
+    # set delim = joiner(", ")
+    <span class="member-params">
+        {{- "(" -}}
+         {%- for param in member.params -%}
+            {{ delim() }}{% if write_type %}{{ param.type|linked_text }} {% endif %}{{- param.name }}
+         {%- endfor %}
+         {{- ")" -}}
+    </span>
+{% endmacro -%}
+
+#- macro breadcrumb_parent(entity)
+    #- if entity is not none
+        {{- breadcrumb_parent(entity.parent_in_canonical_path()) }}
+        <li>{{- entity|ref_entity }}</li>
+    #- endif
+#- endmacro
+
+#- macro breadcrumb(entity)
+    # if entity.parent_in_canonical_path() is not none
+        <ul class="breadcrumb">
+            {{ breadcrumb_parent(entity.parent_in_canonical_path()) }}
+            <li class="active">{{ entity.name }}</li>
+        </ul>
+    # endif
+#- endmacro

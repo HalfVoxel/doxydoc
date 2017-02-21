@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+
+{% block content %}
+	<h1><span class="compound-kind">{{ entity.kind|title }}</span><span> {{ entity.name }}</span></h1>
+
+	{{ entity.briefdescription|description }}
+	{{ entity.detaileddescription|description }}
+
+{% endblock %}
