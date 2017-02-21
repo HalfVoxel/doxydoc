@@ -156,6 +156,7 @@ class PageGenerator:
             # Absolute path
             if target.startswith("http://") or target.startswith("https://"):
                 return target
+
             return os.path.relpath(target, dir_in_outdir)
 
         self.default_writing_context.relpath = relpath

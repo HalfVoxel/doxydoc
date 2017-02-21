@@ -3,13 +3,14 @@ from os import listdir
 from os.path import isfile, isdir, join
 from progressbar import progressbar
 from importer import Importer
-from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity, GroupEntity
+from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity, GroupEntity, MemberEntity
 import shutil
 import os
 import builder.layout
-from builder import Builder, Page
+from builder import Builder, Page, WritingContext, StrTree
 import builder.settings
 from subprocess import call
+import json
 from typing import Any, List
 # import doxyspecial
 import argparse
@@ -154,6 +155,86 @@ class DoxyDoc:
             progressbar(i + 1, len(pages))
             # print("Rendering entity " + page.primary_entity.name)
             generator.generate(page)
+
+        search_items = []
+        for ent in entities:
+            if isinstance(ent, ClassEntity):
+                search_items.append({
+                    "url": ent.path.full_url(),
+                    "name": ent.name,
+                    "fullname": ent.name,
+                    "boost": self.search_boost(None, ent),
+                })
+
+                for m in ent.all_members:
+                    if m.name == ent.name:
+                        # Probably a constructor. Ignore those in the search results
+                        continue
+
+                    if m.defined_in_entity != ent:
+                        # Inherited member, ignore in search results
+                        continue
+
+                    search_item = {
+                        "url": m.path.full_url(),
+                        "name": m.name,
+                        "fullname": self.search_full_name(ent, m),
+                        "boost": self.search_boost(ent, m),
+                    }
+                    search_items.append(search_item)
+
+            if isinstance(ent, PageEntity):
+                search_items.append({
+                    "url": ent.path.full_url(),
+                    "name": ent.name,
+                    "fullname": ent.name,
+                    "boost": 1,
+                })
+
+            if isinstance(ent, GroupEntity):
+                search_items.append({
+                    "url": ent.path.full_url(),
+                    "name": ent.name,
+                    "fullname": ent.name,
+                    "boost": 1,
+                })
+
+        f = open("html/search_data.json", "w")
+        f.write(json.dumps(search_items))
+        f.close()
+
+    def search_full_name(self, parent: ClassEntity, ent: MemberEntity) -> str:
+        result = parent.name + "." + ent.name
+        if ent.hasparams:
+            params = []
+            for param in ent.params:
+                ctx = WritingContext(self.importer).with_link_stripping()
+                buffer = StrTree()
+                builder.layout.markup(ctx, param.type, buffer)
+                params.append(str(buffer).replace(" ", ""))
+
+            result += "(" + ",".join(params) + ")"
+        return result
+
+    def search_boost(self, parent: Entity, ent: Entity) -> float:
+        boost = 100
+        if isinstance(ent, ClassEntity):
+            boost *= 2.0
+        elif isinstance(ent, NamespaceEntity):
+            boost *= 1.5
+        elif isinstance(ent, PageEntity):
+            boost *= 2.0
+        elif isinstance(ent, ExternalEntity):
+            boost *= 0.5
+
+        if ent.protection == "private":
+            boost *= 0.5
+        elif ent.protection == "package":
+            boost *= 0.6
+        elif ent.protection == "protected":
+            boost *= 0.8
+
+        return boost
 
     def create_env(self, builder_obj: Builder) -> None:
         filters = {

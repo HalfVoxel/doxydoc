@@ -9,6 +9,7 @@
     <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/bootstrap.css") }}'>
     <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/prettify.css") }}'>
     <link rel='stylesheet' type='text/css' href='{{ relpath("resources/style.css") }}'>
+    <script type="text/javascript">var pathToRoot = "{{ relpath('a')[0:-1] }}"; console.log(pathToRoot);</script>
 </head>
     <body>
         <div class="container">
@@ -19,7 +20,8 @@
         <script src='{{ relpath("resources/js/jquery.js") }}'></script>
         <script src='{{ relpath("resources/js/bootstrap.min.js") }}'></script>
         <script src='{{ relpath("resources/js/prettify.js") }}'></script>
+        <script src='https://cdn.jsdelivr.net/fuse/2.5.0/fuse.min.js'></script>
+        <script src='{{ relpath("resources/js/elasticlunr.js") }}'></script>
         <script src='{{ relpath("resources/docs.js") }}'></script>
-        <script src='{{ relpath("resources/js/fullproof-all-debug.js") }}'></script>
     </body>
 </html>

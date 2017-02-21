@@ -77,6 +77,12 @@ class ClassEntity(Entity):
 
         # All members, also inherited ones
         self.all_members = [ctx.getref(m) for m in xml.find("listofallmembers")]
+
+        def valid_member(m):
+            # The name check is done to prevent constructors showing up as inherited members
+            return m.defined_in_entity == self or m.defined_in_entity.name != m.name
+
+        self.all_members = [m for m in self.all_members if valid_member(m)]
         for m in xml.find("listofallmembers"):
             if ctx.getref(m) is None:
                 print("NULL REFERENCE " + str(m.find("name").text) + " " + str(m.find("scope").text))
