@@ -12,7 +12,6 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	window.onhashchange = function() {
-		console.log("Here...");
 		$(window.location.hash).toggle();
 	};
 });
@@ -139,7 +138,6 @@ $(document).ready(function() {
 				}
 
 				res2.sort((a,b) => b.score - a.score);
-				console.log(res2);
 
 				// Re-sort
 				//res.sort(function (a, b) { return b.score - a.score; });
@@ -160,7 +158,6 @@ $(document).ready(function() {
 				}
 
 				results = results.slice(0,5);
-				console.log(results);
 
 				var html = "";
 				for (var i = 0; i < results.length; i++) {

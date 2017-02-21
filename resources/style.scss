@@ -398,19 +398,14 @@ a:focus {
 }
 
 .dropdown-menu {
-    max-width: 1000px;
-
     a {
         height: 26px;
-        max-width: 1000px;
 
         span {
-            max-width: 1000px;
             float: left;
         }
 
         small {
-            max-width: 1000px;
             float: right;
             margin-left: 10px;
             line-height: 182%;
@@ -420,5 +415,6 @@ a:focus {
 
 // To make the text in the search field align with the text in the dropdown
 .search-dropdown-align {
-    margin-left: 7px;
+    margin-left: 0px;
+    min-width: 208px;
 }

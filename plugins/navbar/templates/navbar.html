@@ -10,24 +10,23 @@
                         <a href="{{ relpath(item.path) }}">{{item.title}}</a>
                     </li>
                 #endfor
-
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <form id="searchform" class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" autocomplete="off" id="searchfield" class="form-control" placeholder="Search">
-                        </div>
-                    <button type="submit" id="search" class="btn btn-default" tabIndex="-1">Submit</button>
-                    </form>
-                    <ul id="search-dropdown" class="dropdown-menu search-dropdown-align">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                <form id="searchform" class="navbar-form">
+                    <div class="form-group">
+                        <input type="text" autocomplete="off" id="searchfield" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+                <ul id="search-dropdown" class="dropdown-menu search-dropdown-align">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
                 </li>
             </ul>
-            <div class="header-version">{{ settings.version }}</div>
         </div>
     </div>
 </nav>
