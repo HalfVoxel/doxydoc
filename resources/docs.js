@@ -11,7 +11,58 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+	function filterPath(string) {
+		return string.replace(/^\//, '')
+			.replace(/(index|default).[a-zA-Z]{3,4}$/, '')
+			.replace(/\/$/, '');
+	}
+	var locationPath = filterPath(location.pathname);
+
+	$('a[href*=#]').each(function() {
+		var thisPath = filterPath(this.pathname) || locationPath;
+		if (locationPath == thisPath && (location.hostname == this.hostname || !this.hostname) && this.hash.replace(/#/, '')) {
+			var target = this.hash;
+			if (target) {
+				$(this).click(function(event) {
+					event.preventDefault();
+					scrollTo(target, 400);
+				});
+			}
+		}
+	});
+
+	function scrollTo(id, duration) {
+		$(id).slideDown(duration);
+
+		//calculate destination place
+		console.log($(id));
+		var dest = $(id).offset().top;
+		dest -= 100;
+		dest = Math.min(dest, $(document).height() - $(window).height());
+		dest = Math.max(dest, 0);
+
+		//go to destination
+		$('html,body').animate({
+			scrollTop: dest
+		}, duration, 'swing');
+
+		$(id).addClass('shadowPulse');
+		$(id).one('animationend', () => {
+		    $(id).removeClass('shadowPulse');
+		    // do something else...
+		});
+
+		hashTagActive = this.hash;
+	}
+
+	if (window.location.hash.length > 0) {
+		console.log("Hash1: " + window.location.hash);
+		//$(window.location.hash).toggle();
+		scrollTo(window.location.hash, 0);
+	}
+
 	window.onhashchange = function() {
+		console.log("Hash: " + window.location.hash);
 		$(window.location.hash).toggle();
 	};
 });
@@ -210,7 +261,7 @@ $(document).ready(function() {
 			// define a handler
 			function onKeyUp(e) {
 				if (document.activeElement != "INPUT" && e.keyCode == 70) {
-				    $("#searchfield").focus();
+					$("#searchfield").focus();
 				}
 			}
 			// register the handler 
@@ -219,63 +270,4 @@ $(document).ready(function() {
 			console.log("Can't load a file");
 		}
 	});
-});
-
-
-//Smooth Scrolling
-$(document).ready(function() {
-	function filterPath(string) {
-		return string.replace(/^\//, '')
-			.replace(/(index|default).[a-zA-Z]{3,4}$/, '')
-			.replace(/\/$/, '');
-	}
-	var locationPath = filterPath(location.pathname);
-	var scrollElem = scrollableElement('html', 'body');
-
-	$('a[href*=#]').each(function() {
-		var thisPath = filterPath(this.pathname) || locationPath;
-		if (locationPath == thisPath && (location.hostname == this.hostname || !this.hostname) && this.hash.replace(/#/, '')) {
-			var $target = $(this.hash),
-				target = this.hash;
-			if (target) {
-				var targetOffset = $target.offset().top;
-				$(this).click(function(event) {
-					event.preventDefault();
-					$(scrollElem).animate({
-						scrollTop: targetOffset
-					}, 400, 'swing', function() {
-						location.hash = target;
-						/*$(target).prop('id',target.substr(1)+'-noscroll');
-						console.log ($target.prop("id"));
-						console.log ($(target));
-						console.log ($target);
-						window.location.hash = target;
-						console.log (target);
-						$(target).prop('id',target.substr(1)); */
-					});
-				});
-			}
-		}
-	});
-
-	// use the first element that is "scrollable"
-
-	function scrollableElement(els) {
-		for (var i = 0, argLength = arguments.length; i < argLength; i++) {
-			var el = arguments[i],
-				$scrollElement = $(el);
-			if ($scrollElement.scrollTop() > 0) {
-				return el;
-			} else {
-				$scrollElement.scrollTop(1);
-				var isScrollable = $scrollElement.scrollTop() > 0;
-				$scrollElement.scrollTop(0);
-				if (isScrollable) {
-					return el;
-				}
-			}
-		}
-		return [];
-	}
-
 });
