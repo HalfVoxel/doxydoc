@@ -2,7 +2,7 @@ from typing import Any
 
 
 class Settings:
-    def __init__(self) -> None:
+    def __init__(self, settings_dict) -> None:
         self.hide_undocumented = True
         self.show_member_protection_in_list = True
         self.show_member_type_in_list = True
@@ -12,6 +12,16 @@ class Settings:
         self.args = None  # type: Any
         self.out_dir = "html"
         self.template_dirs = ["templates"]
-        self.title = "A* Pathfinding Project"
-        self.version = "4.0.0"
+        self.title = "Project Title"
+        self.version = "0.1"
         self.flat_file_hierarchy = False
+        self.disabled_plugins = []  # type: List[str]
+        self.page_whitelist = None  # type: List[str]
+        self.absolute_url_base = None  # type: str
+
+        if settings_dict is not None:
+            for k, v in settings_dict.items():
+                if hasattr(self, k):
+                    setattr(self, k, v)
+                else:
+                    raise Exception("Unknown config parameter '" + k + "'")

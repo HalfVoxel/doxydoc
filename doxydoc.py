@@ -22,9 +22,7 @@ class DoxyDoc:
 
     def __init__(self) -> None:
         self.importer = Importer()
-        self.settings = builder.settings.Settings()
-        self.settings.out_dir = "html"
-        self.settings.template_dirs = ["templates"]
+        self.settings = None  # type: builder.settings.Settings
         self.plugin_context = {}  # type: Dict[str,Any]
 
     def load_plugins(self) -> None:
@@ -35,7 +33,7 @@ class DoxyDoc:
         dirs = ["plugins", "themes"]
 
         for dir in dirs:
-            plugins = [f for f in listdir(dir) if isdir(join(dir, f))]
+            plugins = [f for f in listdir(dir) if isdir(join(dir, f)) and f not in self.settings.disabled_plugins]
 
             for plugin in plugins:
                 self.settings.template_dirs.append(join(dir, plugin, "templates"))
@@ -153,8 +151,9 @@ class DoxyDoc:
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
-            # print("Rendering entity " + page.primary_entity.name)
-            generator.generate(page)
+            if self.settings.page_whitelist is None or page.path in self.settings.page_whitelist:
+                # print("Rendering entity " + page.primary_entity.name)
+                generator.generate(page)
 
         search_items = []
         for ent in entities:
@@ -249,7 +248,13 @@ class DoxyDoc:
         builder_obj.add_filters(filters)
 
     def generate(self, args) -> None:
+        try:
+            config = json.loads(open(args.config).read())
+        except Exception as e:
+            print("Could not read configuration at '" + args.config + "'\n" + str(e))
+            exit(1)
 
+        self.settings = builder.settings.Settings(config)
         self.settings.args = args
 
         args.verbose = args.verbose and (not args.quiet)
@@ -284,6 +289,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--resources", help="Copy Resources Only", action="store_true")
     parser.add_argument("-v", "--verbose", help="Verbose output", action="store_true")
     parser.add_argument("-q", "--quiet", help="Quiet output", action="store_true")
+    parser.add_argument("-c", "--config", default="config.json", help="Path to config file", type=str)
 
     args = parser.parse_args()
 

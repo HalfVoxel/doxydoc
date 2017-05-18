@@ -1,13 +1,13 @@
+//Prettify
+$(document).ready(function() {
+	window.prettyPrint && prettyPrint()
+});
+
 //Tooltips
 $(document).ready(function() {
 	$("[rel=\"tooltip\"]").tooltip({
 		html: true
 	});
-});
-
-//Prettify
-$(document).ready(function() {
-	window.prettyPrint && prettyPrint()
 });
 
 $(document).ready(function() {
