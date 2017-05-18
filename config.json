@@ -1,0 +1,18 @@
+{
+  "template_dirs": [
+    "templates"
+  ],
+  "out_dir": "html",
+  "hide_undocumented": true,
+  "show_member_protection_in_list": true,
+  "show_member_type_in_list": true,
+  "show_source_files": true,
+  "show_file_paths": true,
+  "keep_empty_member_sections": false,
+  "title": "A* Pathfinding Project",
+  "version": "4.0.0",
+  "flat_file_hierarchy": false,
+  "disabled_plugins": [],
+  "page_whitelist": null,
+  "absolute_url_base": ""
+}
