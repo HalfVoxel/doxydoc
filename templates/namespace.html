@@ -19,7 +19,7 @@
             <h2>Namespaces</h2>
             # for member in entity.inner_namespaces
                 <div class="row member-list-item-header">
-                    {{ member_brief_protection(member, true, true) }}
+                    {{ member_brief_protection(member, true, true, true) }}
                     <div class="col-md-0 col-xs-2"></div>
                     <div class="col-md-6 col-xs-10 member-desc">
                     {{ member.briefdescription|description }}
@@ -32,7 +32,7 @@
             <h2>Classes</h2>
             # for member in entity.inner_classes
                 <div class="row member-list-item-header">
-                    {{ member_brief_protection(member, true, true) }}
+                    {{ member_brief_protection(member, true, true, true) }}
                     <div class="col-md-0 col-xs-2"></div>
                     <div class="col-md-6 col-xs-10 member-desc">
                     {{ member.briefdescription|description }}
@@ -49,7 +49,7 @@
 			# for member in members
 				# block member_list_item scoped
 				<div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
-					{{ member_brief_protection(member, true, false) }}
+					{{ member_brief_protection(member, true, false, true) }}
 					<div class="col-md-0 col-xs-2"></div>
 					<div class="col-md-6 col-xs-10 member-desc">
 					{{ member.briefdescription|description }}

@@ -13,41 +13,19 @@
 	## innergroups, innerclassses, inner_namespaces
 
 	<div class="member-list">
-		# if entity.inner_classes|length > 0
-            # for member in entity.inner_classes
-                <div class="row member-list-item-header">
-                    {{ member_brief_protection(member, true, true) }}
-                    <div class="col-md-0 col-xs-2"></div>
-                    <div class="col-md-6 col-xs-10 member-desc">
-                    {{ member.briefdescription|description }}
+        # for list in [entity.inner_classes, entity.inner_namespaces, entity.inner_groups]
+            # if list|length > 0
+                # for member in list
+                    <div class="row member-list-item-header">
+                        {{ member_brief_protection(member, true, true, true) }}
+                        <div class="col-md-0 col-xs-2"></div>
+                        <div class="col-md-6 col-xs-10 member-desc">
+                        {{ member.briefdescription|description }}
+                        </div>
                     </div>
-                </div>
-            # endfor
-        # endif
-
-        # if entity.inner_namespaces|length > 0
-            # for member in entity.inner_namespaces
-                <div class="row member-list-item-header">
-                    {{ member_brief_protection(member, true, true) }}
-                    <div class="col-md-0 col-xs-2"></div>
-                    <div class="col-md-6 col-xs-10 member-desc">
-                    {{ member.briefdescription|description }}
-                    </div>
-                </div>
-            # endfor
-        # endif
-
-        # if entity.inner_groups|length > 0
-            # for member in entity.inner_groups
-                <div class="row member-list-item-header">
-                    {{ member_brief_protection(member, true, true) }}
-                    <div class="col-md-0 col-xs-2"></div>
-                    <div class="col-md-6 col-xs-10 member-desc">
-                    {{ member.briefdescription|description }}
-                    </div>
-                </div>
-            # endfor
-        # endif
+                # endfor
+            # endif
+        #endfor
     </div>
 
 {% endblock %}
