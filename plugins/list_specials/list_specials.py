@@ -6,7 +6,7 @@ def pages_list(builder, importer):
     entity = PageEntity()
     entity.kind = "special"
     entity.id = "__plugin__list_specials"
-    entity.short_name = entity.name = "Related Pages"
+    entity.short_name = entity.name = "Tutorials"
     entity.subpages = [e for e in importer.entities if e.kind == "page" and e.parent is None]
     entity.path = EntityPath()
     for page in entity.subpages:

@@ -14,6 +14,13 @@ class PageEntity(Entity):
     def parent_in_canonical_path(self) -> Entity:
         return self.parent
 
+    def default_name(self):
+        if self.id == "indexpage":
+            # The index page has an empty <title> tag
+            return "Home"
+        else:
+            return "#" + self.kind + "#"
+
     def read_from_xml(self, ctx: ImporterContext) -> None:
         super().read_from_xml(ctx)
         xml = self.xml
@@ -30,3 +37,4 @@ class PageEntity(Entity):
         for page in self.innerpages:
             assert(isinstance(page, PageEntity))
             page.parent = self
+

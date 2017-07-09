@@ -25,6 +25,9 @@ class Entity:
     def formatname(name: str) -> str:
         return name.split("::")[-1]
 
+    def default_name(self):
+        return "#" + self.kind + "#"
+
     def read_base_xml(self) -> None:
         self.id = self.xml.get("id")
         self.kind = self.xml.get("kind")
@@ -46,12 +49,12 @@ class Entity:
         if name_node is not None and name_node.text is not None:
             self.name = Entity.formatname(str(name_node.text))
         else:
-            self.name = "#" + self.kind + "#"
+            self.name = self.default_name()
 
         if short_name_node is not None:
             self.short_name = Entity.formatname(str(short_name_node.text))
         else:
-            self.short_name = "#" + self.kind + "#"
+            self.short_name = self.default_name()
 
         self.briefdescription = xml.find("briefdescription")
         self.detaileddescription = xml.find("detaileddescription")
