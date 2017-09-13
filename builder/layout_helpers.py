@@ -33,13 +33,15 @@ def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str
 
     # Partition the members into different sections using lambdas
     section_spec = [
-        (lambda m: m.protection == "public" and m.defined_in_entity == entity, [
+        (lambda m: m.protection == "public" and m.defined_in_entity == entity and not m.deprecated, [
             ("Public Methods", lambda m: not m.static and m.kind == "function"),
             ("Public Static Methods", lambda m: m.static and m.kind == "function"),
-            ("Public Properties", lambda m: not m.static and m.kind == "property"),
-            ("Public Static Properties", lambda m: m.static and m.kind == "property"),
-            ("Public Variables", lambda m: not m.static and m.kind == "variable"),
-            ("Public Static Variables", lambda m: m.static and m.kind == "variable"),
+            # ("Public Properties", lambda m: not m.static and m.kind == "property"),
+            # ("Public Static Properties", lambda m: m.static and m.kind == "property"),
+            # ("Public Variables", lambda m: not m.static and m.kind == "variable"),
+            # ("Public Static Variables", lambda m: m.static and m.kind == "variable"),
+            ("Public Variables", lambda m: not m.static and m.kind in ["property", "variable"]),
+            ("Public Static Variables", lambda m: m.static and m.kind in ["property", "variable"]),
             ("Public Enums", lambda m: not m.static and m.kind == "enum"),
             ("Public Events", lambda m: not m.static and m.kind == "event"),
             ("Public Static Events", lambda m: m.static and m.kind == "event"),
@@ -54,9 +56,12 @@ def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str
             ("Public Slots", lambda m: not m.static and m.kind == "slot"),
             ("Public Static Slots", lambda m: m.static and m.kind == "slot"),
         ]),
-        (lambda m: True, [
-            ("Private/Protected Members", lambda m: m.protection != "public" and m.defined_in_entity == entity),
+        (lambda m: not m.deprecated, [
             ("Inherited Members", lambda m: m.defined_in_entity != entity),
+            ("Private/Protected Members", lambda m: m.protection != "public" and m.defined_in_entity == entity),
+        ]),
+        (lambda m: m.deprecated, [
+            ("Deprecated Members", lambda m: m.defined_in_entity == entity)
         ])
     ]
 
