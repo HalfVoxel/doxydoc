@@ -14,5 +14,15 @@
   "flat_file_hierarchy": false,
   "disabled_plugins": [],
   "page_whitelist": null,
-  "absolute_url_base": ""
+  "absolute_url_base": "",
+  "plugins": {
+    "navbar": {
+      "items": [
+        "changelog",
+        "plugins/list_specials/pages",
+        "plugins/list_specials/classes",
+        "plugins/list_specials/groups"
+      ]
+    }
+  }
 }

@@ -1,1 +1,1 @@
-from searchengine import *
+print("Loaded search engine")

@@ -11,11 +11,12 @@ from builder import Builder, Page, WritingContext, StrTree
 import builder.settings
 from subprocess import call
 import json
+import types
 from typing import Any, List
 # import doxyspecial
 import argparse
-import plugins.list_specials.list_specials
-import plugins.navbar.navbar
+# import plugins.list_specials.list_specials
+# import plugins.navbar.navbar
 
 
 class DoxyDoc:
@@ -24,6 +25,7 @@ class DoxyDoc:
         self.importer = Importer()
         self.settings = None  # type: builder.settings.Settings
         self.plugin_context = {}  # type: Dict[str,Any]
+        self.plugins = []
 
     def load_plugins(self) -> None:
 
@@ -31,12 +33,35 @@ class DoxyDoc:
             print("Loading plugins...")
 
         dirs = ["plugins", "themes"]
+        self.plugins = []
 
         for dir in dirs:
             plugins = [f for f in listdir(dir) if isdir(join(dir, f)) and f not in self.settings.disabled_plugins]
 
             for plugin in plugins:
                 self.settings.template_dirs.append(join(dir, plugin, "templates"))
+
+                module_path = dir + "." + plugin
+                __import__(module_path)
+
+        module = __import__("plugins")
+        print("Checking " + str(module))
+        for k, v in module.__dict__.items():
+            if isinstance(v, types.ModuleType) and hasattr(v, "Plugin"):
+                print(k)
+                try:
+                    config = {}
+                    if k in self.settings.plugins:
+                        config = self.settings.plugins[k]
+                    plugin = v.Plugin(config)
+                    print("Loading plugin: " + str(k))
+                    self.plugins.append(plugin)
+                    self.plugin_context[str(k)] = plugin
+                except Exception as e:
+                    print(e)
+                    pass
+                # print(v.__dict__)
+
 
     def read_external(self) -> None:
         if not self.settings.args.quiet:
@@ -116,14 +141,6 @@ class DoxyDoc:
 
         self.importer.read(self.find_xml_files("input/xml"))
 
-    def create_navbar(self, pages: List[Page]) -> None:
-        navbar = plugins.navbar.navbar.Navbar()
-
-        for page in pages:
-            navbar.add(page)
-
-        self.plugin_context["navbar"] = navbar
-
     def build_output(self) -> None:
         if not self.settings.args.quiet:
             print("Building output...")
@@ -140,14 +157,15 @@ class DoxyDoc:
         page_pages = [generator.page_page(ent) for ent in entities if isinstance(ent, PageEntity)]
         namespaces = [generator.namespace_page(ent) for ent in entities if isinstance(ent, NamespaceEntity)]
 
-        lists = plugins.list_specials.list_specials.define_pages(self.importer, builder)
-
-        pages = classes + page_pages + examples + namespaces + groups + lists
+        pages = classes + page_pages + examples + namespaces + groups
+        for plugin in self.plugins:
+            pages = pages + plugin.define_pages(self.importer, builder)
 
         # Build lookup from entities to their pages
         entity2page = {e: page for page in pages for e in page.entities}
 
-        self.create_navbar(lists)
+        for plugin in self.plugins:
+            plugin.on_pre_build_html(self.importer, builder, entity2page)
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
