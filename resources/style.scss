@@ -181,6 +181,12 @@ code {
         color: #337ab7;
         font-family: monospace;
     }
+
+    .member-desc p {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
 
 .member-prot {
