@@ -141,22 +141,40 @@ def ref_explicit(ctx: WritingContext, obj, text, tooltip, buffer: StrTree) -> No
 
         buffer.element("a", text, {
             "href": ctx.relpath(obj.path.full_url()),
-            "rel": 'tooltip',
+            "rel": "tooltip",
             "data-original-title": tooltip
         })
 
 
 def match_external_ref(ctx: WritingContext, text, buffer: StrTree) -> None:
     words = text.split()
+    skipNextSpace = False
     for i in range(0, len(words)):
+        w = words[i].strip()
+        if w == ">":
+            buffer += w
+            continue
+
+        ltStr = "<"
+        lt = w.endswith(ltStr)
+        if lt:
+            w = w[:-len(ltStr)]
+
         if i > 0:
-            buffer += " "
+            if skipNextSpace:
+                skipNextSpace = False
+            else:
+                buffer += " "
         try:
-            obj = ctx.state.get_entity("__external__" + words[i].strip())
+            obj = ctx.state.get_entity("__external__" + w.strip())
             tooltip = obj.tooltip if hasattr(obj, "tooltip") else None
-            ref_explicit(ctx, obj, words[i], tooltip, buffer)
+            ref_explicit(ctx, obj, w, tooltip, buffer)
         except KeyError:
-            buffer += words[i]
+            buffer += w
+
+        if lt:
+            buffer += ltStr
+            skipNextSpace = True
 
 
 def linked_text(ctx: WritingContext, node, buffer: StrTree) -> None:
