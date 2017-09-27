@@ -55,6 +55,7 @@ def strip_common_indent(programlisting: ET.Element):
                 indent += 1
                 e.tag = "dummy"
 
+
 def programlisting(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     # can add class linenums here if needed
     strip_common_indent(n)
@@ -85,7 +86,7 @@ def video(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
             childAttrs = dict(child.attrib)
             if "src" in childAttrs:
                 childAttrs["src"] = ctx.relpath(childAttrs["src"])
-            buffer.element("source", "",params=childAttrs)
+            buffer.element("source", "", params=childAttrs)
         else:
             buffer.html(element_to_string(child))
 
@@ -94,7 +95,7 @@ def video(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def element_to_string(element: ET.Element) -> str:
-    return "".join([ "" if element.text is None else element.text] + [ET.tostring(e, encoding="unicode", method="html") for e in element.getchildren()])
+    return "".join(["" if element.text is None else element.text] + [ET.tostring(e, encoding="unicode", method="html") for e in element.getchildren()])
 
 
 def verbatim(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
