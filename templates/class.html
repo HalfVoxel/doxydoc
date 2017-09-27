@@ -66,11 +66,24 @@
 
         # for member in members
             # block member_list_item scoped
-            <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200);">
+            <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200); $('#{{member.path.anchor}}-overlay').fadeToggle(200);" style="position: relative;">
                 {{ member_brief_protection(member, true, false, true) }}
                 <div class="col-md-0 col-xs-2"></div>
                 <div class="col-md-6 col-xs-10 member-desc">
                 {{ member.briefdescription|description }}
+                </div>
+                <div id="{{member.path.anchor}}-overlay" class="member-top-prot">
+                    <span class="protection protection-{{member.protection}}">{{ member.protection|title }}</span>
+
+                    # if member.static:
+                        <span class="protection protection-static">Static</span>
+                    # endif
+                    # if member.abstract:
+                        <span class="protection protection-abstract">Abstract</span>
+                    # endif
+                    # if member.readonly:
+                        <span class="protection protection-readonly">Readonly</span>
+                    # endif
                 </div>
             </div>
             <div class="row member-detailed" style="display: none;" id="{{ member.path.anchor }}">

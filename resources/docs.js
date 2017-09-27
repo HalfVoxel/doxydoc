@@ -33,6 +33,7 @@ $(document).ready(function() {
 
 	function scrollTo(id, duration) {
 		$(id).slideDown(duration);
+		$(id + "-overlay").fadeIn(duration);
 
 		//calculate destination place
 		console.log($(id));
@@ -64,6 +65,7 @@ $(document).ready(function() {
 	window.onhashchange = function() {
 		console.log("Hash: " + window.location.hash);
 		$(window.location.hash).toggle();
+		$(window.location.hash + "-overlay").fadeToggle();
 	};
 });
 

@@ -13,9 +13,18 @@
 </head>
     <body>
         <div class="container">
-            # include "navbar.html" ignore missing
-            {% block content %}{% endblock %}
-            # include "footer.html" ignore missing
+            <div class="wrapper">
+            # include "sidebar.html" ignore missing
+                <div style="flex-grow: 1; min-width: 0;">
+                    # include "navbar.html" ignore missing
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                    # include "footer.html" ignore missing
+                </div>
+            </div>
         </div>
         <script src='{{ relpath("resources/js/jquery.js") }}'></script>
         <script src='{{ relpath("resources/js/bootstrap.min.js") }}'></script>

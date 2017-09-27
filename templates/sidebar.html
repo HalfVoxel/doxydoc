@@ -1,0 +1,29 @@
+# import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed_row
+
+# macro item(entity, active_entity, depth=0)
+    <li class='{{ "active" if entity == active_entity else "" }}'>
+        {{ entity|ref_entity }}
+        # if entity.innerpages|length > 0 and in_tree(entity)
+            <ul class='{{ "sidenav-l" + ((depth+1)|string) }}'>
+                # for member in sorted(entity.innerpages)
+                    {{ item(member, active_entity, depth+1) }}
+                # endfor
+            </ul>
+        # endif
+    </li>
+# endmacro
+
+<nav class="sidebar hidden-print hidden-sm hidden-xs">
+    <ul class="sidenav-l0">
+        # set pages = state.get_entity("plugins/list_specials/pages")
+        # for member in sorted(state.entities)
+            # if member.kind == "page" and member.parent == pages and member.id != "indexpage"
+                {{ item(member, entity) }}
+            # endif
+        # endfor
+    </ul>
+    
+    
+</nav>

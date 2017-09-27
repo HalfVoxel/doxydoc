@@ -21,6 +21,7 @@
 # endmacro
 
 # macro member_detailed_header(member, bootstrap_protection)
+    # if false
     # if bootstrap_protection
         <div class="member-side-prot">
         <span class="protection protection-{{member.protection}}">{{ member.protection|title }}</span>
@@ -35,6 +36,7 @@
             <span class="protection protection-readonly">Readonly</span>
         # endif
         </div>
+    #endif
     #endif
 
     <h5 style="font-family: monospace;">
