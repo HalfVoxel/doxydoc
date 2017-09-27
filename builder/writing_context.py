@@ -1,9 +1,10 @@
 from typing import Callable
 from importer.entities import Entity
+from importer import Importer
 
 
 class WritingContext:
-    def __init__(self, state) -> None:
+    def __init__(self, state: Importer) -> None:
         assert state is not None
         self.state = state
         self.strip_links = False

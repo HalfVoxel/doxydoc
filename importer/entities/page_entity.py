@@ -1,5 +1,6 @@
 from .entity import Entity
 from importer.importer_context import ImporterContext
+from typing import List
 
 
 class PageEntity(Entity):
@@ -32,6 +33,11 @@ class PageEntity(Entity):
         # briefdesc
         # detaileddesc
         # innerpage
+
+        order = xml.find(".//order")
+        if order is not None:
+            self.sorting_order = int(order.get("value"))
+            print("Found sorting order " + str(self.sorting_order))
 
         self.innerpages = [ctx.getref(node) for node in xml.findall("innerpage")]
         for page in self.innerpages:

@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List, Dict
 
 
 class Settings:
@@ -18,7 +18,7 @@ class Settings:
         self.disabled_plugins = []  # type: List[str]
         self.page_whitelist = None  # type: List[str]
         self.absolute_url_base = None  # type: str
-        self.plugins = None  # type: Dict[Any]
+        self.plugins = None  # type: Dict[str,Any]
 
         if settings_dict is not None:
             for k, v in settings_dict.items():

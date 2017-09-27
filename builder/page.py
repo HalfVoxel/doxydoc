@@ -159,6 +159,16 @@ class PageGenerator:
 
             return os.path.relpath(target, dir_in_outdir)
 
+        def in_tree(other: Entity) -> bool:
+            ent = page.primary_entity
+            while ent is not None:
+                if ent == other:
+                    return True
+                ent = ent.parent_in_canonical_path()
+
+        def sort_entities(list: List[Entity]) -> List[Entity]:
+            return sorted(list, key=lambda e: e.sorting_order)
+
         self.default_writing_context.relpath = relpath
 
         text = template.render(
@@ -168,7 +178,9 @@ class PageGenerator:
             settings=self.builder.settings,
             layout=layout_helpers,
             relpath=relpath,
-            plugins=self.builder.plugin_context
+            in_tree=in_tree,
+            sorted=sort_entities,
+            plugins=self.builder.plugin_context,
         )
         f.write(text)
         f.close()

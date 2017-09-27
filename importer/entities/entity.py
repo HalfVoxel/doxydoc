@@ -14,6 +14,8 @@ class Entity:
         # Sections in descriptions that can be linked to
         self.sections = []  # type: List[Entity]
         self.deprecated = False
+        self.sorting_order = 0
+        self.kind = "<not set>"
 
     def __str__(self):
         return "Entity: " + self.id
