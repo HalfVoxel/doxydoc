@@ -1,6 +1,7 @@
 from .entity import Entity, gather_members
 from .class_entity import ClassEntity
 from importer.importer_context import ImporterContext
+from typing import List
 
 
 class NamespaceEntity(Entity):

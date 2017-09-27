@@ -12,11 +12,12 @@ import builder.settings
 from subprocess import call
 import json
 import types
-from typing import Any, List
+from typing import Any, List, Dict
 # import doxyspecial
 import argparse
 # import plugins.list_specials.list_specials
 # import plugins.navbar.navbar
+from doxydoc_plugin import DoxydocPlugin
 
 
 class DoxyDoc:
@@ -25,7 +26,7 @@ class DoxyDoc:
         self.importer = Importer()
         self.settings = None  # type: builder.settings.Settings
         self.plugin_context = {}  # type: Dict[str,Any]
-        self.plugins = []
+        self.plugins = []  # type: List[DoxydocPlugin]
 
     def load_plugins(self) -> None:
 
@@ -38,10 +39,10 @@ class DoxyDoc:
         for dir in dirs:
             plugins = [f for f in listdir(dir) if isdir(join(dir, f)) and f not in self.settings.disabled_plugins]
 
-            for plugin in plugins:
-                self.settings.template_dirs.append(join(dir, plugin, "templates"))
+            for pluginName in plugins:
+                self.settings.template_dirs.append(join(dir, pluginName, "templates"))
 
-                module_path = dir + "." + plugin
+                module_path = dir + "." + pluginName
                 __import__(module_path)
 
         module = __import__("plugins")
@@ -50,10 +51,10 @@ class DoxyDoc:
             if isinstance(v, types.ModuleType) and hasattr(v, "Plugin"):
                 print(k)
                 try:
-                    config = {}
+                    config = {}  # type: Dict[str, Any]
                     if k in self.settings.plugins:
                         config = self.settings.plugins[k]
-                    plugin = v.Plugin(config)
+                    plugin = getattr(v, "Plugin")(config)  # type: DoxydocPlugin
                     print("Loading plugin: " + str(k))
                     self.plugins.append(plugin)
                     self.plugin_context[str(k)] = plugin
@@ -184,6 +185,7 @@ class DoxyDoc:
                 })
 
                 for m in ent.all_members:
+                    assert(isinstance(m, MemberEntity))
                     if m.name == ent.name:
                         # Probably a constructor. Ignore those in the search results
                         continue
@@ -234,7 +236,7 @@ class DoxyDoc:
         return result
 
     def search_boost(self, parent: Entity, ent: Entity) -> float:
-        boost = 100
+        boost = 100.0
         if isinstance(ent, ClassEntity):
             boost *= 2.0
         elif isinstance(ent, NamespaceEntity):
@@ -261,7 +263,7 @@ class DoxyDoc:
             "ref_explicit": builder.layout.ref_explicit,
             "ref_entity": builder.layout.ref_entity,
             "match_external_ref": builder.layout.match_external_ref,
-            "log": lambda c, v, b: print(v)
+            "log": lambda c, v, b: print(v),
         }
         builder_obj.add_filters(filters)
 

@@ -1,5 +1,6 @@
 from .entity import Entity
 from importer.importer_context import ImporterContext
+from typing import List
 
 
 class GroupEntity(Entity):

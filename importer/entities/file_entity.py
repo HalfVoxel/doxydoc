@@ -1,5 +1,5 @@
 from .entity import Entity, gather_members
-from typing import Dict
+from typing import Dict, List
 import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
 
