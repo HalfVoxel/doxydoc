@@ -410,6 +410,7 @@ xml_mapping = {
     "highlight": highlight,
     "dummy": dummy,
     "video": video,
+    "order": dummy,
     "copydetailed": copydetailed,
 }
 
