@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
 import importer.entities as entities
 from importer.entities import Entity
-from typing import Iterable, List
+from typing import Iterable, List, Dict
 FILE_EXT = ".html"
 OUTPUT_DIR = "html"
 
@@ -37,8 +37,11 @@ class Importer:
             id = obj.id
         self._docobjs[id] = obj
         # Workaround for doxygen apparently generating refid:s which do not exist as id:s
+        # e.g links to pages show up as 'modifiers_1modifiers' or 'graph_types_1graphTypes'
         id2 = obj.id + "_1" + obj.id
+        id3 = obj.id + "_1" + obj.short_name
         self._docobjs[id2] = obj
+        self._docobjs[id3] = obj
         self.entities.append(obj)
 
     def get_entity(self, id: str) -> Entity:
@@ -104,17 +107,20 @@ class Importer:
         roots = []
 
         for fname in xml_filenames:
-            dom = ET.parse(fname)
-            assert dom is not None, "No DOM"
+            try:
+                dom = ET.parse(fname)
+                assert dom is not None, "No DOM"
 
-            root = dom.getroot()
-            assert root is not None, "No Root"
+                root = dom.getroot()
+                assert root is not None, "No Root"
 
-            compound = root.find("compounddef")
+                compound = root.find("compounddef")
 
-            if compound is not None:
-                self._register_compound(compound)
-                roots.append(root)
+                if compound is not None:
+                    self._register_compound(compound)
+                    roots.append(root)
+            except Exception as e:
+                raise Exception("Could not parse '" + fname + "'") from e
 
         self._process_references(roots)
         self._read_entity_xml()
