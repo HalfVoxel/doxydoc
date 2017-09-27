@@ -197,6 +197,27 @@ def table(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     buffer.close("table")
 
 
+def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    name = n.get("name")
+    copy_candidates = []
+    for entity in ctx.state.entities:
+        name_suffix = ""
+        c = entity
+        while c is not None:
+            name_suffix = c.name + "." + name_suffix if name_suffix != "" else c.name
+            c = c.parent_in_canonical_path()
+            if name_suffix == name:
+                copy_candidates.append(entity)
+                break
+
+    if len(copy_candidates) == 0:
+        print("Could not find any entity with the name '" + name + "' (used in a copydetailed tag).")
+    elif len(copy_candidates) > 1:
+        print("Ambigious reference '" + name + "' in a copydetailed tag. " + str((len(copy_candidates))) + " entities match this name.")
+    else:
+        builder.layout.markup(ctx, copy_candidates[0].detaileddescription, buffer)
+
+
 def heading(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     buffer.open("h" + n.get("level"))
     builder.layout.markup(ctx, n, buffer)
@@ -388,7 +409,8 @@ xml_mapping = {
     "sp": sp,
     "highlight": highlight,
     "dummy": dummy,
-    "video": video
+    "video": video,
+    "copydetailed": copydetailed,
 }
 
 
