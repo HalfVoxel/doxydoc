@@ -200,7 +200,7 @@ $(document).ready(function() {
 				var results = [];
 				for (var i = 0; i < res2.length; i++) {
 					var item = res2[i].item;//data[res[i].ref|0];
-					if (!(item.name in name2index)) {
+					if (!name2index.hasOwnProperty(item.name)) {
 						name2index[item.name] = results.length;
 						results.push([]);
 					}
@@ -224,7 +224,7 @@ $(document).ready(function() {
 						return pa.length - pb.length;
 					});
 
-					var id = 'search_' + items[0].item.name.replace(" ", "_");
+					var id = 'search_' + items[0].item.name.replace(/ /g, "_");
 
 					if (items.length == 1) {
 						html += "<li><a id='" + id + "_0' href='" + pathToRoot + items[0].item.url + "'>" + items[0].item.name + "</a></li>";
@@ -241,12 +241,40 @@ $(document).ready(function() {
 						html += "</ul>";
 					}
 				}
+
+				var upArrow = 38;
+				var downArrow = 40;
 				$("#search-dropdown").html(html);
 				$("#search-dropdown").show(0);
+				$("#searchfield").keydown(function(e) {
+					if (e.keyCode == downArrow) {
+						$('#search-dropdown a').first().focus();
+						e.preventDefault();
+					}
+				});
+
+				$("#search-dropdown a").keydown(function(e) {
+					if (e.keyCode == downArrow || e.keyCode == upArrow) {
+						var selector = $('#search-dropdown a:visible');
+						var index = selector.index(this);
+
+						if (e.keyCode == downArrow) index++;
+						else if (e.keyCode == upArrow) index--;
+
+						if (index == -1) {
+							$("#searchfield").focus();
+						} else {
+							var next = selector.eq(index);
+							next.focus();
+						}
+						e.preventDefault();
+					}
+				});
 
 				if (selectFirst && results.length > 0) {
-					var id = 'search_' + results[0][0].item.name.replace(" ", "_");
+					var id = 'search_' + results[0][0].item.name.replace(/ /g, "_");
 					$("#" + id).show(0);
+					$('#search-dropdown a').first().focus();
 					$("#" + id + "_0").focus();
 				}
 			}
@@ -262,8 +290,10 @@ $(document).ready(function() {
 
 			// define a handler
 			function onKeyUp(e) {
+				// Select the search field when pressing 'f'
 				if (document.activeElement != "INPUT" && e.keyCode == 70) {
 					$("#searchfield").focus();
+					e.preventDefault();
 				}
 			}
 			// register the handler 
