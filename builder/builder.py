@@ -42,8 +42,11 @@ class Builder:
         def create_wrapper(key: str, fun, context):
             def wrapper(*args):
                 buffer = StrTree()
-                str(fun(context, *args, buffer))
-                return buffer
+                try:
+                    fun(context, *args, buffer)
+                except Exception as e:
+                    raise Exception("Failed to run filter '" + key + "'") from e
+                return str(buffer)
             return wrapper
 
         for key, fun in filters.items():
