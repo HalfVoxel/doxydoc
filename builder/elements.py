@@ -18,19 +18,87 @@ def preformatted(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     buffer.element("pre", n.text)
 
 
+def findIndent(parent: ET.Element):
+    indent = 0
+    empty = True
+    for child in parent:
+        if child.text is not None:
+            empty = False
+            break
+
+        if child.tag == "sp":
+            indent += 1
+
+        subIndent, subEmpty = findIndent(child)
+        empty &= subEmpty
+        indent += subIndent
+
+        if child.tail is not None:
+            empty = False
+            break
+
+    return indent, empty
+
+
+def strip_common_indent(programlisting: ET.Element):
+    # Strip common indent
+    commonIndent = 100000
+    for line in programlisting:
+        indent, empty = findIndent(line)
+        if not empty:
+            commonIndent = min(indent, commonIndent)
+
+    for line in programlisting:
+        indent = 0
+        for e in line.iter():
+            if indent < commonIndent and e.tag == "sp":
+                indent += 1
+                e.tag = "dummy"
+
 def programlisting(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     # can add class linenums here if needed
+    strip_common_indent(n)
     buffer.open("code", {"class": "prettyprint"})
+
     for line in n:
         ''' \todo ID '''
+        # print(line)
         builder.layout.markup(ctx, line, buffer)
         buffer.voidelem("br")
 
     buffer.close("code")
 
 
+# Used for deleted elements
+def dummy(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    pass
+
+
+def video(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    attrs = n.attrib
+    buffer.open("video", params=attrs)
+
+    # Rewrite the src attribute of the 'source' tag
+    # to make sure it is correct even for nested pages
+    for child in n:
+        if child.tag == "source":
+            childAttrs = dict(child.attrib)
+            if "src" in childAttrs:
+                childAttrs["src"] = ctx.relpath(childAttrs["src"])
+            buffer.element("source", "",params=childAttrs)
+        else:
+            buffer.html(element_to_string(child))
+
+        buffer.html(child.tail or "")
+    buffer.close("video")
+
+
+def element_to_string(element: ET.Element) -> str:
+    return "".join([ "" if element.text is None else element.text] + [ET.tostring(e, encoding="unicode", method="html") for e in element.getchildren()])
+
+
 def verbatim(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    buffer.html(str(n.text))
+    buffer.html(element_to_string(n))
 
 
 def indexentry(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -130,7 +198,9 @@ def table(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def heading(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    pass
+    buffer.open("h" + n.get("level"))
+    builder.layout.markup(ctx, n, buffer)
+    buffer.close("h" + n.get("level"))
 
 
 def image(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -316,7 +386,9 @@ xml_mapping = {
     "ref": ref,
     "para": para,
     "sp": sp,
-    "highlight": highlight
+    "highlight": highlight,
+    "dummy": dummy,
+    "video": video
 }
 
 
