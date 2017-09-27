@@ -65,7 +65,7 @@ def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:
     # kind = refnode.get("kindref")
     # external = refnode.get("external")
     tooltip = refnode.get("tooltip")
-    obj = ctx.state.get_entity(id)
+    obj = ctx.state.get_entity(refid)
 
     obj = obj.compound
     assert obj
