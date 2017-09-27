@@ -205,6 +205,7 @@ class Importer:
 
 def merge_simple_sections(xml: ET.Element):
     ''' Combines consecutive simplesect tags into a single simplesect tag. This is used for e.g the \see command '''
+    items = []
     for node in xml.iter():
         spans = []  # type: List[List[ET.Element]]
         current_span = []  # type: List[ET.Element]
@@ -232,6 +233,12 @@ def merge_simple_sections(xml: ET.Element):
                     current_span = []
                     kind = ""
 
+        if len(current_span) > 0:
+            spans.append(current_span)
+
+        items.append((node, spans))
+
+    for node, spans in items:
         for span in spans:
             # Remove all but the last child
             for child in span[:-1]:
