@@ -122,6 +122,8 @@ class Importer:
             except Exception as e:
                 raise Exception("Could not parse '" + fname + "'") from e
 
+        for root in roots:
+            merge_simple_sections(root)
         self._process_references(roots)
         self._read_entity_xml()
 
@@ -199,6 +201,46 @@ class Importer:
         #         idnode.set("docobj", entity)
         #         self._add_docobj(entity)
         #         # print(entity.full_url())
+
+
+def merge_simple_sections(xml: ET.Element):
+    ''' Combines consecutive simplesect tags into a single simplesect tag. This is used for e.g the \see command '''
+    for node in xml.iter():
+        spans = []  # type: List[List[ET.Element]]
+        current_span = []  # type: List[ET.Element]
+        kind = ""
+        for child in node:
+            if child.tag == "simplesect":
+                # Split span because of change in kind
+                if child.get("kind") != kind:
+                    if len(current_span) > 0:
+                        spans.append(current_span)
+                    current_span = []
+
+                kind = child.get("kind")
+                current_span.append(child)
+
+                # Split span because of trailing text
+                if child.tail.strip() != "":
+                    spans.append(current_span)
+                    current_span = []
+                    kind = ""
+            else:
+                # Split span because of a different tag
+                if len(current_span) > 0:
+                    spans.append(current_span)
+                    current_span = []
+                    kind = ""
+
+        for span in spans:
+            # Remove all but the last child
+            for child in span[:-1]:
+                node.remove(child)
+
+            # Insert the content from the other simplesect nodes into the last one
+            for child in reversed(span[:-1]):
+                for subchild in reversed(list(child)):
+                    span[-1].insert(0, subchild)
 
 
 def is_detail_hidden(member, settings) -> bool:
