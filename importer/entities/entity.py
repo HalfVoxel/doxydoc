@@ -94,6 +94,7 @@ class Entity:
             assert("_" in id)
             key = id.split("_")[0]
             if key == "deprecated":
+                # TODO
                 # Detected that the entity is deprecated
                 # This is not a completely accurate check as there might be some other thing in the description that was marked as deprecated
                 self.deprecated = True
