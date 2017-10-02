@@ -29,7 +29,13 @@ def generate_io_safe_name(filename: str, tail: str, reserved: Set[str]) -> str:
         if len(filename) > 40:
             filename = filename[0:41]
 
+        # Make sure the name only contains alphanumeric characters, underscores and hyphens
+        # This is required to make sure it is a valid anchor for example
+        # See https://stackoverflow.com/questions/1391802/can-a-dom-element-have-an-id-that-contains-a-space
+        filename = "".join([c for c in filename if c.isalnum() or c == "_" or c == "-" or c == "/"])
+
         name_with_tail = filename + tail
+
         if name_with_tail not in reserved:
             return name_with_tail
 
