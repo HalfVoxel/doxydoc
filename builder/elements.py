@@ -199,7 +199,7 @@ def table(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    name = n.get("name")
+    name = n.get("name").replace("::",".")
     copy_candidates = []
     for entity in ctx.state.entities:
         name_suffix = ""
