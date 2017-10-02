@@ -28,7 +28,7 @@ class MemberEntity(Entity):
         # TODO: Rename to overrides
         self.override = None  # type: str
 
-        ''' The value the member is initialized to. TODO: What is the type? '''
+        ''' The value the member is initialized to '''
         self.initializer = None  # type: ET.Element
 
         self.type = None  # type: ET.Element

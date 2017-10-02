@@ -8,7 +8,7 @@
         <table class="member-params-detail">
         # for m in member.members
             <tr>
-            <td><p class="param-name">{{ m.name }}</p></td>
+            <td><p class="param-name">{{ m.name }}{{ m.initializer|markup }}</p></td>
             <td>{{ m.briefdescription|description }}
             {{ m.detaileddescription|description }}</td>
             </tr>
@@ -49,7 +49,7 @@
 
     {{ member.type|linked_text }}
 
-    <span class="member-name">{{ member.name }}</span>
+    <span class="member-name">{{ member.name }}{{ " " + member.initializer|markup }}</span>
 
     # if member.hasparams
         {{ param_description_list(member, true) }}
