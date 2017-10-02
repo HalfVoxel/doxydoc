@@ -61,7 +61,11 @@
 ## <span "data-original-title"="{{ param.detaileddescription|description_no_links }}">{{ param.name }}</span>
 
 {%- macro member_parameter_name(param) %}
-    <td><p class="param-name">{{ param.name }}</p></td>
+    {% set defval = "" %}
+    {% if param.default_value is not none %}
+        {% set defval = "=" + param.default_value|markup %}
+    {% endif %}
+    <td><p class="param-name">{{ param.name }}{{ defval }}</p></td>
     #- if param.detaileddescription
         <td>{{ param.detaileddescription|description }}</td>
     #- else

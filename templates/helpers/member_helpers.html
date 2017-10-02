@@ -46,7 +46,14 @@
     <span class="member-params">
         {{- "(" -}}
          {%- for param in member.params -%}
-            {{ delim() }}{% if write_type %}{{ param.type|linked_text }} {% endif %}{{- param.name }}
+            {%- set defval = "" -%}
+            {%- if param.default_value is not none -%}
+                {%- set defval = "=" + param.default_value|markup -%}
+                {%- if defval|length > 5: -%}
+                    {%- set defval = "=…" -%}
+                {%- endif -%}
+            {%- endif -%}
+            {{ delim() }}{% if write_type %}{{ param.type|linked_text }} {% endif %}{{- param.name }}{{ defval }}
          {%- endfor %}
          {{- ")" -}}
     </span>
