@@ -116,6 +116,27 @@ class DoxyDoc:
         except OSError as e:
             print("Error while copying resources: " + str(e))
 
+    def process_images(self, dir: str):
+        for root, dirs, files in os.walk(dir):
+            for fn in files:
+                source_path = os.path.join(root, fn)
+                source_name, ext = os.path.splitext(source_path)
+                if source_name.endswith("@2x") or source_name.endswith("@1.5x"):
+                    scale = 2 if source_name.endswith("@2x") else 1.5
+                    invscale = str(round(100/scale)) + "%"
+
+                    # Remove everything after the last @
+                    target_path = "@".join(source_name.split("@")[0:-1])
+                    if os.path.exists(target_path + ext) or os.path.exists(target_path + "@1x" + ext):
+                        # Don't bother creating a smaller variant. It seems it already exists
+                        pass
+                    else:
+                        # Create a 1x variant of the image
+                        target_path = target_path + ext
+                        print("Scaling down " + str(source_path))
+                        call(["convert", "-scale", invscale, os.path.realpath(source_path), os.path.realpath(target_path)])
+
+
     def copy_resources(self) -> None:
         if not self.settings.args.quiet:
             print("Copying resources...")
@@ -130,7 +151,9 @@ class DoxyDoc:
             self.copy_resources_dir(resbase, target_dir)
 
         target_dir = os.path.join(self.settings.out_dir, "images")
+        shutil.rmtree(target_dir)
         self.copy_resources_dir(os.path.join(self.settings.in_dir, "images"), target_dir)
+        self.process_images(target_dir)
 
     def find_xml_files(self, path: str) -> List[str]:
         return [join(path, f) for f in listdir(path)

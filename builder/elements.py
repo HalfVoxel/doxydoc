@@ -3,7 +3,9 @@
 from .str_tree import StrTree
 import builder.layout
 import xml.etree.ElementTree as ET
+import os
 from .writing_context import WritingContext
+from typing import List, Tuple
 
 
 def linebreak(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -225,14 +227,45 @@ def heading(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     buffer.close("h" + n.get("level"))
 
 
+def get_image_variants(ctx: WritingContext, path: str) -> List[str]:
+    root, ext = os.path.splitext(path)
+    res = []
+    for s in [(1, ""), (1, "@1x"), (1.5, "@1.5x"), (2, "@2x"), (3, "@3x"), (4, "@4x")]:
+        local_path = root + s[1] + ext
+        full_path = os.path.join(ctx.settings.out_dir, local_path)
+        if os.path.isfile(full_path):
+            # Found an image variant
+            res.append((s[0], local_path))
+
+    return res
+
+
+def srcset2str(srcset: List[Tuple[int,str]]) -> str:
+    return ",\n".join(path + " " + str(scale) + "x" for scale, path in srcset)
+
+
 def image(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     src = n.get("src")
     if src is None:
         src = "images/" + n.get("name")
 
-    url = ctx.relpath(src)
+    srcset = get_image_variants(ctx, src)
+    # Convert to relative paths
+    srcset = [(s, ctx.relpath(p)) for s,p in srcset]
+    scale1 = [p for s,p in srcset if s == 1]
+    if len(srcset) == 0:
+        print("Could not find image " + src)
+        url = ctx.relpath(src)
+    elif len(scale1) == 0:
+        print("Image " + src + " does not have any variants with a scale of 1x")
+        url = ctx.relpath(src)
+    else:
+        url = scale1[0]
+        # the src attribute acts as a 1x image in the srcset
+        srcset = [(s, p) for s,p in srcset if s != 1]
+
     buffer.open("div", {"class": "tinyshadow"})
-    buffer.open("img", {"src": url})
+    buffer.open("img", {"src": url, "srcset": srcset2str(srcset)})
     builder.layout.markup(ctx, n, buffer)
     buffer.close("img")
     buffer.close("div")
