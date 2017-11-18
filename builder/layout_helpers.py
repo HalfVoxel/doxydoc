@@ -57,8 +57,8 @@ def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str
             ("Public Static Slots", lambda m: m.static and m.kind == "slot"),
         ]),
         (lambda m: not m.deprecated, [
-            ("Inherited Members", lambda m: m.defined_in_entity != entity),
-            ("Private/Protected Members", lambda m: m.protection != "public" and m.defined_in_entity == entity),
+            ("Inherited Public Members", lambda m: m.defined_in_entity != entity and m.protection == "public"),
+            ("Private/Protected Members", lambda m: m.protection != "public"),
         ]),
         (lambda m: m.deprecated, [
             ("Deprecated Members", lambda m: m.defined_in_entity == entity)
