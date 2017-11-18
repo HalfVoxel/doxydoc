@@ -84,6 +84,9 @@ def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:
 
 
 def ref_entity(ctx: WritingContext, obj, buffer: StrTree) -> None:
+    ref_entity_with_contents(ctx, obj, "", buffer)
+
+def ref_entity_with_contents(ctx: WritingContext, obj, contents: str, buffer: StrTree) -> None:
     # Prevent recursive loops of links in the tooltips
     if ctx.strip_links or is_hidden(obj):
         buffer += obj.name
@@ -92,11 +95,14 @@ def ref_entity(ctx: WritingContext, obj, buffer: StrTree) -> None:
         _tooltip(ctx, obj, tooltip)
 
         # Write out anchor element
-        buffer.element("a", obj.name, {
+        buffer.open("a", {
             "href": ctx.relpath(obj.path.full_url()),
             "rel": 'tooltip',
             "data-original-title": str(tooltip)
         })
+        buffer.html(contents)
+        buffer.append(obj.name)
+        buffer.close("a")
 
 
 def _tooltip(ctx: WritingContext, entity, buffer: StrTree) -> None:
@@ -104,7 +110,7 @@ def _tooltip(ctx: WritingContext, entity, buffer: StrTree) -> None:
         description(ctx.with_link_stripping(), entity.briefdescription, buffer)
 
 
-def ref(ctx: WritingContext, refnode, buffer) -> None:
+def ref(ctx: WritingContext, refnode, buffer: StrTree) -> None:
     obj = ctx.getref(refnode)
 
     if obj is None:

@@ -42,7 +42,7 @@ nav.sidebar {
     a {
         position: relative;
         display: block;
-        padding-left: 20px;
+        padding-left: 10px;
         padding-top: 0px;
         padding-bottom: 5px;
     }
@@ -52,7 +52,7 @@ nav.sidebar {
     }
 
     li > a:hover, li.active > a {
-        padding-left: 18px;
+        padding-left: 8px;
         border-width: 0px 0px 0px 2px;
         border-color: #000000;
         border-style: solid;
@@ -71,6 +71,19 @@ li {
     padding-left: 0px;
 
     li > a {
+        padding-left: 30px;
+    }
+
+    li > a:hover, li.active > a {
+        padding-left: 28px;
+    }
+}
+
+.sidenav-l2 {
+    font-weight: normal;
+    padding-left: 0px;
+
+    li > a {
         padding-left: 40px;
     }
 
@@ -79,7 +92,7 @@ li {
     }
 }
 
-.sidenav-l2 {
+.sidenav-l3 {
     font-weight: normal;
     padding-left: 0px;
 
@@ -92,7 +105,7 @@ li {
     }
 }
 
-.sidenav-l3 {
+.sidenav-l4 {
     font-weight: normal;
     padding-left: 0px;
 
@@ -105,17 +118,31 @@ li {
     }
 }
 
-.sidenav-l4 {
-    font-weight: normal;
-    padding-left: 0px;
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #333;
+    margin-right: 4px;
+    display: inline-block;
+}
 
-    li > a {
-        padding-left: 70px;
-    }
+.arrow-none {
+    width: 0;
+    height: 0;
+    margin-right: 12px;
+    display: inline-block;
+}
 
-    li > a:hover, li.active > a {
-        padding-left: 68px;
-    }
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #333;
+    margin-right: 8px;
+    display: inline-block;
 }
 
 .container {

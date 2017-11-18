@@ -54,15 +54,16 @@ class StrTree:
     def outside_paragraph(self) -> Reverter:
         return Reverter(self, "p")
 
-    def element(self, t: str, c: Any=None, params: Dict[str, str]=None) -> 'StrTree':
+    def element(self, t: str, contents: Union[types.FunctionType, str]=None, params: Dict[str, str]=None) -> 'StrTree':
         assert t is not None
-        assert c is not None
+        assert contents is not None
         self.open(t, params)
 
-        if isinstance(c, types.FunctionType):
-            c()
+        if isinstance(contents, types.FunctionType):
+            # Assumed to do some string tree stuff
+            contents()
         else:
-            self.append(c)
+            self.append(contents)
 
         self.close(t)
         return self

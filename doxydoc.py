@@ -262,6 +262,7 @@ class DoxyDoc:
             "linked_text": builder.layout.linked_text,
             "ref_explicit": builder.layout.ref_explicit,
             "ref_entity": builder.layout.ref_entity,
+            "ref_entity_with_contents": builder.layout.ref_entity_with_contents,
             "match_external_ref": builder.layout.match_external_ref,
             "log": lambda c, v, b: print(v),
         }
