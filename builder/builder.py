@@ -13,7 +13,7 @@ class Builder:
         self.importer = importer
         self.plugin_context = plugin_context
         self.settings = settings
-        self.default_writing_context = WritingContext(self.importer)
+        self.default_writing_context = WritingContext(self.importer, self.settings)
         self.page_generator = PageGenerator(self, self.default_writing_context)
 
         self.environment = jinja2.Environment(

@@ -130,7 +130,7 @@ class DoxyDoc:
             self.copy_resources_dir(resbase, target_dir)
 
         target_dir = os.path.join(self.settings.out_dir, "images")
-        self.copy_resources_dir("input/images", target_dir)
+        self.copy_resources_dir(os.path.join(self.settings.in_dir, "images"), target_dir)
 
     def find_xml_files(self, path: str) -> List[str]:
         return [join(path, f) for f in listdir(path)
@@ -140,7 +140,7 @@ class DoxyDoc:
         if not self.settings.args.quiet:
             print("Scanning input...")
 
-        self.importer.read(self.find_xml_files("input/xml"))
+        self.importer.read(self.find_xml_files(os.path.join(self.settings.in_dir, "xml")))
 
     def build_output(self) -> None:
         if not self.settings.args.quiet:
@@ -227,7 +227,7 @@ class DoxyDoc:
         if ent.hasparams:
             params = []
             for param in ent.params:
-                ctx = WritingContext(self.importer).with_link_stripping()
+                ctx = WritingContext(self.importer, self.settings).with_link_stripping()
                 buffer = StrTree()
                 builder.layout.markup(ctx, param.type, buffer)
                 params.append(str(buffer).replace(" ", ""))

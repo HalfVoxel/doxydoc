@@ -2,6 +2,7 @@
   "template_dirs": [
     "templates"
   ],
+  "in_dir": "input",
   "out_dir": "html",
   "hide_undocumented": true,
   "show_member_protection_in_list": true,
