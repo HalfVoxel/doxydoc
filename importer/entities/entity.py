@@ -17,6 +17,12 @@ class Entity:
         self.sorting_order = 0
         self.kind = "<not set>"
 
+        # If false then this entity will not show up in any file paths (except for the entity itself)
+        # For example if the page tutorials/get_started exists then normally that page would be placed at
+        # tutorials/get_started.html, however if the tutorials entity has this option disabled then it will
+        # be placed at get_started.html.
+        self.include_in_filepath = False
+
     def __str__(self):
         return "Entity: " + self.id
 

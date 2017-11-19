@@ -11,6 +11,7 @@ class PageEntity(Entity):
 
         # The page which has this page as an inner page
         self.parent = None  # type: PageEntity
+        self.include_in_filepath = False
 
     def parent_in_canonical_path(self) -> Entity:
         return self.parent

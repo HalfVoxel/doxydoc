@@ -82,7 +82,8 @@ class PageGenerator:
         path = []
         ent = entity
         while ent is not None:
-            path.append(ent)
+            if ent == entity or ent.include_in_filepath:
+                path.append(ent)
             ent = ent.parent_in_canonical_path()
 
         path.reverse()
