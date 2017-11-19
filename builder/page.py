@@ -75,7 +75,7 @@ class PageGenerator:
         if entity.id == "indexpage":
             return "index"
         else:
-            return entity.name
+            return entity.short_name
 
     def entity_path(self, entity: Entity) -> str:
         ''' Desired path for an entity in the file system. Does not include the file extension. May change due to conflicts. '''
