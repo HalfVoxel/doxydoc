@@ -151,7 +151,8 @@ class DoxyDoc:
             self.copy_resources_dir(resbase, target_dir)
 
         target_dir = os.path.join(self.settings.out_dir, "images")
-        shutil.rmtree(target_dir)
+        if os.path.isdir(target_dir):
+            shutil.rmtree(target_dir)
         self.copy_resources_dir(os.path.join(self.settings.in_dir, "images"), target_dir)
         self.process_images(target_dir)
 
