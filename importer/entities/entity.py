@@ -99,6 +99,10 @@ class Entity:
                 # This is not a completely accurate check as there might be some other thing in the description that was marked as deprecated
                 self.deprecated = True
 
+    def post_xml_read(self) -> None:
+        ''' Called when all entities' read_from_xml methods have been called '''
+        pass
+
 
 def gather_members(xml, ctx: importer.importer_context.ImporterContext) -> List[Entity]:
     return [ctx.getentity(memberdef) for memberdef in xml.findall("sectiondef/memberdef")]

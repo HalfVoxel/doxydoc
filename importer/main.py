@@ -135,6 +135,13 @@ class Importer:
                 print("Exception when parsing " + str(entity.id) + " of type " + str(entity.kind))
                 raise
 
+        for entity in self.entities:
+            try:
+                entity.post_xml_read()
+            except:
+                print("Exception when post processing " + str(entity.id) + " of type " + str(entity.kind))
+                raise
+
     def _process_references(self, roots: List[ET.Element]) -> None:
         for root in roots:
             self._process_references_root(root)

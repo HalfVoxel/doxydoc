@@ -75,15 +75,52 @@ class ClassEntity(Entity):
         for inner_class in self.inner_classes:
             inner_class.parent = self
 
-        # All members, also inherited ones
-        self.all_members = [ctx.getref(m) for m in xml.find("listofallmembers")]
-
-        def valid_member(m):
-            # The name check is done to prevent constructors showing up as inherited members
-            return m.defined_in_entity == self or m.defined_in_entity.name != m.name
-
-        self.all_members = [m for m in self.all_members if valid_member(m)]
         for m in xml.find("listofallmembers"):
             if ctx.getref(m) is None:
                 print("NULL REFERENCE " + str(m.find("name").text) + " " + str(m.find("scope").text))
                 print("Sure not old files are in the xml directory")
+
+    def post_xml_read(self) -> None:
+        self.all_members = []
+        gather_all_members(self, self, self.all_members)
+        self.all_members.sort(key=lambda m: (m.name.lower(), len(m.params), m.id))
+
+
+def gather_all_members(root_entity, entity, all_members):
+    def valid_member(m):
+        # The name check is done to prevent constructors showing up as inherited members
+        if m.defined_in_entity != root_entity and m.defined_in_entity.name == m.name:
+            # Is constructor in base class
+            return False
+
+        if m.protection == "private" and m.defined_in_entity != root_entity:
+            # Private member in base class is not treated as a member of the subclass
+            return False
+
+        for m2 in m.reimplementedby:
+            if m2 in all_members:
+                return False
+
+        if m.abstract and m.defined_in_entity != root_entity:
+            # Abstract member in base class
+            # Doxygen will not add a reimplementedby section for this member
+            # so the check above will not work.
+            # We still don't want this is subclasses though.
+            # TODO: An abstract class that does not override this method might want to show it in the docs though.
+            return False
+
+        return True
+
+    all_members += [m for m in entity.members if valid_member(m)]
+
+    for parent in entity.inherits_from:
+        parent_entity = parent.entity
+
+        if parent_entity is None:
+            # Unknown entity. Likely some library class that was not scanned by Doxygen
+            continue
+
+        if parent_entity.kind == "interface" and entity.kind != "interface":
+            continue
+
+        gather_all_members(root_entity, parent_entity, all_members)
