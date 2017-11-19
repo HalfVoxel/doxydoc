@@ -35,6 +35,8 @@ class MemberEntity(Entity):
 
         self.readonly = False
 
+        self.abstract = False  # type: bool
+
         # TODO: Remove?
         self.members = []  # type: List[Entity]
 
@@ -91,9 +93,14 @@ class MemberEntity(Entity):
 
         override = len(self.reimplements) > 0 and self.virtual == "virtual"
 
+        definition = xml.find("definition")
+
+        if definition is not None:
+            self.abstract = "abstract" in definition.text.split()
+
         if override:
-            assert xml.find("definition").text
-            types = xml.find("definition").text.split()
+            assert definition.text
+            types = definition.text.split()
             override_type = None
             if "override" in types:
                 override_type = "override"
