@@ -19,6 +19,7 @@ class Settings:
         self.disabled_plugins = []  # type: List[str]
         self.page_whitelist = None  # type: List[str]
         self.absolute_url_base = None  # type: str
+        self.banner = None  # type: str
         self.plugins = None  # type: Dict[str,Any]
 
         if settings_dict is not None:

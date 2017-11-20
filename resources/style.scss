@@ -150,6 +150,7 @@ li {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 25px;
 }
 /*@media (min-width: 768px) {
   .container {
@@ -172,7 +173,6 @@ li {
   }
 }*/
 body {
-    padding-top: 25px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
 }
@@ -662,4 +662,20 @@ a:focus {
     animation-duration: 1.0s;
     animation-iteration-count: 2;
     animation-timing-function: ease;
+}
+
+#banner {
+    width: 100%;
+    display: block;
+    text-align: center;
+    background: #f0af0b;
+    padding-top: 7px;
+    color: #000;
+    overflow: hidden;
+    padding-bottom: 6px;
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
 }
