@@ -17,12 +17,14 @@ class Builder:
         self.page_generator = PageGenerator(self, self.default_writing_context)
 
         self.environment = jinja2.Environment(
-            loader=jinja2.FileSystemLoader(settings.template_dirs),
+            loader=jinja2.FileSystemLoader(reversed(settings.template_dirs)),
             line_statement_prefix="#",
             line_comment_prefix="##",
             trim_blocks=True,
             lstrip_blocks=True
         )
+
+        self.environment.globals["settings"] = settings
 
         # Adds the field 'path' to all entities
         # This is used to look up on which
