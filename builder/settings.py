@@ -20,6 +20,7 @@ class Settings:
         self.page_whitelist = None  # type: List[str]
         self.absolute_url_base = None  # type: str
         self.banner = None  # type: str
+        self.breadcrumbs = True  # type: bool
         self.plugins = None  # type: Dict[str,Any]
 
         if settings_dict is not None:
