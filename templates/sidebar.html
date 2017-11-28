@@ -23,7 +23,7 @@
     <ul class="sidenav-l0">
         # set pages = state.get_entity("plugins/list_specials/pages")
         # for member in sorted(state.entities)
-            # if member.kind == "page" and member.parent == pages and member.id != "indexpage"
+            # if member.parent == pages and member.id != "indexpage"
                 {{ item(member, entity) }}
             # endif
         # endfor
