@@ -6,7 +6,7 @@
 # macro item(entity, depth=0)
     # if entity.innerpages|length > 0 or entity.inner_namespaces|length > 0 or entity.kind != "namespace"
         <li class="row member-list-item-header">
-            {{ member_brief_protection(entity, true, true, false, depth) }}
+            {{ member_brief_protection(entity, true, true, false, true, depth) }}
             <div class="col-md-0 col-xs-2"></div>
             <div class="col-md-6 col-xs-10 member-desc">
             {{ entity.briefdescription|description }}

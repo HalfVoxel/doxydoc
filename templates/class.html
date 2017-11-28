@@ -49,9 +49,9 @@
             <h2>Inner Types</h2>
             # for member in entity.inner_classes
                 <div class="row member-list-item-header">
-                    {{ member_brief_protection(member, true, true, true) }}
-                    <div class="col-md-0 col-xs-2"></div>
-                    <div class="col-md-6 col-xs-10 member-desc">
+                    {{ member_brief_protection(member, true, true, true, false) }}
+                    <div class="col-md-1 col-xs-2"></div>
+                    <div class="col-md-11 col-xs-10 member-desc">
                     {{ member.briefdescription|description }}
                     </div>
                 </div>
@@ -67,9 +67,9 @@
         # for member in members
             # block member_list_item scoped
             <div class="row member-list-item-header" onclick="$('#{{member.path.anchor}}').slideToggle(200); $('#{{member.path.anchor}}-overlay').fadeToggle(200);" style="position: relative;">
-                {{ member_brief_protection(member, true, false, true) }}
-                <div class="col-md-0 col-xs-2"></div>
-                <div class="col-md-6 col-xs-10 member-desc">
+                {{ member_brief_protection(member, true, false, true, false) }}
+                <div class="col-md-1 col-xs-2"></div>
+                <div class="col-md-11 col-xs-10 member-desc">
                 {{ member.briefdescription|description }}
                 </div>
                 <div id="{{member.path.anchor}}-overlay" class="member-top-prot">
