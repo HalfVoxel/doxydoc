@@ -14,16 +14,15 @@
   "version": "4.0.0",
   "flat_file_hierarchy": false,
   "disabled_plugins": [],
+  "doxygen_redirects": true,
+  "doxygen_redirect_extension": ".html",
   "page_whitelist": null,
   "absolute_url_base": "",
   "banner": "This is a beta version of the new documentation. <a href='http://arongranberg.com/astar/docs'>Go back to the old documentation</a> or <a href='https://docs.google.com/forms/d/e/1FAIpQLSf6Cp9SO0c31VnJsyqEtutBaKFrlvYz9pBRUUQs5RBo5rTRIQ/viewform?usp=sf_link'>give us feedback on the new docs</a>",
+  "breadcrumbs": false,
   "plugins": {
     "navbar": {
       "items": [
-        "changelog",
-        "plugins/list_specials/pages",
-        "plugins/list_specials/classes",
-        "plugins/list_specials/groups"
       ]
     }
   }

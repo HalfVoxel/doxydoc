@@ -117,7 +117,7 @@ class Importer:
                 compound = root.find("compounddef")
 
                 if compound is not None:
-                    self._register_compound(compound)
+                    self._register_compound(compound, fname)
                     roots.append(root)
             except Exception as e:
                 raise Exception("Could not parse '" + fname + "'") from e
@@ -158,9 +158,11 @@ class Importer:
                     # raise
                     pass
 
-    def _register_compound(self, xml: ET.Element) -> None:
+    def _register_compound(self, xml: ET.Element, filename: str) -> None:
 
         entity = self._create_entity(xml)
+
+        entity.filename = filename
 
         # Will only be used for debugging if even that. Formatted name will be added later
         entity.name = str(xml.find("compoundname").text)

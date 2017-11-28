@@ -18,6 +18,8 @@
 # endmacro
 
 <nav class="sidebar hidden-print hidden-sm hidden-xs">
+    # include "sidebar_header.html"
+
     <ul class="sidenav-l0">
         # set pages = state.get_entity("plugins/list_specials/pages")
         # for member in sorted(state.entities)

@@ -16,6 +16,8 @@ class Entity:
         self.deprecated = False
         self.sorting_order = 0
         self.kind = "<not set>"
+        # The filename of the xml file that produced this entity
+        self.filename = None  # type: Union[None,str]
 
         # If false then this entity will not show up in any file paths (except for the entity itself)
         # For example if the page tutorials/get_started exists then normally that page would be placed at

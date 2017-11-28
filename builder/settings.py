@@ -22,6 +22,8 @@ class Settings:
         self.banner = None  # type: str
         self.breadcrumbs = True  # type: bool
         self.plugins = None  # type: Dict[str,Any]
+        self.doxygen_redirects = False
+        self.doxygen_redirect_extension = ".html"
 
         if settings_dict is not None:
             for k, v in settings_dict.items():
