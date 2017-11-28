@@ -1,6 +1,7 @@
 import builder.elements
 from .str_tree import StrTree
 from .writing_context import WritingContext
+from importer.entities import Entity
 
 INITIAL_HEADING_DEPTH = 2
 
@@ -50,7 +51,13 @@ def get_anchor(ctx: WritingContext, id: str) -> str:
     if id == "":
         return ""
     obj = ctx.state.get_entity(id)
+
     return obj.path.anchor
+
+
+def get_local_anchor(ctx: WritingContext, entity: Entity, buffer: StrTree) -> None:
+    assert entity is not None
+    buffer.append(ctx.page.get_local_anchor(entity))
 
 
 def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:

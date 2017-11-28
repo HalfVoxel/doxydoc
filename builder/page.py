@@ -15,6 +15,28 @@ class Page:
         self.primary_entity = primary_entity
         self.entities = entities
 
+        self.used_anchors = set()  # type: Map[Entity,str]
+        self.anchors = dict()
+        for entity in entities:
+            if entity.path.path is not None:
+                print("Warning: Entity included in multiple pages: " + entity.id)
+
+            entity.path.path = path
+            if entity is not primary_entity:
+                # Set anchor
+                entity.path.anchor = generate_io_safe_name(entity.name, "", self.used_anchors)
+                self.used_anchors.add(entity.path.anchor)
+                self.anchors[entity] = entity.path.anchor
+
+    def get_local_anchor(self, entity: Entity) -> str:
+        if entity in self.anchors:
+            return self.anchors[entity]
+        else:
+            anchor = generate_io_safe_name(entity.name, "", self.used_anchors)
+            self.used_anchors.add(anchor)
+            self.anchors[entity] = anchor
+            return anchor
+
 
 def generate_io_safe_name(filename: str, tail: str, reserved: Set[str]) -> str:
         # filename_comps = name.split(":")
@@ -105,17 +127,6 @@ class PageGenerator:
         if primary_entity is not None:
             assert primary_entity in entities
 
-        used_anchors = set()  # type: Set[str]
-        for entity in page.entities:
-            if entity.path.path is not None:
-                print("Warning: Entity included in multiple pages: " + entity.id)
-
-            entity.path.path = page.path
-            if entity is not primary_entity:
-                # Set anchor
-                entity.path.anchor = generate_io_safe_name(entity.name, "", used_anchors)
-                used_anchors.add(entity.path.anchor)
-
         return page
 
     def _page_with_entity(self, template: str, primary_entity: Entity, entities: List[Entity]) -> Page:
@@ -177,12 +188,12 @@ class PageGenerator:
             return sorted(list, key=lambda e: e.sorting_order)
 
         self.default_writing_context.relpath = relpath
+        self.default_writing_context.page = page
 
         text = template.render(
             page=page,
             entity=page.primary_entity,
             state=self.builder.importer,
-            settings=self.builder.settings,
             layout=layout_helpers,
             relpath=relpath,
             in_tree=in_tree,
@@ -191,3 +202,11 @@ class PageGenerator:
         )
         f.write(text)
         f.close()
+
+        if self.builder.settings.doxygen_redirects and page.primary_entity.filename is not None:
+            fname = os.path.splitext(os.path.basename(page.primary_entity.filename))[0] + self.builder.settings.doxygen_redirect_extension
+            path = os.path.join(self.builder.settings.out_dir, fname)
+            f = open(path, "w")
+            f.write(text)
+            f.close()
+

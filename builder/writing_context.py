@@ -10,6 +10,7 @@ class WritingContext:
         self.state = state
         self.settings = settings
         self.strip_links = False
+        self.page = None  # type: Page
 
         # Function mapping paths to paths relative to the current page
         # Set by the page generator
