@@ -39,8 +39,14 @@ class PageEntity(Entity):
         if order is not None:
             self.sorting_order = int(order.get("value"))
 
-        self.innerpages = [ctx.getref(node) for node in xml.findall("innerpage")]
-        for page in self.innerpages:
-            assert(isinstance(page, PageEntity))
-            page.parent = self
+        # Note that the Doxygen subpage command has been redefined to emit an innerpage xml element
+        innerpage_nodes = [node for node in xml.iter("innerpage")]
+        for page_node in innerpage_nodes:
+            page = ctx.getref(page_node)
+            if page is None:
+                print("Could not find inner page of " + self.short_name + " with id " + str(page_node.get("refid")))
+            else:
+                assert(isinstance(page, PageEntity))
+                self.innerpages.append(page)        
+                page.parent = self
 

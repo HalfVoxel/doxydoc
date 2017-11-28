@@ -400,6 +400,14 @@ def highlight(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     builder.layout.markup(ctx, n, buffer)
 
 
+def innerpage(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    entity = ctx.getref(n)
+    if entity is None:
+        buffer.append(str(n.get("refid")))
+    else:
+        builder.layout.ref_entity(ctx, entity, buffer)
+
+
 xml_mapping = {
     "linebreak": linebreak,
     "hruler": hruler,
@@ -446,6 +454,7 @@ xml_mapping = {
     "video": video,
     "order": dummy,
     "copydetailed": copydetailed,
+    "innerpage": innerpage,
 }
 
 
