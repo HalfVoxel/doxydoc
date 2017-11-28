@@ -13,11 +13,54 @@ nav.sidebar {
     // background: #EEE;
     // border: #CCC 1px solid;
     // border-radius: 5px;
-    margin-right: 20px;
-    margin-top: 100px;
+    // margin-right: 20px;
+    margin-top: 75px;
     box-shadow: inset 2px 0px 0px 0px #CCC;
     flex-grow: 0;
     flex-shrink: 0;
+
+    #searchfield {
+        width: 100%;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+    }
+
+    .sidebar-package-header {
+        padding-left: 18px;
+        padding-bottom: 5px;
+        padding-top: 10px;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    .sidebar-brand {
+        font-size: 14pt;
+        font-family: bitter;
+        color: #333;
+    }
+
+    .sidebar-brand:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .package-version {
+        font-family: bitter;
+        margin-left: 8px;
+        right: 10px;
+        position: absolute;
+        padding-right: 10px;
+    }
+}
+
+nav.navbar {
+    .package-version {
+        display: inline-block;
+        padding-top: 15px;
+        font-size: 18px;
+        line-height: 20px;
+        color: #777;
+    }
 }
 
 .wrapper {
@@ -353,9 +396,17 @@ code {
 .simplesect-deprecated                      { border-color: #303030; }
 
 .member-list {
-    .member-list-name {
-        color: #337ab7;
+    .member-brief {
         font-family: monospace;
+
+        .member-name {
+            color: #337ab7;
+            font-weight: bold;
+        }
+
+        .member-paramlist {
+            color: #5b5b5b;
+        }
     }
 
     .member-desc p {
@@ -413,6 +464,10 @@ table.member-list-section {
 
     .member-name {
         font-weight: bold;
+    }
+
+    @media print {
+        display: block;
     }
 }
 
@@ -678,4 +733,8 @@ a:focus {
         color: #000;
         text-decoration: underline;
     }
+}
+
+h1 {
+    margin-top: 0px;
 }
