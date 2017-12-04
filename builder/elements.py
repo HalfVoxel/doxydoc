@@ -188,12 +188,12 @@ def variablelist(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def table(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    buffer.open("table")
+    buffer.open("table", params={"class": "table table-striped table-filled"})
     for row in n:
-        buffer.open("tr")
+        buffer.open("tr", params=n.attrib)
         for cell in row:
-            th = cell.get("thead") == "yes"
-            buffer.open("th" if th else "td")
+            th = cell.get("thead") == "yes" or cell.tag == "th"
+            buffer.open("th" if th else "td", params=cell.attrib)
             builder.layout.markup(ctx, cell, buffer)
             buffer.close("th" if th else "td")
         buffer.close("tr")

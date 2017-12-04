@@ -738,3 +738,10 @@ a:focus {
 h1 {
     margin-top: 0px;
 }
+
+table.table-filled {
+    border: 1px solid #e1e1e8;
+    border-radius: 3px;
+    border-collapse: separate;
+    background-color: #f7f7f9;
+}
