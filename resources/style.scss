@@ -745,3 +745,32 @@ table.table-filled {
     border-collapse: separate;
     background-color: #f7f7f9;
 }
+
+table.horizontalAlternative2D3D {
+    th {
+        text-align: center;
+    }
+
+    th.Alt2D {
+        // border-top: 4px solid #6599e7;
+        background: #6599e7;
+    }
+    th.Alt3D {
+        // border-top: 4px solid #ed8585;    
+        background: #ed8585;
+    }
+
+    td {
+        padding: 10px;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    td.Alt2D {
+        background: #6599e755;
+    }
+
+    td.Alt3D {
+        background: #ed858555;
+    }
+}
