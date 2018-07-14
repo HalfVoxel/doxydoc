@@ -91,15 +91,15 @@ class DoxyDoc:
             for root, dirs, files in os.walk(source_dir):
                 dstroot = root.replace(source_dir + "/", "").replace(source_dir, "")
 
-                target_dir = os.path.join(target_dir, dstroot)
+                target_dir2 = os.path.join(target_dir, dstroot)
                 try:
-                    os.makedirs(target_dir)
+                    os.makedirs(target_dir2)
                 except:
                     pass
 
                 for fn in files:
                     source_path = os.path.join(root, fn)
-                    target_path = os.path.join(target_dir, fn)
+                    target_path = os.path.join(target_dir2, fn)
 
                     if source_path.endswith(".scss"):
                         target_path = target_path.replace(".scss", ".css")
@@ -107,12 +107,6 @@ class DoxyDoc:
                         call(["sass", os.path.realpath(source_path), os.path.realpath(target_path)])
                     else:
                         shutil.copy2(source_path, target_path)
-
-                # Copy subdirectories
-                for subdir in dirs:
-                    source_subdir = os.path.join(source_dir, subdir)
-                    target_subdir = os.path.join(target_dir, subdir)
-                    self.copy_resources_dir(source_subdir, target_subdir)
         except OSError as e:
             print("Error while copying resources: " + str(e))
 
