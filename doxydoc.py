@@ -245,7 +245,7 @@ class DoxyDoc:
         if ent.hasparams:
             params = []
             for param in ent.params:
-                ctx = WritingContext(self.importer, self.settings).with_link_stripping()
+                ctx = WritingContext(self.importer, self.settings, None).with_link_stripping()
                 buffer = StrTree()
                 builder.layout.markup(ctx, param.type, buffer)
                 params.append(str(buffer).replace(" ", ""))

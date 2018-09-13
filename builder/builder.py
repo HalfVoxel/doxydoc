@@ -9,12 +9,9 @@ from typing import Dict
 
 class Builder:
     def __init__(self, importer, plugin_context, settings) -> None:
-        self.environment = None
         self.importer = importer
         self.plugin_context = plugin_context
         self.settings = settings
-        self.default_writing_context = WritingContext(self.importer, self.settings)
-        self.page_generator = PageGenerator(self, self.default_writing_context)
 
         self.environment = jinja2.Environment(
             loader=jinja2.FileSystemLoader(reversed(settings.template_dirs)),
@@ -25,6 +22,8 @@ class Builder:
         )
 
         self.environment.globals["settings"] = settings
+        self.default_writing_context = WritingContext(self.importer, self.settings, self.environment)
+        self.page_generator = PageGenerator(self, self.default_writing_context)
 
         # Adds the field 'path' to all entities
         # This is used to look up on which

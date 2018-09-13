@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 import os
 from .writing_context import WritingContext
 from typing import List, Tuple
+from importer.entities import Entity
 
 
 def linebreak(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -408,6 +409,24 @@ def innerpage(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
         builder.layout.ref_entity(ctx, entity, buffer)
 
 
+def render_template(ctx: WritingContext, template_name: str, **kwargs) -> str:
+    template = ctx.jinja_environment.get_template(template_name + ".html")
+    return template.render(
+        page=ctx.page,
+        state=ctx.state,
+        relpath=ctx.relpath,
+        sorted=ctx.sort_entities,
+        **kwargs,
+    )
+
+
+def inspectorfield(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    print("Creating inspector field")
+    title = n.get("title")
+    entity = ctx.state.get_entity_by_path(n.get("refname"))
+    buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity))
+
+
 xml_mapping = {
     "linebreak": linebreak,
     "hruler": hruler,
@@ -455,6 +474,7 @@ xml_mapping = {
     "order": dummy,
     "copydetailed": copydetailed,
     "innerpage": innerpage,
+    "inspectorfield": inspectorfield,
 }
 
 
