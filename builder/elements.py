@@ -416,15 +416,21 @@ def render_template(ctx: WritingContext, template_name: str, **kwargs) -> str:
         state=ctx.state,
         relpath=ctx.relpath,
         sorted=ctx.sort_entities,
+        getref=ctx.getref,
         **kwargs,
     )
 
 
 def inspectorfield(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    print("Creating inspector field")
     title = n.get("title")
     entity = ctx.state.get_entity_by_path(n.get("refname"))
-    buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity))
+
+    primary_type = None
+    if entity.type is not None:
+        for n in entity.type:
+            if n.tag == "ref":
+                primary_type = ctx.getref(n)
+    buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity, primary_type=primary_type))
 
 
 xml_mapping = {

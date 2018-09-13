@@ -17,6 +17,26 @@
                 <h3>See</h3>
                 This setting corresponds to the member {{ member|ref_explicit(member.full_canonical_path(), "") }}
             </div>
+            # set submember = primary_type
+            # if submember is not none and submember.kind == "enum"
+
+                <p>This setting is an enum of the type {{submember|ref_entity}}</p>
+                <h4>{{submember|ref_entity}}</h4>
+                {{ submember.briefdescription|description }}
+
+                # if submember.members|length > 0
+                    <table class="member-params-detail">
+                    # for m in submember.members
+                        <tr>
+                        <td><p class="param-name">{{ m.name }}{{ m.initializer|markup }}</p></td>
+                        <td>{{ m.briefdescription|description }}
+                        {{ m.detaileddescription|description }}</td>
+                        </tr>
+                    # endfor
+                    </table>
+                # endif
+                {{ submember.detaileddescription|description }}
+            # endif
         </div>
     </div>
 </div>
