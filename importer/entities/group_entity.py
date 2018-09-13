@@ -17,6 +17,7 @@ class GroupEntity(Entity):
     def read_from_xml(self, ctx: ImporterContext) -> None:
         super().read_from_xml(ctx)
         xml = self.xml
+        assert xml is not None
 
         self.title = Entity.formatname(str(xml.find("title").text))
 

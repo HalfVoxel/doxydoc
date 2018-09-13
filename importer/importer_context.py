@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from typing import TYPE_CHECKING, Dict
+from typing import TYPE_CHECKING, Dict, Optional
 
 if TYPE_CHECKING:
     from . import entities
@@ -10,13 +10,13 @@ class ImporterContext:
         self._xml2entity = {}  # type: Dict[ET.Element,entities.Entity]
         self._xmlrefs = {}  # type: Dict[ET.Element,entities.Entity]
 
-    def getref(self, xml: ET.Element) -> 'entities.Entity':
+    def getref(self, xml: ET.Element) -> 'Optional[entities.Entity]':
         if xml in self._xmlrefs:
             return self._xmlrefs[xml]
         else:
             return None
 
-    def getentity(self, xml: ET.Element) -> 'entities.Entity':
+    def getentity(self, xml: ET.Element) -> 'Optional[entities.Entity]':
         if xml in self._xml2entity:
             return self._xml2entity[xml]
         else:

@@ -54,6 +54,7 @@ class ClassEntity(Entity):
     def read_from_xml(self, ctx: ImporterContext) -> None:
         super().read_from_xml(ctx)
         xml = self.xml
+        assert xml is not None
 
         self.protection = xml.get("prot")
         self.members = gather_members(xml, ctx)

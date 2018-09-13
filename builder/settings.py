@@ -1,4 +1,4 @@
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Optional
 
 
 class Settings:
@@ -17,11 +17,11 @@ class Settings:
         self.version = "0.1"
         self.flat_file_hierarchy = False
         self.disabled_plugins = []  # type: List[str]
-        self.page_whitelist = None  # type: List[str]
-        self.absolute_url_base = None  # type: str
-        self.banner = None  # type: str
+        self.page_whitelist = None  # type: Optional[List[str]]
+        self.absolute_url_base = None  # type: Optional[str]
+        self.banner = None  # type: Optional[str]
         self.breadcrumbs = True  # type: bool
-        self.plugins = None  # type: Dict[str,Any]
+        self.plugins = None  # type: Optional[Dict[str,Any]]
         self.doxygen_redirects = False
         self.doxygen_redirect_extension = ".html"
 

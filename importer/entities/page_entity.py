@@ -26,6 +26,7 @@ class PageEntity(Entity):
     def read_from_xml(self, ctx: ImporterContext) -> None:
         super().read_from_xml(ctx)
         xml = self.xml
+        assert xml is not None
 
         # xml
         # id

@@ -1,16 +1,16 @@
 import xml.etree.ElementTree as ET
 import importer.importer_context
-from typing import List
+from typing import List, Union, Optional, cast
 
 
 class Entity:
     def __init__(self) -> None:
         self.name = ""  # type: str
         self.short_name = ""  # type: str
-        self.briefdescription = None  # type: ET.Element
-        self.detaileddescription = None  # type: ET.Element
+        self.briefdescription = None  # type: Optional[ET.Element]
+        self.detaileddescription = None  # type: Optional[ET.Element]
         self.id = ""  # type: str
-        self.xml = None  # type: ET.Element
+        self.xml = None  # type: Optional[ET.Element]
         # Sections in descriptions that can be linked to
         self.sections = []  # type: List[Entity]
         self.deprecated = False
@@ -28,8 +28,18 @@ class Entity:
     def __str__(self):
         return "Entity: " + self.id
 
-    def parent_in_canonical_path(self) -> 'Entity':
+    def parent_in_canonical_path(self) -> 'Optional[Entity]':
         return None
+
+    def full_canonical_path(self, separator="."):
+        e = self
+        ss = []
+        while e is not None:
+            ss.append(e.name)
+            e = e.parent_in_canonical_path()
+
+        ss.reverse()
+        return separator.join(ss)
 
     @staticmethod
     def formatname(name: str) -> str:
@@ -39,11 +49,13 @@ class Entity:
         return "#" + self.kind + "#"
 
     def read_base_xml(self) -> None:
+        assert(self.xml is not None)
         self.id = self.xml.get("id")
         self.kind = self.xml.get("kind")
 
     def read_from_xml(self, ctx: importer.importer_context.ImporterContext) -> None:
         xml = self.xml
+        assert(xml is not None)
 
         short_name_node = xml.find("compoundname")
         name_node = xml.find("title")
@@ -91,7 +103,7 @@ class Entity:
 
             xrefsects += self.detaileddescription.findall(".//xrefsect")
 
-        self.sections = [ctx.getentity(sec) for sec in section_xml if ctx.getentity(sec) is not None]
+        self.sections = [e for e in map(ctx.getentity, section_xml) if e is not None]
 
         for xref in xrefsects:
             id = xref.get("id")
@@ -113,4 +125,6 @@ class Entity:
 
 
 def gather_members(xml, ctx: importer.importer_context.ImporterContext) -> List[Entity]:
-    return [ctx.getentity(memberdef) for memberdef in xml.findall("sectiondef/memberdef")]
+    result = [ctx.getentity(memberdef) for memberdef in xml.findall("sectiondef/memberdef")]
+    assert None not in result
+    return cast(List[Entity], result)
