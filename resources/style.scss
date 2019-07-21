@@ -676,9 +676,14 @@ a:focus {
     a {
         height: 26px;
 
-        span {
-            float: left;
+        .glyphicon {
+            margin-right: 8px;
+            padding-top: 1px;
         }
+
+        // span {
+        //     float: left;
+        // }
 
         small {
             float: right;

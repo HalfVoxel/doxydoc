@@ -140,12 +140,20 @@ $(document).ready(function() {
 		if (data) {
 			var index = elasticlunr();
 			index.addField('name');
+			index.addField('body');
 			index.setRef('index');
 
 			for (var i = 0; i < data.length; i++) {
+				const item = data[i];
+				let body = "";
+				for (var j = 0; j < item.keys.length; j++) {
+					body += item.keys[j] + " ";
+				}
+
 				index.addDoc({
-					name: data[i].name,
-					index: i
+					name: item.name,
+					index: i,
+					body: body,
 				});
 			}
 
@@ -179,10 +187,21 @@ $(document).ready(function() {
 						}
 					}
 
-					score -= levenstein.substringDistance(searchPart.toLowerCase(), item.name.toLowerCase());
+					const nameDistance = levenstein.substringDistance(searchPart.toLowerCase(), item.name.toLowerCase());
+
+					let bestKeyword = 10;
+					for (var j = 0; j < item.keys.length; j++) {
+						const keyword = item.keys[j];
+						bestKeyword = Math.min(bestKeyword, levenstein.substringDistance(searchPart.toLowerCase(), keyword.toLowerCase()));
+					}
+					bestKeyword = Math.min(bestKeyword, nameDistance);
+					score -= 0.5 * bestKeyword;
+
+					score -= nameDistance;
 					// Break ties on length
 					score -= 0.001 * item.fullname.length;
 					score = 100*score/item.boost;
+					console.log(item);
 
 					res2.push({
 						item: item,
@@ -227,7 +246,10 @@ $(document).ready(function() {
 					var id = 'search_' + items[0].item.name.replace(/ /g, "_");
 
 					if (items.length == 1) {
-						html += "<li><a id='" + id + "_0' href='" + pathToRoot + items[0].item.url + "'>" + items[0].item.name + "</a></li>";
+						let icon = "";
+						if (items[0].item.type == "page") icon = "<span class='glyphicon glyphicon-book'></span>";
+
+						html += "<li><a id='" + id + "_0' href='" + pathToRoot + items[0].item.url + "'>" + icon + items[0].item.name + "</a></li>";
 					} else {
 						html += '<li><a href="#" onclick="$(\'#' + id + '\').toggle(0);">' + items[0].item.name + " ...</a></li>";
 						html += "<ul class='inner-dropdown-menu' id='" + id + "' style='display: none;'>";

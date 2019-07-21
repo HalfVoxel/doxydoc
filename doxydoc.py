@@ -18,6 +18,7 @@ import argparse
 # import plugins.list_specials.list_specials
 # import plugins.navbar.navbar
 from doxydoc_plugin import DoxydocPlugin
+from search import build_search_data
 
 
 class DoxyDoc:
@@ -186,92 +187,17 @@ class DoxyDoc:
         for plugin in self.plugins:
             plugin.on_pre_build_html(self.importer, builder, entity2page)
 
+        build_search_data(generator.default_writing_context, entities)
+
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
             if self.settings.page_whitelist is None or page.path in self.settings.page_whitelist:
                 # print("Rendering entity " + page.primary_entity.name)
                 generator.generate(page)
 
-        search_items = []
-        for ent in entities:
-            if isinstance(ent, ClassEntity):
-                search_items.append({
-                    "url": ent.path.full_url(),
-                    "name": ent.name,
-                    "fullname": ent.name,
-                    "boost": self.search_boost(None, ent),
-                })
 
-                for m in ent.all_members:
-                    assert(isinstance(m, MemberEntity))
-                    if m.name == ent.name:
-                        # Probably a constructor. Ignore those in the search results
-                        continue
 
-                    if m.defined_in_entity != ent:
-                        # Inherited member, ignore in search results
-                        continue
-
-                    search_item = {
-                        "url": m.path.full_url(),
-                        "name": m.name,
-                        "fullname": self.search_full_name(ent, m),
-                        "boost": self.search_boost(ent, m),
-                    }
-                    search_items.append(search_item)
-
-            if isinstance(ent, PageEntity):
-                search_items.append({
-                    "url": ent.path.full_url(),
-                    "name": ent.name,
-                    "fullname": ent.name,
-                    "boost": 1,
-                })
-
-            if isinstance(ent, GroupEntity):
-                search_items.append({
-                    "url": ent.path.full_url(),
-                    "name": ent.name,
-                    "fullname": ent.name,
-                    "boost": 1,
-                })
-
-        f = open("html/search_data.json", "w")
-        f.write(json.dumps(search_items))
-        f.close()
-
-    def search_full_name(self, parent: ClassEntity, ent: MemberEntity) -> str:
-        result = parent.name + "." + ent.name
-        if ent.hasparams:
-            params = []
-            for param in ent.params:
-                ctx = WritingContext(self.importer, self.settings, None).with_link_stripping()
-                buffer = StrTree()
-                builder.layout.markup(ctx, param.type, buffer)
-                params.append(str(buffer).replace(" ", ""))
-
-            result += "(" + ",".join(params) + ")"
-        return result
-
-    def search_boost(self, parent: Entity, ent: Entity) -> float:
-        boost = 100.0
-        if isinstance(ent, ClassEntity):
-            boost *= 2.0
-        elif isinstance(ent, NamespaceEntity):
-            boost *= 1.5
-        elif isinstance(ent, PageEntity):
-            boost *= 2.0
-        elif isinstance(ent, ExternalEntity):
-            boost *= 0.5
-
-        if ent.protection == "private":
-            boost *= 0.5
-        elif ent.protection == "package":
-            boost *= 0.6
-        elif ent.protection == "protected":
-            boost *= 0.8
-
-        return boost
+    
 
     def create_env(self, builder_obj: Builder) -> None:
         filters = {
