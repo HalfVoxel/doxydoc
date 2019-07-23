@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import importer.importer_context
+from importer.location import Location
 from typing import List, Union, Optional, cast
 
 
@@ -18,6 +19,7 @@ class Entity:
         self.kind = "<not set>"
         # The filename of the xml file that produced this entity
         self.filename = None  # type: Union[None,str]
+        self.location = None  # type: Location
 
         # If false then this entity will not show up in any file paths (except for the entity itself)
         # For example if the page tutorials/get_started exists then normally that page would be placed at
@@ -52,6 +54,10 @@ class Entity:
         assert(self.xml is not None)
         self.id = self.xml.get("id")
         self.kind = self.xml.get("kind")
+        loc = self.xml.find("location")
+        if loc is not None:
+            self.location = Location()
+            self.location.read_from_xml(loc)
 
     def read_from_xml(self, ctx: importer.importer_context.ImporterContext) -> None:
         xml = self.xml

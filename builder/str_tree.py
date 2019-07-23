@@ -32,16 +32,17 @@ class Reverter():
 class StrTree:
     """ Efficient string concatenation and some helper methods for dealing with HTML """
 
-    def __init__(self, initial_contents=None) -> None:
+    def __init__(self, initial_contents=None, escape_html=True) -> None:
         self.contents = []  # type: List[Union[str, StrTree]]
         self.elementStack = []  # type: List[str]
+        self.escape_html = escape_html
         if initial_contents is not None:
             self.append(initial_contents)
 
     def append(self, s: Union[str, 'StrTree']) -> 'StrTree':
         assert s is not None
         if isinstance(s, str):
-            self.contents.append(escape(s))
+            self.contents.append(escape(s) if self.escape_html else s)
         else:
             self.contents.append(s)
         return self
@@ -121,7 +122,7 @@ class StrTree:
         return "".join(res)
 
     def __add__(self, other: Any) -> 'StrTree':
-        return StrTree().append(self).append(other)
+        return StrTree(escape_html=self.escape_html).append(self).append(other)
 
     def __iadd__(self, other: Any) -> 'StrTree':
         return self.append(other)
