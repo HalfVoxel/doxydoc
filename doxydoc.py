@@ -192,7 +192,7 @@ class DoxyDoc:
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
             if self.settings.page_whitelist is None or page.path in self.settings.page_whitelist:
-                # print("Rendering entity " + page.primary_entity.name)
+                # print("Rendering entity " + page.path)
                 generator.generate(page)
 
 
