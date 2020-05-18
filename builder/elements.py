@@ -201,6 +201,12 @@ def table(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     buffer.close("table")
 
 
+def copybrief(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    entity = ctx.getref_from_name(n.get("name"))
+    if entity is not None:
+        builder.layout.markup(ctx, entity.briefdescription, buffer)
+
+
 def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     entity = ctx.getref_from_name(n.get("name"))
     if entity is not None:
@@ -504,6 +510,7 @@ xml_mapping = {
     "dummy": dummy,
     "video": video,
     "order": dummy,
+    "copybrief": copybrief,
     "copydetailed": copydetailed,
     "innerpage": innerpage,
     "inspectorfield": inspectorfield,

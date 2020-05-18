@@ -37,9 +37,11 @@ class KeywordRanker:
         self.stop_words = set(nltk.corpus.stopwords.words('english'))
         self.original_words = {}
 
-        for ent in entities:
-            desc1 = description_to_string(self.ctx, ent.briefdescription)
-            desc2 = description_to_string(self.ctx, ent.detaileddescription)
+        for entity in entities:
+            self.ctx.page = None
+            self.ctx.entity_scope = entity
+            # desc1 = description_to_string(self.ctx, entity.briefdescription)
+            desc2 = description_to_string(self.ctx, entity.detaileddescription)
             token_words=self.tokenize(desc2)
             for word in token_words:
                 stemmed = self.stemmer.stem(word)
@@ -61,6 +63,8 @@ class KeywordRanker:
         return token_words
 
     def entity_keywords(self, entity):
+        self.ctx.page = None
+        self.ctx.entity_scope = entity
         desc2 = description_to_string(self.ctx, entity.detaileddescription)
 
         token_words = self.tokenize(desc2)

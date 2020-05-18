@@ -133,6 +133,7 @@ class Builder:
             "dummy": self.dummy,
             "video": self.video,
             "order": self.dummy,
+            "copybrief": self.copybrief,
             "copydetailed": self.copydetailed,
             "innerpage": self.innerpage,
             "inspectorfield": self.inspectorfield,
@@ -331,6 +332,9 @@ class Builder:
 
     def video(self, ctx: WritingContext, node: ET.Element, buffer: StrTree):
         buffer.html("[View in the online documentation to see videos]")
+    
+    def copybrief(self, ctx: WritingContext, node: ET.Element, buffer: StrTree):
+        pass
 
     def copydetailed(self, ctx: WritingContext, node: ET.Element, buffer: StrTree):
         pass

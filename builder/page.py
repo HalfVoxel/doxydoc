@@ -189,6 +189,7 @@ class PageGenerator:
 
         self.default_writing_context.relpath = relpath
         self.default_writing_context.page = page
+        self.default_writing_context.entity_scope = page.primary_entity
         self.default_writing_context.sort_entities = sort_entities
 
         text = template.render(

@@ -50,10 +50,15 @@ class Builder:
                 return str(buffer)
             return wrapper
 
+        def create_wrapper_no_links(key: str, fun, context):
+            def wrapper(context, *args, buffer):
+                fun(context.with_link_stripping(), *args, buffer)
+            return create_wrapper(key, wrapper, context)
+
         for key, fun in filters.items():
             context = self.default_writing_context
             wrapper = create_wrapper(key, fun, context)
             self.environment.filters[key] = wrapper
 
-            wrapper_no_links = create_wrapper(key, fun, context.with_link_stripping())
+            wrapper_no_links = create_wrapper_no_links(key, fun, context)
             self.environment.filters[key + "_no_links"] = wrapper_no_links
