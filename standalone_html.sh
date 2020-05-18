@@ -1,7 +1,7 @@
 #!/bin/bash
-
+set -e
 # python3 doxydoc.py
-cd html
+cd html_standalone
 s='s#<a href=(['\''"])[^"'\'':]+['\''"][^>]*?>(.*?)</a>#<a href=\1http://arongranberg.com/astar/docs\1>\2</a>#g';
 banner="<div class='alert alert-danger' role='alert'>This is an excerpt from the full documentation. You can view the full documentation <a href='http://arongranberg.com/astar/docs'>here</a>. Most links on this page will just take you to the full documentation.</div>"
 
