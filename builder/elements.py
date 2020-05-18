@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 import os
 from .writing_context import WritingContext
 from typing import List, Tuple
-from importer.entities import Entity
+from importer.entities import Entity, MemberEntity, ClassEntity
 
 
 def linebreak(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -67,7 +67,7 @@ def programlisting(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     for line in n:
         ''' \todo ID '''
         # print(line)
-        builder.layout.markup(ctx, line, buffer)
+        builder.layout.markup(ctx if ctx.settings.links_in_code_blocks else ctx.with_link_stripping(), line, buffer)
         buffer.voidelem("br")
 
     buffer.close("code")
@@ -202,24 +202,9 @@ def table(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    name = n.get("name").replace("::",".")
-    copy_candidates = []
-    for entity in ctx.state.entities:
-        name_suffix = ""
-        c = entity
-        while c is not None:
-            name_suffix = c.name + "." + name_suffix if name_suffix != "" else c.name
-            c = c.parent_in_canonical_path()
-            if name_suffix == name:
-                copy_candidates.append(entity)
-                break
-
-    if len(copy_candidates) == 0:
-        print("Could not find any entity with the name '" + name + "' (used in a copydetailed tag).")
-    elif len(copy_candidates) > 1:
-        print("Ambigious reference '" + name + "' in a copydetailed tag. " + str((len(copy_candidates))) + " entities match this name.")
-    else:
-        builder.layout.markup(ctx, copy_candidates[0].detaileddescription, buffer)
+    entity = ctx.getref_from_name(n.get("name"))
+    if entity is not None:
+        builder.layout.markup(ctx, entity.detaileddescription, buffer)
 
 
 def heading(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -265,11 +250,10 @@ def image(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
         # the src attribute acts as a 1x image in the srcset
         srcset = [(s, p) for s,p in srcset if s != 1]
 
-    buffer.open("div", {"class": "tinyshadow"})
-    buffer.open("img", {"src": url, "srcset": srcset2str(srcset)})
+    cl = n.attrib["class"] if "class" in n.attrib else "tinyshadow"
+    buffer.open("img", {"class": cl, "src": url, "srcset": srcset2str(srcset)})
     builder.layout.markup(ctx, n, buffer)
     buffer.close("img")
-    buffer.close("div")
 
 
 def dotfile(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -315,7 +299,24 @@ def blockquote(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def ulink(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    buffer.element("a href='" + n.get("url") + "'", lambda: builder.layout.markup(ctx, n, buffer))
+    url = n.get("url")
+
+    # entity = ctx.getref_from_name(n.get("name"))
+    # if entity is not None:
+    if url.startswith("ref:"):
+        obj = ctx.getref_from_name(url[len("ref:"):])
+        if obj is None or ctx.strip_links or builder.layout.is_hidden(obj):
+            builder.layout.markup(ctx, n, buffer)
+        else:
+            tooltip = StrTree()
+            builder.layout._tooltip(ctx, obj, tooltip)
+            buffer.element("a", lambda: builder.layout.markup(ctx.with_link_stripping(), n, buffer), {
+                "href": ctx.relpath(obj.path.full_url()),
+                "rel": 'tooltip',
+                "data-original-title": tooltip
+            })
+    else:
+        buffer.element("a", lambda: builder.layout.markup(ctx, n, buffer), {"href": url})
 
 
 def bold(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -423,14 +424,39 @@ def render_template(ctx: WritingContext, template_name: str, **kwargs) -> str:
 
 def inspectorfield(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     title = n.get("title")
-    entity = ctx.state.get_entity_by_path(n.get("refname"))
+    entity = ctx.getref_from_name(n.get("refname"))
+    if entity is None:
+        return
 
-    primary_type = None
-    if entity.type is not None:
-        for n in entity.type:
-            if n.tag == "ref":
-                primary_type = ctx.getref(n)
+    primary_type: Entity = None
+    if entity.kind == "enum":
+        primary_type = entity
+    elif entity is MemberEntity:
+        if entity.type is not None:
+            for n in entity.type:
+                if n.tag == "ref":
+                    primary_type = ctx.getref(n)
+
     buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity, primary_type=primary_type))
+
+
+def generic_html(ctx: WritingContext, node, buffer: StrTree) -> None:
+    ''' Generic html nodes. Preserves all node attributes '''
+    if node is None:
+        return
+
+    buffer.open(node.tag, node.attrib)
+    if node.text is not None:
+        buffer += node.text
+
+    # Traverse children
+    for n in node:
+        builder.elements.write_xml(ctx, n, buffer)
+
+        if n.tail is not None:
+            buffer += n.tail
+
+    buffer.close(node.tag)
 
 
 xml_mapping = {
@@ -481,6 +507,10 @@ xml_mapping = {
     "copydetailed": copydetailed,
     "innerpage": innerpage,
     "inspectorfield": inspectorfield,
+
+    "div": generic_html,
+    "p": generic_html,
+    "span": generic_html,
 }
 
 

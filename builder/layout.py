@@ -24,6 +24,9 @@ def get_anchor(ctx: WritingContext, id: str) -> str:
 
 def get_local_anchor(ctx: WritingContext, entity: Entity, buffer: StrTree) -> None:
     assert entity is not None
+    if ctx.page is None:
+        # Makes no sense if we are not in a page
+        return ""
     buffer.append(ctx.page.get_local_anchor(entity))
 
 
@@ -240,7 +243,6 @@ def paragraph(ctx: WritingContext, paranode, buffer: StrTree) -> None:
 
 def markup(ctx: WritingContext, node, buffer: StrTree) -> None:
     ''' Markup like nodes '''
-
     if node is None:
         return
 

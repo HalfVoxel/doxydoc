@@ -101,6 +101,10 @@ nav.navbar {
         border-style: solid;
         background-color: transparent;
     }
+
+    li.active > a {
+        font-weight: bold;
+    }
 }
 
 li {
@@ -313,6 +317,10 @@ img {
     max-height: 800px;
     display: block;
     border: 1px solid #444;
+}
+
+.borderless img {
+    border: none;
 }
 
 code {

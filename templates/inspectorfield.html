@@ -13,16 +13,14 @@
     <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}">
         <div class="col-md-12">
             {{ member.detaileddescription|description }}
-            <div class="simplesect simplesect-see">
-                <h3>See</h3>
-                This setting corresponds to the member {{ member|ref_explicit(member.full_canonical_path(), "") }}
-            </div>
             # set submember = primary_type
             # if submember is not none and submember.kind == "enum"
-
-                <p>This setting is an enum of the type {{submember|ref_entity}}</p>
-                <h4>{{submember|ref_entity}}</h4>
-                {{ submember.briefdescription|description }}
+                # if submember != member
+                    <p>This setting is an enum of the type {{submember|ref_entity}}</p>
+                    <h4>{{submember|ref_entity}}</h4>
+                    {{ submember.briefdescription|description }}
+                    {{ submember.detaileddescription|description }}
+                # endif
 
                 # if submember.members|length > 0
                     <table class="member-params-detail">
@@ -35,8 +33,11 @@
                     # endfor
                     </table>
                 # endif
-                {{ submember.detaileddescription|description }}
             # endif
+            <div class="simplesect simplesect-see">
+                <h3>See</h3>
+                This setting corresponds to the member {{ member|ref_explicit(member.full_canonical_path(), "") }}
+            </div>
         </div>
     </div>
 </div>

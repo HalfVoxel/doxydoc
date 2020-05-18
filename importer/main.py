@@ -47,31 +47,6 @@ class Importer:
     def get_entity(self, id: str) -> Entity:
         return self._docobjs[id]
 
-    def get_entity_by_path(self, name: str) -> Entity:
-        '''
-        Returns an entity using for example a classname like Pathfinding.Util.ListPool.
-        If the name is ambigious, for example if there is one class named Namespace1.Blah and another one name Namespace2.Blah and the specified name is Blah, then an exception will be thrown.
-        '''
-        parts = name.strip().replace("::", ".").split(".")
-        candidates = []
-        for entity in self.entities:
-            index = len(parts)-1
-            e = entity
-            assert type(e) is not str, e
-            while e is not None and index >= 0 and e.name == parts[index]:
-                index -= 1
-                e = e.parent_in_canonical_path()
-                assert type(e) is not str, e
-
-            if index < 0:
-                # Matched completely
-                candidates.append(entity)
-
-        if len(candidates) > 1:
-            raise Exception(f"Ambigious reference '{name}', there are {len(candidates)} candiates that matches\n" + ", ".join(e.name for e in candidates))
-
-        return candidates[0]
-
     def _create_entity(self, xml: ET.Element, parent_entity: Entity=None) -> Entity:
         kind = xml.get("kind")
         entity = None  # type: Entity

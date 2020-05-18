@@ -136,20 +136,36 @@ class DoxyDoc:
         if not self.settings.args.quiet:
             print("Copying resources...")
 
-        target_dir = os.path.join(self.settings.out_dir, "resources")
+        resource_dir = os.path.join(self.settings.out_dir, "resources")
 
-        self.copy_resources_dir("resources", target_dir)
+        self.copy_resources_dir("resources", resource_dir)
 
         themes = [f for f in listdir("themes") if isdir(join("themes", f))]
         for moduleName in themes:
             resbase = os.path.join(os.path.join("themes", moduleName), "resources")
-            self.copy_resources_dir(resbase, target_dir)
+            self.copy_resources_dir(resbase, resource_dir)
 
-        target_dir = os.path.join(self.settings.out_dir, "images")
-        if os.path.isdir(target_dir):
-            shutil.rmtree(target_dir)
-        self.copy_resources_dir(os.path.join(self.settings.in_dir, "images"), target_dir)
-        self.process_images(target_dir)
+        image_dir = os.path.join(self.settings.out_dir, "images")
+        if os.path.isdir(image_dir):
+            shutil.rmtree(image_dir)
+        self.copy_resources_dir(os.path.join(self.settings.in_dir, "images"), image_dir)
+
+        if self.settings.extra_css is not None:
+            target_file = os.path.join(resource_dir, "style.css")
+            source_file = os.path.realpath(self.settings.extra_css)
+
+            # Process scss file
+            if source_file.endswith(".scss"):
+                tmp_path = "/tmp/temp_style.css"
+                call(["sass", source_file, os.path.realpath(tmp_path)])
+                source_file = tmp_path
+
+            # Note: opening in append mode
+            with open(target_file, "a") as f:
+                f.write("\n/* Extra CSS */\n")
+                f.write(open(source_file).read())
+
+        self.process_images(image_dir)
 
     def find_xml_files(self, path: str) -> List[str]:
         return [join(path, f) for f in listdir(path)
@@ -187,17 +203,13 @@ class DoxyDoc:
         for plugin in self.plugins:
             plugin.on_pre_build_html(self.importer, builder, entity2page)
 
-        build_search_data(generator.default_writing_context, entities)
+        build_search_data(generator.default_writing_context, entities, self.settings)
 
         for i, page in enumerate(pages):
             progressbar(i + 1, len(pages))
             if self.settings.page_whitelist is None or page.path in self.settings.page_whitelist:
                 # print("Rendering entity " + page.path)
                 generator.generate(page)
-
-
-
-    
 
     def create_env(self, builder_obj: Builder) -> None:
         filters = {
@@ -220,7 +232,7 @@ class DoxyDoc:
             print("Could not read configuration at '" + args.config + "'\n" + str(e))
             exit(1)
 
-        self.settings = builder.settings.Settings(config)
+        self.settings = builder.settings.Settings(config, os.path.dirname(args.config))
         self.settings.args = args
 
         args.verbose = args.verbose and (not args.quiet)

@@ -1,5 +1,6 @@
 from nltk.stem import PorterStemmer
 import json
+import os
 from builder.layout import description
 from nltk.tokenize import word_tokenize
 import nltk
@@ -9,6 +10,8 @@ from builder.str_tree import StrTree
 import builder
 from importer.entities import Entity, ClassEntity, PageEntity, ExternalEntity, MemberEntity, GroupEntity, NamespaceEntity
 import html2text
+from builder.settings import Settings
+from builder.page import Page
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -29,8 +32,7 @@ def description_to_string(ctx: WritingContext, node):
 class KeywordRanker:
     def __init__(self, ctx: WritingContext, entities):
         occurances = {}
-        self.ctx = ctx.with_link_stripping()
-        self.ctx.relpath = lambda p: ""
+        self.ctx = ctx
         self.stemmer = PorterStemmer()
         self.stop_words = set(nltk.corpus.stopwords.words('english'))
         self.original_words = {}
@@ -81,7 +83,10 @@ class KeywordRanker:
         keywords = keywords[:min(len(keywords), 20)]
         return [self.original_words[x[1]] for x in keywords]
 
-def build_search_data(ctx: WritingContext, entities) -> None:
+def build_search_data(ctx: WritingContext, entities, settings: Settings) -> None:
+    ctx.strip_links = True
+    ctx.relpath = lambda p: ""
+
     ranker = KeywordRanker(ctx, entities)
 
     search_items = []
@@ -136,9 +141,12 @@ def build_search_data(ctx: WritingContext, entities) -> None:
                 "type": "group",
             })
 
-    f = open("html/search_data.json", "w")
+    f = open(os.path.join(settings.out_dir, "search_data.json"), "w")
     f.write(json.dumps(search_items))
     f.close()
+
+    ctx.strip_links = False
+    ctx.relpath = None
 
 def search_full_name(ctx: WritingContext, parent: ClassEntity, ent: MemberEntity) -> str:
     result = parent.name + "." + ent.name
