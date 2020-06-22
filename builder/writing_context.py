@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, List
 from importer.entities import Entity, MemberEntity
 from importer import Importer
 from .settings import Settings
@@ -69,10 +69,43 @@ class WritingContext:
         if paramPart != "":
             candidateParamNames = [",".join(param.typename for param in params_for_entity(cand)) for cand in candidates]
             candidates = [c for c, paramNames in zip(candidates, candidateParamNames) if paramNames == paramPart]
+        
+        resolve_scope = self.entity_scope
+        # Resolve references in member entities as if we resolve from the associated class
+        if resolve_scope is not None and type(resolve_scope) is MemberEntity:
+            resolve_scope = resolve_scope.parent_in_canonical_path()
+
+        # Try resolving locally
+        def resolveLocal(scope: Entity, path: List[str], params: str):
+            if len(path) > 0:
+                jump_candidates = []
+                if type(scope) is MemberEntity:
+                    # Jump to the member's type
+                    jump_scope = scope.get_simple_type(self.state.ctx)
+                    if jump_scope is not None:
+                        jump_candidates = resolveLocal(jump_scope, path, params)
+
+                potential_children = [c for c in scope.child_entities() if c.name == path[0]]
+                return jump_candidates + [candidate for child in potential_children for candidate in resolveLocal(child, path[1:], params)]
+            else:
+                if params == "":
+                    return [scope]
+                else:
+                    candidateParamNames = ",".join(param.typename for param in params_for_entity(scope))
+                    if candidateParamNames == params:
+                        return [scope]
+                return []
+        
+        candidates += resolveLocal(resolve_scope, pathPart.split("."), paramPart)
+
+        # Remove duplicates
+        candidates = list(dict.fromkeys(candidates))
 
         if len(candidates) == 0:
             print()
-            print("Could not find any entity with the name '" + name + "'.")
+            print("Could not find any entity with the name '" + name + "'. ")
+            if self.entity_scope is not None:
+                print(f"When generating documentation for {self.entity_scope.full_canonical_path()} {self.entity_scope.kind}")
             if len(pathCandidates) > 0:
                 print("There were some entities that matched the name but not the parameter list. The candidates are:")
                 for cand in pathCandidates:
@@ -82,9 +115,6 @@ class WritingContext:
             return None
 
         def can_be_resolved_from(entity: Entity, resolve_scope: Entity):
-            if type(resolve_scope) is MemberEntity:
-                resolve_scope = resolve_scope.parent_in_canonical_path()
-
             while entity is not None:
                 if entity == resolve_scope:
                     return True
@@ -92,9 +122,9 @@ class WritingContext:
 
             return False
 
-        if self.entity_scope is not None: 
-            assert self.entity_scope is not None
-            candidates = [(1 if can_be_resolved_from(c, self.entity_scope) else 0, c) for c in candidates]
+        if resolve_scope is not None: 
+            assert resolve_scope is not None
+            candidates = [(1 if can_be_resolved_from(c, resolve_scope) else 0, c) for c in candidates]
             # Sort by score and pick only the candidates with the highest score
             candidates.sort(key=lambda x: x[0], reverse=True)
             candidates = [c[1] for c in candidates if c[0] == candidates[0][0]]

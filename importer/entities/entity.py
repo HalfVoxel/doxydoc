@@ -26,6 +26,9 @@ class Entity:
         # tutorials/get_started.html, however if the tutorials entity has this option disabled then it will
         # be placed at get_started.html.
         self.include_in_filepath = False
+    
+    def child_entities(self):
+        return self.sections
 
     def __str__(self):
         return "Entity: " + self.id

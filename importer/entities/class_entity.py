@@ -41,6 +41,9 @@ class ClassEntity(Entity):
         # Namespace or class parent
         # If class, this is an inner class
         self.parent = None  # type: Entity
+    
+    def child_entities(self):
+        return self.derived + self.all_members
 
     # Parent in canonical path
     # if this is

@@ -10,6 +10,9 @@ class GroupEntity(Entity):
         self.inner_namespaces = []  # type: List[Entity]
         self.inner_groups = []  # type: List[Entity]
         self.parent = None  # type: Entity
+    
+    def child_entities(self):
+        return self.inner_classes + self.inner_namespaces + self.inner_groups
 
     def parent_in_canonical_path(self) -> Entity:
         return self.parent

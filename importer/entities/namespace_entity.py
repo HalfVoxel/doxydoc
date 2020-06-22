@@ -12,6 +12,9 @@ class NamespaceEntity(Entity):
         self.inner_namespaces = []  # type: List[NamespaceEntity]
 
         self.parent_namespace = None  # type: NamespaceEntity
+    
+    def child_entities(self):
+        return self.inner_classes + self.inner_namespaces
 
     def parent_in_canonical_path(self) -> Entity:
         return self.parent_namespace

@@ -3,7 +3,7 @@ from .entity import Entity
 from .param_entity import ParamEntity
 from .enum_value_entity import EnumValueEntity
 from importer.protection import Protection
-from typing import Dict, List
+from typing import Dict, List, Optional
 import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
 
@@ -37,10 +37,10 @@ class MemberEntity(Entity):
 
         self.abstract = False  # type: bool
 
-        # TODO: Remove?
+        # Contains enum values if this is an enum
         self.members = []  # type: List[Entity]
 
-        # TODO: Remove?
+        # Remove?
         self.all_members = []  # type: List[Entity]
 
         self.argsstring = None  # type: str
@@ -51,6 +51,25 @@ class MemberEntity(Entity):
 
         # ClassEntity probably
         self.defined_in_entity = None  # type: Entity
+
+    def get_simple_type(self, ctx: ImporterContext) -> Optional[Entity]:
+        '''
+        Returns the entity corresponding to the member's type if it is a simple type.
+        E.g. WhateverClass, but for List<Whatever> it returns None.
+        It also returns None if there is no corresponding entity, e.g. a primitive type like float.
+        '''
+        # For enum members the type is None
+        if self.type is None:
+            return None
+
+        children = list(self.type)
+        if len(children) == 1:
+            if children[0].tag == "ref":
+                return ctx.getref(children[0])
+        return None
+    
+    def child_entities(self):
+        return self.members # ??
 
     def parent_in_canonical_path(self) -> Entity:
         return self.defined_in_entity
