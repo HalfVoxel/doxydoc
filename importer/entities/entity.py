@@ -2,7 +2,10 @@ import xml.etree.ElementTree as ET
 import importer.importer_context
 from importer.location import Location
 from typing import List, Union, Optional, cast
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from importer import Importer
 
 class Entity:
     def __init__(self) -> None:
@@ -128,9 +131,24 @@ class Entity:
                 # This is not a completely accurate check as there might be some other thing in the description that was marked as deprecated
                 self.deprecated = True
 
-    def post_xml_read(self) -> None:
+    def post_xml_read(self, state: 'Importer') -> None:
         ''' Called when all entities' read_from_xml methods have been called '''
-        pass
+
+        # Resolve copydocs
+        # We need to do this iteratively since we may copy the docs from some object that also tries to copy the docs from something else
+        while True:
+            if self.briefdescription is None:
+                break
+
+            copydoc = self.briefdescription.find(".//copydoc")
+            if copydoc is None:
+                copydoc = self.detaileddescription.find(".//copydoc")
+            if copydoc is None:
+                break
+
+            entity = state.getref_from_name(copydoc.get("name"), self.parent_in_canonical_path())
+            self.briefdescription = entity.briefdescription
+            self.detaileddescription = entity.detaileddescription
 
 
 def gather_members(xml, ctx: importer.importer_context.ImporterContext) -> List[Entity]:

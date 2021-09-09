@@ -84,7 +84,8 @@ class ClassEntity(Entity):
                 print("NULL REFERENCE " + str(m.find("name").text) + " " + str(m.find("scope").text))
                 print("Sure not old files are in the xml directory")
 
-    def post_xml_read(self) -> None:
+    def post_xml_read(self, state) -> None:
+        super().post_xml_read(state)
         self.all_members = []
         gather_all_members(self, self, self.all_members)
         self.all_members.sort(key=lambda m: (m.name.lower(), len(m.params), m.id))

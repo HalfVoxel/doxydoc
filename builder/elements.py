@@ -206,6 +206,8 @@ def copybrief(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     if entity is not None:
         builder.layout.markup(ctx, entity.briefdescription, buffer)
 
+def copydocref(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    raise Exception("copydocref should have been resolved by now")
 
 def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     entity = ctx.getref_from_name(n.get("name"))
@@ -512,6 +514,7 @@ xml_mapping = {
     "order": dummy,
     "copybrief": copybrief,
     "copydetailed": copydetailed,
+    "copydocref": copydocref,
     "innerpage": innerpage,
     "inspectorfield": inspectorfield,
 
