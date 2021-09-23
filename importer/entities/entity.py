@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from importer import Importer
 
+
 class Entity:
     def __init__(self) -> None:
         self.name = ""  # type: str
@@ -29,7 +30,7 @@ class Entity:
         # tutorials/get_started.html, however if the tutorials entity has this option disabled then it will
         # be placed at get_started.html.
         self.include_in_filepath = False
-    
+
     def child_entities(self):
         return self.sections
 
@@ -40,14 +41,17 @@ class Entity:
         return None
 
     def full_canonical_path(self, separator="."):
+        return separator.join([e.name for e in self.full_canonical_path_list()])
+
+    def full_canonical_path_list(self) -> List['Entity']:
         e = self
         ss = []
         while e is not None:
-            ss.append(e.name)
+            ss.append(e)
             e = e.parent_in_canonical_path()
 
         ss.reverse()
-        return separator.join(ss)
+        return ss
 
     @staticmethod
     def formatname(name: str) -> str:
@@ -146,7 +150,9 @@ class Entity:
             if copydoc is None:
                 break
 
-            entity = state.getref_from_name(copydoc.get("name"), self.parent_in_canonical_path())
+            entity = state.getref_from_name(copydoc.get("name"), self.parent_in_canonical_path(), ignore_overloads=True)
+            if entity is None:
+                raise Exception("Invalid copydoc command. Could not resolve target")
             self.briefdescription = entity.briefdescription
             self.detaileddescription = entity.detaileddescription
 
