@@ -1,6 +1,6 @@
 # import "helpers/member_helpers.html" as helpers
 
-# macro member_brief_protection(member, bootstrap_protection, link, show_protection, force_single_line, depth=0, override_name=none)
+# macro member_brief_protection(member, bootstrap_protection, link, show_protection, force_single_line, depth=0, override_name=none, param_list_types=false)
     # if member.kind != "namespace" and member.kind != "group" and member.kind != "special" and show_protection
         <div class="col-md-1 col-xs-2 member-prot">
             # if bootstrap_protection
@@ -42,8 +42,10 @@
                 {{ override_name or member.name }}
             # endif
         </span>
-        # if member.hasparams
-            <span class="member-paramlist">{{ helpers.paramlist(member, false) }}</span>
+        # if member.kind == "function_overloads"
+            <span class="member-paramlist">({{ member.argsstring }})</span>
+        # elif member.hasparams
+            <span class="member-paramlist">{{ helpers.paramlist(member, param_list_types) }}</span>
         # endif
     </div>
 # endmacro

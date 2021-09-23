@@ -1,3 +1,5 @@
+from importer.entities.class_entity import ClassEntity
+from importer.entities.overload_entity import OverloadEntity
 from importer.entities.member_entity import MemberEntity
 from pprint import pprint
 from xml.sax.saxutils import escape
@@ -47,6 +49,9 @@ class Importer:
 
     def get_entity(self, id: str) -> Entity:
         return self._docobjs[id]
+    
+    def try_get_entity(self, id: str) -> Optional[Entity]:
+        return self._docobjs.get(id)
 
     def _create_entity(self, xml: ET.Element, parent_entity: Entity=None) -> Entity:
         kind = xml.get("kind")
@@ -212,7 +217,7 @@ class Importer:
         #         self._add_docobj(entity)
         #         # print(entity.full_url())
     
-    def getref_from_name(self, name: str, resolve_scope: Optional[Entity]) -> Entity:
+    def getref_from_name(self, name: str, resolve_scope: Optional[Entity], ignore_overloads: bool=False) -> Entity:
         name = name.strip()
         name = name.replace("::", ".")
         if "(" in name:
@@ -286,7 +291,7 @@ class Importer:
                 params = params_for_entity(cand)
                 return cand.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "")
             else:
-                cand.full_canonical_path()
+                return cand.full_canonical_path() + " (" + e.kind + ")"
 
 
         if len(candidates) == 0:
@@ -301,20 +306,51 @@ class Importer:
                     print(fullname)
             return None
 
-        def can_be_resolved_from(entity: Entity, resolve_scope: Entity):
+        def tree_distance(entity: Entity, resolve_scope: Entity) -> int:
+            ancestors = resolve_scope.full_canonical_path_list()
+            dist = 0
             while entity is not None:
-                if entity == resolve_scope:
-                    return True
+                if entity in ancestors:
+                    return dist + (len(ancestors) - 1 - ancestors.index(entity))
                 entity = entity.parent_in_canonical_path()
+                dist += 1
 
-            return False
+            return dist + len(ancestors)
 
         if resolve_scope is not None: 
-            assert resolve_scope is not None
-            candidates = [(1 if can_be_resolved_from(c, resolve_scope) else 0, c) for c in candidates]
-            # Sort by score and pick only the candidates with the highest score
-            candidates.sort(key=lambda x: x[0], reverse=True)
-            candidates = [c[1] for c in candidates if c[0] == candidates[0][0]]
+            try:
+                candidates = [(tree_distance(c, resolve_scope), c) for c in candidates]
+                # Sort by score and pick only the candidates with the highest score
+                candidates.sort(key=lambda x: x[0])
+                candidates = [c[1] for c in candidates if c[0] == candidates[0][0]]
+            except Exception as e:
+                print(e)
+                exit(0)
+
+        # If we specify parameters explicitly we shouldn't link to an overload page        
+        if paramPart != "" or ignore_overloads:
+            candidates = [c for c in candidates if not isinstance(c, OverloadEntity)]
+
+        if len(candidates) > 1:
+            # Check if all of them are in the same overload group
+            groups = [c for c in candidates if isinstance(c, OverloadEntity)]
+            if len(groups) == 1:
+                group = groups[0]
+                if all(c == group or c in group.inner_members for c in candidates):
+                    if len(group.inner_members) == 1:
+                        # If the overload group only has 1 member, return that instead
+                        candidates = [group.inner_members[0]]
+                    else:
+                        candidates = [group]
+        
+        if len(candidates) > 1 and paramPart == "":
+            # Check if we have both an object and its constructor.
+            # In that case prioritize the object
+            groups = [c for c in candidates if isinstance(c, ClassEntity)]
+            if len(groups) == 1:
+                group = groups[0]
+                if all(c == group or c.parent_in_canonical_path() == group for c in candidates):
+                    candidates = [group]
 
         if len(candidates) > 1:
             print()

@@ -10,7 +10,7 @@ class ParamEntity(Entity):
         super().__init__()
 
         self.type: Optional[ET.Element] = None
-        self.default_name: Optional[ET.Element] = None
+        self.default_value: Optional[ET.Element] = None
         self.typename: Optional[str] = None
 
     def read_from_xml(self, ctx: ImporterContext) -> None:

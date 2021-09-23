@@ -1,8 +1,17 @@
+from builder.str_tree import StrTree
+from importer.entities.member_entity import MemberEntity
+from importer.entities.overload_entity import OverloadEntity
 import os
 from . import layout_helpers
-from typing import List, Set, cast, TYPE_CHECKING
+from typing import Any, Callable, List, Set, cast, TYPE_CHECKING
 from importer.entities import Entity, ClassEntity, FileEntity, NamespaceEntity, ExampleEntity, PageEntity, GroupEntity
 from .writing_context import WritingContext
+import itertools
+from builder.entity_path import EntityPath
+import builder.layout
+import xml.etree.ElementTree as ET
+from natsort import natsorted
+
 if TYPE_CHECKING:
     from .builder import Builder
 
@@ -103,10 +112,14 @@ class PageGenerator:
         ''' Desired path for an entity in the file system. Does not include the file extension. May change due to conflicts. '''
         path = []
         ent = entity
+        counter = 0
         while ent is not None:
             if ent == entity or ent.include_in_filepath:
                 path.append(ent)
             ent = ent.parent_in_canonical_path()
+            counter += 1
+            if counter > 50:
+                raise Exception(f"Probable infinite loop in canonical path: {path}")
 
         path.reverse()
 
@@ -137,6 +150,10 @@ class PageGenerator:
 
     def class_page(self, entity: ClassEntity) -> Page:
         inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
+        if self.builder.settings.separate_function_pages:
+            # These functions will go into separate pages
+            inner_entities = [e for e in inner_entities if e.kind != "function"]
+
         page = self._page_with_entity("class", entity, inner_entities)
         return page
 
@@ -160,6 +177,86 @@ class PageGenerator:
         inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
         page = self._page_with_entity("namespace", entity, inner_entities)
         return page
+    
+    def function_overload_pages(self, class_entity: ClassEntity) -> List[Page]:
+        def same_or_default(items: List[MemberEntity], key: Callable[[MemberEntity], Any], default: Any) -> Any:
+            values = set(key(x) for x in items)
+            if len(values) == 1:
+                return values.pop()
+            else:
+                return default
+        
+        def combine_protection(items: List[MemberEntity]) -> str:
+            protection_order = ["public", "protected", "package", "private"]
+            return sorted([item.protection for item in items], key=lambda x: protection_order.index(x))[0]
+        
+        def combine_description(ctx: WritingContext, entities: List[MemberEntity]):
+            descriptions: Set[str] = set()
+            for e in entities:
+                buffer = StrTree(ignore_html=True)
+                builder.layout.description(self.default_writing_context.with_link_stripping(), e.briefdescription, buffer)
+                descriptions.add(str(buffer).strip())
+            
+            if len(descriptions) == 1:
+                return entities[0].briefdescription
+            else:
+                longest_prefix = descriptions.pop()
+                original_prefix = longest_prefix
+                while len(descriptions) > 0:
+                    s = descriptions.pop()
+                    max_index = 0
+                    while max_index < min(len(s), len(longest_prefix)):
+                        if s[max_index] != longest_prefix[max_index]:
+                            break
+                        max_index += 1
+                    
+                    longest_prefix = longest_prefix[:max_index]
+                
+                longest_prefix = longest_prefix.strip()
+                while len(longest_prefix) > 0 and longest_prefix[-1] in "(<,":
+                    longest_prefix = longest_prefix[:-1]
+
+                if len(longest_prefix) < 3:
+                    longest_prefix = ""
+                
+                if original_prefix != longest_prefix:
+                    longest_prefix += "..."
+
+                desc = ET.Element("briefdescription")
+                para = ET.Element("para")
+                para.text = longest_prefix
+                desc.append(para)
+                return desc
+
+        result = []
+        for ((kind, name), overloads) in itertools.groupby(class_entity.all_members, key=lambda e: (e.kind, e.name)):
+            if kind == "function":
+                overloads = natsorted(list(overloads), key=lambda x: (x.name, x.argsstring))
+
+                entity = OverloadEntity()
+                entity.kind = "function_overloads"
+                entity.id = f"{class_entity.id}/{name}/overloads"
+                entity.short_name = entity.name = name
+                entity.inner_members = overloads
+                entity.parent = class_entity
+                entity.path = EntityPath()
+
+                entity.virtual = same_or_default(overloads, lambda e: e.virtual, False)
+                entity.static = same_or_default(overloads, lambda e: e.static, False)
+                entity.override = same_or_default(overloads, lambda e: e.override, False)
+                entity.abstract = same_or_default(overloads, lambda e: e.abstract, False)
+                entity.protection = combine_protection(overloads)
+                entity.defined_in_entity = same_or_default(overloads, lambda e: e.defined_in_entity, None)
+                entity.deprecated = same_or_default(overloads, lambda e: e.deprecated, False)
+                entity.filename = same_or_default(overloads, lambda e: e.filename, None)
+                entity.location = same_or_default(overloads, lambda e: e.location, None)
+                entity.briefdescription = combine_description(self.default_writing_context.with_link_stripping(), overloads)
+                entity.calculate_optimized_params()
+                
+                self.builder.importer._add_docobj(entity)
+
+                result.append(self._page_with_entity("function_overloads", entity, [entity] + overloads))
+        return result
 
     def generate(self, page: Page) -> None:
         path = os.path.join(self.builder.settings.out_dir, page.path)

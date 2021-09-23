@@ -1,13 +1,16 @@
+from importer.main import Importer
 from pprint import pprint
 from importer.entities import Entity
 from typing import List, Tuple
+import itertools
 
 
 def dump(obj):
     pprint(vars(obj))
 
 
-def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str, List[Entity]]]:
+
+def get_member_sections(entity: Entity, members: List[Entity], state: Importer) -> List[Tuple[str, List[Entity]]]:
     ''' Returns a list of sections in which to group members for display '''
 
     for m in members:
@@ -30,12 +33,23 @@ def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str
 #       <xsd:enumeration value="slot" />
 #     </xsd:restriction>
 #   </xsd:simpleType>
+    proxied_members = []
+    for ((kind, name), inner) in itertools.groupby(members, key=lambda e: (e.kind, e.name)):
+        inner = list(inner)
+        if kind == "function":
+            overload_group_entity = state.try_get_entity(f"{entity.id}/{name}/overloads")
+            if overload_group_entity is not None:
+                proxied_members.append(overload_group_entity)
+            else:
+                proxied_members += inner
+        else:
+            proxied_members += inner
 
     # Partition the members into different sections using lambdas
     section_spec = [
         (lambda m: m.protection == "public" and m.defined_in_entity == entity and not m.deprecated, [
-            ("Public Methods", lambda m: not m.static and m.kind == "function"),
-            ("Public Static Methods", lambda m: m.static and m.kind == "function"),
+            ("Public Methods", lambda m: not m.static and m.kind in ["function", "function_overloads"]),
+            ("Public Static Methods", lambda m: m.static and m.kind in ["function", "function_overloads"]),
             # ("Public Properties", lambda m: not m.static and m.kind == "property"),
             # ("Public Static Properties", lambda m: m.static and m.kind == "property"),
             # ("Public Variables", lambda m: not m.static and m.kind == "variable"),
@@ -67,7 +81,8 @@ def get_member_sections(entity: Entity, members: List[Entity]) -> List[Tuple[str
 
     sections = []
     for outer in section_spec:
-        filtered = list(filter(outer[0], members))
+        filtered = list(filter(outer[0], proxied_members))
+        filtered.sort(key=lambda x: (x.name, x.location.file, x.location.line) if x.location is not None else (x.name, "", 0))
         for s in outer[1]:
             sections.append((s[0], list(filter(s[1], filtered))))
 

@@ -58,7 +58,7 @@
             # endfor
         # endif
 
-    # set sections = layout.get_member_sections(entity, entity.all_members)
+    # set sections = layout.get_member_sections(entity, entity.all_members, state)
     # for section in sections if section[1]|length != 0
 
         <h2>{{ section[0] }}</h2>
@@ -66,29 +66,42 @@
 
         # for member in members
             # block member_list_item scoped
-            <div class="row member-list-item-header" onclick="$('#{{member|local_anchor}}').slideToggle(200); $('#{{member|local_anchor}}-overlay').fadeToggle(200);" style="position: relative;">
-                {{ member_brief_protection(member, true, false, true, false) }}
-                <div class="col-md-1 col-xs-2"></div>
-                <div class="col-md-11 col-xs-10 member-desc">
-                {{ member.briefdescription|description }}
+            # if member.kind == "function_overloads"
+                # if member.inner_members|length == 1
+                    # set member = member.inner_members[0]
+                # endif
+                <div class="row member-list-item-header">
+                    {{ member_brief_protection(member, true, true, true, false) }}
+                    <div class="col-md-1 col-xs-2"></div>
+                    <div class="col-md-11 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
                 </div>
-                <div id="{{member|local_anchor}}-overlay" class="member-top-prot">
-                    <span class="protection protection-{{member.protection}}">{{ member.protection|map_protection_name|title }}</span>
+            # else
+                <div class="row member-list-item-header" onclick="$('#{{member|local_anchor}}').slideToggle(200); $('#{{member|local_anchor}}-overlay').fadeToggle(200);" style="position: relative;">
+                    {{ member_brief_protection(member, true, false, true, false) }}
+                    <div class="col-md-1 col-xs-2"></div>
+                    <div class="col-md-11 col-xs-10 member-desc">
+                    {{ member.briefdescription|description }}
+                    </div>
+                    <div id="{{member|local_anchor}}-overlay" class="member-top-prot">
+                        <span class="protection protection-{{member.protection}}">{{ member.protection|map_protection_name|title }}</span>
 
-                    # if member.static:
-                        <span class="protection protection-static">Static</span>
-                    # endif
-                    # if member.abstract:
-                        <span class="protection protection-abstract">Abstract</span>
-                    # endif
-                    # if member.readonly:
-                        <span class="protection protection-readonly">Readonly</span>
-                    # endif
+                        # if member.static:
+                            <span class="protection protection-static">Static</span>
+                        # endif
+                        # if member.abstract:
+                            <span class="protection protection-abstract">Abstract</span>
+                        # endif
+                        # if member.readonly:
+                            <span class="protection protection-readonly">Readonly</span>
+                        # endif
+                    </div>
                 </div>
-            </div>
-            <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}">
-                {{ member_detailed_row(member) }}
-            </div>
+                <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}">
+                    {{ member_detailed_row(member) }}
+                </div>
+            # endif
             # endblock
         # endfor
     # endfor

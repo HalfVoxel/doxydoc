@@ -1,0 +1,46 @@
+# extends "main.html"
+# import "helpers/member_helpers.html" as helpers
+# from "helpers/member_brief.html" import member_brief_protection
+# from "helpers/member_detailed.html" import member_detailed_row
+
+# set bootstrap_protection = True
+
+# macro function_header(entity)
+    {{ helpers.breadcrumb(entity) }}
+    <h1>
+    <small>Function {{ entity.parent_in_canonical_path()|ref_entity }}.</small><span>{{ entity.name }}</span>
+    </h1>
+# endmacro
+
+# block content
+    {{ function_header(entity) }}
+
+    <div class="member-list">
+    # for member in entity.inner_members
+        <div class="row member-list-item-header" onclick="$('#{{member|local_anchor}}').slideToggle(200); $('#{{member|local_anchor}}-overlay').fadeToggle(200);" style="position: relative;">
+            {{ member_brief_protection(member, true, false, true, false, param_list_types=true) }}
+            <div class="col-md-1 col-xs-2"></div>
+            <div class="col-md-11 col-xs-10 member-desc">
+            {{ member.briefdescription|description }}
+            </div>
+            <div id="{{member|local_anchor}}-overlay" class="member-top-prot">
+                <span class="protection protection-{{member.protection}}">{{ member.protection|map_protection_name|title }}</span>
+
+                # if member.static:
+                    <span class="protection protection-static">Static</span>
+                # endif
+                # if member.abstract:
+                    <span class="protection protection-abstract">Abstract</span>
+                # endif
+                # if member.readonly:
+                    <span class="protection protection-readonly">Readonly</span>
+                # endif
+            </div>
+        </div>
+        <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}">
+            {{ member_detailed_row(member) }}
+        </div>
+    # endfor
+    </div>
+
+# endblock

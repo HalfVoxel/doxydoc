@@ -1,3 +1,4 @@
+from builder.settings import Settings
 import jinja2
 from .writing_context import WritingContext
 from .page import PageGenerator
@@ -11,7 +12,7 @@ class Builder:
     def __init__(self, importer, plugin_context, settings) -> None:
         self.importer = importer
         self.plugin_context = plugin_context
-        self.settings = settings
+        self.settings: Settings = settings
 
         self.environment = jinja2.Environment(
             loader=jinja2.FileSystemLoader(reversed(settings.template_dirs)),

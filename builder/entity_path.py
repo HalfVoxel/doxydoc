@@ -1,5 +1,8 @@
 from pprint import pprint
-from .page import Page
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .page import Page
 
 
 class EntityPath:

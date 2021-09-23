@@ -41,7 +41,7 @@
             # endfor
         # endif
 
-		# set sections = layout.get_member_sections(entity, entity.members)
+		# set sections = layout.get_member_sections(entity, entity.members, state)
 		# for section in sections if section[1]|length != 0
 			<h2>{{ section[0] }}</h2>
 			# set members = section[1]
