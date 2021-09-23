@@ -426,6 +426,7 @@ def render_template(ctx: WritingContext, template_name: str, **kwargs) -> str:
         relpath=ctx.relpath,
         sorted=ctx.sort_entities,
         getref=ctx.getref,
+        settings=ctx.settings,
         **kwargs,
     )
 

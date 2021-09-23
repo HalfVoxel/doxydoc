@@ -200,6 +200,7 @@ class PageGenerator:
             relpath=relpath,
             in_tree=in_tree,
             sorted=sort_entities,
+            settings=self.builder.settings,
             plugins=self.builder.plugin_context,
         )
         f.write(text)
