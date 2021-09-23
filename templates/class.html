@@ -73,7 +73,7 @@
                 {{ member.briefdescription|description }}
                 </div>
                 <div id="{{member|local_anchor}}-overlay" class="member-top-prot">
-                    <span class="protection protection-{{member.protection}}">{{ member.protection|title }}</span>
+                    <span class="protection protection-{{member.protection}}">{{ member.protection|map_protection_name|title }}</span>
 
                     # if member.static:
                         <span class="protection protection-static">Static</span>
@@ -118,7 +118,7 @@
                         # elif member.protection == "package":
                             # set labelStyle = "label-info"
                         # endif
-                        <span class="label {{labelStyle}}">{{ member.protection|title }}</span>
+                        <span class="label {{labelStyle}}">{{ member.protection|map_protection_name|title }}</span>
 
                         # if member.readonly:
                             <span class="label label-warning">Readonly</span>
@@ -131,7 +131,7 @@
 
                     <h3>
                         # if not bootstrap_protection
-                            {% if member.protection %}{{ member.protection|title }}{%endif %}
+                            {% if member.protection %}{{ member.protection|map_protection_name|title }}{%endif %}
                             {% if member.readonly %}readonly{%endif%}
                             {% if member.override %}{{ member.override }}{%endif%}
                             {% if member.static %}static{%endif%}

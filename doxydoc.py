@@ -212,6 +212,12 @@ class DoxyDoc:
                 generator.generate(page)
 
     def create_env(self, builder_obj: Builder) -> None:
+        def map_protection(ctx: WritingContext, protection: str, buffer: StrTree):
+            if protection == "package":
+                buffer.append("internal")
+            else:
+                buffer.append(protection)
+
         filters = {
             "markup": builder.layout.markup,
             "description": builder.layout.description,
@@ -222,6 +228,7 @@ class DoxyDoc:
             "ref_entity_with_contents": builder.layout.ref_entity_with_contents,
             "match_external_ref": builder.layout.match_external_ref,
             "log": lambda c, v, b: print(v),
+            "map_protection_name": map_protection,
         }
         builder_obj.add_filters(filters)
 
