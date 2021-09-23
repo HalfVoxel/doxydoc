@@ -41,9 +41,10 @@ class Plugin(DoxydocPlugin):
                 e.parent = entity
 
         entity.path = EntityPath()
-        importer._add_docobj(entity)
 
-        return builder.page_generator.group_page(entity)
+        if len(entity.inner_groups) > 0:
+            importer._add_docobj(entity)
+            return builder.page_generator.group_page(entity)
 
     def examples_list(self, builder, importer, entities):
         entity = GroupEntity()
@@ -51,16 +52,16 @@ class Plugin(DoxydocPlugin):
         entity.id = "plugins/list_specials/examples"
         entity.short_name = entity.name = "Examples"
         entity.inner_groups = [e for e in entities if isinstance(e, ExampleEntity)]
-
         entity.path = EntityPath()
-        importer._add_docobj(entity)
 
-        return builder.page_generator.group_page(entity)
+        if len(entity.inner_groups) > 0:
+            importer._add_docobj(entity)
+            return builder.page_generator.group_page(entity)
 
     def define_pages(self, importer, builder):
         original_entities = importer.entities[:]
         examples = self.examples_list(builder, importer, original_entities)
         groups = self.group_list(builder, importer, original_entities)
         classes = self.classes_list(builder, importer, original_entities)
-        pages = self.pages_list(builder, importer, original_entities, [p.primary_entity for p in [examples, groups, classes]])
-        return [pages, classes, groups, examples]
+        pages = self.pages_list(builder, importer, original_entities, [p.primary_entity for p in [examples, groups, classes] if p is not None])
+        return [p for p in [pages, classes, groups, examples] if p is not None]
