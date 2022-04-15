@@ -49,7 +49,7 @@ class Importer:
 
     def get_entity(self, id: str) -> Entity:
         return self._docobjs[id]
-    
+
     def try_get_entity(self, id: str) -> Optional[Entity]:
         return self._docobjs.get(id)
 
@@ -134,12 +134,17 @@ class Importer:
         self._read_entity_xml()
 
     def _read_entity_xml(self) -> None:
+        sub_entities = []
         for entity in self.entities:
             try:
                 entity.read_from_xml(self.ctx)
+                if isinstance(entity, MemberEntity) and entity.kind == "enum":
+                    sub_entities += entity.members
             except:
                 print("Exception when parsing " + str(entity.id) + " of type " + str(entity.kind))
                 raise
+
+        self.entities += sub_entities
 
         for entity in self.entities:
             try:
@@ -216,10 +221,17 @@ class Importer:
         #         idnode.set("docobj", entity)
         #         self._add_docobj(entity)
         #         # print(entity.full_url())
-    
+
     def getref_from_name(self, name: str, resolve_scope: Optional[Entity], ignore_overloads: bool=False) -> Entity:
         name = name.strip()
         name = name.replace("::", ".")
+        kind_filter = None
+        parts = name.split("!")
+        if len(parts) > 1:
+            assert len(parts) == 2
+            name = parts[0]
+            kind_filter = parts[1]
+
         if "(" in name:
             pathPart, paramPart = name.split("(")
             pathPart = pathPart.strip()
@@ -238,6 +250,7 @@ class Importer:
         for entity in self.entities:
             name_suffix = ""
             c = entity
+
             while c is not None:
                 name_suffix = c.name + "." + name_suffix if name_suffix != "" else c.name
                 c = c.parent_in_canonical_path()
@@ -245,20 +258,10 @@ class Importer:
                     candidates.append(entity)
                     break
 
-        pathCandidates = candidates
-
         def params_for_entity(entity: Entity):
             # Only member entities have parameters.
             # External entities may also be functions, but we do not know the parameters for those
             return entity.params if type(entity) is MemberEntity else []
-
-        if paramPart != "":
-            candidateParamNames = [",".join(param.typename for param in params_for_entity(cand)) for cand in candidates]
-            candidates = [c for c, paramNames in zip(candidates, candidateParamNames) if paramNames == paramPart]
-        
-        # Resolve references in member entities as if we resolve from the associated class
-        if resolve_scope is not None and type(resolve_scope) is MemberEntity:
-            resolve_scope = resolve_scope.parent_in_canonical_path()
 
         # Try resolving locally
         def resolveLocal(scope: Entity, path: List[str], params: str):
@@ -280,8 +283,34 @@ class Importer:
                     if candidateParamNames == params:
                         return [scope]
                 return []
-        
-        candidates += resolveLocal(resolve_scope, pathPart.split("."), paramPart)
+
+        # Try looking up the base entity
+        # and then resolve from there.
+        pathParts = pathPart.split(".")
+        if len(pathParts) > 1:
+            base = pathParts[0]
+            baseEnt = None
+            for e in self.entities:
+                if e.name == base:
+                    baseEnt = e
+            if baseEnt is not None:
+                resolved = resolveLocal(baseEnt, pathParts[1:], paramPart)
+                candidates += resolved
+
+
+        candidates = list(set(candidates))
+        pathCandidates = candidates
+
+        if paramPart != "":
+            candidateParamNames = [",".join(param.typename for param in params_for_entity(cand)) for cand in candidates]
+            candidates = [c for c, paramNames in zip(candidates, candidateParamNames) if paramNames == paramPart]
+
+        # Resolve references in member entities as if we resolve from the associated class
+        if resolve_scope is not None and type(resolve_scope) is MemberEntity:
+            resolve_scope = resolve_scope.parent_in_canonical_path()
+
+        if resolve_scope is not None:
+            candidates += resolveLocal(resolve_scope, pathPart.split("."), paramPart)
 
         # Remove duplicates
         candidates = list(dict.fromkeys(candidates))
@@ -289,7 +318,7 @@ class Importer:
         def entity_fullname(e: Entity) -> str:
             if type(e) is MemberEntity:
                 params = params_for_entity(cand)
-                return cand.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "")
+                return cand.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "") + f" ({e.kind})"
             else:
                 return cand.full_canonical_path() + " (" + e.kind + ")"
 
@@ -317,7 +346,7 @@ class Importer:
 
             return dist + len(ancestors)
 
-        if resolve_scope is not None: 
+        if resolve_scope is not None:
             try:
                 candidates = [(tree_distance(c, resolve_scope), c) for c in candidates]
                 # Sort by score and pick only the candidates with the highest score
@@ -327,7 +356,7 @@ class Importer:
                 print(e)
                 exit(0)
 
-        # If we specify parameters explicitly we shouldn't link to an overload page        
+        # If we specify parameters explicitly we shouldn't link to an overload page
         if paramPart != "" or ignore_overloads:
             candidates = [c for c in candidates if not isinstance(c, OverloadEntity)]
 
@@ -342,7 +371,7 @@ class Importer:
                         candidates = [group.inner_members[0]]
                     else:
                         candidates = [group]
-        
+
         if len(candidates) > 1 and paramPart == "":
             # Check if we have both an object and its constructor.
             # In that case prioritize the object
@@ -351,6 +380,20 @@ class Importer:
                 group = groups[0]
                 if all(c == group or c.parent_in_canonical_path() == group for c in candidates):
                     candidates = [group]
+
+        if kind_filter is not None:
+            orig = candidates
+            candidates = [c for c in candidates if c.kind == kind_filter]
+            if len(candidates) == 0:
+                print()
+                print(f"Could not find any entity with the name '{name}' and kind filter {kind_filter}.")
+                if resolve_scope is not None:
+                    print(f"When generating documentation for {resolve_scope.full_canonical_path()} {resolve_scope.kind}")
+
+                if len(orig) > 0:
+                    print("The kind filter removed {len(orig)} items that would otherwise match.")
+
+                return None
 
         if len(candidates) > 1:
             print()
