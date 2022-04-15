@@ -150,6 +150,12 @@ class PageGenerator:
 
     def class_page(self, entity: ClassEntity) -> Page:
         inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
+        sub_entities = []
+        for e in inner_entities:
+            if isinstance(e, MemberEntity) and e.kind == "enum":
+                sub_entities += e.members
+        
+        inner_entities += sub_entities
         if self.builder.settings.separate_function_pages:
             # These functions will go into separate pages
             inner_entities = [e for e in inner_entities if e.kind != "function"]
