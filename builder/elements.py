@@ -98,7 +98,7 @@ def video(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def element_to_string(element: ET.Element) -> str:
-    return "".join(["" if element.text is None else element.text] + [ET.tostring(e, encoding="unicode", method="html") for e in element.getchildren()])
+    return "".join(["" if element.text is None else element.text] + [ET.tostring(e, encoding="unicode", method="html") for e in list(element)])
 
 
 def verbatim(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
