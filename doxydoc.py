@@ -194,6 +194,12 @@ class DoxyDoc:
         namespaces = [generator.namespace_page(ent) for ent in entities if isinstance(ent, NamespaceEntity)]
 
         pages = classes + page_pages + examples + namespaces + groups
+
+        if self.settings.separate_function_pages:
+            for ent in entities:
+                if isinstance(ent, ClassEntity):
+                    pages += generator.function_overload_pages(ent)
+
         for plugin in self.plugins:
             pages = pages + plugin.define_pages(self.importer, builder)
 
