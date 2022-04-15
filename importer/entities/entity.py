@@ -8,6 +8,18 @@ if TYPE_CHECKING:
     from importer import Importer
 
 
+def try_strip(x: Optional[str]):
+    '''Tries to strip spacing and dots from strings'''
+    return x.strip(" .\t\n") if x is not None else None
+
+def elements_equal(e1: ET.Element, e2: ET.Element):
+    if e1.tag != e2.tag: return False
+    if try_strip(e1.text) != try_strip(e2.text): return False
+    if try_strip(e1.tail) != try_strip(e2.tail): return False
+    if e1.attrib != e2.attrib: return False
+    if len(e1) != len(e2): return False
+    return all(elements_equal(c1, c2) for c1, c2 in zip(e1, e2))
+
 class Entity:
     def __init__(self) -> None:
         self.name = ""  # type: str
@@ -95,6 +107,11 @@ class Entity:
             self.short_name = self.default_name()
 
         self.briefdescription = xml.find("briefdescription")
+        if self.briefdescription is not None and all(len(t.strip()) == 0 for t in self.briefdescription.itertext()):
+            # Empty brief
+            # Doxygen seems to generate empty brief descriptions as "<p>   </p>" sometimes, which we don't want.
+            self.briefdescription.clear()
+
         self.detaileddescription = xml.find("detaileddescription")
 
         # Find sections
@@ -111,6 +128,14 @@ class Entity:
             xrefsects += self.briefdescription.findall(".//xrefsect")
 
         if self.detaileddescription is not None:
+            # Even though doxygen's REPEAT_BRIEF option is set to NO, it will still repeat the brief for pages.
+            if self.briefdescription is not None:
+                brief_para: Optional[ET.Element] = next(iter(self.briefdescription), None)
+                detailed_para: Optional[ET.Element] = next(iter(self.detaileddescription), None)
+                if brief_para is not None and detailed_para is not None and brief_para.tag == "para" and elements_equal(brief_para, detailed_para):
+                    self.detaileddescription.remove(detailed_para)
+                    print("Removing", detailed_para)
+
             section_xml = (section_xml +
                            self.detaileddescription.findall(".//sect1") +
                            self.detaileddescription.findall(".//sect2") +
