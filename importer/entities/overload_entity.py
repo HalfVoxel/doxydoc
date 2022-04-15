@@ -160,7 +160,9 @@ class OverloadEntity(Entity):
                     sorted_param_names[i] = "..."
         sorted_param_names = compress(sorted_param_names)
 
-        if len(sorted_param_names) > 0 and sorted_param_names[-1] == "..." and tuple(sorted_param_names[:-1]) in variants:
+        # If the last item is ... and we can remove the ... to make a valid variant
+        # then the last item should be optional.
+        if len(sorted_param_names) > 0 and sorted_param_names[-1] == "..." and all(isinstance(x, str) for x in sorted_param_names[:-1]) and tuple(sorted_param_names[:-1]) in variants:
             sorted_param_names[-1] = ["..."]
         
         argsstring = []
