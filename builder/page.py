@@ -47,34 +47,34 @@ class Page:
 
 
 def generate_io_safe_name(filename: str, tail: str, reserved: Set[str]) -> str:
-        # filename_comps = name.split(":")
+    # filename_comps = name.split(":")
 
-        # Strip non alphanumeric characters
-        # filename_comps = [
-        #    "".join([c for c in filename if c.isalnum() or c == "_"])
-        #    for filename in filename_comps]
+    # Strip non alphanumeric characters
+    # filename_comps = [
+    #    "".join([c for c in filename if c.isalnum() or c == "_"])
+    #    for filename in filename_comps]
 
-        # filename = "/".join(filename_comps)
+    # filename = "/".join(filename_comps)
 
-        if len(filename) > 40:
-            filename = filename[0:41]
+    if len(filename) > 40:
+        filename = filename[0:41]
 
-        # Make sure the name only contains alphanumeric characters, underscores and hyphens
-        # This is required to make sure it is a valid anchor for example
-        # See https://stackoverflow.com/questions/1391802/can-a-dom-element-have-an-id-that-contains-a-space
-        filename = "".join([c for c in filename if c.isalnum() or c == "_" or c == "-" or c == "/"])
+    # Make sure the name only contains alphanumeric characters, underscores and hyphens
+    # This is required to make sure it is a valid anchor for example
+    # See https://stackoverflow.com/questions/1391802/can-a-dom-element-have-an-id-that-contains-a-space
+    filename = "".join([c for c in filename if c.isalnum() or c == "_" or c == "-" or c == "/"])
 
-        name_with_tail = filename + tail
+    name_with_tail = filename + tail
 
+    if name_with_tail not in reserved:
+        return name_with_tail
+
+    for i in range(2, 100):
+        name_with_tail = filename + str(i) + tail
         if name_with_tail not in reserved:
             return name_with_tail
 
-        for i in range(2, 100):
-            name_with_tail = filename + str(i) + tail
-            if name_with_tail not in reserved:
-                return name_with_tail
-
-        raise Exception("Cannot find a valid filename. Last try was " + name_with_tail)
+    raise Exception("Cannot find a valid filename. Last try was " + name_with_tail)
 
 
 def clean_io_name(name: str) -> str:
@@ -249,7 +249,8 @@ class PageGenerator:
             if kind == "function":
                 overloads = list(overloads)
                 entity = OverloadEntity(name, class_entity, overloads)
-                entity.briefdescription = combine_description(self.default_writing_context.with_link_stripping(), overloads)
+                entity.briefdescription = combine_description(
+                    self.default_writing_context.with_link_stripping(), overloads)
                 entity.detaileddescription = combine_detailed_desription(overloads)
                 entity.path = EntityPath()
                 self.builder.importer._add_docobj(entity)
@@ -303,9 +304,9 @@ class PageGenerator:
         f.close()
 
         if self.builder.settings.doxygen_redirects and page.primary_entity.filename is not None:
-            fname = os.path.splitext(os.path.basename(page.primary_entity.filename))[0] + self.builder.settings.doxygen_redirect_extension
+            fname = os.path.splitext(os.path.basename(page.primary_entity.filename))[
+                0] + self.builder.settings.doxygen_redirect_extension
             path = os.path.join(self.builder.settings.out_dir, fname)
             f = open(path, "w")
             f.write(text)
             f.close()
-
