@@ -12,13 +12,20 @@ def try_strip(x: Optional[str]):
     '''Tries to strip spacing and dots from strings'''
     return x.strip(" .\t\n") if x is not None else None
 
+
 def elements_equal(e1: ET.Element, e2: ET.Element):
-    if e1.tag != e2.tag: return False
-    if try_strip(e1.text) != try_strip(e2.text): return False
-    if try_strip(e1.tail) != try_strip(e2.tail): return False
-    if e1.attrib != e2.attrib: return False
-    if len(e1) != len(e2): return False
+    if e1.tag != e2.tag:
+        return False
+    if try_strip(e1.text) != try_strip(e2.text):
+        return False
+    if try_strip(e1.tail) != try_strip(e2.tail):
+        return False
+    if e1.attrib != e2.attrib:
+        return False
+    if len(e1) != len(e2):
+        return False
     return all(elements_equal(c1, c2) for c1, c2 in zip(e1, e2))
+
 
 class Entity:
     def __init__(self) -> None:
@@ -107,7 +114,7 @@ class Entity:
             self.short_name = self.default_name()
 
         self.briefdescription = xml.find("briefdescription")
-        if self.briefdescription is not None and all(len(t.strip()) == 0 for t in self.briefdescription.itertext()):
+        if self.briefdescription is not None and all(len(t.strip()) == 0 for t in self.briefdescription.itertext()) and all(x.tag in ["para", "order", "briefdescription"] for x in self.briefdescription.iter()):
             # Empty brief
             # Doxygen seems to generate empty brief descriptions as "<p>   </p>" sometimes, which we don't want.
             self.briefdescription.clear()
@@ -134,7 +141,6 @@ class Entity:
                 detailed_para: Optional[ET.Element] = next(iter(self.detaileddescription), None)
                 if brief_para is not None and detailed_para is not None and brief_para.tag == "para" and elements_equal(brief_para, detailed_para):
                     self.detaileddescription.remove(detailed_para)
-                    print("Removing", detailed_para)
 
             section_xml = (section_xml +
                            self.detaileddescription.findall(".//sect1") +
@@ -166,11 +172,8 @@ class Entity:
         # Resolve copydocs
         # We need to do this iteratively since we may copy the docs from some object that also tries to copy the docs from something else
         while True:
-            if self.briefdescription is None:
-                break
-
-            copydoc = self.briefdescription.find(".//copydoc")
-            if copydoc is None:
+            copydoc = self.briefdescription.find(".//copydoc") if self.briefdescription is not None else None
+            if copydoc is None and self.detaileddescription is not None:
                 copydoc = self.detaileddescription.find(".//copydoc")
             if copydoc is None:
                 break
@@ -178,6 +181,7 @@ class Entity:
             entity = state.getref_from_name(copydoc.get("name"), self.parent_in_canonical_path(), ignore_overloads=True)
             if entity is None:
                 raise Exception("Invalid copydoc command. Could not resolve target")
+
             self.briefdescription = entity.briefdescription
             self.detaileddescription = entity.detaileddescription
 

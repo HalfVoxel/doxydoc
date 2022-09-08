@@ -3,9 +3,12 @@ from .entity import Entity
 from .param_entity import ParamEntity
 from .enum_value_entity import EnumValueEntity
 from importer.protection import Protection
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, TYPE_CHECKING
 import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
+
+if TYPE_CHECKING:
+    from importer import Importer
 
 
 class MemberEntity(Entity):
@@ -67,9 +70,9 @@ class MemberEntity(Entity):
             if children[0].tag == "ref":
                 return ctx.getref(children[0])
         return None
-    
+
     def child_entities(self):
-        return self.members # ??
+        return self.members  # ??
 
     def parent_in_canonical_path(self) -> Entity:
         return self.defined_in_entity
@@ -188,6 +191,8 @@ class MemberEntity(Entity):
             self.hasparams = False
             self.params = []
 
+    def post_xml_read(self, state: 'Importer') -> None:
+        super().post_xml_read(state)
         if self.detaileddescription is not None:
             paramdescs = self.detaileddescription.findall(".//parameterlist")
             for parameterList in paramdescs:
