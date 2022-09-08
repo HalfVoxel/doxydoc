@@ -3,14 +3,13 @@ from importer.entities.member_entity import MemberEntity
 from importer.entities.overload_entity import OverloadEntity
 import os
 from . import layout_helpers
-from typing import Any, Callable, List, Set, cast, TYPE_CHECKING
+from typing import Any, Callable, List, Optional, Set, cast, TYPE_CHECKING
 from importer.entities import Entity, ClassEntity, FileEntity, NamespaceEntity, ExampleEntity, PageEntity, GroupEntity
 from .writing_context import WritingContext
 import itertools
 from builder.entity_path import EntityPath
 import builder.layout
 import xml.etree.ElementTree as ET
-from natsort import natsorted
 
 if TYPE_CHECKING:
     from .builder import Builder
@@ -154,7 +153,7 @@ class PageGenerator:
         for e in inner_entities:
             if isinstance(e, MemberEntity) and e.kind == "enum":
                 sub_entities += e.members
-        
+
         inner_entities += sub_entities
         if self.builder.settings.separate_function_pages:
             # These functions will go into separate pages
@@ -183,26 +182,15 @@ class PageGenerator:
         inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
         page = self._page_with_entity("namespace", entity, inner_entities)
         return page
-    
+
     def function_overload_pages(self, class_entity: ClassEntity) -> List[Page]:
-        def same_or_default(items: List[MemberEntity], key: Callable[[MemberEntity], Any], default: Any) -> Any:
-            values = set(key(x) for x in items)
-            if len(values) == 1:
-                return values.pop()
-            else:
-                return default
-        
-        def combine_protection(items: List[MemberEntity]) -> str:
-            protection_order = ["public", "protected", "package", "private"]
-            return sorted([item.protection for item in items], key=lambda x: protection_order.index(x))[0]
-        
         def combine_description(ctx: WritingContext, entities: List[MemberEntity]):
             descriptions: Set[str] = set()
             for e in entities:
                 buffer = StrTree(ignore_html=True)
-                builder.layout.description(self.default_writing_context.with_link_stripping(), e.briefdescription, buffer)
+                builder.layout.description(ctx, e.briefdescription, buffer)
                 descriptions.add(str(buffer).strip())
-            
+
             if len(descriptions) == 1:
                 return entities[0].briefdescription
             else:
@@ -215,16 +203,16 @@ class PageGenerator:
                         if s[max_index] != longest_prefix[max_index]:
                             break
                         max_index += 1
-                    
+
                     longest_prefix = longest_prefix[:max_index]
-                
+
                 longest_prefix = longest_prefix.strip()
                 while len(longest_prefix) > 0 and longest_prefix[-1] in "(<,":
                     longest_prefix = longest_prefix[:-1]
 
                 if len(longest_prefix) < 3:
                     longest_prefix = ""
-                
+
                 if original_prefix != longest_prefix:
                     longest_prefix += "..."
 
@@ -234,31 +222,36 @@ class PageGenerator:
                 desc.append(para)
                 return desc
 
+        def combine_detailed_desription(entities: List[MemberEntity]) -> Optional[ET.Element]:
+            # Try to find an image which is shared among all overloads.
+            # This can be used as a representative image to display on the overload page.
+            shared_images = None
+            for e in entities:
+                s = set([im.attrib["name"] for im in e.detaileddescription.findall(".//image")])
+                if shared_images is None:
+                    shared_images = s
+                else:
+                    shared_images = s.intersection(shared_images)
+
+            if shared_images is not None and len(shared_images) > 0:
+                desc = ET.Element("detaileddescription")
+                para = ET.Element("para")
+                img = ET.Element("image")
+                img.attrib["name"] = list(shared_images)[0]
+                para.append(img)
+                desc.append(para)
+                return desc
+            else:
+                return None
+
         result = []
         for ((kind, name), overloads) in itertools.groupby(class_entity.all_members, key=lambda e: (e.kind, e.name)):
             if kind == "function":
-                overloads = natsorted(list(overloads), key=lambda x: (x.name, x.argsstring))
-
-                entity = OverloadEntity()
-                entity.kind = "function_overloads"
-                entity.id = f"{class_entity.id}/{name}/overloads"
-                entity.short_name = entity.name = name
-                entity.inner_members = overloads
-                entity.parent = class_entity
-                entity.path = EntityPath()
-
-                entity.virtual = same_or_default(overloads, lambda e: e.virtual, False)
-                entity.static = same_or_default(overloads, lambda e: e.static, False)
-                entity.override = same_or_default(overloads, lambda e: e.override, False)
-                entity.abstract = same_or_default(overloads, lambda e: e.abstract, False)
-                entity.protection = combine_protection(overloads)
-                entity.defined_in_entity = same_or_default(overloads, lambda e: e.defined_in_entity, None)
-                entity.deprecated = same_or_default(overloads, lambda e: e.deprecated, False)
-                entity.filename = same_or_default(overloads, lambda e: e.filename, None)
-                entity.location = same_or_default(overloads, lambda e: e.location, None)
+                overloads = list(overloads)
+                entity = OverloadEntity(name, class_entity, overloads)
                 entity.briefdescription = combine_description(self.default_writing_context.with_link_stripping(), overloads)
-                entity.calculate_optimized_params()
-                
+                entity.detaileddescription = combine_detailed_desription(overloads)
+                entity.path = EntityPath()
                 self.builder.importer._add_docobj(entity)
 
                 result.append(self._page_with_entity("function_overloads", entity, [entity] + overloads))

@@ -2,13 +2,26 @@ from importer.entities.member_entity import MemberEntity
 from .entity import Entity
 from .class_entity import ClassEntity
 from importer.importer_context import ImporterContext
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 import itertools
 import functools
+from natsort import natsorted
+
+def same_or_default(items: List[MemberEntity], key: Callable[[MemberEntity], Any], default: Any) -> Any:
+    values = set(key(x) for x in items)
+    if len(values) == 1:
+        return values.pop()
+    else:
+        return default
+
+def combine_protection(items: List[MemberEntity]) -> str:
+    protection_order = ["public", "protected", "package", "private"]
+    return sorted([item.protection for item in items], key=lambda x: protection_order.index(x))[0]
+
 
 
 class OverloadEntity(Entity):
-    def __init__(self) -> None:
+    def __init__(self, name: str, class_entity: ClassEntity, overloads: List[MemberEntity]) -> None:
         super().__init__()
         self.inner_members: List[MemberEntity] = []
         self.parent: Optional[Entity] = None
@@ -19,6 +32,25 @@ class OverloadEntity(Entity):
         self.defined_in_entity: Optional[ClassEntity] = None
         self.protection: Optional[str] = None
         self.argsstring: Optional[str] = None
+
+        overloads = natsorted(list(overloads), key=lambda x: (x.name, x.argsstring))
+        self.kind = "function_overloads"
+        self.id = f"{class_entity.id}/{name}/overloads"
+        self.short_name = self.name = name
+        self.inner_members = overloads
+        self.parent = class_entity
+
+        self.virtual = same_or_default(overloads, lambda e: e.virtual, False)
+        self.static = same_or_default(overloads, lambda e: e.static, False)
+        self.override = same_or_default(overloads, lambda e: e.override, False)
+        self.abstract = same_or_default(overloads, lambda e: e.abstract, False)
+        self.protection = combine_protection(overloads)
+        self.defined_in_entity = same_or_default(overloads, lambda e: e.defined_in_entity, None)
+        self.deprecated = same_or_default(overloads, lambda e: e.deprecated, False)
+        self.filename = same_or_default(overloads, lambda e: e.filename, None)
+        self.location = same_or_default(overloads, lambda e: e.location, None)
+        self.briefdescription = None
+        self.calculate_optimized_params()
     
     def calculate_optimized_params(self):
         '''
