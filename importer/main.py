@@ -244,7 +244,7 @@ class Importer:
             paramPart = paramPart[:-1]
         else:
             pathPart = name
-            paramPart = ""
+            paramPart = None
 
         candidates = []
         for entity in self.entities:
@@ -264,7 +264,7 @@ class Importer:
             return entity.params if type(entity) is MemberEntity else []
 
         # Try resolving locally
-        def resolveLocal(scope: Entity, path: List[str], params: str):
+        def resolveLocal(scope: Entity, path: List[str], params: Optional[str]):
             if len(path) > 0:
                 jump_candidates = []
                 if type(scope) is MemberEntity:
@@ -276,7 +276,7 @@ class Importer:
                 potential_children = [c for c in scope.child_entities() if c.name == path[0]]
                 return jump_candidates + [candidate for child in potential_children for candidate in resolveLocal(child, path[1:], params)]
             else:
-                if params == "":
+                if params is None:
                     return [scope]
                 else:
                     candidateParamNames = ",".join(param.typename for param in params_for_entity(scope))
@@ -301,7 +301,7 @@ class Importer:
         candidates = list(set(candidates))
         pathCandidates = candidates
 
-        if paramPart != "":
+        if paramPart is not None:
             candidateParamNames = [",".join(param.typename for param in params_for_entity(cand)) for cand in candidates]
             candidates = [c for c, paramNames in zip(candidates, candidateParamNames) if paramNames == paramPart]
 
@@ -333,6 +333,13 @@ class Importer:
                 for cand in pathCandidates:
                     fullname = entity_fullname(cand)
                     print(fullname)
+            else:
+                name_matching = [e for e in self.entities if e.name == pathParts[-1]]
+                if len(name_matching) > 0:
+                    print("There were some entities that matched the name but not the path. The candidates are:")
+                    for e in name_matching:
+                        print(e.full_canonical_path() + " (" + e.kind + ")")
+
             return None
 
         def tree_distance(entity: Entity, resolve_scope: Entity) -> int:
@@ -357,7 +364,7 @@ class Importer:
                 exit(0)
 
         # If we specify parameters explicitly we shouldn't link to an overload page
-        if paramPart != "" or ignore_overloads:
+        if paramPart is not None or ignore_overloads:
             candidates = [c for c in candidates if not isinstance(c, OverloadEntity)]
 
         if len(candidates) > 1:
@@ -372,7 +379,7 @@ class Importer:
                     else:
                         candidates = [group]
 
-        if len(candidates) > 1 and paramPart == "":
+        if len(candidates) > 1 and paramPart is None:
             # Check if we have both an object and its constructor.
             # In that case prioritize the object
             groups = [c for c in candidates if isinstance(c, ClassEntity)]
@@ -394,6 +401,22 @@ class Importer:
                     print("The kind filter removed {len(orig)} items that would otherwise match.")
 
                 return None
+        
+        if len(candidates) > 1:
+            # In some cases we can have multiple candiates, but of which some don't actually match the full canonical path.
+            # In that case we should prefer the one that matches the full canonical path.
+            # This can happen for example in this case:
+            #
+            # Ambigious reference 'RichAI.rotation' in a tag.2 entities match this name.
+            # When generating documentation for Tutorials.Changelog
+            # The matching candidates are
+            # Pathfinding.RichAI.rotation (property)
+            # Pathfinding.AIBase.rotation (property)
+            #
+            # where one is an inherited member, and one is an explicit interface implementation.
+            strictMatches = [c for c in candidates if pathPart in c.full_canonical_path()]
+            if len(strictMatches) == 1:
+                candidates = strictMatches
 
         if len(candidates) > 1:
             print()
