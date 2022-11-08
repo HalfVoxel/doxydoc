@@ -1,6 +1,8 @@
 # from doxybase import *
 from os import listdir
 from os.path import isfile, isdir, join
+import re
+from custom_progressbar import progressbar as custom_progressbar
 from progressbar import progressbar
 from importer import Importer
 from importer.entities import ExternalEntity, Entity, ClassEntity, PageEntity, NamespaceEntity, ExampleEntity, GroupEntity, MemberEntity
@@ -112,7 +114,8 @@ class DoxyDoc:
             print("Error while copying resources: " + str(e))
 
     def process_images(self, dir: str):
-        for root, dirs, files in os.walk(dir):
+        print("Scaling down images")
+        for root, dirs, files in progressbar(os.walk(dir)):
             for fn in files:
                 source_path = os.path.join(root, fn)
                 source_name, ext = os.path.splitext(source_path)
@@ -128,7 +131,7 @@ class DoxyDoc:
                     else:
                         # Create a 1x variant of the image
                         target_path = target_path + ext
-                        print("Scaling down " + str(source_path))
+                        # print("Scaling down " + str(source_path))
                         call(["convert", "-scale", invscale, os.path.realpath(source_path), os.path.realpath(target_path)])
 
 
@@ -212,7 +215,7 @@ class DoxyDoc:
         build_search_data(generator.default_writing_context, entities, self.settings)
 
         for i, page in enumerate(pages):
-            progressbar(i + 1, len(pages))
+            custom_progressbar(i + 1, len(pages))
             if self.settings.page_whitelist is None or page.path in self.settings.page_whitelist:
                 # print("Rendering entity " + page.path)
                 generator.generate(page)
