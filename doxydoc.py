@@ -49,16 +49,13 @@ class DoxyDoc:
                 __import__(module_path)
 
         module = __import__("plugins")
-        print("Checking " + str(module))
         for k, v in module.__dict__.items():
             if isinstance(v, types.ModuleType) and hasattr(v, "Plugin"):
-                print(k)
                 try:
                     config = {}  # type: Dict[str, Any]
                     if k in self.settings.plugins:
                         config = self.settings.plugins[k]
                     plugin = getattr(v, "Plugin")(config)  # type: DoxydocPlugin
-                    print("Loading plugin: " + str(k))
                     self.plugins.append(plugin)
                     self.plugin_context[str(k)] = plugin
                 except Exception as e:
