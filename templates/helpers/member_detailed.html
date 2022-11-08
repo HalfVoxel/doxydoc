@@ -8,7 +8,7 @@
         <table class="member-params-detail">
         # for m in member.members
             <tr>
-            <td><p id="{{m|local_anchor}}" class="param-name">{{ m.name }}{{ m.initializer|markup }}</p></td>
+            <td><p id="{{m|local_anchor}}" class="param-name">{{ m.name_with_generics|e }}{{ m.initializer|markup }}</p></td>
             <td>{{ m.briefdescription|description }}
             {{ m.detaileddescription|description }}</td>
             </tr>
@@ -48,8 +48,7 @@
     # endif
 
     {{ member.type|linked_text }}
-
-    <span class="member-name">{{ member.name }}{{ " " + member.initializer|markup }}</span>
+    <span class="member-name">{{ member.name_with_generics|e }}{{ " " + member.initializer|markup }}</span>
 
     # if member.hasparams
         {{ param_description_list(member, true) }}

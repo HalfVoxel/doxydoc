@@ -6,7 +6,9 @@ from importer.entities import Entity
 INITIAL_HEADING_DEPTH = 2
 
 
-def is_hidden(docobj):
+def is_hidden(ctx: WritingContext, docobj: Entity):
+    if ctx.is_entity_excluded(docobj):
+        return True
     # if docobj.hidden:
     #     return True
     return False
@@ -30,7 +32,8 @@ def get_local_anchor(ctx: WritingContext, entity: Entity, buffer: StrTree) -> No
     buffer.append(ctx.page.get_local_anchor(entity))
 
 
-def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:
+def refcompound(ctx: WritingContext, refnode: Entity, buffer: StrTree) -> None:
+
     refid = refnode.get("refid")
 
     if refid == "":
@@ -44,12 +47,12 @@ def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:
     tooltip = refnode.get("tooltip")
     obj = ctx.state.get_entity(refid)
 
-    obj = obj.compound
+    obj: Entity = obj.compound
     assert obj
 
     # Prevent recursive loops of links in the tooltips
 
-    if ctx.strip_links or is_hidden(obj):
+    if ctx.strip_links or is_hidden(ctx, obj):
         buffer += obj.name
     else:
         # Write out anchor element
@@ -63,9 +66,9 @@ def refcompound(ctx: WritingContext, refnode, buffer: StrTree) -> None:
 def ref_entity(ctx: WritingContext, obj, buffer: StrTree) -> None:
     ref_entity_with_contents(ctx, obj, "", buffer)
 
-def ref_entity_with_contents(ctx: WritingContext, obj, contents: str, buffer: StrTree) -> None:
+def ref_entity_with_contents(ctx: WritingContext, obj: Entity, contents: str, buffer: StrTree) -> None:
     # Prevent recursive loops of links in the tooltips
-    if ctx.strip_links or is_hidden(obj):
+    if ctx.strip_links or is_hidden(ctx, obj):
         buffer += obj.name
     else:
         tooltip = StrTree()
@@ -100,7 +103,7 @@ def ref(ctx: WritingContext, refnode, buffer: StrTree) -> None:
     # external = refnode.get("external")
     # tooltip = refnode.get("tooltip")
 
-    if ctx.strip_links or is_hidden(obj):
+    if ctx.strip_links or is_hidden(ctx, obj):
         markup(ctx, refnode, buffer)
     else:
         tooltip = StrTree()
@@ -115,7 +118,7 @@ def ref(ctx: WritingContext, refnode, buffer: StrTree) -> None:
 
 
 def ref_explicit(ctx: WritingContext, obj, text, tooltip, buffer: StrTree) -> None:
-    if ctx.strip_links or is_hidden(obj):
+    if ctx.strip_links or is_hidden(ctx, obj):
         buffer += text
     else:
         if tooltip is None:

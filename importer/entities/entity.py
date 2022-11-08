@@ -31,6 +31,7 @@ class Entity:
     def __init__(self) -> None:
         self.name = ""  # type: str
         self.short_name = ""  # type: str
+        self.name_with_generics = ""  # type: str
         self.briefdescription = None  # type: Optional[ET.Element]
         self.detaileddescription = None  # type: Optional[ET.Element]
         self.id = ""  # type: str
@@ -112,6 +113,8 @@ class Entity:
             self.short_name = Entity.formatname(str(short_name_node.text))
         else:
             self.short_name = self.default_name()
+        
+        self.name_with_generics = self.name
 
         self.briefdescription = xml.find("briefdescription")
         if self.briefdescription is not None and all(len(t.strip()) == 0 for t in self.briefdescription.itertext()) and all(x.tag in ["para", "order", "briefdescription"] for x in self.briefdescription.iter()):

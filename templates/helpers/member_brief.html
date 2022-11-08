@@ -37,9 +37,9 @@
     <div class="col-md-{{ colsmn }} col-xs-{{ colsmx }} member-brief {% if member.deprecated %}deprecated{% endif %} member-depth-{{ depth }}">
         <span class="member-name">
             # if link
-                {{ member|ref_explicit(override_name or member.name, "") }}
+                {{ member|ref_explicit(override_name or member.name_with_generics, "") }}
             # else
-                {{ override_name or member.name }}
+                {{ override_name or member.name_with_generics|e }}
             # endif
         </span>
         # if member.kind == "function_overloads"

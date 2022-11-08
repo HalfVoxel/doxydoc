@@ -17,7 +17,7 @@ class ParamEntity(Entity):
         xml = self.xml
         assert xml is not None
 
-        self.name = str(xml.find("declname").text)
+        self.name_with_generics = self.name = str(xml.find("declname").text)
         self.type = xml.find("type")
         self.default_value = xml.find("defval")
 

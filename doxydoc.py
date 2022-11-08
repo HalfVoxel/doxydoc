@@ -186,6 +186,10 @@ class DoxyDoc:
 
         entities = self.importer.entities
 
+        # Prime the excluded cache and output info
+        for ent in entities:
+            builder.default_writing_context.is_entity_excluded(ent)
+
         generator = builder.page_generator
         classes = [generator.class_page(ent) for ent in entities if isinstance(ent, ClassEntity)]
         examples = [generator.example_page(ent) for ent in entities if isinstance(ent, ExampleEntity)]
@@ -237,6 +241,7 @@ class DoxyDoc:
             "map_protection_name": map_protection,
         }
         builder_obj.add_filters(filters)
+        builder_obj.environment.filters["is_entity_excluded_in_output"] = builder_obj.default_writing_context.is_entity_excluded
 
     def generate(self, args) -> None:
         try:

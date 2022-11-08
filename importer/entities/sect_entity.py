@@ -16,4 +16,4 @@ class SectEntity(Entity):
         self.title = xml.find("title")
         # Doxygen generates the ID as "pagename_1realname"
         # so we try to extract it here
-        self.name = self.id.split("_1")[-1]
+        self.name_with_generics = self.name = self.id.split("_1")[-1]

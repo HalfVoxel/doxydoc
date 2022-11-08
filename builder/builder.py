@@ -1,5 +1,7 @@
 from builder.settings import Settings
 import jinja2
+
+from importer.entities.entity import Entity
 from .writing_context import WritingContext
 from .page import PageGenerator
 from .entity_path import EntityPath

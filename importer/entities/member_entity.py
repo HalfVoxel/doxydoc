@@ -54,6 +54,7 @@ class MemberEntity(Entity):
 
         # ClassEntity probably
         self.defined_in_entity = None  # type: Entity
+        self.template_param_list: Optional[List[str]] = None
 
     def get_simple_type(self, ctx: ImporterContext) -> Optional[Entity]:
         '''
@@ -95,6 +96,12 @@ class MemberEntity(Entity):
         # briefdesc
         # detaileddesc
         # type
+
+        m = re.match(r"(.*)<(.*)>", self.name)
+        if m is not None:
+            self.name = m.group(1)
+            self.template_param_list = [s.strip() for s in m.group(2).split(",")]
+            self.name_with_generics = self.name + "<" + ",".join(self.template_param_list) + ">"
 
         prot = xml.get("prot")
         if prot is not None:

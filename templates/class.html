@@ -8,14 +8,14 @@
 # macro class_header(entity)
     {{ helpers.breadcrumb(entity) }}
     <h1>
-    <small>{{ entity.kind|title }}</small><span> {{ entity.name }}</span>
+    <small>{{ entity.kind|title }}</small><span> {{ entity.name_with_generics|e }}</span>
     # if entity.inherits_from|length > 0:
         <small>Extends
         # set comma = joiner(", ")
         #- for e in entity.inherits_from
             {{- comma() }}
             #- if e.entity is not none
-                {{- e.entity|ref_explicit(e.name, none) }}
+                {{- e.entity|ref_explicit(e.entity.name_with_generics, none) }}
             #- else
                 {{- e.name|match_external_ref }}
             #- endif
@@ -152,7 +152,7 @@
 
                         {{ member.type|linked_text }}
 
-                        <span class="member-name">{{ member.name }}</span>
+                        <span class="member-name">{{ member.name_with_generics|e }}</span>
 
                         # if member.hasparams
                             # set delim = joiner(",")

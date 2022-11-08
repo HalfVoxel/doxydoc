@@ -313,7 +313,9 @@ def ulink(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     # if entity is not None:
     if url.startswith("ref:"):
         obj = ctx.getref_from_name(url[len("ref:"):])
-        if obj is None or ctx.strip_links or builder.layout.is_hidden(obj):
+        if obj is None or ctx.strip_links:
+            builder.layout.markup(ctx, n, buffer)
+        elif builder.layout.is_hidden(ctx, obj):
             builder.layout.markup(ctx, n, buffer)
         else:
             tooltip = StrTree()

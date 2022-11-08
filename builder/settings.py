@@ -28,6 +28,7 @@ class Settings:
     extra_css: Optional[str] = None
     links_in_code_blocks = True
     separate_function_pages: bool = True
+    should_exclude_entity_in_output: List[str] = []
     
     def __init__(self, settings_dict, paths_relative_to: str) -> None:
         if settings_dict is not None:

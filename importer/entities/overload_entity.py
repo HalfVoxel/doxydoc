@@ -36,7 +36,7 @@ class OverloadEntity(Entity):
         overloads = natsorted(list(overloads), key=lambda x: (x.name, x.argsstring))
         self.kind = "function_overloads"
         self.id = f"{class_entity.id}/{name}/overloads"
-        self.short_name = self.name = name
+        self.short_name = self.name_with_generics = self.name = name
         self.inner_members = overloads
         self.parent = class_entity
 

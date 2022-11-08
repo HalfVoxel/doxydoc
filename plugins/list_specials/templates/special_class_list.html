@@ -4,7 +4,9 @@
 # from "helpers/member_detailed.html" import member_detailed_row
 
 # macro item(entity, depth=0)
-    # if entity.inner_classes|length > 0 or entity.inner_namespaces|length > 0 or entity.kind != "namespace"
+    # if entity|is_entity_excluded_in_output:
+    # else
+        # if entity.inner_classes|length > 0 or entity.inner_namespaces|length > 0 or entity.kind != "namespace"
         <li class="row member-list-item-header">
             {{ member_brief_protection(entity, true, true, false, true, depth) }}
             <div class="col-md-0 col-xs-2"></div>
@@ -25,6 +27,7 @@
                 # endfor
             </ul>
         # endif
+    # endif
     # endif
 # endmacro
 
