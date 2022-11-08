@@ -13,8 +13,8 @@ import html2text
 from builder.settings import Settings
 from builder.page import Page
 
-nltk.download('punkt')
-nltk.download('stopwords')
+nltk.download('punkt', quiet=True)
+nltk.download('stopwords', quiet=True)
 
 
 def description_to_string(ctx: WritingContext, node):
