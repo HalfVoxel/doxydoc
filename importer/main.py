@@ -246,7 +246,7 @@ class Importer:
             pathPart = name
             paramPart = None
 
-        candidates = []
+        candidates: List[Entity] = []
         for entity in self.entities:
             name_suffix = ""
             c = entity
@@ -369,15 +369,19 @@ class Importer:
 
         if len(candidates) > 1:
             # Check if all of them are in the same overload group
-            groups = [c for c in candidates if isinstance(c, OverloadEntity)]
+            groups = [e for e in self.entities if isinstance(e, OverloadEntity) \
+                and e.parent == candidates[0].parent_in_canonical_path() \
+                and all(c == e or c in e.inner_members for c in candidates)
+            ]
+
+            # groups = [c for c in candidates if isinstance(c, OverloadEntity)]
             if len(groups) == 1:
                 group = groups[0]
-                if all(c == group or c in group.inner_members for c in candidates):
-                    if len(group.inner_members) == 1:
-                        # If the overload group only has 1 member, return that instead
-                        candidates = [group.inner_members[0]]
-                    else:
-                        candidates = [group]
+                if len(group.inner_members) == 1:
+                    # If the overload group only has 1 member, return that instead
+                    candidates = [group.inner_members[0]]
+                else:
+                    candidates = [group]
 
         if len(candidates) > 1 and paramPart is None:
             # Check if we have both an object and its constructor.
