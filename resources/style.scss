@@ -54,12 +54,78 @@ nav.sidebar {
 }
 
 nav.navbar {
-    .package-version {
+    span.package-version {
         display: inline-block;
-        padding-top: 15px;
+        // padding-top: 15px;
         font-size: 18px;
         line-height: 20px;
         color: #777;
+    }
+
+    .navbar-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .dropdown.package-version {
+        font-size: 18px;
+        margin-right: 8px;
+
+        button {
+            background-color: rgba(255,255,255,0);
+            border-color: rgba(255,255,255,0);
+            transition: background-color 0.1s, border-color 0.1s, color 0.1s;
+            color: #777;
+
+            .caret {
+                opacity: 0.5;
+                transition: opacity 0.1s;
+            }
+
+            &:hover {
+                border-color: #adadad;
+                color: #333333;
+                .caret {
+                    opacity: 1.0;
+                }
+            }
+
+            &:active {
+                border-color: #999;
+            }
+        }
+
+        li a {
+            gap: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+        .item-version {
+            width: 50px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .item-date {
+            color: #666;
+            margin-right: 25px;
+            flex-grow: 1;
+        }
+
+        .dropdown-menu {
+            max-height: 385px;
+            overflow-y: scroll;
+        }
+    }
+
+    .version-badge {
+        font-size: 10px;
+        padding: 2px 8px;
+        background: #3872d7;
+        color: white;
+        border-radius: 3px;
+        font-weight: bold;
     }
 }
 

@@ -67,6 +67,37 @@ $(document).ready(function() {
 		$(window.location.hash).toggle();
 		$(window.location.hash + "-overlay").fadeToggle();
 	};
+
+	const version = packageVersion;
+	const branch = packageBranch;
+	const isBeta = packageIsBeta;
+	fetch(documentation_collection_base_url + "/versions.php").then(r => r.json()).then(data => {
+		let html = "";
+		let seenVersion = new Set();
+		const pathParts = window.location.href.split("/");
+		const page = pathParts[pathParts.length - 1];
+		let latest = data.find(item => item.name == branch);
+		if (latest.version !== version) {
+			const el = document.createElement("template");
+			el.innerHTML = `<a href='${documentation_collection_base_url}/${isBeta ? "beta" : "stable"}/${page}' class="btn btn-danger">View latest version</a>`;
+			document.getElementById("navbar-header").appendChild(el.content.firstChild);
+		}
+		for (let i = 0; i < data.length; i++) {
+			if (data[i].docs === null) continue;
+			if (seenVersion.has(data[i].version)) continue;
+			seenVersion.add(data[i].version);
+			var item = data[i];
+			const date = new Date(item.lastUpdated);
+			// Format date as YYYY-MM-DD
+			const formattedDate = date.toISOString().split('T')[0];
+			let spans = `<span class='item-version'>${item.version}</span><span class='item-date'>${formattedDate}</span>`;
+			if (item.name.includes("_dev")) {
+				spans += `<span class='version-badge'>beta</span>`
+			}
+			html += `<li><a rel="nofollow" href='${documentation_collection_base_url}/${item.docs}/${page}'>${spans}</a></li>`;
+		}
+		document.getElementById("package-version-alternatives").innerHTML = html;
+	});
 });
 
 function loadData(callbackWhenDone) {

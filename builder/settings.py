@@ -13,6 +13,8 @@ class Settings:
     args: Any = None
     in_dir: str = "input"
     out_dir: str = "html"
+    branch: Optional[str] = None
+    is_beta: bool = False
     template_dirs: List[str] = ["templates"]
     title: str = "Project Title"
     version: str = "0.1"
@@ -20,6 +22,7 @@ class Settings:
     disabled_plugins: List[str] = []
     page_whitelist: Optional[List[str]] = None
     absolute_url_base: Optional[str] = None
+    documentation_collection_base_url: Optional[str] = None
     banner: Optional[str] = None
     breadcrumbs: bool = True
     plugins: Optional[Dict[str,Any]] = None
