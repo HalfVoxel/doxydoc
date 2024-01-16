@@ -8,6 +8,7 @@ from importer.importer_context import ImporterContext
 import importer.entities as entities
 from importer.entities import Entity
 from typing import Iterable, List, Dict, Optional
+import re
 FILE_EXT = ".html"
 OUTPUT_DIR = "html"
 
@@ -113,11 +114,29 @@ class Importer:
         roots = []
 
         for fname in xml_filenames:
-            try:
-                dom = ET.parse(fname)
-                assert dom is not None, "No DOM"
+            with open(fname, "r", encoding="utf-8") as f:
+                text = f.read()
+                def replace_reflink(match):
+                    args = match.group(1).split(";")
+                    # Convert this node to an anchor node
+                    # We need to do this here, because our version of doxygen does not support multiple arguments to the ref command with a
+                    # separator that is not a comma. So we do the splitting here instead.
+                    # It's very ugly.
+                    # And also. Doxygen cannot escape the generics for us. So when using generics, the output may become invalid xml.
+                    # So we need to do this replacement before we even parse the xml file.
+                    id = escape(args[0])
+                    print("Replacing reflink with id " + id)
+                    if len(args) > 2:
+                        print(f"Warning: Could not parse reflink with more than 2 arguments: {match.group(1)}")
+                    if len(args) > 1:
+                        title = escape(args[1])
+                        return f"<ulink url=\"ref:{id}\">{title}</ulink>"
+                    else:
+                        return f"<ulink url=\"ref:{id}\">{id}</ulink>"
+                text = re.sub(r"<reflink\s+href=\"([^\"]*)\"\s*\/>", replace_reflink, text)
 
-                root = dom.getroot()
+            try:
+                root = ET.fromstring(text)
                 assert root is not None, "No Root"
 
                 compound = root.find("compounddef")
