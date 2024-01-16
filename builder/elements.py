@@ -1,5 +1,6 @@
 # coding=UTF-8
 
+from importer.entities.sect_entity import SectEntity
 from .str_tree import StrTree
 import builder.layout
 import xml.etree.ElementTree as ET
@@ -469,6 +470,29 @@ def generic_html(ctx: WritingContext, node, buffer: StrTree) -> None:
 
     buffer.close(node.tag)
 
+def tableofcontents(ctx: WritingContext, node: ET.Element, buffer: StrTree) -> None:
+    if ctx.entity_scope is None:
+        raise Exception("Table of contents can only be used when the entity is known")
+    
+    s1 = [s for s in ctx.entity_scope.sections if s.sect_level == 1]
+    if len(s1) == 0:
+        return
+
+    def write_section(s: SectEntity):
+        buffer.open("li")
+        buffer.element("a", s.title, {"href": ctx.relpath(s.path.full_url())})
+        assert s.children is not None
+        if len(s.children) > 0:
+            buffer.open("ul")
+            for child in s.children:
+                write_section(child)
+            buffer.close("ul")
+        buffer.close("li")
+
+    buffer.open("ul", {"class": "toc"})
+    for s in s1:
+        write_section(s)
+    buffer.close("ul")
 
 xml_mapping = {
     "linebreak": linebreak,
@@ -524,10 +548,12 @@ xml_mapping = {
     "div": generic_html,
     "p": generic_html,
     "span": generic_html,
+
+    "tableofcontents": tableofcontents,
 }
 
 
-def write_xml(ctx, node, buffer) -> None:
+def write_xml(ctx: WritingContext, node: ET.Element, buffer: StrTree) -> None:
     f = xml_mapping.get(node.tag)
     if f is not None:
         f(ctx, node, buffer)
