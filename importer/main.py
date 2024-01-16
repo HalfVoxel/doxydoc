@@ -125,7 +125,6 @@ class Importer:
                     # And also. Doxygen cannot escape the generics for us. So when using generics, the output may become invalid xml.
                     # So we need to do this replacement before we even parse the xml file.
                     id = escape(args[0])
-                    print("Replacing reflink with id " + id)
                     if len(args) > 2:
                         print(f"Warning: Could not parse reflink with more than 2 arguments: {match.group(1)}")
                     if len(args) > 1:
