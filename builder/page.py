@@ -14,6 +14,12 @@ import xml.etree.ElementTree as ET
 if TYPE_CHECKING:
     from .builder import Builder
 
+def collect_enum_values(entities: list[Entity]) -> list[Entity]:
+        sub_entities = []
+        for e in entities:
+            if isinstance(e, MemberEntity) and e.kind == "enum":
+                sub_entities += e.members
+        return sub_entities
 
 class Page:
     def __init__(self, path: str, template: str, primary_entity: Entity, entities: List[Entity]) -> None:
@@ -149,12 +155,8 @@ class PageGenerator:
 
     def class_page(self, entity: ClassEntity) -> Page:
         inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
-        sub_entities = []
-        for e in inner_entities:
-            if isinstance(e, MemberEntity) and e.kind == "enum":
-                sub_entities += e.members
+        inner_entities += collect_enum_values(inner_entities)
 
-        inner_entities += sub_entities
         if self.builder.settings.separate_function_pages:
             # These functions will go into separate pages
             inner_entities = [e for e in inner_entities if e.kind != "function"]
@@ -180,6 +182,8 @@ class PageGenerator:
 
     def namespace_page(self, entity: NamespaceEntity) -> Page:
         inner_entities = [cast(Entity, entity)] + entity.sections + entity.members
+        inner_entities += collect_enum_values(inner_entities)
+
         page = self._page_with_entity("namespace", entity, inner_entities)
         return page
 
