@@ -22,7 +22,6 @@ class Settings:
     disabled_plugins: List[str] = []
     page_whitelist: Optional[List[str]] = None
     absolute_url_base: Optional[str] = None
-    documentation_collection_base_url: Optional[str] = None
     banner: Optional[str] = None
     breadcrumbs: bool = True
     plugins: Optional[Dict[str,Any]] = None

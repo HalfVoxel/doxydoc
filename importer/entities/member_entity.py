@@ -169,7 +169,7 @@ class MemberEntity(Entity):
 
             self.members = []
             for v in xml.findall("enumvalue"):
-                enumvalue = EnumValueEntity()
+                enumvalue = EnumValueEntity(self)
                 enumvalue.xml = v
                 enumvalue.read_from_xml(ctx)
                 # This is not set in the xml

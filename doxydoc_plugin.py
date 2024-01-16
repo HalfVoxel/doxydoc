@@ -7,3 +7,6 @@ class DoxydocPlugin:
 
     def on_pre_build_html(self, importer, builder, entity2page):
         pass
+
+    def on_post_build_html(self, importer, builder, entity2page):
+        pass

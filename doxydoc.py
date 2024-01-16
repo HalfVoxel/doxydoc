@@ -220,6 +220,9 @@ class DoxyDoc:
             if self.settings.page_whitelist is None or page.path in self.settings.page_whitelist:
                 # print("Rendering entity " + page.path)
                 generator.generate(page)
+        
+        for plugin in self.plugins:
+            plugin.on_post_build_html(self.importer, builder, entity2page)
 
     def create_env(self, builder_obj: Builder) -> None:
         def map_protection(ctx: WritingContext, protection: str, buffer: StrTree):
