@@ -257,7 +257,7 @@ class Importer:
             paramPart = paramPart.replace(" ", "").strip()
 
             if not paramPart.endswith(")"):
-                print(f"Expected parameter list to end with a closing parenthesis: '{name}'")
+                print(f"Expected parameter list to end with a closing parenthesis: '{name}'. Parameters list: '{paramPart}'")
                 return None
             # Remove ending paren
             paramPart = paramPart[:-1]
@@ -267,6 +267,12 @@ class Importer:
 
         candidates: List[Entity] = []
         for entity in self.entities:
+            # For most entities, their id is equal to their name,
+            # but for some entities (e.g. pages) this is not the case.
+            if entity.id == pathPart:
+                candidates.append(entity)
+                continue
+
             name_suffix = ""
             c = entity
 
@@ -339,7 +345,7 @@ class Importer:
                 params = params_for_entity(cand)
                 return cand.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "") + f" ({e.kind})"
             else:
-                return cand.full_canonical_path() + " (" + e.kind + ")"
+                return cand.full_canonical_path() + " (" + (e.kind if e.kind is not None else "<no kind>") + ")"
 
 
         if len(candidates) == 0:
