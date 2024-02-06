@@ -4,12 +4,12 @@
 
 # macro item(entity, active_entity, depth=0)
     <li class='{{ "active" if entity == active_entity else "" }}'>
-        # set arrowClass = ("arrow-down" if in_tree(entity) else "arrow-right") if entity.innerpages|length > 0 else "arrow-none"
+        # set arrowClass = ("arrow-down" if in_tree(entity) else "arrow-right") if entity.visible_child_entities()|length > 0 else "arrow-none"
         # set inner = "<span class='" + arrowClass + "'></span>"
         {{ entity|ref_entity_with_contents(inner) }}
-        # if entity.innerpages|length > 0 and in_tree(entity)
+        # if entity.visible_child_entities()|length > 0 and in_tree(entity)
             <ul class='{{ "sidenav-l" + ((depth+1)|string) }}'>
-                # for member in sorted(entity.innerpages)
+                # for member in sorted(entity.visible_child_entities())
                     {{ item(member, active_entity, depth+1) }}
                 # endfor
             </ul>

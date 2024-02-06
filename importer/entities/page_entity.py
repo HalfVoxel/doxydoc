@@ -7,14 +7,18 @@ class PageEntity(Entity):
     def __init__(self) -> None:
         super().__init__()
 
-        self.innerpages = []  # type: List[PageEntity]
+        self.innerpages: List["PageEntity"] = []
+        self.fake_innerpages: List["PageEntity"] = []
 
         # The page which has this page as an inner page
-        self.parent = None  # type: PageEntity
-        self.include_in_filepath = False
+        self.parent: "PageEntity" = None  # type: PageEntity
+        self.include_in_filepath: bool = False
     
     def child_entities(self):
         return self.innerpages
+    
+    def visible_child_entities(self):
+        return self.fake_innerpages + self.innerpages
 
     def parent_in_canonical_path(self) -> Entity:
         return self.parent
@@ -53,4 +57,13 @@ class PageEntity(Entity):
                 assert(isinstance(page, PageEntity))
                 self.innerpages.append(page)        
                 page.parent = self
+        
+        fakeinnerpage_nodes = [node for node in xml.iter("fakeinnerpage")]
+        for page_node in fakeinnerpage_nodes:
+            page = ctx.getref(page_node)
+            if page is None:
+                print("Could not find fake inner page of " + self.short_name + " with id " + str(page_node.get("refid")))
+            else:
+                assert(isinstance(page, PageEntity))
+                self.fake_innerpages.append(page)
 

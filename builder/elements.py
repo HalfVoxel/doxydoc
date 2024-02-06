@@ -543,6 +543,7 @@ xml_mapping = {
     "copydetailed": copydetailed,
     "copydocref": copydocref,
     "innerpage": innerpage,
+    "fakeinnerpage": innerpage,
     "inspectorfield": inspectorfield,
 
     "div": generic_html,

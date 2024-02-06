@@ -53,6 +53,9 @@ class Entity:
 
     def child_entities(self):
         return self.sections
+    
+    def visible_child_entities(self):
+        return []
 
     def __str__(self):
         return "Entity: " + self.id
