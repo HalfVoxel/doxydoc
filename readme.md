@@ -11,7 +11,7 @@ It has currently only been tested with C# source code.
 Example output:
 ![example](/docs/example.png?raw=true "Example Output")
 
-A live demo can be found at: http://arongranberg.com/astar/docs_3.8_new
+A live demo can be found at: https://arongranberg.com/astar/docs/
 
 ## Dependencies
 - jinja2
