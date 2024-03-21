@@ -470,11 +470,18 @@ def generic_html(ctx: WritingContext, node, buffer: StrTree) -> None:
 
     buffer.close(node.tag)
 
+def is_deep_child_of(node: ET.Element, parent: ET.Element) -> bool:
+    # Iteratively search all children of parent
+    for c in parent.iter():
+        if c == node:
+            return True
+    return False
+
 def tableofcontents(ctx: WritingContext, node: ET.Element, buffer: StrTree) -> None:
     if ctx.entity_scope is None:
         raise Exception("Table of contents can only be used when the entity is known")
     
-    s1 = [s for s in ctx.entity_scope.sections if s.sect_level == 1]
+    s1 = [s for s in ctx.entity_scope.sections if s.sect_level == 1 and not is_deep_child_of(node, s.xml)]
     if len(s1) == 0:
         return
 
