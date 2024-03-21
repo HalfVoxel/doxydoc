@@ -145,8 +145,11 @@ class Entity:
             if self.briefdescription is not None:
                 brief_para: Optional[ET.Element] = next(iter(self.briefdescription), None)
                 detailed_para: Optional[ET.Element] = next(iter(self.detaileddescription), None)
-                if brief_para is not None and detailed_para is not None and brief_para.tag == "para" and elements_equal(brief_para, detailed_para):
-                    self.detaileddescription.remove(detailed_para)
+                if brief_para is not None and detailed_para is not None and brief_para.tag == "para":
+                    if elements_equal(brief_para, detailed_para):
+                        self.detaileddescription.remove(detailed_para)
+                    elif detailed_para.text is not None and brief_para.text is not None and detailed_para.text.strip().startswith(brief_para.text.strip()):
+                        detailed_para.text = detailed_para.text.strip()[len(brief_para.text.strip()):].strip()
 
             section_xml = (section_xml +
                            self.detaileddescription.findall(".//sect1") +
