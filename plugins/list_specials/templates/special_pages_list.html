@@ -4,7 +4,8 @@
 # from "helpers/member_detailed.html" import member_detailed_row
 
 # macro item(entity, depth=0)
-    # if entity.innerpages|length > 0 or entity.inner_namespaces|length > 0 or entity.kind != "namespace"
+    # set children = entity.child_entities()
+    # if children|length > 0 or entity.inner_namespaces|length > 0 or entity.kind != "namespace"
         <li class="row member-list-item-header">
             {{ member_brief_protection(entity, true, true, false, true, depth) }}
             <div class="col-md-0 col-xs-2"></div>
@@ -12,9 +13,9 @@
             {{ entity.briefdescription|description }}
             </div>
         </li>
-        # if entity.innerpages|length > 0
+        # if children|length > 0
             <ul>
-                # for member in entity.innerpages
+                # for member in children
                     {{ item(member, depth+1) }}
                 # endfor
             </ul>
@@ -30,7 +31,7 @@
     {{ entity.detaileddescription|description }}
     
     <ul class="member-list">
-        # for member in entity.innerpages
+        # for member in entity.child_entities()
             {{ item(member) }}
         # endfor
     </ul>

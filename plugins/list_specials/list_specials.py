@@ -1,20 +1,22 @@
+from typing import List
 from importer.entities import PageEntity, ClassEntity, GroupEntity, NamespaceEntity, ExampleEntity
 from builder.entity_path import EntityPath
 from doxydoc_plugin import DoxydocPlugin
+from importer.entities.page_entity import InnerPage
 
 
 class Plugin(DoxydocPlugin):
-    def pages_list(self, builder, importer, entities, additional_pages):
+    def pages_list(self, builder, importer, entities, additional_pages: List[PageEntity]):
         entity = PageEntity()
         entity.kind = "special"
         entity.id = "plugins/list_specials/pages"
         entity.short_name = entity.name = "Tutorials"
-        entity.innerpages = [e for e in entities if e.kind == "page" and e.parent is None]
-        entity.innerpages += additional_pages
+        entity.innerpages = [InnerPage(e, False) for e in entities if e.kind == "page" and e.parent is None]
+        entity.innerpages += [InnerPage(p, False) for p in additional_pages]
         entity.path = EntityPath()
         importer._add_docobj(entity)
 
-        for page in entity.innerpages:
+        for page in entity.child_entities():
             page.parent = entity
         return builder.page_generator._page_with_entity("special_pages_list", entity, [entity])
 
