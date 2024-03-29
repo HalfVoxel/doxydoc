@@ -1,4 +1,5 @@
 from importer.entities.class_entity import ClassEntity
+from importer.entities.namespace_entity import NamespaceEntity
 from importer.entities.overload_entity import OverloadEntity
 from importer.entities.member_entity import MemberEntity
 from pprint import pprint
@@ -7,7 +8,7 @@ import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
 import importer.entities as entities
 from importer.entities import Entity
-from typing import Iterable, List, Dict, Optional
+from typing import Iterable, List, Dict, Optional, Tuple
 import re
 FILE_EXT = ".html"
 OUTPUT_DIR = "html"
@@ -30,6 +31,7 @@ class Importer:
         self.entities = []  # type: List[Entity]
         self._docobjs = {}  # type: Dict[str,Entity]
         self.ctx = ImporterContext()
+        self.resolve_cache: Dict[Tuple[str, Optional[Entity], bool], Optional[Entity]] = {}
 
     def iter_unique_docobjs(self) -> Iterable[Entity]:
         for k, v in self._docobjs.items():
@@ -209,42 +211,33 @@ class Importer:
         for sect in sects:
             entity = self._create_entity(sect, entity)
 
-        # Can be added later
-        # For plugins to be able to extract more entities from the xml
-        # ids = xml.findall(".//*[@id]")
-
-        # parent = entity
-
-        # for idnode in ids:
-
-        #     entity, ok = try_call_function("parseid_" + idnode.tag, idnode)
-        #     if not ok:
-        #         entity = Entity()
-        #         entity.id = idnode.get("id")
-        #         entity.kind = idnode.get("kind")
-
-        #         # print(idnode.get("id"))
-        #         namenode = idnode.find("name")
-
-        #         if namenode is not None:
-        #             entity.name = namenode.text
-        #         else:
-        #             entity.name = "<undefined " + idnode.tag + "-" + entity.id + " >"
-
-        #         entity.anchor = entity.name
-
-        #     if entity is not None:
-        #         entity.compound = parent
-
-        #         idnode.set("docobj", entity)
-        #         self._add_docobj(entity)
-        #         # print(entity.full_url())
-
     def getref_from_name(self, name: str, resolve_scope: Optional[Entity], ignore_overloads: bool=False) -> Entity:
         name = name.strip()
         name = name.replace("::", ".")
+
+        # Resolve references in member entities as if we resolve from the associated class
+        if resolve_scope is not None and type(resolve_scope) is MemberEntity:
+            resolve_scope = resolve_scope.parent_in_canonical_path()
+
+        key = (name, resolve_scope, ignore_overloads)
+        if key in self.resolve_cache:
+            return self.resolve_cache[key]
+
+        debug = False # resolve_scope is not None and resolve_scope.full_canonical_path() == "Pathfinding.AIPath" and name == "destination"
+        if debug:
+            print("\n\n\n\n\n\nRESOLVING " + name + "\n\n\n\n\n")
+
+        res = self.getref_from_name_inner(name, resolve_scope, ignore_overloads, debug)
+        self.resolve_cache[key] = res
+        if debug:
+            print("Resolved to " + (res.full_canonical_path() if res is not None else "None"))
+
+        return res
+
+    def getref_from_name_inner(self, name: str, resolve_scope: Optional[Entity], ignore_overloads: bool, debug: bool) -> Entity:
         kind_filter = None
         parts = name.split("!")
+
         if len(parts) > 1:
             assert len(parts) == 2
             name = parts[0]
@@ -289,13 +282,21 @@ class Importer:
 
         # Try resolving locally
         def resolveLocal(scope: Entity, path: List[str], params: Optional[str]):
+            if debug:
+                print("Resolving locally " + scope.full_canonical_path() + " -> " + str(path))
+
             if len(path) > 0:
                 jump_candidates = []
                 if type(scope) is MemberEntity:
                     # Jump to the member's type
                     jump_scope = scope.get_simple_type(self.ctx)
                     if jump_scope is not None:
+                        if debug:
+                            print("Jumping to member type " + jump_scope.name)
                         jump_candidates = resolveLocal(jump_scope, path, params)
+                    else:
+                        if debug:
+                            print("No jump target for " + scope.name + " of type " + scope.kind + " " + ET.tostring(scope.type, encoding="unicode"))
 
                 potential_children = [c for c in scope.child_entities() if c.name == path[0]]
                 return jump_candidates + [candidate for child in potential_children for candidate in resolveLocal(child, path[1:], params)]
@@ -315,11 +316,12 @@ class Importer:
             base = pathParts[0]
             baseEnt = None
             for e in self.entities:
+                # Several entities can have the same name,
+                # especially considering that constructors have the same name as their class.
                 if e.name == base:
                     baseEnt = e
-            if baseEnt is not None:
-                resolved = resolveLocal(baseEnt, pathParts[1:], paramPart)
-                candidates += resolved
+                    resolved = resolveLocal(baseEnt, pathParts[1:], paramPart)
+                    candidates += resolved
 
 
         candidates = list(set(candidates))
@@ -329,10 +331,6 @@ class Importer:
             candidateParamNames = [",".join(param.typename for param in params_for_entity(cand)) for cand in candidates]
             candidates = [c for c, paramNames in zip(candidates, candidateParamNames) if paramNames == paramPart]
 
-        # Resolve references in member entities as if we resolve from the associated class
-        if resolve_scope is not None and type(resolve_scope) is MemberEntity:
-            resolve_scope = resolve_scope.parent_in_canonical_path()
-
         if resolve_scope is not None:
             candidates += resolveLocal(resolve_scope, pathPart.split("."), paramPart)
 
@@ -341,10 +339,10 @@ class Importer:
 
         def entity_fullname(e: Entity) -> str:
             if type(e) is MemberEntity:
-                params = params_for_entity(cand)
-                return cand.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "") + f" ({e.kind})"
+                params = params_for_entity(e)
+                return e.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "") + f" ({e.kind})"
             else:
-                return cand.full_canonical_path() + " (" + (e.kind if e.kind is not None else "<no kind>") + ")"
+                return e.full_canonical_path() + " (" + (e.kind if e.kind is not None else "<no kind>") + ")"
 
 
         if len(candidates) == 0:
@@ -366,7 +364,25 @@ class Importer:
 
             return None
 
-        def tree_distance(entity: Entity, resolve_scope: Entity) -> int:
+        def tree_distance_inheritance(entity: Entity, resolve_scope: Entity) -> float:
+            if entity == resolve_scope:
+                return 0
+            if isinstance(entity, ClassEntity) and entity.parent == resolve_scope:
+                return 0
+            if isinstance(entity, NamespaceEntity) and entity.parent_namespace == resolve_scope:
+                return 0
+            if isinstance(entity, MemberEntity) and entity.defined_in_entity == resolve_scope:
+                return 0
+
+            if isinstance(resolve_scope, ClassEntity):
+                # Check if the entity is inherited
+                for base in resolve_scope.inherits_from:
+                    if base.entity is not None:
+                        return 1 + tree_distance_inheritance(entity, base.entity)
+
+            return float('inf')
+
+        def tree_distance_path(entity: Entity, resolve_scope: Entity) -> int:
             ancestors = resolve_scope.full_canonical_path_list()
             dist = 0
             while entity is not None:
@@ -379,8 +395,26 @@ class Importer:
 
         if resolve_scope is not None:
             try:
-                candidates = [(tree_distance(c, resolve_scope), c) for c in candidates]
-                # Sort by score and pick only the candidates with the highest score
+                prev_cands = candidates
+                candidates = [(tree_distance_inheritance(c, resolve_scope), c) for c in candidates]
+                # Sort by score and pick only the candidates with the lowest score
+                candidates.sort(key=lambda x: x[0])
+                new_candidates = [c[1] for c in candidates if c[0] == candidates[0][0]]
+                if debug:
+                    if len(prev_cands) != len(new_candidates):
+                        print("Resolved to a different entity based on inheritance " + name + " in " + resolve_scope.full_canonical_path())
+                        print("Previous candidates:")
+                        for cand in prev_cands:
+                            print(entity_fullname(cand))
+                        print("New candidates:")
+                        for (s, cand) in candidates:
+                            print(entity_fullname(cand) + ": " + str(s))
+                        print()
+
+                candidates = new_candidates
+
+                candidates = [(tree_distance_path(c, resolve_scope), c) for c in candidates]
+                # Sort by score and pick only the candidates with the lowest score
                 candidates.sort(key=lambda x: x[0])
                 candidates = [c[1] for c in candidates if c[0] == candidates[0][0]]
             except Exception as e:
@@ -429,7 +463,7 @@ class Importer:
                     print("The kind filter removed {len(orig)} items that would otherwise match.")
 
                 return None
-        
+
         if len(candidates) > 1:
             # In some cases we can have multiple candiates, but of which some don't actually match the full canonical path.
             # In that case we should prefer the one that matches the full canonical path.
