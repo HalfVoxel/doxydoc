@@ -211,7 +211,9 @@ def copydocref(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     raise Exception("copydocref should have been resolved by now")
 
 def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    entity = ctx.getref_from_name(n.get("name"))
+    if len(n) != 0:
+        raise Exception("copydetailed should not have children")
+    entity = ctx.getref_from_name(n.text)
     if entity is not None:
         builder.layout.markup(ctx, entity.detaileddescription, buffer)
 

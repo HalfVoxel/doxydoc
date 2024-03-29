@@ -186,8 +186,13 @@ class Entity:
                 copydoc = self.detaileddescription.find(".//copydoc")
             if copydoc is None:
                 break
+            
+            if len(copydoc) != 0:
+                raise Exception("Invalid copydoc command. Expected no children")
+            if copydoc.text is None:
+                raise Exception("Invalid copydoc command. Expected a target name")
 
-            entity = state.getref_from_name(copydoc.get("name"), self.parent_in_canonical_path(), ignore_overloads=True)
+            entity = state.getref_from_name(copydoc.text, self.parent_in_canonical_path(), ignore_overloads=True)
             if entity is None:
                 raise Exception("Invalid copydoc command. Could not resolve target")
 
