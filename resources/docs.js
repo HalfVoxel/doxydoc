@@ -71,15 +71,21 @@ $(document).ready(function() {
 	const version = packageVersion;
 	const branch = packageBranch;
 	const isBeta = packageIsBeta;
-	fetch(documentation_collection_base_url + "/versions.php").then(r => r.json()).then(data => {
+	const versionData = JSON.parse(localStorage.getItem("lastVersionData"));
+	const maxAgeSeconds = 60 * 10;
+	const updateVersionInfo = data => {
 		let html = "";
 		let seenVersion = new Set();
 		const pathParts = window.location.href.split("/");
 		const page = pathParts[pathParts.length - 1];
-		let latest = data.find(item => item.name == branch);
+		let latest = data.find(item => item.name == branch + (isBeta ? "_dev" : ""));
 		if (latest.version !== version) {
 			const el = document.createElement("template");
-			el.innerHTML = `<a href='${documentation_collection_base_url}/${isBeta ? "beta" : "stable"}/${page}' class="btn btn-danger">View latest version</a>`;
+			el.innerHTML = `<a href='${documentation_collection_base_url}/${isBeta ? "beta" : "stable"}/${page}' class="btn btn-danger">View latest${isBeta ? " beta" : ""} version</a>`;
+			document.getElementById("navbar-header").appendChild(el.content.firstChild);
+		} else if (isBeta) {
+			const el = document.createElement("template");
+			el.innerHTML = `<a href='${documentation_collection_base_url}/stable/${page}' class="btn btn-warning">View latest non-beta version</a>`;
 			document.getElementById("navbar-header").appendChild(el.content.firstChild);
 		}
 		for (let i = 0; i < data.length; i++) {
@@ -97,7 +103,21 @@ $(document).ready(function() {
 			html += `<li><a rel="nofollow" href='${documentation_collection_base_url}/${item.docs}/${page}'>${spans}</a></li>`;
 		}
 		document.getElementById("package-version-alternatives").innerHTML = html;
-	});
+	};
+
+	// Cache the data for a few minutes in local storage.
+	// This makes the "View latest version" button show up much quicker.
+	if (versionData != null && new Date().getTime() < new Date(versionData.date).getTime() + maxAgeSeconds * 1000) {
+		updateVersionInfo(versionData.data);
+	} else {
+		fetch(documentation_collection_base_url + "/versions.php").then(r => r.json()).then(data => {
+			localStorage.setItem("lastVersionData", JSON.stringify({
+				date: new Date().toISOString(),
+				data: data
+			}));
+			updateVersionInfo(data);
+		});
+	}
 });
 
 function loadData(callbackWhenDone) {
@@ -167,7 +187,7 @@ class Levenstein {
 
 
 $(document).ready(function() {
-	loadData(function(data)  {
+	loadData(function(data)  {
 		if (data) {
 			var index = elasticlunr();
 			index.addField('name');

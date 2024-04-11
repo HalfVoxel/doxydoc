@@ -14,7 +14,7 @@
     var pathToRoot = "{{ relpath('a')[0:-1] }}";
     var packageVersion = "{{ settings.version }}";
     var packageBranch = "{{ settings.branch }}";
-    var documentation_collection_base_url = "{{ settings.documentation_collection_base_url }}";
+    var documentation_collection_base_url = "{{ settings.absolute_url_base }}";
     var packageIsBeta = {{ "true" if settings.is_beta else "false" }};
     </script>
 </head>
