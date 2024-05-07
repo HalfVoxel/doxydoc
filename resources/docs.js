@@ -1,16 +1,16 @@
 //Prettify
-$(document).ready(function() {
+$(function() {
 	window.prettyPrint && prettyPrint()
 });
 
 //Tooltips
-$(document).ready(function() {
+$(function() {
 	$("[rel=\"tooltip\"]").tooltip({
 		html: true
 	});
 });
 
-$(document).ready(function() {
+$(function() {
 	function filterPath(string) {
 		return string.replace(/^\//, '')
 			.replace(/(index|default).[a-zA-Z]{3,4}$/, '')
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	}
 	var locationPath = filterPath(location.pathname);
 
-	$('a[href*=#]').each(function() {
+	$('a[href*="#"]').each(function() {
 		var thisPath = filterPath(this.pathname) || locationPath;
 		if (locationPath == thisPath && (location.hostname == this.hostname || !this.hostname) && this.hash.replace(/#/, '')) {
 			var target = this.hash;
@@ -29,6 +29,14 @@ $(document).ready(function() {
 				});
 			}
 		}
+	});
+
+	$('*[data-show-target').each((_index, element) => {
+		var target = $(element).attr('data-show-target');
+		$(element).click(event => {
+			event.preventDefault();
+			scrollTo(target, 400);
+		})
 	});
 
 	function scrollTo(id, duration) {
@@ -121,7 +129,7 @@ $(document).ready(function() {
 });
 
 function loadData(callbackWhenDone) {
-	$.getJSON(pathToRoot + "search_data.json", callbackWhenDone);
+	fetch(pathToRoot + "search_data.json").then(response => response.json()).then(callbackWhenDone);
 }
 
 function assertEqual(a,b) {
@@ -186,7 +194,7 @@ class Levenstein {
 }
 
 
-$(document).ready(function() {
+$(function() {
 	loadData(function(data)  {
 		if (data) {
 			var index = elasticlunr();
@@ -194,25 +202,33 @@ $(document).ready(function() {
 			index.addField('body');
 			index.setRef('index');
 
-			for (var i = 0; i < data.length; i++) {
-				const item = data[i];
-				let body = "";
-				for (var j = 0; j < item.keys.length; j++) {
-					body += item.keys[j] + " ";
-				}
-
-				index.addDoc({
-					name: item.name,
-					index: i,
-					body: body,
-				});
-			}
+			let isLoaded = false;
 
 			/**
 			 * The seach function manages the terms lookup and result display
 			 */
 
 			function search(selectFirst) {
+				// Lazy-initialize the search index.
+				// To avoid SEO penalties for high javascript CPU usage.
+				if (!isLoaded) {
+					console.log("Loading search index");
+					for (var i = 0; i < data.length; i++) {
+						const item = data[i];
+						let body = "";
+						for (var j = 0; j < item.keys.length; j++) {
+							body += item.keys[j] + " ";
+						}
+		
+						index.addDoc({
+							name: item.name,
+							index: i,
+							body: body,
+						});
+					}
+					isLoaded = true;
+				}
+
 				var value = $("#searchfield").val().trim();
 
 				var parts = value.split(".");
@@ -252,7 +268,6 @@ $(document).ready(function() {
 					// Break ties on length
 					score -= 0.001 * item.fullname.length;
 					score = 100*score/item.boost;
-					console.log(item);
 
 					res2.push({
 						item: item,
@@ -353,9 +368,9 @@ $(document).ready(function() {
 			}
 
 			// Bind the search action
-			$("#search").click(() => search(false));
+			$("#search").on("click", () => search(false));
 			$("#searchfield").on("input", () => search(false));
-			$("#searchform").submit(function(e) {
+			$("#searchform").on("submit", function(e) {
 				e.preventDefault();
 				search(true);
 			});
