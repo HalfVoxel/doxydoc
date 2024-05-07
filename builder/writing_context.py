@@ -1,6 +1,6 @@
 import re
-from typing import Callable, List, TYPE_CHECKING
-from importer.entities import Entity, MemberEntity
+from typing import Callable, List, TYPE_CHECKING, Optional
+from importer.entities import Entity
 from importer import Importer
 from .settings import Settings
 import copy
@@ -16,7 +16,7 @@ class WritingContext:
         self.state = state
         self.settings = settings
         self.strip_links = False
-        self.page: Page = None
+        self.page: Optional[Page] = None
         self.entity_scope: Entity = None
         self.sort_entities: Callable[[List[Entity]],List[Entity]] = None
         self.jinja_environment = jinja_environment
@@ -30,6 +30,11 @@ class WritingContext:
     def with_link_stripping(self) -> 'WritingContext':
         ctx = copy.copy(self)
         ctx.strip_links = True
+        return ctx
+    
+    def with_scope(self, entity: Entity) -> 'WritingContext':
+        ctx = copy.copy(self)
+        ctx.entity_scope = entity
         return ctx
 
     def getref(self, xml) -> Entity:

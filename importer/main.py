@@ -32,6 +32,10 @@ class Importer:
         self._docobjs = {}  # type: Dict[str,Entity]
         self.ctx = ImporterContext()
         self.resolve_cache: Dict[Tuple[str, Optional[Entity], bool], Optional[Entity]] = {}
+        self.name_to_entities: Dict[str, List[Entity]] = {}
+        self.id_to_entity: Dict[str, Entity] = {}
+        self.canonical_path_to_entities: Dict[str, List[Entity]] = {}
+        self.cache_dirty = False
 
     def iter_unique_docobjs(self) -> Iterable[Entity]:
         for k, v in self._docobjs.items():
@@ -49,6 +53,36 @@ class Importer:
         self._docobjs[id2] = obj
         self._docobjs[id3] = obj
         self.entities.append(obj)
+        self.cache_dirty = True
+    
+    def rebuild_caches(self):
+        if not self.cache_dirty:
+            return
+        
+        self.name_to_entities = {}
+        self.id_to_entity = {}
+        self.canonical_path_to_entities = {}
+        for entity in self.entities:
+            if entity.name not in self.name_to_entities:
+                self.name_to_entities[entity.name] = []
+            self.name_to_entities[entity.name].append(entity)
+
+            if entity.id != "":
+                if entity.id in self.id_to_entity:
+                    print(f"Duplicate id {entity.id}")
+                else:
+                    assert entity.id not in self.id_to_entity, f"Duplicate id {entity.id}"
+                    self.id_to_entity[entity.id] = entity
+            
+            canonical_path = entity.full_canonical_path_list()
+            for i in range(len(canonical_path)):
+                path = ".".join(e.name for e in canonical_path[i:])
+                if path not in self.canonical_path_to_entities:
+                    self.canonical_path_to_entities[path] = []
+                self.canonical_path_to_entities[path].append(entity)
+        
+        self.cache_dirty = False
+        
 
     def get_entity(self, id: str) -> Entity:
         return self._docobjs[id]
@@ -237,6 +271,7 @@ class Importer:
     def getref_from_name_inner(self, name: str, resolve_scope: Optional[Entity], ignore_overloads: bool, debug: bool) -> Entity:
         kind_filter = None
         parts = name.split("!")
+        self.rebuild_caches()
 
         if len(parts) > 1:
             assert len(parts) == 2
@@ -258,22 +293,16 @@ class Importer:
             paramPart = None
 
         candidates: List[Entity] = []
-        for entity in self.entities:
-            # For most entities, their id is equal to their name,
-            # but for some entities (e.g. pages) this is not the case.
-            if entity.id == pathPart:
-                candidates.append(entity)
-                continue
-
-            name_suffix = ""
-            c = entity
-
-            while c is not None:
-                name_suffix = c.name + "." + name_suffix if name_suffix != "" else c.name
-                c = c.parent_in_canonical_path()
-                if name_suffix == pathPart:
-                    candidates.append(entity)
-                    break
+        
+        # For most entities, their id is equal to their name,
+        # but for some entities (e.g. pages) this is not the case.
+        matching_id = self.id_to_entity.get(pathPart)
+        if matching_id is not None:
+            assert matching_id.id == pathPart
+            candidates.append(matching_id)
+        
+        for entity in self.canonical_path_to_entities.get(pathPart, []):
+            candidates.append(entity)
 
         def params_for_entity(entity: Entity):
             # Only member entities have parameters.
@@ -314,14 +343,12 @@ class Importer:
         pathParts = pathPart.split(".")
         if len(pathParts) > 1:
             base = pathParts[0]
-            baseEnt = None
-            for e in self.entities:
+            for e in self.name_to_entities.get(base, []):
                 # Several entities can have the same name,
                 # especially considering that constructors have the same name as their class.
-                if e.name == base:
-                    baseEnt = e
-                    resolved = resolveLocal(baseEnt, pathParts[1:], paramPart)
-                    candidates += resolved
+                assert e.name == base
+                resolved = resolveLocal(e, pathParts[1:], paramPart)
+                candidates += resolved
 
 
         candidates = list(set(candidates))
@@ -356,7 +383,7 @@ class Importer:
                     fullname = entity_fullname(cand)
                     print(fullname)
             else:
-                name_matching = [e for e in self.entities if e.name == pathParts[-1]]
+                name_matching = self.name_to_entities.get(pathParts[-1], [])
                 if len(name_matching) > 0:
                     print("There were some entities that matched the name but not the path. The candidates are:")
                     for e in name_matching:
@@ -486,6 +513,7 @@ class Importer:
                   str((len(candidates))) + " entities match this name.")
             if resolve_scope is not None:
                 print(f"When generating documentation for {resolve_scope.full_canonical_path()}")
+            
             print("The matching candidates are")
             for cand in candidates:
                 fullname = entity_fullname(cand)

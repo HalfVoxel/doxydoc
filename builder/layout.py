@@ -1,9 +1,10 @@
+import html2text
 import builder.elements
 from .str_tree import StrTree
 from .writing_context import WritingContext
 from importer.entities import Entity
 
-INITIAL_HEADING_DEPTH = 2
+INITIAL_HEADING_DEPTH = 1
 
 
 def is_hidden(ctx: WritingContext, docobj: Entity):
@@ -307,3 +308,25 @@ def description(ctx: WritingContext, descnode, buffer: StrTree) -> None:
             desctitle(ctx, title.text, buffer)
 
         sectbase(ctx, descnode, buffer)
+
+def description_with_scope(ctx: WritingContext, descnode, scope: Entity, buffer: StrTree) -> None:
+    ctx = ctx.with_scope(scope)
+    return description(ctx, descnode, buffer)
+
+
+def description_to_string(ctx: WritingContext, node):
+    buffer = StrTree()
+    description(ctx, node, buffer)
+    text = str(buffer)
+    text_maker = html2text.HTML2Text()
+    text_maker.ignore_links = True
+    text_maker.bypass_tables = False
+    text_maker.ignore_images = True
+    text_maker.ignore_emphasis = True
+    text_maker.unicode_snob = True
+    return text_maker.handle(text)
+
+def description_as_text(ctx: WritingContext, descnode, buffer: StrTree) -> None:
+    t = description_to_string(ctx, descnode)
+    buffer.append(t)
+

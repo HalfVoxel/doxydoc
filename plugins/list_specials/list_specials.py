@@ -49,6 +49,8 @@ class Plugin(DoxydocPlugin):
             return builder.page_generator.group_page(entity)
 
     def examples_list(self, builder, importer, entities):
+        return
+    
         entity = GroupEntity()
         entity.kind = "special"
         entity.id = "plugins/list_specials/examples"

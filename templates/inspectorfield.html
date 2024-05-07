@@ -1,16 +1,17 @@
 # import "helpers/member_helpers.html" as helpers
 # from "helpers/member_brief.html" import member_brief_protection
 # from "helpers/member_detailed.html" import member_detailed_row
+<!-- onclick="$('#{{member|local_anchor}}-inspector').slideToggle(200); $('#{{member|local_anchor}}-inspector-overlay').fadeToggle(200); location.hash = '#{{member|local_anchor}}-inspector';" -->
 
 <div class="inspector-field member-list">
-    <div class="row member-list-item-header" onclick="$('#{{member|local_anchor}}').slideToggle(200); $('#{{member|local_anchor}}-overlay').fadeToggle(200);" style="position: relative;">
+    <div class="row member-list-item-header" data-show-target="#{{member|local_anchor}}-inspector" style="position: relative;">
         {{ member_brief_protection(member, false, false, false, true, 0, title) }}
         <div class="col-md-1 col-xs-2"></div>
         <div class="col-md-11 col-xs-10 member-desc">
         {{ member.briefdescription|description }}
         </div>
     </div>
-    <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}">
+    <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}-inspector">
         <div class="col-md-12">
             {{ member.detaileddescription|description }}
             # set submember = primary_type

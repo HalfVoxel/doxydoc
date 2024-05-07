@@ -1,12 +1,32 @@
 <!DOCTYPE HTML>
-
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Doxydoc"/>
+    # set metaDescription = ((entity.briefdescription|description_as_text_no_links) if entity else '').strip()
+    # set metaPrefix = ""
+    # if entity
+        #if entity.kind == "class"
+            # set metaPrefix = "Class documentation for " + entity.name
+        #elif entity.kind == "namespace"
+            # set metaPrefix = "Namespace documentation for " + entity.name
+        #elif entity.kind == "file"
+            # set metaPrefix = "File documentation for " + entity.name
+        #endif
+    # endif
+    # if metaPrefix and metaDescription
+        # set metaDescription = metaPrefix + ": " + metaDescription
+    # elif metaPrefix
+        # set metaDescription = metaPrefix
+    #endif
+
+    # if metaDescription
+        <meta name="description" content="{{ metaDescription }}">
+    #endif
     <title>{{ page.title }} - {{ settings.title }}</title>
-    <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/bootstrap.css") }}'>
+    <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/bootstrap.min.css") }}'>
     <link rel='stylesheet' type='text/css' href='{{ relpath("resources/css/prettify.css") }}'>
     <link rel='stylesheet' type='text/css' href='{{ relpath("resources/style.css") }}'>
     <link rel='stylesheet' href='{{ relpath("resources/css/bitter.css") }}'>
@@ -26,9 +46,9 @@
                 <div style="flex-grow: 1; min-width: 0;">
                     # include "navbar.html" ignore missing
                     <div class="row">
-                        <article class="col-md-12">
+                        <main class="col-md-12">
                             {% block content %}{% endblock %}
-                        </article>
+                        </main>
                     </div>
                     # include "footer.html" ignore missing
                 </div>

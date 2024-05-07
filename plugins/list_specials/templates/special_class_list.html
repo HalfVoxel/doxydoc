@@ -11,7 +11,7 @@
             {{ member_brief_protection(entity, true, true, false, true, depth) }}
             <div class="col-md-0 col-xs-2"></div>
             <div class="col-md-6 col-xs-10 member-desc">
-            {{ entity.briefdescription|description }}
+            {{ entity.briefdescription|description_with_scope(entity) }}
             </div>
         </li>
         # if entity.inner_classes|length > 0 or entity.inner_namespaces|length > 0

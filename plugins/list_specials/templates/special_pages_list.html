@@ -13,7 +13,8 @@
             {{ entity.briefdescription|description }}
             </div>
         </li>
-        # if children|length > 0
+        ## Ignore special entities, as we would otherwise recurse into the "classes" entity, and that would lead us to EVERYTHING in the entire documentation
+        # if children|length > 0 and entity.kind != "special"
             <ul>
                 # for member in children
                     {{ item(member, depth+1) }}

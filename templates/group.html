@@ -20,7 +20,7 @@
                         {{ member_brief_protection(member, true, true, true, true) }}
                         <div class="col-md-0 col-xs-2"></div>
                         <div class="col-md-6 col-xs-10 member-desc">
-                        {{ member.briefdescription|description }}
+                        {{ member.briefdescription|description_with_scope(member) }}
                         </div>
                     </div>
                 # endfor

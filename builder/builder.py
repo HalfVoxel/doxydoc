@@ -54,9 +54,14 @@ class Builder:
             return wrapper
 
         def create_wrapper_no_links(key: str, fun, context):
-            def wrapper(context, *args, buffer):
-                fun(context.with_link_stripping(), *args, buffer)
-            return create_wrapper(key, wrapper, context)
+            def wrapper(*args):
+                buffer = StrTree()
+                try:
+                    fun(context.with_link_stripping(), *args, buffer)
+                except Exception as e:
+                    raise Exception("Failed to run filter '" + key + "'") from e
+                return str(buffer)
+            return wrapper
 
         for key, fun in filters.items():
             context = self.default_writing_context

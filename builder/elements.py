@@ -138,13 +138,19 @@ def simplesect(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
         title = n.find("title")
         buffer.open("div", {"class": "simplesect simplesect-" + kind})
 
-        buffer.open("h3")
+        buffer.open("span", {"class": "simplesect-title"})
         if title is not None:
             builder.layout.markup(ctx, title, buffer)
         else:
-            buffer += kind.title()
+            title = kind.title()
 
-        buffer.close("h3")
+            # Tweak name
+            if kind == "Return":
+                kind = "Returns"
+
+            buffer += title
+
+        buffer.close("span")
         builder.layout.sectbase(ctx, n, buffer)
         buffer.close("div")
 
@@ -207,7 +213,11 @@ def copybrief(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     if entity is not None:
         builder.layout.markup(ctx, entity.briefdescription, buffer)
 
-def copydocref(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+def copydoc_resolved(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
+    # These will remain in the XML, but we can ignore them
+    pass
+
+def copydoc(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     raise Exception("copydocref should have been resolved by now")
 
 def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -219,9 +229,11 @@ def copydetailed(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
 
 def heading(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    buffer.open("h" + n.get("level"))
+    level = int(n.get("level"))
+    tag = f"h{level}"
+    buffer.open(tag)
     builder.layout.markup(ctx, n, buffer)
-    buffer.close("h" + n.get("level"))
+    buffer.close(tag)
 
 
 def get_image_variants(ctx: WritingContext, path: str) -> List[str]:
@@ -295,10 +307,6 @@ def xrefsect(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
         buffer.close("h3")
         builder.layout.sectbase(ctx, desc, buffer)
         buffer.close("div")
-
-
-def copydoc(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
-    pass
 
 
 def blockquote(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
@@ -524,7 +532,6 @@ xml_mapping = {
     "dotfile": dotfile,
     "toclist": toclist,
     "xrefsect": xrefsect,
-    "copydoc": copydoc,
     "blockquote": blockquote,
     "ulink": ulink,
     "bold": bold,
@@ -550,7 +557,8 @@ xml_mapping = {
     "order": dummy,
     "copybrief": copybrief,
     "copydetailed": copydetailed,
-    "copydocref": copydocref,
+    "copydoc": copydoc,
+    "copydoc_resolved": copydoc_resolved,
     "innerpage": innerpage,
     "fakeinnerpage": innerpage,
     "inspectorfield": inspectorfield,

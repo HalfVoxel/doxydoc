@@ -26,7 +26,6 @@ class Plugin(DoxydocPlugin):
         entities = cast(list[Entity], importer.entities)
         output = []
         seen = set()
-        path_mapping = {}
         for entity in entities:
             if isinstance(entity, MemberEntity) and entity.kind != "function":
                 path = entity.full_canonical_path(".")
@@ -35,6 +34,8 @@ class Plugin(DoxydocPlugin):
                 # _tooltip(builder.default_writing_context, entity, buffer)
                 writing_ctx = builder.default_writing_context.with_link_stripping()
                 writing_ctx.relpath = lambda x: "no path"
+                writing_ctx.entity_scope = entity
+                writing_ctx.page = None
                 if entity.briefdescription is not None:
                     description(writing_ctx, entity.briefdescription, buffer)
                 if entity.detaileddescription is not None:
@@ -99,7 +100,7 @@ class Plugin(DoxydocPlugin):
                     seen.add(path)
                     output.append(path + "\t" + entity.path.full_url() + "\t" + s)
             
-            output.sort()
-            with open(os.path.join(builder.settings.out_dir, self.output_path), "w") as f:
-                f.write("\n".join(output))
+        output.sort()
+        with open(os.path.join(builder.settings.out_dir, self.output_path), "w") as f:
+            f.write("\n".join(output))
 

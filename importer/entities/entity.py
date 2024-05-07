@@ -195,10 +195,33 @@ class Entity:
             entity = state.getref_from_name(copydoc.text, self.parent_in_canonical_path(), ignore_overloads=True)
             if entity is None:
                 raise Exception("Invalid copydoc command. Could not resolve target")
+            
+            remove_and_simplify(self.briefdescription, copydoc)
+            remove_and_simplify(self.detaileddescription, copydoc)
+            
+            self.briefdescription = combine_tags("briefdescription", list(entity.briefdescription) + list(self.briefdescription))
+            self.detaileddescription = combine_tags("detaileddescription", list(entity.detaileddescription) + list(self.detaileddescription))
 
-            self.briefdescription = entity.briefdescription
-            self.detaileddescription = entity.detaileddescription
 
+def remove_and_simplify(parent: ET.Element, needle: ET.Element):
+    for child in parent:
+        if child == needle:
+            parent.remove(child)
+        else:
+            if not remove_and_simplify(child, needle):
+                parent.remove(child)
+    
+    if parent.tag in ["para"] and len(parent) == 0 and (parent.text + parent.tail).strip() in ["", "."]:
+        parent.clear()
+        return False
+    
+    return True
+
+def combine_tags(tag: str, tags: List[ET.Element]) -> ET.Element:
+    wrapper = ET.Element(tag)
+    for tag in tags:
+        wrapper.append(tag)
+    return wrapper
 
 def gather_members(xml, ctx: importer.importer_context.ImporterContext) -> List[Entity]:
     result = [ctx.getentity(memberdef) for memberdef in xml.findall("sectiondef/memberdef")]
