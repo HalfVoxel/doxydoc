@@ -20,7 +20,7 @@ import argparse
 # import plugins.list_specials.list_specials
 # import plugins.navbar.navbar
 from doxydoc_plugin import DoxydocPlugin
-from search import build_search_data
+from search import build_search_data, description_to_string
 
 
 class DoxyDoc:
@@ -231,10 +231,12 @@ class DoxyDoc:
                 buffer.append("internal")
             else:
                 buffer.append(protection)
-
+        
         filters = {
             "markup": builder.layout.markup,
             "description": builder.layout.description,
+            "description_with_scope": builder.layout.description_with_scope,
+            "description_as_text": builder.layout.description_as_text,
             "linked_text": builder.layout.linked_text,
             "ref_explicit": builder.layout.ref_explicit,
             "ref_entity": builder.layout.ref_entity,
