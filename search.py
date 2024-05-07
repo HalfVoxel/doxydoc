@@ -1,7 +1,7 @@
 from nltk.stem import PorterStemmer
 import json
 import os
-from builder.layout import description
+from builder.layout import description_to_string
 from nltk.tokenize import word_tokenize
 import nltk
 import math
@@ -9,25 +9,11 @@ from builder.writing_context import WritingContext
 from builder.str_tree import StrTree
 import builder
 from importer.entities import Entity, ClassEntity, PageEntity, ExternalEntity, MemberEntity, GroupEntity, NamespaceEntity
-import html2text
 from builder.settings import Settings
 from builder.page import Page
 
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
-
-
-def description_to_string(ctx: WritingContext, node):
-    buffer = StrTree()
-    description(ctx, node, buffer)
-    text = str(buffer)
-    text_maker = html2text.HTML2Text()
-    text_maker.ignore_links = True
-    text_maker.bypass_tables = False
-    text_maker.ignore_images = True
-    text_maker.ignore_emphasis = True
-    text_maker.unicode_snob = True
-    return text_maker.handle(text)
 
 class KeywordRanker:
     def __init__(self, ctx: WritingContext, entities):
