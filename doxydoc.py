@@ -129,7 +129,8 @@ class DoxyDoc:
                         # Create a 1x variant of the image
                         target_path = target_path + ext
                         # print("Scaling down " + str(source_path))
-                        call(["convert", "-scale", invscale, os.path.realpath(source_path), os.path.realpath(target_path)])
+                        # strip is used to remove metadata from the image, leading to a bitwise identical result every time (otherwise we get timestamps and such)
+                        call(["convert", "-strip", "-scale", invscale, os.path.realpath(source_path), os.path.realpath(target_path)])
 
 
     def copy_resources(self) -> None:
