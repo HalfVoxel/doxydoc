@@ -25,6 +25,7 @@ $(function() {
 			if (target) {
 				$(this).click(function(event) {
 					event.preventDefault();
+					history.replaceState(null, null, target);
 					scrollTo(target, 400);
 				});
 			}
@@ -35,7 +36,10 @@ $(function() {
 		var target = $(element).attr('data-show-target');
 		$(element).click(event => {
 			event.preventDefault();
-			scrollTo(target, 400);
+			history.replaceState(null, null, target);
+
+			$(target).slideToggle(200);
+			$(target + "-overlay").fadeToggle(200);
 		})
 	});
 
@@ -65,15 +69,11 @@ $(function() {
 	}
 
 	if (window.location.hash.length > 0) {
-		console.log("Hash1: " + window.location.hash);
-		//$(window.location.hash).toggle();
 		scrollTo(window.location.hash, 0);
 	}
 
 	window.onhashchange = function() {
-		console.log("Hash: " + window.location.hash);
-		$(window.location.hash).toggle();
-		$(window.location.hash + "-overlay").fadeToggle();
+		scrollTo(window.location.hash, 0);
 	};
 
 	const version = packageVersion;
@@ -212,7 +212,6 @@ $(function() {
 				// Lazy-initialize the search index.
 				// To avoid SEO penalties for high javascript CPU usage.
 				if (!isLoaded) {
-					console.log("Loading search index");
 					for (var i = 0; i < data.length; i++) {
 						const item = data[i];
 						let body = "";
