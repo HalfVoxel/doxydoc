@@ -204,11 +204,7 @@ $(function() {
 
 			let isLoaded = false;
 
-			/**
-			 * The seach function manages the terms lookup and result display
-			 */
-
-			function search(selectFirst) {
+			const lazyLoad = () => {
 				// Lazy-initialize the search index.
 				// To avoid SEO penalties for high javascript CPU usage.
 				if (!isLoaded) {
@@ -227,6 +223,14 @@ $(function() {
 					}
 					isLoaded = true;
 				}
+			}
+
+			/**
+			 * The seach function manages the terms lookup and result display
+			 */
+
+			function search(selectFirst) {
+				lazyLoad();
 
 				var value = $("#searchfield").val().trim();
 
@@ -372,6 +376,11 @@ $(function() {
 			$("#searchform").on("submit", function(e) {
 				e.preventDefault();
 				search(true);
+			});
+			// Load when selected
+			$("#searchfield").on("focus", () => {
+				// Load after a short delay, to avoid causing visible stutter
+				setTimeout(lazyLoad, 50);
 			});
 
 
