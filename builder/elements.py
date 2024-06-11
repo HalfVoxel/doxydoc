@@ -302,9 +302,9 @@ def xrefsect(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
 
         buffer.open("div", {"class": "simplesect simplesect-" + key})
 
-        buffer.open("h3")
+        buffer.open("span", {"class": "simplesect-title"})
         builder.layout.markup(ctx, title, buffer)
-        buffer.close("h3")
+        buffer.close("span")
         builder.layout.sectbase(ctx, desc, buffer)
         buffer.close("div")
 
