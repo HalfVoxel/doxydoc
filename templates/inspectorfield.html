@@ -3,7 +3,7 @@
 # from "helpers/member_detailed.html" import member_detailed_row
 
 <div class="inspector-field member-list">
-    <div class="row member-list-item-header" data-show-target="#{{member|local_anchor}}-inspector" style="position: relative;">
+    <div class="row member-list-item-header" id="{{member|local_anchor}}-inspector-overlay" data-show-target="#{{member|local_anchor}}-inspector" style="position: relative;">
         {{ member_brief_protection(member, false, false, false, true, 0, title) }}
         <div class="col-md-1 col-xs-2"></div>
         <div class="col-md-11 col-xs-10 member-desc">
@@ -36,7 +36,7 @@
             # endif
             <div class="simplesect simplesect-see">
                 <span class="simplesect-title">See</span>
-                This setting corresponds to the member {{ member|ref_explicit(member.full_canonical_path(), "") }}
+                This setting corresponds to the member {{ member|ref_explicit(source_link_title, "") }}
             </div>
         </div>
     </div>

@@ -446,7 +446,8 @@ def render_template(ctx: WritingContext, template_name: str, **kwargs) -> str:
 
 def inspectorfield(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     title = n.get("title")
-    entity = ctx.getref_from_name(n.get("refname"))
+    refname = n.get("refname")
+    entity = ctx.getref_from_name(refname)
     if entity is None:
         return
 
@@ -459,7 +460,7 @@ def inspectorfield(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
                 if n.tag == "ref":
                     primary_type = ctx.getref(n)
 
-    buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity, primary_type=primary_type))
+    buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity, primary_type=primary_type, source_link_title=refname))
 
 
 def generic_html(ctx: WritingContext, node, buffer: StrTree) -> None:
