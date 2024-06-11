@@ -507,9 +507,15 @@ code {
         margin-top: 0px;
         margin-bottom: 0px;
     }
-}
-.member-list-item-header:focus, .member-list-item-header:hover {
-    background-color: rgba(0,0,0,0.05)
+
+    &.active {
+        background-color: #eee;
+        border-bottom: 1px dashed #999;
+    }
+    
+    &:focus, &:hover {
+        background-color: rgba(0,0,0,0.05)
+    }
 }
 
 
@@ -535,6 +541,10 @@ table.member-list-section {
         line-height: 1.5em;
         vertical-align: center;
     }
+}
+
+.inspector-field .member-detailed {
+    padding-top: 10px;
 }
 
 .member-detailed {
@@ -618,7 +628,6 @@ table.member-list-section {
     width: 100%;
     height: 100%;
     background: #EEE;
-    display: none;
     padding: 5px 5px 5px 15px;
     line-height: 50%;
     border-top: 1px #AAA solid;
@@ -626,6 +635,13 @@ table.member-list-section {
     .protection {
         display: inline-block;
         padding: .4em .6em .4em .6em;
+    }
+
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    &.active {
+        opacity: 1;
     }
 }
 

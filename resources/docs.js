@@ -39,13 +39,13 @@ $(function() {
 			history.replaceState(null, null, target);
 
 			$(target).slideToggle(200);
-			$(target + "-overlay").fadeToggle(200);
+			$(target + "-overlay").toggleClass("active");
 		})
 	});
 
 	function scrollTo(id, duration) {
 		$(id).slideDown(duration);
-		$(id + "-overlay").fadeIn(duration);
+		$(id + "-overlay").addClass("active");
 
 		//calculate destination place
 		console.log($(id));
