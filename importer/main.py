@@ -54,11 +54,11 @@ class Importer:
         self._docobjs[id3] = obj
         self.entities.append(obj)
         self.cache_dirty = True
-    
+
     def rebuild_caches(self):
         if not self.cache_dirty:
             return
-        
+
         self.name_to_entities = {}
         self.id_to_entity = {}
         self.canonical_path_to_entities = {}
@@ -73,16 +73,16 @@ class Importer:
                 else:
                     assert entity.id not in self.id_to_entity, f"Duplicate id {entity.id}"
                     self.id_to_entity[entity.id] = entity
-            
+
             canonical_path = entity.full_canonical_path_list()
             for i in range(len(canonical_path)):
                 path = ".".join(e.name for e in canonical_path[i:])
                 if path not in self.canonical_path_to_entities:
                     self.canonical_path_to_entities[path] = []
                 self.canonical_path_to_entities[path].append(entity)
-        
+
         self.cache_dirty = False
-        
+
 
     def get_entity(self, id: str) -> Entity:
         return self._docobjs[id]
@@ -293,14 +293,14 @@ class Importer:
             paramPart = None
 
         candidates: List[Entity] = []
-        
+
         # For most entities, their id is equal to their name,
         # but for some entities (e.g. pages) this is not the case.
         matching_id = self.id_to_entity.get(pathPart)
         if matching_id is not None:
             assert matching_id.id == pathPart
             candidates.append(matching_id)
-        
+
         for entity in self.canonical_path_to_entities.get(pathPart, []):
             candidates.append(entity)
 
@@ -367,7 +367,10 @@ class Importer:
         def entity_fullname(e: Entity) -> str:
             if type(e) is MemberEntity:
                 params = params_for_entity(e)
-                return e.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "") + f" ({e.kind})"
+                suffix = [e.kind]
+                if e.explicit_interface_implementation:
+                    suffix.append("explicit interface implementation")
+                return e.full_canonical_path() + ("(" + ",".join(param.typename for param in params) + ")" if len(params) > 0 else "") + f" ({', '.join(suffix)})"
             else:
                 return e.full_canonical_path() + " (" + (e.kind if e.kind is not None else "<no kind>") + ")"
 
@@ -508,12 +511,18 @@ class Importer:
                 candidates = strictMatches
 
         if len(candidates) > 1:
+            # If some of the candidates are explicit interface implementations, avoid those
+            # since they are not very useful to link to.
+            nonExplicitInterfaceImplementations = [c for c in candidates if not (isinstance(c, MemberEntity) and c.explicit_interface_implementation)]
+            if len(nonExplicitInterfaceImplementations) >= 1 and len(nonExplicitInterfaceImplementations) < len(candidates):
+                candidates = nonExplicitInterfaceImplementations
+
+        if len(candidates) > 1:
             print()
-            print(f"Ambigious reference '{name}' in a tag." +
-                  str((len(candidates))) + " entities match this name.")
+            print(f"Ambigious reference '{name}'. {len(candidates)} entities match this name.")
             if resolve_scope is not None:
                 print(f"When generating documentation for {resolve_scope.full_canonical_path()}")
-            
+
             print("The matching candidates are")
             for cand in candidates:
                 fullname = entity_fullname(cand)

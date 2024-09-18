@@ -194,7 +194,7 @@ class Entity:
 
             entity = state.getref_from_name(copydoc.text, self.parent_in_canonical_path(), ignore_overloads=True)
             if entity is None:
-                raise Exception("Invalid copydoc command. Could not resolve target")
+                raise Exception(f"Invalid copydoc command. Could not resolve target: '{copydoc.text}' in the scope of {self.parent_in_canonical_path().full_canonical_path()}")
             
             remove_and_simplify(self.briefdescription, copydoc)
             remove_and_simplify(self.detaileddescription, copydoc)

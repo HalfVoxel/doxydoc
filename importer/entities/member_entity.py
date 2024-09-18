@@ -1,9 +1,11 @@
 import re
+
+from importer.entities.class_entity import ClassEntity
 from .entity import Entity
 from .param_entity import ParamEntity
 from .enum_value_entity import EnumValueEntity
 from importer.protection import Protection
-from typing import Dict, List, Optional, TYPE_CHECKING
+from typing import Dict, List, Optional, TYPE_CHECKING, Tuple
 import xml.etree.ElementTree as ET
 from importer.importer_context import ImporterContext
 
@@ -47,6 +49,7 @@ class MemberEntity(Entity):
         self.all_members = []  # type: List[Entity]
 
         self.argsstring = None  # type: str
+        self.explicit_interface_implementation: bool = False
 
         # TODO: Remove?
         self.hasparams = False
@@ -198,6 +201,28 @@ class MemberEntity(Entity):
             self.hasparams = False
             self.params = []
 
+        def replace_tail(node: ET.Element, needle: str, replacement: str) -> bool:
+            if node is None:
+                return False
+
+            if len(node) > 0 and node[0].tail is not None:
+                new = re.sub(needle, replacement, node[0].tail)
+                if new != node[0].tail:
+                    node[0].tail = new
+                    return True
+            elif len(node) == 0 and node.text is not None:
+                new = re.sub(needle, replacement, node.text)
+                if new != node.text:
+                    node.text = new
+                    return True
+            return False
+
+        # Doxygen doesn't parse explicit interface implementations correctly
+        # so we need to fix it
+        # Example: "int RecastMeshObj."
+        if replace_tail(self.type, r" [^\s]+\.$", ""):
+            self.explicit_interface_implementation = True
+
     def post_xml_read(self, state: 'Importer') -> None:
         super().post_xml_read(state)
         if self.detaileddescription is not None:
@@ -226,3 +251,46 @@ class MemberEntity(Entity):
         # If .hidden is true, no links to it will be generated, instead just plain text
         # TODO: Should not be set in the read_xml method
         # self.hidden = is_detail_hidden(self)
+
+        def is_empty(node: ET.Element) -> bool:
+            return node is None or (len(node) == 0 and (node.text is None or node.text.strip() == ""))
+
+        def params_equal(lhs: List[ParamEntity], rhs: List[ParamEntity]) -> bool:
+            if len(lhs) != len(rhs):
+                return False
+            for left, right in zip(lhs, rhs):
+                if left.typename != right.typename:
+                    return False
+            return True
+
+        # Doxygen doesn't always inherit documentation from parent classes
+        # So we patch it up here
+        if is_empty(self.briefdescription) and is_empty(self.detaileddescription):
+            # Try to find the docs from the parent
+            if isinstance(self.defined_in_entity, ClassEntity):
+                candidates: List[Tuple[ClassEntity, MemberEntity]] = []
+                for parent in self.defined_in_entity.inherits_from:
+                    if isinstance(parent.entity, ClassEntity):
+                        for member in parent.entity.members:
+                            if member.name == self.name and isinstance(member, MemberEntity) and (params_equal(self.params, member.params)) and not is_empty(member.briefdescription):
+                                candidates.append((parent.entity, member))
+
+                prefer_interface = self.explicit_interface_implementation
+                if len(candidates) > 1:
+                    new_candidates = [c for c in candidates if (c[0].kind == "interface") == prefer_interface]
+                    if len(new_candidates) > 0 and len(new_candidates) < len(candidates):
+                        candidates = new_candidates
+
+                if len(candidates) > 1:
+                    print()
+                    print("No brief description for", self.full_canonical_path(), "using parent's brief description")
+                    print("Multiple candidates for brief description:")
+                    for c in candidates:
+                        print(c[1].full_canonical_path())
+                    print()
+                elif len(candidates) == 1:
+                    self.briefdescription = candidates[0][1].briefdescription
+                    self.detaileddescription = candidates[0][1].detaileddescription
+                    print(f"{self.full_canonical_path()} description replaced by parent's ({candidates[0][1].full_canonical_path()})")
+                    print("")
+
