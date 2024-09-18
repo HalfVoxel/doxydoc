@@ -21,20 +21,22 @@ class Plugin(DoxydocPlugin):
         entities: list[Entity] = importer.entities
         print("Checking for inspector screenshots")
         used = set()
+        image_names = os.listdir(os.path.join(builder.settings.out_dir, self.image_directory))
+        # Filter out non-png files and scaled images (e.g. @2x)
+        image_names = set(im for im in image_names if im.endswith(".png") and "@" not in im)
         for entity in entities:
             if entity.kind != "class":
                 continue
 
             filename = entity.name + ".png"
-            localPath = self.image_directory + "/" + filename
-            full_path = os.path.join(builder.settings.out_dir, localPath)
-            if os.path.isfile(full_path):
+            if filename in image_names:
+                localPath = self.image_directory + "/" + filename
                 used.add(filename)
                 p = ET.Element("para")
                 p.insert(0, ET.Element("image", { "src": localPath, "alt": 'Inspector Screenshot' }))
                 entity.detaileddescription.insert(0, p)
         
-        unused = set(os.listdir(os.path.join(builder.settings.out_dir, self.image_directory))) - used
+        unused = image_names - used
         if len(unused) > 0:
             print("Unused inspector screenshots:")
             for f in unused:
