@@ -23,7 +23,7 @@
     <ul class="sidenav-l0">
         # set pages = state.get_entity("plugins/list_specials/pages")
         # for member in sorted(pages.visible_child_entities())
-            # if member.id != "indexpage"
+            # if member.id != "indexpage" and not member|is_entity_excluded_in_output
                 {{ item(member, entity) }}
             # endif
         # endfor
