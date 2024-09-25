@@ -32,8 +32,10 @@ class Plugin(DoxydocPlugin):
                         e = ext.entity
                     else:
                         break
-
-                path_mapping[entity.full_canonical_path(".")] = entity.path.full_url() + "\t" + ".".join(reversed(inherit_path))
+                
+                url = entity.path.full_url()
+                if url is not None:
+                    path_mapping[entity.full_canonical_path(".")] = url + "\t" + ".".join(reversed(inherit_path))
         
         output = [f"{k}\t{v}" for (k,v) in path_mapping.items()]
         output.sort()

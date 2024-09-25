@@ -31,7 +31,7 @@ class WritingContext:
         ctx = copy.copy(self)
         ctx.strip_links = True
         return ctx
-    
+
     def with_scope(self, entity: Entity) -> 'WritingContext':
         ctx = copy.copy(self)
         ctx.entity_scope = entity
@@ -42,7 +42,21 @@ class WritingContext:
 
     def getref_from_name(self, name: str):
         return self.state.getref_from_name(name, self.entity_scope)
-    
+
+    def url_for(self, entity: Entity) -> str:
+        res = entity.path.full_url()
+        if res is None:
+            if entity.kind == "typedef" or entity.kind == "define" or entity.kind == "file":
+                # Typedefs, defines and files are not included in the output
+                return "<undefined>"
+
+            print("No url for", entity)
+            if self.is_entity_excluded(entity):
+                raise Exception(f"Asking for url of excluded entity {entity}")
+            return "<undefined>"
+        else:
+            return self.relpath(res)
+
     def is_entity_excluded(self, e: Entity) -> bool:
         assert isinstance(e, Entity)
         if e in self.exclude_cache:

@@ -32,7 +32,7 @@ class EntityPath:
             if self.parent is not None:
                 url = self.parent.page_url()
             else:
-                url = "<undefined>"
+                return None
 
         return url
 
@@ -45,7 +45,7 @@ class EntityPath:
             if self.parent is not None:
                 url = self.parent.full_url()
             else:
-                url = "<undefined>"
+                return None
 
         return "todo" + "/" + url
 

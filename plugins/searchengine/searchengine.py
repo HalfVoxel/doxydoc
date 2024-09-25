@@ -12,6 +12,8 @@ def generate_index():
     for obj in Importer.iter_unique_docobjs():
         try:
             id = obj.full_url()
+            if id is None:
+                continue
             name = obj.name
             desc = ""
             compound = ""

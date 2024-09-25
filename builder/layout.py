@@ -58,7 +58,7 @@ def refcompound(ctx: WritingContext, refnode: Entity, buffer: StrTree) -> None:
     else:
         # Write out anchor element
         buffer.element("a", obj.name, {
-            "href": ctx.relpath(obj.path.full_url()),
+            "href": ctx.url_for(obj),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
@@ -77,7 +77,7 @@ def ref_entity_with_contents(ctx: WritingContext, obj: Entity, contents: str, bu
 
         # Write out anchor element
         buffer.open("a", {
-            "href": ctx.relpath(obj.path.full_url()),
+            "href": ctx.url_for(obj),
             "rel": 'tooltip',
             "data-original-title": str(tooltip)
         })
@@ -110,7 +110,7 @@ def ref(ctx: WritingContext, refnode, buffer: StrTree) -> None:
         tooltip = StrTree()
         _tooltip(ctx, obj, tooltip)
         buffer.open("a", {
-            "href": ctx.relpath(obj.path.full_url()),
+            "href": ctx.url_for(obj),
             "rel": 'tooltip',
             "data-original-title": tooltip
         })
@@ -127,7 +127,7 @@ def ref_explicit(ctx: WritingContext, obj, text, tooltip, buffer: StrTree) -> No
             _tooltip(ctx, obj, tooltip)
 
         buffer.element("a", text, {
-            "href": ctx.relpath(obj.path.full_url()),
+            "href": ctx.url_for(obj),
             "rel": "tooltip",
             "data-original-title": tooltip
         })
@@ -184,12 +184,6 @@ def linked_text(ctx: WritingContext, node, buffer: StrTree) -> None:
 
 def pagetitle(title, buffer: StrTree) -> None:
     buffer.element("h1", title)
-
-
-def file_path(path, buffer: StrTree) -> None:
-    if path is not None:
-        buffer.element("span", path, {"class": "file-location"})
-
 
 def member_section_heading(section, buffer: StrTree) -> None:
     # skind = section.get("kind")

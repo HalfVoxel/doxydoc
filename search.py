@@ -81,9 +81,12 @@ def build_search_data(ctx: WritingContext, entities, settings: Settings) -> None
 
     search_items = []
     for i, ent in enumerate(entities):
+        url = ent.path.full_url()
+        if url is None:
+            continue
         if isinstance(ent, ClassEntity):
             search_items.append({
-                "url": ent.path.full_url(),
+                "url": url,
                 "name": ent.name,
                 "fullname": ent.name,
                 "boost": search_boost(None, ent),
@@ -101,8 +104,10 @@ def build_search_data(ctx: WritingContext, entities, settings: Settings) -> None
                     # Inherited member, ignore in search results
                     continue
 
+                member_url = m.path.full_url()
+                assert member_url is not None
                 search_item = {
-                    "url": m.path.full_url(),
+                    "url": member_url,
                     "name": m.name,
                     "fullname": search_full_name(ctx, ent, m),
                     "boost": search_boost(ent, m),
@@ -113,7 +118,7 @@ def build_search_data(ctx: WritingContext, entities, settings: Settings) -> None
 
         if isinstance(ent, PageEntity):
             search_items.append({
-                "url": ent.path.full_url(),
+                "url": url,
                 "name": ent.name,
                 "fullname": ent.name,
                 "boost": search_boost(None, ent),
@@ -123,7 +128,7 @@ def build_search_data(ctx: WritingContext, entities, settings: Settings) -> None
 
         if isinstance(ent, GroupEntity):
             search_items.append({
-                "url": ent.path.full_url(),
+                "url": url,
                 "name": ent.name,
                 "fullname": ent.name,
                 "boost": search_boost(None, ent),

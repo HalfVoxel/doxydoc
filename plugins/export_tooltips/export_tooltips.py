@@ -98,7 +98,11 @@ class Plugin(DoxydocPlugin):
                 s = s.replace("\n", "\\n")
                 if path not in seen:
                     seen.add(path)
-                    output.append(path + "\t" + entity.path.full_url() + "\t" + s)
+                    url = entity.path.full_url()
+                    if url is None:
+                        print("Missing URL for ", entity)
+                    else:
+                        output.append(path + "\t" + url + "\t" + s)
             
         output.sort()
         with open(os.path.join(builder.settings.out_dir, self.output_path), "w") as f:

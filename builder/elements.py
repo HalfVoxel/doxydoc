@@ -510,7 +510,7 @@ def tableofcontents(ctx: WritingContext, node: ET.Element, buffer: StrTree) -> N
 
     def write_section(s: SectEntity):
         buffer.open("li")
-        buffer.element("a", s.title, {"href": ctx.relpath(s.path.full_url())})
+        buffer.element("a", s.title, {"href": ctx.url_for(s)})
         assert s.children is not None
         if len(s.children) > 0:
             buffer.open("ul")
