@@ -191,22 +191,24 @@ class DoxyDoc:
         self.create_env(builder)
 
         entities = self.importer.entities
+        non_excluded_entities = []
 
         # Prime the excluded cache and output info
         for ent in entities:
-            builder.default_writing_context.is_entity_excluded(ent)
+            if not builder.default_writing_context.is_entity_excluded(ent):
+                non_excluded_entities.append(ent)
 
         generator = builder.page_generator
-        classes = [generator.class_page(ent) for ent in entities if isinstance(ent, ClassEntity)]
-        examples = [generator.example_page(ent) for ent in entities if isinstance(ent, ExampleEntity)]
-        groups = [generator.group_page(ent) for ent in entities if isinstance(ent, GroupEntity)]
-        page_pages = [generator.page_page(ent) for ent in entities if isinstance(ent, PageEntity)]
-        namespaces = [generator.namespace_page(ent) for ent in entities if isinstance(ent, NamespaceEntity)]
+        classes = [generator.class_page(ent) for ent in non_excluded_entities if isinstance(ent, ClassEntity)]
+        examples = [generator.example_page(ent) for ent in non_excluded_entities if isinstance(ent, ExampleEntity)]
+        groups = [generator.group_page(ent) for ent in non_excluded_entities if isinstance(ent, GroupEntity)]
+        page_pages = [generator.page_page(ent) for ent in non_excluded_entities if isinstance(ent, PageEntity)]
+        namespaces = [generator.namespace_page(ent) for ent in non_excluded_entities if isinstance(ent, NamespaceEntity)]
 
         pages = classes + page_pages + examples + namespaces + groups
 
         if self.settings.separate_function_pages:
-            for ent in entities:
+            for ent in non_excluded_entities:
                 if isinstance(ent, ClassEntity):
                     pages += generator.function_overload_pages(ent)
 
@@ -219,7 +221,7 @@ class DoxyDoc:
         for plugin in self.plugins:
             plugin.on_pre_build_html(self.importer, builder, entity2page)
 
-        build_search_data(generator.default_writing_context, entities, self.settings)
+        build_search_data(generator.default_writing_context, non_excluded_entities, self.settings)
 
         for i, page in enumerate(pages):
             custom_progressbar(i + 1, len(pages))
