@@ -2,6 +2,7 @@
 from os import listdir
 from os.path import isfile, isdir, join
 import re
+import subprocess
 from custom_progressbar import progressbar as custom_progressbar
 from progressbar import progressbar
 from importer import Importer
@@ -112,6 +113,7 @@ class DoxyDoc:
 
     def process_images(self, dir: str):
         print("Scaling down images")
+        procs = []
         for root, dirs, files in progressbar(os.walk(dir)):
             for fn in files:
                 source_path = os.path.join(root, fn)
@@ -130,7 +132,10 @@ class DoxyDoc:
                         target_path = target_path + ext
                         # print("Scaling down " + str(source_path))
                         # strip is used to remove metadata from the image, leading to a bitwise identical result every time (otherwise we get timestamps and such)
-                        call(["convert", "-strip", "-scale", invscale, os.path.realpath(source_path), os.path.realpath(target_path)])
+                        procs.append(subprocess.Popen(["convert", "-strip", "-scale", invscale, os.path.realpath(source_path), os.path.realpath(target_path)]))
+        
+        for p in procs:
+            p.wait()
 
 
     def copy_resources(self) -> None:
