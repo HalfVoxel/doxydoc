@@ -27,7 +27,7 @@ class Plugin(DoxydocPlugin):
         output = []
         seen = set()
         for entity in entities:
-            if isinstance(entity, MemberEntity) and entity.kind != "function":
+            if isinstance(entity, MemberEntity) and entity.kind not in ["function", "typedef", "define"]:
                 path = entity.full_canonical_path(".")
                 buffer = StrTree()
                 buffer2 = StrTree()
