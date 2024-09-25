@@ -458,7 +458,6 @@ class Importer:
         if len(candidates) > 1:
             # Check if all of them are in the same overload group
             groups = [e for e in self.entities if isinstance(e, OverloadEntity) \
-                and e.parent == candidates[0].parent_in_canonical_path() \
                 and all(c == e or c in e.inner_members for c in candidates)
             ]
 
