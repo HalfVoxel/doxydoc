@@ -46,6 +46,7 @@ class Importer:
         if id is None:
             id = obj.id
         self._docobjs[id] = obj
+
         # Workaround for doxygen apparently generating refid:s which do not exist as id:s
         # e.g links to pages show up as 'modifiers_1modifiers' or 'graph_types_1graphTypes'
         id2 = obj.id + "_1" + obj.id
@@ -69,7 +70,7 @@ class Importer:
 
             if entity.id != "":
                 if entity.id in self.id_to_entity:
-                    print(f"Duplicate id {entity.id}")
+                    print(f"Duplicate id {entity.id}\n\tA: {entity} ({type(entity)})\n\tB: {self.id_to_entity[entity.id]} ({type(self.id_to_entity[entity.id])})")
                 else:
                     assert entity.id not in self.id_to_entity, f"Duplicate id {entity.id}"
                     self.id_to_entity[entity.id] = entity
@@ -160,11 +161,11 @@ class Importer:
                     # It's very ugly.
                     # And also. Doxygen cannot escape the generics for us. So when using generics, the output may become invalid xml.
                     # So we need to do this replacement before we even parse the xml file.
-                    id = escape(args[0])
+                    id = escape(args[0].strip())
                     if len(args) > 2:
                         print(f"Warning: Could not parse reflink with more than 2 arguments: {match.group(1)}")
                     if len(args) > 1:
-                        title = escape(args[1])
+                        title = escape(args[1].strip())
                         return f"<ulink url=\"ref:{id}\">{title}</ulink>"
                     else:
                         return f"<ulink url=\"ref:{id}\">{id}</ulink>"
@@ -248,6 +249,10 @@ class Importer:
     def getref_from_name(self, name: str, resolve_scope: Optional[Entity], ignore_overloads: bool=False) -> Entity:
         name = name.strip()
         name = name.replace("::", ".")
+
+        # Resolve references in overload entities as if we resolve from the associated class
+        if resolve_scope is not None and type(resolve_scope) is OverloadEntity:
+            resolve_scope = resolve_scope.parent
 
         # Resolve references in member entities as if we resolve from the associated class
         if resolve_scope is not None and type(resolve_scope) is MemberEntity:
@@ -403,12 +408,20 @@ class Importer:
                 return 0
             if isinstance(entity, MemberEntity) and entity.defined_in_entity == resolve_scope:
                 return 0
+            if isinstance(entity, OverloadEntity) and entity.parent == resolve_scope:
+                return 0
 
             if isinstance(resolve_scope, ClassEntity):
                 # Check if the entity is inherited
+                min_score = float('inf')
+                # print(f"Checking inheritance for {resolve_scope}")
                 for base in resolve_scope.inherits_from:
                     if base.entity is not None:
-                        return 1 + tree_distance_inheritance(entity, base.entity)
+                        inheritance_cost = 1
+                        if base.entity.kind == "interface":
+                            inheritance_cost = 100
+                        min_score = min(min_score, inheritance_cost + tree_distance_inheritance(entity, base.entity))
+                return min_score
 
             return float('inf')
 
