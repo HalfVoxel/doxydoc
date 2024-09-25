@@ -283,7 +283,7 @@ class MemberEntity(Entity):
 
                 if len(candidates) > 1:
                     print()
-                    print("No brief description for", self.full_canonical_path(), "using parent's brief description")
+                    print("No brief description for", self.full_canonical_path(), ". Trying to use parent's brief description")
                     print("Multiple candidates for brief description:")
                     for c in candidates:
                         print(c[1].full_canonical_path())
@@ -291,6 +291,6 @@ class MemberEntity(Entity):
                 elif len(candidates) == 1:
                     self.briefdescription = candidates[0][1].briefdescription
                     self.detaileddescription = candidates[0][1].detaileddescription
-                    print(f"{self.full_canonical_path()} description replaced by parent's ({candidates[0][1].full_canonical_path()})")
-                    print("")
+                    # print(f"{self.full_canonical_path()} description replaced by parent's ({candidates[0][1].full_canonical_path()})")
+                    # print("")
 
