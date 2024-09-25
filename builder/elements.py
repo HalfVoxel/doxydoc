@@ -461,8 +461,18 @@ def inspectorfield(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
             for n in entity.type:
                 if n.tag == "ref":
                     primary_type = ctx.getref(n)
+    
+    entity_scope = ctx.entity_scope
+    if isinstance(entity, MemberEntity):
+        entity_scope = entity.defined_in_entity
+    elif isinstance(entity, OverloadEntity):
+        entity_scope = entity.parent
 
+    # TODO: Hack because the jinja templates always use the default writing scope
+    prev_scope = ctx.entity_scope
+    ctx.entity_scope = entity_scope
     buffer.html(render_template(ctx, "inspectorfield", title=title, member=entity, primary_type=primary_type, source_link_title=refname))
+    ctx.entity_scope = prev_scope
 
 
 def generic_html(ctx: WritingContext, node, buffer: StrTree) -> None:
