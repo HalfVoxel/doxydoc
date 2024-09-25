@@ -1,5 +1,6 @@
 # coding=UTF-8
 
+from importer.entities.overload_entity import OverloadEntity
 from importer.entities.sect_entity import SectEntity
 from .str_tree import StrTree
 import builder.layout
@@ -323,19 +324,20 @@ def ulink(ctx: WritingContext, n: ET.Element, buffer: StrTree) -> None:
     # entity = ctx.getref_from_name(n.get("name"))
     # if entity is not None:
     if url.startswith("ref:"):
-        obj = ctx.getref_from_name(url[len("ref:"):])
-        if obj is None or ctx.strip_links:
-            builder.layout.markup(ctx, n, buffer)
-        elif builder.layout.is_hidden(ctx, obj):
+        if ctx.strip_links:
             builder.layout.markup(ctx, n, buffer)
         else:
-            tooltip = StrTree()
-            builder.layout._tooltip(ctx, obj, tooltip)
-            buffer.element("a", lambda: builder.layout.markup(ctx.with_link_stripping(), n, buffer), {
-                "href": ctx.relpath(obj.path.full_url()),
-                "rel": 'tooltip',
-                "data-original-title": tooltip
-            })
+            obj = ctx.getref_from_name(url[len("ref:"):])
+            if obj is None or builder.layout.is_hidden(ctx, obj):
+                builder.layout.markup(ctx, n, buffer)
+            else:
+                tooltip = StrTree()
+                builder.layout._tooltip(ctx, obj, tooltip)
+                buffer.element("a", lambda: builder.layout.markup(ctx.with_link_stripping(), n, buffer), {
+                    "href": ctx.url_for(obj),
+                    "rel": 'tooltip',
+                    "data-original-title": tooltip
+                })
     else:
         buffer.element("a", lambda: builder.layout.markup(ctx, n, buffer), {"href": url})
 
