@@ -57,8 +57,8 @@ class Entity:
     def visible_child_entities(self):
         return []
 
-    def __str__(self):
-        return "Entity: " + self.id
+    def __str__(self) -> str:
+        return f"<{self.name} kind={self.kind} id={self.id}>"
 
     def parent_in_canonical_path(self) -> 'Optional[Entity]':
         return None
