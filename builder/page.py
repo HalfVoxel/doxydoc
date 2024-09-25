@@ -158,7 +158,7 @@ class PageGenerator:
         inner_entities += collect_enum_values(inner_entities)
 
         if self.builder.settings.separate_function_pages:
-            # These functions will go into separate pages
+            # Filter out entities which will go into separate pages
             inner_entities = [e for e in inner_entities if e.kind != "function"]
 
         page = self._page_with_entity("class", entity, inner_entities)
@@ -259,7 +259,10 @@ class PageGenerator:
                 entity.path = EntityPath()
                 self.builder.importer._add_docobj(entity)
 
-                result.append(self._page_with_entity("function_overloads", entity, [entity] + overloads))
+                # This overload group may contain entities from base classes.
+                # Those will be displayed on this page, but they *belong* to the overload group of the same function in the base class.
+                inner_entities = [e for e in overloads if e.parent_in_canonical_path() == class_entity]
+                result.append(self._page_with_entity("function_overloads", entity, [entity] + inner_entities))
         return result
 
     def generate(self, page: Page) -> None:
