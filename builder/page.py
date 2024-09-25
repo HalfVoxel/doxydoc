@@ -31,16 +31,21 @@ class Page:
 
         self.used_anchors = set()  # type: Map[Entity,str]
         self.anchors = dict()
-        for entity in entities:
-            if entity.path.path is not None:
-                print("Warning: Entity included in multiple pages: " + entity.id)
+        try:
+            for entity in entities:
+                if entity.path.path is not None:
+                    print(f"Warning: Entity included in multiple pages: {entity}")
+                    print(f"  {entity.path.path} and {path}")
 
-            entity.path.path = path
-            if entity is not primary_entity:
-                # Set anchor
-                entity.path.anchor = generate_io_safe_name(entity.name, "", self.used_anchors)
-                self.used_anchors.add(entity.path.anchor)
-                self.anchors[entity] = entity.path.anchor
+                entity.path.path = path
+                if entity is not primary_entity:
+                    # Set anchor
+                    entity.path.anchor = generate_io_safe_name(entity.name, "", self.used_anchors)
+                    self.used_anchors.add(entity.path.anchor)
+                    self.anchors[entity] = entity.path.anchor
+        except:
+            print(f"Error while creating page {path} with {len(entities)} entities")
+            raise
 
     def get_local_anchor(self, entity: Entity) -> str:
         if entity in self.anchors:
@@ -116,17 +121,21 @@ class PageGenerator:
     def entity_path(self, entity: Entity) -> str:
         ''' Desired path for an entity in the file system. Does not include the file extension. May change due to conflicts. '''
         path = []
-        ent = entity
-        counter = 0
-        while ent is not None:
-            if ent == entity or ent.include_in_filepath:
-                path.append(ent)
-            ent = ent.parent_in_canonical_path()
-            counter += 1
-            if counter > 50:
-                raise Exception(f"Probable infinite loop in canonical path: {path}")
+        if isinstance(entity, OverloadEntity):
+            assert entity.parent is not None, f"Entity {entity} has no parent"
+            path = [entity.parent, entity]
+        else:
+            ent = entity
+            counter = 0
+            while ent is not None:
+                if ent == entity or ent.include_in_filepath:
+                    path.append(ent)
+                ent = ent.parent_in_canonical_path()
+                counter += 1
+                if counter > 50:
+                    raise Exception(f"Probable infinite loop in canonical path: {path}")
 
-        path.reverse()
+            path.reverse()
 
         # Join components either with underscores or with slashes
         separator = '_' if self.builder.settings.flat_file_hierarchy else '/'
