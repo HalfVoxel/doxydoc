@@ -236,6 +236,11 @@ class PageGenerator:
                 return desc
 
         def combine_detailed_desription(entities: List[MemberEntity]) -> Optional[ET.Element]:
+            if len(entities) <= 1:
+                # If there's just a single overload, there's no need to combine descriptions,
+                # as the single overload will be displayed on the overload page by default anyway.
+                return None
+
             # Try to find an image which is shared among all overloads.
             # This can be used as a representative image to display on the overload page.
             shared_images = None

@@ -15,16 +15,23 @@
 # block content
     {{ function_header(entity) }}
     {{ entity.detaileddescription|description }}
+    # if entity.inner_members|length > 1
+        # set default_style = "display: none;"
+        # set default_active = ""
+    # else
+        # set default_style = ""
+        # set default_active = "active"
+    # endif
 
     <div class="member-list">
     # for member in entity.inner_members
-        <div class="row member-list-item-header" onclick="$('#{{member|local_anchor}}').slideToggle(200); $('#{{member|local_anchor}}-overlay').fadeToggle(200);" style="position: relative;">
+        <div class="row member-list-item-header" data-show-target="#{{member|local_anchor}}" style="position: relative;">
             {{ member_brief_protection(member, true, false, true, false, param_list_types=true) }}
             <div class="col-md-1 col-xs-2"></div>
             <div class="col-md-11 col-xs-10 member-desc">
             {{ member.briefdescription|description }}
             </div>
-            <div id="{{member|local_anchor}}-overlay" class="member-top-prot">
+            <div id="{{member|local_anchor}}-overlay" class="member-top-prot {{default_active}}">
                 <span class="protection protection-{{member.protection}}">{{ member.protection|map_protection_name|title }}</span>
 
                 # if member.static:
@@ -38,7 +45,7 @@
                 # endif
             </div>
         </div>
-        <div class="row member-detailed" style="display: none;" id="{{ member|local_anchor }}">
+        <div class="row member-detailed" style="{{default_style}}" id="{{ member|local_anchor }}">
             {{ member_detailed_row(member) }}
         </div>
     # endfor
