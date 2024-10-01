@@ -1,16 +1,16 @@
 //Prettify
-$(function() {
-	window.prettyPrint && prettyPrint()
+$(function () {
+	window.prettyPrint && prettyPrint();
 });
 
 //Tooltips
-$(function() {
+$(function () {
 	$("[rel=\"tooltip\"]").tooltip({
 		html: true
 	});
 });
 
-$(function() {
+$(function () {
 	function filterPath(string) {
 		return string.replace(/^\//, '')
 			.replace(/(index|default).[a-zA-Z]{3,4}$/, '')
@@ -18,12 +18,12 @@ $(function() {
 	}
 	var locationPath = filterPath(location.pathname);
 
-	$('a[href*="#"]').each(function() {
+	$('a[href*="#"]').each(function () {
 		var thisPath = filterPath(this.pathname) || locationPath;
 		if (locationPath == thisPath && (location.hostname == this.hostname || !this.hostname) && this.hash.replace(/#/, '')) {
 			var target = this.hash;
 			if (target) {
-				$(this).click(function(event) {
+				$(this).click(function (event) {
 					event.preventDefault();
 					history.replaceState(null, null, target);
 					scrollTo(target, 400);
@@ -40,16 +40,21 @@ $(function() {
 
 			$(target).slideToggle(200);
 			$(target + "-overlay").toggleClass("active");
-		})
+		});
 	});
 
 	function scrollTo(id, duration) {
-		$(id).slideDown(duration);
-		$(id + "-overlay").addClass("active");
+		const group = $(id);
 
 		//calculate destination place
-		console.log($(id));
-		var dest = $(id).offset().top;
+		if (group.length == 0) {
+			return false;
+		}
+
+		group.slideDown(duration);
+		$(id + "-overlay").addClass("active");
+
+		var dest = group.offset().top;
 		dest -= 100;
 		dest = Math.min(dest, $(document).height() - $(window).height());
 		dest = Math.max(dest, 0);
@@ -59,20 +64,30 @@ $(function() {
 			scrollTop: dest
 		}, duration, 'swing');
 
-		$(id).addClass('shadowPulse');
-		$(id).one('animationend', () => {
-		    $(id).removeClass('shadowPulse');
-		    // do something else...
+		group.addClass('shadowPulse');
+		group.one('animationend', () => {
+			group.removeClass('shadowPulse');
+			// do something else...
 		});
 
 		hashTagActive = this.hash;
+		return true;
 	}
 
 	if (window.location.hash.length > 0) {
-		scrollTo(window.location.hash, 0);
+		if (!scrollTo(window.location.hash, 0)) {
+			// The user may have followed an old link.
+			// Hashes for entities are usually on the format #entityName, #entityName2, #entityName3, etc.
+			// So we try to strip any numeric suffix and try again.
+			// This is also relevant if the documentation has changed from having all entities on the same page, to having separate overload pages.
+			const hash = window.location.hash;
+			const hashWithoutNumber = hash.replace(/\d+$/, '');
+			console.log(`Failed to scroll to ${hash}, trying ${hashWithoutNumber}`);
+			scrollTo(hashWithoutNumber, 0);
+		}
 	}
 
-	window.onhashchange = function() {
+	window.onhashchange = function () {
 		scrollTo(window.location.hash, 0);
 	};
 
@@ -106,7 +121,7 @@ $(function() {
 			const formattedDate = date.toISOString().split('T')[0];
 			let spans = `<span class='item-version'>${item.version}</span><span class='item-date'>${formattedDate}</span>`;
 			if (item.name.includes("_dev")) {
-				spans += `<span class='version-badge'>beta</span>`
+				spans += `<span class='version-badge'>beta</span>`;
 			}
 			html += `<li><a rel="nofollow" href='${documentation_collection_base_url}/${item.docs}/${page}'>${spans}</a></li>`;
 		}
@@ -132,7 +147,7 @@ function loadData(callbackWhenDone) {
 	fetch(pathToRoot + "search_data.json").then(response => response.json()).then(callbackWhenDone);
 }
 
-function assertEqual(a,b) {
+function assertEqual(a, b) {
 	if (a !== b) {
 		console.log("Assertion failed " + a + " " + b);
 	}
@@ -158,44 +173,44 @@ class Levenstein {
 	}
 
 	/* Compute the distance between key and any substring in haystack */
-	substringDistance (key, haystack) {
-		var w = haystack.length+1;
-		var h = key.length+1;
+	substringDistance(key, haystack) {
+		var w = haystack.length + 1;
+		var h = key.length + 1;
 
 		var distArr = this.distArr;
-		for (var i = 0; i <= key.length; i++) for (var j = 0; j <= haystack.length; j++) distArr[i*w + j] = 0;
+		for (var i = 0; i <= key.length; i++) for (var j = 0; j <= haystack.length; j++) distArr[i * w + j] = 0;
 
-		for (var i = 0; i <= key.length; i++) distArr[i*w] = i;
+		for (var i = 0; i <= key.length; i++) distArr[i * w] = i;
 
 		// First characters (before substring starts) cost nothing
 		for (var i = 0; i <= haystack.length; i++) distArr[i] = 0;
 
 		for (var i = 1; i <= key.length; i++) {
 			for (var j = 1; j <= haystack.length; j++) {
-				if (key[i-1] == haystack[j-1]) {
-					distArr[i*w + j] = distArr[(i-1)*w + j-1];
+				if (key[i - 1] == haystack[j - 1]) {
+					distArr[i * w + j] = distArr[(i - 1) * w + j - 1];
 				} else {
 					// Note, nested Min operations should be used because Mathf.Min(a, b, c) will allocate an array (slow)
-					distArr[i*w + j] = Math.min(Math.min(
-							distArr[(i-1)*w + j] + 1, // Delete
-							distArr[i*w + j-1] + 1), // Insert
-						distArr[(i-1)*w + j-1] + 1 // Substitute
+					distArr[i * w + j] = Math.min(Math.min(
+						distArr[(i - 1) * w + j] + 1, // Delete
+						distArr[i * w + j - 1] + 1), // Insert
+						distArr[(i - 1) * w + j - 1] + 1 // Substitute
 					);
 				}
 			}
 		}
 
 		var mn = 100000;
-		for (var i = 0; i < haystack.length+1; i++) {
-			mn = Math.min(distArr[key.length*w + i], mn);
+		for (var i = 0; i < haystack.length + 1; i++) {
+			mn = Math.min(distArr[key.length * w + i], mn);
 		}
 		return mn;
 	}
 }
 
 
-$(function() {
-	loadData(function(data)  {
+$(function () {
+	loadData(function (data) {
 		if (data) {
 			var index = elasticlunr();
 			index.addField('name');
@@ -214,7 +229,7 @@ $(function() {
 						for (var j = 0; j < item.keys.length; j++) {
 							body += item.keys[j] + " ";
 						}
-		
+
 						index.addDoc({
 							name: item.name,
 							index: i,
@@ -223,7 +238,7 @@ $(function() {
 					}
 					isLoaded = true;
 				}
-			}
+			};
 
 			/**
 			 * The seach function manages the terms lookup and result display
@@ -245,13 +260,13 @@ $(function() {
 				var levenstein = new Levenstein();
 				var res2 = [];
 				for (var i = 0; i < res.length; i++) {
-					var item = data[res[i].ref|0];
+					var item = data[res[i].ref | 0];
 					var lastDot = item.fullname.lastIndexOf(".");
 					var score = 0;
 					if (searchPartBeforeDot.length > 0) {
 						if (lastDot != -1) {
 							var beforeDot = item.fullname.substr(0, lastDot);
-							score -= levenstein.substringDistance(searchPartBeforeDot.toLowerCase(), beforeDot.toLowerCase())
+							score -= levenstein.substringDistance(searchPartBeforeDot.toLowerCase(), beforeDot.toLowerCase());
 						} else {
 							score -= 10;
 						}
@@ -270,7 +285,7 @@ $(function() {
 					score -= nameDistance;
 					// Break ties on length
 					score -= 0.001 * item.fullname.length;
-					score = 100*score/item.boost;
+					score = 100 * score / item.boost;
 
 					res2.push({
 						item: item,
@@ -278,7 +293,7 @@ $(function() {
 					});
 				}
 
-				res2.sort((a,b) => b.score - a.score);
+				res2.sort((a, b) => b.score - a.score);
 
 				// Re-sort
 				//res.sort(function (a, b) { return b.score - a.score; });
@@ -298,12 +313,12 @@ $(function() {
 					});
 				}
 
-				results = results.slice(0,5);
+				results = results.slice(0, 5);
 
 				var html = "";
 				for (var i = 0; i < results.length; i++) {
 					var items = results[i];
-					items.sort((a,b) => {
+					items.sort((a, b) => {
 						if (b.score > a.score) return 1;
 						else if (b.score < a.score) return -1;
 
@@ -337,14 +352,14 @@ $(function() {
 				var downArrow = 40;
 				$("#search-dropdown").html(html);
 				$("#search-dropdown").show(0);
-				$("#searchfield").keydown(function(e) {
+				$("#searchfield").keydown(function (e) {
 					if (e.keyCode == downArrow) {
 						$('#search-dropdown a').first().focus();
 						e.preventDefault();
 					}
 				});
 
-				$("#search-dropdown a").keydown(function(e) {
+				$("#search-dropdown a").keydown(function (e) {
 					if (e.keyCode == downArrow || e.keyCode == upArrow) {
 						var selector = $('#search-dropdown a:visible');
 						var index = selector.index(this);
@@ -373,7 +388,7 @@ $(function() {
 			// Bind the search action
 			$("#search").on("click", () => search(false));
 			$("#searchfield").on("input", () => search(false));
-			$("#searchform").on("submit", function(e) {
+			$("#searchform").on("submit", function (e) {
 				e.preventDefault();
 				search(true);
 			});
