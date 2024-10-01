@@ -70,7 +70,7 @@
                 # if member.inner_members|length == 1
                     # set member = member.inner_members[0]
                 # endif
-                <div class="row member-list-item-header">
+                <div class="row member-list-item-header" id="{{ member|local_anchor }}">
                     {{ member_brief_protection(member, true, true, true, false) }}
                     <div class="col-md-1 col-xs-2"></div>
                     <div class="col-md-11 col-xs-10 member-desc">
