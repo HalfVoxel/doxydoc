@@ -33,7 +33,9 @@ class OverloadEntity(Entity):
         self.protection: Optional[str] = None
         self.argsstring: Optional[str] = None
 
-        overloads = natsorted(list(overloads), key=lambda x: (x.name, x.argsstring))
+        # Sort deprecated functions last
+        # Sort by name, then by argument string
+        overloads = natsorted(list(overloads), key=lambda x: (x.deprecated, x.name, x.argsstring))
         self.kind = "function_overloads"
         self.id = f"{class_entity.id}/{name}/overloads"
         self.short_name = self.name_with_generics = self.name = name
