@@ -94,7 +94,13 @@ $(function () {
 	const version = packageVersion;
 	const branch = packageBranch;
 	const isBeta = packageIsBeta;
-	const versionData = JSON.parse(localStorage.getItem("lastVersionData"));
+	const cacheKey = `${packageName}/lastVersionData`;
+	let versionData = null;
+	try {
+		versionData = JSON.parse(localStorage.getItem(cacheKey));
+	} catch {
+		versionData = null;
+	}
 	const maxAgeSeconds = 60 * 10;
 	const updateVersionInfo = data => {
 		let html = "";
@@ -134,7 +140,7 @@ $(function () {
 		updateVersionInfo(versionData.data);
 	} else {
 		fetch(documentation_collection_base_url + "/versions.php").then(r => r.json()).then(data => {
-			localStorage.setItem("lastVersionData", JSON.stringify({
+			localStorage.setItem(cacheKey, JSON.stringify({
 				date: new Date().toISOString(),
 				data: data
 			}));
