@@ -43,6 +43,29 @@ $(function () {
 		});
 	});
 
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImg = document.getElementById('lightbox-img');
+	$(lightboxImg).click(event => {
+		console.log("click inner");
+		event.stopPropagation();
+	});
+	$(lightbox).click(() => {
+		console.log("click outer");
+		lightbox.close();
+	});
+	$('img.tinyshadow').each((_index, element) => {
+		$(element).click(event => {
+			// Skip lightbox for SVG images, since they don't have a well-defined width/height
+			if (element.src.endsWith(".svg")) {
+				return;
+			}
+			lightboxImg.src = element.src;
+			lightboxImg.srcset = element.srcset;
+			lightboxImg.alt = element.alt;
+			lightbox.showModal();
+		});
+	});
+
 	function scrollTo(id, duration) {
 		const group = $(id);
 
