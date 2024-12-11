@@ -31,6 +31,7 @@
     <link rel='stylesheet' type='text/css' href='{{ relpath("resources/style.css") }}'>
     <link rel='stylesheet' href='{{ relpath("resources/css/bitter.css") }}'>
     <script type="text/javascript">
+    var packageName = "{{ settings.title }}";
     var pathToRoot = "{{ relpath('a')[0:-1] }}";
     var packageVersion = "{{ settings.version }}";
     var packageBranch = "{{ settings.branch }}";
