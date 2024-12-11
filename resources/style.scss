@@ -1039,6 +1039,14 @@ table.horizontalAlternative2D3D {
     .groupchild-text {
         margin-top: 16px;
     }
+
+    // Threshold for two-column layout
+    @media (min-width: 1200px) {
+        .prettyprint {
+            margin-left: -120px;
+            font-size: 0.9em;
+        }
+    }
 }
 
 #lightbox {
